@@ -1,0 +1,825 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PropertyList>
+
+  <path>mfd.ac</path>
+
+  <animation>
+    <!-- Objets opaques -->
+    <object-name>fond</object-name>
+    <object-name>ecran</object-name>
+    <object-name>EHSI-Button</object-name>
+    <object-name>EADI-Button</object-name>
+
+    <!-- EHSI -->
+    <object-name>EHSI.hdg-bug</object-name>
+    <object-name>EHSI.compass</object-name>
+    <object-name>EHSI.crsneedle</object-name>
+    <object-name>EHSI.crsneedle.1</object-name>
+    <object-name>EHSI.ticks</object-name>
+    <object-name>EHSI.vsi</object-name>
+    <object-name>EHSI.crs</object-name>
+    <object-name>EHSI.crs1</object-name>
+    <object-name>EHSI.crs2</object-name>
+    <object-name>EHSI.crs3</object-name>
+    <object-name>EHSI.hdg</object-name>
+    <object-name>EHSI.hdg1</object-name>
+    <object-name>EHSI.hdg2</object-name>
+    <object-name>EHSI.hdg3</object-name>
+    <object-name>EHSI.gspd</object-name>
+    <object-name>EHSI.gsp1</object-name>
+    <object-name>EHSI.gsp2</object-name>
+    <object-name>EHSI.gsp3</object-name>
+
+    <!-- EADI -->
+    <object-name>EADI.symbol</object-name>
+    <object-name>LOC.needle</object-name>
+    <object-name>FDbars</object-name>
+    <object-name>EADI.gyro</object-name>
+    <object-name>background</object-name>
+    <object-name>ASIribbon</object-name>
+    <object-name>Alttape1</object-name>
+    <object-name>Alttape2</object-name>
+    <object-name>DH</object-name>
+    <object-name>DH100</object-name>
+    <object-name>DH10</object-name>
+    <object-name>DH1</object-name>
+    <object-name>INH.1</object-name>
+    <object-name>INH.2</object-name>
+    <object-name>INH.dec</object-name>
+    <object-name>INH.3</object-name>
+    <object-name>INH.4</object-name>
+    <object-name>ASI.100</object-name>
+    <object-name>ASI.10</object-name>
+    <object-name>ASI.1</object-name>
+    <object-name>ALT.10000</object-name>
+    <object-name>ALT.1000</object-name>
+    <object-name>ALT.100</object-name>
+    <object-name>ALT.10</object-name>
+    <object-name>ALT.1</object-name>
+    <object-name>nav.ind</object-name>
+    <object-name>hdg.ind</object-name>
+    <object-name>alt.ind</object-name>
+    <object-name>vs.ind</object-name>
+    <object-name>pointer</object-name>
+
+    <!-- Objets transparents -->
+  </animation>
+ 
+  <animation>
+    <type>material</type>
+    <object-name>EHSI.hdg-bug</object-name>
+    <object-name>EHSI.compass</object-name>
+    <object-name>EHSI.crsneedle</object-name>
+    <object-name>EHSI.crsneedle.1</object-name>
+    <object-name>EHSI.ticks</object-name>
+    <object-name>EHSI.vsi</object-name>
+    <object-name>EHSI.crs</object-name>
+    <object-name>EHSI.crs1</object-name>
+    <object-name>EHSI.crs2</object-name>
+    <object-name>EHSI.crs3</object-name>
+    <object-name>EHSI.hdg</object-name>
+    <object-name>EHSI.hdg1</object-name>
+    <object-name>EHSI.hdg2</object-name>
+    <object-name>EHSI.hdg3</object-name>
+    <object-name>EHSI.gspd</object-name>
+    <object-name>EHSI.gsp1</object-name>
+    <object-name>EHSI.gsp2</object-name>
+    <object-name>EHSI.gsp3</object-name>
+
+    <object-name>EADI.symbol</object-name>
+    <object-name>LOC.needle</object-name>
+    <object-name>FDbars</object-name>
+    <object-name>EADI.gyro</object-name>
+    <object-name>background</object-name>
+    <object-name>ASIribbon</object-name>
+    <object-name>Alttape1</object-name>
+    <object-name>Alttape2</object-name>
+    <object-name>DH</object-name>
+    <object-name>DH100</object-name>
+    <object-name>DH10</object-name>
+    <object-name>DH1</object-name>
+    <object-name>INH.1</object-name>
+    <object-name>INH.2</object-name>
+    <object-name>INH.dec</object-name>
+    <object-name>INH.3</object-name>
+    <object-name>INH.4</object-name>
+    <object-name>ASI.100</object-name>
+    <object-name>ASI.10</object-name>
+    <object-name>ASI.1</object-name>
+    <object-name>ALT.10000</object-name>
+    <object-name>ALT.1000</object-name>
+    <object-name>ALT.100</object-name>
+    <object-name>ALT.10</object-name>
+    <object-name>ALT.1</object-name>
+    <object-name>nav.ind</object-name>
+    <object-name>hdg.ind</object-name>
+    <object-name>alt.ind</object-name>
+    <object-name>vs.ind</object-name>
+    <object-name>pointer</object-name>
+    <emission>
+      <factor-prop>/systems/electrical/outputs/instrument-lights</factor-prop>
+      <red>   0.20 </red>
+      <green> 0.70 </green>
+      <blue>  0.20 </blue>
+    </emission>
+  </animation>
+
+  <animation>
+    <name>Ensemble-EHSI</name>
+    <object-name>EHSI.hdg-bug</object-name>
+    <object-name>EHSI.compass</object-name>
+    <object-name>EHSI.crsneedle</object-name>
+    <object-name>EHSI.crsneedle.1</object-name>
+    <object-name>EHSI.ticks</object-name>
+    <object-name>EHSI.vsi</object-name>
+    <object-name>EHSI.crs</object-name>
+    <object-name>EHSI.crs1</object-name>
+    <object-name>EHSI.crs2</object-name>
+    <object-name>EHSI.crs3</object-name>
+    <object-name>EHSI.hdg</object-name>
+    <object-name>EHSI.hdg1</object-name>
+    <object-name>EHSI.hdg2</object-name>
+    <object-name>EHSI.hdg3</object-name>
+    <object-name>EHSI.gspd</object-name>
+    <object-name>EHSI.gsp1</object-name>
+    <object-name>EHSI.gsp2</object-name>
+    <object-name>EHSI.gsp3</object-name>
+  </animation>
+
+  <animation>
+    <name>Ensemble-EADI</name>
+    <object-name>EADI.symbol</object-name>
+    <object-name>LOC.needle</object-name>
+    <object-name>FDbars</object-name>
+    <object-name>EADI.gyro</object-name>
+    <object-name>background</object-name>
+    <object-name>ASIribbon</object-name>
+    <object-name>Alttape1</object-name>
+    <object-name>Alttape2</object-name>
+    <object-name>DH</object-name>
+    <object-name>DH100</object-name>
+    <object-name>DH10</object-name>
+    <object-name>DH1</object-name>
+    <object-name>INH.1</object-name>
+    <object-name>INH.2</object-name>
+    <object-name>INH.dec</object-name>
+    <object-name>INH.3</object-name>
+    <object-name>INH.4</object-name>
+    <object-name>ASI.100</object-name>
+    <object-name>ASI.10</object-name>
+    <object-name>ASI.1</object-name>
+    <object-name>ALT.10000</object-name>
+    <object-name>ALT.1000</object-name>
+    <object-name>ALT.100</object-name>
+    <object-name>ALT.10</object-name>
+    <object-name>ALT.1</object-name>
+    <object-name>nav.ind</object-name>
+    <object-name>hdg.ind</object-name>
+    <object-name>alt.ind</object-name>
+    <object-name>vs.ind</object-name>
+    <object-name>pointer</object-name>
+  </animation>
+
+  <animation>
+    <type>pick</type>
+    <object-name>EHSI-Button</object-name>
+    <visible>true</visible>
+    <action>
+      <button>0</button>
+      <repeatable>false</repeatable>  
+      <binding>
+        <command>property-assign</command>
+        <property>/instrumentation/mfd/modeL</property>
+        <value> 0 </value>
+      </binding>
+    </action>
+  </animation>
+
+  <animation>
+    <type>pick</type>
+    <object-name>EADI-Button</object-name>
+    <visible>true</visible>
+    <action>
+      <button>0</button>
+      <repeatable>false</repeatable>  
+      <binding>
+        <command>property-assign</command>
+        <property>/instrumentation/mfd/modeL</property>
+        <value> 1 </value>
+      </binding>
+    </action>
+  </animation>
+
+  <animation>
+    <type>select</type>
+    <object-name>Ensemble-EHSI</object-name>
+    <condition>
+      <equals>
+        <property>/instrumentation/mfd/modeL</property>
+        <value> 0 </value>
+      </equals>
+    </condition>
+  </animation>
+
+  <animation>
+    <type>select</type>
+    <object-name>Ensemble-EADI</object-name>
+    <condition>
+      <equals>
+        <property>/instrumentation/mfd/modeL</property>
+        <value> 1 </value>
+      </equals>
+    </condition>
+  </animation>
+
+  <!-- EHSI -->
+  <animation>
+    <type>rotate</type>
+    <object-name>EHSI.hdg-bug</object-name>
+    <property>/autopilot/internal/fdm-heading-bug-error-deg</property>
+    <axis>
+      <x> -1.0 </x>
+      <y>  0.0 </y>
+      <z>  0.0 </z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>EHSI.compass</object-name>
+    <property>orientation/heading-magnetic-deg</property>
+    <axis>
+      <x> 1.0 </x>
+      <y> 0.0 </y>
+      <z> 0.0 </z>
+    </axis>
+  </animation>
+
+  <!--  COURSE -->
+  <animation>
+    <type>rotate</type>
+    <object-name>EHSI.crsneedle</object-name>
+    <object-name>EHSI.crsneedle.1</object-name>
+    <property>orientation/heading-magnetic-deg</property>
+    <axis>
+      <x> 1.0 </x>
+      <y> 0.0 </y>
+      <z> 0.0 </z>
+    </axis>
+  </animation>
+
+   <animation>
+    <type>rotate</type>
+    <object-name>EHSI.crsneedle</object-name>
+    <object-name>EHSI.crsneedle.1</object-name>
+    <property>/instrumentation/nav/radials/selected-deg</property>
+    <axis>
+      <x> -1 </x>
+      <y>  0 </y>
+      <z>  0 </z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>translate</type>
+    <object-name>EHSI.crsneedle.1</object-name>
+    <property>/instrumentation/nav/heading-needle-deflection</property>
+    <interpolation>
+      <entry><ind> -999 </ind><dep> -0.02 </dep></entry>
+      <entry><ind>  -10 </ind><dep> -0.02 </dep></entry>
+      <entry><ind>    0 </ind><dep>  0.00 </dep></entry>
+      <entry><ind>   10 </ind><dep>  0.02 </dep></entry>
+      <entry><ind>  999 </ind><dep>  0.02 </dep></entry>
+    </interpolation>
+    <axis>
+      <x> 0 </x>
+      <y> 1 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>EHSI.vsi</object-name>
+    <property>autopilot/internal/vert-speed-fpm</property>
+    <interpolation>
+      <entry><ind> -3000 </ind><dep> -31.0 </dep></entry>
+      <entry><ind> -2000 </ind><dep> -24.0 </dep></entry>
+      <entry><ind> -1000 </ind><dep> -17.5 </dep></entry>
+      <entry><ind>     0 </ind><dep>   0.0 </dep></entry>
+      <entry><ind>  1000 </ind><dep>  17.5 </dep></entry>
+      <entry><ind>  2000 </ind><dep>  24.0 </dep></entry>
+      <entry><ind>  3000 </ind><dep>  31.0 </dep></entry>
+    </interpolation>
+    <axis>
+      <x> -1 </x>
+      <y>  0 </y>
+      <z>  0 </z>
+    </axis>
+    <center>
+      <x-m> 0.000 </x-m>
+      <y-m> 0.104 </y-m>
+      <z-m> 0.000 </z-m>
+    </center>
+  </animation>
+
+  <animation>
+    <type>textranslate</type>
+    <object-name>EHSI.crs1</object-name>
+    <property>/instrumentation/nav/radials/selected-deg</property>
+    <factor>0.001</factor>
+    <step>100</step>
+    <axis>
+      <x> 0 </x>
+      <y> 1 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>textranslate</type>
+    <object-name>EHSI.crs2</object-name>
+    <property>/instrumentation/nav/radials/selected-deg</property>
+    <factor>0.01</factor>
+    <step>10</step>
+    <axis>
+      <x> 0 </x>
+      <y> 1 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>textranslate</type>
+    <object-name>EHSI.crs3</object-name>
+    <property>/instrumentation/nav/radials/selected-deg</property>
+    <factor>0.1</factor>
+    <step>1</step>
+    <axis>
+      <x> 0 </x>
+      <y> 1 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+
+  <!--  hdg bug -->
+  <animation>
+    <type>textranslate</type>
+    <object-name>EHSI.hdg1</object-name>
+    <property>/autopilot/settings/heading-bug-deg</property>
+    <factor>0.001</factor>
+    <step>100</step>
+    <axis>
+      <x> 0 </x>
+      <y> 1 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>textranslate</type>
+    <object-name>EHSI.hdg2</object-name>
+    <property>/autopilot/settings/heading-bug-deg</property>
+    <factor>0.01</factor>
+    <step>10</step>
+    <axis>
+      <x> 0 </x>
+      <y> 1 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>textranslate</type>
+    <object-name>EHSI.hdg3</object-name>
+    <property>/autopilot/settings/heading-bug-deg</property>
+    <factor>0.1</factor>
+    <step>1</step>
+    <axis>
+      <x> 0 </x>
+      <y> 1 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+
+  <!--  groundspeed -->
+  <animation>
+    <type>textranslate</type>
+    <object-name>EHSI.gsp1</object-name>
+    <property>velocities/groundspeed-kt</property>
+    <factor>0.001</factor>
+    <step>100</step>
+    <axis>
+      <x> 0 </x>
+      <y> 1 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>textranslate</type>
+    <object-name>EHSI.gsp2</object-name>
+    <property>velocities/groundspeed-kt</property>
+    <factor>0.01</factor>
+    <step>10</step>
+    <axis>
+      <x> 0 </x>
+      <y> 1 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>textranslate</type>
+    <object-name>EHSI.gsp3</object-name>
+    <property>velocities/groundspeed-kt</property>
+    <factor>0.1</factor>
+    <step>1</step>
+    <axis>
+      <x> 0 </x>
+      <y> 1 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+
+  <!--EADI -->
+  <animation>
+    <type>texmultiple</type>
+    <object-name>EADI.gyro</object-name>
+    <transform>
+      <property>orientation/pitch-deg</property>
+      <subtype>textranslate</subtype>
+      <factor>0.0046</factor>
+      <axis>
+        <x> 0 </x>
+        <y> 1 </y>
+        <z> 0 </z>
+      </axis>
+    </transform>
+    <transform>
+      <property>orientation/roll-deg</property>
+      <subtype>texrotate</subtype>
+      <center>
+        <x> 0.25 </x>
+        <y> 0.50 </y>
+      </center>
+      <axis>
+        <x>  0 </x>
+        <y>  0 </y>
+        <z> -1 </z>
+      </axis>
+    </transform>
+  </animation>
+
+  <!--airspeed-->
+  <animation>
+    <type>select</type>
+    <object-name>ASI.10</object-name>
+    <condition>
+      <greater-than>
+        <property>instrumentation/airspeed-indicator/indicated-speed-kt</property>
+        <value>9.999</value>
+      </greater-than>
+    </condition>
+  </animation>
+
+  <animation>
+    <type>select</type>
+    <object-name>ASI.100</object-name>
+    <condition>
+      <greater-than>
+        <property>instrumentation/airspeed-indicator/indicated-speed-kt</property>
+        <value>99.999</value>
+      </greater-than>
+    </condition>
+  </animation>
+
+  <animation>
+    <type>textranslate</type>
+    <object-name>ASI.100</object-name>
+    <property>instrumentation/airspeed-indicator/indicated-speed-kt</property>
+    <factor>0.001</factor>
+    <step>100</step>
+    <axis>
+      <x> 0 </x>
+      <y> 1 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>textranslate</type>
+    <object-name>ASI.10</object-name>
+    <property>instrumentation/airspeed-indicator/indicated-speed-kt</property>
+    <factor>0.01</factor>
+    <step>10</step>
+    <axis>
+      <x> 0 </x>
+      <y> 1 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>textranslate</type>
+    <object-name>ASI.1</object-name>
+    <property>instrumentation/airspeed-indicator/indicated-speed-kt</property>
+    <factor>0.1</factor>
+    <step>1</step>
+    <axis>
+      <x> 0 </x>
+      <y> 1 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>textranslate</type>
+    <object-name>ASIribbon</object-name>
+    <property>instrumentation/airspeed-indicator/indicated-speed-kt</property>
+    <interpolation>
+      <entry><ind>   0 </ind><dep> 0.0000 </dep></entry>
+      <entry><ind> 240 </ind><dep> 0.5493 </dep></entry>
+    </interpolation>
+    <axis>
+      <x> 0 </x>
+      <y> 1 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>select</type>
+    <object-name>Alttape1</object-name>
+    <condition>
+      <less-than>
+        <property>instrumentation/altimeter/indicated-altitude-ft</property>
+        <value>9500</value>
+      </less-than>
+    </condition>
+  </animation>
+
+  <animation>
+    <type>select</type>
+    <object-name>Alttape2</object-name>
+    <condition>
+      <greater-than>
+        <property>instrumentation/altimeter/indicated-altitude-ft</property>
+        <value>9499.999</value>
+      </greater-than>
+    </condition>
+  </animation>
+
+  <animation>
+    <type>textranslate</type>
+    <object-name>Alttape1</object-name>
+    <property>instrumentation/altimeter/indicated-altitude-ft</property>
+    <interpolation>
+      <entry><ind>    0 </ind><dep> 0.0000 </dep></entry>
+      <entry><ind> 9500 </ind><dep> 0.9068 </dep></entry>
+    </interpolation>
+    <axis>
+      <x> 0 </x>
+      <y> 1 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>textranslate</type>
+    <object-name>Alttape2</object-name>
+    <property>instrumentation/altimeter/indicated-altitude-ft</property>
+    <interpolation>
+      <entry><ind>  9500 </ind><dep> 0.0000 </dep></entry>
+      <entry><ind> 19000 </ind><dep> 0.9068 </dep></entry>
+    </interpolation>
+    <axis>
+      <x> 0 </x>
+      <y> 1 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>translate</type>
+    <object-name>LOC.needle</object-name>
+    <property>/instrumentation/nav/heading-needle-deflection</property>
+    <interpolation>
+      <entry><ind> -10 </ind><dep> -0.0125 </dep></entry>
+      <entry><ind>   0 </ind><dep>  0.0000 </dep></entry>
+      <entry><ind>  10 </ind><dep>  0.0125 </dep></entry>
+    </interpolation>
+    <axis>
+      <x> 0 </x>
+      <y> 1 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>textranslate</type>
+    <object-name>ALT.1</object-name>
+    <property>instrumentation/altimeter/indicated-altitude-ft</property>
+    <factor>0.1</factor>
+    <step>1</step>
+    <axis>
+      <x> 0 </x>
+      <y> 1 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>textranslate</type>
+    <object-name>ALT.10</object-name>
+    <property>instrumentation/altimeter/indicated-altitude-ft</property>
+    <factor>0.01</factor>
+    <step>10</step>
+    <axis>
+      <x> 0 </x>
+      <y> 1 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>textranslate</type>
+    <object-name>ALT.100</object-name>
+    <property>instrumentation/altimeter/indicated-altitude-ft</property>
+    <factor>0.001</factor>
+    <step>100</step>
+    <axis>
+      <x> 0 </x>
+      <y> 1 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>textranslate</type>
+    <object-name>ALT.1000</object-name>
+    <property>instrumentation/altimeter/indicated-altitude-ft</property>
+    <factor>0.0001</factor>
+    <step>1000</step>
+    <axis>
+      <x> 0 </x>
+      <y> 1 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>textranslate</type>
+    <object-name>ALT.10000</object-name>
+    <property>instrumentation/altimeter/indicated-altitude-ft</property>
+    <factor>0.00001</factor>
+    <step>10000</step>
+    <axis>
+      <x> 0 </x>
+      <y> 1 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>textranslate</type>
+    <object-name>INH.1</object-name>
+    <property>instrumentation/altimeter/setting-inhg</property>
+    <factor>0.01</factor>
+    <step>10</step>
+    <axis>
+      <x> 0 </x>
+      <y> 1 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>textranslate</type>
+    <object-name>INH.2</object-name>
+    <property>instrumentation/altimeter/setting-inhg</property>
+    <factor>0.1</factor>
+    <step>1</step>
+    <axis>
+      <x> 0 </x>
+      <y> 1 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>textranslate</type>
+    <object-name>INH.3</object-name>
+    <property>instrumentation/altimeter/setting-inhg</property>
+    <factor>1.0</factor>
+    <step>0.1</step>
+    <bias>0.005</bias>  
+    <axis>
+      <x> 0 </x>
+      <y> 1 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>textranslate</type>
+    <object-name>INH.4</object-name>
+    <property>instrumentation/altimeter/setting-inhg</property>
+    <factor>10.0</factor>
+    <step>0.01</step>
+    <bias>0.005</bias>
+    <axis>
+      <x> 0 </x>
+      <y> 1 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+
+  <!-- DH -->
+  <animation>
+    <type>textranslate</type>
+    <object-name>DH1</object-name>
+    <property>instrumentation/altimeter/DH</property>
+    <factor>0.1</factor>
+    <step>1</step>
+    <axis>
+      <x> 0 </x>
+      <y> 1 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>textranslate</type>
+    <object-name>DH10</object-name>
+    <property>instrumentation/altimeter/DH</property>
+    <factor>0.01</factor>
+    <step>10</step>
+    <axis>
+      <x> 0 </x>
+      <y> 1 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>textranslate</type>
+    <object-name>DH100</object-name>
+    <property>instrumentation/altimeter/DH</property>
+    <factor>0.001</factor>
+    <step>100</step>
+    <axis>
+      <x> 0 </x>
+      <y> 1 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+
+  <!-- AP annunciators-->
+  <animation>
+    <type>select</type>
+    <object-name>hdg.ind</object-name>
+    <condition>
+       <equals>
+         <property>autopilot/locks/heading</property>
+         <value>dg-heading-hold</value>
+       </equals>
+    </condition>
+  </animation>
+
+  <animation>
+    <type>select</type>
+    <object-name>nav.ind</object-name>
+    <condition>
+      <equals>
+        <property>autopilot/locks/heading</property>
+        <value>nav1-hold</value>
+      </equals>
+    </condition>
+  </animation>
+
+  <animation>
+    <type>select</type>
+    <object-name>vs.ind</object-name>
+    <condition>
+      <equals>
+        <property>autopilot/locks/altitude</property>
+        <value>vertical-speed-hold</value>
+      </equals>
+    </condition>
+  </animation>
+
+  <animation>
+    <type>select</type>
+    <object-name>alt.ind</object-name>
+    <condition>
+      <equals>
+        <property>autopilot/locks/altitude</property>
+        <value>altitude-hold</value>
+      </equals>
+    </condition>
+  </animation>
+
+</PropertyList>
+

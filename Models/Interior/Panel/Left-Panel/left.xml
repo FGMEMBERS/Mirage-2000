@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PropertyList>
+
+  <path>left.ac</path>
+
+  <animation>
+    <!-- Objets opaques -->
+    <object-name>left</object-name>
+
+    <!-- Objets transparents -->
+  </animation>
+ 
+</PropertyList>
+

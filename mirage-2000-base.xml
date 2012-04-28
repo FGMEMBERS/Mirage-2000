@@ -1,0 +1,429 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PropertyList>
+
+  <sim include="Nasal/views.xml">
+
+    <author>BARANGER Emmanuel (3D/FDM), Buckaroo (FDM)</author>
+    <aircraft-version>0.1</aircraft-version>
+    <status>0.1 Alpha</status>
+
+    <fuel-fraction>0.8</fuel-fraction>
+
+    <model>
+      <path>Aircraft/Mirage-2000/Models/mirage-2000.xml</path>
+      <livery>
+        <file type="string">default</file>
+      </livery>
+    </model>
+
+    <submodels> 
+      <serviceable type="bool">true</serviceable>
+      <path>Aircraft/Mirage-2000/Models/Effects/guns/submodels.xml</path>
+      <path>Aircraft/Mirage-2000/Models/External-objects/loads.xml</path>
+    </submodels>
+
+    <startup>
+      <splash-texture>Aircraft/Mirage-2000/mirage-2000-splash.png</splash-texture>
+    </startup>
+
+    <sound>
+      <path>Aircraft/Mirage-2000/Sounds/mirage-2000-sound.xml</path>
+    </sound>
+
+    <rendering>
+      <redout>
+        <parameters>
+          <blackout-complete-g>9</blackout-complete-g>
+          <blackout-onset-g>6</blackout-onset-g>
+        </parameters>
+      </redout>
+    </rendering>
+	
+    <multiplay>
+      <chat_display>1</chat_display>
+      <generic> 
+        <int type="int" n="0">  0 </int>                                           <!--  0 immat -->
+        <int type="int" n="1">  0 </int>                                           <!--  1 immat -->
+        <int type="int" n="2">  0 </int>                                           <!--  2 immat -->
+        <int type="int" n="3">  0 </int>                                           <!--  3 immat -->
+        <int type="int" n="4">  0 </int>                                           <!--  4 immat -->
+        <int type="int" n="5">  0 </int>                                           <!--  5 immat -->
+        <int type="bool" n="6" alias="/smoke/active"> 0 </int>                     <!--  6 start smoke -->
+        <int type="int" n="7" alias="smoke/particlepersec"> 50 </int>              <!--  7 particlepersec -->
+        <int type="int" n="10" alias="controls/armament/trigger">0</int>           <!-- 10 reserved for bombable mode -->
+        <float n="0" alias="/instrumentation/doors/crew/position-norm"/>
+        <float n="1" alias="/instrumentation/doors/passenger/position-norm"/>
+        <float n="2" alias="/position/gear-agl-m"> 0 </float>                      <!-- altitude for MP shadow -->
+        <float n="3" alias="/smoke/colors/knob-red">1</float>                      <!-- 3 smoke mixer red setting -->
+        <float n="4" alias="/smoke/colors/knob-green">1</float>                    <!-- 4 smoke mixer green setting -->
+        <float n="5" alias="/smoke/colors/knob-blue">1</float>                     <!-- 5 smoke mixer blue setting -->
+        <string n="9" type="string" />                                             <!-- string[9] reserved for bombable mode -->
+      </generic>
+    </multiplay>
+
+    <hud>
+      <path n="1">Aircraft/Mirage-2000/Hud/hud.xml</path>
+      <visibility n="1">true</visibility>
+      <palette>
+        <color n="0">
+          <alpha type="float">0.85</alpha>
+          <antialiased type="bool">true</antialiased>
+          <brightness type="float">0.85</brightness>
+          <transparent type="bool">true</transparent>
+          <red type="float">0.38</red>
+          <green type="float">1.0</green>
+          <blue type="float">0.22</blue>
+        </color>
+        <color n="1">
+          <alpha type="float">0.85</alpha>
+          <antialiased type="bool">true</antialiased>
+          <brightness type="float">0.85</brightness>
+          <transparent type="bool">true</transparent>
+          <red type="float">   1.0 </red>
+          <green type="float"> 0.2 </green>
+          <blue type="float">  0.0 </blue>
+        </color>
+      </palette>
+    </hud>
+
+    <help>
+      <title>Mirage 2000</title>
+      <key>
+        <name>d</name>
+        <desc>Open/Close canopy</desc>
+      </key>
+      <key>
+        <name>e</name>
+        <desc>Fire guns</desc>
+      </key>
+      <key>
+        <name>E</name>
+        <desc>Parachute</desc>
+      </key>
+      <line>Afterburners engage when</line>
+      <line>throttle moves past 75%</line>
+    </help>
+
+    <menubar include="Dialogs/mirage-2000-menu.xml"/>
+	
+  <!--                  /-\
+                       /   \
+      _________________|   |_________________
+        |      |      |\   /|      |      |       
+       2.L    3.L    1.L\-/1.R    3.R    2.R
+       (1)    (2)    (0) | (6)    (4)    (5)
+                       Center
+                        (3)
+  -->                   
+    <weight n="0">
+      <name>pylon1.L</name>
+      <weight-lb>0</weight-lb>
+      <selected>none</selected>
+      <opt>
+        <name>none</name>
+        <lbs>0</lbs>
+      </opt>
+      <opt>
+        <name>Matra R550 Magic 2</name>
+        <lbs>196.21</lbs>
+      </opt>
+    </weight>
+
+    <weight n="1">
+      <name>pylon2.L</name>
+      <weight-lb>0</weight-lb>
+      <selected>none</selected>
+      <opt>
+        <name>none</name>
+        <lbs>0</lbs>
+      </opt>
+      <opt>
+        <name>Matra R550 Magic 2</name>
+        <lbs>196.21</lbs>
+      </opt>
+    </weight>
+
+    <weight n="2">
+      <name>pylon3.L</name>
+      <tank>2</tank>
+      <weight-lb>0</weight-lb>
+      <selected>none</selected>
+      <opt>
+        <name>none</name>
+        <lbs>0</lbs>
+      </opt>
+      <opt>
+        <name>1700 l Droptank</name>
+        <lbs>3746.80</lbs>
+        <gals>449.09</gals>
+      </opt>
+      <opt>
+        <name>1300 l Droptank</name>
+        <lbs>2865.20</lbs>
+        <gals>343.42</gals>
+      </opt>
+      <opt>
+        <name>Matra R550 Magic 2</name>
+        <lbs>196.21</lbs>
+      </opt>
+    </weight>
+
+    <weight n="3">
+      <name>pylon.C</name>
+      <tank>3</tank>
+      <weight-lb>0</weight-lb>
+      <selected>none</selected>
+      <opt>
+        <name>none</name>
+        <lbs>0</lbs>
+      </opt>
+      <opt>
+        <name>1300 l Droptank</name>
+        <lbs>2865.20</lbs>
+        <gals>343.42</gals>
+      </opt>
+    </weight>
+
+    <weight n="4">
+      <name>pylon3.R</name>
+      <tank>4</tank>
+      <weight-lb>0</weight-lb>
+      <selected>none</selected>
+      <opt>
+        <name>none</name>
+        <lbs>0</lbs>
+      </opt>
+      <opt>
+        <name>1700 l Droptank</name>
+        <lbs>3746.80</lbs>
+        <gals>449.09</gals>
+      </opt>
+      <opt>
+        <name>1300 l Droptank</name>
+        <lbs>2865.20</lbs>
+        <gals>343.42</gals>
+      </opt>
+      <opt>
+        <name>Matra R550 Magic 2</name>
+        <lbs>196.21</lbs>
+      </opt>
+    </weight>
+
+    <weight n="5">
+      <name>pylon2.R</name>
+      <weight-lb>0</weight-lb>
+      <selected>none</selected>
+      <opt>
+        <name>none</name>
+        <lbs>0</lbs>
+      </opt>
+      <opt>
+        <name>Matra R550 Magic 2</name>
+        <lbs>196.21</lbs>
+      </opt>
+    </weight>
+
+    <weight n="6">
+      <name>pylon1.R</name>
+      <weight-lb>0</weight-lb>
+      <selected>none</selected>
+      <opt>
+        <name>none</name>
+        <lbs>0</lbs>
+      </opt>
+      <opt>
+        <name>Matra R550 Magic 2</name>
+        <lbs>196.21</lbs>
+      </opt>
+    </weight>
+
+  </sim>
+
+  <controls>
+    <gear>
+      <brake-parking type="double"> 1 </brake-parking>
+    </gear>
+    <engines>
+      <engine n="0">
+	<boost type="double">0</boost>
+        <magnetos>0</magnetos>
+      </engine>
+      <engine n="1">
+	<boost type="double">0</boost>
+        <magnetos>0</magnetos>
+      </engine>
+    </engines>
+    <armament>
+      <trigger type="bool">false</trigger>
+      <master-arm type="bool">true</master-arm>
+      <position-norm type="int">1</position-norm>
+      <station n="0">
+        <release type="bool">false</release>
+      </station>
+      <station n="1">
+        <release type="bool">false</release>
+      </station>
+      <station n="2">
+        <release type="bool">false</release>
+      </station>
+      <station n="3">
+        <release type="bool">false</release>
+      </station>
+      <station n="4">
+        <release type="bool">false</release>
+      </station>
+      <station n="5">
+        <release type="bool">false</release>
+      </station>
+      <station n="6">
+        <release type="bool">false</release>
+      </station>
+    </armament>
+  </controls>
+
+  <engines>
+    <engine n="0">
+      <engine-num type="int">0</engine-num>
+      <rpm>500</rpm>
+      <running>false</running>
+    </engine>
+  </engines>
+
+  <instrumentation>
+    <doors>
+      <crew>
+        <position-norm type="float">0</position-norm>
+      </crew>
+      <passenger>
+        <position-norm type="float">0</position-norm>
+      </passenger>
+    </doors>
+    <rwr>
+      <display-lighting-intens type="double">0.4</display-lighting-intens>
+      <symbology-lighting-intens type="double">1</symbology-lighting-intens>
+    </rwr>
+    <enav><selected type="int">3</selected></enav>
+    <radar>
+      <range type="int" archive="y">40</range>
+      <range-factor type="double" archive="n">0.001888</range-factor>
+      <minimized type="bool" archive="y">false</minimized>
+      <selected type="int">3</selected>
+      <!-- inicio en pruebas -->
+      <enabled type="bool">true</enabled>
+      <az-field type="double">120</az-field>
+      <range type="double">150</range>
+      <range-selected type="double">50</range-selected>
+      <radar2-range type="double">150</radar2-range>
+      <display-rdr type="bool">true</display-rdr>
+      <radar-standby type="int">3</radar-standby>
+      <mode>
+        <rws type="bool">true</rws>
+        <tws-auto type="bool">false</tws-auto>
+      </mode>
+    </radar> 
+    <terrain-radar>
+      <hi-elev>
+        <alt-ft type="double">-9999.9</alt-ft>
+        <lat-deg type="double">-9999.9</lat-deg>
+        <lon-deg type="double">-9999.9</lon-deg>
+        <dist-m type="double">-9999.9</dist-m>
+        <collision-status type="string">initialised</collision-status>
+      </hi-elev>
+      <settings>
+        <mode type="string">extend</mode>
+        <state type="string">off</state>
+        <range-m type="double">2500</range-m>
+        <step-m type="double">250</step-m>
+        <max-climb-rate-fps type="double">120</max-climb-rate-fps>
+        <hi-elev-markers type="bool">false</hi-elev-markers>
+      </settings>
+    </terrain-radar>
+    <mfd>
+      <modeL type="int"> 0 </modeL>
+      <modeR type="int"> 1 </modeR>
+    </mfd>
+  </instrumentation>
+
+  <input>
+    <keyboard include="Nasal/mirage-2000-keyboard.xml"/>
+  </input>
+ 
+  <environment>
+    <turbulence>
+      <use-cloud-turbulence>true</use-cloud-turbulence>
+    </turbulence>
+  </environment>
+
+  <systems>
+    <refuel>
+      <type>probe</type>
+      <serviceable type="bool">true</serviceable>
+    </refuel>
+  </systems>
+
+  <consumables>
+    <fuel>
+      <tank n="0">
+        <tank-num type="int">0</tank-num>
+        <level-gal_us archive="y">2500</level-gal_us>
+      </tank>
+      <tank n="1">
+        <tank-num type="int">1</tank-num>
+        <level-gal_us archive="y">2500</level-gal_us>
+      </tank>
+<!--
+      <tank n="2">
+        <tank-num type="int">2</tank-num>
+        <level-gal_us archive="y">1031</level-gal_us>
+      </tank>
+      <tank n="3">
+        <tank-num type="int">3</tank-num>
+        <level-gal_us archive="y">1031</level-gal_us>
+      </tank>
+      <tank n="4">
+        <tank-num type="int">4</tank-num>
+        <level-gal_us archive="y">1031</level-gal_us>
+      </tank>
+-->
+      <tank n="2">
+        <name>left-Tank</name>
+        <selected type="bool">false</selected>
+      </tank>
+      <tank n="3">
+        <name>Center-tank</name>
+        <selected type="bool">false</selected>
+      </tank>
+      <tank n="4">
+        <name>right-Tank</name>
+        <selected type="bool">false</selected>
+      </tank>
+    </fuel>
+  </consumables>
+
+  <nasal>
+    <doors>
+      <file>Aircraft/Mirage-2000/Nasal/doors.nas</file>
+    </doors>
+    <mirage2000>
+      <file>Aircraft/Mirage-2000/Nasal/liveries.nas</file>
+      <file>Aircraft/Mirage-2000/Nasal/light.nas</file>
+      <file>Aircraft/Mirage-2000/Nasal/mirage-2000.nas</file>
+    </mirage2000>
+    <aar>
+      <file>Aircraft/Generic/aar.nas</file>
+    </aar>
+    <radardist>
+      <file>Aircraft/Instruments-3d/radardist/radardist.nas</file>
+    </radardist>
+    <radar>
+      <file>Aircraft/Mirage-2000/Nasal/radar.nas</file> 
+      <file>Aircraft/Mirage-2000/Nasal/rwr.nas</file>
+    </radar>
+    <guns>
+       <file>Aircraft/Mirage-2000/Nasal/weapons.nas</file>
+    </guns>	
+  </nasal>
+
+</PropertyList>
+

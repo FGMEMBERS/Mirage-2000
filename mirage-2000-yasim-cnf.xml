@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PropertyList include="mirage-2000-base.xml">
+
+  <sim>
+
+    <description>Mirage 2000 (YASim)</description>
+    <author>BARANGER Emmanuel (3D/FDM), Buckaroo (FDM)</author>
+    <flight-model>yasim</flight-model>
+    <aero>mirage-2000-yasim</aero>
+
+  </sim>
+  
+</PropertyList>
+

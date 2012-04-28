@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PropertyList>
+
+  <path>failures.ac</path>
+
+  <animation>
+    <!-- Objets opaques -->
+    <object-name>fond</object-name>
+    <object-name>failures</object-name>
+    <object-name>traits</object-name>
+
+    <!-- Objets transparents -->
+  </animation>
+ 
+  <!-- SWITCH -->
+  <model>
+    <path>Aircraft/Mirage-2000/Models/Interior/Panel/Right-Panel/Instruments/divers/switch1.xml</path>
+    <offsets>
+      <x-m>  0.001685 </x-m>
+      <y-m> -0.031730 </y-m>
+      <z-m>  0.024480 </z-m>
+    </offsets>
+  </model>
+
+  <model>
+    <path>Aircraft/Mirage-2000/Models/Interior/Panel/Right-Panel/Instruments/divers/switch2.xml</path>
+    <offsets>
+      <x-m>  0.001685 </x-m>
+      <y-m> -0.017380 </y-m>
+      <z-m>  0.024480 </z-m>
+    </offsets>
+  </model>
+
+  <model>
+    <path>Aircraft/Mirage-2000/Models/Interior/Panel/Right-Panel/Instruments/divers/switch2.xml</path>
+    <offsets>
+      <x-m>  0.001685 </x-m>
+      <y-m> -0.003381 </y-m>
+      <z-m>  0.024480 </z-m>
+    </offsets>
+  </model>
+
+  <model>
+    <path>Aircraft/Mirage-2000/Models/Interior/Panel/Right-Panel/Instruments/divers/switch2.xml</path>
+    <offsets>
+      <x-m> 0.001685 </x-m>
+      <y-m> 0.009983 </y-m>
+      <z-m> 0.024480 </z-m>
+    </offsets>
+  </model>
+
+  <model>
+    <path>Aircraft/Mirage-2000/Models/Interior/Panel/Right-Panel/Instruments/divers/switch2.xml</path>
+    <offsets>
+      <x-m> 0.001685 </x-m>
+      <y-m> 0.022980 </y-m>
+      <z-m> 0.017480 </z-m>
+      <roll-deg> 90 </roll-deg>
+    </offsets>
+  </model>
+
+</PropertyList>
+

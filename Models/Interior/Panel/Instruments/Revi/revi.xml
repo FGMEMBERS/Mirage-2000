@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PropertyList>
+
+  <path>revi.ac</path>
+
+  <animation>
+    <!-- Objets opaques -->
+    <object-name>fond</object-name>
+
+    <!-- Objets transparents -->
+    <object-name>verre1</object-name>
+    <object-name>verre2</object-name>
+  </animation>
+ 
+</PropertyList>
+
