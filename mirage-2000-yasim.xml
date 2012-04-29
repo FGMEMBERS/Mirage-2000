@@ -236,7 +236,8 @@
        egt="935"
        epr="9.8"
        exhaust-speed="2333"
-       spool-time="6">
+       spool-time="6"
+       tsfc="0.2">
        <actionpt x="-6" y="0" z="-0.634"/>
        <control-input axis="/controls/engines/engine[0]/throttle" control="THROTTLE"/>
        <control-input axis="/controls/engines/engine[0]/throttle" control="REHEAT" src0="0.85" src1="1.0" dst0="0.0" dst1="1.0"/>
@@ -297,8 +298,9 @@
   </gear>
 
   <!-- Internal tanks -->
-  <tank x="-1.600" y=" 1.667" z="-1.032" jet="true" capacity="2500"/>
-  <tank x="-1.600" y="-1.667" z="-1.032" jet="true" capacity="2500"/>
+  <!-- Total : 4000 l = 2 x 2000 l = 2 x 527.7 gal = 2 x 3546.144 lbs -->
+  <tank x="-1.600" y=" 1.667" z="-1.032" jet="true" capacity="3546.144"/>
+  <tank x="-1.600" y="-1.667" z="-1.032" jet="true" capacity="3546.144"/>
 <!--
   <tank x=" 1.300" y=" 0.000" z="-0.100" jet="true" capacity="1031"/>
 -->

@@ -107,15 +107,19 @@
 
     <menubar include="Dialogs/mirage-2000-menu.xml"/>
 	
-  <!--                  /-\
-                       /   \
-      _________________|   |_________________
-        |      |      |\   /|      |      |       
-       2.L    3.L    1.L\-/1.R    3.R    2.R
-       (1)    (2)    (0) | (6)    (4)    (5)
-                       Center
-                        (3)
-  -->                   
+    <!--                  /-\
+                         /   \
+        _________________|   |_________________
+          |      |      |\   /|      |      |       
+         2.L    3.L    1.L\-/1.R    3.R    2.R
+         (1)    (2)    (0) | (6)    (4)    (5)
+                         Center
+                          (3)
+
+       1700 l = 448.5 gal = 3013.92 lbs
+       1300 l = 343.0 gal = 2305.01 lbs
+    -->                   
+
     <weight n="0">
       <name>pylon1.L</name>
       <weight-lb>0</weight-lb>
@@ -155,13 +159,13 @@
       </opt>
       <opt>
         <name>1700 l Droptank</name>
-        <lbs>3746.80</lbs>
-        <gals>449.09</gals>
+        <lbs>3013.92</lbs>
+        <gals>448.50</gals>
       </opt>
       <opt>
         <name>1300 l Droptank</name>
-        <lbs>2865.20</lbs>
-        <gals>343.42</gals>
+        <lbs>2305.01</lbs>
+        <gals>343.00</gals>
       </opt>
       <opt>
         <name>Matra R550 Magic 2</name>
@@ -180,8 +184,8 @@
       </opt>
       <opt>
         <name>1300 l Droptank</name>
-        <lbs>2865.20</lbs>
-        <gals>343.42</gals>
+        <lbs>2305.01</lbs>
+        <gals>343.00</gals>
       </opt>
     </weight>
 
@@ -196,13 +200,13 @@
       </opt>
       <opt>
         <name>1700 l Droptank</name>
-        <lbs>3746.80</lbs>
-        <gals>449.09</gals>
+        <lbs>3013.92</lbs>
+        <gals>448.50</gals>
       </opt>
       <opt>
         <name>1300 l Droptank</name>
-        <lbs>2865.20</lbs>
-        <gals>343.42</gals>
+        <lbs>2305.01</lbs>
+        <gals>343.00</gals>
       </opt>
       <opt>
         <name>Matra R550 Magic 2</name>
@@ -366,11 +370,11 @@
     <fuel>
       <tank n="0">
         <tank-num type="int">0</tank-num>
-        <level-gal_us archive="y">2500</level-gal_us>
+        <level-gal_us archive="y">527.7</level-gal_us>
       </tank>
       <tank n="1">
         <tank-num type="int">1</tank-num>
-        <level-gal_us archive="y">2500</level-gal_us>
+        <level-gal_us archive="y">527.7</level-gal_us>
       </tank>
 <!--
       <tank n="2">
