@@ -11,7 +11,7 @@
     <fuel-fraction>0.8</fuel-fraction>
 
     <model>
-      <path>Aircraft/Mirage-2000/Models/mirage-2000.xml</path>
+      <path>Aircraft/Mirage-2000/Models/m2000-5.xml</path>
       <livery>
         <file type="string">default</file>
       </livery>
@@ -24,11 +24,11 @@
     </submodels>
 
     <startup>
-      <splash-texture>Aircraft/Mirage-2000/mirage-2000-splash.png</splash-texture>
+      <splash-texture>Aircraft/Mirage-2000/m2000-5-splash.png</splash-texture>
     </startup>
 
     <sound>
-      <path>Aircraft/Mirage-2000/Sounds/mirage-2000-sound.xml</path>
+      <path>Aircraft/Mirage-2000/Sounds/m2000-5-sound.xml</path>
     </sound>
 
     <rendering>
@@ -105,7 +105,7 @@
       <line>throttle moves past 75%</line>
     </help>
 
-    <menubar include="Dialogs/mirage-2000-menu.xml"/>
+    <menubar include="Dialogs/m2000-5-menu.xml"/>
 	
     <!--                  /-\
                          /   \
@@ -350,7 +350,7 @@
   </instrumentation>
 
   <input>
-    <keyboard include="Nasal/mirage-2000-keyboard.xml"/>
+    <keyboard include="Nasal/m2000-5-keyboard.xml"/>
   </input>
  
   <environment>
@@ -412,7 +412,7 @@
     <mirage2000>
       <file>Aircraft/Mirage-2000/Nasal/liveries.nas</file>
       <file>Aircraft/Mirage-2000/Nasal/light.nas</file>
-      <file>Aircraft/Mirage-2000/Nasal/mirage-2000.nas</file>
+      <file>Aircraft/Mirage-2000/Nasal/m2000-5.nas</file>
     </mirage2000>
     <aar>
       <file>Aircraft/Generic/aar.nas</file>

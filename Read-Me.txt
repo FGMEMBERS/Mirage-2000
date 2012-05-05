@@ -6,8 +6,8 @@ English/Francais
 A little history
 ================
 
-Dassault Mirage 2000
-====================
+Dassault Mirage 2000-5
+======================
 
 Manufacturer                  :
 Type                          :
@@ -40,8 +40,8 @@ embaranger@free.fr
 Un peu d'histoire
 =================
 
-Dassault Mirage 2000
-====================
+Dassault Mirage 2000-5
+======================
 
 Constructeur                  :
 Type                          :

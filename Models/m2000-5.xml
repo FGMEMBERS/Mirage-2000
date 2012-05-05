@@ -2,7 +2,7 @@
 
 <PropertyList>
 
-  <path>mirage-2000.ac</path>
+  <path>m2000-5.ac</path>
 
   <nasal>
     <load>
@@ -136,19 +136,6 @@
     <property-base>sim/model/livery</property-base>
     <texture-prop>texture</texture-prop>
     <texture>texture.png</texture>
-<!--
-    <diffuse>
-      <red-prop>diffuse/red</red-prop>
-      <green-prop>diffuse/green</green-prop>
-      <blue-prop>diffuse/blue</blue-prop>
-    </diffuse>
-
-    <ambient>
-      <red-prop>ambient/red</red-prop>
-      <green-prop>ambient/green</green-prop>
-      <blue-prop>ambient/blue</blue-prop>
-    </ambient>
--->
     <specular>
       <red-prop>specular/red</red-prop>
       <green-prop>specular/green</green-prop>
@@ -160,11 +147,6 @@
       <green-prop>emission/green</green-prop>
       <blue-prop>emission/blue</blue-prop>
     </emission>
-<!--
-    <shininess>
-      <shininess-prop>shininess</shininess-prop>
-    </shininess>
--->
   </animation>
 
   <effect>
@@ -215,6 +197,33 @@
     <type>noshadow</type>
     <object-name>vitres</object-name>
     <object-name>verriere</object-name>
+  </animation>
+
+  <!-- Externals objects  -->
+  <model>
+    <path>Aircraft/Mirage-2000/Models/External-objects/loads.xml</path>
+  </model>
+
+  <animation>
+    <type>material</type>
+    <object-name>R550</object-name>
+    <object-name>ailettes</object-name>
+    <object-name>tank</object-name>
+
+    <property-base>sim/model/livery-tank</property-base>
+    <texture-prop>texture</texture-prop>
+    <texture>External-objects/external-objects.png</texture>
+    <specular>
+      <red-prop>specular/red</red-prop>
+      <green-prop>specular/green</green-prop>
+      <blue-prop>specular/blue</blue-prop>
+    </specular>
+
+    <emission>
+      <red-prop>emission/red</red-prop>
+      <green-prop>emission/green</green-prop>
+      <blue-prop>emission/blue</blue-prop>
+    </emission>
   </animation>
 
   <!-- ******************************************************************* -->
@@ -271,11 +280,6 @@
   <!-- Intérieur -->
   <model>
     <path>Aircraft/Mirage-2000/Models/Interior/interior.xml</path>
-  </model>
-
-  <!-- Externals objects -->
-  <model>
-    <path>Aircraft/Mirage-2000/Models/External-objects/loads.xml</path>
   </model>
 
   <!-- Flamme -->

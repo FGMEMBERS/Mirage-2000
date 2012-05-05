@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!-- <PropertyList include="mirage-2000-jsbsim-cnf.xml"> -->
-<PropertyList include="mirage-2000-yasim-cnf.xml">
+<!-- <PropertyList include="m2000-5-jsbsim-cnf.xml"> -->
+<PropertyList include="m2000-5-yasim-cnf.xml">
 
   <sim>
 

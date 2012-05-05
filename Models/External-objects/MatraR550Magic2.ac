@@ -7,7 +7,7 @@ name "R550"
 loc 0 0 -0
 data 4
 R550
-texture "colors.png"
+texture "external-objects.png"
 texrep 1 1
 crease 30.000001
 numvert 37
@@ -425,7 +425,7 @@ name "ailettes"
 loc 0 0 -0
 data 8
 ailettes
-texture "colors.png"
+texture "external-objects.png"
 texrep 1 1
 crease 30.000001
 numvert 112
