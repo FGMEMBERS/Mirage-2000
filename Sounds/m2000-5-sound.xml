@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 
+<!-- Updated by 5H1N0B1 : August 2012 -->
+
 <PropertyList>
 
   <fx>
@@ -117,7 +119,19 @@
     <engine>
       <name>burner lowfreq</name>
       <path>Aircraft/Mirage-2000/Sounds/BaBoOn-mirageIV-Sonic-Boom.wav</path>
-      <mode>once</mode>    
+      <mode>once</mode>
+
+      <condition>
+        <property>/engines/engine/running</property>
+        <not>
+          <property>/sim/current-view/internal</property>
+        </not>
+	 <greater-than>
+          <property>velocities/airspeed-kt</property>
+          <value>600</value>
+        </greater-than>
+      </condition>
+    
       <property>controls/engines/engine/reheat</property>
       <volume>
         <offset>4.9</offset>
@@ -129,7 +143,19 @@
     <engine>
       <name>burner lowfreq loop</name>
       <path>Aircraft/Mirage-2000/Sounds/BaBoOn-mirageIV-Sonic-Boom.wav</path>
-      <mode>looped</mode>
+      <mode>once</mode>
+
+      <condition>
+        <property>/engines/engine/running</property>
+        <not>
+          <property>/sim/current-view/internal</property>
+        </not>
+	 <greater-than>
+          <property>velocities/airspeed-kt</property>
+          <value>600</value>
+        </greater-than>
+      </condition>
+
       <property>controls/engines/engine/reheat</property>
       <volume>
         <offset>-0.2</offset>
@@ -141,12 +167,17 @@
     <engine>
       <name>burner loop</name>
       <path>Aircraft/Mirage-2000/Sounds/BaBoOn-mirageIV-Sonic-Boom.wav</path>
-      <mode>looped</mode>
+      <mode>once</mode>
       <condition>
         <property>/engines/engine/running</property>
         <not>
           <property>/sim/current-view/internal</property>
         </not>
+	 <greater-than>
+          <property>velocities/airspeed-kt</property>
+          <value>600</value>
+        </greater-than>
+
       </condition>
       <volume>
         <property>controls/engines/engine/reheat</property>
