@@ -43,6 +43,92 @@
       <script>doors.doorsystem.parachuteexport();</script>
     </binding>
   </key>
+  <key n="82">
+    <name>R</name>
+    <desc>Reload Guns</desc>
+    <binding>
+      <command>nasal</command>
+      <script>guns.reload_Cannon();</script>
+    </binding>
+  </key>
+  <key n="84">
+    <name>T</name>
+    <desc>Test</desc>
+    <binding>
+      <command>nasal</command>
+      <script>load.test();</script>
+    </binding>
+  </key>
+  <key n="51">
+     <name>3</name>
+     <desc>Drop load</desc>
+     <binding>
+        <command>nasal</command>
+        <script>load.dropLoad(3)</script>
+     </binding>
+     <mod-up>
+      <binding>
+        <command>nasal</command>
+        <script>load.dropLoad_stop()</script>
+      </binding>
+     </mod-up>
+  </key>
+  <key n="57">
+     <name>3</name>
+     <desc>Drop Tanks</desc>
+     <binding>
+        <command>nasal</command>
+        <script>load.dropTanks()</script>
+     </binding>
+     <mod-up>
+      <binding>
+        <command>nasal</command>
+        <script>load.dropLoad_stop()</script>
+      </binding>
+     </mod-up>
+  </key>
+  <key n="72">
+     <name>H</name>
+     <desc>Active Target Seeking</desc>
+     <binding>
+        <command>nasal</command>
+        <script>radar.activate_borsight()</script>
+     </binding>
+  </key>
+  <key n="84">
+     <name>t</name>
+     <desc>Active ECM</desc>
+     <binding>
+        <command>nasal</command>
+        <script>radar.activate_ECM()</script>
+     </binding>
+  </key>
+  <key n="89">
+     <name>t</name>
+     <desc>Active Telemeter</desc>
+     <binding>
+        <command>nasal</command>
+        <script>radar.activate_Telemeter()</script>
+     </binding>
+  </key>
+  <key n="116">
+     <name>t</name>
+     <desc>Ajusting Radar Distance</desc>
+     <binding>
+        <command>nasal</command>
+        <script>radar.switch_distance()</script>
+     </binding>
+  </key>
+  <key n="125">
+     <name>t</name>
+     <desc>Engine Autostart</desc>
+	<binding>
+		<command>nasal</command>
+		<script>engines.engine1.autostart();</script>
+	</binding>
+  </key>
+
+>
 
 </PropertyList>
 

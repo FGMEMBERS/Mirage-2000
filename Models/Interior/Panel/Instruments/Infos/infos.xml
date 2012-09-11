@@ -53,7 +53,7 @@
     <object-name>hdg10</object-name>
     <condition>
       <greater-than>
-        <property>/instrumentation/heading-indicator/indicated-heading-deg</property>
+        <property>/orientation/heading-deg</property>
         <value>9.999</value>
       </greater-than>
     </condition>
@@ -64,7 +64,7 @@
     <object-name>hdg100</object-name>
     <condition>
       <greater-than>
-        <property>/instrumentation/heading-indicator/indicated-heading-deg</property>
+        <property>/orientation/heading-deg</property>
         <value>99.999</value>
       </greater-than>
     </condition>
@@ -73,7 +73,7 @@
   <animation>
     <type>textranslate</type>
     <object-name>hdg1</object-name>
-    <property>/instrumentation/heading-indicator/indicated-heading-deg</property>
+    <property>/orientation/heading-deg</property>
     <factor>0.1</factor>
     <step>1</step>
     <axis>
@@ -86,7 +86,7 @@
   <animation>
     <type>textranslate</type>
     <object-name>hdg10</object-name>
-    <property>/instrumentation/heading-indicator/indicated-heading-deg</property>
+    <property>/orientation/heading-deg</property>
     <factor>0.01</factor>
     <step>10</step>
     <axis>
@@ -99,7 +99,7 @@
   <animation>
     <type>textranslate</type>
     <object-name>hdg100</object-name>
-    <property>/instrumentation/heading-indicator/indicated-heading-deg</property>
+    <property>/orientation/heading-deg</property>
     <factor>0.001</factor>
     <step>100</step>
     <axis>

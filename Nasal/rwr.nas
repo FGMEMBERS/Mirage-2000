@@ -34,13 +34,121 @@ var u_ecm_signal_norm = 0;
 var u_radar_standby   = 0;
 var u_ecm_type_num    = 0;
 
+
+
 init = func() {
 	radardist.init();
+	closest_target();
 	settimer(rwr_loop, 0.5);
 }
 
+var switch_distance = func() {
+         if(getprop("instrumentation/radar/range")==10){
+            setprop("instrumentation/radar/range",20);
+            setprop("instrumentation/radar[0]/selected",3);
+         }elsif(getprop("instrumentation/radar/range")==20){
+            setprop("instrumentation/radar/range",40);
+            setprop("instrumentation/radar[0]/selected",2);
+         }elsif(getprop("instrumentation/radar/range")==40){
+            setprop("instrumentation/radar/range",10);
+            setprop("instrumentation/radar[0]/selected",3);
+         }
+}
+
+#Toggle circle for the HUD. This have to move to the future hud.nas
+var activate_borsight = func() {
+	if(getprop("/sim/aim/active") != "true" )
+         {
+           setprop("/sim/aim/active","true");
+         }else{
+
+           if(getprop("/sim/aim/tachy") != "true"){
+             setprop("/sim/aim/tachy","true");
+             setprop("/sim/aim/align","true");
+             setprop("/sim/aim/speed-fps",3363); #speed of bullets ?
+             setprop("/sim/aim/range-yds",6075); #(3nm = 6075 yard)
+           }else{
+             setprop("/sim/aim/tachy","false");
+             setprop("/sim/aim/align","false"); 
+             setprop("/sim/aim/active","false");
+            }
+          }
+}
+var activate_ECM = func() {
+	if(getprop("instrumentation/ecm/on-off") != "true" )
+         {
+           setprop("instrumentation/ecm/on-off","true");
+         }else{
+           setprop("instrumentation/ecm/on-off","false");
+         }
+}
+
+
+var activate_Telemeter= func(){
+       if(getprop("/ai/closest/range") == 101){
+          setprop("/ai/closest/range",100);}
+       else{setprop("/ai/closest/range",101);}
+
+       radar.closest_target();
+
+}
+
+
+
+var closest_target = func() {
+	if(getprop("/ai/closest/range") < 101){
+
+
+	      tgts_list = [];
+	      var raw_list = Mp.getChildren();
+	      var closeRange =100;
+              var bearing = 0;
+              var heading = 0 ;
+              var speed = 0;
+              var altitude = 0;
+              var callsign = "-";
+
+
+	      foreach( var c; raw_list ) {
+		     var type = c.getName();
+		     
+
+		     if (!c.getNode("valid", 1).getValue()) {
+		          continue;
+		     }
+		    
+		     if (type == "multiplayer" or type == "tanker" or type =="carrier" or type =="aircraft") {
+		         var maTarget = Threat.new(c);
+		         var u_rng = maTarget.get_range();
+		         #var u_rng = c.getChildren("distance-to-nm").getValue();
+		         if(closeRange >= u_rng and u_rng!=0){
+		             closeRange = u_rng;
+		             #print(u_rng);
+                             bearing = maTarget.get_bearing();
+                             heading = maTarget.get_heading();
+                             altitude = maTarget.get_altitude();
+                             speed = maTarget.get_Speed();
+                             callsign = maTarget.get_Callsign();
+
+		         }
+		     }
+	      }
+	      setprop("/ai/closest/range",closeRange);
+              setprop("/ai/closest/bearing",bearing);
+              setprop("/ai/closest/heading",heading);
+              setprop("/ai/closest/altitude",altitude);
+              setprop("/ai/closest/speed",speed);
+              setprop("/ai/closest/callsign",callsign);
+
+	      settimer(closest_target, 0.5);
+       }
+}
+
+
+
 # Main loop ###############
 var rwr_loop = func() {
+
 	ecm_on = EcmOn.getBoolValue();
 	if ( ecm_on) {
 		our_alt = OurAlt.getValue();
@@ -141,6 +249,9 @@ var Threat = {
 		obj.InstrTgts = props.globals.getNode("instrumentation/radar2/targets", 1);
 		obj.TgtsFiles = obj.InstrTgts.getNode(obj.shortstring, 1);
 
+		obj.Callsign       = c.getNode("callsign");
+		obj.Speed          = c.getNode("velocities/true-airspeed-kt");
+
 		obj.Range          = obj.RdrProp.getNode("range-nm");
 		obj.Bearing        = obj.RdrProp.getNode("bearing-deg");
 		obj.Elevation      = obj.RdrProp.getNode("elevation-deg");
@@ -157,6 +268,16 @@ var Threat = {
 		obj.deviation = nil;
 
 		return obj;
+	},
+	get_Speed : func {
+		var n = me.Speed.getValue();
+                #vat alt = me.Alt.getValue();
+		#n = n/(0.632^(-(alt/25066))); #Calcul of Air Speed based on ground speed. the function ^ don't work !!
+		return n;
+	},
+	get_Callsign : func {
+		var n = me.Callsign.getValue();
+		return n;
 	},
 	get_heading : func {
 		var n = me.Heading.getValue();

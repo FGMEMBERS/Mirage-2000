@@ -4,7 +4,7 @@
 
   <sim include="Nasal/views.xml">
 
-    <author>BARANGER Emmanuel (3D/FDM), Buckaroo (FDM)</author>
+    <author>BARANGER Emmanuel (3D/FDM), Buckaroo (FDM), 5H1N0B1 (Weapons, system)</author>
     <aircraft-version>0.1</aircraft-version>
     <status>0.1 Alpha</status>
 
@@ -18,9 +18,8 @@
     </model>
 
     <submodels> 
-      <serviceable type="bool">true</serviceable>
-      <path>Aircraft/Mirage-2000/Models/Effects/guns/submodels.xml</path>
-      <path>Aircraft/Mirage-2000/Models/External-objects/loads.xml</path>
+      <serviceable type="bool">true</serviceable>	
+      <path>Aircraft/Mirage-2000/System/submodels.xml</path>
     </submodels>
 
     <startup>
@@ -98,14 +97,42 @@
         <desc>Fire guns</desc>
       </key>
       <key>
+        <name>R</name>
+        <desc>Reload Guns</desc>
+      </key>
+      <key>
         <name>E</name>
         <desc>Parachute</desc>
+      </key>
+      <key>
+        <name>9</name>
+        <desc>Release 2,3,4</desc>
+      </key>
+      <key>
+        <name>T</name>
+        <desc>Toggle ECM (Electronic Countermeasure"</desc>
+      </key>
+      <key>
+        <name>t</name>
+        <desc>Change Radar Distances (10, 20 40)</desc>
+      </key>
+      <key>
+        <name>Y</name>
+        <desc>Activate/desactivate Telemeter (the target have to be bellow radar range)</desc>
+      </key>
+      <key>
+        <name>H</name>
+        <desc>Toggle Armements Circles</desc>
+      </key>
+      <key>
+        <name>}</name>
+        <desc>On/Off Reactor</desc>
       </key>
       <line>Afterburners engage when</line>
       <line>throttle moves past 75%</line>
     </help>
 
-    <menubar include="Dialogs/m2000-5-menu.xml"/>
+
 	
     <!--                  /-\
                          /   \
@@ -119,6 +146,8 @@
        1700 l = 448.5 gal = 3013.92 lbs
        1300 l = 343.0 gal = 2305.01 lbs
     -->                   
+    
+    <menubar include="Dialogs/m2000-5-menu.xml"/>
 
     <weight n="0">
       <name>pylon1.L</name>
@@ -131,6 +160,14 @@
       <opt>
         <name>Matra R550 Magic 2</name>
         <lbs>196.21</lbs>
+      </opt>
+      <opt>
+        <name>AIM120</name>
+        <lbs>335</lbs>
+      </opt>
+      <opt>
+        <name>Matra MICA</name>
+        <lbs>246.91</lbs>
       </opt>
     </weight>
 
@@ -145,6 +182,14 @@
       <opt>
         <name>Matra R550 Magic 2</name>
         <lbs>196.21</lbs>
+      </opt>
+      <opt>
+        <name>aim-9</name>
+        <lbs>191</lbs>
+      </opt>
+      <opt>
+        <name>Matra MICA</name>
+        <lbs>246.91</lbs>
       </opt>
     </weight>
 
@@ -171,6 +216,10 @@
         <name>Matra R550 Magic 2</name>
         <lbs>196.21</lbs>
       </opt>
+      <opt>
+        <name>Matra MICA</name>
+        <lbs>246.91</lbs>
+      </opt>
     </weight>
 
     <weight n="3">
@@ -186,6 +235,10 @@
         <name>1300 l Droptank</name>
         <lbs>2305.01</lbs>
         <gals>343.00</gals>
+      </opt>
+      <opt>
+        <name>GBU16</name>
+        <lbs>1000</lbs>
       </opt>
     </weight>
 
@@ -212,6 +265,10 @@
         <name>Matra R550 Magic 2</name>
         <lbs>196.21</lbs>
       </opt>
+      <opt>
+        <name>Matra MICA</name>
+        <lbs>246.91</lbs>
+      </opt>
     </weight>
 
     <weight n="5">
@@ -226,6 +283,14 @@
         <name>Matra R550 Magic 2</name>
         <lbs>196.21</lbs>
       </opt>
+      <opt>
+        <name>aim-9</name>
+        <lbs>191</lbs>
+      </opt>
+      <opt>
+        <name>Matra MICA</name>
+        <lbs>246.91</lbs>
+      </opt>
     </weight>
 
     <weight n="6">
@@ -239,6 +304,14 @@
       <opt>
         <name>Matra R550 Magic 2</name>
         <lbs>196.21</lbs>
+      </opt>
+      <opt>
+        <name>AIM120</name>
+        <lbs>335</lbs>
+      </opt>
+      <opt>
+        <name>Matra MICA</name>
+        <lbs>246.91</lbs>
       </opt>
     </weight>
 
@@ -258,6 +331,21 @@
         <magnetos>0</magnetos>
       </engine>
     </engines>
+    <!--                  /-\
+                         /   \
+
+        _________________|   |_________________
+          |      |      |\   /|      |      |       
+         2.L    3.L    1.L\-/1.R    3.R    2.R
+         (1)    (2)    (0) | (6)    (4)    (5)
+                         Center
+
+                          (3)
+
+       1700 l = 448.5 gal = 3013.92 lbs
+       1300 l = 343.0 gal = 2305.01 lbs
+
+    -->  
     <armament>
       <trigger type="bool">false</trigger>
       <master-arm type="bool">true</master-arm>
@@ -269,13 +357,40 @@
         <release type="bool">false</release>
       </station>
       <station n="2">
-        <release type="bool">false</release>
+        <type n="0"><!--Dropable Tank 1700-->
+          <release type="bool">false</release>
+        </type>
+        <type n="1"><!--Dropable Tank 1300-->
+          <release type="bool">false</release>
+        </type>
+        <type n="2"><!--Magic II-->
+          <release type="bool">false</release>
+        </type>
+        <type n="3"><!--MICA-->
+          <release type="bool">false</release>
+        </type>
       </station>
       <station n="3">
-        <release type="bool">false</release>
+        <type n="0"><!--Dropable Tank -->
+          <release type="bool">false</release>
+        </type>
+        <type n="1"><!--Dropable GBU -->
+          <release type="bool">false</release>
+        </type>
       </station>
       <station n="4">
-        <release type="bool">false</release>
+        <type n="0"><!--Dropable Tank 1700-->
+          <release type="bool">false</release>
+        </type>
+        <type n="1"><!--Dropable Tank 1300-->
+          <release type="bool">false</release>
+        </type>
+        <type n="2"><!--Magic II-->
+          <release type="bool">false</release>
+        </type>
+        <type n="3"><!--MICA-->
+          <release type="bool">false</release>
+        </type>
       </station>
       <station n="5">
         <release type="bool">false</release>
@@ -405,6 +520,17 @@
     </fuel>
   </consumables>
 
+  <ai>
+    <closest>
+       <callsign> 0 </callsign>
+       <range>  101 </range>
+       <heading>  0 </heading>
+       <bearing>  0 </bearing>
+       <altitude> 0 </altitude>
+       <speed>    0 </speed>
+    </closest>
+  </ai>
+
   <nasal>
     <doors>
       <file>Aircraft/Mirage-2000/Nasal/doors.nas</file>
@@ -420,14 +546,31 @@
     <radardist>
       <file>Aircraft/Instruments-3d/radardist/radardist.nas</file>
     </radardist>
+    <rwr>
+      <file>Aircraft/Mirage-2000/Nasal/rwr.nas</file>
+    </rwr>
     <radar>
       <file>Aircraft/Mirage-2000/Nasal/radar.nas</file> 
-      <file>Aircraft/Mirage-2000/Nasal/rwr.nas</file>
     </radar>
     <guns>
        <file>Aircraft/Mirage-2000/Nasal/weapons.nas</file>
-    </guns>	
-  </nasal>
+    </guns>
+    <load>
+       <file>Aircraft/Mirage-2000/Nasal/ext_stores.nas</file>
+       <file>Aircraft/Mirage-2000/Nasal/test_ext_stores.nas</file>
+    </load>
+    <engines>
+       <file>Aircraft/Mirage-2000/Nasal/generic-yasim-engine.nas</file>
+       <script>
+            var engine1 = engines.Jet.new(0, 0, 0.01, 5.21, 3, 5, 1, 6);
+            setlistener("sim/signals/fdm-initialized", func
+            {
+                 engine1.init();
+            }, 0, 0);
+       </script>
 
+    </engines>	
+  </nasal>
+  
 </PropertyList>
 

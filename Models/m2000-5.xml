@@ -209,10 +209,16 @@
     <object-name>R550</object-name>
     <object-name>ailettes</object-name>
     <object-name>tank</object-name>
+    <object-name>Mica</object-name>
+    <object-name>tail</object-name>
+    <object-name>body</object-name>
+    <object-name>canard</object-name>
+    <object-name>AIM-120C5</object-name>
+    <object-name>gbu16</object-name>
 
     <property-base>sim/model/livery-tank</property-base>
     <texture-prop>texture</texture-prop>
-    <texture>External-objects/external-objects.png</texture>
+    <texture>External-objects/tank1700l/external-objects.png</texture>
     <specular>
       <red-prop>specular/red</red-prop>
       <green-prop>specular/green</green-prop>
