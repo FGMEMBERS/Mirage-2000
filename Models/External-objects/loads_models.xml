@@ -16,7 +16,7 @@
   <!-- station left 1 (Index 0) -->
   <model>
     <name>left-pos-1</name>
-    <path>Aircraft/Mirage-2000/Models/External-objects/MatraR550Magic2/MatraR550Magic2.xml</path>
+    <path>Aircraft/Mirage-2000/Missiles/MatraR550Magic2/MatraR550Magic2.xml</path>
     <condition>
       <equals>
         <property>sim/weight[0]/selected</property>
@@ -32,7 +32,7 @@
 
   <model>
     <name>AIM120L</name>
-    <path>Aircraft/Mirage-2000/Models/External-objects/AIM-120/AIM-120.xml</path>
+    <path>Aircraft/Mirage-2000/Missiles/AIM-120/AIM-120.xml</path>
     <condition>
       <equals>
         <property>sim/weight[0]/selected</property>
@@ -48,7 +48,7 @@
 
   <model>
     <name>left-pos-1-MICA</name>
-    <path>Aircraft/Mirage-2000/Models/External-objects/MatraMica/MatraMica.xml</path>
+    <path>Aircraft/Mirage-2000/Missiles/MatraMica/MatraMica.xml</path>
     <condition>
       <equals>
         <property>sim/weight[0]/selected</property>
@@ -65,7 +65,7 @@
   <!-- station left 2 (Index 1) -->
   <model>
     <name>left-pos-2</name>
-    <path>Aircraft/Mirage-2000/Models/External-objects/MatraR550Magic2/MatraR550Magic2.xml</path>
+    <path>Aircraft/Mirage-2000/Missiles/MatraR550Magic2/MatraR550Magic2.xml</path>
     <condition>
       <equals>
         <property>sim/weight[1]/selected</property>
@@ -81,7 +81,7 @@
 	
   <model>
     <name>aim-9L</name>
-    <path>Aircraft/Mirage-2000/Models/External-objects/aim-9/aim-9-0.xml</path>
+    <path>Aircraft/Mirage-2000/Missiles/aim-9/aim-9.xml</path>
     <condition>
       <equals>
         <property>sim/weight[1]/selected</property>
@@ -97,7 +97,7 @@
 
   <model>
     <name>left-pos-2-MICA</name>
-    <path>Aircraft/Mirage-2000/Models/External-objects/MatraMica/MatraMica.xml</path>
+    <path>Aircraft/Mirage-2000/Missiles/MatraMica/MatraMica.xml</path>
     <condition>
       <equals>
         <property>sim/weight[1]/selected</property>
@@ -134,7 +134,7 @@
 
   <model>
     <name>left-magic-2</name>
-    <path>Aircraft/Mirage-2000/Models/External-objects/MatraR550Magic2/MatraR550Magic2.xml</path>
+    <path>Aircraft/Mirage-2000/Missiles/MatraR550Magic2/MatraR550Magic2.xml</path>
     <condition>
       <equals>
         <property>sim/weight[2]/selected</property>
@@ -150,7 +150,7 @@
 
   <model>
     <name>left-MICA</name>
-    <path>Aircraft/Mirage-2000/Models/External-objects/MatraMica/MatraMica.xml</path>
+    <path>Aircraft/Mirage-2000/Missiles/MatraMica/MatraMica.xml</path>
     <condition>
       <equals>
         <property>sim/weight[2]/selected</property>
@@ -177,7 +177,45 @@
 
   <model>
     <name>Center-GBU16</name>
-    <path>Aircraft/Mirage-2000/Models/External-objects/GBU16/gbu16.xml</path>
+    <path>Aircraft/Mirage-2000/Missiles/GBU16/gbu16.xml</path>
+    <offsets>
+      <x-m>  1.082 </x-m>
+      <y-m>  0.000 </y-m>
+      <z-m> -1.656 </z-m>
+    </offsets>
+  </model>
+
+  <model>
+    <name>Center-GBU12</name>
+    <path>Aircraft/Mirage-2000/Missiles/GBU12/GBU12.xml</path>
+    <offsets>
+      <x-m>  1.082 </x-m>
+      <y-m>  0.000 </y-m>
+      <z-m> -1.656 </z-m>
+    </offsets>
+  </model>
+  <model>
+    <name>SCALP</name>
+    <path>Aircraft/Mirage-2000/Missiles/SCALP/SCALP.xml</path>
+    <offsets>
+      <x-m>  1.082 </x-m>
+      <y-m>  0.000 </y-m>
+      <z-m> -1.656 </z-m>
+    </offsets>
+  </model>
+  <model>
+    <name>AIM-54</name>
+    <path>Aircraft/Mirage-2000/Missiles/AIM-54/AIM-54.xml</path>
+    <offsets>
+      <x-m>  1.082 </x-m>
+      <y-m>  0.000 </y-m>
+      <z-m> -1.656 </z-m>
+    </offsets>
+  </model>
+
+  <model>
+    <name>Sea_Eagle</name>
+    <path>Aircraft/Mirage-2000/Missiles/SeaEagle/seaeagle.xml</path>
     <offsets>
       <x-m>  1.082 </x-m>
       <y-m>  0.000 </y-m>
@@ -208,7 +246,7 @@
 
   <model>
     <name>right-magic-2</name>
-    <path>Aircraft/Mirage-2000/Models/External-objects/MatraR550Magic2/MatraR550Magic2.xml</path>
+    <path>Aircraft/Mirage-2000/Missiles/MatraR550Magic2/MatraR550Magic2.xml</path>
     <condition>
       <equals>
         <property>sim/weight[4]/selected</property>
@@ -224,7 +262,7 @@
 	
   <model>
     <name>right-MICA</name>
-    <path>Aircraft/Mirage-2000/Models/External-objects/MatraMica/MatraMica.xml</path>
+    <path>Aircraft/Mirage-2000/Missiles/MatraMica/MatraMica.xml</path>
     <condition>
       <equals>
         <property>sim/weight[4]/selected</property>
@@ -241,7 +279,7 @@
   <!-- station right 2 (Index 5) -->
   <model>
     <name>right-pos-2</name>
-    <path>Aircraft/Mirage-2000/Models/External-objects/MatraR550Magic2/MatraR550Magic2.xml</path>
+    <path>Aircraft/Mirage-2000/Missiles/MatraR550Magic2/MatraR550Magic2.xml</path>
     <condition>
       <equals>
         <property>sim/weight[5]/selected</property>
@@ -257,7 +295,7 @@
 
   <model>
     <name>aim-9R</name>
-    <path>Aircraft/Mirage-2000/Models/External-objects/aim-9/aim-9-0.xml</path>
+    <path>Aircraft/Mirage-2000/Missiles/aim-9/aim-9.xml</path>
     <offsets>
       <x-m>  2.373 </x-m>
       <y-m>  3.278 </y-m>
@@ -267,7 +305,7 @@
 
   <model>
     <name>right-pos-2-MICA</name>
-    <path>Aircraft/Mirage-2000/Models/External-objects/MatraMica/MatraMica.xml</path>
+    <path>Aircraft/Mirage-2000/Missiles/MatraMica/MatraMica.xml</path>
     <condition>
       <equals>
         <property>sim/weight[5]/selected</property>
@@ -284,7 +322,7 @@
   <!-- station right 1 (Index 6) -->
   <model>
     <name>right-pos-1</name>
-    <path>Aircraft/Mirage-2000/Models/External-objects/MatraR550Magic2/MatraR550Magic2.xml</path>
+    <path>Aircraft/Mirage-2000/Missiles/MatraR550Magic2/MatraR550Magic2.xml</path>
     <condition>
       <equals>
         <property>sim/weight[6]/selected</property>
@@ -300,7 +338,7 @@
 
   <model>
     <name>AIM120R</name>    
-    <path>Aircraft/Mirage-2000/Models/External-objects/AIM-120/AIM-120.xml</path>
+    <path>Aircraft/Mirage-2000/Missiles/AIM-120/AIM-120.xml</path>
     <condition>
       <equals>
         <property>sim/weight[6]/selected</property>
@@ -316,7 +354,7 @@
 
   <model>
     <name>right-pos-1-MICA</name>
-    <path>Aircraft/Mirage-2000/Models/External-objects/MatraMica/MatraMica.xml</path>
+    <path>Aircraft/Mirage-2000/Missiles/MatraMica/MatraMica.xml</path>
     <condition>
       <equals>
         <property>sim/weight[6]/selected</property>

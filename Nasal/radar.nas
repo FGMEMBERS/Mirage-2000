@@ -35,7 +35,7 @@ MPradarProperties = func {
       }
       foreach (m; targetList) {
          var string = "instrumentation/radar/ai/models/"~m.getName()~"["~m.getIndex()~"]/";
-         if (getprop(string,"joined")==1 or m.getName()=="aircraft" or m.getName()=="tanker") {
+         if (getprop(string,"joined")==1 or m.getName()=="aircraft") {
             factor = getprop("instrumentation/radar/range-factor"); ## if (factor == nil) { factor=0.001888};
             setprop(string,"radar/y-shift",m.getNode("radar/y-shift").getValue() * factor);
             setprop(string,"radar/x-shift",m.getNode("radar/x-shift").getValue() * factor);

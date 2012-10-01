@@ -127,9 +127,13 @@
           <property>/sim/current-view/internal</property>
         </not>
 	 <greater-than>
-          <property>velocities/airspeed-kt</property>
-          <value>600</value>
+              <property>/velocities/mach</property>
+              <value>1.00</value>
         </greater-than>
+        <less-than>
+          <property>/position/altitude-ft</property>
+          <value>5000.0</value>
+        </less-than>
       </condition>
     
       <property>controls/engines/engine/reheat</property>
@@ -151,9 +155,13 @@
           <property>/sim/current-view/internal</property>
         </not>
 	 <greater-than>
-          <property>velocities/airspeed-kt</property>
-          <value>600</value>
+            <property>/velocities/mach</property>
+             <value>1.00</value>
         </greater-than>
+        <less-than>
+          <property>/position/altitude-ft</property>
+          <value>5000.0</value>
+        </less-than>
       </condition>
 
       <property>controls/engines/engine/reheat</property>
@@ -165,7 +173,7 @@
     </engine>
 	
     <engine>
-      <name>burner loop</name>
+      <name>Sound Barrier</name>
       <path>Aircraft/Mirage-2000/Sounds/BaBoOn-mirageIV-Sonic-Boom.wav</path>
       <mode>once</mode>
       <condition>
@@ -174,9 +182,13 @@
           <property>/sim/current-view/internal</property>
         </not>
 	 <greater-than>
-          <property>velocities/airspeed-kt</property>
-          <value>600</value>
+            <property>/velocities/mach</property>
+              <value>1.00</value>
         </greater-than>
+	<less-than>
+          <property>/position/altitude-ft</property>
+          <value>5000.0</value>
+        </less-than>
 
       </condition>
       <volume>
@@ -323,15 +335,16 @@
     <guns>
       <name>gunfire</name>
       <mode>looped</mode>
-      <path>Aircraft/Mirage-2000/Sounds/gunfire.wav</path>
+      <path>Aircraft/Mirage-2000/Sounds/M-2000-Guns.wav</path>
       <condition> 
         <property>controls/armament/trigger</property>
         <property>ai/submodels/submodel/count</property>
       </condition>
       <volume> 
-        <factor>1.2</factor>
-        <max>1.0</max>
+         <value>1</value>
       </volume>
+  
+
     </guns>
 
   </fx>

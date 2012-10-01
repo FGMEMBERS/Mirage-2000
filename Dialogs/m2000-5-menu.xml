@@ -13,6 +13,13 @@
           <script>aircraft.livery.dialog.toggle()</script>
         </binding>
       </item>
+      <item>
+        <label>MP Shot Report</label>
+        <binding>
+          <command>nasal</command>
+          <script>missile.MPReport()</script>
+        </binding>
+      </item>
     </menu>
   </default>
 

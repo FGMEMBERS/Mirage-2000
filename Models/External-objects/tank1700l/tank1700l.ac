@@ -7,7 +7,7 @@ name "tank"
 loc 0 0 -0
 data 4
 tank
-texture "external-objects.png"
+texture "tank1700.png"
 texrep 1 1
 crease 30.000001
 numvert 538

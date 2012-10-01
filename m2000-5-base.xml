@@ -18,7 +18,7 @@
     </model>
 
     <submodels> 
-      <serviceable type="bool">true</serviceable>	
+      <serviceable type="bool">true</serviceable>        
       <path>Aircraft/Mirage-2000/System/submodels.xml</path>
     </submodels>
 
@@ -38,7 +38,7 @@
         </parameters>
       </redout>
     </rendering>
-	
+        
     <multiplay>
       <chat_display>1</chat_display>
       <generic> 
@@ -105,8 +105,12 @@
         <desc>Parachute</desc>
       </key>
       <key>
+        <name>Pav Num</name>
+        <desc>(Release the correspondant Load)</desc>
+      </key>
+      <key>
         <name>9</name>
-        <desc>Release 2,3,4</desc>
+        <desc>Release 2,3,4 (Jettison Tank)</desc>
       </key>
       <key>
         <name>T</name>
@@ -118,7 +122,7 @@
       </key>
       <key>
         <name>Y</name>
-        <desc>Activate/desactivate Telemeter (the target have to be bellow radar range)</desc>
+        <desc>Activate/desactivate targeting the nearest (the target have to be bellow radar range)</desc>
       </key>
       <key>
         <name>H</name>
@@ -130,10 +134,11 @@
       </key>
       <line>Afterburners engage when</line>
       <line>throttle moves past 75%</line>
+      <line>To fire a guided Missile, you must have a target</line>
     </help>
 
 
-	
+        
     <!--                  /-\
                          /   \
         _________________|   |_________________
@@ -153,73 +158,47 @@
       <name>pylon1.L</name>
       <weight-lb>0</weight-lb>
       <selected>none</selected>
-      <opt>
-        <name>none</name>
-        <lbs>0</lbs>
-      </opt>
-      <opt>
-        <name>Matra R550 Magic 2</name>
-        <lbs>196.21</lbs>
-      </opt>
-      <opt>
-        <name>AIM120</name>
-        <lbs>335</lbs>
-      </opt>
-      <opt>
-        <name>Matra MICA</name>
-        <lbs>246.91</lbs>
-      </opt>
+      <offsets>
+        <x-m type="double"> -1.265 </x-m>
+        <y-m type="double"> -0.824 </y-m>
+        <z-m type="double"> -1.404 </z-m>
+      </offsets>
+      <opt><name>none</name><lbs>0</lbs></opt>
+      <opt><name>Matra R550 Magic 2</name><lbs>196.21</lbs></opt>
+      <opt><name>AIM120</name><lbs>335</lbs></opt>
+      <opt><name>Matra MICA</name><lbs>246.91</lbs></opt>
     </weight>
 
     <weight n="1">
       <name>pylon2.L</name>
       <weight-lb>0</weight-lb>
       <selected>none</selected>
-      <opt>
-        <name>none</name>
-        <lbs>0</lbs>
-      </opt>
-      <opt>
-        <name>Matra R550 Magic 2</name>
-        <lbs>196.21</lbs>
-      </opt>
-      <opt>
-        <name>aim-9</name>
-        <lbs>191</lbs>
-      </opt>
-      <opt>
-        <name>Matra MICA</name>
-        <lbs>246.91</lbs>
-      </opt>
+      <offsets>
+        <x-m type="double">  2.373 </x-m>
+        <y-m type="double"> -3.278 </y-m>
+        <z-m type="double"> -1.494 </z-m>
+      </offsets>
+      <opt><name>none</name><lbs>0</lbs></opt>
+      <opt><name>Matra R550 Magic 2</name><lbs>196.21</lbs></opt>
+      <opt><name>aim-9</name><lbs>191</lbs></opt>
+      <opt><name>Matra MICA</name><lbs>246.91</lbs></opt>
     </weight>
 
     <weight n="2">
       <name>pylon3.L</name>
       <tank>2</tank>
       <weight-lb>0</weight-lb>
+      <offsets>
+        <x-m type="double">  1.047 </x-m>
+        <y-m type="double"> -2.359 </y-m>
+        <z-m type="double"> -1.556 </z-m>
+      </offsets>
       <selected>none</selected>
-      <opt>
-        <name>none</name>
-        <lbs>0</lbs>
-      </opt>
-      <opt>
-        <name>1700 l Droptank</name>
-        <lbs>3013.92</lbs>
-        <gals>448.50</gals>
-      </opt>
-      <opt>
-        <name>1300 l Droptank</name>
-        <lbs>2305.01</lbs>
-        <gals>343.00</gals>
-      </opt>
-      <opt>
-        <name>Matra R550 Magic 2</name>
-        <lbs>196.21</lbs>
-      </opt>
-      <opt>
-        <name>Matra MICA</name>
-        <lbs>246.91</lbs>
-      </opt>
+      <opt><name>none</name><lbs>0</lbs></opt>
+      <opt><name>1700 l Droptank</name><lbs>0</lbs><gals>448.50</gals></opt> <!-- 3013.92 lbs -->
+      <opt><name>1300 l Droptank</name><lbs>0</lbs><gals>343.00</gals></opt> <!-- 2305.01 lbs -->
+      <opt><name>Matra R550 Magic 2</name><lbs>196.21</lbs></opt>
+      <opt><name>Matra MICA</name><lbs>246.91</lbs></opt>
     </weight>
 
     <weight n="3">
@@ -227,19 +206,18 @@
       <tank>3</tank>
       <weight-lb>0</weight-lb>
       <selected>none</selected>
-      <opt>
-        <name>none</name>
-        <lbs>0</lbs>
-      </opt>
-      <opt>
-        <name>1300 l Droptank</name>
-        <lbs>2305.01</lbs>
-        <gals>343.00</gals>
-      </opt>
-      <opt>
-        <name>GBU16</name>
-        <lbs>1000</lbs>
-      </opt>
+      <offsets>
+        <x-m type="double">  1.082 </x-m>
+        <y-m type="double">  0.000 </y-m>
+        <z-m type="double"> -1.656 </z-m>
+      </offsets>
+      <opt><name>none</name><lbs>0</lbs></opt>
+      <opt><name>1300 l Droptank</name><lbs>0</lbs><gals>343.00</gals></opt> <!-- 2305.01 lbs -->
+      <opt><name>GBU16</name><lbs>1000</lbs></opt>
+      <opt><name>GBU12</name><lbs>800</lbs></opt>
+      <opt><name>SCALP</name><lbs>2866</lbs></opt>
+      <opt><name>AIM-54</name><lbs>1040</lbs></opt>
+      <opt><name>Sea Eagle</name><lbs>1825</lbs></opt>
     </weight>
 
     <weight n="4">
@@ -247,72 +225,46 @@
       <tank>4</tank>
       <weight-lb>0</weight-lb>
       <selected>none</selected>
-      <opt>
-        <name>none</name>
-        <lbs>0</lbs>
-      </opt>
-      <opt>
-        <name>1700 l Droptank</name>
-        <lbs>3013.92</lbs>
-        <gals>448.50</gals>
-      </opt>
-      <opt>
-        <name>1300 l Droptank</name>
-        <lbs>2305.01</lbs>
-        <gals>343.00</gals>
-      </opt>
-      <opt>
-        <name>Matra R550 Magic 2</name>
-        <lbs>196.21</lbs>
-      </opt>
-      <opt>
-        <name>Matra MICA</name>
-        <lbs>246.91</lbs>
-      </opt>
+      <offsets>
+        <x-m type="double">  1.047 </x-m>
+        <y-m type="double">  2.359 </y-m>
+        <z-m type="double"> -1.556 </z-m>
+      </offsets>
+      <opt><name>none</name><lbs>0</lbs></opt>
+      <opt><name>1700 l Droptank</name><lbs>0</lbs><gals>448.50</gals></opt> <!-- 3013.92 lbs -->
+      <opt><name>1300 l Droptank</name><lbs>0</lbs><gals>343.00</gals></opt> <!-- 2305.01 lbs -->
+      <opt><name>Matra R550 Magic 2</name><lbs>196.21</lbs></opt>
+      <opt><name>Matra MICA</name><lbs>246.91</lbs></opt>
     </weight>
 
     <weight n="5">
       <name>pylon2.R</name>
       <weight-lb>0</weight-lb>
       <selected>none</selected>
-      <opt>
-        <name>none</name>
-        <lbs>0</lbs>
-      </opt>
-      <opt>
-        <name>Matra R550 Magic 2</name>
-        <lbs>196.21</lbs>
-      </opt>
-      <opt>
-        <name>aim-9</name>
-        <lbs>191</lbs>
-      </opt>
-      <opt>
-        <name>Matra MICA</name>
-        <lbs>246.91</lbs>
-      </opt>
+      <offsets>
+        <x-m type="double">  2.373 </x-m>
+        <y-m type="double">  3.278 </y-m>
+        <z-m type="double"> -1.494 </z-m>
+      </offsets>
+      <opt><name>none</name><lbs>0</lbs></opt>
+      <opt><name>Matra R550 Magic 2</name><lbs>196.21</lbs></opt>
+      <opt><name>aim-9</name><lbs>191</lbs></opt>
+      <opt><name>Matra MICA</name><lbs>246.91</lbs></opt>
     </weight>
 
     <weight n="6">
       <name>pylon1.R</name>
       <weight-lb>0</weight-lb>
       <selected>none</selected>
-      <opt>
-        <name>none</name>
-        <lbs>0</lbs>
-      </opt>
-      <opt>
-        <name>Matra R550 Magic 2</name>
-        <lbs>196.21</lbs>
-      </opt>
-      <opt>
-        <name>AIM120</name>
-        <lbs>335</lbs>
-      </opt>
-      <opt>
-        <name>Matra MICA</name>
-        <lbs>246.91</lbs>
-      </opt>
+      <offsets>
+        <x-m type="double"> -1.265 </x-m>
+        <y-m type="double">  0.824 </y-m>
+        <z-m type="double"> -1.404 </z-m>
+      </offsets>
+      <opt><name>none</name><lbs>0</lbs></opt>
+      <opt><name>Matra R550 Magic 2</name><lbs>196.21</lbs></opt>
+      <opt><name>AIM120</name><lbs>335</lbs></opt>
+      <opt><name>Matra MICA</name><lbs>246.91</lbs></opt>
     </weight>
 
   </sim>
@@ -323,11 +275,11 @@
     </gear>
     <engines>
       <engine n="0">
-	<boost type="double">0</boost>
+        <boost type="double">0</boost>
         <magnetos>0</magnetos>
       </engine>
       <engine n="1">
-	<boost type="double">0</boost>
+        <boost type="double">0</boost>
         <magnetos>0</magnetos>
       </engine>
     </engines>
@@ -347,6 +299,39 @@
 
     -->  
     <armament>
+      <!-- Missile property. the value here doesn't really count, beacause it's reloaded by a Nasal for each missile.
+           Anyway this is nessecary for variable declaration -->
+      <missile>
+        <address>Aircraft/Mirage-2000/Missiles/MatraMica/MatraMica.xml</address>
+        <addressNoSmoke>Aircraft/Mirage-2000/Missiles/MatraMica/MatraMica.xml</addressNoSmoke>
+        <count type="int">0</count>
+        <nearest-target type="int">-1</nearest-target>
+        <sound-on-off type="bool">false</sound-on-off>
+        <sound-volume type="double">0.12</sound-volume>
+        <target-range-nm type="double">0</target-range-nm>
+        <max-detection-rng-nm type="int">45</max-detection-rng-nm> <!-- Not real Impact yet-->
+        <fov-deg type="int">25</fov-deg>                           <!-- seeker optical FOV -->
+        <detection-fov-deg type="int">60</detection-fov-deg>       <!-- Search pattern diameter (rosette scan) -->
+        <track-max-deg type="int">110</track-max-deg>              <!-- Seeker max total angular rotation -->
+        <max-g type="int">100</max-g>                              <!-- In turn --> 
+        <thrust-lbs type="double">300</thrust-lbs>                 <!-- guess -->
+        <thrust-duration-sec type="int">30</thrust-duration-sec>   <!-- Mk.36 Mod.7,8 -->
+        <weight-launch-lbs>216</weight-launch-lbs>
+        <weight-warhead-lbs>30</weight-warhead-lbs>
+        <drag-coeff type="double">0.05</drag-coeff>                <!-- guess; original 0.05-->
+        <drag-area type="double">0.043</drag-area>                 <!-- sq ft -->
+        <!--Due to the code, more the speed is important, more we need to have this figure high-->
+        <maxExplosionRange type="int">200</maxExplosionRange>
+        <maxspeed type="double"> 4</maxspeed> <!-- In Mach -->
+        <life>60</life>
+        <!-- "Fox1" for guided by the aircraft radar (semi active) AIM7, "Fox2" for infrared AIM9, "Fox3" for intern
+             missile Radar AIM120, AIM54, A/G air to ground-->
+        <fox>Fox 3</fox>
+        <!-- if the missile fall before thrust start or if there is some kind of "rail" -->
+        <rail type="bool">true</rail>
+        <!--for cruise missile, in feet.0 is off.bellow 10000 feet is terrain following-->
+        <cruise_alt type="int">0</cruise_alt> 
+      </missile>
       <trigger type="bool">false</trigger>
       <master-arm type="bool">true</master-arm>
       <position-norm type="int">1</position-norm>
@@ -357,40 +342,21 @@
         <release type="bool">false</release>
       </station>
       <station n="2">
-        <type n="0"><!--Dropable Tank 1700-->
-          <release type="bool">false</release>
-        </type>
-        <type n="1"><!--Dropable Tank 1300-->
-          <release type="bool">false</release>
-        </type>
-        <type n="2"><!--Magic II-->
-          <release type="bool">false</release>
-        </type>
-        <type n="3"><!--MICA-->
-          <release type="bool">false</release>
-        </type>
+        <release type="bool">false</release>
+        <!--This is for bypassing submodel control (cause we can't have conditional control, just a trigger) -->
+        <release-L1300 type="bool">false</release-L1300>
+        <release-L1700 type="bool">false</release-L1700>
       </station>
       <station n="3">
-        <type n="0"><!--Dropable Tank -->
-          <release type="bool">false</release>
-        </type>
-        <type n="1"><!--Dropable GBU -->
-          <release type="bool">false</release>
-        </type>
+        <release type="bool">false</release>
+        <!--This is for bypassing submodel control (cause we can't have conditional control, just a trigger) -->
+        <release-C1300 type="bool">false</release-C1300>
       </station>
       <station n="4">
-        <type n="0"><!--Dropable Tank 1700-->
-          <release type="bool">false</release>
-        </type>
-        <type n="1"><!--Dropable Tank 1300-->
-          <release type="bool">false</release>
-        </type>
-        <type n="2"><!--Magic II-->
-          <release type="bool">false</release>
-        </type>
-        <type n="3"><!--MICA-->
-          <release type="bool">false</release>
-        </type>
+        <release type="bool">false</release>
+        <!--This is for bypassing submodel control (cause we can't have conditional control, just a trigger) -->
+        <release-R1300 type="bool">false</release-R1300>
+        <release-R1700 type="bool">false</release-R1700>
       </station>
       <station n="5">
         <release type="bool">false</release>
@@ -443,10 +409,10 @@
     </radar> 
     <terrain-radar>
       <hi-elev>
-        <alt-ft type="double">-9999.9</alt-ft>
-        <lat-deg type="double">-9999.9</lat-deg>
-        <lon-deg type="double">-9999.9</lon-deg>
-        <dist-m type="double">-9999.9</dist-m>
+        <alt-ft type="double">  -9999.9 </alt-ft>
+        <lat-deg type="double"> -9999.9 </lat-deg>
+        <lon-deg type="double"> -9999.9 </lon-deg>
+        <dist-m type="double">  -9999.9 </dist-m>
         <collision-status type="string">initialised</collision-status>
       </hi-elev>
       <settings>
@@ -522,12 +488,14 @@
 
   <ai>
     <closest>
-       <callsign> 0 </callsign>
-       <range>  101 </range>
-       <heading>  0 </heading>
-       <bearing>  0 </bearing>
-       <altitude> 0 </altitude>
-       <speed>    0 </speed>
+       <callsign type="string">   0 </callsign>
+       <range type="double">    101 </range>
+       <heading type="int">       0 </heading>
+       <bearing type="int">       0 </bearing>
+       <altitude type="int">      0 </altitude>
+       <speed type="int">         0 </speed>
+       <longitude type="double">  0 </longitude>
+       <latitude type="double">   0 </latitude>
     </closest>
   </ai>
 
@@ -552,6 +520,9 @@
     <radar>
       <file>Aircraft/Mirage-2000/Nasal/radar.nas</file> 
     </radar>
+    <environment>
+       <file>Aircraft/Mirage-2000/Nasal/environment.nas</file> 
+    </environment>
     <guns>
        <file>Aircraft/Mirage-2000/Nasal/weapons.nas</file>
     </guns>
@@ -559,6 +530,10 @@
        <file>Aircraft/Mirage-2000/Nasal/ext_stores.nas</file>
        <file>Aircraft/Mirage-2000/Nasal/test_ext_stores.nas</file>
     </load>
+    <missile>
+       <file>Aircraft/Mirage-2000/Nasal/missile.nas</file>
+       <file>Aircraft/Mirage-2000/Missiles/Loading_Missiles.nas</file>
+    </missile>
     <engines>
        <file>Aircraft/Mirage-2000/Nasal/generic-yasim-engine.nas</file>
        <script>
@@ -569,7 +544,10 @@
             }, 0, 0);
        </script>
 
-    </engines>	
+    </engines>
+    <test>
+       <file>Aircraft/Mirage-2000/Nasal/test.nas</file>
+    </test>
   </nasal>
   
 </PropertyList>

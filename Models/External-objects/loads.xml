@@ -127,7 +127,7 @@
           <value>1700 l Droptank</value>
         </equals>
         <equals>
-          <property>controls/armament/station[2]/type[0]/release</property>
+          <property>controls/armament/station[2]/release</property>
           <value>false</value>
         </equals>
       </and>
@@ -144,7 +144,7 @@
           <value>1300 l Droptank</value>
         </equals>
         <equals>
-          <property>controls/armament/station[2]/type[1]/release</property>
+          <property>controls/armament/station[2]/release</property>
           <value>false</value>
         </equals>
       </and>
@@ -161,7 +161,7 @@
           <value>Matra R550 Magic 2</value>
         </equals>
         <equals>
-          <property>controls/armament/station[2]/type[2]/release</property>
+          <property>controls/armament/station[2]/release</property>
           <value>false</value>
         </equals>
       </and>
@@ -178,7 +178,7 @@
           <value>Matra MICA</value>
         </equals>
         <equals>
-          <property>controls/armament/station[2]/type[3]/release</property>
+          <property>controls/armament/station[2]/release</property>
           <value>false</value>
         </equals>
       </and>
@@ -196,7 +196,7 @@
           <value>1300 l Droptank</value>
         </equals>
         <equals>
-          <property>controls/armament/station[3]/type[0]/release</property>
+          <property>controls/armament/station[3]/release</property>
           <value>false</value>
         </equals>
       </and>
@@ -214,12 +214,84 @@
           <value>GBU16</value>
         </equals>
         <equals>
-          <property>controls/armament/station[3]/type[1]/release</property>
+          <property>controls/armament/station[3]/release</property>
           <value>false</value>
         </equals>
       </and>
     </condition>
-  </animation>	
+  </animation>
+
+  <!-- Center GBU12 -->
+  <animation>
+    <type>select</type>
+    <object-name>Center-GBU12</object-name>      
+    <condition>
+      <and>
+        <equals>
+          <property>sim/weight[3]/selected</property>
+          <value>GBU12</value>
+        </equals>
+        <equals>
+          <property>controls/armament/station[3]/release</property>
+          <value>false</value>
+        </equals>
+      </and>
+    </condition>
+  </animation>		
+  <!-- Center SCALP -->
+  <animation>
+    <type>select</type>
+    <object-name>SCALP</object-name>      
+    <condition>
+      <and>
+        <equals>
+          <property>sim/weight[3]/selected</property>
+          <value>SCALP</value>
+        </equals>
+        <equals>
+          <property>controls/armament/station[3]/release</property>
+          <value>false</value>
+        </equals>
+      </and>
+    </condition>
+  </animation>
+<!-- AIM-54 -->
+  <animation>
+    <type>select</type>
+    <object-name>AIM-54</object-name>      
+    <condition>
+      <and>
+        <equals>
+          <property>sim/weight[3]/selected</property>
+          <value>AIM-54</value>
+        </equals>
+        <equals>
+          <property>controls/armament/station[3]/release</property>
+          <value>false</value>
+        </equals>
+      </and>
+    </condition>
+  </animation>
+
+<!-- Sea Eagle -->
+
+  <animation>
+    <type>select</type>
+    <object-name>Sea_Eagle</object-name>      
+    <condition>
+      <and>
+        <equals>
+          <property>sim/weight[3]/selected</property>
+          <value>Sea Eagle</value>
+        </equals>
+        <equals>
+          <property>controls/armament/station[3]/release</property>
+          <value>false</value>
+        </equals>
+      </and>
+    </condition>
+  </animation>
+
 
   <!-- station right 3 (Index 4)-->
   <animation>
@@ -232,7 +304,7 @@
           <value>1700 l Droptank</value>
         </equals>
         <equals>
-          <property>controls/armament/station[4]/type[0]/release</property>
+          <property>controls/armament/station[4]/release</property>
           <value>false</value>
         </equals>
       </and>
@@ -249,7 +321,7 @@
           <value>1300 l Droptank</value>
         </equals>
         <equals>
-          <property>controls/armament/station[4]/type[1]/release</property>
+          <property>controls/armament/station[4]/release</property>
           <value>false</value>
         </equals>
       </and>
@@ -266,7 +338,7 @@
           <value>Matra R550 Magic 2</value>
         </equals>
         <equals>
-          <property>controls/armament/station[4]/type[2]/release</property>
+          <property>controls/armament/station[4]/release</property>
           <value>false</value>
         </equals>
       </and>
@@ -283,7 +355,7 @@
           <value>Matra MICA</value>
         </equals>
         <equals>
-          <property>controls/armament/station[4]/type[3]/release</property>
+          <property>controls/armament/station[4]/release</property>
           <value>false</value>
         </equals>
       </and>

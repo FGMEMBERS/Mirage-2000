@@ -204,7 +204,7 @@
     <path>Aircraft/Mirage-2000/Models/External-objects/loads.xml</path>
   </model>
 
-  <animation>
+  <!--<animation>
     <type>material</type>
     <object-name>R550</object-name>
     <object-name>ailettes</object-name>
@@ -218,7 +218,7 @@
 
     <property-base>sim/model/livery-tank</property-base>
     <texture-prop>texture</texture-prop>
-    <texture>External-objects/tank1700l/external-objects.png</texture>
+    <texture>External-objects/tank1700l/tank1700.png</texture>
     <specular>
       <red-prop>specular/red</red-prop>
       <green-prop>specular/green</green-prop>
@@ -230,7 +230,7 @@
       <green-prop>emission/green</green-prop>
       <blue-prop>emission/blue</blue-prop>
     </emission>
-  </animation>
+  </animation>-->
 
   <!-- ******************************************************************* -->
   <!-- FX                                                                  -->
