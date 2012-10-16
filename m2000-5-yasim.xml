@@ -75,7 +75,7 @@
 
   <!-- Buck notes:
     If the drag bodies were simplified, drag performance could be improved. But these are such nicely formed drag bodies that
-    I just didn't have the heart to change them.
+    I just didn't have the heart to 2change them.
   -->
   <!-- Fuselage -->
   <fuselage ax="6.769" ay=" 0.000" az="-1.053" bx=" 4.463" by=" 0.000" bz="-0.806" width="0.756" taper="0.08" midpoint="1.00"/>

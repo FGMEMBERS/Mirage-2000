@@ -184,7 +184,7 @@
     <!--<impact-reports>sim/ai/aircraft/impact/droptank</impact-reports>-->
     <x-offset>  0.082 </x-offset> <!-- -1.212 m =  3.98 ft -->
     <y-offset>  0.000 </y-offset> <!-- -0.308 m =  1.01 ft -->
-    <z-offset> -5 </z-offset> <!-- -1.183 m = -3.88 ft -->
+    <z-offset> -5.000 </z-offset> <!-- -1.183 m = -3.88 ft -->
     <yaw-offset>0</yaw-offset>
     <pitch-offset>-1</pitch-offset>
     <contents>consumables/fuel/tank[3]</contents>
@@ -207,8 +207,8 @@
     <count>1</count>
     <wind>false</wind>
     <!--<impact-reports>sim/ai/aircraft/impact/droptank</impact-reports>-->
-    <x-offset>  -1.047 </x-offset> <!-- -1.212 m =  3.98 ft -->
-    <y-offset>  -7.359 </y-offset> <!-- -0.308 m =  1.01 ft -->
+    <x-offset> -1.047 </x-offset> <!-- -1.212 m =  3.98 ft -->
+    <y-offset> -7.359 </y-offset> <!-- -0.308 m =  1.01 ft -->
     <z-offset> -4.656 </z-offset> <!-- -1.183 m = -3.88 ft -->
     <yaw-offset>358</yaw-offset>
     <pitch-offset>-1</pitch-offset>
@@ -232,7 +232,7 @@
     <count>1</count>
     <wind>false</wind>
     <!--<impact-reports>sim/ai/aircraft/impact/droptank</impact-reports>-->
-    <x-offset>  -1.047 </x-offset> <!-- -1.212 m =  3.98 ft -->
+    <x-offset> -1.047 </x-offset> <!-- -1.212 m =  3.98 ft -->
     <y-offset>  7.359 </y-offset> <!-- -0.308 m =  1.01 ft -->
     <z-offset> -4.656 </z-offset> <!-- -1.183 m = -3.88 ft -->
     <yaw-offset>2</yaw-offset>
@@ -257,8 +257,8 @@
     <count>1</count>
     <wind>false</wind>
     <!--<impact-reports>sim/ai/aircraft/impact/droptank</impact-reports>-->
-    <x-offset>  -1.047 </x-offset> <!-- -1.212 m =  3.98 ft -->
-    <y-offset>  -6.359 </y-offset> <!-- -0.308 m =  1.01 ft -->
+    <x-offset> -1.047 </x-offset> <!-- -1.212 m =  3.98 ft -->
+    <y-offset> -6.359 </y-offset> <!-- -0.308 m =  1.01 ft -->
     <z-offset> -4.656 </z-offset> <!-- -1.183 m = -3.88 ft -->
     <yaw-offset>358</yaw-offset>
     <pitch-offset>-1</pitch-offset>
@@ -282,7 +282,7 @@
     <count>1</count>
     <wind>false</wind>
     <!--<impact-reports>sim/ai/aircraft/impact/droptank</impact-reports>-->
-    <x-offset>  -1.047 </x-offset> <!-- -1.212 m =  3.98 ft -->
+    <x-offset> -1.047 </x-offset> <!-- -1.212 m =  3.98 ft -->
     <y-offset>  6.359 </y-offset> <!-- -0.308 m =  1.01 ft -->
     <z-offset> -4.656 </z-offset> <!-- -1.183 m = -3.88 ft -->
     <yaw-offset>2</yaw-offset>
@@ -294,6 +294,7 @@
     <impact>true</impact>
     <impact-report>sim/ai/aircraft/impact/droptank1700r</impact-report>
   </submodel>
+
 <!--
      <name>         The name of the submodel.
      <model>        The path to the visual model. Any model in any location is allowed. All the normal
@@ -316,7 +317,7 @@
                     pitch.  Up is positive.
      <buoyancy>     Submodel's upward acceleration (fps) due to buoyancy in air. 32 is 
                     neutral (contrails),  > 32 exhaust gas, smoke. 
-     <wind>	     If true, the Submodel is affected by local wind. Defaults to false. This
+     <wind>             If true, the Submodel is affected by local wind. Defaults to false. This
                     tag was added to cater for smoke, contrails and the like. The effect of 
                     wind on ballistic objects is not well modelled. For bombs, bulllets etc. 
                     this is best left at the default setting.
@@ -324,7 +325,7 @@
                     0.045 for an airfoil. Enter an appropriate value. Defaults to 0.295.
      <eda>          Effective drag area (sq ft). Usually the cross-sectional area of the 
                     submodel normal to the airflow.
-     <weight>       The weight of the submodel (lbs). Defaults to 0.25	
+     <weight>       The weight of the submodel (lbs). Defaults to 0.25        
      <aero-stabilised> If true, the submodel aligns with the local airflow. Defaults to true.
      <external-force> If true the submodel is subjected to an external force.
      <force-path>   A string describing the property where the magnitude, azimuth and elevation
@@ -362,9 +363,66 @@
                     the property "controls/slave-to-ac" must be set to false.
 
 -->
+  <submodel>
+    <name>flare</name>
+    <model>Aircraft/Mirage-2000/Models/Effects/flare/flare.xml</model>
+    <trigger>controls/switches/flare</trigger>
+    <speed>400</speed>
+    <repeat>true</repeat>
+    <delay>0.5</delay>
+    <count>-1</count>
+    <x-offset> -3 </x-offset>
+    <y-offset>  0 </y-offset>
+    <z-offset> -8 </z-offset>
+    <eda>0.1</eda>
+    <life>10</life>
+    <buoyancy>28</buoyancy>
+    <aero-stabilise>false</aero-stabilise>
+    <wind>true</wind>
+    <pitch-offset>-35.0</pitch-offset>
+    <yaw-offset>2</yaw-offset>
+  </submodel>
 
+  <submodel>
+    <name>flare</name>
+    <model>Aircraft/Mirage-2000/Models/Effects/flare/flare.xml</model>
+    <trigger>controls/switches/flare</trigger>
+    <speed>400</speed>
+    <repeat>true</repeat>
+    <delay>0.5</delay>
+    <count>-1</count>
+    <x-offset> -3 </x-offset>
+    <y-offset>  0 </y-offset>
+    <z-offset> -8 </z-offset>
+    <eda>0.1</eda>
+    <life>10</life>
+    <buoyancy>28</buoyancy>
+    <aero-stabilise>false</aero-stabilise>
+    <wind>true</wind>
+    <pitch-offset>-35.0</pitch-offset>
+    <yaw-offset>358</yaw-offset>
+  </submodel>
 
-
+  <submodel>
+    <name>ejection</name>
+    <model>Aircraft/Mirage-2000/Models/Effects/ejection/ejection.xml</model>
+    <trigger>instrumentation/ejection</trigger>
+    <speed>40</speed>
+    <weight>2</weight>
+    <repeat>true</repeat>
+    <delay>2</delay>
+    <count>1</count>
+    <x-offset> 0 </x-offset>
+    <y-offset> 0 </y-offset>
+    <z-offset> 0 </z-offset>
+    <eda>0.1</eda>
+    <life>10</life>
+    <buoyancy>32</buoyancy>
+    <aero-stabilise>false</aero-stabilise>
+    <wind>false</wind>            
+    <pitch-offset>60</pitch-offset>
+    <yaw-offset>0</yaw-offset>
+  </submodel>
 
 </PropertyList>
 

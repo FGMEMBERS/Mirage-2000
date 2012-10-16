@@ -54,7 +54,9 @@ var MISSILE = {
                 #m.next_t_coord      = m.t_coord;
                 m.direct_dist_m     = nil;
                 m.diveToken      = 0;        #this is for cruise missile. when the token is 1, the dive can start....
-                me.total_speed_ft = 1;
+                m.total_speed_ft = 1;
+                m.vApproch       = 1;
+                m.tpsApproch     = 0;
                 m.nextGroundElevation = 0; #Next Ground Elevation in 2 dt
 
                 # missile specs:
@@ -394,19 +396,20 @@ var MISSILE = {
                                                 #Disable for the moment
                                         }
                                 }
+                         }
 
-                                ####Ground interaction
-                                var ground = geo.elevation(me.coord.lat(),me.coord.lon());
-                                #print("Ground :",ground);
-                                if(ground != nil){
-                                        if(ground>alt_ft){
-                                                print("Ground");
-                                                me.free = 1;
-                                                settimer(func { me.del(); }, 1 );
-                                                return;
-                                        }
-                                 }
-                        }
+                        ####Ground interaction
+                        var ground = geo.elevation(me.coord.lat(),me.coord.lon());
+                        #print("Ground :",ground);
+                        if(ground != nil){
+                                if(ground>alt_ft){
+                                        print("Ground");
+                                        me.free = 1;
+                                        settimer(func { me.del(); }, 1 );
+                                        return;
+                                }
+                         }
+                       
                         
                 }
                 # record the velocities for the next loop.
@@ -466,9 +469,11 @@ var MISSILE = {
                         # Get target position.
                         var t_alt =  me.Tgt.get_altitude();
                         
-                        var previsionSpeed = (me.Tgt.get_Speed()*0.5144) *(me.Tgt.get_Speed()*0.5144) / (me.total_speed_ft *FT2M);
+                        #var previsionSpeed = (me.Tgt.get_Speed()*0.5144) *(me.Tgt.get_Speed()*0.5144) / (me.total_speed_ft *FT2M);
+                        var previsionSpeed = (me.Tgt.get_Speed()*0.5144) *(me.Tgt.get_Speed()*0.5144) / (me.vApproch);
+                        
 
-                        var nextGeo = nextGeoloc(me.Tgt.get_Latitude(),me.Tgt.get_Longitude(),me.Tgt.get_heading(),previsionSpeed,0.2);
+                        var nextGeo = nextGeoloc(me.Tgt.get_Latitude(),me.Tgt.get_Longitude(),me.Tgt.get_heading(),previsionSpeed,1);
                         var next_alt = math.tan(me.Tgt.get_Pitch()*D2R)*nextGeo.distance_to(geo.Coord.new().set_latlon(me.Tgt.get_Latitude(),me.Tgt.get_Longitude()))*M2FT+t_alt;
 
                         t_alt = next_alt;
@@ -596,12 +601,12 @@ var MISSILE = {
 #         A_______C'______ B
 #          \      |      /                We have a system  :   x²   = CB² - C'B²
 #           \     |     /                                       C'B  = AB  - AC'
-#           \    |x   /                                        AC'² = A'C² + x²
-#            \   |   /
+#            \    |x   /                                        AC'² = A'C² + x²
+#             \   |   /
 #              \  |  /                    Then, if I made no mistake : x² = BC² - ((BC²-AC²+AB²)/(2AB))²
 #               \ | /
 #                \|/
-#                C
+#                 C
 #C is the target. A is the last missile positioin and B tha actual. For very high speed (more than 1000 m /seconds) we need to know if,
 #between the position A and the position B, the distance x to the target is enough short to proxiimity detection.
 
@@ -609,6 +614,8 @@ var MISSILE = {
 
                 # Get current direct distance.
                 #print("me.direct_dist_m = ",me.direct_dist_m);
+                
+                
                 if ( me.direct_dist_m != nil ) {
 
                         var x2 = BC*BC - (((BC*BC-AC*AC+AB*AB)/(2*AB))*((BC*BC-AC*AC+AB*AB)/(2*AB)));
@@ -623,7 +630,15 @@ var MISSILE = {
                         #print("cur_dir_dist_m = ",cur_dir_dist_m," me.direct_dist_m = ",me.direct_dist_m);
 
 
-                        if ( cur_dir_dist_m > me.direct_dist_m and me.direct_dist_m< me.maxExplosionRange * 2) {
+                 if(me.tpsApproch ==0){
+                        me.tpsApproch = props.globals.getNode("/sim/time/elapsed-sec", 1).getValue();
+                 }else{
+                        me.vApproch = (me.direct_dist_m-cur_dir_dist_m)/(props.globals.getNode("/sim/time/elapsed-sec", 1).getValue()-me.tpsApproch);
+                        me.tpsApproch = props.globals.getNode("/sim/time/elapsed-sec", 1).getValue();
+                        #print(me.vApproch);
+                 }
+
+                 if ( cur_dir_dist_m > me.direct_dist_m and me.direct_dist_m< me.maxExplosionRange * 2) {
                                 if( me.direct_dist_m < me.maxExplosionRange){
                                         # Distance to target increase, trigger explosion.
                                         # Get missile relative position to the target at last frame.

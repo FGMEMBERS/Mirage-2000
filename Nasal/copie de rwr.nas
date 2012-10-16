@@ -43,19 +43,30 @@ init = func() {
 }
 
 var switch_distance = func() {
-         if(getprop("instrumentation/radar/range")==10){
-            setprop("instrumentation/radar/range",20);
+
+         var range = getprop("instrumentation/radar/range");
+         if(range == 10){
+            range = 20;
             if(getprop("/sim/aim/tachy") != "true"){setprop("instrumentation/radar[0]/selected",3);}
-         }elsif(getprop("instrumentation/radar/range")==20){
-            setprop("instrumentation/radar/range",40);
+         }elsif(range == 20){
+            range = 40;
             if(getprop("/sim/aim/tachy") != "true"){setprop("instrumentation/radar[0]/selected",2);}
-         }elsif(getprop("instrumentation/radar/range")==40){
-            setprop("instrumentation/radar/range",100);
+         }elsif(range == 40){
+            range = 100;
             if(getprop("/sim/aim/tachy") != "true"){setprop("instrumentation/radar[0]/selected",2);}
-         }elsif(getprop("instrumentation/radar/range")==100){
-            setprop("instrumentation/radar/range",10);
+         }elsif(range == 100){
+            range = 150;
+            if(getprop("/sim/aim/tachy") != "true"){setprop("instrumentation/radar[0]/selected",2);}
+         }elsif(range==150){
+            range = 10;
             if(getprop("/sim/aim/tachy") != "true"){setprop("instrumentation/radar[0]/selected",3);}
          }
+         
+       setprop("instrumentation/radar/range",range);
+       setprop("instrumentation/nd/range",range);
+       setprop("instrumentation/radar/range-selected",range);         
+         
+         
 }
 
 #Toggle circle for the HUD. This have to move to the future hud.nas
@@ -89,9 +100,9 @@ var activate_ECM = func() {
 
 
 var activate_Telemeter= func(){
-       if(getprop("/ai/closest/range") == 101){
-          setprop("/ai/closest/range",100);}
-       else{setprop("/ai/closest/range",101);}
+       if(getprop("/ai/closest/range") == -2){
+          setprop("/ai/closest/range",-1);}
+       else{setprop("/ai/closest/range",-2);}
 
        closest_target();
 
@@ -100,12 +111,12 @@ var activate_Telemeter= func(){
 
 #This have to move to another .nas
 var closest_target = func() {
-        if(getprop("/ai/closest/range") < 101){
+        if(getprop("/ai/closest/range") >= -1){
 
 
               tgts_list = [];
               var raw_list = Mp.getChildren();
-              var closeRange =100;
+              var closeRange =200;
               var bearing = 0;
               var heading = 0 ;
               var speed = 0;
@@ -151,6 +162,7 @@ var closest_target = func() {
                         
                      }
               }
+              if(closeRange == 200){closeRange = -1;}
               setprop("/ai/closest/range",closeRange);
               setprop("/ai/closest/bearing",bearing);
               setprop("/ai/closest/heading",heading);
@@ -159,11 +171,11 @@ var closest_target = func() {
               setprop("/ai/closest/callsign",callsign);
               setprop("/ai/closest/longitude",longitude);
               setprop("/ai/closest/latitude",latitude);
-              if(StandByTgtMarker < 600) {
+              if(StandByTgtMarker < 1000) {
                         settimer(closest_target, 0.5);
                         StandByTgtMarker = StandByTgtMarker +1 ;
               }else{
-                    setprop("/ai/closest/range",101);
+                    setprop("/ai/closest/range",-2 );
                     StandByTgtMarker = 0;
               }
 

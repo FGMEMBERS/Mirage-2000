@@ -10,6 +10,11 @@
 
     <fuel-fraction>0.8</fuel-fraction>
 
+    <instrumentation>
+         <path>Aircraft/Mirage-2000/System/instrumentation.xml</path>
+    </instrumentation>
+
+
     <model>
       <path>Aircraft/Mirage-2000/Models/m2000-5.xml</path>
       <livery>
@@ -84,6 +89,13 @@
           <blue type="float">  0.0 </blue>
         </color>
       </palette>
+      <!--Thanks f16 team for that -->
+      <clipping>
+        <left type="double">-65</left>
+        <right type="double">65</right>
+        <top type="double">60</top><!-- 20 -->
+        <bottom type="double">-88</bottom><!-- -102 -->
+      </clipping>
     </hud>
 
     <help>
@@ -95,10 +107,6 @@
       <key>
         <name>e</name>
         <desc>Fire guns</desc>
-      </key>
-      <key>
-        <name>R</name>
-        <desc>Reload Guns</desc>
       </key>
       <key>
         <name>E</name>
@@ -121,7 +129,7 @@
         <desc>Change Radar Distances (10, 20 40)</desc>
       </key>
       <key>
-        <name>Y</name>
+        <name>R</name>
         <desc>Activate/desactivate targeting the nearest (the target have to be bellow radar range)</desc>
       </key>
       <key>
@@ -132,13 +140,17 @@
         <name>}</name>
         <desc>On/Off Reactor</desc>
       </key>
+      <key>
+        <name>l</name>
+        <desc>Flare out</desc>
+      </key>
       <line>Afterburners engage when</line>
       <line>throttle moves past 75%</line>
-      <line>To fire a guided Missile, you must have a target</line>
+      <line>To fire a guided Missile, activate with R, aim with the HUD and fire</line>
+      <line>(1,4,7)     5     (9,6,3)   </line>
+      <line> right    Center    left    </line>
     </help>
-
-
-        
+       
     <!--                  /-\
                          /   \
         _________________|   |_________________
@@ -195,8 +207,8 @@
       </offsets>
       <selected>none</selected>
       <opt><name>none</name><lbs>0</lbs></opt>
-      <opt><name>1700 l Droptank</name><lbs>0</lbs><gals>448.50</gals></opt> <!-- 3013.92 lbs -->
-      <opt><name>1300 l Droptank</name><lbs>0</lbs><gals>343.00</gals></opt> <!-- 2305.01 lbs -->
+      <opt><name>1700 l Droptank</name><lbs>280</lbs><gals>448.50</gals></opt>
+      <opt><name>1300 l Droptank</name><lbs>220</lbs><gals>343.00</gals></opt>
       <opt><name>Matra R550 Magic 2</name><lbs>196.21</lbs></opt>
       <opt><name>Matra MICA</name><lbs>246.91</lbs></opt>
     </weight>
@@ -212,7 +224,7 @@
         <z-m type="double"> -1.656 </z-m>
       </offsets>
       <opt><name>none</name><lbs>0</lbs></opt>
-      <opt><name>1300 l Droptank</name><lbs>0</lbs><gals>343.00</gals></opt> <!-- 2305.01 lbs -->
+      <opt><name>1300 l Droptank</name><lbs>220</lbs><gals>343.00</gals></opt>
       <opt><name>GBU16</name><lbs>1000</lbs></opt>
       <opt><name>GBU12</name><lbs>800</lbs></opt>
       <opt><name>SCALP</name><lbs>2866</lbs></opt>
@@ -231,8 +243,8 @@
         <z-m type="double"> -1.556 </z-m>
       </offsets>
       <opt><name>none</name><lbs>0</lbs></opt>
-      <opt><name>1700 l Droptank</name><lbs>0</lbs><gals>448.50</gals></opt> <!-- 3013.92 lbs -->
-      <opt><name>1300 l Droptank</name><lbs>0</lbs><gals>343.00</gals></opt> <!-- 2305.01 lbs -->
+      <opt><name>1700 l Droptank</name><lbs>280</lbs><gals>448.50</gals></opt>
+      <opt><name>1300 l Droptank</name><lbs>220</lbs><gals>343.00</gals></opt>
       <opt><name>Matra R550 Magic 2</name><lbs>196.21</lbs></opt>
       <opt><name>Matra MICA</name><lbs>246.91</lbs></opt>
     </weight>
@@ -322,15 +334,15 @@
         <drag-area type="double">0.043</drag-area>                 <!-- sq ft -->
         <!--Due to the code, more the speed is important, more we need to have this figure high-->
         <maxExplosionRange type="int">200</maxExplosionRange>
-        <maxspeed type="double"> 4</maxspeed> <!-- In Mach -->
+        <maxspeed type="double"> 4</maxspeed>                      <!-- In Mach -->
         <life>60</life>
-        <!-- "Fox1" for guided by the aircraft radar (semi active) AIM7, "Fox2" for infrared AIM9, "Fox3" for intern
-             missile Radar AIM120, AIM54, A/G air to ground-->
+        <!-- "Fox1" for guided by the aircraft radar (semi active) AIM7, "Fox2" for infrared AIM9, "Fox3" for intern missile
+             Radar AIM120,  AIM54, A/G air to ground -->
         <fox>Fox 3</fox>
         <!-- if the missile fall before thrust start or if there is some kind of "rail" -->
         <rail type="bool">true</rail>
-        <!--for cruise missile, in feet.0 is off.bellow 10000 feet is terrain following-->
-        <cruise_alt type="int">0</cruise_alt> 
+        <!--for cruise missile, in feet.0 is off.bellow 10000 feet is terrain following -->
+        <cruise_alt type="int">0</cruise_alt>
       </missile>
       <trigger type="bool">false</trigger>
       <master-arm type="bool">true</master-arm>
@@ -376,6 +388,7 @@
   </engines>
 
   <instrumentation>
+    <ejection type="bool">false</ejection>
     <doors>
       <crew>
         <position-norm type="float">0</position-norm>
@@ -390,7 +403,7 @@
     </rwr>
     <enav><selected type="int">3</selected></enav>
     <radar>
-      <range type="int" archive="y">40</range>
+      <range type="int" archive="y">20</range>
       <range-factor type="double" archive="n">0.001888</range-factor>
       <minimized type="bool" archive="y">false</minimized>
       <selected type="int">3</selected>
@@ -398,21 +411,29 @@
       <enabled type="bool">true</enabled>
       <az-field type="double">120</az-field>
       <range type="double">150</range>
-      <range-selected type="double">50</range-selected>
+      <range-selected type="double">20</range-selected>
       <radar2-range type="double">150</radar2-range>
       <display-rdr type="bool">true</display-rdr>
-      <radar-standby type="int">3</radar-standby>
+      <radar-standby type="int">0</radar-standby>
       <mode>
         <rws type="bool">true</rws>
         <tws-auto type="bool">false</tws-auto>
       </mode>
     </radar> 
+    <radar2>
+      <sweep-width-m type="double">0.0844</sweep-width-m>
+      <range-width-m type="double">0.0846</range-width-m>
+      <radius-ppi-display-m type="double">0.0846</radius-ppi-display-m>
+      <hud-eye-dist-m type="double">0.766</hud-eye-dist-m>
+      <hud-radius-m type="double">0.071</hud-radius-m>
+      <hud-vertical-offset-m type="double">-0.025</hud-vertical-offset-m>
+    </radar2>
     <terrain-radar>
       <hi-elev>
-        <alt-ft type="double">  -9999.9 </alt-ft>
-        <lat-deg type="double"> -9999.9 </lat-deg>
-        <lon-deg type="double"> -9999.9 </lon-deg>
-        <dist-m type="double">  -9999.9 </dist-m>
+        <alt-ft type="double">-9999.9</alt-ft>
+        <lat-deg type="double">-9999.9</lat-deg>
+        <lon-deg type="double">-9999.9</lon-deg>
+        <dist-m type="double">-9999.9</dist-m>
         <collision-status type="string">initialised</collision-status>
       </hi-elev>
       <settings>
@@ -425,9 +446,72 @@
       </settings>
     </terrain-radar>
     <mfd>
-      <modeL type="int"> 0 </modeL>
-      <modeR type="int"> 1 </modeR>
+      <modeL type="int"> 1 </modeL>
+      <modeR type="int"> 0 </modeR>
     </mfd>
+    <!--Thanks to the CitationX guy !! -->
+    <nd>
+      <radar-texture-path type="string">
+        Aircraft/Mirage-2000/Models/Interior/Panel/Instruments/Center-mfd/radar.png
+      </radar-texture-path>
+      <symbol-texture-path type="string">
+        Aircraft/Mirage-2000/Models/Interior/Panel/Instruments/Center-mfd/symbols.png
+      </symbol-texture-path>
+      <font>
+        <color>
+          <red type="float">   0.7 </red>
+          <green type="float"> 0.7 </green>
+          <blue type="float">  0.7 </blue>
+          <alpha type="float"> 1.0 </alpha>
+        </color>
+        <name type="string">helvetica_bold.txf</name>
+        <size type="float">14</size>
+        <line-spacing type="float">0.01</line-spacing>
+      </font>
+      <serviceable type="bool">true</serviceable>
+      <range type="int" archive="y">20</range>
+      <aircraft-heading-up type="bool">true</aircraft-heading-up>
+      <heading-up-deg type="float">0.01</heading-up-deg>
+      <x-center type="float">0.5</x-center>
+      <y-center type="float">0.5</y-center>
+      <display>
+        <arpt type="bool">1</arpt>
+        <vor type="bool">1</vor>
+        <fix type="bool">0</fix>
+        <tcas type="bool">0</tcas>
+      </display>
+      <line-width type="double">3</line-width>
+    </nd>  
+    <primus2000>
+      <dc840>
+        <hsi type="bool">       0 </hsi>
+        <wx type="bool">        0 </wx>
+        <et type="bool">        0 </et>
+        <tcas type="bool">      0 </tcas>
+        <acft-sys type="bool">  0 </acft-sys>
+        <mfd-map type="bool">   1 </mfd-map>
+        <mfd-wx type="bool">    0 </mfd-wx>
+        <norm type="bool">      0 </norm>
+        <abn type="bool">       0 </abn>
+        <emer type="bool">      0 </emer>
+        <skp type="bool">       0 </skp>
+        <pag type="bool">       0 </pag>
+        <rcl type="bool">       0 </rcl>
+        <ent type="bool">       0 </ent>
+      </dc840>
+      <sc840>
+        <nav1ptr type="double"> 0 </nav1ptr>
+        <nav2ptr type="double"> 0 </nav2ptr>
+      </sc840>
+      <eicas>
+        <serviceable type="bool"> 1 </serviceable>
+      </eicas>
+      <mfd>
+        <menu-num type="int"> 0</menu-num>
+      </mfd>
+      <pfd>
+      </pfd>
+    </primus2000>
   </instrumentation>
 
   <input>
@@ -488,14 +572,14 @@
 
   <ai>
     <closest>
-       <callsign type="string">   0 </callsign>
-       <range type="double">    101 </range>
-       <heading type="int">       0 </heading>
-       <bearing type="int">       0 </bearing>
-       <altitude type="int">      0 </altitude>
-       <speed type="int">         0 </speed>
-       <longitude type="double">  0 </longitude>
-       <latitude type="double">   0 </latitude>
+      <callsign type="string">   0 </callsign>
+      <range type="double">     -2 </range>
+      <heading type="int">       0 </heading>
+      <bearing type="int">       0 </bearing>
+      <altitude type="int">      0 </altitude>
+      <speed type="int">         0 </speed>
+      <longitude type="double">  0 </longitude>
+      <latitude type="double">   0 </latitude>
     </closest>
   </ai>
 
@@ -514,11 +598,12 @@
     <radardist>
       <file>Aircraft/Instruments-3d/radardist/radardist.nas</file>
     </radardist>
-    <rwr>
-      <file>Aircraft/Mirage-2000/Nasal/rwr.nas</file>
-    </rwr>
+    <hud>
+      <file>Aircraft/Mirage-2000/Nasal/MiscRwr.nas</file>
+    </hud>
     <radar>
-      <file>Aircraft/Mirage-2000/Nasal/radar.nas</file> 
+      <file>Aircraft/Mirage-2000/Nasal/radar2.nas</file> 
+  <!--<file>Aircraft/Instruments-3d/radar2/radar2.nas</file>-->
     </radar>
     <environment>
        <file>Aircraft/Mirage-2000/Nasal/environment.nas</file> 
@@ -535,15 +620,14 @@
        <file>Aircraft/Mirage-2000/Missiles/Loading_Missiles.nas</file>
     </missile>
     <engines>
-       <file>Aircraft/Mirage-2000/Nasal/generic-yasim-engine.nas</file>
-       <script>
-            var engine1 = engines.Jet.new(0, 0, 0.01, 5.21, 3, 5, 1, 6);
-            setlistener("sim/signals/fdm-initialized", func
-            {
-                 engine1.init();
-            }, 0, 0);
-       </script>
-
+      <file>Aircraft/Mirage-2000/Nasal/generic-yasim-engine.nas</file>
+      <script>
+        var engine1 = engines.Jet.new(0, 0, 0.01, 5.21, 3, 5, 1, 6);
+        setlistener("sim/signals/fdm-initialized", func
+        {
+          engine1.init();
+        }, 0, 0);
+      </script>
     </engines>
     <test>
        <file>Aircraft/Mirage-2000/Nasal/test.nas</file>

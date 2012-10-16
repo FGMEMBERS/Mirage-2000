@@ -43,16 +43,17 @@
       <script>doors.doorsystem.parachuteexport();</script>
     </binding>
   </key>
-  <key n="82">
-    <name>R</name>
-    <desc>Reload Guns</desc>
+  <key n="5">
+    <name>Ctrl-E</name>
+    <desc>Ejection</desc>
     <binding>
       <command>nasal</command>
-      <script>guns.reload_Cannon();</script>
+      <script>setprop("instrumentation/ejection","true");</script>
     </binding>
   </key>
 
-  <!--____________________Lanch________________________-->
+<!--____________________Lanch________________________-->
+
   <key n="49">
      <name>1</name>
      <desc>Missile 1</desc>
@@ -121,61 +122,71 @@
      </binding>
   </key>
 
-  <!--__________________End Launch ______________________-->
+<!--__________________End Launch ______________________-->
   <key n="72">
-    <name>H</name>
-    <desc>Active Target Seeking</desc>
-    <binding>
-      <command>nasal</command>
-      <script>rwr.activate_borsight()</script>
-    </binding>
+     <name>H</name>
+     <desc>Active Target Seeking</desc>
+     <binding>
+        <command>nasal</command>
+        <script>hud.activate_borsight()</script>
+     </binding>
   </key>
-
   <key n="84">
-    <name>t</name>
-    <desc>Active ECM</desc>
-    <binding>
-      <command>nasal</command>
-      <script>rwr.activate_ECM()</script>
-    </binding>
+     <name>t</name>
+     <desc>Active ECM</desc>
+     <binding>
+        <command>nasal</command>
+        <script>hud.activate_ECM()</script>
+     </binding>
   </key>
-
-  <key n="89">
-    <name>Y</name>
-    <desc>Active Telemeter</desc>
-    <binding>
-      <command>nasal</command>
-      <script>rwr.activate_Telemeter()</script>
-    </binding>
+  <key n="82">
+     <name>R</name>
+     <desc>Active Telemeter</desc>
+     <binding>
+        <command>nasal</command>
+        <script>hud.activate_Telemeter()</script>
+     </binding>
   </key>
-
   <key n="116">
-    <name>t</name>
-    <desc>Ajusting Radar Distance</desc>
-    <binding>
-      <command>nasal</command>
-      <script>rwr.switch_distance()</script>
-    </binding>
+     <name>t</name>
+     <desc>Ajusting Radar Distance</desc>
+     <binding>
+        <command>nasal</command>
+        <script>hud.switch_distance()</script>
+     </binding>
   </key>
-
   <key n="125">
-    <name>}</name>
-    <desc>Engine Autostart</desc>
-    <binding>
-      <command>nasal</command>
-      <script>engines.engine1.autostart();</script>
-    </binding>
+     <name>}</name>
+     <desc>Engine Autostart</desc>
+	<binding>
+		<command>nasal</command>
+		<script>engines.engine1.autostart();</script>
+	</binding>
   </key>
-
-  <key n="357">
-    <name>t</name>
-    <desc>Test</desc>
-    <binding>
+    <key n="108">
+	 <name>l</name>
+	 <desc>Flare out</desc>
+	 <binding>
+		 <command>property-toggle</command>
+		<property>controls/switches/flare</property>
+	 </binding>
+   </key>
+   <key n="113">
+     <name>q</name>
+     <desc>Toggle radar standby mode</desc>
+     <binding>
+      <command>property-toggle</command>
+      <property>instrumentation/radar/radar-standby</property>
+     </binding>
+    </key>
+    <!--<key n="14">
+     <name>Ctrl-n</name>
+     <desc>Toggles Radar RWS / TWS AUTO Modes</desc>
+     <binding>
       <command>nasal</command>
-      <script>test.test();</script>
-    </binding>
-  </key>
-
+      <script>radar.radar_mode_toggle()</script>
+     </binding>
+    </key>-->
 
 </PropertyList>
 

@@ -34,15 +34,13 @@
     </pitch-input>
     <compression-factor>11.50</compression-factor>
     <display-span>10.4</display-span>
-    <divisions>2.0</divisions>
-    <screen-hole>15</screen-hole>
-
-
-    <zero-bar-overlength>14</zero-bar-overlength>
+    <divisions>5.0</divisions>
+    <screen-hole>15</screen-hole>s
+    <zero-bar-overlength>20</zero-bar-overlength>
     <enable-dive-bar-angle>true</enable-dive-bar-angle>
     <enable-dynamic-origin>false</enable-dynamic-origin>
     <enable-fuselage-ref-line>true</enable-fuselage-ref-line>
-    <enable-target-spot>true</enable-target-spot>
+    <enable-target-spot>false</enable-target-spot>
     <enable-target-markers>true</enable-target-markers>
     <enable-velocity-vector>true</enable-velocity-vector>
     <enable-drift-marker>false</enable-drift-marker>
@@ -55,10 +53,12 @@
     <enable-waypoint-marker>true</enable-waypoint-marker>
   </ladder>
 
+    
+
   <label>
     <name>Gyro Heading Label</name>
     <x> -9 </x>
-    <y>  43 </y>
+    <y>  38 </y>
     <width>18</width>
     <height>15</height>
     <input>
@@ -117,21 +117,17 @@
    <label>
      <name>Closest Range</name>
      <x>63</x>
-     <y>44</y>
+     <y>51</y>
      <condition>
         <and>
           <less-than>
              <property>/ai/closest/range</property>
              <property>instrumentation/radar/range</property>
           </less-than>
-          <not-equals>
-             <property>/ai/closest/range</property>
-             <value>101</value>
-          </not-equals>
-          <not-equals>
+          <greater-than>
              <property>/ai/closest/range</property>
              <value>0</value>
-          </not-equals>
+          </greater-than>
         </and>
      </condition>
      <halign>right</halign>
@@ -141,22 +137,18 @@
 
   <label>
      <name>Closest Callsign</name>
-     <x>70</x>
-     <y>50</y>
+     <x>63</x>
+     <y>57</y>
      <condition>
         <and>
           <less-than>
              <property>/ai/closest/range</property>
              <property>instrumentation/radar/range</property>
           </less-than>
-          <not-equals>
+          <greater-than>
              <property>/ai/closest/range</property>
              <value>0</value>
-          </not-equals>
-          <not-equals>
-             <property>/ai/closest/range</property>
-             <value>101</value>
-          </not-equals>
+          </greater-than>
         </and>
      </condition>
      <input>
@@ -169,21 +161,17 @@
   <label>
      <name>Closest Altitude</name>
      <x>63</x>
-     <y>38</y>
+     <y>45</y>
      <condition>
         <and>
           <less-than>
              <property>/ai/closest/range</property>
              <property>instrumentation/radar/range</property>
           </less-than>
-          <not-equals>
+          <greater-than>
              <property>/ai/closest/range</property>
              <value>0</value>
-          </not-equals>
-          <not-equals>
-             <property>/ai/closest/range</property>
-             <value>101</value>
-          </not-equals>
+          </greater-than>
         </and>
      </condition>
      <input>
@@ -196,21 +184,17 @@
  <label>
      <name>Closest heading</name>
      <x>63</x>
-     <y>32</y>
+     <y>39</y>
      <condition>
         <and>
           <less-than>
              <property>/ai/closest/range</property>
              <property>instrumentation/radar/range</property>
           </less-than>
-          <not-equals>
+          <greater-than>
              <property>/ai/closest/range</property>
              <value>0</value>
-          </not-equals>
-          <not-equals>
-             <property>/ai/closest/range</property>
-             <value>101</value>
-          </not-equals>
+          </greater-than>
         </and>
      </condition>
      <input>
@@ -223,21 +207,17 @@
  <label>
      <name>Closest speed</name>
      <x>63</x>
-     <y>26</y>
+     <y>32</y>
      <condition>
         <and>
           <less-than>
              <property>/ai/closest/range</property>
              <property>instrumentation/radar/range</property>
           </less-than>
-          <not-equals>
+          <greater-than>
              <property>/ai/closest/range</property>
              <value>0</value>
-          </not-equals>
-          <not-equals>
-             <property>/ai/closest/range</property>
-             <value>101</value>
-          </not-equals>
+          </greater-than>
         </and>
      </condition>
      <input>
@@ -250,21 +230,17 @@
  <label>
      <name>Closest bearing</name>
      <x>63</x>
-     <y>18</y>
+     <y>26</y>
      <condition>
         <and>
           <less-than>
              <property>/ai/closest/range</property>
              <property>instrumentation/radar/range</property>
           </less-than>
-          <not-equals>
+          <greater-than>
              <property>/ai/closest/range</property>
              <value>0</value>
-          </not-equals>
-          <not-equals>
-             <property>/ai/closest/range</property>
-             <value>101</value>
-          </not-equals>
+          </greater-than>
         </and>
      </condition>
      <input>

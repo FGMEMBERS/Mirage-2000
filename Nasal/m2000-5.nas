@@ -26,6 +26,8 @@ setlistener("/controls/engines/engine[1]/throttle", func(n) {
 #   setprop("/sim/alarms/stall-warning", Estado);
 #};
 
+
+
 # ================================== Chute ==================================================
 
 controls.deployChute = func(v){

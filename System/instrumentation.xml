@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!--
+**********************************************************************
+This file selects the instrumentation modules that should be available.
+**********************************************************************
+-->
+
+<PropertyList>
+
+  <airspeed-indicator>
+    <name>airspeed-indicator</name>
+    <number>0</number>
+    <total-pressure>/systems/pitot/total-pressure-inhg</total-pressure>
+    <static-pressure>/systems/static/pressure-inhg</static-pressure>
+    <has-overspeed-indicator>1</has-overspeed-indicator>
+  </airspeed-indicator>
+
+  <altimeter>
+    <name>altimeter</name>
+    <number>0</number>
+    <static-pressure>/systems/static/pressure-inhg</static-pressure>
+  </altimeter>
+
+
+  <navigation-display>
+    <name>nd</name>
+    <number>0</number>
+    <symbols include="nav-display.xml"/>
+  </navigation-display>
+    
+  <radar>
+    <name>radar</name>
+    <number>0</number>
+  </radar>
+
+</PropertyList>

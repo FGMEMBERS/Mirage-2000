@@ -23,14 +23,42 @@
 
   <!-- MFD Center -->
   <model>
-    <path>Aircraft/Mirage-2000/Models/Interior/Panel/Instruments/Center-mfd/mfd.xml</path>
+    <name>MFD_Center</name>
+    <path>Aircraft/Mirage-2000/Models/Interior/Panel/Instruments/Center-mfd/MFD3d.xml</path>
     <offsets>
       <x-m>  0.431 </x-m>
       <y-m>  0.000 </y-m>
-      <z-m> -0.173 </z-m>
+      <z-m> -0.277</z-m>
       <pitch-deg> -20 </pitch-deg>
     </offsets>
   </model>
+  
+   <animation>
+        <type>scale</type>
+        <object-name>MFD_Center</object-name> 
+        <x-offset>1</x-offset>
+        <y-offset>0.82</y-offset>
+        <z-offset>0.67</z-offset>
+   </animation>
+  
+    <!-- MFD Center border-->
+  <model>
+    <name>MFD_Center_border</name>
+    <path>Aircraft/Mirage-2000/Models/Interior/Panel/Instruments/Center-mfd/Old/mfd.xml</path>
+    <offsets>
+      <x-m>  0.431 </x-m>
+      <y-m>  0.000 </y-m>
+      <z-m> -0.166 </z-m>
+      <pitch-deg> -20 </pitch-deg>
+    </offsets>
+  </model>
+    <animation>
+        <type>scale</type>
+        <object-name>MFD_Center_border</object-name> 
+        <x-offset>1</x-offset>
+        <y-offset>1.03</y-offset>
+        <z-offset>1.05</z-offset>
+   </animation>
 
   <!-- MFD Right -->
   <model>
@@ -102,6 +130,20 @@
       <z-m> 0.003 </z-m>
     </offsets>
   </model>
+
+ <model>
+ 
+  <!-- Just a diamond displayed in the HUD above the nearest target -->
+  <name>HUD_ADDS</name>
+  <path>Aircraft/Mirage-2000/Models/Interior/Panel/Instruments/HUD/hud.xml</path>
+  <name>diamond</name>
+  <offsets>
+      <x-m> 0.6 </x-m>
+      <y-m> 0.00000 </y-m>
+      <z-m> 0.1945</z-m>
+   <pitch-deg>0</pitch-deg>
+  </offsets>
+ </model>
 
 </PropertyList>
 

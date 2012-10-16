@@ -6,22 +6,59 @@
     <menu n="10">
       <label>Mirage 2000</label>
       <enabled type="bool">true</enabled>
-      <item>
+      <item n="0">
         <label>Select Livery</label>
         <binding>
           <command>nasal</command>
           <script>aircraft.livery.dialog.toggle()</script>
         </binding>
       </item>
-      <item>
+      <item n="1">
         <label>MP Shot Report</label>
         <binding>
           <command>nasal</command>
           <script>missile.MPReport()</script>
         </binding>
       </item>
+      <item n="2">
+        <label>Reload Gun</label>
+        <binding>
+          <command>nasal</command>
+          <script>guns.reload_Cannon()</script>
+        </binding>
+      </item>
+        <!--<item n="3">
+          <label>Fuel and Stores</label>
+          <binding>
+            <command>nasal</command>
+            <script>load.ext_loads_dlg.open()</script>
+          </binding>
+        </item>-->
+        <item n="4">
+             <label>Air to Air Middle Distance</label>
+                <binding>
+                  <command>nasal</command>
+                  <script>load.AirToAirMiddle()</script>
+                </binding>
+        </item>
+         <item n="5">
+             <label>Air to Air Short Distance</label>
+                <binding>
+                  <command>nasal</command>
+                  <script>load.AirToAirshort()</script>
+                </binding>
+        </item>
+        <item n="6">
+             <label>Air to Air Long Distance</label>
+                <binding>
+                  <command>nasal</command>
+                  <script>load.AirToAirLong()</script>
+                </binding>
+        </item>
     </menu>
   </default>
+
+
 
 </PropertyList>
 

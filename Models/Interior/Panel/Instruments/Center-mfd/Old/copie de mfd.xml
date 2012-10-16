@@ -178,7 +178,7 @@
     </center>
   </animation>
 
-  <!--
+  
   <animation>
     <type>textranslate</type>
     <object-name>alttext</object-name>
@@ -217,7 +217,7 @@
       <z> 0 </z>
     </axis>
   </animation>
-  -->
+  
 
   <animation>
     <type>textranslate</type>
@@ -261,7 +261,7 @@
   <animation>
     <type>textranslate</type>
     <object-name>rng.001</object-name>
-    <property>/instrumentation/wxradar/range</property>
+    <property>/instrumentation/radar/range</property>
     <factor>0.001</factor>
     <step>100</step>
     <axis>
@@ -274,7 +274,7 @@
   <animation>
     <type>textranslate</type>
     <object-name>rng.002</object-name>
-    <property>/instrumentation/wxradar/range</property>
+    <property>/instrumentation/radar/range</property>
     <factor>0.01</factor>
     <step>10</step>
     <axis>
@@ -287,7 +287,7 @@
   <animation>
     <type>textranslate</type>
     <object-name>rng.003</object-name>
-    <property>/instrumentation/wxradar/range</property>
+    <property>/instrumentation/radar/range</property>
     <factor>0.1</factor>
     <step>1</step>
     <axis>
@@ -300,7 +300,7 @@
   <animation> 
     <type>rotate</type>
     <object-name>waypoint1a</object-name>
-    <property>autopilot/settings/true-heading-deg[0]</property>
+    <property>autopilot/settings/true-heading-deg</property>
     <center>
       <x-m>  0.000 </x-m>
       <y-m>  0.000 </y-m>
@@ -316,7 +316,7 @@
   <animation> 
     <type>rotate</type>
     <object-name>waypoint1a</object-name>
-    <property>orientation/heading-deg[0]</property>
+    <property>orientation/heading-deg</property>
     <axis> 
       <x> 1 </x>
       <y> 0 </y>
@@ -332,7 +332,7 @@
   <animation> 
     <type>translate</type>
     <object-name>waypoint1a</object-name>
-    <property>autopilot/route-manager/wp/dist[0]</property>
+    <property>autopilot/route-manager/wp/dist</property>
     <factor>0.0116</factor>
     <axis> 
       <x> 0 </x>
@@ -344,7 +344,7 @@
   <animation> 
     <type>rotate</type>
     <object-name>waypoint1b</object-name>
-    <property>autopilot/settings/true-heading-deg[0]</property>
+    <property>autopilot/settings/true-heading-deg</property>
     <center>
       <x-m>  0.000 </x-m>
       <y-m>  0.000 </y-m>
@@ -360,7 +360,7 @@
   <animation> 
     <type>rotate</type>
     <object-name>waypoint1b</object-name>
-    <property>orientation/heading-deg[0]</property>
+    <property>orientation/heading-deg</property>
     <center>
       <x-m>  0.000 </x-m>
       <y-m>  0.000 </y-m>
@@ -376,7 +376,7 @@
   <animation> 
     <type>translate</type>
     <object-name>waypoint1b</object-name>
-    <property>autopilot/route-manager/wp/dist[0]</property>
+    <property>autopilot/route-manager/wp/dist</property>
     <factor>0.0058</factor>
     <axis> 
       <x> 0 </x>
@@ -388,7 +388,7 @@
  <animation> 
 	<type>rotate</type>
 	<object-name>waypoint1c</object-name>
-	<property>autopilot/settings/true-heading-deg[0]</property>
+	<property>autopilot/settings/true-heading-deg</property>
 	<axis> 
 	<x>-1</x>
 	<y>0</y>
@@ -404,7 +404,7 @@
  <animation> 
 	<type>rotate</type>
 	<object-name>waypoint1c</object-name>
-	<property>orientation/heading-deg[0]</property>
+	<property>orientation/heading-deg</property>
 	<axis> 
 	<x>1</x>
 	<y>0</y>
@@ -420,7 +420,7 @@
  <animation> 
 	<type>translate</type>
 	<object-name>waypoint1c</object-name>
-	<property>autopilot/route-manager/wp/dist[0]</property>
+	<property>autopilot/route-manager/wp/dist</property>
 <factor>0.0029</factor>
 <axis> 
 <x>0</x>
@@ -432,7 +432,7 @@
  <animation> 
 	<type>rotate</type>
 	<object-name>waypoint1d</object-name>
-	<property>autopilot/settings/true-heading-deg[0]</property>
+	<property>autopilot/settings/true-heading-deg</property>
 	<axis> 
 	<x>-1</x>
 	<y>0</y>
@@ -448,7 +448,7 @@
  <animation> 
 	<type>rotate</type>
 	<object-name>waypoint1d</object-name>
-	<property>orientation/heading-deg[0]</property>
+	<property>orientation/heading-deg</property>
 	<axis> 
 	<x>1</x>
 	<y>0</y>
@@ -464,7 +464,7 @@
  <animation> 
 	<type>translate</type>
 	<object-name>waypoint1d</object-name>
-	<property>autopilot/route-manager/wp/dist[0]</property>
+	<property>autopilot/route-manager/wp/dist</property>
 <factor>0.00145</factor>
 <axis> 
 <x>0</x>
@@ -476,7 +476,7 @@
  <animation> 
 	<type>rotate</type>
 	<object-name>waypoint1e</object-name>
-	<property>autopilot/settings/true-heading-deg[0]</property>
+	<property>autopilot/settings/true-heading-deg</property>
 	<axis> 
 	<x>-1</x>
 	<y>0</y>
@@ -492,7 +492,7 @@
  <animation> 
 	<type>rotate</type>
 	<object-name>waypoint1e</object-name>
-	<property>orientation/heading-deg[0]</property>
+	<property>orientation/heading-deg</property>
 	<axis> 
 	<x>1</x>
 	<y>0</y>
@@ -508,7 +508,7 @@
  <animation> 
 	<type>translate</type>
 	<object-name>waypoint1e</object-name>
-	<property>autopilot/route-manager/wp/dist[0]</property>
+	<property>autopilot/route-manager/wp/dist</property>
 <factor>0.000725</factor>
 <axis> 
 <x>0</x>
@@ -520,7 +520,7 @@
  <animation> 
 	<type>rotate</type>
 	<object-name>waypoint1f</object-name>
-	<property>autopilot/settings/true-heading-deg[0]</property>
+	<property>autopilot/settings/true-heading-deg</property>
 	<axis> 
 	<x>-1</x>
 	<y>0</y>
@@ -536,7 +536,7 @@
  <animation> 
 	<type>rotate</type>
 	<object-name>waypoint1f</object-name>
-	<property>orientation/heading-deg[0]</property>
+	<property>orientation/heading-deg</property>
 	<axis> 
 	<x>1</x>
 	<y>0</y>
@@ -552,7 +552,7 @@
  <animation> 
 	<type>translate</type>
 	<object-name>waypoint1f</object-name>
-	<property>autopilot/route-manager/wp/dist[0]</property>
+	<property>autopilot/route-manager/wp/dist</property>
 <factor>0.0003625</factor>
 <axis> 
 <x>0</x>
@@ -564,7 +564,7 @@
  <animation> 
 	<type>rotate</type>
 	<object-name>waypoint1g</object-name>
-	<property>autopilot/settings/true-heading-deg[0]</property>
+	<property>autopilot/settings/true-heading-deg</property>
 	<axis> 
 	<x>-1</x>
 	<y>0</y>
@@ -580,7 +580,7 @@
  <animation> 
 	<type>rotate</type>
 	<object-name>waypoint1g</object-name>
-	<property>orientation/heading-deg[0]</property>
+	<property>orientation/heading-deg</property>
 	<axis> 
 	<x>1</x>
 	<y>0</y>
@@ -596,7 +596,7 @@
  <animation> 
 	<type>translate</type>
 	<object-name>waypoint1g</object-name>
-	<property>autopilot/route-manager/wp/dist[0]</property>
+	<property>autopilot/route-manager/wp/dist</property>
 <factor>0.00018125</factor>
 <axis> 
 <x>0</x>
@@ -608,7 +608,7 @@
  <animation> 
 	<type>rotate</type>
 	<object-name>nav1a</object-name>
-	<property>instrumentation/nav/heading-deg[0]</property>
+	<property>instrumentation/nav/heading-deg</property>
 	<axis> 
 	<x>-1</x>
 	<y>0</y>
@@ -624,7 +624,7 @@
  <animation> 
 	<type>rotate</type>
 	<object-name>nav1a</object-name>
-	<property>orientation/heading-deg[0]</property>
+	<property>orientation/heading-deg</property>
 	<axis> 
 	<x>1</x>
 	<y>0</y>
@@ -640,7 +640,7 @@
  <animation> 
 	<type>translate</type>
 	<object-name>nav1a</object-name>
-	<property>instrumentation/nav/nav-distance[0]</property>
+	<property>instrumentation/nav/nav-distance</property>
 <factor>0.000006235</factor>
 <axis> 
 <x>0</x>
@@ -652,7 +652,7 @@
  <animation> 
 	<type>rotate</type>
 	<object-name>nav1a</object-name>
-	<property>instrumentation/nav/radials/target-radial-deg[0]</property>
+	<property>instrumentation/nav/radials/target-radial-deg</property>
 	<axis> 
 	<x>-1</x>
 	<y>0</y>
@@ -668,7 +668,7 @@
  <animation> 
 	<type>rotate</type>
 	<object-name>nav1a</object-name>
-	<property>instrumentation/nav/heading-deg[0]</property>
+	<property>instrumentation/nav/heading-deg</property>
 	<axis> 
 	<x>1</x>
 	<y>0</y>
@@ -684,7 +684,7 @@
  <animation> 
 	<type>rotate</type>
 	<object-name>nav2a</object-name>
-	<property>instrumentation/nav[1]/heading-deg[0]</property>
+	<property>instrumentation/nav[1]/heading-deg</property>
 	<axis> 
 	<x>-1</x>
 	<y>0</y>
@@ -700,7 +700,7 @@
  <animation> 
 	<type>rotate</type>
 	<object-name>nav2a</object-name>
-	<property>orientation/heading-deg[0]</property>
+	<property>orientation/heading-deg</property>
 	<axis> 
 	<x>1</x>
 	<y>0</y>
@@ -716,7 +716,7 @@
  <animation> 
 	<type>translate</type>
 	<object-name>nav2a</object-name>
-	<property>instrumentation/nav[1]/nav-distance[0]</property>
+	<property>instrumentation/nav[1]/nav-distance</property>
 <factor>0.000006235</factor>
 <axis> 
 <x>0</x>
@@ -728,7 +728,7 @@
  <animation> 
 	<type>rotate</type>
 	<object-name>nav2a</object-name>
-	<property>instrumentation/nav[1]/radials/target-radial-deg[0]</property>
+	<property>instrumentation/nav[1]/radials/target-radial-deg</property>
 	<axis> 
 	<x>-1</x>
 	<y>0</y>
@@ -744,7 +744,7 @@
  <animation> 
 	<type>rotate</type>
 	<object-name>nav2a</object-name>
-	<property>instrumentation/nav[1]/heading-deg[0]</property>
+	<property>instrumentation/nav[1]/heading-deg</property>
 	<axis> 
 	<x>1</x>
 	<y>0</y>
@@ -760,7 +760,7 @@
  <animation> 
 	<type>rotate</type>
 	<object-name>nav1b</object-name>
-	<property>instrumentation/nav/heading-deg[0]</property>
+	<property>instrumentation/nav/heading-deg</property>
 	<axis> 
 	<x>-1</x>
 	<y>0</y>
@@ -776,7 +776,7 @@
  <animation> 
 	<type>rotate</type>
 	<object-name>nav1b</object-name>
-	<property>orientation/heading-deg[0]</property>
+	<property>orientation/heading-deg</property>
 	<axis> 
 	<x>1</x>
 	<y>0</y>
@@ -792,7 +792,7 @@
  <animation> 
 	<type>translate</type>
 	<object-name>nav1b</object-name>
-	<property>instrumentation/nav/nav-distance[0]</property>
+	<property>instrumentation/nav/nav-distance</property>
 <factor>0.000003132</factor>
 <axis> 
 <x>0</x>
@@ -804,7 +804,7 @@
  <animation> 
 	<type>rotate</type>
 	<object-name>nav1b</object-name>
-	<property>instrumentation/nav/radials/target-radial-deg[0]</property>
+	<property>instrumentation/nav/radials/target-radial-deg</property>
 	<axis> 
 	<x>-1</x>
 	<y>0</y>
@@ -820,7 +820,7 @@
  <animation> 
 	<type>rotate</type>
 	<object-name>nav1b</object-name>
-	<property>instrumentation/nav/heading-deg[0]</property>
+	<property>instrumentation/nav/heading-deg</property>
 	<axis> 
 	<x>1</x>
 	<y>0</y>
@@ -836,7 +836,7 @@
  <animation> 
 	<type>rotate</type>
 	<object-name>nav2b</object-name>
-	<property>instrumentation/nav[1]/heading-deg[0]</property>
+	<property>instrumentation/nav[1]/heading-deg</property>
 	<axis> 
 	<x>-1</x>
 	<y>0</y>
@@ -852,7 +852,7 @@
  <animation> 
 	<type>rotate</type>
 	<object-name>nav2b</object-name>
-	<property>orientation/heading-deg[0]</property>
+	<property>orientation/heading-deg</property>
 	<axis> 
 	<x>1</x>
 	<y>0</y>
@@ -868,7 +868,7 @@
  <animation> 
 	<type>translate</type>
 	<object-name>nav2b</object-name>
-	<property>instrumentation/nav[1]/nav-distance[0]</property>
+	<property>instrumentation/nav[1]/nav-distance</property>
 <factor>0.000003132</factor>
 <axis> 
 <x>0</x>
@@ -880,7 +880,7 @@
  <animation> 
 	<type>rotate</type>
 	<object-name>nav2b</object-name>
-	<property>instrumentation/nav[1]/radials/target-radial-deg[0]</property>
+	<property>instrumentation/nav[1]/radials/target-radial-deg</property>
 	<axis> 
 	<x>-1</x>
 	<y>0</y>
@@ -896,7 +896,7 @@
  <animation> 
 	<type>rotate</type>
 	<object-name>nav2b</object-name>
-	<property>instrumentation/nav[1]/heading-deg[0]</property>
+	<property>instrumentation/nav[1]/heading-deg</property>
 	<axis> 
 	<x>1</x>
 	<y>0</y>
@@ -912,7 +912,7 @@
  <animation> 
 	<type>rotate</type>
 	<object-name>nav1c</object-name>
-	<property>instrumentation/nav/heading-deg[0]</property>
+	<property>instrumentation/nav/heading-deg</property>
 	<axis> 
 	<x>-1</x>
 	<y>0</y>
@@ -928,7 +928,7 @@
  <animation> 
 	<type>rotate</type>
 	<object-name>nav1c</object-name>
-	<property>orientation/heading-deg[0]</property>
+	<property>orientation/heading-deg</property>
 	<axis> 
 	<x>1</x>
 	<y>0</y>
@@ -944,7 +944,7 @@
  <animation> 
 	<type>translate</type>
 	<object-name>nav1c</object-name>
-	<property>instrumentation/nav/nav-distance[0]</property>
+	<property>instrumentation/nav/nav-distance</property>
 <factor>0.000001566</factor>
 <axis> 
 <x>0</x>
@@ -956,7 +956,7 @@
  <animation> 
 	<type>rotate</type>
 	<object-name>nav1c</object-name>
-	<property>instrumentation/nav/radials/target-radial-deg[0]</property>
+	<property>instrumentation/nav/radials/target-radial-deg</property>
 	<axis> 
 	<x>-1</x>
 	<y>0</y>
@@ -972,7 +972,7 @@
  <animation> 
 	<type>rotate</type>
 	<object-name>nav1c</object-name>
-	<property>instrumentation/nav/heading-deg[0]</property>
+	<property>instrumentation/nav/heading-deg</property>
 	<axis> 
 	<x>1</x>
 	<y>0</y>
@@ -988,7 +988,7 @@
  <animation> 
 	<type>rotate</type>
 	<object-name>nav2c</object-name>
-	<property>instrumentation/nav[1]/heading-deg[0]</property>
+	<property>instrumentation/nav[1]/heading-deg</property>
 	<axis> 
 	<x>-1</x>
 	<y>0</y>
@@ -1004,7 +1004,7 @@
  <animation> 
 	<type>rotate</type>
 	<object-name>nav2c</object-name>
-	<property>orientation/heading-deg[0]</property>
+	<property>orientation/heading-deg</property>
 	<axis> 
 	<x>1</x>
 	<y>0</y>
@@ -1020,7 +1020,7 @@
  <animation> 
 	<type>translate</type>
 	<object-name>nav2c</object-name>
-	<property>instrumentation/nav[1]/nav-distance[0]</property>
+	<property>instrumentation/nav[1]/nav-distance</property>
 <factor>0.000001566</factor>
 <axis> 
 <x>0</x>
@@ -1032,7 +1032,7 @@
  <animation> 
 	<type>rotate</type>
 	<object-name>nav2c</object-name>
-	<property>instrumentation/nav[1]/radials/target-radial-deg[0]</property>
+	<property>instrumentation/nav[1]/radials/target-radial-deg</property>
 	<axis> 
 	<x>-1</x>
 	<y>0</y>
@@ -1048,7 +1048,7 @@
  <animation> 
 	<type>rotate</type>
 	<object-name>nav2c</object-name>
-	<property>instrumentation/nav[1]/heading-deg[0]</property>
+	<property>instrumentation/nav[1]/heading-deg</property>
 	<axis> 
 	<x>1</x>
 	<y>0</y>
@@ -1064,7 +1064,7 @@
  <animation> 
 	<type>rotate</type>
 	<object-name>nav1d</object-name>
-	<property>instrumentation/nav/heading-deg[0]</property>
+	<property>instrumentation/nav/heading-deg</property>
 	<axis> 
 	<x>-1</x>
 	<y>0</y>
@@ -1080,7 +1080,7 @@
  <animation> 
 	<type>rotate</type>
 	<object-name>nav1d</object-name>
-	<property>orientation/heading-deg[0]</property>
+	<property>orientation/heading-deg</property>
 	<axis> 
 	<x>1</x>
 	<y>0</y>
@@ -1096,7 +1096,7 @@
  <animation> 
 	<type>translate</type>
 	<object-name>nav1d</object-name>
-	<property>instrumentation/nav/nav-distance[0]</property>
+	<property>instrumentation/nav/nav-distance</property>
 <factor>0.000000783</factor>
 <axis> 
 <x>0</x>
@@ -1108,7 +1108,7 @@
  <animation> 
 	<type>rotate</type>
 	<object-name>nav1d</object-name>
-	<property>instrumentation/nav/radials/target-radial-deg[0]</property>
+	<property>instrumentation/nav/radials/target-radial-deg</property>
 	<axis> 
 	<x>-1</x>
 	<y>0</y>
@@ -1124,7 +1124,7 @@
  <animation> 
 	<type>rotate</type>
 	<object-name>nav1d</object-name>
-	<property>instrumentation/nav/heading-deg[0]</property>
+	<property>instrumentation/nav/heading-deg</property>
 	<axis> 
 	<x>1</x>
 	<y>0</y>
@@ -1142,7 +1142,7 @@
  <animation> 
 	<type>rotate</type>
 	<object-name>nav2d</object-name>
-	<property>instrumentation/nav[1]/heading-deg[0]</property>
+	<property>instrumentation/nav[1]/heading-deg</property>
 	<axis> 
 	<x>-1</x>
 	<y>0</y>
@@ -1158,7 +1158,7 @@
  <animation> 
 	<type>rotate</type>
 	<object-name>nav2d</object-name>
-	<property>orientation/heading-deg[0]</property>
+	<property>orientation/heading-deg</property>
 	<axis> 
 	<x>1</x>
 	<y>0</y>
@@ -1174,7 +1174,7 @@
  <animation> 
 	<type>translate</type>
 	<object-name>nav2d</object-name>
-	<property>instrumentation/nav[1]/nav-distance[0]</property>
+	<property>instrumentation/nav[1]/nav-distance</property>
 <factor>0.000000783</factor>
 <axis> 
 <x>0</x>
@@ -1186,7 +1186,7 @@
  <animation> 
 	<type>rotate</type>
 	<object-name>nav2d</object-name>
-	<property>instrumentation/nav[1]/radials/target-radial-deg[0]</property>
+	<property>instrumentation/nav[1]/radials/target-radial-deg</property>
 	<axis> 
 	<x>-1</x>
 	<y>0</y>
@@ -1202,7 +1202,7 @@
  <animation> 
 	<type>rotate</type>
 	<object-name>nav2d</object-name>
-	<property>instrumentation/nav[1]/heading-deg[0]</property>
+	<property>instrumentation/nav[1]/heading-deg</property>
 	<axis> 
 	<x>1</x>
 	<y>0</y>
@@ -1218,7 +1218,7 @@
  <animation> 
 	<type>rotate</type>
 	<object-name>nav1e</object-name>
-	<property>instrumentation/nav/heading-deg[0]</property>
+	<property>instrumentation/nav/heading-deg</property>
 	<axis> 
 	<x>-1</x>
 	<y>0</y>
@@ -1234,7 +1234,7 @@
  <animation> 
 	<type>rotate</type>
 	<object-name>nav1e</object-name>
-	<property>orientation/heading-deg[0]</property>
+	<property>orientation/heading-deg</property>
 	<axis> 
 	<x>1</x>
 	<y>0</y>
@@ -1250,7 +1250,7 @@
  <animation> 
 	<type>translate</type>
 	<object-name>nav1e</object-name>
-	<property>instrumentation/nav/nav-distance[0]</property>
+	<property>instrumentation/nav/nav-distance</property>
 <factor>0.000000391</factor>
 <axis> 
 <x>0</x>
@@ -1262,7 +1262,7 @@
  <animation> 
 	<type>rotate</type>
 	<object-name>nav1e</object-name>
-	<property>instrumentation/nav/radials/target-radial-deg[0]</property>
+	<property>instrumentation/nav/radials/target-radial-deg</property>
 	<axis> 
 	<x>-1</x>
 	<y>0</y>
@@ -1278,7 +1278,7 @@
  <animation> 
 	<type>rotate</type>
 	<object-name>nav1e</object-name>
-	<property>instrumentation/nav/heading-deg[0]</property>
+	<property>instrumentation/nav/heading-deg</property>
 	<axis> 
 	<x>1</x>
 	<y>0</y>
@@ -1294,7 +1294,7 @@
  <animation> 
 	<type>rotate</type>
 	<object-name>nav2e</object-name>
-	<property>instrumentation/nav[1]/heading-deg[0]</property>
+	<property>instrumentation/nav[1]/heading-deg</property>
 	<axis> 
 	<x>-1</x>
 	<y>0</y>
@@ -1310,7 +1310,7 @@
  <animation> 
 	<type>rotate</type>
 	<object-name>nav2e</object-name>
-	<property>orientation/heading-deg[0]</property>
+	<property>orientation/heading-deg</property>
 	<axis> 
 	<x>1</x>
 	<y>0</y>
@@ -1326,7 +1326,7 @@
  <animation> 
 	<type>translate</type>
 	<object-name>nav2e</object-name>
-	<property>instrumentation/nav[1]/nav-distance[0]</property>
+	<property>instrumentation/nav[1]/nav-distance</property>
 <factor>0.000000391</factor>
 <axis> 
 <x>0</x>
@@ -1338,7 +1338,7 @@
  <animation> 
 	<type>rotate</type>
 	<object-name>nav2e</object-name>
-	<property>instrumentation/nav[1]/radials/target-radial-deg[0]</property>
+	<property>instrumentation/nav[1]/radials/target-radial-deg</property>
 	<axis> 
 	<x>-1</x>
 	<y>0</y>
@@ -1354,7 +1354,7 @@
  <animation> 
 	<type>rotate</type>
 	<object-name>nav2e</object-name>
-	<property>instrumentation/nav[1]/heading-deg[0]</property>
+	<property>instrumentation/nav[1]/heading-deg</property>
 	<axis> 
 	<x>1</x>
 	<y>0</y>
@@ -1370,7 +1370,7 @@
  <animation> 
 	<type>rotate</type>
 	<object-name>nav1f</object-name>
-	<property>instrumentation/nav/heading-deg[0]</property>
+	<property>instrumentation/nav/heading-deg</property>
 	<axis> 
 	<x>-1</x>
 	<y>0</y>
@@ -1386,7 +1386,7 @@
  <animation> 
 	<type>rotate</type>
 	<object-name>nav1f</object-name>
-	<property>orientation/heading-deg[0]</property>
+	<property>orientation/heading-deg</property>
 	<axis> 
 	<x>1</x>
 	<y>0</y>
@@ -1402,7 +1402,7 @@
  <animation> 
 	<type>translate</type>
 	<object-name>nav1f</object-name>
-	<property>instrumentation/nav/nav-distance[0]</property>
+	<property>instrumentation/nav/nav-distance</property>
 <factor>0.000000196</factor>
 <axis> 
 <x>0</x>
@@ -1414,7 +1414,7 @@
  <animation> 
 	<type>rotate</type>
 	<object-name>nav1f</object-name>
-	<property>instrumentation/nav/radials/target-radial-deg[0]</property>
+	<property>instrumentation/nav/radials/target-radial-deg</property>
 	<axis> 
 	<x>-1</x>
 	<y>0</y>
@@ -1430,7 +1430,7 @@
  <animation> 
 	<type>rotate</type>
 	<object-name>nav1f</object-name>
-	<property>instrumentation/nav/heading-deg[0]</property>
+	<property>instrumentation/nav/heading-deg</property>
 	<axis> 
 	<x>1</x>
 	<y>0</y>
@@ -1446,7 +1446,7 @@
  <animation> 
 	<type>rotate</type>
 	<object-name>nav2f</object-name>
-	<property>instrumentation/nav[1]/heading-deg[0]</property>
+	<property>instrumentation/nav[1]/heading-deg</property>
 	<axis> 
 	<x>-1</x>
 	<y>0</y>
@@ -1462,7 +1462,7 @@
  <animation> 
 	<type>rotate</type>
 	<object-name>nav2f</object-name>
-	<property>orientation/heading-deg[0]</property>
+	<property>orientation/heading-deg</property>
 	<axis> 
 	<x>1</x>
 	<y>0</y>
@@ -1478,7 +1478,7 @@
  <animation> 
 	<type>translate</type>
 	<object-name>nav2f</object-name>
-	<property>instrumentation/nav[1]/nav-distance[0]</property>
+	<property>instrumentation/nav[1]/nav-distance</property>
 <factor>0.000000196</factor>
 <axis> 
 <x>0</x>
@@ -1490,7 +1490,7 @@
  <animation> 
 	<type>rotate</type>
 	<object-name>nav2f</object-name>
-	<property>instrumentation/nav[1]/radials/target-radial-deg[0]</property>
+	<property>instrumentation/nav[1]/radials/target-radial-deg</property>
 	<axis> 
 	<x>-1</x>
 	<y>0</y>
@@ -1506,7 +1506,7 @@
  <animation> 
 	<type>rotate</type>
 	<object-name>nav2f</object-name>
-	<property>instrumentation/nav[1]/heading-deg[0]</property>
+	<property>instrumentation/nav[1]/heading-deg</property>
 	<axis> 
 	<x>1</x>
 	<y>0</y>
@@ -1522,7 +1522,7 @@
  <animation> 
 	<type>rotate</type>
 	<object-name>nav1g</object-name>
-	<property>instrumentation/nav/heading-deg[0]</property>
+	<property>instrumentation/nav/heading-deg</property>
 	<axis> 
 	<x>-1</x>
 	<y>0</y>
@@ -1538,83 +1538,7 @@
  <animation> 
 	<type>rotate</type>
 	<object-name>nav1g</object-name>
-	<property>orientation/heading-deg[0]</property>
-	<axis> 
-	<x>1</x>
-	<y>0</y>
-	<z>0</z>
-	</axis>
-	<center>
-	 <x-m>0.0</x-m>
-     <y-m>0.0</y-m>
-     <z-m>-0.047</z-m>
-   </center>
-</animation>
-
- <animation> 
-	<type>translate</type>
-	<object-name>nav1g</object-name>
-	<property>instrumentation/nav/nav-distance[0]</property>
-<factor>0.000000098</factor>
-<axis> 
-<x>0</x>
-<y>0</y>
-<z>1</z>
-</axis>
-</animation>
-
- <animation> 
-	<type>rotate</type>
-	<object-name>nav1g</object-name>
-	<property>instrumentation/nav/radials/target-radial-deg[0]</property>
-	<axis> 
-	<x>-1</x>
-	<y>0</y>
-	<z>0</z>
-	</axis>
-	<center>
-	 <x-m>0.0</x-m>
-     <y-m>0.0</y-m>
-     <z-m>-0.047</z-m>
-   </center>
-</animation>
-
- <animation> 
-	<type>rotate</type>
-	<object-name>nav1g</object-name>
-	<property>instrumentation/nav/heading-deg[0]</property>
-	<axis> 
-	<x>1</x>
-	<y>0</y>
-	<z>0</z>
-	</axis>
-	<center>
-	 <x-m>0.0</x-m>
-     <y-m>0.0</y-m>
-     <z-m>-0.047</z-m>
-   </center>
-</animation>
-
- <animation> 
-	<type>rotate</type>
-	<object-name>nav2g</object-name>
-	<property>instrumentation/nav[1]/heading-deg[0]</property>
-	<axis> 
-	<x>-1</x>
-	<y>0</y>
-	<z>0</z>
-	</axis>
-	<center>
-	 <x-m>0.0</x-m>
-     <y-m>0.0</y-m>
-     <z-m>-0.047</z-m>
-   </center>
-</animation>
-
- <animation> 
-	<type>rotate</type>
-	<object-name>nav2g</object-name>
-	<property>orientation/heading-deg[0]</property>
+	<property>orientation/heading-deg</property>
 	<axis> 
 	<x>1</x>
 	<y>0</y>
@@ -1629,8 +1553,8 @@
 
  <animation> 
 	<type>translate</type>
-	<object-name>nav2g</object-name>
-	<property>instrumentation/nav[1]/nav-distance[0]</property>
+	<object-name>nav1g</object-name>
+	<property>instrumentation/nav/nav-distance</property>
 <factor>0.000000098</factor>
 <axis> 
 <x>0</x>
@@ -1641,8 +1565,40 @@
 
  <animation> 
 	<type>rotate</type>
+	<object-name>nav1g</object-name>
+	<property>instrumentation/nav/radials/target-radial-deg</property>
+	<axis> 
+	<x>-1</x>
+	<y>0</y>
+	<z>0</z>
+	</axis>
+	<center>
+	 <x-m>0.0</x-m>
+     <y-m>0.0</y-m>
+     <z-m>-0.047</z-m>
+   </center>
+</animation>
+
+ <animation> 
+	<type>rotate</type>
+	<object-name>nav1g</object-name>
+	<property>instrumentation/nav/heading-deg</property>
+	<axis> 
+	<x>1</x>
+	<y>0</y>
+	<z>0</z>
+	</axis>
+	<center>
+	 <x-m>0.0</x-m>
+     <y-m>0.0</y-m>
+     <z-m>-0.047</z-m>
+   </center>
+</animation>
+
+ <animation> 
+	<type>rotate</type>
 	<object-name>nav2g</object-name>
-	<property>instrumentation/nav[1]/radials/target-radial-deg[0]</property>
+	<property>instrumentation/nav[1]/heading-deg</property>
 	<axis> 
 	<x>-1</x>
 	<y>0</y>
@@ -1658,7 +1614,51 @@
  <animation> 
 	<type>rotate</type>
 	<object-name>nav2g</object-name>
-	<property>instrumentation/nav[1]/heading-deg[0]</property>
+	<property>orientation/heading-deg</property>
+	<axis> 
+	<x>1</x>
+	<y>0</y>
+	<z>0</z>
+	</axis>
+	<center>
+	 <x-m>0.0</x-m>
+     <y-m>0.0</y-m>
+     <z-m>-0.047</z-m>
+   </center>
+</animation>
+
+ <animation> 
+	<type>translate</type>
+	<object-name>nav2g</object-name>
+	<property>instrumentation/nav[1]/nav-distance</property>
+<factor>0.000000098</factor>
+<axis> 
+<x>0</x>
+<y>0</y>
+<z>1</z>
+</axis>
+</animation>
+
+ <animation> 
+	<type>rotate</type>
+	<object-name>nav2g</object-name>
+	<property>instrumentation/nav[1]/radials/target-radial-deg</property>
+	<axis> 
+	<x>-1</x>
+	<y>0</y>
+	<z>0</z>
+	</axis>
+	<center>
+	 <x-m>0.0</x-m>
+     <y-m>0.0</y-m>
+     <z-m>-0.047</z-m>
+   </center>
+</animation>
+
+ <animation> 
+	<type>rotate</type>
+	<object-name>nav2g</object-name>
+	<property>instrumentation/nav[1]/heading-deg</property>
 	<axis> 
 	<x>1</x>
 	<y>0</y>
@@ -1674,7 +1674,7 @@
  <animation> 
 	<type>rotate</type>
 	<object-name>adf</object-name>
-	<property>instrumentation/adf/indicated-bearing-deg[0]</property>
+	<property>instrumentation/adf/indicated-bearing-deg</property>
 	<axis> 
 	<x>-1</x>
 	<y>0</y>
@@ -1690,7 +1690,7 @@
  <animation> 
 	<type>rotate</type>
 	<object-name>adf2</object-name>
-	<property>instrumentation/adf/rotation-deg[0]</property>
+	<property>instrumentation/adf/rotation-deg</property>
 	<axis> 
 	<x>-1</x>
 	<y>0</y>
@@ -1706,7 +1706,7 @@
  <animation> 
 	<type>rotate</type>
 	<object-name>adf2</object-name>
-	<property>orientation/heading-magnetic-deg[0]</property>
+	<property>orientation/heading-magnetic-deg</property>
 	<axis> 
 	<x>1</x>
 	<y>0</y>
@@ -1724,7 +1724,7 @@
  <animation> 
 	<type>rotate</type>
 	<object-name>AI1a</object-name>
-	<property>instrumentation/radar/ai/brg-offset[0]</property>
+	<property>instrumentation/radar/ai/brg-offset</property>
 	<axis> 
 	<x>-1</x>
 	<y>0</y>
@@ -1740,7 +1740,7 @@
  <animation> 
 	<type>translate</type>
 	<object-name>AI1a</object-name>
-	<property>instrumentation/radar/ai/norm-dist[0]</property>
+	<property>instrumentation/radar/ai/norm-dist</property>
 <factor>0.115</factor>
 <axis> 
 <x>0</x>
@@ -1752,7 +1752,7 @@
  <animation> 
 	<type>rotate</type>
 	<object-name>AI1a</object-name>
-	<property>instrumentation/radar/ai/brg-offset[0]</property>
+	<property>instrumentation/radar/ai/brg-offset</property>
 	<axis> 
 	<x>1</x>
 	<y>0</y>
@@ -1768,7 +1768,7 @@
  <animation> 
 	<type>rotate</type>
 	<object-name>AI2a</object-name>
-	<property>instrumentation/radar/ai[1]/brg-offset[0]</property>
+	<property>instrumentation/radar/ai[1]/brg-offset</property>
 	<axis> 
 	<x>-1</x>
 	<y>0</y>
@@ -1784,7 +1784,7 @@
  <animation> 
 	<type>translate</type>
 	<object-name>AI2a</object-name>
-	<property>instrumentation/radar/ai[1]/norm-dist[0]</property>
+	<property>instrumentation/radar/ai[1]/norm-dist</property>
 <factor>0.115</factor>
 <axis> 
 <x>0</x>
@@ -1796,7 +1796,7 @@
  <animation> 
 	<type>rotate</type>
 	<object-name>AI2a</object-name>
-	<property>instrumentation/radar/ai[1]/brg-offset[0]</property>
+	<property>instrumentation/radar/ai[1]/brg-offset</property>
 	<axis> 
 	<x>1</x>
 	<y>0</y>
@@ -1812,7 +1812,7 @@
  <animation> 
 	<type>rotate</type>
 	<object-name>AI3a</object-name>
-	<property>instrumentation/radar/ai[2]/brg-offset[0]</property>
+	<property>instrumentation/radar/ai[2]/brg-offset</property>
 	<axis> 
 	<x>-1</x>
 	<y>0</y>
@@ -1828,7 +1828,7 @@
  <animation> 
 	<type>translate</type>
 	<object-name>AI3a</object-name>
-	<property>instrumentation/radar/ai[2]/norm-dist[0]</property>
+	<property>instrumentation/radar/ai[2]/norm-dist</property>
 <factor>0.115</factor>
 <axis> 
 <x>0</x>
@@ -1840,7 +1840,7 @@
  <animation> 
 	<type>rotate</type>
 	<object-name>AI3a</object-name>
-	<property>instrumentation/radar/ai[2]/brg-offset[0]</property>
+	<property>instrumentation/radar/ai[2]/brg-offset</property>
 	<axis> 
 	<x>1</x>
 	<y>0</y>
@@ -1856,7 +1856,7 @@
  <animation> 
 	<type>rotate</type>
 	<object-name>AI4a</object-name>
-	<property>instrumentation/radar/ai[3]/brg-offset[0]</property>
+	<property>instrumentation/radar/ai[3]/brg-offset</property>
 	<axis> 
 	<x>-1</x>
 	<y>0</y>
@@ -1872,7 +1872,7 @@
  <animation> 
 	<type>translate</type>
 	<object-name>AI4a</object-name>
-	<property>instrumentation/radar/ai[3]/norm-dist[0]</property>
+	<property>instrumentation/radar/ai[3]/norm-dist</property>
 <factor>0.115</factor>
 <axis> 
 <x>0</x>
@@ -1884,7 +1884,7 @@
  <animation> 
 	<type>rotate</type>
 	<object-name>AI4a</object-name>
-	<property>instrumentation/radar/ai[3]/brg-offset[0]</property>
+	<property>instrumentation/radar/ai[3]/brg-offset</property>
 	<axis> 
 	<x>1</x>
 	<y>0</y>
@@ -1900,7 +1900,7 @@
  <animation> 
 	<type>rotate</type>
 	<object-name>AI5a</object-name>
-	<property>instrumentation/radar/ai[4]/brg-offset[0]</property>
+	<property>instrumentation/radar/ai[4]/brg-offset</property>
 	<axis> 
 	<x>-1</x>
 	<y>0</y>
@@ -1916,7 +1916,7 @@
  <animation> 
 	<type>translate</type>
 	<object-name>AI5a</object-name>
-	<property>instrumentation/radar/ai[4]/norm-dist[0]</property>
+	<property>instrumentation/radar/ai[4]/norm-dist</property>
 <factor>0.115</factor>
 <axis> 
 <x>0</x>
@@ -1928,7 +1928,7 @@
  <animation> 
 	<type>rotate</type>
 	<object-name>AI5a</object-name>
-	<property>instrumentation/radar/ai[4]/brg-offset[0]</property>
+	<property>instrumentation/radar/ai[4]/brg-offset</property>
 	<axis> 
 	<x>1</x>
 	<y>0</y>
@@ -1944,7 +1944,7 @@
  <animation> 
 	<type>rotate</type>
 	<object-name>AI6a</object-name>
-	<property>instrumentation/radar/ai[5]/brg-offset[0]</property>
+	<property>instrumentation/radar/ai[5]/brg-offset</property>
 	<axis> 
 	<x>-1</x>
 	<y>0</y>
@@ -1960,7 +1960,7 @@
  <animation> 
 	<type>translate</type>
 	<object-name>AI6a</object-name>
-	<property>instrumentation/radar/ai[5]/norm-dist[0]</property>
+	<property>instrumentation/radar/ai[5]/norm-dist</property>
 <factor>0.115</factor>
 <axis> 
 <x>0</x>
@@ -1972,7 +1972,7 @@
  <animation> 
 	<type>rotate</type>
 	<object-name>AI6a</object-name>
-	<property>instrumentation/radar/ai[5]/brg-offset[0]</property>
+	<property>instrumentation/radar/ai[5]/brg-offset</property>
 	<axis> 
 	<x>1</x>
 	<y>0</y>
@@ -1989,7 +1989,7 @@
  <animation> 
 	<type>rotate</type>
 	<object-name>MP1a</object-name>
-	<property>instrumentation/radar/mp/brg-offset[0]</property>
+	<property>instrumentation/radar/mp/brg-offset</property>
 	<axis> 
 	<x>-1</x>
 	<y>0</y>
@@ -2005,7 +2005,7 @@
  <animation> 
 	<type>translate</type>
 	<object-name>MP1a</object-name>
-	<property>instrumentation/radar/mp/norm-dist[0]</property>
+	<property>instrumentation/radar/mp/norm-dist</property>
 <factor>0.115</factor>
 <axis> 
 <x>0</x>
@@ -2017,7 +2017,7 @@
  <animation> 
 	<type>rotate</type>
 	<object-name>MP1a</object-name>
-	<property>instrumentation/radar/mp/brg-offset[0]</property>
+	<property>instrumentation/radar/mp/brg-offset</property>
 	<axis> 
 	<x>1</x>
 	<y>0</y>
@@ -2033,7 +2033,7 @@
  <animation> 
 	<type>rotate</type>
 	<object-name>MP2a</object-name>
-	<property>instrumentation/radar/mp[1]/brg-offset[0]</property>
+	<property>instrumentation/radar/mp[1]/brg-offset</property>
 	<axis> 
 	<x>-1</x>
 	<y>0</y>
@@ -2049,7 +2049,7 @@
  <animation> 
 	<type>translate</type>
 	<object-name>MP2a</object-name>
-	<property>instrumentation/radar/mp[1]/norm-dist[0]</property>
+	<property>instrumentation/radar/mp[1]/norm-dist</property>
 <factor>0.115</factor>
 <axis> 
 <x>0</x>
@@ -2061,7 +2061,7 @@
  <animation> 
 	<type>rotate</type>
 	<object-name>MP2a</object-name>
-	<property>instrumentation/radar/mp[1]/brg-offset[0]</property>
+	<property>instrumentation/radar/mp[1]/brg-offset</property>
 	<axis> 
 	<x>1</x>
 	<y>0</y>
@@ -2077,7 +2077,7 @@
  <animation> 
 	<type>rotate</type>
 	<object-name>MP3a</object-name>
-	<property>instrumentation/radar/mp[2]/brg-offset[0]</property>
+	<property>instrumentation/radar/mp[2]/brg-offset</property>
 	<axis> 
 	<x>-1</x>
 	<y>0</y>
@@ -2093,7 +2093,7 @@
  <animation> 
 	<type>translate</type>
 	<object-name>MP3a</object-name>
-	<property>instrumentation/radar/mp[2]/norm-dist[0]</property>
+	<property>instrumentation/radar/mp[2]/norm-dist</property>
 <factor>0.115</factor>
 <axis> 
 <x>0</x>
@@ -2105,7 +2105,7 @@
  <animation> 
 	<type>rotate</type>
 	<object-name>MP3a</object-name>
-	<property>instrumentation/radar/mp[2]/brg-offset[0]</property>
+	<property>instrumentation/radar/mp[2]/brg-offset</property>
 	<axis> 
 	<x>1</x>
 	<y>0</y>
@@ -2121,7 +2121,7 @@
  <animation> 
 	<type>rotate</type>
 	<object-name>MP4a</object-name>
-	<property>instrumentation/radar/mp[3]/brg-offset[0]</property>
+	<property>instrumentation/radar/mp[3]/brg-offset</property>
 	<axis> 
 	<x>-1</x>
 	<y>0</y>
@@ -2137,7 +2137,7 @@
  <animation> 
 	<type>translate</type>
 	<object-name>MP4a</object-name>
-	<property>instrumentation/radar/mp[3]/norm-dist[0]</property>
+	<property>instrumentation/radar/mp[3]/norm-dist</property>
 <factor>0.115</factor>
 <axis> 
 <x>0</x>
@@ -2149,7 +2149,7 @@
  <animation> 
 	<type>rotate</type>
 	<object-name>MP4a</object-name>
-	<property>instrumentation/radar/mp[3]/brg-offset[0]</property>
+	<property>instrumentation/radar/mp[3]/brg-offset</property>
 	<axis> 
 	<x>1</x>
 	<y>0</y>
@@ -2165,7 +2165,7 @@
  <animation> 
 	<type>rotate</type>
 	<object-name>MP5a</object-name>
-	<property>instrumentation/radar/mp[4]/brg-offset[0]</property>
+	<property>instrumentation/radar/mp[4]/brg-offset</property>
 	<axis> 
 	<x>-1</x>
 	<y>0</y>
@@ -2181,7 +2181,7 @@
  <animation> 
 	<type>translate</type>
 	<object-name>MP5a</object-name>
-	<property>instrumentation/radar/mp[4]/norm-dist[0]</property>
+	<property>instrumentation/radar/mp[4]/norm-dist</property>
 <factor>0.115</factor>
 <axis> 
 <x>0</x>
@@ -2193,7 +2193,7 @@
  <animation> 
 	<type>rotate</type>
 	<object-name>MP5a</object-name>
-	<property>instrumentation/radar/mp[4]/brg-offset[0]</property>
+	<property>instrumentation/radar/mp[4]/brg-offset</property>
 	<axis> 
 	<x>1</x>
 	<y>0</y>
@@ -2209,7 +2209,7 @@
   <animation> 
     <type>rotate</type>
     <object-name>MP6a</object-name>
-    <property>instrumentation/radar/mp[5]/brg-offset[0]</property>
+    <property>instrumentation/radar/mp[5]/brg-offset</property>
     <axis> 
       <x> -1 </x>
       <y>  0 </y>
@@ -2225,7 +2225,7 @@
   <animation> 
     <type>translate</type>
     <object-name>MP6a</object-name>
-    <property>instrumentation/radar/mp[5]/norm-dist[0]</property>
+    <property>instrumentation/radar/mp[5]/norm-dist</property>
     <factor>0.115</factor>
     <axis> 
       <x> 0 </x>
@@ -2237,7 +2237,7 @@
   <animation> 
     <type>rotate</type>
     <object-name>MP6a</object-name>
-    <property>instrumentation/radar/mp[5]/brg-offset[0]</property>
+    <property>instrumentation/radar/mp[5]/brg-offset</property>
     <axis> 
       <x> 1 </x>
       <y> 0 </y>
@@ -2253,7 +2253,7 @@
   <animation>
     <type>textranslate</type>
     <object-name>navidl1</object-name>
-    <property>/instrumentation/nav[0]/nav-id_asc1</property>
+    <property>/instrumentation/nav/nav-id_asc1</property>
     <factor>0.03125</factor>
     <step>1</step>
     <offset>-1.0</offset>
@@ -2267,7 +2267,7 @@
   <animation>
     <type>textranslate</type>
     <object-name>navidl2</object-name>
-    <property>/instrumentation/nav[0]/nav-id_asc2</property>
+    <property>/instrumentation/nav/nav-id_asc2</property>
     <factor>0.03125</factor>
     <step>1</step>
     <offset>-1.0</offset>
@@ -2281,7 +2281,7 @@
   <animation>
     <type>textranslate</type>
     <object-name>navidl3</object-name>
-    <property>/instrumentation/nav[0]/nav-id_asc3</property>
+    <property>/instrumentation/nav/nav-id_asc3</property>
     <factor>0.03125</factor>
     <step>1</step>
     <offset>-1.0</offset>
@@ -2295,7 +2295,7 @@
   <animation>
     <type>textranslate</type>
     <object-name>navidl4</object-name>
-    <property>/instrumentation/nav[0]/nav-id_asc4</property>
+    <property>/instrumentation/nav/nav-id_asc4</property>
     <factor>0.03125</factor>
     <step>1</step>
     <offset>-1.0</offset>
