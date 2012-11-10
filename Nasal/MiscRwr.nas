@@ -25,6 +25,9 @@ var Mp = props.globals.getNode("ai/models");
 var tgts_list         = [];
 
 var StandByTgtMarker  = 0;
+var MyTargetList      = [];
+var Target_Index      = 0;
+var tableuBound       = 0;
 
 
 
@@ -108,88 +111,124 @@ var activate_Telemeter= func(){
           setprop("/ai/closest/range",-1);}
        else{setprop("/ai/closest/range",-2);}
 
-       closest_target();
+       choosen_Target_List();
        radar.radar_mode_toggle();
        StandByTgtMarker = 0;
 
 }
 
 
-#This have to move to another .nas
-var closest_target = func() {
+#This is how we can choose target
+var choosen_Target_List = func (){
         if(getprop("/ai/closest/range") >= -1){
+                 MyTargetList = [];
+                 tableuBound  = 0;
 
-
-              tgts_list = [];
-              var raw_list = Mp.getChildren();
-              var closeRange =200;
-              var bearing = 0;
-              var heading = 0 ;
-              var speed = 0;
-              var altitude = 0;
-              var callsign = "-";
-              var longitude = 0;
-              var latitude = 0;
-              var current_target=0;
-
-
-              foreach( var c; raw_list ) {
-                     var type = c.getName();
-                     
-
-                     if (!c.getNode("valid", 1).getValue()) {
-                          continue;
-                     }
-                    
-                     if (type == "multiplayer" or type == "tanker" or type =="carrier" or type =="aircraft") {
-                         var maTarget = Threat.new(c);
-                         var u_rng = maTarget.get_range();
-                         #var u_rng = c.getChildren("distance-to-nm").getValue();
-
-                         if(math.abs(maTarget.get_bearing()-getprop("orientation/heading-deg"))<=5){
-                                
-                                 if(math.abs( (math.atan2((maTarget.get_altitude() - getprop("position/altitude-ft"))*FT2M,u_rng *1852)*R2D) - getprop("orientation/pitch-deg")) <= 5 ){
-                                         if(closeRange >= u_rng and u_rng!=0){
-                                             closeRange = u_rng;
-                                             #print(u_rng);
-                                             current_target = maTarget;
-
-                                             heading = maTarget.get_heading();
-                                             altitude = maTarget.get_altitude();
-                                             speed = maTarget.get_Speed();
-                                             callsign = maTarget.get_Callsign();
-                                             longitude = maTarget.get_Longitude();
-                                             latitude = maTarget.get_Latitude();
-                                             bearing = maTarget.get_bearing();
-
-                                         }
+                 var raw_list = Mp.getChildren();
+                 var RadarRange = getprop("instrumentation/radar/range-selected");
+                 
+                 foreach( var c; raw_list ) {
+                         var type = c.getName();
+                         if (!c.getNode("valid", 1).getValue()) {
+                                  continue;
+                         }
+                            
+                         if (type == "multiplayer" or type == "tanker" or type =="carrier" or type =="aircraft") {
+                                var maTarget = Threat.new(c);
+                                var u_rng = maTarget.get_range();
+                                if(math.abs(maTarget.get_bearing()-getprop("orientation/heading-deg"))<=5){
+                                        if(math.abs( (math.atan2((maTarget.get_altitude() - getprop("position/altitude-ft"))*FT2M,u_rng *1852)*R2D) - getprop("orientation/pitch-deg")) <= 5 ){
+                                                if(RadarRange > u_rng and u_rng!=0){
+                                                        append(MyTargetList, maTarget);
+                                                        tableuBound = tableuBound +1;
+                                                        #print(tableuBound);
+                                                }
+                                        }
                                  }
-                        }
-                        
-                     }
-              }
-              if(closeRange == 200){closeRange = -1;}
-              setprop("/ai/closest/range",closeRange);
-              setprop("/ai/closest/bearing",bearing);
-              setprop("/ai/closest/heading",heading);
-              setprop("/ai/closest/altitude",altitude);
-              setprop("/ai/closest/speed",speed);
-              setprop("/ai/closest/callsign",callsign);
-              setprop("/ai/closest/longitude",longitude);
-              setprop("/ai/closest/latitude",latitude);
-              if(StandByTgtMarker < 1000) {
-                        settimer(closest_target, 0.5);
-                        StandByTgtMarker = StandByTgtMarker +1 ;
-              }else{
-                    setprop("/ai/closest/range",-2 );
-                    StandByTgtMarker = 0;
-                    radar.radar_mode_toggle();
-              }
-
-              return current_target;
-
-       }
+                         }
+                  }
+                  targeted();
+        }                
 }
+
+var next_Target_Index = func(){
+        Target_Index = Target_Index + 1;
+}
+
+var previous_Target_Index = func(){
+        Target_Index = Target_Index - 1;
+}
+
+var length = func(myTab){
+         var i = 0;
+         foreach( var tempo; myTab ) {
+                i = i+1;
+         }
+         return i;
+
+}
+
+var targeted = func(){
+
+         var closeRange = 0;
+         var heading = 0;
+         var altitude = 0;
+         var speed = 0;
+         var callsign = "";
+         var longitude = 0;
+         var latitude = 0;
+         var bearing = 0;
+
+
+
+
+
+        if(tableuBound>0){
+                #print("Target_Index ", Target_Index, " tableuBound ", tableuBound);
+                #var max = length(MyTargetList);
+                if(Target_Index<0){Target_Index = tableuBound - 1;}
+                if(Target_Index>tableuBound - 1){Target_Index = 0;}
+                var MyTarget = MyTargetList[Target_Index];
+                closeRange = MyTarget.get_range();
+                heading = MyTarget.get_heading();
+                altitude = MyTarget.get_altitude();
+                speed = MyTarget.get_Speed();
+                callsign = MyTarget.get_Callsign();
+                longitude = MyTarget.get_Longitude();
+                latitude = MyTarget.get_Latitude();
+                bearing = MyTarget.get_bearing();
+                
+                setprop("/ai/closest/range",closeRange);
+                setprop("/ai/closest/bearing",bearing);
+                setprop("/ai/closest/heading",heading);
+                setprop("/ai/closest/altitude",altitude);
+                setprop("/ai/closest/speed",speed);
+                setprop("/ai/closest/callsign",callsign);
+                setprop("/ai/closest/longitude",longitude);
+                setprop("/ai/closest/latitude",latitude);
+         }
+              
+         if(StandByTgtMarker < 1000) {
+                 settimer(choosen_Target_List, 0.5);
+                 StandByTgtMarker = StandByTgtMarker +1 ;
+          }else{
+                 setprop("/ai/closest/range",-2 );
+                 StandByTgtMarker = 0;
+                 radar.radar_mode_toggle();
+          }
+              
+       
+
+}
+var closest_target = func(){
+        if(tableuBound>0){
+                if(Target_Index<0){Target_Index = tableuBound - 1;}
+                if(Target_Index>tableuBound - 1){Target_Index = 0;}
+                var MyTarget = MyTargetList[Target_Index];
+                return MyTarget;
+        }        
+}
+
 
 
 # Target class

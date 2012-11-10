@@ -9,9 +9,9 @@
     <author>BARANGER Emmanuel (3D/FDM), Buckaroo (FDM), 5H1N0B1 (Weapons, system)</author>
 
     <rating>
-      <FDM type="int">     4 </FDM>
-      <systems type="int"> 4 </systems>
-      <cockpit type="int"> 3 </cockpit>
+      <FDM type="int">     3 </FDM>
+      <systems type="int"> 2 </systems>
+      <cockpit type="int"> 2 </cockpit>
       <model type="int">   4 </model>
     </rating>
 
