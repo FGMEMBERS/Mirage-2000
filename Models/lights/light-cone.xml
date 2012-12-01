@@ -4,9 +4,18 @@
 
   <path>light-cone.ac</path>
 
+   <!--  REMBRANDT support for transparent objects
+  <effect>
+    <inherits-from>Effects/model-transparent</inherits-from>
+    <condition>
+      <property>sim/rendering/rembrandt/enabled</property>
+    </condition>
+    <object-name>Cone</object-name>
+  </effect> -->
+
   <effect>
     <inherits-from>Effects/light-cone</inherits-from>
     <object-name>Cone</object-name>
   </effect>
   
- </PropertyList>
+</PropertyList>

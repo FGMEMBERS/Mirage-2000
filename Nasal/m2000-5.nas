@@ -10,6 +10,7 @@ setlistener("/controls/engines/engine[1]/throttle", func(n) {
     setprop("/controls/engines/engine[1]/reheat", n.getValue() >= 0.75);
 },1);
 
+
 # turn off hud in external views
  setlistener("/sim/current-view/view-number", func(n) { setprop("/sim/hud/visibility[1]", n.getValue() == 0) },1);
 

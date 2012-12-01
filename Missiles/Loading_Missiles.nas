@@ -4,6 +4,7 @@ var Loading_missile = func(name) {
 
     var address= "test";
     var NoSmoke = "test2";
+    var Explosion = "Aircraft/Mirage-2000/Missiles/MatraMica/explosion.xml";
     var maxdetectionrngnm =0;
     var fovdeg=0;
     var detectionfovdeg=0;
@@ -26,6 +27,7 @@ var Loading_missile = func(name) {
     		#MICA max range 80 km for actual version. ->43 nm.. at mach 4 it's about 59 sec. I put a life of 120, and thurst duration to 3/4 the travel time, and have vectorial thurst (So 27 G more than a similar missile wich have not vectorial thurst)
                     address="Aircraft/Mirage-2000/Missiles/MatraMica/MatraMica_smoke.xml";
                     NoSmoke="Aircraft/Mirage-2000/Missiles/MatraMica/MatraMica.xml";
+                    Explosion="Aircraft/Mirage-2000/Missiles/MatraMica/explosion.xml";
 		    #
 		    maxdetectionrngnm = 45;                    #<!-- Not real Impact yet-->
 		    fovdeg =25;                                   #<!-- seeker optical FOV -->
@@ -38,7 +40,7 @@ var Loading_missile = func(name) {
 		    weightwarheadlbs=30;
 		    dragcoeff=0.065;                                   #<!-- guess; original 0.05-->
 		    dragarea = 0.056;                                 #<!-- sq ft -->
-		    maxExplosionRange =80;                             #in meter !!<!--Due to the code, more the speed is important, more we need to have this figure high-->
+		    maxExplosionRange =50;                             #in meter !!<!--Due to the code, more the speed is important, more we need to have this figure high-->
 		    maxspeed = 4;                                      #<!-- In Mach -->
 		    life=120;
                     fox="Fox 3";
@@ -62,7 +64,7 @@ var Loading_missile = func(name) {
 		    weightwarheadlbs=44;
 		    dragcoeff=0.088;                                   #<!-- guess; original 0.05-->
 		    dragarea = 0.075;                                 #<!-- sq ft -->
-		    maxExplosionRange =80;                             #in meter !!<!--Due to the code, more the speed is important, more we need to have this figure high-->
+		    maxExplosionRange =50;                             #in meter !!<!--Due to the code, more the speed is important, more we need to have this figure high-->
 		    maxspeed = 4;                                      #<!-- In Mach -->
 		    life=115;
                     fox="Fox 3";
@@ -85,7 +87,7 @@ var Loading_missile = func(name) {
 		    weightwarheadlbs=27;
 		    dragcoeff=0.051;                                   #<!-- guess; original 0.05-->
 		    dragarea = 0.044;                                 #<!-- sq ft -->
-		    maxExplosionRange =60;                             #<!--Due to the code, more the speed is important, more we need to have this figure high-->
+		    maxExplosionRange =40;                             #<!--Due to the code, more the speed is important, more we need to have this figure high-->
 		    maxspeed = 2.7;                                      #<!-- In Mach -->
 		    life=35;
                     fox="Fox 2";
@@ -108,9 +110,9 @@ var Loading_missile = func(name) {
 		    weightwarheadlbs=20.8;
 		    dragcoeff=0.05;                                   #<!-- guess; original 0.05-->
 		    dragarea = 0.043;                                 #<!-- sq ft -->
-		    maxExplosionRange =60;                             #<!--Due to the code, more the speed is important, more we need to have this figure high-->
+		    maxExplosionRange =40;                             #<!--Due to the code, more the speed is important, more we need to have this figure high-->
 		    maxspeed = 2.5;                                      #<!-- In Mach -->
-		    life=440;
+		    life=44;
                     fox="Fox 2";
                     rail = "true";
                     cruisealt = 0;
@@ -131,7 +133,7 @@ var Loading_missile = func(name) {
 		    weightwarheadlbs=450;
 		    dragcoeff=0.262;                                   #<!-- guess; original 0.05-->
 		    dragarea = 0.225;                                 #<!-- sq ft -->
-		    maxExplosionRange =50;                             #<!--Due to the code, more the speed is important, more we need to have this figure high-->
+		    maxExplosionRange =40;                             #<!--Due to the code, more the speed is important, more we need to have this figure high-->
 		    maxspeed = 1.5;                                      #<!-- In Mach -->
 		    life=120;
                     fox="A/G";
@@ -155,13 +157,38 @@ var Loading_missile = func(name) {
 		    weightwarheadlbs=190;
 		    dragcoeff=0.209;                                   #<!-- guess; original 0.05-->
 		    dragarea = 0.180;                                 #<!-- sq ft -->
-		    maxExplosionRange =50;                             #<!--Due to the code, more the speed is important, more we need to have this figure high-->
+		    maxExplosionRange =40;                             #<!--Due to the code, more the speed is important, more we need to have this figure high-->
 		    maxspeed = 1.5;                                      #<!-- In Mach -->
 		    life=120;
                     fox="A/G";
                     rail = "false";
                     cruisealt = 0;
 
+    }elsif(name =="AGM65"){
+
+                    address="Aircraft/Mirage-2000/Missiles/AGM65/AGM65_smoke.xml";
+                    NoSmoke="Aircraft/Mirage-2000/Missiles/AGM65/AGM65.xml";
+                    Explosion="Aircraft/Mirage-2000/Missiles/AGM65/explosion.xml";
+		    #
+		    maxdetectionrngnm = 14;                         #<!-- Not real Impact yet-->
+		    fovdeg =25;                                   #<!-- seeker optical FOV -->
+		    detectionfovdeg=60;                              # <!-- Search pattern diameter (rosette scan) -->
+		    trackmaxdeg = 110;                               #<!-- Seeker max total angular rotation -->
+		    maxg = 15;                                       
+		    thrustlbs=785;                                    # <!-- guess -->
+		    thrustdurationsec =60;                           #<!-- Mk.36 Mod.7,8 -->
+		    weightlaunchlbs=400;
+		    weightwarheadlbs=200;
+		    dragcoeff=0.157;                                   #<!-- guess; original 0.05-->
+		    dragarea = 0.135;                                 #<!-- sq ft -->
+		    maxExplosionRange =50;                             #<!--Due to the code, more the speed is important, more we need to have this figure high-->
+		    maxspeed = 1;                                      #<!-- In Mach -->
+		    life=90;
+                    fox="A/G";
+                    rail = "false";
+                    cruisealt = 0;
+
+    
    }elsif(name =="SCALP"){
 
                     address="Aircraft/Mirage-2000/Missiles/SCALP/SCALP_smoke.xml";
@@ -201,7 +228,7 @@ var Loading_missile = func(name) {
 		    weightwarheadlbs=505;
 		    dragcoeff=0.478;                                   #<!-- guess; original 0.05-->
 		    dragarea = 0.411;                                 #<!-- sq ft -->
-		    maxExplosionRange =75;                             #<!--Due to the code, more the speed is important, more we need to have this figure high-->
+		    maxExplosionRange =80;                             #<!--Due to the code, more the speed is important, more we need to have this figure high-->
 		    maxspeed = 0.8;                                      #<!-- In Mach -->
 		    life=1000;
                     fox="A/M";
@@ -224,12 +251,35 @@ var Loading_missile = func(name) {
 		    weightwarheadlbs=135;
 		    dragcoeff=0.272;                                   #<!-- guess; original 0.05-->
 		    dragarea = 0.234;                                 #<!-- sq ft -->
-		    maxExplosionRange =200;                             #<!--Due to the code, more the speed is important, more we need to have this figure high-->
+		    maxExplosionRange =70;                             #<!--Due to the code, more the speed is important, more we need to have this figure high-->
 		    maxspeed = 5;                                      #<!-- In Mach -->
 		    life=160;
                     fox="Fox 3";
                     rail = "false";
                     cruisealt = 100000;
+
+    }elsif(name =="MATRA-R530"){
+    		#MATRA-R530 max range 20 km for actual version. ->10 nm.. at mach 2.7 it's about 20 sec. I put a life of 30, and thurst duration to 3/4 the travel time.
+                    address="Aircraft/Mirage-2000/Missiles/MATRA-R530/MATRA-R530_smoke.xml";
+                    NoSmoke="Aircraft/Mirage-2000/Missiles/MATRA-R530/MATRA-R530.xml";
+		    #
+		    maxdetectionrngnm = 10.8;                         #<!-- Not real Impact yet-->
+		    fovdeg =25;                                   #<!-- seeker optical FOV -->
+		    detectionfovdeg=60;                              # <!-- Search pattern diameter (rosette scan) -->
+		    trackmaxdeg = 110;                               #<!-- Seeker max total angular rotation -->
+		    maxg = 15;                                       #<!-- In turn --> 
+		    thrustlbs=320;                                    # <!-- guess -->  the doc says 17 000 = 83 lbs of thrust...need to readapt all the values.
+		    thrustdurationsec =20;                           #<!-- Mk.36 Mod.7,8 -->
+		    weightlaunchlbs=357;
+		    weightwarheadlbs=55;
+		    dragcoeff=0.272;                                   #<!-- guess; original 0.05-->
+		    dragarea = 0.234;                                 #<!-- sq ft -->
+		    maxExplosionRange = 40;                             #<!--Due to the code, more the speed is important, more we need to have this figure high-->
+		    maxspeed = 2.7;                                      #<!-- In Mach -->
+		    life=30;
+                    fox="Fox 1";
+                    rail = "false";
+                    cruisealt = 0;
 
     }
 
@@ -240,6 +290,7 @@ var Loading_missile = func(name) {
     #SetProp
     setprop("controls/armament/missile/address",address);
     setprop("controls/armament/missile/addressNoSmoke",NoSmoke);
+    setprop("controls/armament/missile/addressExplosion",Explosion);
     setprop("controls/armament/missile/max-detectionrngnm",maxdetectionrngnm);
     setprop("controls/armament/missile/fov-deg",fovdeg);
     setprop("controls/armament/missile/track-max-deg",trackmaxdeg);

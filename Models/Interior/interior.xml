@@ -29,6 +29,16 @@
     <object-name>intverriere</object-name>
   </animation>
 
+  <!--  REMBRANDT support for transparent objects
+  <effect>
+    <inherits-from>Effects/model-transparent</inherits-from>
+    <condition>
+      <property>sim/rendering/rembrandt/enabled</property>
+    </condition>
+    <object-name>intvitres</object-name>
+    <object-name>intverriere</object-name>
+  </effect> -->
+
   <!-- Tableau de bord -->
   <model>
     <path>Aircraft/Mirage-2000/Models/Interior/Panel/panel.xml</path>

@@ -113,13 +113,13 @@ dropLoad = func (number) {
                      tank_submodel(number,select);
                      setprop("consumables/fuel/tank["~ number ~"]/selected", 0);
                      settimer(func load.dropLoad_stop(number),2);
+                     setprop("controls/armament/station["~ number ~"]/release", 1);
+                     setprop("sim/weight["~ number ~"]/selected", "none");
+                     setprop("sim/weight["~ number ~"]/weight-lb", 0);
                 }else{
                      load.dropMissile(number);
                      settimer(func load.dropLoad_stop(number),0.5);
                 }
-                setprop("controls/armament/station["~ number ~"]/release", 1);
-                setprop("sim/weight["~ number ~"]/selected", "none");
-                setprop("sim/weight["~ number ~"]/weight-lb", 0);
 
 
            }
@@ -152,6 +152,9 @@ dropMissile = func (number) {
           Current_missile.status = 0;
           Current_missile.search(target);             
           Current_missile.release();
+          setprop("controls/armament/station["~ number ~"]/release", 1);
+          setprop("sim/weight["~ number ~"]/selected", "none");
+          setprop("sim/weight["~ number ~"]/weight-lb", 0);
      
 
 }

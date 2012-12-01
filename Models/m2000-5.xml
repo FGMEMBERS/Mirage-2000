@@ -185,25 +185,6 @@
     <object-name>tmp1</object-name>
   </effect>
 
-  <animation>
-    <type>shader</type>
-    <shader>chrome</shader>
-    <texture>Aircraft/Generic/Effects/glass_shader.png</texture>
-    <object-name>vitres</object-name>
-    <object-name>verriere</object-name>
-  </animation>
-
-  <animation>
-    <type>noshadow</type>
-    <object-name>vitres</object-name>
-    <object-name>verriere</object-name>
-  </animation>
-
-  <!-- Externals objects  -->
-  <model>
-    <path>Aircraft/Mirage-2000/Models/External-objects/loads.xml</path>
-  </model>
-
   <!--<animation>
     <type>material</type>
     <object-name>R550</object-name>
@@ -231,6 +212,47 @@
       <blue-prop>emission/blue</blue-prop>
     </emission>
   </animation>-->
+
+  <animation>
+    <type>shader</type>
+    <shader>chrome</shader>
+    <texture>Aircraft/Generic/Effects/glass_shader.png</texture>
+    <object-name>vitres</object-name>
+    <object-name>verriere</object-name>
+  </animation>
+
+  <animation>
+    <type>noshadow</type>
+    <object-name>vitres</object-name>
+    <object-name>verriere</object-name>
+  </animation>
+
+  <!--  REMBRANDT support for transparent objects
+  <effect>
+    <inherits-from>Effects/model-transparent</inherits-from>
+    <condition>
+      <property>sim/rendering/rembrandt/enabled</property>
+    </condition>
+    <object-name>vitres</object-name>
+    <object-name>verriere</object-name>
+  </effect> -->
+
+  <!-- Intérieur -->
+  <model>
+    <name>Interieur</name>
+    <path>Aircraft/Mirage-2000/Models/Interior/interior.xml</path>
+  </model>
+
+  <!-- For Rembrandt
+  <animation>
+    <type>noshadow</type>
+    <object-name>Interieur</object-name>
+  </animation> -->
+
+  <!-- Externals objects  -->
+  <model>
+    <path>Aircraft/Mirage-2000/Models/External-objects/loads.xml</path>
+  </model>
 
   <!-- ******************************************************************* -->
   <!-- FX                                                                  -->
@@ -283,11 +305,6 @@
     </offsets>
   </model>
 
-  <!-- Intérieur -->
-  <model>
-    <path>Aircraft/Mirage-2000/Models/Interior/interior.xml</path>
-  </model>
-
   <!-- Exhausts -->
   <model>
     <path>Aircraft/Mirage-2000/Models/Exhausts/exhausts.xml</path>
@@ -312,7 +329,7 @@
   <model>
     <path>Aircraft/Mirage-2000/Models/Effects/trail/trail.xml</path>
     <offsets>
-      <x-m>  6.319 </x-m>
+      <x-m>  12 </x-m>
       <y-m>  0.000 </y-m>
       <z-m> -0.527 </z-m>
     </offsets>
@@ -343,7 +360,6 @@
       <y-m>  4.518 </y-m>
       <z-m> -1.296 </z-m>
     </offsets>
-
   </model>
 
   <!-- Effets sur le sol -->

@@ -32,6 +32,21 @@
       <blue>  0.3 </blue>
     </emission>
   </animation>
+  
+  <animation>
+    <type>pick</type>
+    <object-name>alt</object-name>
+    <visible>true</visible>
+    <action>
+      <button>0</button>
+      <repeatable>true</repeatable>  
+      <binding>
+        <command>property-toggle</command>
+        <property>autopilot/locks/altitude</property>
+      </binding>
+    </action>
+  </animation>
+
 
 </PropertyList>
 

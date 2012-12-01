@@ -214,7 +214,7 @@ var Turboprop =
 	},
 	# updates the engine
 	update: func
-	{
+	{        
 		if (me.cutoff.getBoolValue())
 		{
 			me.out_of_fuel.setBoolValue(1);

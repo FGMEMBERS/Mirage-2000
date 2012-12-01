@@ -291,6 +291,45 @@
       </and>
     </condition>
   </animation>
+  
+  <!-- MATRA-R530 -->
+
+  <animation>
+    <type>select</type>
+    <object-name>MATRA-R530</object-name>      
+    <condition>
+      <and>
+        <equals>
+          <property>sim/weight[3]/selected</property>
+          <value>MATRA-R530</value>
+        </equals>
+        <equals>
+          <property>controls/armament/station[3]/release</property>
+          <value>false</value>
+        </equals>
+      </and>
+    </condition>
+  </animation>
+  
+  <!-- AGM65 -->
+
+  <animation>
+    <type>select</type>
+    <object-name>AGM65</object-name>      
+    <condition>
+      <and>
+        <equals>
+          <property>sim/weight[3]/selected</property>
+          <value>AGM65</value>
+        </equals>
+        <equals>
+          <property>controls/armament/station[3]/release</property>
+          <value>false</value>
+        </equals>
+      </and>
+    </condition>
+  </animation>
+
 
 
   <!-- station right 3 (Index 4)-->

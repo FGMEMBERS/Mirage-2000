@@ -222,7 +222,27 @@
       <z-m> -1.656 </z-m>
     </offsets>
   </model>
+  <model>
+    <name>MATRA-R530</name>
+    <path>Aircraft/Mirage-2000/Missiles/MATRA-R530/MATRA-R530.xml</path>
+    <offsets>
+      <x-m>  1.082 </x-m>
+      <y-m>  0.000 </y-m>
+      <z-m> -1.656 </z-m>
+    </offsets>
+  </model>
+  <model>
+    <name>AGM65</name>
+    <path>Aircraft/Mirage-2000/Missiles/AGM65/AGM65.xml</path>
+    <offsets>
+      <x-m>  1.082 </x-m>
+      <y-m>  0.000 </y-m>
+      <z-m> -1.656 </z-m>
+    </offsets>
+  </model>
 	
+	
+
   <!-- station right 3 (Index 4)-->
   <model>
     <name>right-large-tank</name>

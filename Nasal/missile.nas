@@ -60,10 +60,11 @@ var MISSILE = {
                 m.nextGroundElevation = 0; #Next Ground Elevation in 2 dt
 
                 # missile specs:
-                m.missile_model    =  getprop("controls/armament/missile/address");
-                m.missile_NoSmoke    =  getprop("controls/armament/missile/addressNoSmoke");
-                m.missile_fov_diam     = getprop("controls/armament/missile/fov-deg");
-                m.missile_fov          = m.missile_fov_diam  / 2;
+                m.missile_model     =  getprop("controls/armament/missile/address");
+                m.missile_NoSmoke   =  getprop("controls/armament/missile/addressNoSmoke");
+                m.missile_Explosion =  getprop("controls/armament/missile/addressExplosion");
+                m.missile_fov_diam  = getprop("controls/armament/missile/fov-deg");
+                m.missile_fov       = m.missile_fov_diam  / 2;
                 m.max_detect_rng    = getprop("controls/armament/missile/max-detection-rng-nm");
                 m.max_seeker_dev    = getprop("controls/armament/missile/track-max-deg") / 2;
                 m.force_lbs         = getprop("controls/armament/missile/thrust-lbs");
@@ -138,9 +139,32 @@ var MISSILE = {
                 }
                 delete(MISSILE.active, me.ID);
         },
+        reload_model: func(path) {
+                #Delete the current model
+                me.model.remove();
+
+                #Find the new model index
+                var n = props.globals.getNode("models", 1);
+                for (var i = 0; 1; i += 1)
+                        if (n.getChild("model", i, 0) == nil)
+                                break;
+                me.model = n.getChild("model", i, 1);
+
+                #Put value in model
+                me.model.getNode("path", 1).setValue(path);
+                me.model.getNode("latitude-deg-prop", 1).setValue(me.latN.getPath());
+                me.model.getNode("longitude-deg-prop", 1).setValue(me.lonN.getPath());
+                me.model.getNode("elevation-ft-prop", 1).setValue(me.altN.getPath());
+                me.model.getNode("heading-deg-prop", 1).setValue(me.hdgN.getPath());
+                me.model.getNode("pitch-deg-prop", 1).setValue(me.pitchN.getPath());
+                me.model.getNode("roll-deg-prop", 1).setValue(me.rollN.getPath());
+                me.model.getNode("load", 1).remove();
+
+        },
+
         release: func() {
                 me.status = 2;
-                me.animation_flags_props();
+                #me.animation_flags_props();
 
                 # Get the A/C position and orientation values.
                 me.ac = geo.aircraft_position();
@@ -212,7 +236,7 @@ var MISSILE = {
                 me.pitch = ac_pitch;
                 me.hdg = ac_hdg;
 
-                me.smoke_prop.setBoolValue(1);
+                #me.smoke_prop.setBoolValue(1);
                 #SwSoundVol.setValue(0);
                 #settimer(func { HudReticleDeg.setValue(0) }, 2);
                 #interpolate(HudReticleDev, 0, 2);
@@ -255,10 +279,15 @@ var MISSILE = {
                         if (me.life_time > 3) { f_lbs = me.force_lbs * 0.3; }
                 }
                 #This do not work for the moment... need to know how to reload a 3D model...
-                if (me.life_time > me.thrust_duration) { 
-                                   var id_model =  me.missile_NoSmoke;
-                                   me.model.getNode("path", 1).setValue(id_model);
-                                   f_lbs = 0; me.smoke_prop.setBoolValue(0); 
+                if (me.life_time > me.thrust_duration) {
+                                   var Dapath = me.missile_NoSmoke;
+                                   if(me.model.getNode("path", 1).getValue() != Dapath){
+                                        #print(Dapath);
+                                        me.reload_model(Dapath);
+                                   }
+                                   #print( me.model.getNode("path", 1).getValue());
+                                   f_lbs = 0; 
+                                   #me.smoke_prop.setBoolValue(0); 
                 }
 
                 # Kill the AI after a while.
@@ -770,9 +799,15 @@ var MISSILE = {
 
 
         animate_explosion: func {
-                me.msl_prop.setBoolValue(0);
-                me.smoke_prop.setBoolValue(0);
-                me.explode_prop.setBoolValue(1);
+
+                var Dapath = me.missile_Explosion;
+                if(me.model.getNode("path", 1).getValue() != Dapath){
+                        #print(Dapath);
+                        me.reload_model(Dapath);
+                }
+                #me.msl_prop.setBoolValue(0);
+                #me.smoke_prop.setBoolValue(0);
+                #me.explode_prop.setBoolValue(1);
                 #settimer( func me.explode_prop.setBoolValue(0), 0.5 );
                 #settimer( func me.explode_smoke_prop.setBoolValue(1), 0.5 );
                 #settimer( func me.explode_smoke_prop.setBoolValue(0), 3 );
@@ -878,6 +913,8 @@ var nextGeoloc =func (long,lat, heading, speed, dt){
         return NextGeo;
 
 }
+
+
 
 
 
