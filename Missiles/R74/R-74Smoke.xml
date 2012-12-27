@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="ISO-8859-1"?>
 
 <PropertyList>
 
@@ -23,5 +23,14 @@
 			<blue>254</blue>
 			</emission>
 	</animation>
+	
+	  <model>
+            <path>Aircraft/Mirage-2000/Missiles/R74/smoke.xml</path>
+                    <offsets>
+                      <x-m> 3 </x-m>
+                      <y-m> 0 </y-m>
+                      <z-m> 0 </z-m>
+                    </offsets>
+          </model>
 
 </PropertyList>

@@ -109,7 +109,23 @@
       <y-m> -3.278 </y-m>
       <z-m> -1.494 </z-m>
     </offsets>
-  </model>	
+  </model>
+  
+    <model>
+    <name>left-pos-2-R74</name>
+    <path>Aircraft/Mirage-2000/Missiles/R74/R-74.xml</path>
+    <condition>
+      <equals>
+        <property>sim/weight[1]/selected</property>
+        <value>R74</value>
+      </equals>
+    </condition>
+    <offsets>
+      <x-m>  2.373 </x-m>
+      <y-m> -3.278 </y-m>
+      <z-m> -1.494 </z-m>
+    </offsets>
+  </model>		
 	
   <!-- station left 3 (Index 2) -->
   <model>
@@ -338,6 +354,23 @@
       <z-m> -1.494 </z-m>
     </offsets>
   </model>		
+
+
+  <model>
+    <name>right-pos-2-R74</name>
+    <path>Aircraft/Mirage-2000/Missiles/R74/R-74.xml</path>
+    <condition>
+      <equals>
+        <property>sim/weight[5]/selected</property>
+        <value>R74</value>
+      </equals>
+    </condition>
+    <offsets>
+      <x-m>  2.373 </x-m>
+      <y-m>  3.278 </y-m>
+      <z-m> -1.494 </z-m>
+    </offsets>
+  </model>	
 
   <!-- station right 1 (Index 6) -->
   <model>

@@ -294,7 +294,8 @@
     <impact>true</impact>
     <impact-report>sim/ai/aircraft/impact/droptank1700r</impact-report>
   </submodel>
-<!--
+
+  <!--
      <name>         The name of the submodel.
      <model>        The path to the visual model. Any model in any location is allowed. All the normal
                     animations are available.
@@ -360,71 +361,66 @@
      <randomness>   Varies the randomness of Life between 0.0(0%) and 1.0(100%). Defaults to 0.5 (50%).
      <slaved>       If true the Submodel is slaved to its parent model on release. For a subsequent release 
                     the property "controls/slave-to-ac" must be set to false.
-
--->
-   <submodel>
-                <name>flare</name>
-                <model>Aircraft/Mirage-2000/Models/Effects/flare/flare.xml</model>
-                <trigger>controls/switches/flare</trigger>
-                <speed>400</speed>
-                <repeat>true</repeat>
-                <delay>0.5</delay>
-                <count>-1</count>
-                <x-offset>-3.0</x-offset>
-                <y-offset>0.0</y-offset>
-                <z-offset>-8.0</z-offset>
-                <eda>0.1</eda>
-                <life>10</life>
-                <buoyancy>28</buoyancy>
-                <aero-stabilise>false</aero-stabilise>
-                <wind>true</wind>
-          <pitch-offset>-35.0</pitch-offset>
-           <yaw-offset>2</yaw-offset>
+  -->
+  <submodel>
+    <name>flare</name>
+    <model>Aircraft/Mirage-2000/Models/Effects/flare/flare.xml</model>
+    <trigger>controls/switches/flare</trigger>
+    <speed>400</speed>
+    <repeat>true</repeat>
+    <delay>0.5</delay>
+    <count>-1</count>
+    <x-offset> -3 </x-offset>
+    <y-offset>  0 </y-offset>
+    <z-offset> -8 </z-offset>
+    <eda>0.1</eda>
+    <life>10</life>
+    <buoyancy>28</buoyancy>
+    <aero-stabilise>false</aero-stabilise>
+    <wind>true</wind>
+    <pitch-offset>-35.0</pitch-offset>
+    <yaw-offset>2</yaw-offset>
   </submodel>
-     <submodel>
-                <name>flare</name>
-                <model>Aircraft/Mirage-2000/Models/Effects/flare/flare.xml</model>
-                <trigger>controls/switches/flare</trigger>
-                <speed>400</speed>
-                <repeat>true</repeat>
-                <delay>0.5</delay>
-                <count>-1</count>
-                <x-offset>-3.0</x-offset>
-                <y-offset>0.0</y-offset>
-                <z-offset>-8.0</z-offset>
-                <eda>0.1</eda>
-                <life>10</life>
-                <buoyancy>28</buoyancy>
-                <aero-stabilise>false</aero-stabilise>
-                <wind>true</wind>
-          <pitch-offset>-35.0</pitch-offset>
-           <yaw-offset>358</yaw-offset>
-  </submodel>
-       <submodel>
-                <name>ejection</name>
-                <model>Aircraft/Mirage-2000/Models/Effects/ejection/ejection.xml</model>
-                <trigger>instrumentation/ejection</trigger>
-                <speed>40</speed>
-                <weight>2</weight>
-                <repeat>true</repeat>
-                <delay>2</delay>
-                <count>1</count>
-                <x-offset>0.0</x-offset>
-                <y-offset>0.0</y-offset>
-                <z-offset>0.0</z-offset>
-                <eda>0.1</eda>
-                <life>10</life>
-                <buoyancy>32</buoyancy>
-                <aero-stabilise>false</aero-stabilise>
-                <wind>false</wind>
-
   
-                
-          <pitch-offset>60</pitch-offset>
-           <yaw-offset>0</yaw-offset>
+  <submodel>
+    <name>flare</name>
+    <model>Aircraft/Mirage-2000/Models/Effects/flare/flare.xml</model>
+    <trigger>controls/switches/flare</trigger>
+    <speed>400</speed>
+    <repeat>true</repeat>
+    <delay>0.5</delay>
+    <count>-1</count>
+    <x-offset> -3 </x-offset>
+    <y-offset>  0 </y-offset>
+    <z-offset> -8 </z-offset>
+    <eda>0.1</eda>
+    <life>10</life>
+    <buoyancy>28</buoyancy>
+    <aero-stabilise>false</aero-stabilise>
+    <wind>true</wind>
+    <pitch-offset>-35.0</pitch-offset>
+    <yaw-offset>358</yaw-offset>
   </submodel>
-
-
+  
+  <submodel>
+    <name>ejection</name>
+    <model>Aircraft/Mirage-2000/Models/Effects/ejection/ejection.xml</model>
+    <trigger>instrumentation/ejection</trigger>
+    <speed>40</speed>
+    <weight>2</weight>
+    <repeat>true</repeat>
+    <delay>2</delay>
+    <count>1</count>
+    <x-offset>0.0</x-offset>
+    <y-offset>0.0</y-offset>
+    <z-offset>0.0</z-offset>
+    <eda>0.1</eda>
+    <life>10</life>
+    <buoyancy>32</buoyancy>
+    <aero-stabilise>false</aero-stabilise>
+    <wind>false</wind>
+    <pitch-offset>60</pitch-offset>
+    <yaw-offset>0</yaw-offset>
+  </submodel>
 
 </PropertyList>
-

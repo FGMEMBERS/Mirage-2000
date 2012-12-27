@@ -855,6 +855,8 @@
   
   <model>
     <name>RWR</name>
+    
+    <!--<path>Aircraft/Instruments-3d/rwr/rwr.xml</path>-->
     <path>Aircraft/Mirage-2000/Models/Interior/Panel/Instruments/mfd/rwr/rwr.xml</path>
     <condition>
       <equals>
@@ -872,7 +874,7 @@
   <animation>
     <type>scale</type>
     <object-name>RWR</object-name> 
-    <x-offset> 1.0 </x-offset>
+    <x-offset> 1.2 </x-offset>
     <y-offset> 1.4 </y-offset>
     <z-offset> 1.4 </z-offset>
   </animation>

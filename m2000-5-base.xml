@@ -45,13 +45,20 @@
         
     <multiplay>
       <chat_display>1</chat_display>
-      <generic> 
+            <generic> 
         <int type="int" n="0">  0 </int>                                           <!--  0 immat -->
         <int type="int" n="1">  0 </int>                                           <!--  1 immat -->
         <int type="int" n="2">  0 </int>                                           <!--  2 immat -->
         <int type="int" n="3">  0 </int>                                           <!--  3 immat -->
         <int type="int" n="4">  0 </int>                                           <!--  4 immat -->
-        <int type="int" n="5">  0 </int>                                           <!--  5 immat -->
+        <int type="int" n="5">  0 </int>                                           <!--  5 immat 
+        <int n="10" >0</int>                                          
+        <int n="11" >0</int>                                                  
+        <int n="12" >0</int>                                             
+        <int n="13" >0</int>                                          
+        <int n="14" >0</int>                                            
+        <int n="15" >0</int>                                          
+        <int n="16" >0</int>                                             -->
         <int type="bool" n="6" alias="/smoke/active"> 0 </int>                     <!--  6 start smoke -->
         <int type="int" n="7" alias="smoke/particlepersec"> 50 </int>              <!--  7 particlepersec -->
         <int type="int" n="10" alias="controls/armament/trigger">0</int>           <!-- 10 reserved for bombable mode -->
@@ -61,7 +68,14 @@
         <float n="3" alias="/smoke/colors/knob-red">1</float>                      <!-- 3 smoke mixer red setting -->
         <float n="4" alias="/smoke/colors/knob-green">1</float>                    <!-- 4 smoke mixer green setting -->
         <float n="5" alias="/smoke/colors/knob-blue">1</float>                     <!-- 5 smoke mixer blue setting -->
-        <string n="9" type="string" />                                             <!-- string[9] reserved for bombable mode -->
+        <string n="9" type="string" />                                             <!-- string[9] reserved for bombable mode 
+        <string n="10" alias="/sim/weight[0]/selected"/>                                              For loads 
+        <string n="11" alias="/sim/weight[1]/selected"/>                                                      
+        <string n="12" alias="/sim/weight[2]/selected"/>                                              
+        <string n="13" alias="/sim/weight[3]/selected"/>                                             
+        <string n="14" alias="/sim/weight[4]/selected"/>                                             
+        <string n="15" alias="/sim/weight[5]/selected"/>                                             
+        <string n="16" alias="/sim/weight[6]/selected"/>                                         -->
       </generic>
     </multiplay>
 
@@ -193,6 +207,7 @@
       <opt><name>Matra R550 Magic 2</name><lbs>196.21</lbs></opt>
       <opt><name>aim-9</name><lbs>191</lbs></opt>
       <opt><name>Matra MICA</name><lbs>246.91</lbs></opt>
+      <opt><name>R74</name><lbs>230</lbs></opt>
     </weight>
 
     <weight n="2">
@@ -247,6 +262,7 @@
       <opt><name>Matra R550 Magic 2</name><lbs>196.21</lbs></opt>
       <opt><name>aim-9</name><lbs>191</lbs></opt>
       <opt><name>Matra MICA</name><lbs>246.91</lbs></opt>
+      <opt><name>R74</name><lbs>230</lbs></opt>
     </weight>
 
     <weight n="6">
@@ -372,6 +388,13 @@
         <position-norm type="float">0</position-norm>
       </passenger>
     </doors>
+    <!-- fuel features -->
+    <consumables>
+        <average_consuption_per_min type="double">0</average_consuption_per_min>
+        <remain_fuel type="double">0</remain_fuel>   
+        <bingo_fuel type="double">0</bingo_fuel>
+        <bingo_low type="int">0</bingo_low>
+    </consumables>
     <rwr>
       <display-lighting-intens type="double">0.4</display-lighting-intens>
       <symbology-lighting-intens type="double">1</symbology-lighting-intens>
@@ -584,7 +607,7 @@
     </guns>
     <instrumentation>
       <file>Aircraft/Mirage-2000/Nasal/instrumentation.nas</file>
-      <script>instrumentation.convertTemp();</script>
+      <script>instrumentation.initIns();</script>
     </instrumentation>
     <load>
       <file>Aircraft/Mirage-2000/Nasal/ext_stores.nas</file>

@@ -6,6 +6,11 @@
 
   <nasal>
     <load>
+      ##############################################################################
+      # The on-load Nasal is not executed when this file is loaded as the user
+      # aircraft.
+      ##############################################################################
+                
       var livery_update = aircraft.livery_update.new("Aircraft/Mirage-2000/Models/Liveries", 10);
 
       var self = cmdarg();
@@ -18,12 +23,45 @@
     
       crew_door.alias(float_0);
       passenger_door.alias(float_1);
+      
+      #5HIN : THis is to see MP looad
+      #self.getNode("/sim/weight[0]/selected", 1).alias(self.getNode("/sim/multiplay/generic/string[10]"));
+      #self.getNode("/sim/weight[1]/selected", 1).alias(self.getNode("/sim/multiplay/generic/string[11]"));
+      #self.getNode("/sim/weight[2]/selected", 1).alias(self.getNode("/sim/multiplay/generic/string[12]"));
+      #self.getNode("/sim/weight[3]/selected", 1).alias(self.getNode("/sim/multiplay/generic/string[13]"));
+      #self.getNode("/sim/weight[4]/selected", 1).alias(self.getNode("/sim/multiplay/generic/string[14]"));
+      #self.getNode("/sim/weight[5]/selected", 1).alias(self.getNode("/sim/multiplay/generic/string[15]"));
+      #self.getNode("/sim/weight[6]/selected", 1).alias(self.getNode("/sim/multiplay/generic/string[16]")); 
+            
+      #self.getNode("/controls/armament/station[0]/release", 1).alias(self.getNode("/sim/multiplay/generic/int[10]"));
+      #self.getNode("/controls/armament/station[1]/release", 1).alias(self.getNode("/sim/multiplay/generic/int[11]"));
+      #self.getNode("/controls/armament/station[2]/release", 1).alias(self.getNode("/sim/multiplay/generic/int[12]"));
+      #self.getNode("/controls/armament/station[3]/release", 1).alias(self.getNode("/sim/multiplay/generic/int[13]"));
+      #self.getNode("/controls/armament/station[4]/release", 1).alias(self.getNode("/sim/multiplay/generic/int[14]"));
+      #self.getNode("/controls/armament/station[5]/release", 1).alias(self.getNode("/sim/multiplay/generic/int[15]"));
+      #self.getNode("/controls/armament/station[6]/release", 1).alias(self.getNode("/sim/multiplay/generic/int[16]"));       
     </load>
 
     <unload>
       livery_update.stop();
       crew_door.unalias();
       passenger_door.unalias();
+      
+      #self.getNode("/sim/multiplay/generic/string[10]").unalias();
+      #self.getNode("/sim/multiplay/generic/string[11]").unalias();      
+      #self.getNode("/sim/multiplay/generic/string[12]").unalias();
+      #self.getNode("/sim/multiplay/generic/string[13]").unalias();
+      #self.getNode("/sim/multiplay/generic/string[14]").unalias();
+      #self.getNode("/sim/multiplay/generic/string[15]").unalias();
+      #self.getNode("/sim/multiplay/generic/string[16]").unalias();
+      
+      #self.getNode("/sim/multiplay/generic/int[10]").unalias();
+      #self.getNode("/sim/multiplay/generic/int[11]").unalias();
+      #self.getNode("/sim/multiplay/generic/int[12]").unalias();
+      #self.getNode("/sim/multiplay/generic/int[13]").unalias();
+      #self.getNode("/sim/multiplay/generic/int[14]").unalias();
+      #self.getNode("/sim/multiplay/generic/int[15]").unalias();
+      #self.getNode("/sim/multiplay/generic/int[16]").unalias();
     </unload>
   </nasal>
 
@@ -235,7 +273,7 @@
     </condition>
     <object-name>vitres</object-name>
     <object-name>verriere</object-name>
-  </effect> -->
+  </effect>-->
 
   <!-- Intérieur -->
   <model>
@@ -247,8 +285,8 @@
   <animation>
     <type>noshadow</type>
     <object-name>Interieur</object-name>
-  </animation> -->
-
+  </animation>
+-->
   <!-- Externals objects  -->
   <model>
     <path>Aircraft/Mirage-2000/Models/External-objects/loads.xml</path>
@@ -1291,4 +1329,3 @@
   </model>
 
 </PropertyList>
-

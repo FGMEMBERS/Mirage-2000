@@ -305,21 +305,32 @@ setprop("instrumentation/radar2/hud/target-clamped-blinker/enabled", 1);
 rwr = func(u) {
         var u_name = radardist.get_aircraft_name(u.string);
         var u_maxrange = radardist.my_maxrange(u_name); # in kilometer, 0 is unknown or no radar.
+        #Debug
+        if(u_maxrange < 1 ){ u_maxrange = 50; }
+        
         var horizon = u.get_horizon( our_alt );
         var u_rng = u.get_range();
         var u_carrier = u.check_carrier_type();
         if ( u.get_rdr_standby() == 0 and u_maxrange > 0  and u_rng < horizon ) {
                 # Test if we are in its radar field (hard coded 74°) or if we have a MPcarrier.
                 # Compute the signal strength.
+                #print("Test 001");
                 var our_deviation_deg = deviation_normdeg(u.get_heading(), u.get_reciprocal_bearing());
                 if ( our_deviation_deg < 0 ) { our_deviation_deg *= -1 }
                 if ( our_deviation_deg < 37 or u_carrier == 1 ) {
                         u_ecm_signal = (((-our_deviation_deg/20)+2.5)*(!u_carrier )) + (-u_rng/20) + 2.6 + (u_carrier*1.8);
-                        u_ecm_type_num = radardist.get_ecm_type_num(u_name);
+                        u_ecm_type_num = "54";
+                        #print("Pouet");
+                        #u_ecm_type_num = radardist.get_ecm_type_num(u_name);
+                        print("l'avion " ~ u_name ~ " type ECM " ~ u_ecm_type_num ~ "devrait vous accrocher ");
+                        print(u_ecm_signal);
                 }
         } else {
                 u_ecm_signal = 0;
-        }        
+                #print("Rien");
+        }
+        #Debug
+        #u_ecm_signal = 2;    
         # Compute global threat situation for undiscriminant warning lights
         # and discrete (normalized) definition of threat strength.
         if ( u_ecm_signal > 1 and u_ecm_signal < 3 ) {

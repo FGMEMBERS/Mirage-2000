@@ -63,6 +63,7 @@
       </and>
     </condition>
   </animation>
+  
 
   <!-- station left 2 (Index 1) -->
   <animation>
@@ -107,6 +108,23 @@
         <equals>
           <property>sim/weight[1]/selected</property>
           <value>Matra MICA</value>
+        </equals>
+        <equals>
+          <property>controls/armament/station[1]/release</property>
+          <value>false</value>
+        </equals>
+      </and>
+    </condition>
+  </animation>
+  
+    <animation>
+    <type>select</type>
+    <object-name>left-pos-2-R74</object-name>      
+    <condition>
+      <and>
+        <equals>
+          <property>sim/weight[1]/selected</property>
+          <value>R74</value>
         </equals>
         <equals>
           <property>controls/armament/station[1]/release</property>
@@ -437,6 +455,23 @@
   </animation>
 
   <animation>
+    <type>select</type>
+    <object-name>right-pos-2-R74</object-name>      
+    <condition>
+      <and>
+        <equals>
+          <property>sim/weight[5]/selected</property>
+          <value>R74</value>
+        </equals>
+        <equals>
+          <property>controls/armament/station[5]/release</property>
+          <value>false</value>
+        </equals>
+      </and>
+    </condition>
+  </animation>	
+  
+    <animation>
     <type>select</type>
     <object-name>right-pos-2-MICA</object-name>      
     <condition>

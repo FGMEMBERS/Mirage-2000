@@ -164,5 +164,17 @@
       <z-m> -0.24519 </z-m>
     </offsets>
   </model>
+  
+  <!-- Radio -->
+    <model>
+    <path>Aircraft/Mirage-2000/Models/Interior/Panel/Instruments/uhf-box/uhf-box.xml</path>
+    <offsets>
+      <x-m> 0.431 </x-m>
+      <y-m>  0.000 </y-m>
+      <z-m> -0.315 </z-m>
+      <pitch-deg>-5</pitch-deg>
+    </offsets>
+  </model>
+  
 
 </PropertyList>

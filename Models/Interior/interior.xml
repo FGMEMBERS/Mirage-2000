@@ -41,6 +41,7 @@
 
   <!-- Tableau de bord -->
   <model>
+    <name>Panel</name>
     <path>Aircraft/Mirage-2000/Models/Interior/Panel/panel.xml</path>
     <offsets>
       <x-m> -3.653 </x-m>
@@ -116,6 +117,14 @@
       <z> 0 </z>
     </axis>
   </animation>
+  
+   <!-- LoD -->
+ <animation>
+   <object-name>Panel</object-name>
+   <type>range</type>
+   <min-m>0</min-m>
+   <max-m>30</max-m>
+ </animation>
 
 </PropertyList>
 

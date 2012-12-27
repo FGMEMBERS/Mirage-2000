@@ -153,7 +153,7 @@
   <animation>
     <type>textranslate</type>
     <object-name>num1-1</object-name>
-    <property>/engines/engine[0]/epr</property>
+    <property>/instrumentation/consumables/average_consuption_per_min</property>
     <factor>0.01</factor>
     <step>10</step>
     <axis>
@@ -166,7 +166,7 @@
   <animation>
     <type>textranslate</type>
     <object-name>num1-2</object-name>
-    <property>/engines/engine[0]/epr</property>
+    <property>/instrumentation/consumables/average_consuption_per_min</property>
     <factor>0.1</factor>
     <step>1</step>
     <axis>
