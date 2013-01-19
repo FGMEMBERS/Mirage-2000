@@ -91,7 +91,7 @@ var u_ecm_type_num    = 0;
 init = func() {
         var our_ac_name = getprop("sim/aircraft");
         radardist.init();
-        my_radarcorr = 150 ; #radardist.my_maxrange( our_ac_name ); # Kilometers
+        my_radarcorr = radardist.my_maxrange( our_ac_name ); # Kilometers
         var h = HudVoffset.getValue();
         if (h != nil) { hud_voffset = h }        
 
@@ -147,6 +147,9 @@ var az_scan = func() {
                 nearest_rng = tmp_nearest_rng;
                 tmp_nearest_rng = nil;
                 tmp_nearest_u = nil;
+                
+                #remove AI/MP oof the radar before reloading it
+                #hud.remove_target();
 
                 tgts_list = [];
                 var raw_list = Mp.getChildren();
@@ -158,7 +161,7 @@ var az_scan = func() {
                                 continue;
                         }
                         var HaveRadarNode = c.getNode("radar");
-                        if (type == "multiplayer" or (type == "tanker" and HaveRadarNode != nil) or type == "aircraft" or type=="carrier") {
+                        if (type == "multiplayer" or (type == "tanker" and HaveRadarNode != nil) or type == "aircraft" or type=="carrier" ) {
                                 var u = Target.new(c);
                                 u_ecm_signal      = 0;
                                 u_ecm_signal_norm = 0;
@@ -318,10 +321,11 @@ rwr = func(u) {
                 var our_deviation_deg = deviation_normdeg(u.get_heading(), u.get_reciprocal_bearing());
                 if ( our_deviation_deg < 0 ) { our_deviation_deg *= -1 }
                 if ( our_deviation_deg < 37 or u_carrier == 1 ) {
-                        u_ecm_signal = (((-our_deviation_deg/20)+2.5)*(!u_carrier )) + (-u_rng/20) + 2.6 + (u_carrier*1.8);
-                        u_ecm_type_num = "54";
+                        #u_ecm_signal = (((-our_deviation_deg/20)+2.5)*(!u_carrier )) + (-u_rng/20) + 2.6 + (u_carrier*1.8);
+                        u_ecm_signal = 2;
+                        #u_ecm_type_num = "54";
                         #print("Pouet");
-                        #u_ecm_type_num = radardist.get_ecm_type_num(u_name);
+                        u_ecm_type_num = radardist.get_ecm_type_num(u_name);
                         print("l'avion " ~ u_name ~ " type ECM " ~ u_ecm_type_num ~ "devrait vous accrocher ");
                         print(u_ecm_signal);
                 }
@@ -342,6 +346,7 @@ rwr = func(u) {
                 ecm_alert2 = 1;
                 u_ecm_signal_norm = 1;
         }
+        #print("u_ecm_signal=" ~ u_ecm_signal ~ " et u_ecm_type_num=" ~ u_ecm_type_num ~ " et our_deviation_deg =" ~ our_deviation_deg);
         u.EcmSignal.setValue(u_ecm_signal);
         u.EcmSignalNorm.setIntValue(u_ecm_signal_norm);
         u.EcmTypeNum.setIntValue(u_ecm_type_num);

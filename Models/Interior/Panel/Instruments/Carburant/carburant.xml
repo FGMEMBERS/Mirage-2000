@@ -21,8 +21,6 @@
     <object-name>num3-3</object-name>
     <object-name>num3-4</object-name>
     <object-name>knob</object-name>
-    <object-name>Switch2</object-name>
-    <object-name>Switch3</object-name>
     <object-name>leftgauge</object-name>
     <object-name>rightgauge</object-name>
     <object-name>lefttank</object-name>
@@ -34,6 +32,9 @@
     <object-name>warningrougeR</object-name>
     <object-name>low-lamp</object-name>
     <object-name>low-lamp-off</object-name>
+    <object-name>low-lamp2</object-name>
+    <object-name>low-lamp-off2</object-name>
+    <object-name>texte</object-name>
   </animation>
 
   <animation>
@@ -60,6 +61,7 @@
     <object-name>warningblancR</object-name>
     <object-name>warningrougeL</object-name>
     <object-name>warningrougeR</object-name>
+    <object-name>texte</object-name>
     <emission>
       <red>   0.50 </red>
       <green> 0.25 </green>
@@ -71,6 +73,7 @@
   <animation>
     <type>material</type>
     <object-name>low-lamp</object-name>
+    <object-name>low-lamp2</object-name>
     <emission>
       <red>   2 </red>
       <green> 2 </green>
@@ -81,6 +84,7 @@
   <animation>
     <type>material</type>
     <object-name>low-lamp-off</object-name>
+    <object-name>low-lamp-off2</object-name>
     <emission>
       <red>   0 </red>
       <green> 0 </green>
@@ -322,27 +326,51 @@
     </condition>
   </animation>
   
-  <!-- low-altitude warning-light -->
-  <!-- Below 500 ft -->
+  <!-- low fuel warning -->
+  <!-- Below 100 kg -->
   <animation>
     <type>select</type>
     <object-name>low-lamp</object-name>
     <condition>
       <less-than>
-        <property>/position/altitude-ft</property>
-        <value>500</value>
+        <property>/instrumentation/consumables/remain_fuel</property>
+        <value>100</value>
       </less-than>
     </condition>
   </animation>
-  
-  <!-- Above 500 ft -->
+
+  <!-- Above 100 kg -->
   <animation>
     <type>select</type>
     <object-name>low-lamp-off</object-name>
     <condition>
       <greater-than>
-        <property>/position/altitude-ft</property>
-        <value>500.001</value>
+        <property>/instrumentation/consumables/remain_fuel</property>
+        <value>100.001</value>
+      </greater-than>
+    </condition>
+  </animation>
+  
+  <!-- Temporairement identique à la précédente -->
+  <animation>
+    <type>select</type>
+    <object-name>low-lamp2</object-name>
+    <condition>
+      <less-than>
+        <property>/instrumentation/consumables/remain_fuel</property>
+        <value>100</value>
+      </less-than>
+    </condition>
+  </animation>
+
+  <!-- Above 100 kg -->
+  <animation>
+    <type>select</type>
+    <object-name>low-lamp-off2</object-name>
+    <condition>
+      <greater-than>
+        <property>/instrumentation/consumables/remain_fuel</property>
+        <value>100.001</value>
       </greater-than>
     </condition>
   </animation>

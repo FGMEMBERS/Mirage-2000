@@ -277,7 +277,7 @@
     </axis>
   </animation>
 
-  <animation>
+   <animation>
     <type>rotate</type>
     <object-name>EHSI.compass</object-name>
     <property>orientation/heading-magnetic-deg</property>
@@ -305,7 +305,7 @@
     <type>rotate</type>
     <object-name>EHSI.crsneedle</object-name>
     <object-name>EHSI.crsneedle.1</object-name>
-    <property>/instrumentation/nav/radials/selected-deg</property>
+    <property>/autopilot/settings/true-heading-deg</property>
     <axis>
       <x> -1 </x>
       <y>  0 </y>
@@ -316,7 +316,7 @@
   <animation>
     <type>translate</type>
     <object-name>EHSI.crsneedle.1</object-name>
-    <property>/instrumentation/nav/heading-needle-deflection</property>
+    <property>/autopilot/internal/true-heading-error-deg</property>
     <interpolation>
       <entry><ind> -999 </ind><dep> -0.02 </dep></entry>
       <entry><ind>  -10 </ind><dep> -0.02 </dep></entry>
@@ -359,7 +359,7 @@
   <animation>
     <type>textranslate</type>
     <object-name>EHSI.crs1</object-name>
-    <property>/instrumentation/nav/radials/selected-deg</property>
+    <property>/autopilot/settings/true-heading-deg</property>
     <factor>0.001</factor>
     <step>100</step>
     <axis>
@@ -372,7 +372,7 @@
   <animation>
     <type>textranslate</type>
     <object-name>EHSI.crs2</object-name>
-    <property>/instrumentation/nav/radials/selected-deg</property>
+    <property>/autopilot/settings/true-heading-deg</property>
     <factor>0.01</factor>
     <step>10</step>
     <axis>
@@ -385,7 +385,7 @@
   <animation>
     <type>textranslate</type>
     <object-name>EHSI.crs3</object-name>
-    <property>/instrumentation/nav/radials/selected-deg</property>
+    <property>/autopilot/settings/true-heading-deg</property>
     <factor>0.1</factor>
     <step>1</step>
     <axis>

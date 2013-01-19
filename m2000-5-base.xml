@@ -68,8 +68,9 @@
         <float n="3" alias="/smoke/colors/knob-red">1</float>                      <!-- 3 smoke mixer red setting -->
         <float n="4" alias="/smoke/colors/knob-green">1</float>                    <!-- 4 smoke mixer green setting -->
         <float n="5" alias="/smoke/colors/knob-blue">1</float>                     <!-- 5 smoke mixer blue setting -->
-        <string n="9" type="string" />                                             <!-- string[9] reserved for bombable mode 
-        <string n="10" alias="/sim/weight[0]/selected"/>                                              For loads 
+        <string n="0" type="string" />
+        <string n="9" type="string" />                                             <!-- string[9] reserved for bombable mode -->
+           <!--                                          For loads 
         <string n="11" alias="/sim/weight[1]/selected"/>                                                      
         <string n="12" alias="/sim/weight[2]/selected"/>                                              
         <string n="13" alias="/sim/weight[3]/selected"/>                                             
@@ -130,16 +131,16 @@
         <desc>(Release the correspondant Load)</desc>
       </key>
       <key>
-        <name>9</name>
+        <name>0</name>
         <desc>Release 2,3,4 (Jettison Tank)</desc>
       </key>
       <key>
         <name>T</name>
-        <desc>Toggle ECM (Electronic Countermeasure"</desc>
+        <desc>Toggle RWR</desc>
       </key>
       <key>
         <name>t</name>
-        <desc>Change Radar Distances (10, 20 40)</desc>
+        <desc>Change Radar Distances (10, 20 50,100,150)</desc>
       </key>
       <key>
         <name>R</name>
@@ -170,6 +171,7 @@
       <line>To fire a guided Missile, activate with R, aim with the HUD and fire</line>
       <line>(1,4,7)     5     (9,6,3)   </line>
       <line> right    Center    left    </line>
+      <line> Back right '8', Back left '2'  </line>
     </help>
         
     <!--                  /-\
@@ -196,6 +198,8 @@
       <opt><name>Matra R550 Magic 2</name><lbs>196.21</lbs></opt>
       <opt><name>AIM120</name><lbs>335</lbs></opt>
       <opt><name>Matra MICA</name><lbs>246.91</lbs></opt>
+      <opt><name>GBU16</name><lbs>1000</lbs></opt>
+      <opt><name>GBU12</name><lbs>800</lbs></opt>
     </weight>
 
     <weight n="1">
@@ -219,6 +223,7 @@
       <opt><name>none</name><lbs>0</lbs></opt>
       <opt><name>1700 l Droptank</name><lbs>280</lbs><gals>448.50</gals></opt>
       <opt><name>1300 l Droptank</name><lbs>220</lbs><gals>343.00</gals></opt>
+      <opt><name>Sea Eagle</name><lbs>1825</lbs></opt>
       <opt><name>Matra R550 Magic 2</name><lbs>196.21</lbs></opt>
       <opt><name>Matra MICA</name><lbs>246.91</lbs></opt>
     </weight>
@@ -249,6 +254,7 @@
       <opt><name>none</name><lbs>0</lbs></opt>
       <opt><name>1700 l Droptank</name><lbs>280</lbs><gals>448.50</gals></opt>
       <opt><name>1300 l Droptank</name><lbs>220</lbs><gals>343.00</gals></opt>
+      <opt><name>Sea Eagle</name><lbs>1825</lbs></opt>
       <opt><name>Matra R550 Magic 2</name><lbs>196.21</lbs></opt>
       <opt><name>Matra MICA</name><lbs>246.91</lbs></opt>
     </weight>
@@ -269,12 +275,42 @@
       <name>pylon1.R</name>
       <weight-lb>0</weight-lb>
       <selected>none</selected>
-      <offsets><x-m type="double"> -1.265 </x-m><y-m type="double">  0.824 </y-m><z-m type="double"> -1.404 </z-m></offsets>
+      <offsets><x-m type="double"> 2.373 </x-m><y-m type="double">  0.824 </y-m><z-m type="double"> -1.404 </z-m></offsets>
       <opt><name>none</name><lbs>0</lbs></opt>
       <opt><name>Matra R550 Magic 2</name><lbs>196.21</lbs></opt>
       <opt><name>AIM120</name><lbs>335</lbs></opt>
       <opt><name>Matra MICA</name><lbs>246.91</lbs></opt>
+      <opt><name>GBU16</name><lbs>1000</lbs></opt>
+      <opt><name>GBU12</name><lbs>800</lbs></opt>
     </weight>
+    <weight n="7">
+      <name>pylonB.L</name>
+      <weight-lb>0</weight-lb>
+      <selected>none</selected>
+      <offsets><x-m type="double"> 2.373 </x-m><y-m type="double"> -0.824 </y-m><z-m type="double"> -1.404 </z-m></offsets>
+      <opt><name>none</name><lbs>0</lbs></opt>
+      <opt><name>Matra MICA</name><lbs>246.91</lbs></opt>
+      <opt><name>GBU16</name><lbs>1000</lbs></opt>
+      <opt><name>GBU12</name><lbs>800</lbs></opt>
+    </weight>
+    <weight n="8">
+      <name>pylonB.R</name>
+      <weight-lb>0</weight-lb>
+      <selected>none</selected>
+      <offsets><x-m type="double"> -1.265 </x-m><y-m type="double">  0.824 </y-m><z-m type="double"> -1.404 </z-m></offsets>
+      <opt><name>none</name><lbs>0</lbs></opt>
+      <opt><name>Matra MICA</name><lbs>246.91</lbs></opt>
+      <opt><name>GBU16</name><lbs>1000</lbs></opt>
+      <opt><name>GBU12</name><lbs>800</lbs></opt>
+    </weight>
+    
+     <!--   <offsets><x-m type="double"> -1.265 </x-m><y-m  droite/gauche type="double"> -0.824 </y-m><z-m type="double"> -1.404 </z-m></offsets>-->
+    
+    <systems>
+       <autopilot>
+          <path>Aircraft/Mirage-2000/System/Autopilot.xml</path>
+       </autopilot>
+    </systems>
 
   </sim>
 
@@ -364,6 +400,12 @@
         <release type="bool">false</release>
       </station>
       <station n="6">
+        <release type="bool">false</release>
+      </station>
+      <station n="7">
+        <release type="bool">false</release>
+      </station>
+      <station n="8">
         <release type="bool">false</release>
       </station>
     </armament>
@@ -627,9 +669,10 @@
         }, 0, 0);
        </script>
     </engines>
-    <test>
-      <file>Aircraft/Mirage-2000/Nasal/test.nas</file>
-    </test>
+    <MP>
+      <file>Aircraft/Mirage-2000/Nasal/MPstring.nas</file>
+      <script>#MP.makestring();</script>
+    </MP>
   </nasal>
   
 </PropertyList>

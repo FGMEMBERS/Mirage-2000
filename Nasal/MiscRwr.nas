@@ -66,10 +66,12 @@ var switch_distance = func() {
 
 var remove_target = func(){
         var targets = props.globals.getNode("instrumentation/radar2/targets");
-        var raw_list = Mp.getChildren();
+        var raw_list = targets.getChildren();
+        
         foreach( var c; raw_list ) {
                 c.remove();
         }
+        radar.az_scan();
 
 }
 

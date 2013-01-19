@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 
-<PropertyList>
-
+ <PropertyList>
+   
   <enable3d>true</enable3d>
-    
+   
   <label>
     <name>G Load</name>
     <x> -55 </x>
@@ -18,7 +18,7 @@
     <format>%2.1f</format>
     <halign>left</halign>
   </label>
-
+   
   <ladder>
     <name>Pitch Ladder</name>
     <type>pitch</type>
@@ -52,9 +52,7 @@
     <enable-energy-worm>false</enable-energy-worm>
     <enable-waypoint-marker>true</enable-waypoint-marker>
   </ladder>
-
-    
-
+     
   <label>
     <name>Gyro Heading Label</name>
     <x> -9 </x>
@@ -68,7 +66,7 @@
     <halign>center</halign>
     <box>true</box>
   </label>
-
+     
   <label>
     <name>KIAS</name>
     <x> -55 </x>
@@ -83,7 +81,7 @@
     <box>true</box>
     <option>right</option>
   </label>
-
+     
   <label>
     <name>Altitude</name>
     <x>  24 </x>
@@ -98,201 +96,207 @@
     <box>true</box>
     <option>left</option>
   </label>
-
-   <label>
-     <name>elevation</name>
-     <x>24</x>
-     <y>-63</y>
-     <condition> 
-          <less-than>
-            <property>/position/altitude-agl-ft</property>
-            <value>1000</value>
-          </less-than>
-     </condition>
-     <halign>left</halign>
-     <format>%5.0f ft</format>
-     <input><property>/position/altitude-agl-ft</property></input>
-   </label>
-
-   <label>
-     <name>Closest Range</name>
-     <x>63</x>
-     <y>51</y>
-     <condition>
-        <and>
-          <less-than>
-             <property>/ai/closest/range</property>
-             <property>instrumentation/radar/range</property>
-          </less-than>
-          <greater-than>
-             <property>/ai/closest/range</property>
-             <value>0</value>
-          </greater-than>
-        </and>
-     </condition>
-     <halign>right</halign>
-     <format>%2.2fnm</format>
-     <input><property>/ai/closest/range</property></input>
-   </label>
-
+     
   <label>
-     <name>Closest Callsign</name>
-     <x>63</x>
-     <y>57</y>
-     <condition>
-        <and>
-          <less-than>
-             <property>/ai/closest/range</property>
-             <property>instrumentation/radar/range</property>
-          </less-than>
-          <greater-than>
-             <property>/ai/closest/range</property>
-             <value>0</value>
-          </greater-than>
-        </and>
-     </condition>
-     <input>
-          <property>/ai/closest/callsign</property>
-     </input>
-     <format>%s</format>
-     <halign>right</halign>
-   </label>
-
+    <name>elevation</name>
+    <x>24</x>
+    <y>-63</y>
+    <condition> 
+      <less-than>
+        <property>/position/altitude-agl-ft</property>
+        <value>1000</value>
+      </less-than>
+    </condition>
+    <halign>left</halign>
+    <format>%5.0f ft</format>
+    <input>
+      <property>/position/altitude-agl-ft</property>
+    </input>
+  </label>
+     
   <label>
-     <name>Closest Altitude</name>
-     <x>63</x>
-     <y>45</y>
-     <condition>
-        <and>
-          <less-than>
-             <property>/ai/closest/range</property>
-             <property>instrumentation/radar/range</property>
-          </less-than>
-          <greater-than>
-             <property>/ai/closest/range</property>
-             <value>0</value>
-          </greater-than>
-        </and>
-     </condition>
-     <input>
-          <property>/ai/closest/altitude</property>
-     </input>
-     <format>%1.0f</format>
-     <halign>right</halign>
-   </label>
-
- <label>
-     <name>Closest heading</name>
-     <x>63</x>
-     <y>39</y>
-     <condition>
-        <and>
-          <less-than>
-             <property>/ai/closest/range</property>
-             <property>instrumentation/radar/range</property>
-          </less-than>
-          <greater-than>
-             <property>/ai/closest/range</property>
-             <value>0</value>
-          </greater-than>
-        </and>
-     </condition>
-     <input>
-          <property>/ai/closest/heading</property>
-     </input>
-     <format>%1.0f'</format>
-     <halign>right</halign>
-   </label>
-
- <label>
-     <name>Closest speed</name>
-     <x>63</x>
-     <y>32</y>
-     <condition>
-        <and>
-          <less-than>
-             <property>/ai/closest/range</property>
-             <property>instrumentation/radar/range</property>
-          </less-than>
-          <greater-than>
-             <property>/ai/closest/range</property>
-             <value>0</value>
-          </greater-than>
-        </and>
-     </condition>
-     <input>
-          <property>/ai/closest/speed</property>
-     </input>
-     <format>%1.0f</format>
-     <halign>right</halign>
-   </label>
-
- <label>
-     <name>Closest bearing</name>
-     <x>63</x>
-     <y>26</y>
-     <condition>
-        <and>
-          <less-than>
-             <property>/ai/closest/range</property>
-             <property>instrumentation/radar/range</property>
-          </less-than>
-          <greater-than>
-             <property>/ai/closest/range</property>
-             <value>0</value>
-          </greater-than>
-        </and>
-     </condition>
-     <input>
-          <property>/ai/closest/bearing</property>
-     </input>
-     <format>at %1.0f'</format>
-     <halign>right</halign>
-   </label>
-
-
-
-   <label>
-     <name>MACH Number</name>
-     <x>-55</x>
-     <y>-63</y>
-     <width>1</width>
-     <height>1</height>
-     <condition> 
-          <greater-than>
-            <property>/velocities/mach</property>
-            <value>0.80</value>
-          </greater-than>
-     </condition>
-     <input><property>/velocities/mach</property></input>
-     <format>%4.2f</format>
-     <halign>left</halign>
-    </label>
-
-   <label>
-     <name>off</name>
-     <x>-55</x>
-     <y>-63</y>
-     <width>1</width>
-     <height>1</height>
-     <condition><property>/controls/engines/engine[0]/cutoff</property></condition>
-     <format>off</format>
-     <halign>left</halign>
-    </label>
-
-   <label>
-     <name>Starting</name>
-     <x>-20</x>
-     <y>-64</y>
-     <width>1</width>
-     <height>1</height>
-     <condition><property>/controls/engines/engine[0]/starter</property></condition>
-     <format>Starting</format>
-     <halign>left</halign>
-    </label>
-
-
-
+    <name>Closest Range</name>
+    <x>63</x>
+    <y>51</y>
+    <condition>
+      <and>
+        <less-than>
+          <property>/ai/closest/range</property>
+          <property>instrumentation/radar/range</property>
+        </less-than>
+        <greater-than>
+          <property>/ai/closest/range</property>
+          <value>0</value>
+        </greater-than>
+      </and>
+    </condition>
+    <halign>right</halign>
+    <format>%2.2fnm</format>
+    <input>
+      <property>/ai/closest/range</property>
+    </input>
+  </label>
+     
+  <label>
+    <name>Closest Callsign</name>
+    <x>63</x>
+    <y>57</y>
+    <condition>
+      <and>
+        <less-than>
+          <property>/ai/closest/range</property>
+          <property>instrumentation/radar/range</property>
+        </less-than>
+        <greater-than>
+          <property>/ai/closest/range</property>
+          <value>0</value>
+        </greater-than>
+      </and>
+    </condition>
+    <input>
+      <property>/ai/closest/callsign</property>
+    </input>
+    <format>%s</format>
+    <halign>right</halign>
+  </label>
+     
+  <label>
+    <name>Closest Altitude</name>
+    <x>63</x>
+    <y>45</y>
+    <condition>
+      <and>
+        <less-than>
+          <property>/ai/closest/range</property>
+          <property>instrumentation/radar/range</property>
+        </less-than>
+        <greater-than>
+          <property>/ai/closest/range</property>
+          <value>0</value>
+        </greater-than>
+      </and>
+    </condition>
+    <input>
+      <property>/ai/closest/altitude</property>
+    </input>
+    <format>%1.0f</format>
+    <halign>right</halign>
+  </label>
+     
+  <label>
+    <name>Closest heading</name>
+    <x>63</x>
+    <y>39</y>
+    <condition>
+      <and>
+        <less-than>
+          <property>/ai/closest/range</property>
+          <property>instrumentation/radar/range</property>
+        </less-than>
+        <greater-than>
+          <property>/ai/closest/range</property>
+          <value>0</value>
+        </greater-than>
+      </and>
+    </condition>
+    <input>
+      <property>/ai/closest/heading</property>
+    </input>
+    <format>%1.0f'</format>
+    <halign>right</halign>
+  </label>
+     
+  <label>
+    <name>Closest speed</name>
+    <x>63</x>
+    <y>32</y>
+    <condition>
+      <and>
+        <less-than>
+          <property>/ai/closest/range</property>
+          <property>instrumentation/radar/range</property>
+        </less-than>
+        <greater-than>
+          <property>/ai/closest/range</property>
+          <value>0</value>
+        </greater-than>
+      </and>
+    </condition>
+    <input>
+      <property>/ai/closest/speed</property>
+    </input>
+    <format>%1.0f</format>
+    <halign>right</halign>
+  </label>
+     
+  <label>
+    <name>Closest bearing</name>
+    <x>63</x>
+    <y>26</y>
+    <condition>
+      <and>
+        <less-than>
+          <property>/ai/closest/range</property>
+          <property>instrumentation/radar/range</property>
+        </less-than>
+        <greater-than>
+          <property>/ai/closest/range</property>
+          <value>0</value>
+        </greater-than>
+      </and>
+    </condition>
+    <input>
+      <property>/ai/closest/bearing</property>
+    </input>
+    <format>at %1.0f'</format>
+    <halign>right</halign>
+  </label>
+     
+  <label>
+    <name>MACH Number</name>
+    <x>-55</x>
+    <y>-63</y>
+    <width>1</width>
+    <height>1</height>
+    <condition> 
+      <greater-than>
+        <property>/velocities/mach</property>
+        <value>0.80</value>
+      </greater-than>
+    </condition>
+    <input>
+      <property>/velocities/mach</property>
+    </input>
+    <format>%4.2f</format>
+    <halign>left</halign>
+  </label>
+     
+  <label>
+    <name>off</name>
+    <x>-55</x>
+    <y>-63</y>
+    <width>1</width>
+    <height>1</height>
+    <condition>
+      <property>/controls/engines/engine[0]/cutoff</property>
+    </condition>
+    <format>off</format>
+    <halign>left</halign>
+  </label>
+     
+  <label>
+    <name>Starting</name>
+    <x>-20</x>
+    <y>-64</y>
+    <width>1</width>
+    <height>1</height>
+    <condition>
+      <property>/controls/engines/engine[0]/starter</property>
+    </condition>
+    <format>Starting</format>
+    <halign>left</halign>
+  </label>
+     
   <label>
     <name>ECM</name>
     <x> -55 </x>
@@ -305,7 +309,7 @@
     <format>e</format>
     <halign>left</halign>
   </label>
-
+     
   <label>
     <name>Gear</name>
     <x> -56 </x>
@@ -318,6 +322,7 @@
     <format>G</format>
     <halign>left</halign>
   </label>
+  
   <label>
     <name>Parking Break</name>
     <x> -50 </x>
@@ -330,96 +335,95 @@
     <format>B</format>
     <halign>left</halign>
   </label>
-
-
+     
   <aiming-reticle>
     <x>-20</x>
     <y>-19</y>
-    <width>40</width> <!-- defines the diameter of the constant/inner circle -->
+    <width>40</width>
+    <!-- defines the diameter of the constant/inner circle -->
     <height>40</height>
     <active-condition> 
       <property>/sim/aim/active</property>
     </active-condition>
-
+       
     <!-- defines the diameter of the adjustable/outer circle -->
-     <!--<diameter-input>50</diameter-input> -->
-
-<!-- The aiming reticule under is for gun-->
- </aiming-reticle>
-
-       <aiming-reticle>
-
-                <condition>
-                        <equals>
-                                <property>/sim/current-view/name</property>
-                                <value>Cockpit View</value>
-                        </equals>
-                        <property>/sim/aim/tachy</property>
-		</condition>
-
-		<active-condition>
-			<property>/sim/aim/active</property>
-		</active-condition>
-
-		<tachy-condition>
-			<property>/sim/aim/tachy</property>
-		</tachy-condition>
-
-		<align-condition>
-			<property>/sim/aim/align</property>
-		</align-condition>
-
-		<yaw-input>
-			<property>/orientation/yaw-rate-degps</property>
-                        <factor>-1.0</factor>
-                        <damp>2.0</damp>
-		</yaw-input>
-
-		<pitch-input>
-			<property>/orientation/pitch-rate-degps</property>
-                        <factor>-1.0</factor>
-                        <damp>2.0</damp>
-		</pitch-input>
-
-		<offset-x-input>
-			<property>/sim/aim/offsets/x</property>
-		</offset-x-input>
-
-		<offset-y-input>
-			<property>/sim/aim/offsets/y</property>
-		</offset-y-input>
-
-		<speed-input>
-			<property>/sim/aim/speed-fps</property><!--In feet /s ... 1 yard = 3 feet and 1 nm = 2025 yards (and 1000 meters = 1 km)-->
-		</speed-input>
-
-		<range-input>
-			<property>/sim/aim/range-yds</property> <!-- In Yard... -->
-		</range-input>
-
-		<!-- defines the diameter and length of the adjustable outer arc -->
-		<diameter-input>
-			<property>/sim/aim/radius</property>
-		</diameter-input>
-
-		<arc-start-input>
-			<property>/sim/aim/arc/start-deg</property>
-		</arc-start-input>
-
-		<arc-stop-input>
-			<property>/sim/aim/arc/stop-deg</property>
-		</arc-stop-input>
-
-		<x>-9</x>
-		<y>-15</y>
-		<width>15</width>
-		<height>15</height>
-		<compression-factor>10</compression-factor>
-		<limit-x>80</limit-x>
-		<limit-y>40</limit-y>
-
-	</aiming-reticle>
-
+    <!--<diameter-input>50</diameter-input> -->
+       
+    <!-- The aiming reticule under is for gun-->
+  </aiming-reticle>
+         
+  <aiming-reticle>
+           
+    <condition>
+      <equals>
+        <property>/sim/current-view/name</property>
+        <value>Cockpit View</value>
+      </equals>
+      <property>/sim/aim/tachy</property>
+    </condition>
+           
+    <active-condition>
+             <property>/sim/aim/active</property>
+    </active-condition>
+           
+    <tachy-condition>
+      <property>/sim/aim/tachy</property>
+    </tachy-condition>
+           
+    <align-condition>
+      <property>/sim/aim/align</property>
+    </align-condition>
+           
+    <yaw-input>
+      <property>/orientation/yaw-rate-degps</property>
+      <factor>-1.0</factor>
+      <damp>2.0</damp>
+    </yaw-input>
+           
+    <pitch-input>
+      <property>/orientation/pitch-rate-degps</property>
+      <factor>-1.0</factor>
+      <damp>2.0</damp>
+    </pitch-input>
+           
+    <offset-x-input>
+      <property>/sim/aim/offsets/x</property>
+    </offset-x-input>
+           
+    <offset-y-input>
+      <property>/sim/aim/offsets/y</property>
+    </offset-y-input>
+           
+    <speed-input>
+      <property>/sim/aim/speed-fps</property>
+      <!--In feet /s ... 1 yard = 3 feet and 1 nm = 2025 yards (and 1000 meters = 1 km)-->
+    </speed-input>
+           
+    <range-input>
+      <property>/sim/aim/range-yds</property>
+      <!-- In Yard... -->
+    </range-input>
+           
+    <!-- defines the diameter and length of the adjustable outer arc -->
+    <diameter-input>
+      <property>/sim/aim/radius</property>
+    </diameter-input>
+           
+    <arc-start-input>
+      <property>/sim/aim/arc/start-deg</property>
+    </arc-start-input>
+           
+    <arc-stop-input>
+      <property>/sim/aim/arc/stop-deg</property>
+    </arc-stop-input>      
+    
+    <x>-9</x>
+    <y>-15</y>
+    <width>15</width>
+    <height>15</height>
+    <compression-factor>10</compression-factor>
+    <limit-x>80</limit-x>
+    <limit-y>40</limit-y>
+  </aiming-reticle>
 
 </PropertyList>
-

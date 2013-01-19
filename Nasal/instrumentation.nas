@@ -1,4 +1,4 @@
-
+var blinking = 0;
 
 
 var initIns = func {
@@ -64,15 +64,32 @@ var lastWPtime = getprop("instrumentation/gps/wp/wp[1]/TTW-sec");
         if(lastWPtime != nil and lastWPtime != "NaN"){       
                 lastWPtime = lastWPtime/60;
                 var bingo = moy * (lastWPtime + 45);
-                setprop("/instrumentation/consumables/bingo_fuel",bingo);
-                
-                if(getprop("/consumables/fuel/total-fuel-kg")<bingo){
-                     setprop("/instrumentation/consumables/bingo_low",1);   
-                }else{
-                     setprop("/instrumentation/consumables/bingo_low",0); 
-                }
+                setprop("/instrumentation/consumables/bingo_fuel",bingo);    
+                if(blinking ==0){ clignote(); }
+
         }
 
+
+
+}
+
+#This is for blinking light
+var clignote = func(){
+
+        if(getprop("/consumables/fuel/total-fuel-kg")<getprop("/instrumentation/consumables/bingo_fuel")){
+        
+                 if(getprop("/instrumentation/consumables/bingo_low") == 1)
+                 {
+                        setprop("/instrumentation/consumables/bingo_low",0); 
+                 }else{
+                        setprop("/instrumentation/consumables/bingo_low",1); 
+                 }
+                blinking = 1;
+                settimer(clignote, 0.25);
+        }else{
+                setprop("/instrumentation/consumables/bingo_low",0); 
+                blinking = 0;
+        }
 
 
 }

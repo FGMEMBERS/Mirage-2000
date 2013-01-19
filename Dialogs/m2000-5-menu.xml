@@ -27,38 +27,43 @@
           <script>guns.reload_Cannon()</script>
         </binding>
       </item>
-        <!--<item n="3">
-          <label>Fuel and Stores</label>
-          <binding>
-            <command>nasal</command>
-            <script>load.ext_loads_dlg.open()</script>
-          </binding>
-        </item>-->
-        <item n="4">
-             <label>Air to Air Middle Distance</label>
-                <binding>
-                  <command>nasal</command>
-                  <script>load.AirToAirMiddle()</script>
-                </binding>
-        </item>
-         <item n="5">
-             <label>Air to Air Short Distance</label>
-                <binding>
-                  <command>nasal</command>
-                  <script>load.AirToAirshort()</script>
-                </binding>
-        </item>
-        <item n="6">
-             <label>Air to Air Long Distance</label>
-                <binding>
-                  <command>nasal</command>
-                  <script>load.AirToAirLong()</script>
-                </binding>
-        </item>
+      <!--<item n="3">
+        <label>Fuel and Stores</label>
+        <binding>
+          <command>nasal</command>
+          <script>load.ext_loads_dlg.open()</script>
+        </binding>
+      </item>-->
+      <item n="4">
+        <label>Air to Air Middle Distance</label>
+        <binding>
+          <command>nasal</command>
+          <script>load.AirToAirMiddle()</script>
+        </binding>
+      </item>
+      <item n="5">
+        <label>Air to Air Short Distance</label>
+        <binding>
+          <command>nasal</command>
+          <script>load.AirToAirshort()</script>
+        </binding>
+      </item>
+      <item n="6">
+        <label>Air to Air Long Distance</label>
+        <binding>
+          <command>nasal</command>
+          <script>load.AirToAirLong()</script>
+        </binding>
+      </item>  
+      <item n="7">
+        <label>Target Tracking</label>
+        <name>track_target</name>
+        <binding>
+           <command>dialog-show</command>
+           <dialog-name>track_target</dialog-name>
+        </binding>
+      </item> 
     </menu>
   </default>
 
-
-
 </PropertyList>
-

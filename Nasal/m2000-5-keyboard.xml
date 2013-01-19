@@ -54,12 +54,28 @@
 
 <!--____________________Lanch________________________-->
 
+   <key n="48">
+     <name>0</name>
+     <desc>Drop Tanks</desc>
+     <binding>
+        <command>nasal</command>
+        <script>load.dropTanks()</script>
+     </binding>
+  </key>
   <key n="49">
      <name>1</name>
      <desc>Missile 1</desc>
      <binding>
         <command>nasal</command>
         <script>load.dropLoad(1)</script>
+     </binding>
+  </key>
+  <key n="50">
+     <name>2</name>
+     <desc>Drop load</desc>
+     <binding>
+        <command>nasal</command>
+        <script>load.dropLoad(7)</script>
      </binding>
   </key>
   <key n="51">
@@ -106,10 +122,10 @@
   </key>
   <key n="56">
      <name>8</name>
-     <desc>Drop Tanks</desc>
+     <desc>Missile 8</desc>
      <binding>
         <command>nasal</command>
-        <script>load.dropTanks()</script>
+        <script>load.dropLoad(8)</script>
      </binding>
   </key>
 
