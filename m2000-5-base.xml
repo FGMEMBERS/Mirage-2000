@@ -174,14 +174,25 @@
       <line> Back right '8', Back left '2'  </line>
     </help>
         
-    <!--                  /-\
-                         /   \
-        _________________|   |_________________
-          |      |      |\   /|      |      |       
-         2.L    3.L    1.L\-/1.R    3.R    2.R
-         (1)    (2)    (0) | (6)    (4)    (5)
-                         Center
-                          (3)
+    <!-- pylon options
+      _________________|___|_________________
+      \                |   |                /
+       \               |   |               /
+        \2.L        4.L|   |4.R        2.R/
+         (1)        (7)|   |(8)        (5)
+          \   3.L      |   |      3.R   /
+           \  (2)      |   |      (4)  /   
+            \          |   |          /    
+             \         |   |         /
+              \        |   |        /
+               \       |.C |       / 
+                \      |(3)|      /
+                 \     |   |     /
+                  \ 1.L|   |1.R /
+                   \(0)|   |(6)/
+                    \  |   |  /
+                     \ |   | /
+                      \|___|/
 
        1700 l = 448.5 gal = 3013.92 lbs
        1300 l = 343.0 gal = 2305.01 lbs
@@ -283,6 +294,7 @@
       <opt><name>GBU16</name><lbs>1000</lbs></opt>
       <opt><name>GBU12</name><lbs>800</lbs></opt>
     </weight>
+    
     <weight n="7">
       <name>pylonB.L</name>
       <weight-lb>0</weight-lb>
@@ -293,6 +305,7 @@
       <opt><name>GBU16</name><lbs>1000</lbs></opt>
       <opt><name>GBU12</name><lbs>800</lbs></opt>
     </weight>
+    
     <weight n="8">
       <name>pylonB.R</name>
       <weight-lb>0</weight-lb>
@@ -304,8 +317,7 @@
       <opt><name>GBU12</name><lbs>800</lbs></opt>
     </weight>
     
-     <!--   <offsets><x-m type="double"> -1.265 </x-m><y-m  droite/gauche type="double"> -0.824 </y-m><z-m type="double"> -1.404 </z-m></offsets>-->
-    
+    <!--   <offsets><x-m type="double"> -1.265 </x-m><y-m  droite/gauche type="double"> -0.824 </y-m><z-m type="double"> -1.404 </z-m></offsets>-->
     <systems>
        <autopilot>
           <path>Aircraft/Mirage-2000/System/Autopilot.xml</path>
@@ -328,21 +340,6 @@
         <magnetos>0</magnetos>
       </engine>
     </engines>
-    <!--                  /-\
-                         /   \
-
-        _________________|   |_________________
-          |      |      |\   /|      |      |       
-         2.L    3.L    1.L\-/1.R    3.R    2.R
-         (1)    (2)    (0) | (6)    (4)    (5)
-                         Center
-
-                          (3)
-
-       1700 l = 448.5 gal = 3013.92 lbs
-       1300 l = 343.0 gal = 2305.01 lbs
-
-    -->  
     <armament>
       <!--Missile property. the value here doesn't really count, beacause it's reloaded by a Nasal for each missile. Anyway this is nessecary for variable declaration -->
       <missile>
@@ -369,7 +366,7 @@
         <maxspeed type="double"> 4</maxspeed>                      <!-- In Mach -->
         <life>60</life>
         <fox>Fox 3</fox>                                           <!--"Fox1" for guided by the aircraft radar (semi active) AIM7, "Fox2" for infrared AIM9,
-	                                                               "Fox3" for intern missile Radar AIM120, AIM54, A/G air to ground-->
+                                                                       "Fox3" for intern missile Radar AIM120, AIM54, A/G air to ground-->
         <rail type="bool">true</rail>                              <!-- if the missile fall before thrust start or if there is some kind of "rail" -->
         <cruise_alt type="int">0</cruise_alt>                      <!--for cruise missile, in feet.0 is off.bellow 10000 feet is terrain following-->
       </missile>
@@ -673,6 +670,9 @@
       <file>Aircraft/Mirage-2000/Nasal/MPstring.nas</file>
       <script>#MP.makestring();</script>
     </MP>
+    <tanker>
+      <file>Aircraft/Mirage-2000/Nasal/tanker.nas</file>
+    </tanker>
   </nasal>
   
 </PropertyList>

@@ -9,7 +9,38 @@ var dropTanks = func(){
         }
 }
 
+#Here is where quick load management is managed...
 var AirToAirMiddle = func(){
+
+        setprop("consumables/fuel/tank[2]/selected", 0);
+        setprop("consumables/fuel/tank[2]/capacity-gal_us", 0);
+        setprop("consumables/fuel/tank[2]/level-gal_us", 0);
+        setprop("consumables/fuel/tank[3]/selected", 0);
+        setprop("consumables/fuel/tank[3]/capacity-gal_us", 0);
+        setprop("consumables/fuel/tank[3]/level-gal_us", 0);
+        setprop("consumables/fuel/tank[4]/selected", 0);
+        setprop("consumables/fuel/tank[4]/capacity-gal_us", 0);
+        setprop("consumables/fuel/tank[4]/level-gal_us", 0);
+
+
+
+        setprop("sim/weight[0]/selected", "Matra MICA");
+        setprop("sim/weight[1]/selected", "Matra MICA");
+        setprop("sim/weight[2]/selected", "Matra MICA");
+        setprop("sim/weight[3]/selected", "1300 l Droptank");
+        setprop("consumables/fuel/tank[3]/selected", 1);
+        setprop("consumables/fuel/tank[3]/capacity-gal_us", 343);
+        setprop("consumables/fuel/tank[3]/level-gal_us", 342);
+        
+        setprop("sim/weight[4]/selected", "Matra MICA");
+        setprop("sim/weight[5]/selected", "Matra MICA");
+        setprop("sim/weight[6]/selected", "Matra MICA");
+        setprop("sim/weight[7]/selected", "Matra MICA");
+        setprop("sim/weight[8]/selected", "Matra MICA");
+
+}
+
+var AirToAirshort = func(){
 
         setprop("consumables/fuel/tank[2]/selected", 0);
         setprop("consumables/fuel/tank[2]/capacity-gal_us", 0);
@@ -34,32 +65,8 @@ var AirToAirMiddle = func(){
         setprop("sim/weight[4]/selected", "Matra MICA");
         setprop("sim/weight[5]/selected", "Matra R550 Magic 2");
         setprop("sim/weight[6]/selected", "Matra MICA");
-
-}
-
-var AirToAirshort = func(){
-
-        setprop("consumables/fuel/tank[2]/selected", 0);
-        setprop("consumables/fuel/tank[2]/capacity-gal_us", 0);
-        setprop("consumables/fuel/tank[2]/level-gal_us", 0);
-        setprop("consumables/fuel/tank[3]/selected", 0);
-        setprop("consumables/fuel/tank[3]/capacity-gal_us", 0);
-        setprop("consumables/fuel/tank[3]/level-gal_us", 0);
-        setprop("consumables/fuel/tank[4]/selected", 0);
-        setprop("consumables/fuel/tank[4]/capacity-gal_us", 0);
-        setprop("consumables/fuel/tank[4]/level-gal_us", 0);
-
-        setprop("sim/weight[0]/selected", "Matra MICA");
-        setprop("sim/weight[1]/selected", "Matra R550 Magic 2");
-        setprop("sim/weight[2]/selected", "Matra R550 Magic 2");
-        setprop("sim/weight[3]/selected", "1300 l Droptank");
-        setprop("consumables/fuel/tank[3]/selected", 1);
-        setprop("consumables/fuel/tank[3]/capacity-gal_us", 343);
-        setprop("consumables/fuel/tank[3]/level-gal_us", 342);
-        
-        setprop("sim/weight[4]/selected", "Matra R550 Magic 2");
-        setprop("sim/weight[5]/selected", "Matra R550 Magic 2");
-        setprop("sim/weight[6]/selected", "Matra MICA");
+        setprop("sim/weight[7]/selected", "Matra MICA");
+        setprop("sim/weight[8]/selected", "Matra MICA");
 
 }
 
@@ -82,7 +89,10 @@ var AirToAirLong = func() {
         setprop("consumables/fuel/tank[2]/capacity-gal_us", 448.50);
         setprop("consumables/fuel/tank[2]/level-gal_us", 447);        
                 
-        setprop("sim/weight[3]/selected", "AIM-54");
+        setprop("sim/weight[3]/selected", "1300 l Droptank");
+        setprop("consumables/fuel/tank[3]/selected", 1);
+        setprop("consumables/fuel/tank[3]/capacity-gal_us", 343);
+        setprop("consumables/fuel/tank[3]/level-gal_us", 342);
 
         setprop("sim/weight[4]/selected", "1700 l Droptank");
         setprop("consumables/fuel/tank[4]/selected", 1);
@@ -92,10 +102,71 @@ var AirToAirLong = func() {
                 
         setprop("sim/weight[5]/selected", "Matra MICA");
         setprop("sim/weight[6]/selected", "Matra MICA");
+        setprop("sim/weight[7]/selected", "Matra MICA");
+        setprop("sim/weight[8]/selected", "Matra MICA");
 
 
 }
 
+var NoLoad = func() {
+        setprop("consumables/fuel/tank[2]/selected", 0);
+        setprop("consumables/fuel/tank[2]/capacity-gal_us", 0);
+        setprop("consumables/fuel/tank[2]/level-gal_us", 0);
+        setprop("consumables/fuel/tank[3]/selected", 0);
+        setprop("consumables/fuel/tank[3]/capacity-gal_us", 0);
+        setprop("consumables/fuel/tank[3]/level-gal_us", 0);
+        setprop("consumables/fuel/tank[4]/selected", 0);
+        setprop("consumables/fuel/tank[4]/capacity-gal_us", 0);
+        setprop("consumables/fuel/tank[4]/level-gal_us", 0);
+
+        setprop("sim/weight[0]/selected", "none");
+        setprop("sim/weight[1]/selected", "none");
+        setprop("sim/weight[2]/selected", "none");
+        setprop("sim/weight[3]/selected", "none");
+        setprop("sim/weight[4]/selected", "none");                         
+        setprop("sim/weight[5]/selected", "none");
+        setprop("sim/weight[6]/selected", "none");        
+        setprop("sim/weight[7]/selected", "none");
+        setprop("sim/weight[8]/selected", "none");
+
+
+}
+
+var AirToGround = func() {
+        setprop("consumables/fuel/tank[2]/selected", 0);
+        setprop("consumables/fuel/tank[2]/capacity-gal_us", 0);
+        setprop("consumables/fuel/tank[2]/level-gal_us", 0);
+        setprop("consumables/fuel/tank[3]/selected", 0);
+        setprop("consumables/fuel/tank[3]/capacity-gal_us", 0);
+        setprop("consumables/fuel/tank[3]/level-gal_us", 0);
+        setprop("consumables/fuel/tank[4]/selected", 0);
+        setprop("consumables/fuel/tank[4]/capacity-gal_us", 0);
+        setprop("consumables/fuel/tank[4]/level-gal_us", 0);
+
+        setprop("sim/weight[0]/selected", "GBU16");
+        setprop("sim/weight[1]/selected", "Matra MICA");
+        
+        setprop("sim/weight[2]/selected", "1700 l Droptank");
+        setprop("consumables/fuel/tank[2]/selected", 1);
+        setprop("consumables/fuel/tank[2]/capacity-gal_us", 448.50);
+        setprop("consumables/fuel/tank[2]/level-gal_us", 447);        
+                
+        setprop("sim/weight[3]/selected", "SCALP");
+
+
+        setprop("sim/weight[4]/selected", "1700 l Droptank");
+        setprop("consumables/fuel/tank[4]/selected", 1);
+        setprop("consumables/fuel/tank[4]/capacity-gal_us", 448.50);
+        setprop("consumables/fuel/tank[4]/level-gal_us", 447);  
+                
+                
+        setprop("sim/weight[5]/selected", "Matra MICA");
+        setprop("sim/weight[6]/selected", "GBU16");
+        setprop("sim/weight[7]/selected", "GBU16");
+        setprop("sim/weight[8]/selected", "GBU16");
+
+
+}
 
 
 
@@ -114,7 +185,7 @@ dropLoad = func (number) {
                      setprop("consumables/fuel/tank["~ number ~"]/selected", 0);
                      settimer(func load.dropLoad_stop(number),2);
                      setprop("controls/armament/station["~ number ~"]/release", 1);
-                     setprop("sim/weight["~ number ~"]/selected", "none");
+                     #setprop("sim/weight["~ number ~"]/selected", "none");
                      setprop("sim/weight["~ number ~"]/weight-lb", 0);
                 }else{
                      load.dropMissile(number);
@@ -130,7 +201,7 @@ dropLoad = func (number) {
 
 #Need to be changed
 dropLoad_stop = func(n) {     
-         setprop("controls/armament/station["~ n ~"]/release", 0);
+         #setprop("controls/armament/station["~ n ~"]/release", 0);
 }
 
 
@@ -153,7 +224,8 @@ dropMissile = func (number) {
           Current_missile.search(target);             
           Current_missile.release();
           setprop("controls/armament/station["~ number ~"]/release", 1);
-          setprop("sim/weight["~ number ~"]/selected", "none");
+          #print(getprop("controls/armament/station["~ number ~"]/release"));
+          #setprop("sim/weight["~ number ~"]/selected", "none");
           setprop("sim/weight["~ number ~"]/weight-lb", 0);
      
 

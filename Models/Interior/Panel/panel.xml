@@ -166,15 +166,25 @@
   </model>
   
   <!-- Radio -->
-    <model>
+  <model>
     <path>Aircraft/Mirage-2000/Models/Interior/Panel/Instruments/uhf-box/uhf-box.xml</path>
     <offsets>
-      <x-m> 0.431 </x-m>
+      <x-m>  0.431 </x-m>
       <y-m>  0.000 </y-m>
       <z-m> -0.315 </z-m>
       <pitch-deg>-5</pitch-deg>
     </offsets>
   </model>
   
-
+  <!-- Radio -->
+  <model>
+    <path>Aircraft/Mirage-2000/Models/Interior/Panel/Instruments/Alerts/alerts.xml</path>
+    <offsets>
+      <x-m>  0.40591 </x-m>
+      <y-m> -0.17000 </y-m>
+      <z-m> -0.23410 </z-m>
+      <pitch-deg>-5</pitch-deg>
+    </offsets>
+  </model>
+  
 </PropertyList>

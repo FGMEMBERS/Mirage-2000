@@ -27,13 +27,13 @@
           <script>guns.reload_Cannon()</script>
         </binding>
       </item>
-      <!--<item n="3">
-        <label>Fuel and Stores</label>
+      <item n="3">
+        <label>No load</label>
         <binding>
           <command>nasal</command>
-          <script>load.ext_loads_dlg.open()</script>
+          <script>load.NoLoad()</script>
         </binding>
-      </item>-->
+      </item>
       <item n="4">
         <label>Air to Air Middle Distance</label>
         <binding>
@@ -54,8 +54,15 @@
           <command>nasal</command>
           <script>load.AirToAirLong()</script>
         </binding>
-      </item>  
+      </item>
       <item n="7">
+        <label>Air to Ground</label>
+        <binding>
+          <command>nasal</command>
+          <script>load.AirToGround()</script>
+        </binding>
+      </item> 
+      <item n="8">
         <label>Target Tracking</label>
         <name>track_target</name>
         <binding>
