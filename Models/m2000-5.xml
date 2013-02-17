@@ -327,13 +327,23 @@
     </offsets>
   </model>
 
-  <!-- Flamme -->
+  <!-- Flamme
   <model>
     <path>Aircraft/Mirage-2000/Models/Effects/flammes/flamme.xml</path>
     <offsets>
       <x-m>  6.319 </x-m>
       <y-m>  0.000 </y-m>
       <z-m> -0.527 </z-m>
+    </offsets>
+  </model> -->
+
+  <!-- Flamme -->
+  <model>
+    <path>Aircraft/Mirage-2000/Models/Effects/flammes/combustion.xml</path>
+    <offsets>
+      <x-m>  7.08689 </x-m>
+      <y-m>  0.00000 </y-m>
+      <z-m> -0.52691 </z-m>
     </offsets>
   </model>
 

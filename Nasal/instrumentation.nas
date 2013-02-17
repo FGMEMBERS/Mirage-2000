@@ -30,7 +30,7 @@ var average_fuel = func {
         if(time = int(time)){
                 if(average != nil){
                         average = (average * 60) * 0.45359237;
-                        var my_average = (getprop("instrumentation/consumables/average_consuption_per_min")*(time-1)+average)/time;
+                        var my_average = (getprop("instrumentation/consumables/average_consuption_per_min")*(time-1)+average)/time;                
                         setprop("instrumentation/consumables/average_consuption_per_min",my_average);
                         bingo(my_average);
                 }

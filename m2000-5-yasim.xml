@@ -330,10 +330,10 @@
 
   <!-- left droptank -->
   <weight x="-1.047" y=" 2.359" z="-1.556" size="0.70" mass-prop="sim/weight[2]/weight-lb"/>
-  
+
   <!-- center -->
   <weight x="-1.082" y=" 0.000" z="-1.656" size="0.60" mass-prop="sim/weight[3]/weight-lb"/>
-  
+
   <!-- right droptank -->
   <weight x="-1.047" y="-2.359" z="-1.556" size="0.70" mass-prop="sim/weight[4]/weight-lb"/>
 
@@ -342,4 +342,3 @@
   <weight x="-1.900" y="-1.800" z=" 0.250" size="0.25" mass-prop="sim/weight[6]/weight-lb"/>
 
 </airplane>
-

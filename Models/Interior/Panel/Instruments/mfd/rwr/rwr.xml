@@ -1222,11 +1222,11 @@
 		<type2-name>MP13type2</type2-name>
 		<symb-ship-name>MP13symb-ship</symb-ship-name>
 		<symb-aircraft-name>MP13symb-aircraft</symb-aircraft-name>
-		<ecm-signal-norm>instrumentation/radar2/targets/multiplayer[12]/ecm-signal-norm</ecm-signal-norm>
-		<bearing-deg>instrumentation/radar2/targets/multiplayer[12]/bearing-deg</bearing-deg>
-		<true-heading-deg>instrumentation/radar2/targets/multiplayer[12]/orientation/true-heading-deg</true-heading-deg>
-		<ecm_type_num>instrumentation/radar2/targets/multiplayer[12]/ecm_type_num</ecm_type_num>
-		<carrier>instrumentation/radar2/targets/multiplayer[12]/carrier</carrier>
+		<ecm-signal-norm>instrumentation/radar2/targets/carrier[0]/ecm-signal-norm</ecm-signal-norm>
+		<bearing-deg>instrumentation/radar2/targets/carrier[0]/bearing-deg</bearing-deg>
+		<true-heading-deg>instrumentation/radar2/targets/carrier[0]/orientation/true-heading-deg</true-heading-deg>
+		<ecm_type_num>instrumentation/radar2/targets/carrier[0]/ecm_type_num</ecm_type_num>
+		<carrier>instrumentation/radar2/targets/carrier[0]/carrier</carrier>
 	</MP13>
 
 	<animation>

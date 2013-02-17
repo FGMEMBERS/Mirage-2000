@@ -321,12 +321,12 @@ rwr = func(u) {
                 var our_deviation_deg = deviation_normdeg(u.get_heading(), u.get_reciprocal_bearing());
                 if ( our_deviation_deg < 0 ) { our_deviation_deg *= -1 }
                 if ( our_deviation_deg < 37 or u_carrier == 1 ) {
-                        #u_ecm_signal = (((-our_deviation_deg/20)+2.5)*(!u_carrier )) + (-u_rng/20) + 2.6 + (u_carrier*1.8);
-                        u_ecm_signal = 2;
+                        u_ecm_signal = (((-our_deviation_deg/20)+2.5)*(!u_carrier )) + (-u_rng/20) + 2.6 + (u_carrier*1.8);
+                        #u_ecm_signal = 2;
                         #u_ecm_type_num = "54";
                         #print("Pouet");
                         u_ecm_type_num = radardist.get_ecm_type_num(u_name);
-                        print("l'avion " ~ u_name ~ " type ECM " ~ u_ecm_type_num ~ "devrait vous accrocher ");
+                        print("l'avion " ~ u_name ~ " type ECM " ~ u_ecm_type_num ~ "devrait vous accrocher. Carrier  " ~ u_carrier);
                         print(u_ecm_signal);
                 }
         } else {
@@ -541,6 +541,7 @@ var Target = {
                 var carrier = 0;
                 if ( me.AcType != nil ) { type = me.AcType.getValue() }
                 if ( type == "MP-Nimitz" or type == "MP-Eisenhower"  or type == "MP-Vinson") { carrier = 1 }
+                if ( type == "Nimitz" or type == "Eisenhower"  or type == "Vinson") { carrier = 1 }
                 # This works only after the mp-carrier model has been loaded. Before that it is seen like a common aircraft.
                 me.Carrier.setBoolValue(carrier);
                 return carrier;

@@ -392,6 +392,24 @@
     </condition>
   </animation>
   
+    <!-- Meteor -->
+  <animation>
+    <type>select</type>
+    <object-name>Meteor</object-name>      
+    <condition>
+      <and>
+        <equals>
+          <property>sim/weight[3]/selected</property>
+          <value>Meteor</value>
+        </equals>
+        <equals>
+          <property>controls/armament/station[3]/release</property>
+          <value>false</value>
+        </equals>
+      </and>
+    </condition>
+  </animation>
+  
   <!-- AGM65 -->
   <animation>
     <type>select</type>
