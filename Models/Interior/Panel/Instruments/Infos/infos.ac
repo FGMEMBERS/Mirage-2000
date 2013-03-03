@@ -8,7 +8,7 @@ name "fond"
 loc -0.000013 0.008167 -0.005666
 data 4
 fond
-texture "color.png"
+texture "infos.png"
 texrep 1 1
 crease 30.000001
 numvert 120
@@ -799,7 +799,7 @@ name "ft0"
 loc 0.000321 -0.016333 -0.055666
 data 3
 ft0
-texture "color.png"
+texture "infos.png"
 texrep 1 1
 crease 1.000000
 numvert 4
@@ -821,7 +821,7 @@ name "ft1"
 loc 0.000729 -0.016333 -0.067498
 data 3
 ft1
-texture "color.png"
+texture "infos.png"
 texrep 1 1
 crease 30.000001
 numvert 4
@@ -843,7 +843,7 @@ name "ft10"
 loc 0.000729 -0.016333 -0.061582
 data 4
 ft10
-texture "color.png"
+texture "infos.png"
 texrep 1 1
 crease 30.000001
 numvert 4
@@ -865,7 +865,7 @@ name "ft100"
 loc 0.000729 -0.016333 -0.055667
 data 5
 ft100
-texture "color.png"
+texture "infos.png"
 texrep 1 1
 crease 30.000001
 numvert 4
@@ -887,7 +887,7 @@ name "ft1000"
 loc 0.000729 -0.016333 -0.049751
 data 6
 ft1000
-texture "color.png"
+texture "infos.png"
 texrep 1 1
 crease 30.000001
 numvert 4
@@ -909,7 +909,7 @@ name "ft10000"
 loc 0.000729 -0.016333 -0.043835
 data 7
 ft10000
-texture "color.png"
+texture "infos.png"
 texrep 1 1
 crease 1.000000
 numvert 4
@@ -931,7 +931,7 @@ name "hdg0"
 loc 0.00034 0.032667 0.011334
 data 4
 hdg0
-texture "color.png"
+texture "infos.png"
 texrep 1 1
 crease 30.000001
 numvert 4
@@ -953,7 +953,7 @@ name "hdg1"
 loc 0.000729 0.032667 0.005418
 data 4
 hdg1
-texture "color.png"
+texture "infos.png"
 texrep 1 1
 crease 30.000001
 numvert 4
@@ -975,7 +975,7 @@ name "hdg10"
 loc 0.000729 0.032667 0.011333
 data 5
 hdg10
-texture "color.png"
+texture "infos.png"
 texrep 1 1
 crease 30.000001
 numvert 4
@@ -997,7 +997,7 @@ name "hdg100"
 loc 0.000729 0.032667 0.017249
 data 6
 hdg100
-texture "color.png"
+texture "infos.png"
 texrep 1 1
 crease 30.000001
 numvert 4
@@ -1019,7 +1019,7 @@ name "kt0"
 loc 0.000478 -0.016333 0.038334
 data 3
 kt0
-texture "color.png"
+texture "infos.png"
 texrep 1 1
 crease 30.000001
 numvert 4
@@ -1041,7 +1041,7 @@ name "kt1"
 loc 0.000729 -0.016333 0.032418
 data 3
 kt1
-texture "color.png"
+texture "infos.png"
 texrep 1 1
 crease 30.000001
 numvert 4
@@ -1063,7 +1063,7 @@ name "kt10"
 loc 0.000729 -0.016333 0.038333
 data 4
 kt10
-texture "color.png"
+texture "infos.png"
 texrep 1 1
 crease 30.000001
 numvert 4
@@ -1085,7 +1085,7 @@ name "kt100"
 loc 0.000729 -0.016333 0.044249
 data 5
 kt100
-texture "color.png"
+texture "infos.png"
 texrep 1 1
 crease 30.000001
 numvert 4
@@ -1107,7 +1107,7 @@ name "text"
 loc -0.00001 0.018985 -0.00551
 data 4
 text
-texture "color.png"
+texture "infos.png"
 texrep 1 1
 crease 30.000001
 numvert 205

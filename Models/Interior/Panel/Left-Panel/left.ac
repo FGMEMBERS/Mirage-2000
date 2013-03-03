@@ -7,7 +7,7 @@ name "left"
 loc 0 0 -0
 data 4
 left
-texture "colors.png"
+texture "left.png"
 texrep 1 1
 crease 30.000001
 numvert 18

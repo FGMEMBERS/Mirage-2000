@@ -7,7 +7,7 @@ name "disc"
 loc -0.047985 0 -0
 data 4
 disc
-texture "color.png"
+texture "vsi.png"
 texrep 1 1
 numvert 34
 -0 -0.049914 0.005386
@@ -163,7 +163,7 @@ name "fond"
 loc 0 0 -0
 data 4
 fond
-texture "color.png"
+texture "vsi.png"
 texrep 1 1
 crease 30.000001
 numvert 40

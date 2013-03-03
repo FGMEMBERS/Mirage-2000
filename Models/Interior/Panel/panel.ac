@@ -7,7 +7,7 @@ name "panel"
 loc 0.246253 -0.015184 -0
 data 5
 panel
-texture "colors.png"
+texture "panel.png"
 texrep 1 1
 crease 30.000001
 numvert 83
@@ -641,7 +641,7 @@ name "support"
 loc 0.415496 -0.179253 0.083791
 data 7
 support
-texture "colors.png"
+texture "panel.png"
 texrep 1 1
 numvert 44
 -0.027592 0.075808 -0.167582

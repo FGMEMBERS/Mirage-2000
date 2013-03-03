@@ -22,5 +22,27 @@
     </offsets>
   </model>
 
+  <!-- TACAN -->
+  <model>
+    <path>Aircraft/Mirage-2000/Models/Interior/Panel/Right-Panel/Instruments/tacan/tacan.xml</path>
+    <offsets>
+      <x-m>  0.07000 </x-m>
+      <y-m> -0.00294 </y-m>
+      <z-m> -0.00130 </z-m>
+      <pitch-deg> -90 </pitch-deg>
+    </offsets>
+  </model>
+
+  <!-- VOR-ILS -->
+  <model>
+    <path>Aircraft/Mirage-2000/Models/Interior/Panel/Right-Panel/Instruments/vor-ils/vor-ils.xml</path>
+    <offsets>
+      <x-m>  0.07000 </x-m>
+      <y-m>  0.04320 </y-m>
+      <z-m> -0.00130 </z-m>
+      <pitch-deg> -90 </pitch-deg>
+    </offsets>
+  </model>
+
 </PropertyList>
 

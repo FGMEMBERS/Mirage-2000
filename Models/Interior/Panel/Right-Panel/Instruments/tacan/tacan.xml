@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<PropertyList>
+
+  <path>tacan.ac</path>
+
+  <animation>
+    <!-- Objets opaques -->
+    <object-name>base</object-name>
+    <object-name>texte</object-name>
+    <object-name>num-0</object-name>
+    <object-name>num-1</object-name>
+    <object-name>num-2</object-name>
+    <object-name>num-3</object-name>
+    <object-name>num-4</object-name>
+    <object-name>buton1</object-name>
+    <object-name>buton2</object-name>
+    
+    <!-- Objets transparents -->
+  </animation>
+
+  <!--
+  
+  Position centre button1 (gauche)
+  
+  x :  0.003574
+  y : -0.010760
+  z : -0.005036
+  
+  Position centre button2 (gauche)
+  
+  x :  0.003574
+  y :  0.010760
+  z : -0.005036
+  
+  -->
+</PropertyList>
+

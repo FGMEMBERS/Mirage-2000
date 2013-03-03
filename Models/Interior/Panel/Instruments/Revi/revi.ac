@@ -8,7 +8,7 @@ name "fond"
 loc 0.017067 -0.071275 -0
 data 4
 fond
-texture "colors.png"
+texture "revi.png"
 texrep 1 1
 crease 30.000001
 numvert 434

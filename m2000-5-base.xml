@@ -659,7 +659,7 @@
       <file>Aircraft/Mirage-2000/Missiles/Loading_Missiles.nas</file>
     </missile>
     <engines>
-      <file>Aircraft/Mirage-2000/Nasal/generic-yasim-engine.nas</file>
+      <file>Aircraft/Generic/Engines/generic-yasim-engine.nas</file>
       <script>
         var engine1 = engines.Jet.new(0, 0, 0.01, 5.21, 3, 5, 1, 6);
         setlistener("sim/signals/fdm-initialized", func

@@ -7,7 +7,7 @@ name "failures"
 loc 0.000317 0 -0
 data 8
 failures
-texture "colors.png"
+texture "failures.png"
 texrep 1 1
 crease 30.000001
 numvert 336
@@ -1824,7 +1824,7 @@ name "fond"
 loc 0 0 -0
 data 4
 fond
-texture "colors.png"
+texture "failures.png"
 texrep 1 1
 crease 30.000001
 numvert 375
@@ -4515,7 +4515,7 @@ name "traits"
 loc 0.001944 -0.022676 0.01128
 data 6
 traits
-texture "colors.png"
+texture "failures.png"
 texrep 1 1
 numvert 1568
 0.000103 0.044906 -0.039189

@@ -17,7 +17,7 @@ name "alt"
 loc 0 0 -0
 data 3
 alt
-texture "color.png"
+texture "warning.png"
 texrep 1 1
 crease 30.000001
 numvert 10
@@ -102,7 +102,7 @@ name "app"
 loc 0 0 -0
 data 3
 app
-texture "color.png"
+texture "warning.png"
 texrep 1 1
 crease 30.000001
 numvert 10
@@ -187,7 +187,7 @@ name "fond"
 loc 0 0 -0
 data 4
 fond
-texture "color.png"
+texture "warning.png"
 texrep 1 1
 crease 30.000001
 numvert 52
@@ -516,7 +516,7 @@ name "lgspeed"
 loc 0 0 -0
 data 7
 lgspeed
-texture "color.png"
+texture "warning.png"
 texrep 1 1
 crease 30.000001
 numvert 13
@@ -640,7 +640,7 @@ name "navh"
 loc 0 0 -0
 data 4
 navh
-texture "color.png"
+texture "warning.png"
 texrep 1 1
 crease 30.000001
 numvert 10
@@ -725,7 +725,7 @@ name "pa"
 loc 0 0 -0
 data 2
 pa
-texture "color.png"
+texture "warning.png"
 texrep 1 1
 crease 30.000001
 numvert 10
@@ -810,7 +810,7 @@ name "tbhm"
 loc 0 0 -0
 data 4
 tbhm
-texture "color.png"
+texture "warning.png"
 texrep 1 1
 crease 30.000001
 numvert 10
@@ -895,7 +895,7 @@ name "texte"
 loc 0 0 -0
 data 5
 texte
-texture "color.png"
+texture "warning.png"
 texrep 1 1
 crease 30.000001
 numvert 26
