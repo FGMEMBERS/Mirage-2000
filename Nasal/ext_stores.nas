@@ -10,8 +10,10 @@ var dropTanks = func(){
 }
 
 #Here is where quick load management is managed...
+#These 4 function can't be active whn flying : This mean a little preparation for the mission
+#It's an anti kiddo script
 var AirToAirMiddle = func(){
-
+    if(getprop("/gear/gear[2]/wow")==1){
         setprop("consumables/fuel/tank[2]/selected", 0);
         setprop("consumables/fuel/tank[2]/capacity-gal_us", 0);
         setprop("consumables/fuel/tank[2]/level-gal_us", 0);
@@ -37,11 +39,12 @@ var AirToAirMiddle = func(){
         setprop("sim/weight[6]/selected", "Matra MICA");
         setprop("sim/weight[7]/selected", "Matra MICA");
         setprop("sim/weight[8]/selected", "Matra MICA");
+     }
 
 }
 
 var AirToAirshort = func(){
-
+    if(getprop("/gear/gear[2]/wow")==1){
         setprop("consumables/fuel/tank[2]/selected", 0);
         setprop("consumables/fuel/tank[2]/capacity-gal_us", 0);
         setprop("consumables/fuel/tank[2]/level-gal_us", 0);
@@ -67,10 +70,11 @@ var AirToAirshort = func(){
         setprop("sim/weight[6]/selected", "Matra MICA");
         setprop("sim/weight[7]/selected", "Matra MICA");
         setprop("sim/weight[8]/selected", "Matra MICA");
-
+    }
 }
 
 var AirToAirLong = func() {
+    if(getprop("/gear/gear[2]/wow")==1){
         setprop("consumables/fuel/tank[2]/selected", 0);
         setprop("consumables/fuel/tank[2]/capacity-gal_us", 0);
         setprop("consumables/fuel/tank[2]/level-gal_us", 0);
@@ -104,11 +108,13 @@ var AirToAirLong = func() {
         setprop("sim/weight[6]/selected", "Matra MICA");
         setprop("sim/weight[7]/selected", "Matra MICA");
         setprop("sim/weight[8]/selected", "Matra MICA");
+    }
 
 
 }
 
 var NoLoad = func() {
+    if(getprop("/gear/gear[2]/wow")==1){
         setprop("consumables/fuel/tank[2]/selected", 0);
         setprop("consumables/fuel/tank[2]/capacity-gal_us", 0);
         setprop("consumables/fuel/tank[2]/level-gal_us", 0);
@@ -128,11 +134,13 @@ var NoLoad = func() {
         setprop("sim/weight[6]/selected", "none");        
         setprop("sim/weight[7]/selected", "none");
         setprop("sim/weight[8]/selected", "none");
+     }
 
 
 }
 
 var AirToGround = func() {
+    if(getprop("/gear/gear[2]/wow")==1){
         setprop("consumables/fuel/tank[2]/selected", 0);
         setprop("consumables/fuel/tank[2]/capacity-gal_us", 0);
         setprop("consumables/fuel/tank[2]/level-gal_us", 0);
@@ -164,7 +172,7 @@ var AirToGround = func() {
         setprop("sim/weight[6]/selected", "GBU16");
         setprop("sim/weight[7]/selected", "GBU16");
         setprop("sim/weight[8]/selected", "GBU16");
-
+    }        
 
 }
 

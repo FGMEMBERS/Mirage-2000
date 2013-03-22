@@ -10,6 +10,13 @@ setlistener("/controls/engines/engine[1]/throttle", func(n) {
     setprop("/controls/engines/engine[1]/reheat", n.getValue() >= 0.75);
 },1);
 
+setlistener("/gear/gear[2]/wow", func(n) {
+    if(getprop("/gear/gear[2]/wow")==1){
+        gui.menuEnable("fuel-and-payload", 1);
+    }else{
+        gui.menuEnable("fuel-and-payload", 0);
+    }
+},1);
 
 # turn off hud in external views
  setlistener("/sim/current-view/view-number", func(n) { setprop("/sim/hud/visibility[1]", n.getValue() == 0) },1);
@@ -92,4 +99,13 @@ var chuteRepack = func{
 	setprop('sim/model/lightning/controls/flight/chute_jettisoned', 0);
 
 } # end func	
+
+##
+# AirBrake handling.
+#
+var fullAirBrakeTime = 1;
+var applyAirBrakes = func(v) {
+        interpolate("/controls/flight/spoilers", v, fullAirBrakeTime);
+}
+
 

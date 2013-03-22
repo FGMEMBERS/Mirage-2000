@@ -7,6 +7,16 @@
   <!-- ******************************************************************* -->
   <!-- Condensation                                                        -->
   <!-- ******************************************************************* -->
+   <!--  REMBRANDT support for transparent objects-->
+ <effect>
+         <inherits-from>Effects/model-transparent</inherits-from>
+         <condition>
+                <property>sim/rendering/rembrandt/enabled</property>
+         </condition>
+         <object-name>ShockWave</object-name> 
+ </effect>
+
+
   <!-- shock waves -->
   <animation>
     <type>select</type>

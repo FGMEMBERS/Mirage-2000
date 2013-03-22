@@ -7,7 +7,8 @@
   <animation>
     <!-- Objets opaques -->
     <object-name>panel</object-name>
-
+    <object-name>support</object-name>
+    
     <!-- Objets transparents -->
   </animation>
  
@@ -15,9 +16,9 @@
   <model>
     <path>Aircraft/Mirage-2000/Models/Interior/Panel/Instruments/mfd/mfdL.xml</path>
     <offsets>
-      <x-m>  0.408 </x-m>
-      <y-m> -0.185 </y-m>
-      <z-m> -0.119 </z-m>
+      <x-m>  0.390 </x-m>
+      <y-m> -0.207 </y-m>
+      <z-m> -0.124 </z-m>
     </offsets>
   </model>
 
@@ -65,9 +66,9 @@
   <model>
     <path>Aircraft/Mirage-2000/Models/Interior/Panel/Instruments/mfd/mfdR.xml</path>
     <offsets>
-      <x-m>  0.408 </x-m>
-      <y-m>  0.185 </y-m>
-      <z-m> -0.119 </z-m>
+      <x-m>  0.390 </x-m>
+      <y-m>  0.207 </y-m>
+      <z-m> -0.124 </z-m>
     </offsets>
   </model>
 
@@ -91,14 +92,13 @@
     </offsets>
   </model>
 
-  <!-- WARNING -->
+  <!-- AP -->
   <model>
-    <path>Aircraft/Mirage-2000/Models/Interior/Panel/Instruments/Warning/warning.xml</path>
+    <path>Aircraft/Mirage-2000/Models/Interior/Panel/Instruments/AP/ap.xml</path>
     <offsets>
       <x-m>  0.3760 </x-m>
-      <y-m> -0.1790 </y-m>
-      <z-m>  0.0195 </z-m>
-      <roll-deg> 42 </roll-deg>
+      <y-m> -0.18 </y-m>
+      <z-m>  0.05 </z-m>
     </offsets>
   </model>
 
@@ -106,8 +106,8 @@
   <model>
     <path>Aircraft/Mirage-2000/Models/Interior/Panel/Instruments/adi/adi.xml</path>
     <offsets>
-      <x-m>  0.358 </x-m>
-      <y-m>  0.164 </y-m>
+      <x-m>  0.356 </x-m>
+      <y-m>  0.184 </y-m>
       <z-m> -0.010 </z-m>
     </offsets>
   </model>
@@ -116,9 +116,9 @@
   <model>
     <path>Aircraft/Mirage-2000/Models/Interior/Panel/Instruments/vsi/vsi.xml</path>
     <offsets>
-      <x-m> 0.36900 </x-m>
-      <y-m> 0.11500 </y-m>
-      <z-m> 0.05479 </z-m>
+      <x-m> 0.383 </x-m>
+      <y-m> 0.135 </y-m>
+      <z-m> 0.055 </z-m>
     </offsets>
   </model>
 
@@ -127,7 +127,7 @@
     <path>Aircraft/Mirage-2000/Models/Interior/Panel/Instruments/Infos/infos.xml</path>
     <offsets>
       <x-m> 0.371 </x-m>
-      <y-m> 0.155 </y-m>
+      <y-m> 0.175 </y-m>
       <z-m> 0.003 </z-m>
     </offsets>
   </model>

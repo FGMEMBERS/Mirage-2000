@@ -7,6 +7,18 @@
   <!-- ******************************************************************* -->
   <!-- Condensation                                                        -->
   <!-- ******************************************************************* -->
+  
+   <!--  REMBRANDT support for transparent objects-->
+ <effect>
+         <inherits-from>Effects/model-transparent</inherits-from>
+         <condition>
+                <property>sim/rendering/rembrandt/enabled</property>
+         </condition>
+         <object-name>condensation-left</object-name>
+         <object-name>condensation-right</object-name> 
+ </effect>
+  
+  
 
   <!-- condensation -->
   <animation>

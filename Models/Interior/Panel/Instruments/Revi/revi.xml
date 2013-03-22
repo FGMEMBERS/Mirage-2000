@@ -19,7 +19,7 @@
     <object-name>verre2</object-name>
   </animation>
 
-  <!--  REMBRANDT support for transparent objects
+  <!--  REMBRANDT support for transparent objects-->
   <effect>
     <inherits-from>Effects/model-transparent</inherits-from>
     <condition>
@@ -27,7 +27,7 @@
     </condition>
     <object-name>verre1</object-name>
     <object-name>verre2</object-name>
-  </effect>-->
+  </effect>
 
 </PropertyList>
 

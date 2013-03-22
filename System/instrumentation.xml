@@ -8,6 +8,11 @@ This file selects the instrumentation modules that should be available.
 
 <PropertyList>
 
+  <adf>
+    <name>adf</name>
+    <number>0</number>
+  </adf>
+
   <airspeed-indicator>
     <name>airspeed-indicator</name>
     <number>0</number>
@@ -22,6 +27,11 @@ This file selects the instrumentation modules that should be available.
     <static-pressure>/systems/static/pressure-inhg</static-pressure>
   </altimeter>
 
+  <marker-beacon>
+        <name>marker-beacon</name>
+        <number>0</number>
+    </marker-beacon>
+
   <navigation-display>
     <name>nd</name>
     <number>0</number>
@@ -32,5 +42,20 @@ This file selects the instrumentation modules that should be available.
     <name>radar</name>
     <number>0</number>
   </radar>
+
+   <nav-radio>
+        <name>nav</name>
+        <number>0</number>
+    </nav-radio>
+
+    <nav-radio>
+        <name>nav</name>
+        <number>1</number>
+    </nav-radio>
+
+  <tacan>
+    <name>tacan</name>
+    <number>0</number>
+  </tacan>
 
 </PropertyList>

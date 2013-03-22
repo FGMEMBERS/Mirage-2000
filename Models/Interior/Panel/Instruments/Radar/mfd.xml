@@ -4,6 +4,20 @@
 
  <path>mfd_Radar.ac</path>
  
+ <!--  REMBRANDT support for transparent objects-->
+ <effect>
+         <inherits-from>Effects/model-transparent</inherits-from>
+         <condition>
+                <property>sim/rendering/rembrandt/enabled</property>
+         </condition>
+         <object-name>radar_screen</object-name>
+         <object-name>scan_marker</object-name> 
+         <object-name>radar-markers</object-name> 
+         <object-name>horizon</object-name> 
+ </effect>
+ 
+ 
+ 
   <animation>
 
   <object-name>radar_screen</object-name>

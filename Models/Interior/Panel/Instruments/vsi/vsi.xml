@@ -23,11 +23,13 @@
   <animation>
     <type>rotate</type>
     <object-name>disc</object-name>
-    <property>instrumentation/vertical-speed-indicator/indicated-speed-fpm</property>
+    <property>autopilot/internal/vert-speed-fpm</property>
     <interpolation>
-      <entry><ind> -5000 </ind><dep> -51 </dep></entry>
+      <entry><ind> -8000 </ind><dep> -85 </dep></entry>
+      <entry><ind> -5000 </ind><dep> -53 </dep></entry>
       <entry><ind>     0 </ind><dep>   0 </dep></entry>
-      <entry><ind>  5000 </ind><dep>  51 </dep></entry>
+      <entry><ind>  5000 </ind><dep>  53 </dep></entry>
+      <entry><ind>  8000 </ind><dep>  85 </dep></entry>
     </interpolation>
     <center>
       <x-m> -0.04798 </x-m>

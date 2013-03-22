@@ -22,7 +22,7 @@
     <desc>Passenger door</desc>
     <binding>
      <command>nasal</command>
-     <script>doors.doorsystem.passengerexport();</script>
+     <script>doors.passenger.toggle();</script>
     </binding>
   </key>
 
@@ -31,7 +31,7 @@
     <desc>Doors</desc>
     <binding>
       <command>nasal</command>
-      <script>doors.doorsystem.crewexport();</script>
+      <script>doors.crew.toggle();</script>
     </binding>
   </key>
 
@@ -40,9 +40,10 @@
     <desc>Parachute</desc>
     <binding>
       <command>nasal</command>
-      <script>doors.doorsystem.parachuteexport();</script>
+      <script>doors.parachute.toggle();</script>
     </binding>
   </key>
+  
   <key n="5">
     <name>Ctrl-E</name>
     <desc>Ejection</desc>
@@ -52,167 +53,192 @@
     </binding>
   </key>
 
-<!--____________________Lanch________________________-->
-
-   <key n="48">
-     <name>0</name>
-     <desc>Drop Tanks</desc>
-     <binding>
-        <command>nasal</command>
-        <script>load.dropTanks()</script>
-     </binding>
+  <!--____________________Lanch________________________-->
+  <key n="48">
+    <name>0</name>
+    <desc>Drop Tanks</desc>
+    <binding>
+      <command>nasal</command>
+      <script>load.dropTanks()</script>
+    </binding>
   </key>
+  
   <key n="49">
-     <name>1</name>
-     <desc>Missile 1</desc>
-     <binding>
-        <command>nasal</command>
-        <script>load.dropLoad(1)</script>
-     </binding>
+    <name>1</name>
+    <desc>Missile 1</desc>
+    <binding>
+      <command>nasal</command>
+      <script>load.dropLoad(1)</script>
+    </binding>
   </key>
+  
   <key n="50">
-     <name>2</name>
-     <desc>Drop load</desc>
-     <binding>
-        <command>nasal</command>
-        <script>load.dropLoad(7)</script>
-     </binding>
+    <name>2</name>
+    <desc>Drop load</desc>
+    <binding>
+      <command>nasal</command>
+      <script>load.dropLoad(7)</script>
+    </binding>
   </key>
+  
   <key n="51">
-     <name>3</name>
-     <desc>Drop load</desc>
-     <binding>
-        <command>nasal</command>
-        <script>load.dropLoad(5)</script>
-     </binding>
+    <name>3</name>
+    <desc>Drop load</desc>
+    <binding>
+      <command>nasal</command>
+      <script>load.dropLoad(5)</script>
+    </binding>
   </key>
+  
   <key n="52">
-     <name>4</name>
-     <desc>Missile 2</desc>
-     <binding>
-        <command>nasal</command>
-        <script>load.dropLoad(2)</script>
-     </binding>
+    <name>4</name>
+    <desc>Missile 2</desc>
+    <binding>
+      <command>nasal</command>
+      <script>load.dropLoad(2)</script>
+    </binding>
   </key>
 
   <key n="53">
-     <name>5</name>
-     <desc>Missile 5</desc>
-     <binding>
-        <command>nasal</command>
-        <script>load.dropLoad(3)</script>
-     </binding>
+    <name>5</name>
+    <desc>Missile 5</desc>
+    <binding>
+      <command>nasal</command>
+      <script>load.dropLoad(3)</script>
+    </binding>
   </key>
 
   <key n="54">
-     <name>6</name>
-     <desc>Missile 6</desc>
-     <binding>
-        <command>nasal</command>
-        <script>load.dropLoad(4)</script>
-     </binding>
+    <name>6</name>
+    <desc>Missile 6</desc>
+    <binding>
+      <command>nasal</command>
+      <script>load.dropLoad(4)</script>
+    </binding>
   </key>
+  
   <key n="55">
-     <name>7</name>
-     <desc>Missile 0</desc>
-     <binding>
-        <command>nasal</command>
-        <script>load.dropLoad(0)</script>
-     </binding>
+    <name>7</name>
+    <desc>Missile 0</desc>
+    <binding>
+      <command>nasal</command>
+      <script>load.dropLoad(0)</script>
+    </binding>
   </key>
+  
   <key n="56">
-     <name>8</name>
-     <desc>Missile 8</desc>
-     <binding>
-        <command>nasal</command>
-        <script>load.dropLoad(8)</script>
-     </binding>
+    <name>8</name>
+    <desc>Missile 8</desc>
+    <binding>
+      <command>nasal</command>
+      <script>load.dropLoad(8)</script>
+    </binding>
   </key>
 
   <key n="57">
-     <name>9</name>
-     <desc>Missile 6</desc>
-     <binding>
-        <command>nasal</command>
-        <script>load.dropLoad(6)</script>
-     </binding>
+    <name>9</name>
+    <desc>Missile 6</desc>
+    <binding>
+      <command>nasal</command>
+      <script>load.dropLoad(6)</script>
+    </binding>
   </key>
 
-<!--__________________End Launch ______________________-->
+  <!--__________________End Launch ______________________-->
   <key n="72">
-     <name>H</name>
-     <desc>Active Target Seeking</desc>
-     <binding>
-        <command>nasal</command>
-        <script>hud.activate_borsight()</script>
-     </binding>
+    <name>H</name>
+    <desc>Active Target Seeking</desc>
+    <binding>
+       <command>nasal</command>
+       <script>hud.activate_borsight()</script>
+    </binding>
   </key>
+  
   <key n="84">
-     <name>t</name>
-     <desc>Active ECM</desc>
-     <binding>
-        <command>nasal</command>
-        <script>hud.activate_ECM()</script>
-     </binding>
+    <name>t</name>
+    <desc>Active ECM</desc>
+    <binding>
+       <command>nasal</command>
+       <script>hud.activate_ECM()</script>
+    </binding>
   </key>
+  
   <key n="82">
-     <name>R</name>
-     <desc>Active Telemeter</desc>
-     <binding>
-        <command>nasal</command>
-        <script>hud.activate_Telemeter()</script>
-     </binding>
+    <name>R</name>
+    <desc>Active Telemeter</desc>
+    <binding>
+       <command>nasal</command>
+       <script>hud.activate_Telemeter()</script>
+    </binding>
   </key>
+  
   <key n="116">
-     <name>t</name>
-     <desc>Ajusting Radar Distance</desc>
-     <binding>
-        <command>nasal</command>
-        <script>hud.switch_distance()</script>
-     </binding>
+    <name>t</name>
+    <desc>Ajusting Radar Distance</desc>
+    <binding>
+       <command>nasal</command>
+       <script>hud.switch_distance()</script>
+    </binding>
   </key>
+  
   <key n="125">
-     <name>}</name>
-     <desc>Engine Autostart</desc>
-	<binding>
-		<command>nasal</command>
-		<script>engines.engine1.autostart();</script>
-	</binding>
+    <name>}</name>
+    <desc>Engine Autostart</desc>
+    <binding>
+      <command>nasal</command>
+      <script>engines.engine1.autostart();</script>
+    </binding>
   </key>
-    <key n="108">
-	 <name>l</name>
-	 <desc>Flare out</desc>
-	 <binding>
-		 <command>property-toggle</command>
-		<property>controls/switches/flare</property>
-	 </binding>
-   </key>
-   <key n="113">
-     <name>q</name>
-     <desc>Toggle radar standby mode</desc>
-     <binding>
+  
+  <key n="108">
+    <name>l</name>
+    <desc>Flare out</desc>
+    <binding>
+      <command>property-toggle</command>
+      <property>controls/switches/flare</property>
+    </binding>
+  </key>
+  
+  <key n="113">
+    <name>q</name>
+    <desc>Toggle radar standby mode</desc>
+    <binding>
       <command>property-toggle</command>
       <property>instrumentation/radar/radar-standby</property>
-     </binding>
-    </key>
-    <key n="110">
-     <name>Ctrl-n</name>
-     <desc>Changes Target</desc>
-     <binding>
+    </binding>
+  </key>
+  
+  <key n="110">
+    <name>Ctrl-n</name>
+    <desc>Changes Target</desc>
+    <binding>
       <command>nasal</command>
       <script>hud.next_Target_Index()</script>
-     </binding>
-    </key>
-    <key n="14">
-     <name>Ctrl-n</name>
-     <desc>Changes Target</desc>
-     <binding>
+    </binding>
+  </key>
+  
+  <key n="14">
+    <name>Ctrl-n</name>
+    <desc>Changes Target</desc>
+    <binding>
       <command>nasal</command>
       <script>hud.previous_Target_Index()</script>
-     </binding>
-    </key>
-    
-    
+    </binding>
+  </key>
+  
+  <key n="2">
+    <name>Ctrl-B</name>
+    <desc>Apply AirBrake</desc>
+    <binding>
+      <command>nasal</command>
+      <script>mirage2000.applyAirBrakes(1)</script>
+    </binding>
+    <mod-up>
+      <binding>
+        <command>nasal</command>
+        <script>mirage2000.applyAirBrakes(0)</script>
+      </binding>
+    </mod-up>
+  </key>
 
 </PropertyList>
-

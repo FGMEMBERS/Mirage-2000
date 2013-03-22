@@ -111,7 +111,7 @@
      
   <label>
     <name>KIAS</name>
-    <x> -55 </x>
+    <x> -59 </x>
     <y> -80 </y>
     <width>24</width>
     <height>12</height>
@@ -120,22 +120,24 @@
     </input>
     <format>%4.0f</format>
     <halign>left</halign>
-    <box>true</box>
+    <box>false</box>
     <option>right</option>
   </label>
      
   <label>
     <name>Altitude</name>
-    <x>  24 </x>
+    <x>  39 </x>
     <y> -80 </y>
-    <width>30</width>
+    <width>18</width>
     <height>12</height>
     <input>
       <property>/position/altitude-ft</property>
+      <factor>0.01</factor>
     </input>
+    
     <format>%4.0f</format>
     <halign>right</halign>
-    <box>true</box>
+    <box>false</box>
     <option>left</option>
   </label>
      
@@ -296,8 +298,8 @@
      
   <label>
     <name>MACH Number</name>
-    <x>-55</x>
-    <y>-63</y>
+    <x>-57</x>
+    <y>-67</y>
     <width>1</width>
     <height>1</height>
     <condition> 
@@ -341,8 +343,8 @@
      
   <label>
     <name>ECM</name>
-    <x> -55 </x>
-    <y> -58 </y>
+    <x> -57 </x>
+    <y> -62 </y>
     <width>15</width>
     <height>6</height>
     <condition> 

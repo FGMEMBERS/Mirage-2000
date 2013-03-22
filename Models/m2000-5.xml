@@ -150,15 +150,64 @@
       <blue-prop>specular/blue</blue-prop>
     </specular>
 
-    <emission>
+    <!--<emission>
       <red-prop>emission/red</red-prop>
       <green-prop>emission/green</green-prop>
       <blue-prop>emission/blue</blue-prop>
-    </emission>
+    <condition>
+      <not><property>sim/rendering/rembrandt/enabled</property></not>
+    </condition>
+    </emission>-->
+
   </animation>
+
+   <effect>
+    <inherits-from>Effects/model-combined-deferred</inherits-from>
+    <object-name>fuselage</object-name>
+    <object-name>queue</object-name>
+    <object-name>ailes</object-name>
+    <object-name>slatG1</object-name>
+    <object-name>slatG2</object-name>
+    <object-name>slatD1</object-name>
+    <object-name>slatD2</object-name>
+    <object-name>aileronG</object-name>
+    <object-name>elevonG</object-name>
+    <object-name>aileronD</object-name>
+    <object-name>elevonD</object-name>
+    <object-name>direction</object-name>
+    <object-name>spoilerGH</object-name>
+    <object-name>spoilerDH</object-name>
+    <object-name>spoilerGB</object-name>
+    <object-name>spoilerDB</object-name>
+    <object-name>direction</object-name>
+    <object-name>entrees</object-name>
+    <object-name>canope</object-name>
+    <object-name>antennes</object-name>
+    <object-name>tuyere</object-name>
+    <object-name>porteA1</object-name>
+    <object-name>porteA2</object-name>
+    <object-name>porteG1</object-name>
+    <object-name>porteG2</object-name>
+    <object-name>porteD1</object-name>
+    <object-name>porteD2</object-name>
+    <object-name>air</object-name>
+    <object-name>perche</object-name>
+    <object-name>ailettes</object-name>
+    <object-name>tmp0</object-name>
+    <object-name>tmp1</object-name>
+    <condition>
+      <property>sim/rendering/rembrandt/enabled</property>
+    </condition>
+  </effect>
+
+
+
 
   <effect>
     <inherits-from>Aircraft/Generic/Effects/Fuselagereflect</inherits-from>
+    <condition>
+      <not><property>sim/rendering/rembrandt/enabled</property></not>
+    </condition>
     <object-name>fuselage</object-name>
     <object-name>queue</object-name>
     <object-name>ailes</object-name>
@@ -192,6 +241,11 @@
     <object-name>tmp0</object-name>
     <object-name>tmp1</object-name>
   </effect>
+  
+
+  
+  
+  
 
   <!--<animation>
     <type>material</type>
@@ -235,7 +289,7 @@
     <object-name>verriere</object-name>
   </animation>
 
-  <!--  REMBRANDT support for transparent objects
+  <!--  REMBRANDT support for transparent objects-->
   <effect>
     <inherits-from>Effects/model-transparent</inherits-from>
     <condition>
@@ -243,7 +297,7 @@
     </condition>
     <object-name>vitres</object-name>
     <object-name>verriere</object-name>
-  </effect>-->
+  </effect>
 
   <!-- Intérieur -->
   <model>
@@ -251,12 +305,12 @@
     <path>Aircraft/Mirage-2000/Models/Interior/interior.xml</path>
   </model>
 
-  <!-- For Rembrandt
+  <!-- For Rembrandt-->
   <animation>
     <type>noshadow</type>
     <object-name>Interieur</object-name>
   </animation>
--->
+
   <!-- Externals objects  -->
   <model>
     <path>Aircraft/Mirage-2000/Models/External-objects/loads.xml</path>
@@ -1129,9 +1183,23 @@
   </animation>
 
   <animation>
+    <type>pick</type>
+    <object-name>EnsembleCanope</object-name>
+    <visible>true</visible>
+    <action>
+      <button>0</button>
+      <repeatable>false</repeatable>
+      <binding>
+        <command>nasal</command>
+        <script>doors.crew.toggle();</script>
+      </binding>
+    </action>
+  </animation>
+
+  <animation>
     <type>rotate</type>
     <object-name>EnsembleCanope</object-name>
-    <property>instrumentation/doors/crew/position-norm</property>
+    <property>sim/model/door-positions/crew/position-norm</property>
     <interpolation>
       <entry><ind> 0 </ind><dep>  0 </dep></entry>
       <entry><ind> 1 </ind><dep> 45 </dep></entry>
@@ -1311,5 +1379,32 @@
       <z-m> -1.263 </z-m>
     </offsets>
   </model>
+  
+    <!-- Landing Lights 
+  <model>
+    <path>Aircraft/Mirage-2000/Models/lights/light-cone.xml</path>
+    <offsets>
+      <x-m> -3.08 </x-m>
+      <y-m> -0.110 </y-m>
+      <z-m> -1.84 </z-m>
+      <heading-deg> 10 </heading-deg>
+    </offsets>
+    <condition> 
+      <property>/controls/gear/gear-down</property> 
+    </condition>
+  </model>
+
+  <model>
+    <path>Aircraft/Mirage-2000/Models/lights/light-cone.xml</path>
+    <offsets>
+      <x-m> -3.08 </x-m>
+      <y-m>  0.110 </y-m>
+      <z-m> -1.84 </z-m>
+      <heading-deg> -10 </heading-deg>
+    </offsets>
+    <condition> 
+      <property>/controls/gear/gear-down</property>
+    </condition>
+  </model>-->
 
 </PropertyList>

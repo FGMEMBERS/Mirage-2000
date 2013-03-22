@@ -29,7 +29,7 @@
     <object-name>intverriere</object-name>
   </animation>
 
-  <!--  REMBRANDT support for transparent objects
+  <!--  REMBRANDT support for transparent objects-->
   <effect>
     <inherits-from>Effects/model-transparent</inherits-from>
     <condition>
@@ -37,7 +37,7 @@
     </condition>
     <object-name>intvitres</object-name>
     <object-name>intverriere</object-name>
-  </effect> -->
+  </effect> 
 
   <!-- Tableau de bord -->
   <model>
@@ -99,9 +99,23 @@
   </animation>
 
   <animation>
+    <type>pick</type>
+    <object-name>IntEnsembleCanope</object-name>
+    <visible>true</visible>
+    <action>
+      <button>0</button>
+      <repeatable>false</repeatable>
+      <binding>
+        <command>nasal</command>
+        <script>doors.crew.toggle();</script>
+      </binding>
+    </action>
+  </animation>
+
+  <animation>
     <type>rotate</type>
     <object-name>IntEnsembleCanope</object-name>
-    <property>instrumentation/doors/crew/position-norm</property>
+    <property>sim/model/door-positions/crew/position-norm</property>
     <interpolation>
       <entry><ind> 0 </ind><dep>  0 </dep></entry>
       <entry><ind> 1 </ind><dep> 45 </dep></entry>
@@ -118,13 +132,12 @@
     </axis>
   </animation>
   
-   <!-- LoD -->
- <animation>
-   <object-name>Panel</object-name>
-   <type>range</type>
-   <min-m>0</min-m>
-   <max-m>30</max-m>
- </animation>
+  <!-- LoD -->
+  <animation>
+    <object-name>Panel</object-name>
+    <type>range</type>
+    <min-m>  0 </min-m>
+    <max-m> 30 </max-m>
+  </animation>
 
 </PropertyList>
-

@@ -2,861 +2,11 @@
 
 <PropertyList>
 
-  <path>mfd.ac</path>
+  <path>mfd2.ac</path>
 
-  <animation>
-    <!-- Objets opaques -->
-    <object-name>fond</object-name>
-    <object-name>ecran</object-name>
-    <object-name>EHSI-Button</object-name>
-    <object-name>EADI-Button</object-name>
-
-    <!-- EHSI -->
-    <object-name>EHSI.hdg-bug</object-name>
-    <object-name>EHSI.compass</object-name>
-    <object-name>EHSI.crsneedle</object-name>
-    <object-name>EHSI.crsneedle.1</object-name>
-    <object-name>EHSI.ticks</object-name>
-    <object-name>EHSI.vsi</object-name>
-    <object-name>EHSI.crs</object-name>
-    <object-name>EHSI.crs1</object-name>
-    <object-name>EHSI.crs2</object-name>
-    <object-name>EHSI.crs3</object-name>
-    <object-name>EHSI.hdg</object-name>
-    <object-name>EHSI.hdg1</object-name>
-    <object-name>EHSI.hdg2</object-name>
-    <object-name>EHSI.hdg3</object-name>
-    <object-name>EHSI.gspd</object-name>
-    <object-name>EHSI.gsp1</object-name>
-    <object-name>EHSI.gsp2</object-name>
-    <object-name>EHSI.gsp3</object-name>
-
-    <!-- EADI -->
-    <object-name>EADI.symbol</object-name>
-    <object-name>LOC.needle</object-name>
-    <object-name>FDbars</object-name>
-    <object-name>EADI.gyro</object-name>
-    <object-name>background</object-name>
-    <object-name>ASIribbon</object-name>
-    <object-name>Alttape1</object-name>
-    <object-name>Alttape2</object-name>
-    <object-name>DH</object-name>
-    <object-name>DH100</object-name>
-    <object-name>DH10</object-name>
-    <object-name>DH1</object-name>
-    <object-name>INH.1</object-name>
-    <object-name>INH.2</object-name>
-    <object-name>INH.dec</object-name>
-    <object-name>INH.3</object-name>
-    <object-name>INH.4</object-name>
-    <object-name>ASI.100</object-name>
-    <object-name>ASI.10</object-name>
-    <object-name>ASI.1</object-name>
-    <object-name>ALT.10000</object-name>
-    <object-name>ALT.1000</object-name>
-    <object-name>ALT.100</object-name>
-    <object-name>ALT.10</object-name>
-    <object-name>ALT.1</object-name>
-    <object-name>nav.ind</object-name>
-    <object-name>hdg.ind</object-name>
-    <object-name>alt.ind</object-name>
-    <object-name>vs.ind</object-name>
-    <object-name>pointer</object-name>
-
-    <!-- Objets transparents -->
-  </animation>
- 
-  <animation>
-    <type>material</type>
-    <object-name>EHSI.hdg-bug</object-name>
-    <object-name>EHSI.compass</object-name>
-    <object-name>EHSI.crsneedle</object-name>
-    <object-name>EHSI.crsneedle.1</object-name>
-    <object-name>EHSI.ticks</object-name>
-    <object-name>EHSI.vsi</object-name>
-    <object-name>EHSI.crs</object-name>
-    <object-name>EHSI.crs1</object-name>
-    <object-name>EHSI.crs2</object-name>
-    <object-name>EHSI.crs3</object-name>
-    <object-name>EHSI.hdg</object-name>
-    <object-name>EHSI.hdg1</object-name>
-    <object-name>EHSI.hdg2</object-name>
-    <object-name>EHSI.hdg3</object-name>
-    <object-name>EHSI.gspd</object-name>
-    <object-name>EHSI.gsp1</object-name>
-    <object-name>EHSI.gsp2</object-name>
-    <object-name>EHSI.gsp3</object-name>
-
-    <object-name>EADI.symbol</object-name>
-    <object-name>LOC.needle</object-name>
-    <object-name>FDbars</object-name>
-    <object-name>EADI.gyro</object-name>
-    <object-name>background</object-name>
-    <object-name>ASIribbon</object-name>
-    <object-name>Alttape1</object-name>
-    <object-name>Alttape2</object-name>
-    <object-name>DH</object-name>
-    <object-name>DH100</object-name>
-    <object-name>DH10</object-name>
-    <object-name>DH1</object-name>
-    <object-name>INH.1</object-name>
-    <object-name>INH.2</object-name>
-    <object-name>INH.dec</object-name>
-    <object-name>INH.3</object-name>
-    <object-name>INH.4</object-name>
-    <object-name>ASI.100</object-name>
-    <object-name>ASI.10</object-name>
-    <object-name>ASI.1</object-name>
-    <object-name>ALT.10000</object-name>
-    <object-name>ALT.1000</object-name>
-    <object-name>ALT.100</object-name>
-    <object-name>ALT.10</object-name>
-    <object-name>ALT.1</object-name>
-    <object-name>nav.ind</object-name>
-    <object-name>hdg.ind</object-name>
-    <object-name>alt.ind</object-name>
-    <object-name>vs.ind</object-name>
-    <object-name>pointer</object-name>
-    <emission>
-      <factor-prop>/systems/electrical/outputs/instrument-lights</factor-prop>
-      <red>   0.20 </red>
-      <green> 0.70 </green>
-      <blue>  0.20 </blue>
-    </emission>
-  </animation>
-
-  <animation>
-    <name>Ensemble-EHSI</name>
-    <object-name>EHSI.hdg-bug</object-name>
-    <object-name>EHSI.compass</object-name>
-    <object-name>EHSI.crsneedle</object-name>
-    <object-name>EHSI.crsneedle.1</object-name>
-    <object-name>EHSI.ticks</object-name>
-    <object-name>EHSI.vsi</object-name>
-    <object-name>EHSI.crs</object-name>
-    <object-name>EHSI.crs1</object-name>
-    <object-name>EHSI.crs2</object-name>
-    <object-name>EHSI.crs3</object-name>
-    <object-name>EHSI.hdg</object-name>
-    <object-name>EHSI.hdg1</object-name>
-    <object-name>EHSI.hdg2</object-name>
-    <object-name>EHSI.hdg3</object-name>
-    <object-name>EHSI.gspd</object-name>
-    <object-name>EHSI.gsp1</object-name>
-    <object-name>EHSI.gsp2</object-name>
-    <object-name>EHSI.gsp3</object-name>
-  </animation>
-
-  <animation>
-    <name>Ensemble-EADI</name>
-    <object-name>EADI.symbol</object-name>
-    <object-name>LOC.needle</object-name>
-    <object-name>FDbars</object-name>
-    <object-name>EADI.gyro</object-name>
-    <object-name>background</object-name>
-    <object-name>ASIribbon</object-name>
-    <object-name>Alttape1</object-name>
-    <object-name>Alttape2</object-name>
-    <object-name>DH</object-name>
-    <object-name>DH100</object-name>
-    <object-name>DH10</object-name>
-    <object-name>DH1</object-name>
-    <object-name>INH.1</object-name>
-    <object-name>INH.2</object-name>
-    <object-name>INH.dec</object-name>
-    <object-name>INH.3</object-name>
-    <object-name>INH.4</object-name>
-    <object-name>ASI.100</object-name>
-    <object-name>ASI.10</object-name>
-    <object-name>ASI.1</object-name>
-    <object-name>ALT.10000</object-name>
-    <object-name>ALT.1000</object-name>
-    <object-name>ALT.100</object-name>
-    <object-name>ALT.10</object-name>
-    <object-name>ALT.1</object-name>
-    <object-name>nav.ind</object-name>
-    <object-name>hdg.ind</object-name>
-    <object-name>alt.ind</object-name>
-    <object-name>vs.ind</object-name>
-    <object-name>pointer</object-name>
-  </animation>
-
-  <!-- __________________ Buttons _____________________-->
-  <animation>
-    <type>pick</type>
-    <object-name>EHSI-Button</object-name>
-    <visible>true</visible>
-    <action>
-      <button>0</button>
-      <repeatable>false</repeatable>  
-      <binding>
-        <command>property-assign</command>
-        <property>/instrumentation/mfd/modeR</property>
-        <value> 0 </value>
-      </binding>
-    </action>
-  </animation>
-
-  <animation>
-    <type>pick</type>
-    <object-name>EADI-Button</object-name>
-    <visible>true</visible>
-    <action>
-      <button>0</button>
-      <repeatable>false</repeatable>  
-      <binding>
-        <command>property-assign</command>
-        <property>/instrumentation/mfd/modeR</property>
-        <value> 1 </value>
-      </binding>
-    </action>
-  </animation>
-  
-  <animation>
-    <type>pick</type>
-    <object-name>003</object-name>
-    <visible>true</visible>
-    <action>
-      <button>0</button>
-      <repeatable>false</repeatable>  
-      <binding>
-        <command>property-assign</command>
-        <property>/instrumentation/mfd/modeR</property>
-        <value> 2 </value>
-      </binding>
-    </action>
-  </animation>
-  
-  <animation>
-    <type>pick</type>
-    <object-name>004</object-name>
-    <visible>true</visible>
-    <action>
-      <button>0</button>
-      <repeatable>false</repeatable>  
-      <binding>
-        <command>property-assign</command>
-        <property>/instrumentation/mfd/modeR</property>
-        <value> 3 </value>
-      </binding>
-    </action>
-  </animation>
-  
-  <!-- __________________ End Buttons _____________________-->
-  <animation>
-    <type>select</type>
-    <object-name>Ensemble-EHSI</object-name>
-    <condition>
-      <equals>
-        <property>/instrumentation/mfd/modeR</property>
-        <value> 0 </value>
-      </equals>
-    </condition>
-  </animation>
-
-  <animation>
-    <type>select</type>
-    <object-name>Ensemble-EADI</object-name>
-    <condition>
-      <equals>
-        <property>/instrumentation/mfd/modeR</property>
-        <value> 1 </value>
-      </equals>
-    </condition>
-  </animation>
-
-  <!-- EHSI -->
-  <animation>
-    <type>rotate</type>
-    <object-name>EHSI.hdg-bug</object-name>
-    <property>/autopilot/internal/fdm-heading-bug-error-deg</property>
-    <axis>
-      <x> -1.0 </x>
-      <y>  0.0 </y>
-      <z>  0.0 </z>
-    </axis>
-  </animation>
-
-  <animation>
-    <type>rotate</type>
-    <object-name>EHSI.compass</object-name>
-    <property>orientation/heading-magnetic-deg</property>
-    <axis>
-      <x> 1.0 </x>
-      <y> 0.0 </y>
-      <z> 0.0 </z>
-    </axis>
-  </animation>
-
-  <!--  COURSE -->
-  <animation>
-    <type>rotate</type>
-    <object-name>EHSI.crsneedle</object-name>
-    <object-name>EHSI.crsneedle.1</object-name>
-    <property>orientation/heading-magnetic-deg</property>
-    <axis>
-      <x> 1.0 </x>
-      <y> 0.0 </y>
-      <z> 0.0 </z>
-    </axis>
-  </animation>
-
-   <animation>
-    <type>rotate</type>
-    <object-name>EHSI.crsneedle</object-name>
-    <object-name>EHSI.crsneedle.1</object-name>
-    <property>/autopilot/settings/true-heading-deg</property>
-    <axis>
-      <x> -1 </x>
-      <y>  0 </y>
-      <z>  0 </z>
-    </axis>
-  </animation>
-
-  <animation>
-    <type>translate</type>
-    <object-name>EHSI.crsneedle.1</object-name>
-    <property>/autopilot/internal/true-heading-error-deg</property>
-    <interpolation>
-      <entry><ind> -999 </ind><dep> -0.02 </dep></entry>
-      <entry><ind>  -10 </ind><dep> -0.02 </dep></entry>
-      <entry><ind>    0 </ind><dep>  0.00 </dep></entry>
-      <entry><ind>   10 </ind><dep>  0.02 </dep></entry>
-      <entry><ind>  999 </ind><dep>  0.02 </dep></entry>
-    </interpolation>
-    <axis>
-      <x> 0 </x>
-      <y> 1 </y>
-      <z> 0 </z>
-    </axis>
-  </animation>
-
-  <animation>
-    <type>rotate</type>
-    <object-name>EHSI.vsi</object-name>
-    <property>autopilot/internal/vert-speed-fpm</property>
-    <interpolation>
-      <entry><ind> -3000 </ind><dep> -31.0 </dep></entry>
-      <entry><ind> -2000 </ind><dep> -24.0 </dep></entry>
-      <entry><ind> -1000 </ind><dep> -17.5 </dep></entry>
-      <entry><ind>     0 </ind><dep>   0.0 </dep></entry>
-      <entry><ind>  1000 </ind><dep>  17.5 </dep></entry>
-      <entry><ind>  2000 </ind><dep>  24.0 </dep></entry>
-      <entry><ind>  3000 </ind><dep>  31.0 </dep></entry>
-    </interpolation>
-    <axis>
-      <x> -1 </x>
-      <y>  0 </y>
-      <z>  0 </z>
-    </axis>
-    <center>
-      <x-m> 0.000 </x-m>
-      <y-m> 0.104 </y-m>
-      <z-m> 0.000 </z-m>
-    </center>
-  </animation>
-
-  <animation>
-    <type>textranslate</type>
-    <object-name>EHSI.crs1</object-name>
-    <property>/autopilot/settings/true-heading-deg</property>
-    <factor>0.001</factor>
-    <step>100</step>
-    <axis>
-      <x> 0 </x>
-      <y> 1 </y>
-      <z> 0 </z>
-    </axis>
-  </animation>
-
-  <animation>
-    <type>textranslate</type>
-    <object-name>EHSI.crs2</object-name>
-    <property>/autopilot/settings/true-heading-deg</property>
-    <factor>0.01</factor>
-    <step>10</step>
-    <axis>
-      <x> 0 </x>
-      <y> 1 </y>
-      <z> 0 </z>
-    </axis>
-  </animation>
-
-  <animation>
-    <type>textranslate</type>
-    <object-name>EHSI.crs3</object-name>
-    <property>/autopilot/settings/true-heading-deg</property>
-    <factor>0.1</factor>
-    <step>1</step>
-    <axis>
-      <x> 0 </x>
-      <y> 1 </y>
-      <z> 0 </z>
-    </axis>
-  </animation>
-
-  <!--  hdg bug -->
-  <animation>
-    <type>textranslate</type>
-    <object-name>EHSI.hdg1</object-name>
-    <property>/autopilot/settings/heading-bug-deg</property>
-    <factor>0.001</factor>
-    <step>100</step>
-    <axis>
-      <x> 0 </x>
-      <y> 1 </y>
-      <z> 0 </z>
-    </axis>
-  </animation>
-
-  <animation>
-    <type>textranslate</type>
-    <object-name>EHSI.hdg2</object-name>
-    <property>/autopilot/settings/heading-bug-deg</property>
-    <factor>0.01</factor>
-    <step>10</step>
-    <axis>
-      <x> 0 </x>
-      <y> 1 </y>
-      <z> 0 </z>
-    </axis>
-  </animation>
-
-  <animation>
-    <type>textranslate</type>
-    <object-name>EHSI.hdg3</object-name>
-    <property>/autopilot/settings/heading-bug-deg</property>
-    <factor>0.1</factor>
-    <step>1</step>
-    <axis>
-      <x> 0 </x>
-      <y> 1 </y>
-      <z> 0 </z>
-    </axis>
-  </animation>
-
-  <!--  groundspeed -->
-  <animation>
-    <type>textranslate</type>
-    <object-name>EHSI.gsp1</object-name>
-    <property>velocities/groundspeed-kt</property>
-    <factor>0.001</factor>
-    <step>100</step>
-    <axis>
-      <x> 0 </x>
-      <y> 1 </y>
-      <z> 0 </z>
-    </axis>
-  </animation>
-
-  <animation>
-    <type>textranslate</type>
-    <object-name>EHSI.gsp2</object-name>
-    <property>velocities/groundspeed-kt</property>
-    <factor>0.01</factor>
-    <step>10</step>
-    <axis>
-      <x> 0 </x>
-      <y> 1 </y>
-      <z> 0 </z>
-    </axis>
-  </animation>
-
-  <animation>
-    <type>textranslate</type>
-    <object-name>EHSI.gsp3</object-name>
-    <property>velocities/groundspeed-kt</property>
-    <factor>0.1</factor>
-    <step>1</step>
-    <axis>
-      <x> 0 </x>
-      <y> 1 </y>
-      <z> 0 </z>
-    </axis>
-  </animation>
-
-  <!--EADI -->
-  <animation>
-    <type>texmultiple</type>
-    <object-name>EADI.gyro</object-name>
-    <transform>
-      <property>orientation/pitch-deg</property>
-      <subtype>textranslate</subtype>
-      <factor>0.0046</factor>
-      <axis>
-        <x> 0 </x>
-        <y> 1 </y>
-        <z> 0 </z>
-      </axis>
-    </transform>
-    <transform>
-      <property>orientation/roll-deg</property>
-      <subtype>texrotate</subtype>
-      <center>
-        <x> 0.25 </x>
-        <y> 0.50 </y>
-      </center>
-      <axis>
-        <x>  0 </x>
-        <y>  0 </y>
-        <z> -1 </z>
-      </axis>
-    </transform>
-  </animation>
-
-  <!--airspeed-->
-  <animation>
-    <type>select</type>
-    <object-name>ASI.10</object-name>
-    <condition>
-      <greater-than>
-        <property>instrumentation/airspeed-indicator/indicated-speed-kt</property>
-        <value>9.999</value>
-      </greater-than>
-    </condition>
-  </animation>
-
-  <animation>
-    <type>select</type>
-    <object-name>ASI.100</object-name>
-    <condition>
-      <greater-than>
-        <property>instrumentation/airspeed-indicator/indicated-speed-kt</property>
-        <value>99.999</value>
-      </greater-than>
-    </condition>
-  </animation>
-
-  <animation>
-    <type>textranslate</type>
-    <object-name>ASI.100</object-name>
-    <property>instrumentation/airspeed-indicator/indicated-speed-kt</property>
-    <factor>0.001</factor>
-    <step>100</step>
-    <axis>
-      <x> 0 </x>
-      <y> 1 </y>
-      <z> 0 </z>
-    </axis>
-  </animation>
-
-  <animation>
-    <type>textranslate</type>
-    <object-name>ASI.10</object-name>
-    <property>instrumentation/airspeed-indicator/indicated-speed-kt</property>
-    <factor>0.01</factor>
-    <step>10</step>
-    <axis>
-      <x> 0 </x>
-      <y> 1 </y>
-      <z> 0 </z>
-    </axis>
-  </animation>
-
-  <animation>
-    <type>textranslate</type>
-    <object-name>ASI.1</object-name>
-    <property>instrumentation/airspeed-indicator/indicated-speed-kt</property>
-    <factor>0.1</factor>
-    <step>1</step>
-    <axis>
-      <x> 0 </x>
-      <y> 1 </y>
-      <z> 0 </z>
-    </axis>
-  </animation>
-
-  <animation>
-    <type>textranslate</type>
-    <object-name>ASIribbon</object-name>
-    <property>instrumentation/airspeed-indicator/indicated-speed-kt</property>
-    <interpolation>
-      <entry><ind>   0 </ind><dep> 0.0000 </dep></entry>
-      <entry><ind> 240 </ind><dep> 0.5493 </dep></entry>
-    </interpolation>
-    <axis>
-      <x> 0 </x>
-      <y> 1 </y>
-      <z> 0 </z>
-    </axis>
-  </animation>
-
-  <animation>
-    <type>select</type>
-    <object-name>Alttape1</object-name>
-    <condition>
-      <less-than>
-        <property>instrumentation/altimeter/indicated-altitude-ft</property>
-        <value>9500</value>
-      </less-than>
-    </condition>
-  </animation>
-
-  <animation>
-    <type>select</type>
-    <object-name>Alttape2</object-name>
-    <condition>
-      <greater-than>
-        <property>instrumentation/altimeter/indicated-altitude-ft</property>
-        <value>9499.999</value>
-      </greater-than>
-    </condition>
-  </animation>
-
-  <animation>
-    <type>textranslate</type>
-    <object-name>Alttape1</object-name>
-    <property>instrumentation/altimeter/indicated-altitude-ft</property>
-    <interpolation>
-      <entry><ind>    0 </ind><dep> 0.0000 </dep></entry>
-      <entry><ind> 9500 </ind><dep> 0.9068 </dep></entry>
-    </interpolation>
-    <axis>
-      <x> 0 </x>
-      <y> 1 </y>
-      <z> 0 </z>
-    </axis>
-  </animation>
-
-  <animation>
-    <type>textranslate</type>
-    <object-name>Alttape2</object-name>
-    <property>instrumentation/altimeter/indicated-altitude-ft</property>
-    <interpolation>
-      <entry><ind>  9500 </ind><dep> 0.0000 </dep></entry>
-      <entry><ind> 19000 </ind><dep> 0.9068 </dep></entry>
-    </interpolation>
-    <axis>
-      <x> 0 </x>
-      <y> 1 </y>
-      <z> 0 </z>
-    </axis>
-  </animation>
-
-  <animation>
-    <type>translate</type>
-    <object-name>LOC.needle</object-name>
-    <property>/instrumentation/nav/heading-needle-deflection</property>
-    <interpolation>
-      <entry><ind> -10 </ind><dep> -0.0125 </dep></entry>
-      <entry><ind>   0 </ind><dep>  0.0000 </dep></entry>
-      <entry><ind>  10 </ind><dep>  0.0125 </dep></entry>
-    </interpolation>
-    <axis>
-      <x> 0 </x>
-      <y> 1 </y>
-      <z> 0 </z>
-    </axis>
-  </animation>
-
-  <animation>
-    <type>textranslate</type>
-    <object-name>ALT.1</object-name>
-    <property>instrumentation/altimeter/indicated-altitude-ft</property>
-    <factor>0.1</factor>
-    <step>1</step>
-    <axis>
-      <x> 0 </x>
-      <y> 1 </y>
-      <z> 0 </z>
-    </axis>
-  </animation>
-
-  <animation>
-    <type>textranslate</type>
-    <object-name>ALT.10</object-name>
-    <property>instrumentation/altimeter/indicated-altitude-ft</property>
-    <factor>0.01</factor>
-    <step>10</step>
-    <axis>
-      <x> 0 </x>
-      <y> 1 </y>
-      <z> 0 </z>
-    </axis>
-  </animation>
-
-  <animation>
-    <type>textranslate</type>
-    <object-name>ALT.100</object-name>
-    <property>instrumentation/altimeter/indicated-altitude-ft</property>
-    <factor>0.001</factor>
-    <step>100</step>
-    <axis>
-      <x> 0 </x>
-      <y> 1 </y>
-      <z> 0 </z>
-    </axis>
-  </animation>
-
-  <animation>
-    <type>textranslate</type>
-    <object-name>ALT.1000</object-name>
-    <property>instrumentation/altimeter/indicated-altitude-ft</property>
-    <factor>0.0001</factor>
-    <step>1000</step>
-    <axis>
-      <x> 0 </x>
-      <y> 1 </y>
-      <z> 0 </z>
-    </axis>
-  </animation>
-
-  <animation>
-    <type>textranslate</type>
-    <object-name>ALT.10000</object-name>
-    <property>instrumentation/altimeter/indicated-altitude-ft</property>
-    <factor>0.00001</factor>
-    <step>10000</step>
-    <axis>
-      <x> 0 </x>
-      <y> 1 </y>
-      <z> 0 </z>
-    </axis>
-  </animation>
-
-  <animation>
-    <type>textranslate</type>
-    <object-name>INH.1</object-name>
-    <property>instrumentation/altimeter/setting-inhg</property>
-    <factor>0.01</factor>
-    <step>10</step>
-    <axis>
-      <x> 0 </x>
-      <y> 1 </y>
-      <z> 0 </z>
-    </axis>
-  </animation>
-
-  <animation>
-    <type>textranslate</type>
-    <object-name>INH.2</object-name>
-    <property>instrumentation/altimeter/setting-inhg</property>
-    <factor>0.1</factor>
-    <step>1</step>
-    <axis>
-      <x> 0 </x>
-      <y> 1 </y>
-      <z> 0 </z>
-    </axis>
-  </animation>
-
-  <animation>
-    <type>textranslate</type>
-    <object-name>INH.3</object-name>
-    <property>instrumentation/altimeter/setting-inhg</property>
-    <factor>1.0</factor>
-    <step>0.1</step>
-    <bias>0.005</bias>  
-    <axis>
-      <x> 0 </x>
-      <y> 1 </y>
-      <z> 0 </z>
-    </axis>
-  </animation>
-
-  <animation>
-    <type>textranslate</type>
-    <object-name>INH.4</object-name>
-    <property>instrumentation/altimeter/setting-inhg</property>
-    <factor>10.0</factor>
-    <step>0.01</step>
-    <bias>0.005</bias>
-    <axis>
-      <x> 0 </x>
-      <y> 1 </y>
-      <z> 0 </z>
-    </axis>
-  </animation>
-
-  <!-- DH -->
-  <animation>
-    <type>textranslate</type>
-    <object-name>DH1</object-name>
-    <property>instrumentation/altimeter/DH</property>
-    <factor>0.1</factor>
-    <step>1</step>
-    <axis>
-      <x> 0 </x>
-      <y> 1 </y>
-      <z> 0 </z>
-    </axis>
-  </animation>
-
-  <animation>
-    <type>textranslate</type>
-    <object-name>DH10</object-name>
-    <property>instrumentation/altimeter/DH</property>
-    <factor>0.01</factor>
-    <step>10</step>
-    <axis>
-      <x> 0 </x>
-      <y> 1 </y>
-      <z> 0 </z>
-    </axis>
-  </animation>
-
-  <animation>
-    <type>textranslate</type>
-    <object-name>DH100</object-name>
-    <property>instrumentation/altimeter/DH</property>
-    <factor>0.001</factor>
-    <step>100</step>
-    <axis>
-      <x> 0 </x>
-      <y> 1 </y>
-      <z> 0 </z>
-    </axis>
-  </animation>
-
-  <!-- AP annunciators-->
-  <animation>
-    <type>select</type>
-    <object-name>hdg.ind</object-name>
-    <condition>
-       <equals>
-         <property>autopilot/locks/heading</property>
-         <value>dg-heading-hold</value>
-       </equals>
-    </condition>
-  </animation>
-
-  <animation>
-    <type>select</type>
-    <object-name>nav.ind</object-name>
-    <condition>
-      <equals>
-        <property>autopilot/locks/heading</property>
-        <value>nav1-hold</value>
-      </equals>
-    </condition>
-  </animation>
-
-  <animation>
-    <type>select</type>
-    <object-name>vs.ind</object-name>
-    <condition>
-      <equals>
-        <property>autopilot/locks/altitude</property>
-        <value>vertical-speed-hold</value>
-      </equals>
-    </condition>
-  </animation>
-
-  <animation>
-    <type>select</type>
-    <object-name>alt.ind</object-name>
-    <condition>
-      <equals>
-        <property>autopilot/locks/altitude</property>
-        <value>altitude-hold</value>
-      </equals>
-    </condition>
-  </animation>
-  
+  <!--RWR-->
   <model>
-    <name>RWR</name>
-    
-    <!--<path>Aircraft/Instruments-3d/rwr/rwr.xml</path>-->
+    <name>RWR</name>    
     <path>Aircraft/Mirage-2000/Models/Interior/Panel/Instruments/mfd/rwr/rwr.xml</path>
     <condition>
       <equals>
@@ -871,6 +21,280 @@
     </offsets>
   </model>
   
+  <!-- *************Text*************** -->
+  <model>
+    <name>text3dEHSI</name>
+    <path>Aircraft/Mirage-2000/Models/Interior/Panel/Instruments/mfd/mfd_3dtextEHSI.xml</path>
+    <offsets>
+      <x-m>-0.008</x-m>
+      <y-m>0</y-m>
+      <z-m>0</z-m>
+      <pitch-deg>0</pitch-deg>
+    </offsets>
+    <condition>
+      <equals>
+        <property>/instrumentation/mfd/modeR</property>
+        <value> 0 </value>
+      </equals>
+    </condition>    
+  </model>
+
+  <model>
+    <name>text3dEADI</name>
+    <path>Aircraft/Mirage-2000/Models/Interior/Panel/Instruments/mfd/mfd_3dtextEADI.xml</path>
+    <offsets>
+      <x-m>-0.008</x-m>
+      <y-m>0</y-m>
+      <z-m>0</z-m>
+      <pitch-deg>0</pitch-deg>
+    </offsets>
+    <condition>
+      <equals>
+        <property>/instrumentation/mfd/modeR</property>
+        <value> 1 </value>
+      </equals>
+    </condition>    
+  </model>
+
+  <model>
+    <name>text3dEICAS</name>
+    <path>Aircraft/Mirage-2000/Models/Interior/Panel/Instruments/mfd/mfd_3dtextEICAS.xml</path>
+    <offsets>
+      <x-m>-0.008</x-m>
+      <y-m>0</y-m>
+      <z-m>0</z-m>
+      <pitch-deg>0</pitch-deg>
+    </offsets>
+    <condition>
+      <equals>
+        <property>instrumentation/mfd/modeR</property>
+        <value> 2 </value>
+      </equals>
+    </condition>    
+  </model>
+
+  <model>
+    <name>text3dRWR</name>
+    <path>Aircraft/Mirage-2000/Models/Interior/Panel/Instruments/mfd/mfd_3dtextRWR.xml</path>
+    <offsets>
+      <x-m>-0.008</x-m>
+      <y-m>0</y-m>
+      <z-m>0</z-m>
+      <pitch-deg>0</pitch-deg>
+    </offsets>
+    <condition>
+      <equals>
+        <property>instrumentation/mfd/modeR</property>
+        <value> 3 </value>
+      </equals>
+    </condition>    
+  </model>
+
+  <animation>
+    <!-- Objets opaques -->
+    <object-name>cadre</object-name>
+    <object-name>course-dec</object-name>
+    <object-name>course-inc</object-name>
+    <object-name>hdg-dec</object-name>
+    <object-name>hdg-inc</object-name>
+    <object-name>vis</object-name>    
+    <object-name>Course-knob</object-name>
+    <object-name>HDG-knob</object-name>
+    <object-name>bt-b1</object-name>
+    <object-name>bt-b2</object-name>
+    <object-name>bt-b3</object-name>
+    <object-name>bt-b4</object-name>
+    <object-name>bt-h1</object-name>
+    <object-name>bt-h2</object-name>
+    <object-name>bt-h3</object-name>
+    <object-name>bt-h4</object-name>
+    <object-name>bt-h5</object-name>
+    <object-name>pot-l1</object-name>
+    <object-name>pot-l2</object-name>
+    <object-name>pot-l3</object-name>
+    <object-name>pot-l4</object-name>
+    <object-name>pot-r1</object-name>
+    <object-name>pot-r2</object-name>
+    <object-name>pot-r3</object-name>
+    <object-name>pot-r4</object-name>
+    
+    <!-- EHSI -->
+    <object-name>EHSI-hdg-bug</object-name>
+    <object-name>EHSI-compass</object-name>
+    <object-name>EHSI-compass-rep</object-name>
+    <object-name>EHSI-CRS-needle</object-name>
+    <object-name>EHSI-CRS-deflect</object-name>
+    <object-name>EHSI-CRS-FROM</object-name>
+    <object-name>EHSI-CRS-TO</object-name>    
+    <object-name>EHSI-ptr1</object-name>
+    <object-name>EHSI-ptr2</object-name>
+    <object-name>EHSI-ptr1-rep</object-name>
+    <object-name>EHSI-ptr2-rep</object-name>    
+
+    <!-- EADI -->
+    <object-name>EADI-Imarker</object-name>
+    <object-name>EADI-Mmarker</object-name>
+    <object-name>EADI-Omarker</object-name>
+    <object-name>EADI-center</object-name>
+    <object-name>EADI-ticks</object-name>
+    <object-name>EADI-Vbars</object-name>
+    <object-name>EADI-alt.d1</object-name>
+    <object-name>EADI-alt.d2</object-name>
+    <object-name>EADI-alt.d3</object-name>
+    <object-name>EADI-alt.d4</object-name>
+    <object-name>EADI-altladder</object-name>
+    <object-name>EADI-att</object-name>
+    <object-name>EADI-gs.needle</object-name>
+    <object-name>EADI-gs.scale</object-name>
+    <object-name>EADI-ias.d1</object-name>
+    <object-name>EADI-ias.d2</object-name>
+    <object-name>EADI-ias.d3</object-name>
+    <object-name>EADI-iasladder</object-name>
+    <object-name>EADI-yaw-line</object-name>
+    <object-name>EADI-index</object-name>
+    <object-name>EADI-rep</object-name>
+    <object-name>EADI-alt-marker+</object-name>
+    <object-name>EADI-alt-marker---</object-name>
+    <object-name>EADI-ais-marker</object-name>
+
+    <object-name>RWR</object-name>
+    <object-name>text3dEHSI</object-name>
+    <object-name>text3dEADI</object-name>
+    <object-name>text3dEICAS</object-name>
+    <object-name>text3dRWR</object-name>
+ 
+    <object-name>ecran</object-name>
+    
+    <!-- Objets transparents -->
+    <object-name>vitre</object-name>  
+  </animation>
+  
+  <animation>
+    <type>noshadow</type>
+    <object-name>vitre</object-name>
+  </animation>
+  
+  <animation>
+    <type>shader</type>
+    <shader>chrome</shader>
+    <texture>Aircraft/Mirage-2000/Models/Interior/Panel/Instruments/mfd/glass_shader.png</texture>
+    <object-name>vitre</object-name>
+  </animation>
+  
+  <animation>
+    <type>select</type>
+    <object-name>vitre</object-name>
+    <condition>        
+      <property>sim/model/door-positions/temporary/position-norm</property>
+      <value> 1 </value>
+    </condition>
+  </animation>
+  
+  <animation>
+    <type>material</type>
+    <object-name>EHSI-hdg-bug</object-name>
+    <object-name>EHSI-compass</object-name>
+    <object-name>EHSI-compass-rep</object-name>
+    <object-name>EHSI-CRS-needle</object-name>
+    <object-name>EHSI-CRS-deflect</object-name>
+    <object-name>EHSI-CRS-FROM</object-name>
+    <object-name>EHSI-CRS-TO</object-name>    
+    <object-name>EHSI-ptr1</object-name>
+    <object-name>EHSI-ptr2</object-name>    
+    <object-name>EHSI-ptr1-rep</object-name>
+    <object-name>EHSI-ptr2-rep</object-name>
+    <object-name>ecran</object-name> 
+
+    <object-name>EADI-Imarker</object-name>
+    <object-name>EADI-Mmarker</object-name>
+    <object-name>EADI-Omarker</object-name>
+    <object-name>EADI-center</object-name>
+    <object-name>EADI-ticks</object-name>
+    <object-name>EADI-Vbars</object-name>
+    <object-name>EADI-alt.d1</object-name>
+    <object-name>EADI-alt.d2</object-name>
+    <object-name>EADI-alt.d3</object-name>
+    <object-name>EADI-alt.d4</object-name>
+    <object-name>EADI-altladder</object-name>
+    <object-name>EADI-att</object-name>
+    <object-name>EADI-gs.needle</object-name>
+    <object-name>EADI-gs.scale</object-name>
+    <object-name>EADI-ias.d1</object-name>
+    <object-name>EADI-ias.d2</object-name>
+    <object-name>EADI-ias.d3</object-name>
+    <object-name>EADI-iasladder</object-name>
+    <object-name>EADI-yaw-line</object-name>
+    <object-name>EADI-index</object-name>
+    <object-name>EADI-rep</object-name>
+    <object-name>EADI-alt-marker+</object-name>
+    <object-name>EADI-alt-marker---</object-name>
+    <object-name>EADI-ais-marker</object-name>
+    <emission>
+      <factor-prop>systems/electrical/outputs/instrument-lights</factor-prop>
+      <red>   0.9 </red>
+      <green> 0.9 </green>
+      <blue>  0.9 </blue>
+    </emission>
+  </animation>
+
+  <animation>
+    <object-name>EADI-Imarker</object-name>
+    <object-name>EADI-Mmarker</object-name>
+    <object-name>EADI-Omarker</object-name>
+    <object-name>EADI-gs.scale</object-name>
+    <object-name>EADI-att</object-name>
+    <object-name>EADI-center</object-name>
+    <object-name>EADI-rep</object-name>
+    <emission>
+      <red>   1 </red>
+      <green> 1 </green>
+      <blue>  1 </blue>
+    </emission>
+  </animation>
+ 
+  <animation>
+    <name>Ensemble-EHSI</name>
+    <object-name>EHSI-hdg-bug</object-name>
+    <object-name>EHSI-compass</object-name>
+    <object-name>EHSI-compass-rep</object-name>
+    <object-name>EHSI-CRS-needle</object-name>
+    <object-name>EHSI-CRS-deflect</object-name>
+    <object-name>EHSI-CRS-FROM</object-name>
+    <object-name>EHSI-CRS-TO</object-name>    
+    <object-name>EHSI-ptr1</object-name>
+    <object-name>EHSI-ptr2</object-name>    
+    <object-name>EHSI-ptr1-rep</object-name>
+    <object-name>EHSI-ptr2-rep</object-name>    
+  </animation>
+
+  <animation>
+    <name>Ensemble-EADI</name>
+    <object-name>EADI-Imarker</object-name>
+    <object-name>EADI-Mmarker</object-name>
+    <object-name>EADI-Omarker</object-name>
+    <object-name>EADI-center</object-name>
+    <object-name>EADI-ticks</object-name>
+    <object-name>EADI-Vbars</object-name>
+    <object-name>EADI-alt.d1</object-name>
+    <object-name>EADI-alt.d2</object-name>
+    <object-name>EADI-alt.d3</object-name>
+    <object-name>EADI-alt.d4</object-name>
+    <object-name>EADI-altladder</object-name>
+    <object-name>EADI-att</object-name>
+    <object-name>EADI-gs.needle</object-name>
+    <object-name>EADI-gs.scale</object-name>
+    <object-name>EADI-ias.d1</object-name>
+    <object-name>EADI-ias.d2</object-name>
+    <object-name>EADI-ias.d3</object-name>
+    <object-name>EADI-iasladder</object-name>
+    <object-name>EADI-yaw-line</object-name>
+    <object-name>EADI-index</object-name>
+    <object-name>EADI-rep</object-name>
+    <object-name>EADI-alt-marker+</object-name>
+    <object-name>EADI-alt-marker---</object-name>
+    <object-name>EADI-ais-marker</object-name>
+  </animation>
+
   <animation>
     <type>scale</type>
     <object-name>RWR</object-name> 
@@ -879,4 +303,1020 @@
     <z-offset> 1.4 </z-offset>
   </animation>
 
+  <!-- __________________ Buttons _____________________-->
+  <animation>
+    <type>pick</type>
+    <object-name>bt-b1</object-name>
+    <visible>true</visible>
+    <action>
+      <button>0</button>
+      <repeatable>false</repeatable>  
+      <binding>
+        <command>property-adjust</command>
+        <property>/instrumentation/mfd/modeR</property>
+        <step>1</step>
+        <min>0</min>
+        <max>4</max>
+        <wrap>true</wrap>
+      </binding>      
+    </action>
+  </animation>
+
+  <animation>
+        <type>pick</type>
+        <object-name>bt-b2</object-name>
+        <visible>true</visible>
+        <action>
+            <button>0</button>
+            <repeatable>false</repeatable>
+            <binding>
+                <command>nasal</command>
+                <script>mirage2000.nav_src_set();</script>
+                <condition>
+                   <equals>
+                   <property>/instrumentation/mfd/modeR</property>
+                   <value> 0 </value>
+                   </equals>
+                </condition> 
+            </binding>            
+        </action>
+    </animation>
+
+ <animation>
+    <type>pick</type>
+    <object-name>bt-h1</object-name>
+    <visible>true</visible>
+    <action>
+      <button>0</button>
+      <repeatable>false</repeatable>  
+      <binding>
+        <command>property-adjust</command>
+        <property>instrumentation/mfd/ptr2-src</property>
+        <step>1</step>
+        <min>0</min>
+        <max>2</max>
+        <wrap>true</wrap>     
+      </binding>
+    </action>
+  </animation>
+
+<animation>
+    <type>pick</type>
+    <object-name>bt-h2</object-name>
+    <visible>true</visible>
+    <action>
+      <button>0</button>
+      <repeatable>false</repeatable>  
+      <binding>
+        <command>property-adjust</command>
+        <property>instrumentation/mfd/ptr1-src</property>
+        <step>1</step>
+        <min>0</min>
+        <max>2</max>
+        <wrap>true</wrap>     
+      </binding>
+    </action>
+  </animation>
+
+
+<!--Potentiomètre r1-->
+<animation>
+  <type>pick</type>
+  <object-name>pot-r1</object-name>
+  <action>
+    <button>4</button> <!--  scroll up -->
+    <repeatable>false</repeatable>
+    
+    <binding>
+      <command>property-adjust</command>
+      <property>autopilot/settings/target-altitude-ft</property>
+      <step>100</step>
+      <min>200</min>
+      <max>50000</max>
+      <wrap>false</wrap>
+      <condition>
+      <equals>
+        <property>/instrumentation/mfd/modeR</property>
+        <value> 1 </value>
+      </equals>
+    </condition>        
+    </binding>
+  </action>
+</animation>
+
+<animation>
+  <type>pick</type>  
+  <object-name>pot-r1</object-name>
+  <action>
+    <button>3</button> <!--  scroll down -->
+    <repeatable>false</repeatable>
+    
+    <binding>
+      <command>property-adjust</command>
+      <property>autopilot/settings/target-altitude-ft</property>
+      <step>-100</step>
+      <min>200</min>
+      <max>50000</max>
+      <wrap>false</wrap>
+      <condition>
+      <equals>
+        <property>/instrumentation/mfd/modeR</property>
+        <value> 1 </value>
+      </equals>
+    </condition>
+    </binding>
+        
+  </action>
+</animation>
+
+<!--Potentiomètre l1-->
+<animation>
+  <type>pick</type>
+  <object-name>pot-l1</object-name>
+  <action>
+    <button>4</button> <!--  scroll up -->
+    <repeatable>false</repeatable>
+    
+    <binding>
+      <command>property-adjust</command>
+      <property>autopilot/settings/target-speed-kt</property>
+      <step>5</step>
+      <min>160</min>
+      <max>500</max>
+      <wrap>false</wrap>
+      <condition>
+      <equals>
+        <property>/instrumentation/mfd/modeR</property>
+        <value> 1 </value>
+      </equals>
+    </condition>        
+    </binding>
+
+  </action>
+</animation>
+
+<animation>
+  <type>pick</type>  
+  <object-name>pot-l1</object-name>
+  <action>
+    <button>3</button> <!--  scroll down -->
+    <repeatable>false</repeatable>
+    
+    <binding>
+      <command>property-adjust</command>
+      <property>autopilot/settings/target-speed-kt</property>
+      <step>-5</step>
+      <min>160</min>
+      <max>500</max>
+      <wrap>false</wrap>
+      <condition>
+      <equals>
+        <property>/instrumentation/mfd/modeR</property>
+        <value> 1 </value>
+      </equals>
+    </condition>
+    </binding>
+        
+  </action>
+</animation>
+ 
+
+ 
+  <!-- __________________ End Buttons _____________________-->
+  <animation>
+    <type>select</type>
+    <object-name>Ensemble-EHSI</object-name>
+    <condition>
+      <equals>
+        <property>instrumentation/mfd/modeR</property>
+        <value> 0 </value>
+      </equals>
+    </condition>
+  </animation>
+
+  <animation>
+    <type>select</type>
+    <object-name>Ensemble-EADI</object-name>
+    <condition>
+      <equals>
+        <property>instrumentation/mfd/modeR</property>
+        <value> 1 </value>
+      </equals>
+    </condition>
+  </animation>
+
+  <!--                    ***************EHSI****************** -->
+  <animation>
+    <type>rotate</type>
+    <object-name>EHSI-hdg-bug</object-name>
+    <property>autopilot/internal/fdm-heading-bug-error-deg</property>
+    <center>
+      <x-m>0</x-m>
+      <y-m>0</y-m>
+      <z-m>0</z-m>
+    </center>
+    <axis>
+      <x> -1.0 </x>
+      <y>  0.0 </y>
+      <z>  0.0 </z>
+    </axis>
+  </animation>
+
+   <animation>
+    <type>rotate</type>
+    <object-name>EHSI-compass</object-name>
+    <object-name>EHSI-CRS-needle</object-name>
+    <object-name>EHSI-CRS-deflect</object-name>
+    <object-name>EHSI-CRS-TO</object-name>
+    <object-name>EHSI-CRS-FROM</object-name>
+    <object-name>EHSI-ptr2</object-name>    
+    <property>orientation/heading-magnetic-deg</property>
+    <center>
+      <x-m>0</x-m>
+      <y-m>0</y-m>
+      <z-m>0</z-m>
+    </center>
+    <axis>
+      <x> 1 </x>
+      <y> 0 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+
+  <!--EHSI CRS -->  
+  <animation>
+    <type>rotate</type>
+    <object-name>EHSI-CRS-needle</object-name>
+    <object-name>EHSI-CRS-deflect</object-name>
+     <object-name>EHSI-CRS-TO</object-name>
+    <object-name>EHSI-CRS-FROM</object-name>    
+    <property>autopilot/internal/radial-selected-deg</property>
+    <center> 
+      <x-m>0</x-m>
+      <y-m>0</y-m>
+      <z-m>0/</z-m>
+    </center>   
+    <axis>
+      <x> -1.0 </x>
+      <y> 0.0 </y>
+      <z> 0.0 </z>
+    </axis>
+  </animation>
+
+   <animation>
+    <type>translate</type>
+    <object-name>EHSI-CRS-deflect</object-name>    
+    <property>autopilot/internal/heading-needle-deflection</property>
+    <interpolation>
+      <entry><ind> -999 </ind><dep> -0.02 </dep></entry>
+      <entry><ind>  -10 </ind><dep> -0.02 </dep></entry>
+      <entry><ind>    0 </ind><dep>  0.00 </dep></entry>
+      <entry><ind>   10 </ind><dep>  0.02 </dep></entry>
+      <entry><ind>  999 </ind><dep>  0.02 </dep></entry>
+    </interpolation>
+    <axis>
+      <x> 0 </x>
+      <y> 1 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+
+ <animation>
+        <type>select</type>
+        <object-name>EHSI-CRS-TO</object-name>
+        <condition>            
+            <property>autopilot/internal/to-flag</property>      
+        </condition>
+    </animation>
+
+    <animation>
+        <type>select</type>
+        <object-name>EHSI-CRS-FROM</object-name>
+        <condition>            
+            <property>autopilot/internal/from-flag</property>
+        </condition>
+    </animation>
+
+<!--EHSI-Ptr2-->
+<animation>
+    <type>select</type>
+    <object-name>EHSI-ptr2</object-name>
+    <condition>
+          
+        <equals>
+          <property>instrumentation/mfd/ptr2-src</property>
+          <value> 1 </value>
+        </equals> 
+          
+    </condition>
+  </animation>
+
+<animation>
+    <type>rotate</type>
+    <object-name>EHSI-ptr2</object-name>
+    <property>instrumentation/tacan/indicated-bearing-true-deg</property>
+    <center>
+      <x-m>0</x-m>
+      <y-m>0</y-m>
+      <z-m>0/</z-m>
+    </center>   
+    <axis>
+      <x> -1.0 </x>
+      <y> 0.0 </y>
+      <z> 0.0 </z>
+    </axis>
+  </animation>
+
+<!--EHSI-Ptr1-->
+<animation>
+    <type>select</type>
+    <object-name>EHSI-ptr1</object-name>
+    <condition>
+      <equals>
+        <property>instrumentation/mfd/ptr1-src</property>
+        <value> 1 </value>
+      </equals>
+    </condition>
+  </animation>
+
+<animation>
+    <type>rotate</type>
+    <object-name>EHSI-ptr1</object-name>
+    <property>instrumentation/adf/indicated-bearing-deg</property>
+    <center>
+      <x-m>0</x-m>
+      <y-m>0</y-m>
+      <z-m>0/</z-m>
+    </center>   
+    <axis>
+      <x> -1.0 </x>
+      <y> 0.0 </y>
+      <z> 0.0 </z>
+    </axis>
+  </animation>
+
+<!--EHSI CRS KNOB-->
+<animation>
+  <type>pick</type>
+  <object-name>Course-knob</object-name>
+  <action>
+    <button>4</button> <!--  scroll up -->
+    <repeatable>false</repeatable>
+    <binding>
+      <command>property-adjust</command>
+      <property>instrumentation/nav/radials/selected-deg</property>
+      <step>1</step>
+      <min>1</min>
+      <max>361</max>
+      <wrap>true</wrap>
+      <condition>
+      <and>
+      <equals>
+        <property>/instrumentation/mfd/modeR</property>
+        <value> 0 </value>
+      </equals>
+      <equals>
+        <property>autopilot/settings/nav-source</property>
+        <value>NAV1</value>  
+      </equals>
+      </and>
+    </condition>
+    </binding>
+    <binding>
+      <command>property-adjust</command>
+      <property>instrumentation/nav[1]/radials/selected-deg</property>
+      <step>1</step>
+      <min>1</min>
+      <max>361</max>
+      <wrap>true</wrap>
+      <condition>
+      <and>
+      <equals>
+        <property>/instrumentation/mfd/modeR</property>
+        <value> 0 </value>
+      </equals>
+      <equals>
+        <property>autopilot/settings/nav-source</property>
+        <value>NAV2</value>  
+      </equals>
+      </and>
+    </condition>
+    </binding>
+    <binding>
+      <command>property-adjust</command>
+      <property>instrumentation/altimeter/setting-inhg</property>
+      <step>0.01</step>
+      <min>25</min>
+      <max>36</max>
+      <wrap>true</wrap>
+      <condition>
+      <equals>
+        <property>/instrumentation/mfd/modeR</property>
+        <value> 1 </value>
+      </equals>
+    </condition>        
+    </binding>
+  </action>
+</animation>
+
+<animation>
+  <type>pick</type>  
+  <object-name>Course-knob</object-name>
+  <action>
+    <button>3</button> <!--  scroll down -->
+    <repeatable>false</repeatable>    
+    <binding>
+      <command>property-adjust</command>
+      <property>instrumentation/nav/radials/selected-deg</property>
+      <step>-1</step>
+      <min>1</min>
+      <max>361</max>
+      <wrap>true</wrap>
+      <condition>
+      <and>
+      <equals>
+        <property>/instrumentation/mfd/modeR</property>
+        <value> 0 </value>
+      </equals>
+      <equals>
+        <property>autopilot/settings/nav-source</property>
+        <value>NAV1</value>  
+      </equals>
+      </and>
+    </condition>
+    </binding>
+    <binding>
+      <command>property-adjust</command>
+      <property>instrumentation/nav[1]/radials/selected-deg</property>
+      <step>-1</step>
+      <min>1</min>
+      <max>361</max>
+      <wrap>true</wrap>
+      <condition>
+      <and>
+      <equals>
+        <property>/instrumentation/mfd/modeR</property>
+        <value> 0 </value>
+      </equals>
+      <equals>
+        <property>autopilot/settings/nav-source</property>
+        <value>NAV2</value>  
+      </equals>
+      </and>
+    </condition>
+    </binding>
+    <binding>
+      <command>property-adjust</command>
+      <property>instrumentation/altimeter/setting-inhg</property>
+      <step>-0.01</step>
+      <min>25</min>
+      <max>36</max>
+      <wrap>true</wrap>
+      <condition>
+      <equals>
+        <property>/instrumentation/mfd/modeR</property>
+        <value> 1 </value>
+      </equals>
+    </condition>
+    </binding>  
+  </action>
+</animation>
+
+<!--    CW      -->
+<animation>
+  <type>pick</type>        
+  <visible>false</visible>
+  <object-name>course-inc</object-name>
+  <action>
+    <button>0</button>
+    <repeatable>true</repeatable>
+    <interval-sec>0.2</interval-sec>
+    <binding>
+      <command>property-adjust</command>
+      <property>instrumentation/nav/radials/selected-deg</property>
+      <step>1</step>
+      <min>1</min>
+      <max>361</max>
+      <wrap>true</wrap>
+      <condition>
+      <and>
+      <equals>
+        <property>/instrumentation/mfd/modeR</property>
+        <value> 0 </value>
+      </equals>
+      <equals>
+        <property>autopilot/settings/nav-source</property>
+        <value>NAV1</value>  
+      </equals>
+      </and>
+    </condition>
+    </binding>
+    <binding>
+      <command>property-adjust</command>
+      <property>instrumentation/nav[1]/radials/selected-deg</property>
+      <step>1</step>
+      <min>1</min>
+      <max>361</max>
+      <wrap>true</wrap>
+      <condition>
+      <and>
+      <equals>
+        <property>/instrumentation/mfd/modeR</property>
+        <value> 0 </value>
+      </equals>
+      <equals>
+        <property>autopilot/settings/nav-source</property>
+        <value>NAV2</value>  
+      </equals>
+      </and>
+    </condition>
+    </binding>
+  </action>
+</animation>
+
+<animation>
+  <type>pick</type>
+  <visible>false</visible>
+  <object-name>course-inc</object-name>
+  <action>
+    <button>1</button>
+    <repeatable>true</repeatable>
+    <interval-sec>0.2</interval-sec>
+    <binding>
+      <command>property-adjust</command>
+      <property>instrumentation/nav/radials/selected-deg</property>
+      <step>10</step>
+      <min>1</min>
+      <max>361</max>
+      <wrap>true</wrap>
+      <condition>
+      <and>
+      <equals>
+        <property>/instrumentation/mfd/modeR</property>
+        <value> 0 </value>
+      </equals>
+      <equals>
+        <property>autopilot/settings/nav-source</property>
+        <value>NAV1</value>  
+      </equals>
+      </and>
+    </condition>
+    </binding>
+    <binding>
+      <command>property-adjust</command>
+      <property>instrumentation/nav[1]/radials/selected-deg</property>
+      <step>10</step>
+      <min>1</min>
+      <max>361</max>
+      <wrap>true</wrap>
+      <condition>
+      <and>
+      <equals>
+        <property>/instrumentation/mfd/modeR</property>
+        <value> 0 </value>
+      </equals>
+      <equals>
+        <property>autopilot/settings/nav-source</property>
+        <value>NAV2</value>  
+      </equals>
+      </and>
+    </condition>
+    </binding>
+  </action>
+</animation>
+
+<!--    CCW     -->
+<animation>
+  <type>pick</type>
+  <visible>false</visible>
+  <object-name>course-dec</object-name>
+  <action>
+    <button>0</button>
+    <repeatable>true</repeatable>
+    <interval-sec>0.2</interval-sec>
+    <binding>
+      <command>property-adjust</command>
+      <property>instrumentation/nav/radials/selected-deg</property>
+      <step>-1</step>
+      <min>1</min>
+      <max>361</max>
+      <wrap>true</wrap>
+      <condition>
+      <and>
+      <equals>
+        <property>/instrumentation/mfd/modeR</property>
+        <value> 0 </value>
+      </equals>
+      <equals>
+        <property>autopilot/settings/nav-source</property>
+        <value>NAV1</value>  
+      </equals>
+      </and>
+    </condition>
+    </binding>
+    <binding>
+      <command>property-adjust</command>
+      <property>instrumentation/nav[1]/radials/selected-deg</property>
+      <step>-1</step>
+      <min>1</min>
+      <max>361</max>
+      <wrap>true</wrap>
+      <condition>
+      <and>
+      <equals>
+        <property>/instrumentation/mfd/modeR</property>
+        <value> 0 </value>
+      </equals>
+      <equals>
+        <property>autopilot/settings/nav-source</property>
+        <value>NAV2</value>  
+      </equals>
+      </and>
+    </condition>
+    </binding>
+ </action>
+</animation>
+
+<animation>
+  <type>pick</type>
+  <visible>false</visible>
+  <object-name>course-dec</object-name>
+  <action>
+    <button>1</button>
+    <repeatable>true</repeatable>
+    <interval-sec>0.2</interval-sec>
+    <binding>
+      <command>property-adjust</command>
+      <property>instrumentation/nav/radials/selected-deg</property>
+      <step>-10</step>
+      <min>1</min>
+      <max>361</max>
+      <wrap>true</wrap>
+      <condition>
+      <and>
+      <equals>
+        <property>/instrumentation/mfd/modeR</property>
+        <value> 0 </value>
+      </equals>
+      <equals>
+        <property>autopilot/settings/nav-source</property>
+        <value>NAV1</value>  
+      </equals>
+      </and>
+    </condition>
+    </binding>
+    <binding>
+      <command>property-adjust</command>
+      <property>instrumentation/nav[1]/radials/selected-deg</property>
+      <step>-10</step>
+      <min>1</min>
+      <max>361</max>
+      <wrap>true</wrap>
+      <condition>
+      <and>
+      <equals>
+        <property>/instrumentation/mfd/modeR</property>
+        <value> 0 </value>
+      </equals>
+      <equals>
+        <property>autopilot/settings/nav-source</property>
+        <value>NAV2</value>  
+      </equals>
+      </and>
+    </condition>
+    </binding>
+  </action>
+</animation>
+
+
+<animation>
+  <type>rotate</type>
+  <object-name>Course-knob</object-name>
+  <property>instrumentation/nav/radials/selected-deg</property>
+  <axis>
+    <x1-m>0.000912</x1-m>
+    <y1-m>0.06049</y1-m>
+    <z1-m>-0.06885</z1-m>
+
+    <x2-m>0.01298</x2-m>
+    <y2-m>0.06049</y2-m>
+    <z2-m>-0.06284</z2-m>
+  </axis>
+</animation>
+
+<!-- EHSI HEADING SET KNOB -->
+<animation>
+  <type>pick</type>
+  <object-name>HDG-knob</object-name>
+  <action>
+    <button>3</button>
+    <repeatable>false</repeatable>
+    <binding>
+      <command>property-adjust</command>                                        
+      <property>autopilot/settings/heading-bug-deg</property>
+      <step>1</step>
+      <min>1</min>
+      <max>361</max>
+      <wrap>true</wrap>
+    </binding>
+  </action>
+</animation>
+
+<animation>
+  <type>pick</type>
+  <object-name>HDG-knob</object-name>
+  <action>
+    <button>4</button>
+    <repeatable>false</repeatable>
+    <binding>
+      <command>property-adjust</command>                                        
+      <property>autopilot/settings/heading-bug-deg</property>
+      <step>-1</step>
+      <min>1</min>
+      <max>361</max>
+      <wrap>true</wrap>
+    </binding>
+  </action>
+</animation>
+
+<!--    CW      -->
+<animation>
+  <type>pick</type>
+  <visible>false</visible>
+  <object-name>hdg-inc</object-name>
+  <action>
+    <button>0</button>          
+    <repeatable>true</repeatable>
+    <interval-sec>0.2</interval-sec>
+    <binding>
+      <command>property-adjust</command>                                        
+      <property>autopilot/settings/heading-bug-deg</property>
+      <step>1</step>
+      <min>0</min>
+      <max>360</max>
+      <wrap>true</wrap>
+    </binding>
+  </action>
+</animation>
+
+<animation>
+  <type>pick</type>
+  <visible>false</visible>
+  <object-name>hdg-inc</object-name>
+  <action>
+    <button>1</button>
+    <repeatable>true</repeatable>
+    <interval-sec>0.2</interval-sec>
+    <binding>
+      <command>property-adjust</command>                        
+      <property>autopilot/settings/heading-bug-deg</property>
+      <step>10</step>
+      <min>0</min>
+      <max>360</max>
+      <wrap>true</wrap>
+    </binding>
+  </action>
+</animation>
+
+<!--    CCW     -->
+<animation>
+  <type>pick</type>
+  <visible>false</visible>
+  <object-name>hdg-dec</object-name>
+  <action>
+    <button>0</button>
+    <repeatable>true</repeatable>
+    <interval-sec>0.2</interval-sec>
+    <binding>
+      <command>property-adjust</command>                        
+      <property>autopilot/settings/heading-bug-deg</property>
+      <step>-1</step>
+      <min>0</min>
+      <max>360</max>
+      <wrap>true</wrap>
+    </binding>
+  </action>
+</animation>
+
+<animation>
+  <type>pick</type>
+  <visible>false</visible>
+  <object-name>hdg-dec</object-name>
+  <action>
+    <button>1</button>
+    <repeatable>true</repeatable>
+    <interval-sec>0.2</interval-sec>
+    <binding>
+      <command>property-adjust</command>                        
+      <property>autopilot/settings/heading-bug-deg</property>
+      <step>-10</step>
+      <min>0</min>
+      <max>360</max>
+      <wrap>true</wrap>
+    </binding>
+  </action>
+</animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>HDG-knob</object-name> 
+    <property>autopilot/settings/heading-bug-deg</property>
+    <axis>
+      <x1-m>  0.000912 </x1-m>
+      <y1-m> -0.060490 </y1-m>
+      <z1-m> -0.068850 </z1-m>
+      <x2-m>  0.012980 </x2-m>
+      <y2-m> -0.060490 </y2-m>
+      <z2-m> -0.062840 </z2-m>
+    </axis>
+  </animation>
+
+  <!-- ***************EADI************* -->
+  <animation>
+    <type>texmultiple</type>
+    <object-name>EADI-att</object-name>
+    <transform>
+      <property>orientation/pitch-deg</property>
+      <subtype>textranslate</subtype>
+      <factor> 0.0055 </factor>
+      <axis>
+        <x> 0 </x>
+        <y> 1 </y>
+        <z> 0 </z>
+      </axis>
+    </transform>
+  </animation>
+ 
+  <animation>
+    <type>rotate</type>
+    <object-name>EADI-att</object-name>
+    <property>orientation/roll-deg</property>
+    <factor>1</factor>
+    <axis>
+      <x> 1 </x>
+      <y> 0 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+ 
+  <animation>
+    <type>rotate</type>
+    <object-name>EADI-index</object-name>
+    <property>orientation/roll-deg</property>
+    <axis>
+      <x> -1 </x>
+      <y>  0 </y>
+      <z>  0 </z>
+    </axis>
+  </animation>
+
+  <!-- GS -->
+  <animation>
+     <type>select</type>     
+     <object-name>EADI-gs.needle</object-name>
+     <condition>
+       <and>
+         <less-than>          
+           <property>instrumentation/nav/gs-distance</property>
+           <value>30000</value>
+         </less-than>
+         <property>instrumentation/nav/has-gs</property>
+       </and>  
+     </condition>        
+  </animation>
+
+  <animation>
+    <type>translate</type>
+    <object-name>EADI-gs.needle</object-name>
+    <property>instrumentation/nav/gs-needle-deflection-norm</property>
+    <interpolation>
+      <entry><ind> -1 </ind><dep> -0.0162 </dep></entry>
+      <entry><ind>  0 </ind><dep>  0.0000 </dep></entry>
+      <entry><ind>  1 </ind><dep>  0.0162 </dep></entry>
+    </interpolation>
+    <axis>
+      <x> 0 </x>
+      <y> 0 </y>
+      <z> 1 </z>
+    </axis>
+  </animation>
+
+  <!-- ILS -->
+  <animation>
+     <type>select</type>        
+     <object-name>EADI-yaw-line</object-name>
+     <condition>
+        <and>
+          <less-than>
+            <property>instrumentation/nav/nav-distance</property>
+            <value>50000</value>
+          </less-than>
+          <property>instrumentation/nav/has-gs</property>
+        </and>
+      </condition>
+  </animation>
+
+  <animation>
+    <type>translate</type>
+    <object-name>EADI-yaw-line</object-name>
+    <property>instrumentation/nav/heading-needle-deflection</property>
+    <interpolation>
+      <entry><ind> -999 </ind><dep> -0.02 </dep></entry>
+      <entry><ind>  -10 </ind><dep> -0.02 </dep></entry>
+      <entry><ind>    0 </ind><dep>  0.00 </dep></entry>
+      <entry><ind>   10 </ind><dep>  0.02 </dep></entry>
+      <entry><ind>  999 </ind><dep>  0.02 </dep></entry>
+    </interpolation>
+    <axis>
+      <x> 0 </x>
+      <y> 1 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+
+  <!--Vertical speed-->
+  <!--montee-->
+  <animation>
+     <type>select</type>        
+     <object-name>EADI-alt-marker+</object-name>
+     <condition>        
+          <greater-than>
+            <property>autopilot/internal/vert-speed-fpm</property>
+            <value>100</value>
+          </greater-than>          
+      </condition>
+  </animation>
+
+  <animation>
+    <type>translate</type>
+    <object-name>EADI-alt-marker+</object-name>
+    <property>autopilot/internal/vert-speed-fpm</property>
+    <interpolation>     
+      <entry><ind>    0 </ind><dep>  0.00 </dep></entry>
+      <entry><ind>   15000 </ind><dep>  0.022 </dep></entry>      
+    </interpolation>
+    <axis>
+      <x> 0 </x>
+      <y> 0 </y>
+      <z> 1 </z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>translate</type>
+    <object-name>EADI-alt-marker+</object-name>
+    <property>autopilot/internal/vert-speed-fpm</property>
+    <interpolation>     
+      <entry><ind>    0 </ind><dep>  0.00 </dep></entry>
+      <entry><ind>   15000 </ind><dep>  0.0019 </dep></entry>      
+    </interpolation>
+    <axis>
+      <x> 1 </x>
+      <y> 0 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+
+  <!--descente-->
+  <animation>
+    <type>select</type>        
+    <object-name>EADI-alt-marker---</object-name>
+    <condition>        
+      <less-than>
+        <property>autopilot/internal/vert-speed-fpm</property>
+        <value>-100</value>
+      </less-than>          
+    </condition>
+  </animation>
+
+  <animation>
+    <type>translate</type>
+    <object-name>EADI-alt-marker---</object-name>
+    <property>autopilot/internal/vert-speed-fpm</property>
+    <interpolation>
+      <entry><ind>   -15000 </ind><dep>  -0.022 </dep></entry>
+      <entry><ind>    0 </ind><dep>  0.00 </dep></entry>            
+    </interpolation>
+    <axis>
+      <x> 0 </x>
+      <y> 0 </y>
+      <z> 1 </z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>translate</type>
+    <object-name>EADI-alt-marker---</object-name>
+    <property>autopilot/internal/vert-speed-fpm</property>
+    <interpolation>     
+      <entry><ind>    0 </ind><dep>  0.00 </dep></entry>
+      <entry><ind>   -15000 </ind><dep>  0.0020 </dep></entry>      
+    </interpolation>
+    <axis>
+      <x> 1 </x>
+      <y> 0 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+   
 </PropertyList>

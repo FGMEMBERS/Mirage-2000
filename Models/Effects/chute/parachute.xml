@@ -30,7 +30,7 @@
     <object-name>ParachuteEntier</object-name>
     <condition>
       <greater-than>
-        <property>instrumentation/doors/parachute/position-norm</property>
+        <property>sim/model/door-positions/parachute/position-norm</property>
         <value>0.5</value>
       </greater-than>
     </condition>
