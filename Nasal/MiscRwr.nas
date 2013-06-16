@@ -32,25 +32,23 @@ var tableuBound       = 0;
 
 
 var switch_distance = func() {
+#The real distance selctor is : 10,20,40,60,160,320
 
          var range = getprop("instrumentation/radar/range");
-         if(range == 5){
-            range = 10;
-            if(getprop("/sim/aim/tachy") != "true"){setprop("instrumentation/radar[0]/selected",3);}
-         }elsif(range == 10){
+         if(range == 10){
             range = 20;
-            if(getprop("/sim/aim/tachy") != "true"){setprop("instrumentation/radar[0]/selected",2);}
+            if(getprop("/sim/aim/tachy") != "true"){setprop("instrumentation/radar[0]/selected",3);}
          }elsif(range == 20){
-            range = 50;
+            range = 40;
             if(getprop("/sim/aim/tachy") != "true"){setprop("instrumentation/radar[0]/selected",2);}
-         }elsif(range == 50){
-            range = 100;
+         }elsif(range == 40){
+            range = 60;
             if(getprop("/sim/aim/tachy") != "true"){setprop("instrumentation/radar[0]/selected",2);}
-         }elsif(range == 100){
-            range = 150;
+         }elsif(range == 60){
+            range = 160;
             if(getprop("/sim/aim/tachy") != "true"){setprop("instrumentation/radar[0]/selected",2);}
-         }elsif(range==150){
-            range = 5;
+         }elsif(range == 160){
+            range = 10;
             if(getprop("/sim/aim/tachy") != "true"){setprop("instrumentation/radar[0]/selected",3);}
          }
          

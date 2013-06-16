@@ -161,7 +161,7 @@ var az_scan = func() {
                                 continue;
                         }
                         var HaveRadarNode = c.getNode("radar");
-                        if (type == "multiplayer" or (type == "tanker" and HaveRadarNode != nil) or type == "aircraft" or type=="carrier" ) {
+                        if (type == "multiplayer" or (type == "tanker" and HaveRadarNode != nil) or type == "aircraft" or type=="carrier" or type=="ship") {
                                 var u = Target.new(c);
                                 u_ecm_signal      = 0;
                                 u_ecm_signal_norm = 0;

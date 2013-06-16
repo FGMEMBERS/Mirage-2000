@@ -27,7 +27,7 @@
   </animation>
 
   <animation>
-    <type>material</type>
+    <type>material</type>    
     <object-name>pa</object-name>
     <object-name>pa-alt</object-name>
     <object-name>pa-vs</object-name>
@@ -45,10 +45,22 @@
     <object-name>pa-stby-on</object-name>
     <object-name>pa-hdg-on</object-name>
     <emission>
-      <factor-prop>systems/electrical/outputs/instrument-lights</factor-prop>
+      <factor>1</factor>
       <red>   0.6 </red>
-      <green> 0.3 </green>
-      <blue>  0.3 </blue>
+      <green> 0.5 </green>
+      <blue>  0.5 </blue>
+    </emission>
+  </animation>
+
+  <animation>
+    <type>material</type>
+    <object-name>fond</object-name>
+    <object-name>label</object-name>
+    <emission>
+      <factor>0.15</factor>
+      <red>   1 </red>
+      <green> 1 </green>
+      <blue>  1 </blue>
     </emission>
   </animation>
 
@@ -56,12 +68,24 @@
     <type>select</type>
     <object-name>pa-on</object-name>
     <condition>
-      <equals>
-        <property>autopilot/locks/AP-status</property>
-        <value>AP1</value>
-      </equals>
+        <or>
+          <equals>
+            <property>autopilot/locks/AP-status</property>
+            <value>AP1</value>
+          </equals>
+        <and>
+          <equals>
+            <property>autopilot/locks/AP-status</property>
+            <value>TEMP DISENGAGE</value>
+          </equals>
+          <equals>
+            <property>sim/model/lights/pa-blink/state</property>
+            <value>true</value>
+          </equals>
+        </and>
+        </or>
     </condition>
-  </animation>
+   </animation>
 
   <animation>
     <type>select</type>
@@ -179,6 +203,10 @@
       <button>0</button>
       <repeatable>false</repeatable>
       <binding>
+        <command>property-toggle</command>
+        <property>sim/model/click</property>
+      </binding>
+      <binding>
         <command>nasal</command>
         <script>mirage2000.FD_set_mode("hdg")</script>
       </binding>
@@ -192,6 +220,10 @@
     <action>
       <button>0</button>
       <repeatable>false</repeatable>
+      <binding>
+        <command>property-toggle</command>
+        <property>sim/model/click</property>
+      </binding>
       <binding>
         <command>nasal</command>
         <script>mirage2000.FD_set_mode("alt")</script>
@@ -207,6 +239,10 @@
       <button>0</button>
       <repeatable>false</repeatable>
       <binding>
+        <command>property-toggle</command>
+        <property>sim/model/click</property>
+      </binding>
+      <binding>
         <command>nasal</command>
         <script>mirage2000.FD_set_mode("nav")</script>
       </binding>
@@ -220,6 +256,10 @@
     <action>
       <button>0</button>
       <repeatable>false</repeatable>
+      <binding>
+        <command>property-toggle</command>
+        <property>sim/model/click</property>
+      </binding>
       <binding>
         <command>nasal</command>
         <script>mirage2000.FD_set_mode("app")</script>
@@ -235,6 +275,10 @@
       <button>0</button>
       <repeatable>false</repeatable>
       <binding>
+        <command>property-toggle</command>
+        <property>sim/model/click</property>
+      </binding>
+      <binding>
         <command>nasal</command>
         <script>mirage2000.FD_set_mode("vs")</script>
       </binding>
@@ -248,6 +292,10 @@
     <action>
       <button>0</button>
       <repeatable>false</repeatable>
+      <binding>
+        <command>property-toggle</command>
+        <property>sim/model/click</property>
+      </binding>
       <binding>
         <command>nasal</command>
         <script>mirage2000.FD_set_mode("stby")</script>
@@ -263,6 +311,10 @@
       <button>0</button>
       <repeatable>true</repeatable>
       <binding>
+        <command>property-toggle</command>
+        <property>sim/model/click</property>
+      </binding>
+      <binding>
         <command>nasal</command>
         <script>mirage2000.pitch_wheel(-1)</script>
       </binding>
@@ -270,6 +322,10 @@
     <action>
       <button>1</button>
       <repeatable>true</repeatable>
+      <binding>
+        <command>property-toggle</command>
+        <property>sim/model/click</property>
+      </binding>
       <binding>
         <command>nasal</command>
         <script>mirage2000.pitch_wheel(1)</script>
@@ -279,6 +335,10 @@
       <button>3</button>
       <repeatable>true</repeatable>
       <binding>
+        <command>property-toggle</command>
+        <property>sim/model/click</property>
+      </binding>
+      <binding>
         <command>nasal</command>
         <script>mirage2000.pitch_wheel(-1)</script>
       </binding>
@@ -286,6 +346,10 @@
     <action>
       <button>4</button>
       <repeatable>true</repeatable>
+      <binding>
+        <command>property-toggle</command>
+        <property>sim/model/click</property>
+      </binding>
       <binding>
         <command>nasal</command>
         <script>mirage2000.pitch_wheel(1)</script>
@@ -296,7 +360,8 @@
   <animation>
     <type>rotate</type>
     <object-name>pa-pitch</object-name>
-    <property>autopilot/settings/vertical-speed-fpm</property>
+    <property>autopilot/settings/target-pitch-deg</property>
+    <factor>10</factor>
     <center>
       <x-m> -0.02470 </x-m>
       <y-m>  0.02378 </y-m>
@@ -317,6 +382,10 @@
       <button>0</button>
       <repeatable>false</repeatable>
       <binding>
+        <command>property-toggle</command>
+        <property>sim/model/click</property>
+      </binding>
+      <binding>
         <command>nasal</command>
         <script>mirage2000.FD_set_mode("ap");</script>
       </binding>
@@ -331,6 +400,10 @@
       <button>0</button>
       <repeatable>false</repeatable>
       <binding>
+        <command>property-toggle</command>
+        <property>sim/model/click</property>
+      </binding>
+      <binding>
         <command>nasal</command>
         <script>mirage2000.FD_set_mode("spd");</script>
       </binding>
@@ -344,6 +417,10 @@
     <action>
       <button>0</button>
       <repeatable>false</repeatable>
+      <binding>
+        <command>property-toggle</command>
+        <property>sim/model/click</property>
+      </binding>
       <binding>
         <command>nasal</command>
         <script>mirage2000.FD_set_mode("spd");</script>

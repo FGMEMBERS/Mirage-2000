@@ -380,6 +380,30 @@
       </volume>
     </guns>
 
+<!--                  Toggle Switches                  -->
+    <click>
+      <name>Clickon</name>
+      <path>Aircraft/Mirage-2000/Sounds/click.wav</path>
+      <condition>
+        <property>sim/model/click</property>
+      </condition>
+      <volume>
+        <factor>1.0</factor>
+      </volume>
+    </click>
+
+    <click>
+      <name>Clickoff</name>
+      <path>Aircraft/Mirage-2000/Sounds/click.wav</path>
+      <condition>
+        <not><property>sim/model/click</property></not>
+      </condition>
+      <volume>
+        <factor>1.0</factor>
+      </volume>
+    </click>
+
+
   </fx>
  
 </PropertyList>

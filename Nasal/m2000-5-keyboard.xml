@@ -195,7 +195,7 @@
     <desc>Flare out</desc>
     <binding>
       <command>property-toggle</command>
-      <property>controls/switches/flare</property>
+      <property>controls/switches/flares</property>
     </binding>
   </key>
   

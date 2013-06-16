@@ -1,37 +1,37 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 
-
-
-
 <PropertyList>
 
+  <!-- =============================================================== -->
+  <!-- Prediction filters                                              -->
+  <!-- =============================================================== -->
 
-	<!-- =============================================================== -->
-	<!-- Prediction filters                                              -->
-	<!-- =============================================================== -->
+  <!--
+  <predict-simple>
+    <input>/velocities/mach</input>
+    <output>/autopilot/internal/lookahead-5-sec-mach</output>
+    <seconds>5.0</seconds>
+    <filter-gain>0.0</filter-gain>
+  </predict-simple>
+  -->
 
-	<!--<predict-simple>
-		<input>/velocities/mach</input>
-		<output>/autopilot/internal/lookahead-5-sec-mach</output>
-		<seconds>5.0</seconds>
-		<filter-gain>0.0</filter-gain>
-	</predict-simple>-->
+  <predict-simple>
+    <input>/velocities/airspeed-kt</input>
+    <output>/autopilot/internal/lookahead-5-sec-airspeed-kt</output>
+    <seconds>5.0</seconds>
+    <filter-gain>0.0</filter-gain>
+  </predict-simple>
 
-	<predict-simple>
-		<input>/velocities/airspeed-kt</input>
-		<output>/autopilot/internal/lookahead-5-sec-airspeed-kt</output>
-		<seconds>5.0</seconds>
-		<filter-gain>0.0</filter-gain>
-	</predict-simple>
+  <!--
+  <predict-simple>
+    <input>/autopilot/internal/nav1-track-error-deg</input>
+    <output>/autopilot/internal/nav1-track-error-lookahead-deg</output>
+    <seconds>8.0</seconds>
+    <filter-gain>0.0</filter-gain>
+  </predict-simple>
+  -->
 
-	<!--<predict-simple>
-		<input>/autopilot/internal/nav1-track-error-deg</input>
-		<output>/autopilot/internal/nav1-track-error-lookahead-deg</output>
-		<seconds>8.0</seconds>
-		<filter-gain>0.0</filter-gain>
-	</predict-simple>-->
-
- <!-- =============================================================== -->
+  <!-- =============================================================== -->
   <!-- Roll Axis Modes                                                 -->
   <!-- =============================================================== -->
 
@@ -117,7 +117,7 @@
       <prop>/controls/flight/aileron</prop>
     </output>
     <config>
-      <Kp>0.015</Kp>        <!-- proportional gain -->
+      <Kp>0.015</Kp>      <!-- proportional gain -->
       <beta>1.0</beta>    <!-- input value weighing factor -->
       <alpha>0.1</alpha>  <!-- low pass filter weighing factor -->
       <gamma>0.0</gamma>  <!-- input value weighing factor for -->
@@ -155,7 +155,7 @@
       <alpha>0.1</alpha>   <!-- low pass filter weighing factor -->
       <gamma>0.0</gamma>   <!-- input value weighing factor for -->
                            <!-- unfiltered derivative error -->
-      <Ti>5.0</Ti>        <!-- integrator time -->
+      <Ti>5.0</Ti>         <!-- integrator time -->
       <Td>0.00001</Td>     <!-- derivator time -->
       <u_min>-35.0</u_min> <!-- minimum output clamp -->
       <u_max>35.0</u_max>  <!-- maximum output clamp -->
@@ -180,12 +180,12 @@
       <prop>/controls/flight/aileron</prop>
     </output>
     <config>
-      <Kp>0.022</Kp>       <!-- proportional gain -->
+      <Kp>0.022</Kp>      <!-- proportional gain -->
       <beta>1.0</beta>    <!-- input value weighing factor -->
       <alpha>0.1</alpha>  <!-- low pass filter weighing factor -->
       <gamma>0.0</gamma>  <!-- input value weighing factor for -->
                           <!-- unfiltered derivative error -->
-      <Ti>5.0</Ti>       <!-- integrator time -->
+      <Ti>5.0</Ti>        <!-- integrator time -->
       <Td>0.00001</Td>    <!-- derivator time -->
       <u_min>-1.0</u_min> <!-- minimum output clamp -->
       <u_max>1.0</u_max>  <!-- maximum output clamp -->
@@ -243,12 +243,12 @@
       <prop>/controls/flight/aileron</prop>
     </output>
     <config>
-      <Kp>0.0025</Kp>        <!-- proportional gain -->
+      <Kp>0.0025</Kp>      <!-- proportional gain -->
       <beta>1.0</beta>     <!-- input value weighing factor -->
       <alpha>0.1</alpha>   <!-- low pass filter weighing factor -->
       <gamma>0.0</gamma>   <!-- input value weighing factor for -->
                            <!-- unfiltered derivative error -->
-      <Ti>5.0</Ti>        <!-- integrator time -->
+      <Ti>5.0</Ti>         <!-- integrator time -->
       <Td>0.00001</Td>     <!-- derivator time -->
       <u_min>-0.35</u_min> <!-- minimum output clamp -->
       <u_max>0.35</u_max>  <!-- maximum output clamp -->
@@ -256,12 +256,12 @@
   </pid-controller>
 
 
- <!-- =============================================================== -->
- <!-- Pitch Axis Modes                                                -->
- <!-- =============================================================== -->
+  <!-- =============================================================== -->
+  <!-- Pitch Axis Modes                                                -->
+  <!-- =============================================================== -->
 
- <!-- Simple pitch hold -->
- <pid-controller>
+  <!-- Simple pitch hold -->
+  <pid-controller>
     <name>Pitch hold</name>
     <debug>false</debug>
     <enable>
@@ -290,8 +290,8 @@
     </config>
    </pid-controller>
 
- <!-- Simple angle of attack hold -->
- <pid-controller>
+  <!-- Simple angle of attack hold -->
+  <pid-controller>
     <name>AOA hold</name>
     <debug>false</debug>
     <enable>
@@ -341,9 +341,9 @@
       <prop>/autopilot/internal/target-climb-rate-fps</prop>
     </output>
     <config>
-      <Kp>0.3</Kp>          <!-- proportional gain -->
-      <Ki>0.0</Ki>          <!-- integral gain -->
-      <u_min>-66</u_min> <!-- minimum output clamp -->
+      <Kp>0.3</Kp>        <!-- proportional gain -->
+      <Ki>0.0</Ki>        <!-- integral gain -->
+      <u_min>-66</u_min>  <!-- minimum output clamp -->
       <u_max>66</u_max>   <!-- maximum output clamp -->
     </config>
   </pi-simple-controller>
@@ -424,7 +424,7 @@
       <prop>/controls/flight/elevator-trim</prop>
     </output>
     <config>
-      <Kp>-0.002</Kp>      <!-- proportional gain -->
+      <Kp>-0.002</Kp>     <!-- proportional gain -->
       <beta>1.0</beta>    <!-- input value weighing factor -->
       <alpha>0.1</alpha>  <!-- low pass filter weighing factor -->
       <gamma>0.0</gamma>  <!-- input value weighing factor for -->
@@ -456,7 +456,7 @@
       <prop>/controls/flight/elevator-trim</prop>
     </output>
     <config>
-      <Kp>-0.002</Kp>      <!-- proportional gain -->
+      <Kp>-0.002</Kp>     <!-- proportional gain -->
       <beta>1.0</beta>    <!-- input value weighing factor -->
       <alpha>0.1</alpha>  <!-- low pass filter weighing factor -->
       <gamma>0.0</gamma>  <!-- input value weighing factor for -->
@@ -487,7 +487,7 @@
       <prop>/controls/flight/elevator-trim</prop>
     </output>
     <config>
-      <Kp>-0.002</Kp>      <!-- proportional gain -->
+      <Kp>-0.002</Kp>     <!-- proportional gain -->
       <beta>1.0</beta>    <!-- input value weighing factor -->
       <alpha>0.1</alpha>  <!-- low pass filter weighing factor -->
       <gamma>0.0</gamma>  <!-- input value weighing factor for -->
@@ -499,13 +499,12 @@
     </config>
   </pid-controller>
 
+  <!-- =============================================================== -->
+  <!-- Velocity Modes                                                  -->
+  <!-- =============================================================== -->
 
- <!-- =============================================================== -->
- <!-- Velocity Modes                                                  -->
- <!-- =============================================================== -->
-
- <!-- Auto throttle -->
- <pid-controller>
+  <!-- Auto throttle -->
+  <pid-controller>
     <name>Auto Throttle (5 sec lookahead)</name>
     <debug>false</debug>
     <enable>
@@ -530,7 +529,7 @@
       <prop>/controls/engines/engine[7]/throttle</prop>
     </output>
     <config>
-      <Kp>0.06</Kp>        <!-- proportional gain **0.1**-->
+      <Kp>0.06</Kp>       <!-- proportional gain **0.1**-->
       <beta>1.0</beta>    <!-- input value weighing factor -->
       <alpha>0.1</alpha>  <!-- low pass filter weighing factor -->
       <gamma>0.0</gamma>  <!-- input value weighing factor for -->
@@ -542,8 +541,8 @@
     </config>
   </pid-controller>
 
- <!-- Hold speed by varying pitch trim (Two stage cascading controller) -->
- <pid-controller>
+  <!-- Hold speed by varying pitch trim (Two stage cascading controller) -->
+  <pid-controller>
     <name>Speed hold (vary pitch trim) Stage #1</name>
     <debug>false</debug>
     <enable>
@@ -572,7 +571,7 @@
     </config>
   </pid-controller>
 
- <pid-controller>
+  <pid-controller>
     <name>Speed hold (vary pitch trim) Stage #2</name>
     <debug>false</debug>
     <enable>
@@ -589,7 +588,7 @@
       <prop>/controls/flight/elevator-trim</prop>
     </output>
     <config>
-      <Kp>-0.002</Kp>      <!-- proportional gain -->
+      <Kp>-0.002</Kp>     <!-- proportional gain -->
       <beta>1.0</beta>    <!-- input value weighing factor -->
       <alpha>0.1</alpha>  <!-- low pass filter weighing factor -->
       <gamma>0.0</gamma>  <!-- input value weighing factor for -->

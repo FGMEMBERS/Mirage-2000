@@ -131,7 +131,7 @@
     <width>18</width>
     <height>12</height>
     <input>
-      <property>/position/altitude-ft</property>
+      <property>instrumentation/altimeter/indicated-altitude-ft</property>
       <factor>0.01</factor>
     </input>
     
@@ -148,7 +148,7 @@
     <condition> 
       <less-than>
         <property>/position/altitude-agl-ft</property>
-        <value>1000</value>
+        <value>5000</value>
       </less-than>
     </condition>
     <halign>left</halign>

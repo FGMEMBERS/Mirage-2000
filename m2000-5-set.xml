@@ -6,8 +6,8 @@
   <sim>
 
     <description>Mirage 2000 (YASim)</description>
-    <author>BARANGER Emmanuel (3D/FDM), Buckaroo (FDM), 5H1N0B1 (Weapons, system)</author>
-
+    <author>BARANGER Emmanuel (3D/FDM), Buckaroo (FDM), 5H1N0B1 (Weapons, system), F-Sig (3D, ssystems)</author>
+    
     <rating>
       <FDM type="int">     4 </FDM>
       <systems type="int"> 4 </systems>

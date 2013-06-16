@@ -14,11 +14,11 @@
  
   <!-- MFD Left -->
   <model>
-    <path>Aircraft/Mirage-2000/Models/Interior/Panel/Instruments/mfd/mfdL.xml</path>
+    <path>Aircraft/Mirage-2000/Models/Interior/Panel/Instruments/Mfd/mfdL.xml</path>
     <offsets>
       <x-m>  0.390 </x-m>
-      <y-m> -0.207 </y-m>
-      <z-m> -0.124 </z-m>
+      <y-m> -0.197 </y-m>
+      <z-m> -0.118 </z-m>
     </offsets>
   </model>
 
@@ -64,11 +64,11 @@
 
   <!-- MFD Right -->
   <model>
-    <path>Aircraft/Mirage-2000/Models/Interior/Panel/Instruments/mfd/mfdR.xml</path>
+    <path>Aircraft/Mirage-2000/Models/Interior/Panel/Instruments/Mfd/mfdR.xml</path>
     <offsets>
       <x-m>  0.390 </x-m>
-      <y-m>  0.207 </y-m>
-      <z-m> -0.124 </z-m>
+      <y-m>  0.197 </y-m>
+      <z-m> -0.118 </z-m>
     </offsets>
   </model>
 

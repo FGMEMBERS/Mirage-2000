@@ -13,14 +13,18 @@ var AP = "autopilot/locks/AP-status";
 var SPD = "autopilot/locks/speed";
 var NAVprop="autopilot/settings/nav-source";
 var NAVSRC= getprop(NAVprop);
+var DMEprop="instrumentation/dme/frequencies/source";
+var pitch_trim="controls/flight/elevator-trim";
+var roll_trim="controls/flight/aileron-trim";
 var count=0;
 var count_1=0;
-var count_2=0;
-var count_3=0;
 var minimums=getprop("autopilot/settings/minimums");
 var wx_range=[10,25,50,100,200,300];
 var wx_index=3;
-
+var deadZ_pitch = 0.05; #0.02
+var deadZ_roll = 0.05;  
+var stick_pos = 0;
+var flag = 0;
 #####################################
 
 setlistener("/sim/signals/fdm-initialized", func {
@@ -28,17 +32,17 @@ setlistener("/sim/signals/fdm-initialized", func {
     print("Flight Director ...Check");
     settimer(update_fd, 5);
 });
-#*************
 
-#set target-altitude  m2000
-
+######initialisation
+var init_set=func{
+    setprop("/autopilot/settings/target-altitude-ft",4000);
+    setprop(RMI1prop,"");
+    setprop(RMI2prop,"");
+}
 var nasalInit = setlistener("/sim/signals/fdm-initialized", func{
-  settimer( func{ setprop("/autopilot/settings/target-altitude-ft",4000); }, 2);
+  settimer(init_set, 2);
   removelistener(nasalInit);
 });
-#***************
-
-
 
 ### AP /FD BUTTONS ####
 
@@ -75,8 +79,7 @@ var FD_set_mode = func(btn){
         } else set_pitch();
    
     }elsif(btn=="nav"){
-        set_nav_mode();
-        setprop("autopilot/settings/low-bank",0);
+        set_nav_mode();       
 
     }elsif(btn=="vnav"){
         if(Vmode!="VALT"){
@@ -85,27 +88,17 @@ var FD_set_mode = func(btn){
                 setprop(Lateral,"LNAV");
             }
             }else set_pitch();
+
     }elsif(btn=="app"){
         setprop(Lateral_arm,"");
         setprop(Vertical_arm,"");
-        set_apr();
-        setprop("autopilot/settings/low-bank",0);
-
-    }elsif(btn=="vs"){
-        setprop(Lateral_arm,"");
-        setprop(Vertical_arm,"");
-         if(Vmode!="VS"){
-            var tgt_vs = (int(getprop("autopilot/internal/vert-speed-fpm") * 0.01)) * 100;
-            setprop(Vertical,"VS");
-            setprop("autopilot/settings/vertical-speed-fpm",tgt_vs);
-        } else set_pitch();
+        set_apr(); 
 
     }elsif(btn=="stby"){
         setprop(Lateral_arm,"");
         setprop(Vertical_arm,"");
         set_pitch();
-        set_roll();
-        setprop("autopilot/settings/low-bank",0);
+        set_roll();       
     
     }elsif(btn=="spd"){
         if(SPmode!="SPD") setprop(SPD,"SPD")
@@ -123,7 +116,6 @@ var nav_src_set=func(){
 #   if(count_1==2)setprop(NAVprop,"TACAN"); 
 #   if(count_1==3)setprop(NAVprop,"FMS");          
 }
-
 
 ########### ARM VALID NAV MODE ################
 var set_nav_mode=func{
@@ -149,24 +141,20 @@ var set_nav_mode=func{
 var pitch_wheel=func(dir){
     var Vmode=getprop(Vertical);
    
-    var amt=0;
-    if(Vmode=="VS"){
-        amt = int(getprop("autopilot/settings/vertical-speed-fpm")) + (dir* 100);
-        amt = (amt < -8000 ? -8000 : amt > 6000 ? 6000 : amt);
-        setprop("autopilot/settings/vertical-speed-fpm",amt);
+    var amt=0; 
     
-    }elsif(Vmode=="PTCH"){
+    if(Vmode=="PTCH"){
         amt=getprop("autopilot/settings/target-pitch-deg") + (dir*0.1);
         amt = (amt < -20 ? -20 : amt > 20 ? 20 : amt);
         setprop("autopilot/settings/target-pitch-deg",amt)
     }
+
 }
 
 ########    FD INTERNAL ACTIONS  #############
 
-
 var set_pitch=func{
-    setprop(Vertical,"PTCH");
+    setprop(Vertical,"PTCH");   
     var p_inst=getprop("orientation/pitch-deg");
     if(p_inst < 3 and p_inst > -3){
     setprop("autopilot/settings/target-pitch-deg",0);
@@ -178,7 +166,7 @@ var set_pitch=func{
 
 var set_roll=func{
     var r_inst=getprop("orientation/roll-deg");    
-    setprop(Lateral,"ROLL");    
+    setprop(Lateral,"ROLL");      
     if(r_inst < 10 and r_inst > -10){    
        setprop("autopilot/settings/target-roll-deg",0.0)}
     if(r_inst > 10 or r_inst < -10){    
@@ -234,6 +222,7 @@ var update_nav=func{
         setprop("autopilot/internal/heading-needle-deflection",getprop("instrumentation/nav/heading-needle-deflection"));
         setprop("autopilot/internal/to-flag",getprop("instrumentation/nav/to-flag"));
         setprop("autopilot/internal/from-flag",getprop("instrumentation/nav/from-flag"));
+        setprop(DMEprop,"instrumentation/nav[0]/frequencies/selected-mhz");
 
     }elsif(NAVSRC == "NAV2"){
         if(getprop("instrumentation/nav[1]/data-is-valid"))sgnl="VOR2";
@@ -253,6 +242,7 @@ var update_nav=func{
         setprop("autopilot/internal/heading-needle-deflection",getprop("instrumentation/nav[1]/heading-needle-deflection"));
         setprop("autopilot/internal/to-flag",getprop("instrumentation/nav[1]/to-flag"));
         setprop("autopilot/internal/from-flag",getprop("instrumentation/nav[1]/from-flag"));
+        setprop(DMEprop,"instrumentation/nav[1]/frequencies/selected-mhz");
 
     }elsif(NAVSRC == "FMS"){
         setprop("autopilot/internal/nav-type","FMS1");
@@ -265,6 +255,7 @@ var update_nav=func{
         setprop("autopilot/internal/from-flag",getprop("instrumentation/gps/wp/wp[1]/from-flag"));
     }
 }
+
 
 var set_range = func(dir){
     wx_index+=dir;
@@ -323,6 +314,7 @@ var monitor_V_armed = func{
                     if(gs_err >-0.15 and gs_err < 0.15){
                         setprop(Vertical,"GS");
                         setprop(Vertical_arm,"");
+                        minimums=100;                   #mini 100ft si GS
                     }
                 }
             }
@@ -345,20 +337,55 @@ var kill_Ap = func(msg){
     setprop(SPD,"");
     set_pitch();
     set_roll();
+    flag = 0;
+#    setprop(pitch_trim,0);
+    setprop(roll_trim,0);
 }
 
-
-
-
+#---Temporarly disengage Autopilot when control stick steering
+var pa_stb_off = func{
+    if(stick_pos == 1 and flag==0){
+        setprop(AP,"TEMP DISENGAGE");
+        setprop(Lateral,"");
+        setprop(Vertical,"");
+        flag=1;
+        }
+}    
+#---Re-engage Autopilot
+var pa_stb_on = func{   
+    if(stick_pos == 0 and flag==1){
+        setprop(AP,"AP1");
+        set_pitch();
+        set_roll();
+        flag=0;
+        }
+}
 ###  Main loop ###
 
 var update_fd = func {
-    update_nav();
+var elev_ctrl=getprop("controls/flight/elevator");
+var roll_ctrl=getprop("controls/flight/aileron");
 
+#--Control stick position
+	stick_pos = ((elev_ctrl > deadZ_pitch or -deadZ_pitch > elev_ctrl) or (roll_ctrl > deadZ_roll or -deadZ_roll > roll_ctrl)) ? 1 : 0;
+
+    var L_mode=getprop(Lateral);
+    var V_mode=getprop(Vertical);
+    var pa_stat=getprop(AP); 
+    if(pa_stat=="AP1" and L_mode=="ROLL" 
+                      and V_mode=="PTCH" 
+                      and stick_pos==1)pa_stb_off(); 
+
+    if(pa_stat=="TEMP DISENGAGE" and L_mode==""
+                                 and V_mode==""
+                                 and stick_pos==0)pa_stb_on(); 
+
+    update_nav();    
     if(count==0)monitor_AP_errors();
     if(count==1)monitor_L_armed();
     if(count==2)monitor_V_armed(); 
+     
     count+=1;
     if(count>2)count=0;
-    settimer(update_fd, 0);
+    settimer(update_fd, 0.25);
 }

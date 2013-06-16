@@ -97,7 +97,7 @@
     <object-name>pylon1.R</object-name>      
     <condition>
       <not-equals>
-        <property>sim/weight[4]/selected</property>
+        <property>sim/weight[6]/selected</property>
         <value>none</value>
       </not-equals>
     </condition>
@@ -119,7 +119,7 @@
     <object-name>pylon3.R</object-name>      
     <condition>
       <not-equals>
-        <property>sim/weight[6]/selected</property>
+        <property>sim/weight[4]/selected</property>
         <value>none</value>
       </not-equals>
     </condition>

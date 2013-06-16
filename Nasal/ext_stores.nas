@@ -196,8 +196,10 @@ dropLoad = func (number) {
                      #setprop("sim/weight["~ number ~"]/selected", "none");
                      setprop("sim/weight["~ number ~"]/weight-lb", 0);
                 }else{
-                     load.dropMissile(number);
-                     settimer(func load.dropLoad_stop(number),0.5);
+                     if(getprop("controls/armament/station["~ number ~"]/release")==0){;
+                        load.dropMissile(number);
+                        settimer(func load.dropLoad_stop(number),0.5);
+                     }
                 }
 
 

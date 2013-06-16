@@ -4,7 +4,8 @@
 
   <sim include="Nasal/views.xml">
 
-    <author>BARANGER Emmanuel (3D/FDM), Buckaroo (FDM), 5H1N0B1 (Weapons, system)</author>
+    <description>Mirage 2000 (YASim)</description>
+    <author>BARANGER Emmanuel (3D/FDM), Buckaroo (FDM), 5H1N0B1 (Weapons, system), F-Sig (3D, ssystems)</author>
     <aircraft-version>0.1</aircraft-version>
     <status>0.1 Alpha</status>
 
@@ -319,14 +320,19 @@
       <opt><name>GBU12</name><lbs>800</lbs></opt>
     </weight>
     
-    <!--   <offsets><x-m type="double"> -1.265 </x-m><y-m  droite/gauche type="double"> -0.824 </y-m><z-m type="double"> -1.404 </z-m></offsets>-->
-
+    <!--
+    <offsets>
+      <x-m type="double"> -1.265 </x-m>
+      <y-m  droite/gauche type="double"> -0.824 </y-m>
+      <z-m type="double"> -1.404 </z-m>
+    </offsets>
+    -->
 
     <systems>
        <autopilot>
           
-        <path>Aircraft/Mirage-2000/System/m2000-5_autopilot.xml</path>
-        
+       <path>Aircraft/Mirage-2000/System/m2000-5_autopilot.xml</path>
+         <!--<path>Aircraft/Mirage-2000/System/autopilot.xml</path>-->
        </autopilot>
     </systems>
 
@@ -497,10 +503,26 @@
     </terrain-radar>
 
     <mfd>
-      <modeL type="int"> 1 </modeL>
-      <modeR type="int"> 0 </modeR>
-      
+      <modeL type="int">0</modeL>
+      <modeR type="int">0</modeR>
+      <dimm-l type="float">1</dimm-l>
+      <dimm-r type="float">1</dimm-r>
+      <inhg-hpa type="bool">0</inhg-hpa>
+      <mfd-glass type="bool">0</mfd-glass>
+      <rmi-1-bearing-deg type="float">0</rmi-1-bearing-deg>
+      <rmi-2-bearing-deg type="float">0</rmi-2-bearing-deg>
+      <rmuL type="int">0</rmuL> 
+      <rmuR type="int">0</rmuR> 
     </mfd>
+
+    <tacan>
+       <ident type="string">""</ident>
+       <frequencies>
+         <stby-can type="int">24</stby-can>
+         <stby-can1 type="string">0</stby-can1>
+         <stby-can2 type="string">X</stby-can2>
+       </frequencies>
+    </tacan>
 
     <!--Thanks to the CitationX guy !! -->
     <nd>
@@ -584,6 +606,12 @@
       <type>probe</type>
       <serviceable type="bool">true</serviceable>
     </refuel>
+    <electrical>
+      <outputs>
+        <adf1 type="float">28.0</adf1>
+      </outputs>
+    </electrical>
+
   </systems>
 
   <consumables>
@@ -624,54 +652,53 @@
     </closest>
   </ai>
 
-<autopilot>
-        <settings>
-            <minimums type="int">200</minimums>
-            <target-roll-deg type="double">0</target-roll-deg>
-            <target-pitch-deg type="double">0</target-pitch-deg>
-            <vertical-speed-fpm type="int">0</vertical-speed-fpm>
-            <nav-source type="string">NAV1</nav-source>
-            <bank-limit type="int">47</bank-limit>
-            <target-speed-kt type="int">350</target-speed-kt>
-            <target-speed-mach type="double">0.40</target-speed-mach>
-            <changeover type="bool">0</changeover>
-            <heading-bug-deg type="int">0</heading-bug-deg>
-            <vertical-speed-fpm type="int">0</vertical-speed-fpm>
-            
-            
-        </settings>
-        <locks>
-            <heading>ROLL</heading>
-            <heading-arm type="string"></heading-arm>
-            <altitude>PTCH</altitude>
-            <altitude-arm type="string"></altitude-arm>
-            <AP-status type="string"></AP-status>
-            <FD-status type="bool">1</FD-status>
-            <yaw-damper type="bool">0</yaw-damper>
-            <m-trim type="bool">0</m-trim>
-        </locks>
-        <internal>
-            <selected-crs type="int">0</selected-crs>
-            <nav-distance type="double">0</nav-distance>
-            <nav-type type="string"></nav-type>
-            <nav-id type="string"></nav-id>
-            <course-deflection type="double">0.0</course-deflection>
-            <gs-valid type="bool">0</gs-valid>
-            <gs-deflection type="double">0.0</gs-deflection>
-            <in-range type="bool">0</in-range>
-            <gs-in-range type="bool">0</gs-in-range>
-        </internal>
-    </autopilot>
+  <autopilot>
+    <settings>
+      <minimums type="int">200</minimums>
+      <target-roll-deg type="double">0</target-roll-deg>
+      <target-pitch-deg type="double">0</target-pitch-deg>
+      <vertical-speed-fpm type="int">0</vertical-speed-fpm>
+      <nav-source type="string">NAV1</nav-source>
+      <bank-limit type="int">47</bank-limit>
+      <target-speed-kt type="int">350</target-speed-kt>
+      <target-speed-mach type="double">0.40</target-speed-mach>
+      <changeover type="bool">0</changeover>
+      <heading-bug-deg type="int">0</heading-bug-deg>
+      <vertical-speed-fpm type="int">0</vertical-speed-fpm>
+    </settings>
+    <locks>
+      <heading>ROLL</heading>
+      <heading-arm type="string"></heading-arm>
+      <altitude>PTCH</altitude>
+      <altitude-arm type="string"></altitude-arm>
+      <AP-status type="string"></AP-status>
+      <FD-status type="bool">1</FD-status>
+      <yaw-damper type="bool">0</yaw-damper>
+      <m-trim type="bool">0</m-trim>
+    </locks>
+    <internal>
+      <selected-crs type="int">0</selected-crs>
+      <nav-distance type="double">0</nav-distance>
+      <nav-type type="string"></nav-type>
+      <nav-id type="string"></nav-id>
+      <course-deflection type="double">0.0</course-deflection>
+      <gs-valid type="bool">0</gs-valid>
+      <gs-deflection type="double">0.0</gs-deflection>
+      <in-range type="bool">0</in-range>
+      <gs-in-range type="bool">0</gs-in-range>
+    </internal>
+  </autopilot>
 
   <nasal>
     <doors>
       <file>Aircraft/Mirage-2000/Nasal/doors.nas</file>
     </doors>
     <mirage2000>
+      <file>Aircraft/Mirage-2000/Nasal/m2000-5_mfd.nas</file>
       <file>Aircraft/Mirage-2000/Nasal/liveries.nas</file>
       <file>Aircraft/Mirage-2000/Nasal/light.nas</file>
       <file>Aircraft/Mirage-2000/Nasal/m2000-5.nas</file>
-      <file>Aircraft/Mirage-2000/Nasal/m2000-5_flightdirector.nas</file>
+      <file>Aircraft/Mirage-2000/Nasal/m2000-5_flightdirector.nas</file>      
     </mirage2000>
     <aar>
       <file>Aircraft/Generic/aar.nas</file>

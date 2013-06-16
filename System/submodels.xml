@@ -61,10 +61,10 @@
     <buoyancy>20</buoyancy>
     <wind>false</wind>
     <collision>true</collision>
+    <collision-report>sim/ai/aircraft/collision/bullet</collision-report>
     <impact>true</impact>
-    <impact-report>sim/ai/aircraft/impact/bullet</impact-report>
+    <impact-report>ai/models/model-impact</impact-report>
     <submodel-path>Aircraft/Mirage-2000/Models/Effects/guns/bullet-submodel.xml</submodel-path>
-    <impact-reports>sim/ai/aircraft/collision/cannon</impact-reports>
     <pitch-offset>0.1</pitch-offset>
   </cannon>
 
@@ -83,8 +83,13 @@
     <count alias="../../cannon/count"/>
     <wind alias="../../cannon/wind"/>
     <expiry alias="../../cannon/expiry"/>
+    
     <collision alias="../../cannon/collision"/>
+    <collision-report alias="../../cannon/collision-report"/>
+    
     <impact alias="../../cannon/impact"/>
+    <impact-report alias="../../cannon/impact-report"/>
+    
     <submodel-path alias="../../cannon/submodel-path"/>
     <x-offset>  3.98 </x-offset> <!-- -1.212 m =  3.98 ft -->
     <y-offset>  1.01 </y-offset> <!-- -0.308 m =  1.01 ft -->
@@ -128,7 +133,11 @@
     <wind alias="../../cannon/wind"/>
     <expiry alias="../../cannon/expiry"/>
     <collision alias="../../cannon/collision"/>
+    <collision-report alias="../../cannon/collision-report"/>
+    
     <impact alias="../../cannon/impact"/>
+    <impact-report alias="../../cannon/impact-report"/>
+    
     <submodel-path alias="../../cannon/submodel-path"/>
     <x-offset>  3.98 </x-offset> <!-- -1.212 m =  3.98 ft -->
     <y-offset> -1.01 </y-offset> <!--  0.308 m = -1.01 ft -->
@@ -363,9 +372,9 @@
                     the property "controls/slave-to-ac" must be set to false.
   -->
   <submodel>
-    <name>flare</name>
+    <name>flares</name>
     <model>Aircraft/Mirage-2000/Models/Effects/flare/flare.xml</model>
-    <trigger>controls/switches/flare</trigger>
+    <trigger>controls/switches/flares</trigger>
     <speed>400</speed>
     <repeat>true</repeat>
     <delay>0.5</delay>
@@ -383,9 +392,9 @@
   </submodel>
   
   <submodel>
-    <name>flare</name>
+    <name>flares</name>
     <model>Aircraft/Mirage-2000/Models/Effects/flare/flare.xml</model>
-    <trigger>controls/switches/flare</trigger>
+    <trigger>controls/switches/flares</trigger>
     <speed>400</speed>
     <repeat>true</repeat>
     <delay>0.5</delay>
