@@ -1,5 +1,3 @@
-
-
 var AcModel        = props.globals.getNode("sim/model/m2000-5");
 var OurHdg         = props.globals.getNode("orientation/heading-deg");
 var OurRoll        = props.globals.getNode("orientation/roll-deg");
@@ -747,19 +745,12 @@ var MISSILE = {
                                 if(me.free == 0 and me.life_time > me.Life){
                                         settimer(func me.update_track(), 2);
                                 }
-
-        
-
         },
-
-
 
         reset_steering: func {
                 me.track_signal_e = 0;
                 me.track_signal_h = 0;
         },
-
-
 
         reset_seeker: func {
                 me.curr_tgt_e     = 0;
@@ -770,8 +761,6 @@ var MISSILE = {
                 interpolate(HudReticleDev, 0, 2);
                 me.reset_steering()
         },
-
-
 
         clamp_min_max: func (v, mm) {
                 if ( v < -mm ) {
@@ -795,11 +784,7 @@ var MISSILE = {
                 var explode_smoke_path = "armament/MatraMICA/flags/explode-smoke-id-" ~ me.ID;
                 me.explode_smoke_prop = props.globals.initNode( explode_smoke_path, 0, "BOOL" );
         },
-
-
-
         animate_explosion: func {
-
                 var Dapath = me.missile_Explosion;
                 if(me.model.getNode("path", 1).getValue() != Dapath){
                         #print(Dapath);
@@ -812,9 +797,6 @@ var MISSILE = {
                 #settimer( func me.explode_smoke_prop.setBoolValue(1), 0.5 );
                 #settimer( func me.explode_smoke_prop.setBoolValue(0), 3 );
         },
-
-
-
         active: {},
 };
 
@@ -853,7 +835,6 @@ var impact_report = func(pos, mass_slug, string) {
 
         var impact_str = "/ai/models/" ~ string ~ "[" ~ i ~ "]";
         setprop("ai/models/model-impact", impact_str);
-
 }
 
 steering_speed_G = func(steering_e_deg, steering_h_deg, s_fps, mass, dt) {
@@ -888,10 +869,9 @@ var max_G_Rotation = func(steering_e_deg, steering_h_deg, s_fps, mass, dt,gMax) 
         var g_th = (mass * s_fps * s_fps / radius_ft_th * dt) / g_fps;
 
         #print ("Max G ",gMax , " Actual G " , g,"steer_deg_theoric ",steer_deg_theoric);
-        
+
         return(steer_deg_theoric/steer_deg);
 }
-
 
 # HUD clamped target blinker
 SW_reticle_Blinker = aircraft.light.new("sim/model/f-14b/lighting/hud-sw-reticle-switch", [0.1, 0.1]);
@@ -914,10 +894,6 @@ var nextGeoloc =func (long,lat, heading, speed, dt){
 
 }
 
-
-
-
-
 var MPReport = func () {
         if (getprop("sim/model/m2000-5/systems/armament/mp-messaging")=="true") {
                 setprop("sim/model/m2000-5/systems/armament/mp-messaging","false");
@@ -927,7 +903,3 @@ var MPReport = func () {
         var phrase = "MP messaging : " ~ getprop("sim/model/m2000-5/systems/armament/mp-messaging");
         setprop("/sim/messages/atc", phrase);
 }
-
-
-
-

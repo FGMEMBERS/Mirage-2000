@@ -252,7 +252,17 @@
       <binding>
         <command>property-toggle</command>
         <property>sim/model/click</property>
-      </binding>       
+      </binding>
+      <binding>
+        <command>property-toggle</command>
+        <property>instrumentation/mfd/wind-display</property>
+      </binding>
+      <condition>
+          <equals> 
+            <property>/instrumentation/mfd/modeR</property>           
+            <value> 0 </value>
+            </equals>
+          </condition>       
       <binding>
         <command>property-adjust</command>
           <property>instrumentation/mfd/rmuR</property>
@@ -881,7 +891,7 @@
   <type>pick</type>
   <object-name>bl-knob</object-name>
   <action>
-    <button>3</button>
+    <button>4</button>
     <repeatable>false</repeatable>
       <binding>
         <command>property-toggle</command>
@@ -902,7 +912,7 @@
   <type>pick</type>
   <object-name>bl-knob</object-name>
   <action>
-    <button>4</button>
+    <button>3</button>
     <repeatable>false</repeatable>
       <binding>
         <command>property-toggle</command>

@@ -343,7 +343,7 @@
         <script>mirage2000.pitch_wheel(-1)</script>
       </binding>
     </action>
-    <action>
+  1  <action>
       <button>4</button>
       <repeatable>true</repeatable>
       <binding>

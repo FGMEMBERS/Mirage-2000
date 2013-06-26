@@ -6,7 +6,7 @@
     <name>button_b1</name>
     <offsets>
       <x-m>  0.000 </x-m>
-      <y-m> -0.042 </y-m>
+      <y-m> -0.035 </y-m>
       <z-m> -0.056 </z-m>
     </offsets>
     <alignment>center-center</alignment>
@@ -16,12 +16,7 @@
     <text>EADI</text>
 
     <font>helvetica_bold.txf</font>
-    <character-size>0.006</character-size>
-    <character-aspect-ratio type="double">1.3</character-aspect-ratio>
-    <font-resolution>
-      <width type="int">64</width>
-      <height type="int">64</height>
-    </font-resolution>
+    <character-size>0.006</character-size>    
   </text>
    
    <text>
@@ -38,12 +33,7 @@
      <property>autopilot/locks/AP-status</property>
         
      <font>helvetica_bold.txf</font>
-     <character-size>0.006</character-size>
-     <character-aspect-ratio type="double">1.3</character-aspect-ratio>
-     <font-resolution>
-       <width type="int">64</width>
-       <height type="int">64</height>
-     </font-resolution>
+     <character-size>0.006</character-size>     
    </text>
    
    <text>
@@ -60,12 +50,7 @@
      <property>autopilot/locks/altitude-arm</property>
         
      <font>helvetica_bold.txf</font>
-     <character-size>0.006</character-size>
-     <character-aspect-ratio type="double">1.3</character-aspect-ratio>
-     <font-resolution>
-       <width type="int">64</width>
-       <height type="int">64</height>
-     </font-resolution>
+     <character-size>0.006</character-size>     
    </text>
    
    <text>
@@ -82,12 +67,7 @@
      <property>autopilot/locks/altitude</property>
         
      <font>helvetica_bold.txf</font>
-     <character-size>0.006</character-size>
-     <character-aspect-ratio type="double">1.3</character-aspect-ratio>
-     <font-resolution>
-       <width type="int">64</width>
-       <height type="int">64</height>
-     </font-resolution>
+     <character-size>0.006</character-size>     
    </text>
    
    <text>
@@ -104,12 +84,7 @@
      <property>autopilot/locks/heading-arm</property> 
        
      <font>helvetica_bold.txf</font>
-     <character-size>0.006</character-size>
-     <character-aspect-ratio type="double">1.3</character-aspect-ratio>
-     <font-resolution>
-       <width type="int">64</width>
-       <height type="int">64</height>
-     </font-resolution>
+     <character-size>0.006</character-size>     
    </text>
    
    <text>
@@ -126,12 +101,7 @@
      <property>autopilot/locks/heading</property>
         
      <font>helvetica_bold.txf</font>
-     <character-size>0.006</character-size>
-     <character-aspect-ratio type="double">1.3</character-aspect-ratio>
-     <font-resolution>
-       <width type="int">64</width>
-       <height type="int">64</height>
-     </font-resolution>
+     <character-size>0.006</character-size>     
    </text>
    
    <!--GS in range-->
@@ -149,12 +119,7 @@
      <text>GS IN RANGE</text>
      
      <font>helvetica_bold.txf</font>
-     <character-size>0.005</character-size>
-     <character-aspect-ratio type="double">1.3</character-aspect-ratio>
-     <font-resolution>
-       <width type="int">64</width>
-       <height type="int">64</height>
-     </font-resolution>
+     <character-size>0.005</character-size>     
    </text>
    
    <animation>
@@ -172,7 +137,7 @@
      <name>alt</name>
      <offsets>
        <x-m>0.0</x-m>
-       <y-m>0.060</y-m>
+       <y-m>0.058</y-m>
        <z-m>-0.0</z-m>
      </offsets>
      <alignment>center-center</alignment>
@@ -184,12 +149,7 @@
      <truncate>true</truncate>    
      
      <font>helvetica_bold.txf</font>
-     <character-size>0.009</character-size>
-     <character-aspect-ratio type="double">1.3</character-aspect-ratio>
-     <font-resolution>
-       <width type="int">64</width>
-       <height type="int">64</height>
-     </font-resolution>
+     <character-size>0.009</character-size>     
    </text>
    
    <!--Vertical speed plus-->
@@ -197,7 +157,7 @@
      <name>vs+</name>
      <offsets>
        <x-m>0.0</x-m>
-       <y-m>0.059</y-m>
+       <y-m>0.057</y-m>
        <z-m>0.008</z-m>
      </offsets>
      <alignment>center-center</alignment>
@@ -209,12 +169,7 @@
      <truncate>true</truncate>    
      
      <font>helvetica_bold.txf</font>
-     <character-size>0.008</character-size>
-     <character-aspect-ratio type="double">1.3</character-aspect-ratio>
-     <font-resolution>
-       <width type="int">64</width>
-       <height type="int">64</height>
-     </font-resolution>
+     <character-size>0.008</character-size>     
    </text>
    
    <animation>
@@ -233,7 +188,7 @@
      <name>vs-</name>
      <offsets>
        <x-m>0.0</x-m>
-       <y-m>0.059</y-m>
+       <y-m>0.057</y-m>
        <z-m>-0.008</z-m>
      </offsets>
      <alignment>center-center</alignment>
@@ -245,12 +200,7 @@
      <truncate>true</truncate>    
      
      <font>helvetica_bold.txf</font>
-     <character-size>0.008</character-size>
-     <character-aspect-ratio type="double">1.3</character-aspect-ratio>
-     <font-resolution>
-       <width type="int">64</width>
-       <height type="int">64</height>
-     </font-resolution>
+     <character-size>0.008</character-size>     
    </text>
    
    <animation>
@@ -277,16 +227,11 @@
      
      <type>number-value</type>
      <property>velocities/airspeed-kt</property>
-     <format>Kt %3.0f</format>
+     <format>%3.0f</format>
      <truncate>true</truncate>    
      
      <font>helvetica_bold.txf</font>
-     <character-size>0.009</character-size>
-     <character-aspect-ratio type="double">1.3</character-aspect-ratio>
-     <font-resolution>
-       <width type="int">64</width>
-       <height type="int">64</height>
-     </font-resolution>
+     <character-size>0.009</character-size>     
    </text>
    
    <!--Mach-->
@@ -306,12 +251,7 @@
      
      
      <font>helvetica_bold.txf</font>
-     <character-size>0.006</character-size>
-     <character-aspect-ratio type="double">1.3</character-aspect-ratio>
-     <font-resolution>
-       <width type="int">64</width>
-       <height type="int">64</height>
-     </font-resolution>
+     <character-size>0.006</character-size>     
    </text>
    
    <!--Nav-id-->
@@ -329,12 +269,7 @@
      <property>autopilot/internal/nav-id</property>
      
      <font>helvetica_bold.txf</font>
-     <character-size>0.006</character-size>
-     <character-aspect-ratio type="double">1.3</character-aspect-ratio>
-     <font-resolution>
-       <width type="int">64</width>
-       <height type="int">64</height>
-     </font-resolution>
+     <character-size>0.006</character-size>     
    </text>
    
    <!--INHG-HPA-->
@@ -343,7 +278,7 @@
      <name>inhg</name>
      <offsets>
        <x-m>0.0</x-m>
-       <y-m>0.047</y-m>
+       <y-m>0.049</y-m>
        <z-m>-0.055</z-m>
      </offsets>
      <alignment>center-center</alignment>
@@ -351,16 +286,11 @@
      
      <type>number-value</type>
      <property>instrumentation/altimeter/setting-inhg</property>
-     <format>INGH   %2.2f</format>
+     <format>INGH %2.2f</format>
      <truncate>false</truncate>    
      
      <font>helvetica_bold.txf</font>
-     <character-size>0.007</character-size>
-     <character-aspect-ratio type="double">1.3</character-aspect-ratio>
-     <font-resolution>
-       <width type="int">64</width>
-       <height type="int">64</height>
-     </font-resolution>
+     <character-size>0.007</character-size>     
    </text>
 
    <text>
@@ -375,16 +305,11 @@
      
      <type>number-value</type>
      <property>instrumentation/altimeter/setting-hpa</property>
-     <format>HPA  %4.2f</format>
+     <format>HPA%4.2f</format>
      <truncate>false</truncate>    
      
      <font>helvetica_bold.txf</font>
-     <character-size>0.007</character-size>
-     <character-aspect-ratio type="double">1.3</character-aspect-ratio>
-     <font-resolution>
-       <width type="int">64</width>
-       <height type="int">64</height>
-     </font-resolution>
+     <character-size>0.007</character-size>     
    </text>
 
   <animation>
@@ -410,7 +335,7 @@
      <name>tg_alt</name>
      <offsets>
        <x-m>0.0</x-m>
-       <y-m>0.052</y-m>
+       <y-m>0.048</y-m>
        <z-m>0.042</z-m>
      </offsets>
      <alignment>center-center</alignment>
@@ -422,12 +347,7 @@
      <truncate>true</truncate>    
      
      <font>helvetica_bold.txf</font>
-     <character-size>0.007</character-size>
-     <character-aspect-ratio type="double">1.3</character-aspect-ratio>
-     <font-resolution>
-       <width type="int">64</width>
-       <height type="int">64</height>
-     </font-resolution>
+     <character-size>0.007</character-size>     
    </text>
    
    <!--AP-Targer-Speed-->
@@ -435,7 +355,7 @@
      <name>tg_spd</name>
      <offsets>
        <x-m>0.0</x-m>
-       <y-m>-0.054</y-m>
+       <y-m>-0.052</y-m>
        <z-m>0.042</z-m>
      </offsets>
      <alignment>center-center</alignment>
@@ -447,12 +367,27 @@
      <truncate>true</truncate>    
      
      <font>helvetica_bold.txf</font>
-     <character-size>0.007</character-size>
-     <character-aspect-ratio type="double">1.3</character-aspect-ratio>
-     <font-resolution>
-       <width type="int">64</width>
-       <height type="int">64</height>
-     </font-resolution>
+     <character-size>0.007</character-size>     
+   </text>
+
+  <!--Ground-Speed-->
+   <text>
+     <name>g_spd</name>
+     <offsets>
+       <x-m>0.0</x-m>
+       <y-m>-0.056</y-m>
+       <z-m>-0.025</z-m>
+     </offsets>
+     <alignment>center-center</alignment>
+     <axis-alignment>yz-plane</axis-alignment>
+     
+     <type>number-value</type>
+     <property>velocities/groundspeed-kt</property>
+     <format>Gspd:%3.0f</format>
+     <truncate>true</truncate>    
+     
+     <font>helvetica_bold.txf</font>
+     <character-size>0.007</character-size>     
    </text>
 
    <!--COLORS-->
@@ -466,7 +401,8 @@
      <object-name>gs-inrange</object-name>
      <object-name>nav_id</object-name>
      <object-name>tg_alt</object-name>
-     <object-name>tg_spd</object-name>     
+     <object-name>tg_spd</object-name>  
+     <object-name>g_spd</object-name>   
      <emission>
        <red>0</red>
        <factor-prop>instrumentation/mfd/dimm-l</factor-prop>

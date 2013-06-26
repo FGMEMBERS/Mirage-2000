@@ -28,6 +28,18 @@
 
   <animation>
     <type>material</type>
+    <object-name>fond</object-name>
+    <object-name>text</object-name>        
+    <emission>      
+      <factor>0.2</factor>
+      <red>   1 </red>
+      <green> 1 </green>
+      <blue>  1 </blue>
+    </emission>
+  </animation>
+
+  <animation>
+    <type>material</type>
     <object-name>kt1</object-name>
     <object-name>kt10</object-name>
     <object-name>kt100</object-name>

@@ -32,6 +32,17 @@
 
   <animation>
     <type>material</type>
+    <object-name>fond</object-name>           
+    <emission>      
+      <factor>0.13</factor>
+      <red>   1 </red>
+      <green> 1 </green>
+      <blue>  1 </blue>
+    </emission>
+  </animation>
+
+  <animation>
+    <type>material</type>
     <object-name>drum</object-name>
     <object-name>ring</object-name>
     <object-name>scale</object-name>

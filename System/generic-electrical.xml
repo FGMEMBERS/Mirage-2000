@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="ISO-8859-1"?>
  
 <!-- Generic 28 Volt electrical system -->
 
@@ -67,7 +67,6 @@
   </bus>
 
   <!-- Generic Outputs -->
-
   <output>
     <name>Starter 1 Power</name>
     <prop>/systems/electrical/outputs/starter[0]</prop>
@@ -134,7 +133,6 @@
   </output>
 
   <!-- connect in power sources -->
-
   <connector>
     <input>Alternator 1</input>
     <output>Master Bus</output>
@@ -165,7 +163,6 @@
   </connector>
 
   <!-- connect starter output -->
-
   <connector>
     <input>Master Bus</input>
     <output>Starter 1 Power</output>
@@ -176,7 +173,6 @@
   </connector>
 
   <!-- connect master bus outputs -->
-
   <connector>
     <input>Master Bus</input>
     <output>Cabin Lights Power</output>

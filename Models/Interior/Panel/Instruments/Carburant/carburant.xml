@@ -39,6 +39,19 @@
 
   <animation>
     <type>material</type>
+    <object-name>base</object-name>
+    <object-name>visses</object-name>
+    <object-name>knob</object-name>        
+    <emission>      
+      <factor>0.13</factor>
+      <red>   1 </red>
+      <green> 1 </green>
+      <blue>  1 </blue>
+    </emission>
+  </animation>
+
+  <animation>
+    <type>material</type>
     <object-name>face</object-name>
     <object-name>num1-1</object-name>
     <object-name>num1-2</object-name>

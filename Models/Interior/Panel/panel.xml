@@ -45,15 +45,15 @@
   <!-- MFD Center border-->
   <model>
     <name>MFD_Center_border</name>
-    <path>Aircraft/Mirage-2000/Models/Interior/Panel/Instruments/Center-mfd/Old/mfd.xml</path>
+    <path>Aircraft/Mirage-2000/Models/Interior/Panel/Instruments/Center-mfd/center-mfd.xml</path>
     <offsets>
-      <x-m>  0.431 </x-m>
+      <x-m>  0.400 </x-m>
       <y-m>  0.000 </y-m>
-      <z-m> -0.166 </z-m>
+      <z-m> -0.185 </z-m>
       <pitch-deg> -20 </pitch-deg>
     </offsets>
   </model>
-  
+<!--  
   <animation>
     <type>scale</type>
     <object-name>MFD_Center_border</object-name> 
@@ -61,7 +61,7 @@
     <y-offset> 1.03 </y-offset>
     <z-offset> 1.05 </z-offset>
   </animation>
-
+-->
   <!-- MFD Right -->
   <model>
     <path>Aircraft/Mirage-2000/Models/Interior/Panel/Instruments/Mfd/mfdR.xml</path>
@@ -97,8 +97,18 @@
     <path>Aircraft/Mirage-2000/Models/Interior/Panel/Instruments/AP/ap.xml</path>
     <offsets>
       <x-m>  0.3760 </x-m>
-      <y-m> -0.18 </y-m>
-      <z-m>  0.05 </z-m>
+      <y-m> -0.183 </y-m>
+      <z-m>  0.048 </z-m>
+    </offsets>
+  </model>
+
+<!-- SURF-INDIC -->
+  <model>
+    <path>Aircraft/Mirage-2000/Models/Interior/Panel/Instruments/Surf-indic/surf-indic.xml</path>
+    <offsets>
+      <x-m>  0.37426 </x-m>
+      <y-m> -0.182 </y-m>
+      <z-m>  0.048 </z-m>
     </offsets>
   </model>
 
@@ -114,11 +124,11 @@
 
   <!-- VSI -->
   <model>
-    <path>Aircraft/Mirage-2000/Models/Interior/Panel/Instruments/vsi/vsi.xml</path>
+    <path>Aircraft/Mirage-2000/Models/Interior/Panel/Instruments/Vsi/vsi.xml</path>
     <offsets>
-      <x-m> 0.383 </x-m>
-      <y-m> 0.135 </y-m>
-      <z-m> 0.055 </z-m>
+      <x-m> 0.3785 </x-m>
+      <y-m> 0.125 </y-m>
+      <z-m> 0.065 </z-m>
     </offsets>
   </model>
 
@@ -149,9 +159,9 @@
   <model>
     <path>Aircraft/Mirage-2000/Models/Interior/Panel/Instruments/Carburant/carburant.xml</path>
     <offsets>
-      <x-m>  0.40880 </x-m>
+      <x-m>  0.39000 </x-m>
       <y-m>  0.14621 </y-m>
-      <z-m> -0.24519 </z-m>
+      <z-m> -0.24200 </z-m>
     </offsets>
   </model>
 
@@ -159,9 +169,9 @@
   <model>
     <path>Aircraft/Mirage-2000/Models/Interior/Panel/Instruments/Tuyere/tuyere.xml</path>
     <offsets>
-      <x-m>  0.40880 </x-m>
+      <x-m>  0.39000 </x-m>
       <y-m>  0.24102 </y-m>
-      <z-m> -0.24519 </z-m>
+      <z-m> -0.24200 </z-m>
     </offsets>
   </model>
   
@@ -176,14 +186,26 @@
     </offsets>
   </model>
   
-  <!-- Radio -->
+  <!-- Alerts -->
   <model>
     <path>Aircraft/Mirage-2000/Models/Interior/Panel/Instruments/Alerts/alerts.xml</path>
     <offsets>
-      <x-m>  0.40591 </x-m>
+      <x-m>  0.395 </x-m>
       <y-m> -0.17000 </y-m>
-      <z-m> -0.23410 </z-m>
+      <z-m> -0.231 </z-m>
       <pitch-deg>-5</pitch-deg>
+    </offsets>
+  </model>
+
+ <!-- Clock -->
+  <model>
+    <path>Aircraft/Mirage-2000/Models/Interior/Panel/Instruments/clock/clock.xml</path>
+    <offsets>
+      <x-m>  0.480 </x-m>
+      <y-m> -0.310 </y-m>
+      <z-m> -0.196 </z-m>
+      <heading-deg> 10 </heading-deg>
+      <pitch-deg>   -5 </pitch-deg>
     </offsets>
   </model>
   

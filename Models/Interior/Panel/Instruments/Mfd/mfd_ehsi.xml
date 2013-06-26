@@ -36,7 +36,8 @@
     <object-name>EHSI-ptr1-rep</object-name>
     <object-name>EHSI-ptr2-rep</object-name>    
     <object-name>EHSI-ecran</object-name>
-    
+    <object-name>EHSI-w-arrow</object-name>
+    <object-name>EHSI-w-rep</object-name>
     <object-name>text3dEHSI</object-name>
  </animation>  
   
@@ -54,6 +55,8 @@
     <object-name>EHSI-ptr1-rep</object-name>
     <object-name>EHSI-ptr2-rep</object-name>
     <object-name>EHSI-ecran</object-name> 
+    <object-name>EHSI-w-arrow</object-name>
+    <object-name>EHSI-w-rep</object-name>
     <emission>      
       <factor-prop>instrumentation/mfd/dimm-r</factor-prop>
       <red>   1 </red>
@@ -106,7 +109,7 @@
     <object-name>EHSI-CRS-TO</object-name>
     <object-name>EHSI-CRS-FROM</object-name>
     <object-name>EHSI-ptr2</object-name>
-    <object-name>EHSI-ptr1</object-name>
+    <object-name>EHSI-ptr1</object-name>   
     <property>orientation/heading-magnetic-deg</property>
     <center>
       <x-m>0</x-m>
@@ -223,6 +226,52 @@
     <x-m>0</x-m>
     <y-m>0</y-m>
     <z-m>0/</z-m>
+  </center>   
+  <axis>
+    <x> -1.0 </x>
+    <y> 0.0 </y>
+    <z> 0.0 </z>
+  </axis>
+</animation>
+
+<!--EHSI-wind-->
+
+<animation>
+    <type>select</type>
+    <object-name>EHSI-w-arrow</object-name>
+    <object-name>EHSI-w-rep</object-name>
+    <condition>
+      <equals>      
+        <property>instrumentation/mfd/wind-display</property> 
+        <value> 1 </value>   
+      </equals>
+    </condition>
+  </animation>
+
+<animation>
+    <type>rotate</type>
+    <object-name>EHSI-w-arrow</object-name>
+    <property>orientation/heading-magnetic-deg</property>
+    <center>
+      <x-m>-0.010</x-m>
+      <y-m> 0.059</y-m>
+      <z-m> 0.045</z-m>
+    </center>
+    <axis>
+      <x> 1 </x>
+      <y> 0 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+
+<animation>
+  <type>rotate</type>
+  <object-name>EHSI-w-arrow</object-name>
+  <property>environment/wind-from-heading-deg</property>
+  <center>
+    <x-m>-0.010</x-m>
+    <y-m> 0.059</y-m>
+    <z-m> 0.045</z-m>
   </center>   
   <axis>
     <x> -1.0 </x>

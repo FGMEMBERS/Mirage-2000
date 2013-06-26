@@ -21,8 +21,7 @@
         <value> 1 </value>
       </equals>
     </condition>    
-  </model>  
-
+  </model>
    
     <!-- RMU -->
        
@@ -41,15 +40,6 @@
     <type>material</type>
     <object-name>RMU-ecran</object-name>    
     <object-name>RMU-rep-bt</object-name>
-    <object-name>RMU-rep-adf1</object-name>
-    <object-name>RMU-rep-adf2</object-name>
-    <object-name>RMU-rep-comm1</object-name>
-    <object-name>RMU-rep-comm2</object-name>
-    <object-name>RMU-rep-nav1</object-name>
-    <object-name>RMU-rep-nav2</object-name>
-    <object-name>RMU-rep-tacan</object-name>
-
-
     <emission>      
       <factor-prop>instrumentation/mfd/dimm-r</factor-prop>
       <red>   1 </red>
@@ -61,6 +51,41 @@
       <red>   1 </red>
       <green> 1 </green>
       <blue>  1 </blue>
+    </ambient>
+    <diffuse>
+    <factor-prop>instrumentation/mfd/dimm-r</factor-prop>
+      <red>   1 </red>
+      <green> 1 </green>
+      <blue>  1 </blue>
+    </diffuse>
+    <specular>
+     <factor-prop>instrumentation/mfd/dimm-r</factor-prop>
+      <red>   1 </red>
+      <green> 1 </green>
+      <blue>  1 </blue>
+    </specular>
+   </animation>
+
+  <animation>
+    <type>material</type>    
+    <object-name>RMU-rep-adf1</object-name>
+    <object-name>RMU-rep-adf2</object-name>
+    <object-name>RMU-rep-comm1</object-name>
+    <object-name>RMU-rep-comm2</object-name>
+    <object-name>RMU-rep-nav1</object-name>
+    <object-name>RMU-rep-nav2</object-name>
+    <object-name>RMU-rep-tacan</object-name>
+    <emission>      
+      <factor-prop>instrumentation/mfd/dimm-r</factor-prop>
+      <red>   0.7 </red>
+      <green> 0.7 </green>
+      <blue>  0.7 </blue>
+    </emission>
+    <ambient>
+    <factor-prop>instrumentation/mfd/dimm-r</factor-prop>
+      <red>   0.7 </red>
+      <green> 0.7 </green>
+      <blue>  0.7 </blue>
     </ambient>
     <diffuse>
     <factor-prop>instrumentation/mfd/dimm-r</factor-prop>
@@ -152,7 +177,5 @@
         </equals>
       </condition>
   </animation>
-
-
 
 </PropertyList>

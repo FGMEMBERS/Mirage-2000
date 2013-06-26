@@ -10,7 +10,7 @@ var dropTanks = func(){
 }
 
 #Here is where quick load management is managed...
-#These 4 function can't be active whn flying : This mean a little preparation for the mission
+#These 4 function can't be active when flying : This mean a little preparation for the mission
 #It's an anti kiddo script
 var AirToAirMiddle = func(){
     if(getprop("/gear/gear[2]/wow")==1){
@@ -39,6 +39,7 @@ var AirToAirMiddle = func(){
         setprop("sim/weight[6]/selected", "Matra MICA");
         setprop("sim/weight[7]/selected", "Matra MICA");
         setprop("sim/weight[8]/selected", "Matra MICA");
+        FireableAgain();
      }
 
 }
@@ -70,6 +71,7 @@ var AirToAirshort = func(){
         setprop("sim/weight[6]/selected", "Matra MICA");
         setprop("sim/weight[7]/selected", "Matra MICA");
         setprop("sim/weight[8]/selected", "Matra MICA");
+        FireableAgain();
     }
 }
 
@@ -108,6 +110,7 @@ var AirToAirLong = func() {
         setprop("sim/weight[6]/selected", "Matra MICA");
         setprop("sim/weight[7]/selected", "Matra MICA");
         setprop("sim/weight[8]/selected", "Matra MICA");
+        FireableAgain();
     }
 
 
@@ -134,6 +137,8 @@ var NoLoad = func() {
         setprop("sim/weight[6]/selected", "none");        
         setprop("sim/weight[7]/selected", "none");
         setprop("sim/weight[8]/selected", "none");
+        FireableAgain();
+        
      }
 
 
@@ -172,11 +177,16 @@ var AirToGround = func() {
         setprop("sim/weight[6]/selected", "GBU16");
         setprop("sim/weight[7]/selected", "GBU16");
         setprop("sim/weight[8]/selected", "GBU16");
+        FireableAgain();
     }        
 
 }
 
-
+var FireableAgain = func() {
+       for(var i = 0 ;i < 9 ; i = i + 1 ){
+          setprop("controls/armament/station["~ i ~"]/release", 0);
+       }
+}
 
 
 #La boite de dialogue

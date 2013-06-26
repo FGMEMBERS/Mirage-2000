@@ -19,6 +19,18 @@
     <object-name>verre2</object-name>
   </animation>
 
+  <animation>
+    <type>material</type>
+    <object-name>fond</object-name>    
+    <emission>      
+      <factor>0.13/</factor>
+      <red>   1 </red>
+      <green> 1 </green>
+      <blue>  1 </blue>
+    </emission>
+  </animation>
+ 
+
   <!--  REMBRANDT support for transparent objects-->
   <effect>
     <inherits-from>Effects/model-transparent</inherits-from>

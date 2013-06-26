@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<PropertyList>
+
+  <path>center-mfd.ac</path>
+
+  <animation>
+    <!-- Objets opaques -->
+    <type>material</type>
+    <object-name>cadre</object-name>    
+    <object-name>vis</object-name>    
+    <object-name>br-knob</object-name>
+    <object-name>bl-knob</object-name>
+    <object-name>bt-b1</object-name>
+    <object-name>bt-b2</object-name>
+    <object-name>bt-b3</object-name>
+    <object-name>bt-b4</object-name>
+    <object-name>bt-h1</object-name>
+    <object-name>bt-h2</object-name>
+    <object-name>bt-h3</object-name>
+    <object-name>bt-h4</object-name>
+    <object-name>bt-h5</object-name>
+    <object-name>pot-l1</object-name>
+    <object-name>pot-l2</object-name>
+    <object-name>pot-l3</object-name>
+    <object-name>pot-l4</object-name>
+    <object-name>pot-r1</object-name>
+    <object-name>pot-r2</object-name>
+    <object-name>pot-r3</object-name>
+    <object-name>pot-r4</object-name>
+
+
+
+    <!-- Objets transparents -->
+  </animation>
+  
+
+  <animation>
+    <type>material</type>
+    <object-name>cadre</object-name>    
+    <object-name>vis</object-name>    
+    <object-name>br-knob</object-name>
+    <object-name>bl-knob</object-name>
+    <object-name>bt-b1</object-name>
+    <object-name>bt-b2</object-name>
+    <object-name>bt-b3</object-name>
+    <object-name>bt-b4</object-name>
+    <object-name>bt-h1</object-name>
+    <object-name>bt-h2</object-name>
+    <object-name>bt-h3</object-name>
+    <object-name>bt-h4</object-name>
+    <object-name>bt-h5</object-name>
+    <object-name>pot-l1</object-name>
+    <object-name>pot-l2</object-name>
+    <object-name>pot-l3</object-name>
+    <object-name>pot-l4</object-name>
+    <object-name>pot-r1</object-name>
+    <object-name>pot-r2</object-name>
+    <object-name>pot-r3</object-name>
+    <object-name>pot-r4</object-name>
+    <emission>      
+      <factor>0.13/</factor>
+      <red>   1 </red>
+      <green> 1 </green>
+      <blue>  1 </blue>
+    </emission>
+  </animation>
+ 
+    
+
+
+</PropertyList>
+

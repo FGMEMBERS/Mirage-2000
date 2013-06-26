@@ -23,6 +23,18 @@
 
   <animation>
     <type>material</type>
+    <object-name>base</object-name>
+    <object-name>visses</object-name>        
+    <emission>      
+      <factor>0.2</factor>
+      <red>   1 </red>
+      <green> 1 </green>
+      <blue>  1 </blue>
+    </emission>
+  </animation>
+
+  <animation>
+    <type>material</type>
     <object-name>face</object-name>
     <object-name>needle</object-name>
     <object-name>num1-1</object-name>

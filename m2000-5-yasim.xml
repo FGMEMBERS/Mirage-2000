@@ -236,7 +236,12 @@
        epr="9.8"
        exhaust-speed="2333"
        spool-time="6"
-       tsfc="0.2">
+       tsfc="0.2"
+       n1-idle="30.0"
+       n1-max="105" 
+       n2-idle="45" 
+       n2-max="100"
+       >
        <actionpt x="-6" y="0" z="-0.634"/>
        <control-input axis="/controls/engines/engine[0]/throttle" control="THROTTLE"/>
        <control-input axis="/controls/engines/engine[0]/throttle" control="REHEAT" src0="0.85" src1="1.0" dst0="0.0" dst1="1.0"/>
@@ -244,6 +249,7 @@
        <control-output control="REHEAT" prop="engines/engine[0]/afterburner" />
        <control-speed control="THROTTLE" transition-time="2"/>
        <control-speed control="REHEAT" transition-time="2"/>
+       
   </jet>
 
   <!-- Buckaroo notes:

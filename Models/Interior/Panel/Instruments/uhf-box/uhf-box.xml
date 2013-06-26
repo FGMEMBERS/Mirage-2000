@@ -50,6 +50,22 @@
 
   <animation>
     <type>material</type>
+    <object-name>fond</object-name>
+    <object-name>trous</object-name>
+    <object-name>molette1</object-name>
+    <object-name>molette2</object-name>
+    <object-name>molette3</object-name>
+    <object-name>molette4</object-name>       
+    <emission>      
+      <factor>0.2</factor>
+      <red>   1 </red>
+      <green> 1 </green>
+      <blue>  1 </blue>
+    </emission>
+  </animation>
+
+  <animation>
+    <type>material</type>
     <object-name>chiffre1</object-name>
     <object-name>chiffre2</object-name>
     <object-name>chiffre3</object-name>

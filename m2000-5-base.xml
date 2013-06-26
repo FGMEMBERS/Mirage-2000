@@ -320,19 +320,12 @@
       <opt><name>GBU12</name><lbs>800</lbs></opt>
     </weight>
     
-    <!--
-    <offsets>
-      <x-m type="double"> -1.265 </x-m>
-      <y-m  droite/gauche type="double"> -0.824 </y-m>
-      <z-m type="double"> -1.404 </z-m>
-    </offsets>
-    -->
+    <!--   <offsets><x-m type="double"> -1.265 </x-m><y-m  droite/gauche type="double"> -0.824 </y-m><z-m type="double"> -1.404 </z-m></offsets>-->
+
 
     <systems>
-       <autopilot>
-          
-       <path>Aircraft/Mirage-2000/System/m2000-5_autopilot.xml</path>
-         <!--<path>Aircraft/Mirage-2000/System/autopilot.xml</path>-->
+       <autopilot>          
+       <path>Aircraft/Mirage-2000/System/m2000-5_autopilot.xml</path>         
        </autopilot>
     </systems>
 
@@ -512,7 +505,13 @@
       <rmi-1-bearing-deg type="float">0</rmi-1-bearing-deg>
       <rmi-2-bearing-deg type="float">0</rmi-2-bearing-deg>
       <rmuL type="int">0</rmuL> 
-      <rmuR type="int">0</rmuR> 
+      <rmuR type="int">0</rmuR>
+      <wind-display type="bool">0</wind-display>
+    <eicas>      
+      <n1-real type="string">""</n1-real>
+      <n2-real type="string">""</n2-real>
+      <itt-real type="string">""</itt-real>
+    </eicas>
     </mfd>
 
     <tacan>
@@ -611,7 +610,6 @@
         <adf1 type="float">28.0</adf1>
       </outputs>
     </electrical>
-
   </systems>
 
   <consumables>
