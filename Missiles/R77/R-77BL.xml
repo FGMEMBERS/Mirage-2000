@@ -5,11 +5,6 @@
     <animation>
         <type>select</type>
         <object-name>r-77</object-name>
-        <condition>
-            <not>
-                <property>fdm/jsbsim/systems/armament/station3/released</property>
-            </not>
-        </condition>
     </animation>
 
     <animation>

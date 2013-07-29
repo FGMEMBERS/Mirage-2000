@@ -31,7 +31,7 @@ var Loading_missile = func(name) {
     #
     maxdetectionrngnm = 45;                    #<!-- Not real Impact yet-->
     fovdeg =25;                                   #<!-- seeker optical FOV -->
-    detectionfovdeg=60;                              # <!-- Search pattern diameter (rosette scan) -->
+    detectionfovdeg=120;                              # <!-- Search pattern diameter (rosette scan) -->
     trackmaxdeg = 110;                               #<!-- Seeker max total angular rotation -->
     maxg = 27;                                       #<!-- In turn --> 
     thrustlbs=517;                                    # <!-- guess -->
@@ -53,7 +53,7 @@ var Loading_missile = func(name) {
                     #
                     maxdetectionrngnm = 38.8;                         #<!-- Not real Impact yet A little more than the MICA-->
                     fovdeg =25;                                   #<!-- seeker optical FOV -->
-                    detectionfovdeg=60;                              # <!-- Search pattern diameter (rosette scan) -->
+                    detectionfovdeg=120;                              # <!-- Search pattern diameter (rosette scan) -->
                     trackmaxdeg = 110;                               #<!-- Seeker max total angular rotation -->
                     maxg = 15;                                       #<!-- In turn less than the MICA, coz it don't have vectorial thurst-->  
                     thrustlbs=701;                                    # <!-- guess -->
@@ -76,7 +76,7 @@ var Loading_missile = func(name) {
                     #
                     maxdetectionrngnm = 8;                         #<!-- Not real Impact yet-->
                     fovdeg =25;                                   #<!-- seeker optical FOV -->
-                    detectionfovdeg=60;                              # <!-- Search pattern diameter (rosette scan) -->
+                    detectionfovdeg=120;                              # <!-- Search pattern diameter (rosette scan) -->
                     trackmaxdeg = 110;                               #<!-- Seeker max total angular rotation -->
                     maxg = 21;                                       #<!-- In turn --> 
                     thrustlbs=277;                                    # <!-- guess -->
@@ -99,7 +99,7 @@ var Loading_missile = func(name) {
                     #
                     maxdetectionrngnm = 9;                         #<!-- Not real Impact yet-->
                     fovdeg =25;                                   #<!-- seeker optical FOV -->
-                    detectionfovdeg=60;                              # <!-- Search pattern diameter (rosette scan) -->
+                    detectionfovdeg=120;                              # <!-- Search pattern diameter (rosette scan) -->
                     trackmaxdeg = 110;                               #<!-- Seeker max total angular rotation -->
                     maxg = 21;                                       #<!-- In turn --> 
                     thrustlbs=250;                                    # <!-- guess -->
@@ -122,7 +122,7 @@ var Loading_missile = func(name) {
                     #
                     maxdetectionrngnm = 14;                         #<!-- Not real Impact yet-->
                     fovdeg =25;                                   #<!-- seeker optical FOV -->
-                    detectionfovdeg=60;                              # <!-- Search pattern diameter (rosette scan) -->
+                    detectionfovdeg=120;                              # <!-- Search pattern diameter (rosette scan) -->
                     trackmaxdeg = 110;                               #<!-- Seeker max total angular rotation -->
                     maxg = 15;                                       
                     thrustlbs=0;                                    # <!-- guess -->
@@ -146,7 +146,7 @@ var Loading_missile = func(name) {
                     #
                     maxdetectionrngnm = 14;                         #<!-- Not real Impact yet-->
                     fovdeg =25;                                   #<!-- seeker optical FOV -->
-                    detectionfovdeg=60;                              # <!-- Search pattern diameter (rosette scan) -->
+                    detectionfovdeg=120;                              # <!-- Search pattern diameter (rosette scan) -->
                     trackmaxdeg = 110;                               #<!-- Seeker max total angular rotation -->
                     maxg = 15;                                       #<!-- In turn --> 
                     thrustlbs=0;                                    # <!-- guess -->
@@ -170,7 +170,7 @@ var Loading_missile = func(name) {
                     #
                     maxdetectionrngnm = 14;                         #<!-- Not real Impact yet-->
                     fovdeg =25;                                   #<!-- seeker optical FOV -->
-                    detectionfovdeg=60;                              # <!-- Search pattern diameter (rosette scan) -->
+                    detectionfovdeg=120;                              # <!-- Search pattern diameter (rosette scan) -->
                     trackmaxdeg = 110;                               #<!-- Seeker max total angular rotation -->
                     maxg = 15;                                       
                     thrustlbs=785;                                    # <!-- guess -->
@@ -194,7 +194,7 @@ var Loading_missile = func(name) {
                     #
                     maxdetectionrngnm = 135;                         #<!-- Not real Impact yet-->
                     fovdeg =25;                                   #<!-- seeker optical FOV -->
-                    detectionfovdeg=60;                              # <!-- Search pattern diameter (rosette scan) -->
+                    detectionfovdeg=120;                              # <!-- Search pattern diameter (rosette scan) -->
                     trackmaxdeg = 110;                               #<!-- Seeker max total angular rotation -->
                     maxg = 15;                                       #<!-- In turn --> 
                     thrustlbs=1500;                                    # <!-- guess -->
@@ -216,7 +216,7 @@ var Loading_missile = func(name) {
                     #
                     maxdetectionrngnm = 134;                         #<!-- Not real Impact yet-->
                     fovdeg =25;                                   #<!-- seeker optical FOV -->
-                    detectionfovdeg=60;                              # <!-- Search pattern diameter (rosette scan) -->
+                    detectionfovdeg=120;                              # <!-- Search pattern diameter (rosette scan) -->
                     trackmaxdeg = 110;                               #<!-- Seeker max total angular rotation -->
                     maxg = 15;                                       #<!-- In turn --> 
                     thrustlbs=1000;                                    # <!-- guess -->
@@ -232,13 +232,13 @@ var Loading_missile = func(name) {
                     rail = "false";
                     cruisealt = 40;
   }elsif(name =="AIM-54"){
-                    #aim-54 max range 1884 km for actual version. ->100 nm.. at mach 5 it's about 108 sec. I put a life of 160, and thurst duration to 3/4 the travel time.
+                    #aim-54 max range 1884 km for actual version. ->100 nm.. at mach 5 it's about 108 sec. I put a life of 1120, and thurst duration to 3/4 the travel time.
                     address="Aircraft/Mirage-2000/Missiles/AIM-54/AIM-54_smoke.xml";
                     NoSmoke="Aircraft/Mirage-2000/Missiles/AIM-54/AIM-54.xml";
                     #
                     maxdetectionrngnm = 100;                      # <!-- Not real Impact yet-->
                     fovdeg =25;                                   # <!-- seeker optical FOV -->
-                    detectionfovdeg=60;                           # <!-- Search pattern diameter (rosette scan) -->
+                    detectionfovdeg=120;                           # <!-- Search pattern diameter (rosette scan) -->
                     trackmaxdeg = 110;                            # <!-- Seeker max total angular rotation -->
                     maxg = 30;                                    # <!-- In turn --> 
                     thrustlbs=2722;                               # <!-- guess -->
@@ -261,7 +261,7 @@ var Loading_missile = func(name) {
                     #
                     maxdetectionrngnm = 100;                    #<!-- Not real Impact yet-->
                     fovdeg =25;                                   #<!-- seeker optical FOV -->
-                    detectionfovdeg=60;                              # <!-- Search pattern diameter (rosette scan) -->
+                    detectionfovdeg=120;                              # <!-- Search pattern diameter (rosette scan) -->
                     trackmaxdeg = 110;                               #<!-- Seeker max total angular rotation -->
                     maxg = 35;                                       #<!-- In turn --> 
                     thrustlbs=1200;                                    # <!-- guess -->
@@ -283,7 +283,7 @@ var Loading_missile = func(name) {
                     #
                     maxdetectionrngnm = 10.8;                     # <!-- Not real Impact yet-->
                     fovdeg =25;                                   # <!-- seeker optical FOV -->
-                    detectionfovdeg=60;                           # <!-- Search pattern diameter (rosette scan) -->
+                    detectionfovdeg=120;                           # <!-- Search pattern diameter (rosette scan) -->
                     trackmaxdeg = 110;                            # <!-- Seeker max total angular rotation -->
                     maxg = 15;                                    # <!-- In turn --> 
                     thrustlbs=320;                                # <!-- guess -->  the doc says 17 000 = 83 lbs of thrust...need to readapt all the values.
@@ -305,7 +305,7 @@ var Loading_missile = func(name) {
                     #
                     maxdetectionrngnm = 10.8;                     # <!-- Not real Impact yet-->
                     fovdeg =25;                                   # <!-- seeker optical FOV -->
-                    detectionfovdeg=60;                           # <!-- Search pattern diameter (rosette scan) -->
+                    detectionfovdeg=120;                           # <!-- Search pattern diameter (rosette scan) -->
                     trackmaxdeg = 110;                            # <!-- Seeker max total angular rotation -->
                     maxg = 25;                                    # <!-- In turn --> 
                     thrustlbs=752;                                # <!-- guess -->  the doc says 17 000 = 83 lbs of thrust...need to readapt all the values.
@@ -328,6 +328,7 @@ var Loading_missile = func(name) {
   setprop("controls/armament/missile/addressExplosion",Explosion);
   setprop("controls/armament/missile/max-detectionrngnm",maxdetectionrngnm);
   setprop("controls/armament/missile/fov-deg",fovdeg);
+  setprop("controls/armament/missile/detection-fov-deg",detectionfovdeg);
   setprop("controls/armament/missile/track-max-deg",trackmaxdeg);
   setprop("controls/armament/missile/thrust-lbs",thrustlbs);
   setprop("controls/armament/missile/max-g",maxg);

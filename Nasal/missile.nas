@@ -63,7 +63,7 @@ var MISSILE = {
                 m.missile_model     =  getprop("controls/armament/missile/address");
                 m.missile_NoSmoke   =  getprop("controls/armament/missile/addressNoSmoke");
                 m.missile_Explosion =  getprop("controls/armament/missile/addressExplosion");
-                m.missile_fov_diam  = getprop("controls/armament/missile/fov-deg");
+                m.missile_fov_diam  = getprop("controls/armament/missile/detection-fov-deg");
                 m.missile_fov       = m.missile_fov_diam  / 2;
                 m.max_detect_rng    = getprop("controls/armament/missile/max-detection-rng-nm");
                 m.max_seeker_dev    = getprop("controls/armament/missile/track-max-deg") / 2;
@@ -278,7 +278,7 @@ var MISSILE = {
                         if (me.life_time > 1) { f_lbs = me.force_lbs; }
                         if (me.life_time > 3) { f_lbs = me.force_lbs * 0.3; }
                 }
-                #This do not work for the moment... need to know how to reload a 3D model...
+                #This do work for the moment... need to know how to reload a 3D model...
                 if (me.life_time > me.thrust_duration) {
                                    var Dapath = me.missile_NoSmoke;
                                    if(me.model.getNode("path", 1).getValue() != Dapath){
@@ -499,10 +499,13 @@ var MISSILE = {
                         var t_alt =  me.Tgt.get_altitude();
                         
                         #var previsionSpeed = (me.Tgt.get_Speed()*0.5144) *(me.Tgt.get_Speed()*0.5144) / (me.total_speed_ft *FT2M);
+                        #to convert me.Tgt.get_Speed() in M/S
                         var previsionSpeed = (me.Tgt.get_Speed()*0.5144) *(me.Tgt.get_Speed()*0.5144) / (me.vApproch);
                         
-
+                        #Prevision of the next position with speed & heading and dt->time to next position
                         var nextGeo = nextGeoloc(me.Tgt.get_Latitude(),me.Tgt.get_Longitude(),me.Tgt.get_heading(),previsionSpeed,1);
+                        
+                        #Prevision of the next altitude
                         var next_alt = math.tan(me.Tgt.get_Pitch()*D2R)*nextGeo.distance_to(geo.Coord.new().set_latlon(me.Tgt.get_Latitude(),me.Tgt.get_Longitude()))*M2FT+t_alt;
 
                         t_alt = next_alt;
@@ -553,8 +556,20 @@ var MISSILE = {
 
 
                         #print(me.curr_tgt_e);
+                        
                         var t_course = me.coord.course_to(me.t_coord);
                         me.curr_tgt_h = t_course - me.hdg;
+                        
+                        var modulo180 = math.mod(me.curr_tgt_h,360);
+                        if(modulo180>180){modulo180 = -(360 - modulo180);}
+                        if(modulo180<-180){modulo180 = (360 - modulo180);}
+                        
+                        #here is how to calculate the own missile dettection limitatioin
+                        if((math.abs(me.curr_tgt_e)>me.missile_fov)or(math.abs(modulo180)>me.missile_fov)){
+                                print("me.missile_fov:", me.missile_fov, "me.curr_tgt_e:" , me.curr_tgt_e, "degree h me.curr_tgt_h:" ,me.curr_tgt_h, "t_course:", t_course,"me.hdg:",me.hdg, "modulo180:",modulo180);
+                                me.free=1;
+                        }
+                        #print("me.curr_tgt_e",me.curr_tgt_e);
 
                         # Compute gain to reduce target deviation to match an optimum 3 deg
                         # This augments steering by an additional 10 deg per second during
@@ -740,10 +755,11 @@ var MISSILE = {
                                 me.status = 1;
                                 me.Tgt = tgt;
 
-                                me.TgtLon_prop       = getprop("/ai/closest/longitude");
-                                me.TgtLat_prop       = getprop("/ai/closest/latitude");
-                                me.TgtAlt_prop       = getprop("/ai/closest/altitude");
-                                me.TgtHdg_prop       = getprop("/ai/closest/heading");
+                                me.TgtLon_prop       = me.Tgt.get_Longitude;#getprop("/ai/closest/longitude");
+                                me.TgtLat_prop       = me.Tgt.get_Latitude;#getprop("/ai/closest/latitude");
+                                me.TgtAlt_prop       = me.Tgt.get_altitude;#getprop("/ai/closest/altitude");
+                                me.TgtHdg_prop       = me.Tgt.get_heading;#getprop("/ai/closest/heading");
+                                #print("TUTUTTUTUTU ",me.Tgt.get_Speed());
                                 if(me.free == 0 and me.life_time > me.Life){
                                         settimer(func me.update_track(), 2);
                                 }

@@ -71,7 +71,7 @@ var bingo = func(moy){
 #var lastWPtime = getprop("/autopilot/route-manager/ete");
 var lastWPtime = getprop("instrumentation/gps/wp/wp[1]/TTW-sec");
 
-print("/autopilot/route-manager/ete : " ~ getprop("/autopilot/route-manager/ete") ~ " instrumentation/gps/wp/wp[1]/TTW-sec : " ~ getprop("instrumentation/gps/wp/wp[1]/TTW-sec"));
+#print("/autopilot/route-manager/ete : " ~ getprop("/autopilot/route-manager/ete") ~ " instrumentation/gps/wp/wp[1]/TTW-sec : " ~ getprop("instrumentation/gps/wp/wp[1]/TTW-sec"));
         
         
         #Consommations moyennes: 4kg / Nm en HA. 7kg / Nm en BA (LA) or Average Consumption 36 kg/min
@@ -82,9 +82,9 @@ print("/autopilot/route-manager/ete : " ~ getprop("/autopilot/route-manager/ete"
         
         var bingo = remaining * 7;
         
-        #Adde 45 min to the process
+        #Add 30 min to the process
         
-        bingo = bingo + 36 * 45;
+        bingo = bingo + 36 * 30;
         
         
         setprop("/instrumentation/consumables/bingo_fuel",bingo);    

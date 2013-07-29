@@ -9,6 +9,10 @@
 
     <condition>
       <property>controls/armament/trigger</property>
+      <greater-than>
+         <property>ai/submodels/submodel/count</property>
+         <value>0</value>
+      </greater-than>
     </condition>
 
     <emissive>true</emissive>

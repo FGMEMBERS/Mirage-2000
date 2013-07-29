@@ -122,7 +122,7 @@
       </key>
       <key>
         <name>e</name>
-        <desc>Fire guns</desc>
+        <desc>Fire guns/missiles</desc>
       </key>
       <key>
         <name>E</name>
@@ -167,13 +167,16 @@
       <key>
         <name>Ctrl-n</name>
         <desc>Previous Target</desc>
-      </key>      
+      </key>  
+      <key>
+        <name>w</name>
+        <desc>Cycle Stick Weapon Mode Selector</desc>
+      </key>    
       <line>Afterburners engage when</line>
       <line>throttle moves past 75%</line>
-      <line>To fire a guided Missile, activate with R, aim with the HUD and fire</line>
-      <line>(1,4,7)     5     (9,6,3)   </line>
-      <line> right    Center    left    </line>
-      <line> Back right '8', Back left '2'  </line>
+      <line>To fire a guided Missile, select A/A missile with "w",</line>
+      <line>activate "lock" with R, aim with the HUD and fire with "e"</line>
+      <line>Beware : it's a bad idea to fire a missile and have negative G...(Don't shoot yourself)</line>
     </help>
         
     <!-- pylon options
@@ -257,6 +260,7 @@
       <opt><name>MATRA-R530</name><lbs>400</lbs></opt>
       <opt><name>Meteor</name><lbs>407</lbs></opt>
       <opt><name>AGM65</name><lbs>600</lbs></opt>
+      <opt><name>R77</name><lbs>498</lbs></opt>
     </weight>
 
     <weight n="4">
@@ -348,6 +352,7 @@
     <armament>
       <!--Missile property. the value here doesn't really count, beacause it's reloaded by a Nasal for each missile. Anyway this is nessecary for variable declaration -->
       <missile>
+        <name>Matra MICA</name>
         <address>Aircraft/Mirage-2000/Missiles/MatraMica/MatraMica.xml</address>
         <addressNoSmoke>Aircraft/Mirage-2000/Missiles/MatraMica/MatraMica.xml</addressNoSmoke>
         <addressExplosion>Aircraft/Mirage-2000/Missiles/MatraMica/explosion.xml</addressExplosion>
@@ -374,9 +379,11 @@
                                                                        "Fox3" for intern missile Radar AIM120, AIM54, A/G air to ground-->
         <rail type="bool">true</rail>                              <!-- if the missile fall before thrust start or if there is some kind of "rail" -->
         <cruise_alt type="int">0</cruise_alt>                      <!--for cruise missile, in feet.0 is off.bellow 10000 feet is terrain following-->
+        <current-pylon>0</current-pylon>
       </missile>
       <trigger type="bool">false</trigger>
       <master-arm type="bool">true</master-arm>
+      <stick-selector type="int">0</stick-selector><!-- 0=OFF, 1=GUN, 2=A/A, 3=A/G -->
       <position-norm type="int">1</position-norm>
       <station n="0">
         <release type="bool">false</release>

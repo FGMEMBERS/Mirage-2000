@@ -427,6 +427,24 @@
       </and>
     </condition>
   </animation>
+  
+    <!-- R77s -->
+  <animation>
+    <type>select</type>
+    <object-name>R77</object-name>      
+    <condition>
+      <and>
+        <equals>
+          <property>sim/weight[3]/selected</property>
+          <value>R77</value>
+        </equals>
+        <equals>
+          <property>controls/armament/station[3]/release</property>
+          <value>false</value>
+        </equals>
+      </and>
+    </condition>
+  </animation>
 
   <!-- station right 3 (Index 4)-->
   <animation>

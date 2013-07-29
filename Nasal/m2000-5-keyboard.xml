@@ -16,6 +16,26 @@
       </binding>
     </mod-up>
   </key>
+  
+    <!--<key n="101">
+    <name>e</name>
+    <desc>Missiles</desc>
+    <binding>
+         <condition>
+          <greater-than>
+            <property>controls/armament/stick-selector</property>
+            <value>1</value>
+          </greater-than>
+        </condition>
+      <command>nasal</command>
+      <script>
+           var pylon = getprop("controls/armament/missile/current-pylon");
+           load.dropLoad(pylon);
+      </script>
+     </binding>
+  </key>-->
+  
+  
 
   <key n="68">
     <name>D</name>
@@ -54,7 +74,7 @@
   </key>
 
   <!--____________________Lanch________________________-->
-  <key n="48">
+ <key n="48">
     <name>0</name>
     <desc>Drop Tanks</desc>
     <binding>
@@ -63,7 +83,7 @@
     </binding>
   </key>
   
-  <key n="49">
+ <!-- <key n="49">
     <name>1</name>
     <desc>Missile 1</desc>
     <binding>
@@ -142,7 +162,7 @@
       <command>nasal</command>
       <script>load.dropLoad(6)</script>
     </binding>
-  </key>
+  </key>-->
 
   <!--__________________End Launch ______________________-->
   <key n="72">
@@ -181,6 +201,20 @@
     </binding>
   </key>
   
+    <key n="119">
+    <name>w</name>
+    <desc>Cycle Stick Weapon Mode Selector</desc>
+        <binding>
+          <command>property-adjust</command>
+          <property>controls/armament/stick-selector</property>
+          <step>1</step>
+          <min>0</min>
+          <max>4</max>
+          <repeat>false</repeat>
+          <wrap>true</wrap>
+        </binding>
+  </key>
+  
   <key n="125">
     <name>}</name>
     <desc>Engine Autostart</desc>
@@ -199,6 +233,7 @@
     </binding>
   </key>
   
+  <!--This should be used to compute ECM-->
   <key n="113">
     <name>q</name>
     <desc>Toggle radar standby mode</desc>
@@ -208,8 +243,19 @@
     </binding>
   </key>
   
+  <!-- This is to toggle radar az_scan. Could be used to reboot the radar-->
+  <key n="81">
+    <name>q</name>
+    <desc>Toggle radar standby mode</desc>
+    <binding>
+      <command>property-toggle</command>
+      <property>instrumentation/radar/display-rdr</property>
+    </binding>
+  </key>
+  
+  
   <key n="110">
-    <name>Ctrl-n</name>
+    <name>n</name>
     <desc>Changes Target</desc>
     <binding>
       <command>nasal</command>

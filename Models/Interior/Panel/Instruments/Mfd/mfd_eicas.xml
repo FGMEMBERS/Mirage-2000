@@ -17,8 +17,8 @@
     </offsets>
     <condition>
       <equals>
-        <property>/instrumentation/mfd/modeL</property>
-        <value> 1 </value>
+        <property>/instrumentation/mfd/modeR</property>
+        <value> 3 </value>
       </equals>
     </condition>    
   </model>  

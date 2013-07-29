@@ -17,6 +17,9 @@ setlistener("/gear/gear[2]/wow", func(n) {
         gui.menuEnable("fuel-and-payload", 0);
     }
 },1);
+setlistener("/controls/gear/gear-down", func(n) {
+        setprop("/controls/flight/flaps", 0);
+},1);
 
 # turn off hud in external views
  setlistener("/sim/current-view/view-number", func(n) { setprop("/sim/hud/visibility[1]", n.getValue() == 0) },1);

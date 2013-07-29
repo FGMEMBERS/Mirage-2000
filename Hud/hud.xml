@@ -380,11 +380,97 @@
     <halign>left</halign>
   </label>
 
+ <label>
+    <name>Guns</name>
+    <x> -20 </x>
+    <y> -77 </y>
+    <width>15</width>
+    <height>6</height>
+    <condition>
+      <equals> 
+        <property>controls/armament/stick-selector</property>
+        <value>1</value>
+      </equals> 
+    </condition>
+    <format>Guns:</format>
+    <halign>left</halign>
+  </label>
+  
+    <label>
+    <name>Ammos</name>
+    <x> -0 </x>
+    <y> -80 </y>
+    <width>24</width>
+    <height>12</height>
+    <condition>
+      <equals> 
+        <property>controls/armament/stick-selector</property>
+        <value>1</value>
+      </equals> 
+    </condition>
+    
+    <input>
+      <property>ai/submodels/submodel/count</property>
+      <factor>10</factor>
+    </input>
+    <format>%4.0f</format>
+    <halign>left</halign>
+    <box>false</box>
+    <option>right</option>
+  </label>
   
   
+  <!--Missiles A/A
+   <label>
+    <name>Missiles</name>
+    <x> -30 </x>
+    <y> -77 </y>
+    <width>15</width>
+    <height>6</height>
+    <condition>
+      <equals> 
+        <property>controls/armament/stick-selector</property>
+        <value>2</value>
+      </equals> 
+    </condition>
+    <format>A/A:</format>
+    <halign>left</halign>
+  </label>-->
   
+     <label>
+    <name>Missiles</name>
+    <x> -20 </x>
+    <y> -77 </y>
+    <width>15</width>
+    <height>6</height>
+    <condition>
+      <equals> 
+        <property>controls/armament/stick-selector</property>
+        <value>2</value>
+      </equals> 
+    </condition>
+    <input>
+      <property>controls/armament/name</property>
+    </input>
+    <format>%s</format>
+    <halign>left</halign>
+  </label>
   
-  
+     <label>
+    <name>Missiles</name>
+    <x> -20 </x>
+    <y> -77 </y>
+    <width>15</width>
+    <height>6</height>
+    <condition>
+      <equals> 
+        <property>controls/armament/stick-selector</property>
+        <value>3</value>
+      </equals> 
+    </condition>
+    <format>A/G</format>
+    <halign>left</halign>
+  </label>
   
   
   

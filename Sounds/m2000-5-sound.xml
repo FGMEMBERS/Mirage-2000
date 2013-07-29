@@ -1,250 +1,295 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 
 <!-- Updated by 5H1N0B1 : August 2012
-     Updated by Helijah : December 2012 -->
-
+     Updated by Helijah : December 2012 
+     Updated by 5H1N0B1 : July 2013
+     -->
+ 
 <PropertyList>
 
-  <fx>
+   <fx>
+       <engine>
+              <name>engine-start</name>
+              <mode>once</mode>
+              <path>Sounds/turbine_start.wav</path>
+              <condition>
+                  <property>/controls/engines/engine[0]/starter</property>
+              </condition>
+                 <volume>
+                    <property>engines/engine[0]/thrust-lbs</property>
+                    <factor>0.000012</factor>
+                    <min>0.1</min>
+                    <max>0.2</max>
+                 </volume>
+               <reference-dist>100</reference-dist>
+              <max-dist>1000</max-dist>
+           </engine>
+           
+           <engine>
+              <name>engine-shutdown</name>
+              <mode>once</mode>
+              <path>Sounds/turbine_shutdown.wav</path>
+              <condition>
+                  <property>/controls/engines/engine[0]/cutoff</property> 
+              </condition>
+                 <volume>
+                        <factor>0.2</factor>
+                 </volume>
+               <reference-dist>100</reference-dist>
+              <max-dist>1000</max-dist>
+           </engine>
+   
+      <!-- Engines -->
+      <engine-jet>
+         <name>engine-jet</name>
+         <path>Aircraft/Mirage-2000/Sounds/BaBoOn-mirageIV-Turbine2.wav</path>
+         <mode>looped</mode>
+         <condition>
+                 <property>/engines/engine[0]/running</property>
+            <not>
+               <property>sim/current-view/internal</property>
+            </not>
+            <not>
+               <property>engines/engine[0]/out-of-fuel</property>
+            </not>
+         </condition>
+         <orientation>
+            <x>0.0</x>
+            <y>0.0</y>
+            <z>-180.0</z>
+            <inner-angle>180.0</inner-angle>
+            <outer-angle>360.0</outer-angle>
+            <outer-gain>0.2</outer-gain>
+         </orientation>
+         <pitch>
+            <property>engines/engine[0]/n1</property>
+            <ofset>0.1</ofset>
+            <factor>.001</factor>
+         </pitch>
+         <volume>
+            <property>engines/engine[0]/thrust-lbs</property>
+            <factor>0.000025</factor>
+            <min>0.2</min>
+            <max>0.75</max>
+         </volume>
+      </engine-jet>
+      
+      
+      <engine-rumble>
+         <name>engine-rumble</name>
+         <path>Aircraft/Mirage-2000/Sounds/afterburner.wav</path>
+         <mode>looped</mode>
+         <condition>
+            <property>/engines/engine[0]/running</property>
+            <not>
+               <property>sim/current-view/internal</property>
+            </not>
+            <not>
+               <property>engines/engine[0]/out-of-fuel</property>
+            </not>
+         </condition>
+         <property>engines/engine[0]/afterburner</property>
+         <orientation>
+            <x>0.0</x>
+            <y>0.0</y>
+            <z>-180.0</z>
+            <inner-angle>180.0</inner-angle>
+            <outer-angle>360.0</outer-angle>
+            <outer-gain>0.2</outer-gain>
+         </orientation>
+         <pitch>
+            <property>engines/engine[0]/afterburner</property>
+            <factor>1</factor>
+            <offset>0.3</offset>
+         </pitch>
+         <volume>
+            <property>engines/engine[0]/afterburner</property>
+            <!--<factor>0.7</factor>-->
+            <factor>1.2</factor>
+            <offset>0.15</offset>
+            <!--<max>1</max>-->
+         </volume>
+      </engine-rumble>
+      <engine-rumble>
+         <name>engine-rumble</name>
+         <path>Aircraft/Mirage-2000/Sounds/afterburner.wav</path>
+         <mode>looped</mode>
+         <condition>
+                 <property>/engines/engine[0]/running</property>
+            <property>sim/current-view/internal</property>
+            <not>
+               <property>engines/engine[0]/out-of-fuel</property>
+            </not>
+         </condition>
+         <property>engines/engine[0]/afterburner</property>
+         <orientation>
+            <x>0.0</x>
+            <y>0.0</y>
+            <z>-180.0</z>
+            <inner-angle>180.0</inner-angle>
+            <outer-angle>360.0</outer-angle>
+            <outer-gain>0.2</outer-gain>
+         </orientation>
+         <pitch>
+            <property>engines/engine[0]/afterburner</property>
+            <factor>1</factor>
+            <offset>0.3</offset>
+         </pitch>
+         <volume>
+            <property>engines/engine[0]/afterburner</property>
+            <!--<factor>0.7</factor>-->
+            <factor>0.5</factor>
+            <offset>0.15</offset>
+            <!--<max>1</max>-->
+         </volume>
+      </engine-rumble>
+      
+      
+      <engine-whine-external>
+         <name>external-whine</name>
+         <path>Sounds/turbojet_fan.wav</path>
+         <mode>looped</mode>
+         <condition>
+                 <property>/engines/engine[0]/running</property>
+            <not>
+               <property>sim/current-view/internal</property>
+            </not>
+            <not>
+               <property>engines/engine[0]/out-of-fuel</property>
+            </not>
+         </condition>
+         <orientation>
+            <x>0.0</x>
+            <y>0.0</y>
+            <z>1</z>
+            <inner-angle>180.0</inner-angle>
+            <outer-angle>360.0</outer-angle>
+            <outer-gain>0.5</outer-gain>
+         </orientation>
+         <pitch>
+            <property>engines/engine[0]/n1</property>
+            <ofset>0.7</ofset>
+            <factor>.003</factor>
+         </pitch>
+         <volume>
+            <property>engines/engine/n1</property>
+            <offset>1.0</offset>
+            <factor>-0.008</factor>
+            <max>0.6</max>
+         </volume>
+      </engine-whine-external>
+      <engine-whine-internal>
+         <name>internal-whine</name>
+         <path>Sounds/whine.wav</path>
+         <mode>looped</mode>
+         <condition>
+                 <property>/engines/engine[0]/running</property>
+            <property>sim/current-view/internal</property>
+            <not>
+               <property>engines/engine[0]/out-of-fuel</property>
+            </not>
+         </condition>
+         <pitch>
+            <property>engines/engine[0]/n1</property>
+            <ofset>0.1</ofset>
+            <factor>.0016</factor>
+         </pitch>
+         <volume>
+            <property>engines/engine[0]/thrust-lbs</property>
+            <factor>0.000012</factor>
+            <min>0.2</min>
+            <max>0.6</max>
+         </volume>
+      </engine-whine-internal>
+      <engine-jet-internal>
+         <name>internal-jet</name>
+         <path>Sounds/jet.wav</path>
+         <mode>looped</mode>
+         <condition>
+                 <property>/engines/engine[0]/running</property>
+            <property>sim/current-view/internal</property>
+            <not>
+               <property>engines/engine[0]/out-of-fuel</property>
+            </not>
+         </condition>
+         <pitch>
+            <property>engines/engine[0]/n1</property>
+            <ofset>0.1</ofset>
+            <factor>.0016</factor>
+         </pitch>
+         <volume>
+            <property>engines/engine[0]/thrust-lbs</property>
+            <factor>0.00005</factor>
+            <min>0.1</min>
+            <max>0.8</max>
+         </volume>
+      </engine-jet-internal>
+      
+      
+      
+      
 
-    <engine>
-      <name>engine-start-inside</name>
-      <mode>once</mode>
-      <path>Aircraft/Mirage-2000/Sounds/turbine_start_in.wav</path>
-      <condition>
-        <and>
-          <property>/controls/engines/engine[0]/starter</property>
-          <property>/sim/current-view/internal</property>
-        </and>
-      </condition>
-      <volume>
-        <property>engines/engine[0]/n2</property>
-        <factor> 0.01 </factor>
-        <min> 0.03 </min>
-        <max> 0.07 </max>
-      </volume>
-      <pitch>
-        <property>engines/engine[0]/n2</property>
-        <factor> 0.01 </factor>
-        <min> 0.0 </min>
-        <max> 0.9 </max>
-      </pitch>
-       <reference-dist>100</reference-dist>
-      <max-dist>1000</max-dist>
-   </engine>
+      <!-- stall warnings -->
+      <pre-stall>
+         <name>pre-stall</name>
+         <mode>looped</mode>
+         <path>Aircraft/Mirage-2000/Sounds/stall-600-chopped.wav</path>
+         <condition>
+            <greater-than>
+               <property>orientation/alpha-deg</property>
+               <value>18</value>
+            </greater-than>
+            <less-than-equals>
+               <property>orientation/alpha-deg</property>
+               <value>22.5</value>
+            </less-than-equals>
+            <greater-than>
+               <property>instrumentation/airspeed-indicator/indicated-speed-kt</property>
+               <value>10</value>
+            </greater-than>
+            <or>
+               <equals>
+                  <property>sim/current-view/name</property>
+                  <value>Cockpit View</value>
+               </equals>
+               <equals>
+                  <property>sim/current-view/name</property>
+                  <value>RIO View</value>
+               </equals>
+            </or>
+         </condition>
+         <volume><factor>0.4</factor></volume>
+      </pre-stall>
 
-    <engine>
-      <name>engine-start-outside</name>
-      <mode>once</mode>
-      <path>Aircraft/Mirage-2000/Sounds/turbine_start_out.wav</path>
-      <condition>
-        <and>
-          <property>/controls/engines/engine[0]/starter</property>
-          <not>
-            <property>/sim/current-view/internal</property>
-          </not>
-        </and>
-      </condition>
-      <volume>
-        <property>engines/engine[0]/n2</property>
-        <factor> 0.09 </factor>
-        <min> 0.3 </min>
-        <max> 0.9 </max>
-      </volume>
-      <pitch>
-        <property>engines/engine[0]/n2</property>
-        <factor> 0.01 </factor>
-	<min> 0.0 </min>
-	<max> 0.9 </max>
-      </pitch>
-      <reference-dist>100</reference-dist>
-      <max-dist>1000</max-dist>
-    </engine>
 
-    <engine>
-      <name>turbine</name>
-      <mode>looped</mode>
-      <path>Aircraft/Mirage-2000/Sounds/turbine1.wav</path>
-      <condition>
-        <property>/engines/engine[0]/running</property>
-        <not>
-          <property>/sim/current-view/internal</property>
-        </not>
-      </condition>
-      <orientation>
-        <x>   0 </x>
-        <y>   0 </y>
-        <z> 180 </z>
-        <inner-cone> 180.0 </inner-cone>
-        <outer-cone> 360.0 </outer-cone>
-        <outer-gain>   0.2 </outer-gain>
-      </orientation>
-      <volume>
-        <property>engines/engine[0]/n2</property>
-        <factor>0.09</factor>
-        <min>0.3</min>
-        <max>0.9</max>
-      </volume>
-      <pitch>
-        <property>engines/engine[0]/n2</property>
-        <factor>0.01</factor>
-	<min>0</min>
-	<max>0.9</max>
-      </pitch>
-      <reference-dist>100</reference-dist>
-      <max-dist>1000</max-dist>
-    </engine>
-  
-    <engine>
-      <name>turbine interior</name>
-      <mode>looped</mode>
-      <path>Aircraft/Mirage-2000/Sounds/turbine1.wav</path>
-      <condition>
-        <and>
-          <property>/engines/engine[0]/running</property>
-          <property>/sim/current-view/internal</property>
-        </and>
-      </condition>
-      <orientation>
-        <x>   0 </x>
-        <y>   0 </y>
-        <z> 180 </z>
-        <inner-cone> 180.0 </inner-cone>
-        <outer-cone> 360.0 </outer-cone>
-        <outer-gain>   0.2 </outer-gain>
-      </orientation>
-      <volume>
-        <property>engines/engine[0]/n2</property>
-        <factor>0.01</factor>
-        <min>0.03</min>
-        <max>0.07</max>
-      </volume>
-      <pitch>
-        <property>engines/engine[0]/n2</property>
-        <factor>0.01</factor>
-        <min>0</min>
-        <max>0.9</max>
-      </pitch>
-      <reference-dist>100</reference-dist>
-      <max-dist>1000</max-dist>
-    </engine>
+      <stall>
+         <name>stall</name>
+         <mode>looped</mode>
+         <path>Aircraft/Mirage-2000/Sounds/stall-600-continue.wav</path>
+         <condition>
+            <greater-than>
+               <property>orientation/alpha-deg</property>
+               <value>22.5</value>
+            </greater-than>
+            <greater-than>
+               <property>instrumentation/airspeed-indicator/indicated-speed-kt</property>
+               <value>10</value>
+            </greater-than>
+            <or>
+               <equals>
+                  <property>sim/current-view/name</property>
+                  <value>Cockpit View</value>
+               </equals>
+               <equals>
+                  <property>sim/current-view/name</property>
+                  <value>RIO View</value>
+               </equals>
+            </or>
+         </condition>
+         <volume><factor>0.6</factor></volume>
+      </stall>
 
-    <engine>
-      <name>thrust lowfreq exterior</name>
-      <path>Aircraft/Mirage-2000/Sounds/BaBoOn-mirageIV-Turbine2.wav</path>
-      <mode>looped</mode>
-      <condition>
-        <property>/engines/engine[0]/running</property>
-        <not>
-          <property>/sim/current-view/internal</property>
-        </not>
-      </condition>
-      <property>engines/engine[0]/thrust-lbs</property>
-      <volume>
-        <property>engines/engine[0]/thrust-lbs</property>
-        <factor>0.008</factor>       
-        <min>0</min>
-        <max>4.9</max>
-      </volume>
-      <reference-dist>100</reference-dist>
-      <max-dist>10000</max-dist>
-    </engine>
-	
-    <engine>
-      <name>thrust lowfreq interior</name>
-      <path>Aircraft/Mirage-2000/Sounds/BaBoOn-mirageIV-Turbine2.wav</path>
-      <mode>looped</mode>
-      <condition>
-        <and>
-          <property>/engines/engine[0]/running</property>
-          <property>/sim/current-view/internal</property>
-        </and>
-      </condition>
-      <property>engines/engine[0]/thrust-lbs</property>
-      <volume>
-        <property>engines/engine[0]/thrust-lbs</property>
-        <factor>0.00003</factor>         
-        <min>0</min>
-        <max>2.9</max>
-      </volume>		
-      <reference-dist>100</reference-dist>
-      <max-dist>1000</max-dist>
-    </engine>
-	
-    <engine>
-      <name>burner lowfreq</name>
-      <path>Aircraft/Mirage-2000/Sounds/afterburner.wav</path>
-      <mode>looped</mode>
-      <condition>
-        <property>/engines/engine[0]/running</property>
-        <not>
-          <property>/sim/current-view/internal</property>
-        </not>
-        <property>controls/engines/engine[0]/reheat</property>
-      </condition>  
-      <property>engines/engine[0]/afterburner</property>
-      <volume>
-        <offset>4.9</offset>
-      </volume> 
-      <reference-dist>100</reference-dist>
-      <max-dist>10000</max-dist>
-    </engine>
 
-    <engine>
-      <name>burner lowfreq loop</name>
-      <path>Aircraft/Mirage-2000/Sounds/afterburner.wav</path>
-      <mode>looped</mode>
-      <condition>
-        <property>/engines/engine[0]/running</property>
-        <not>
-          <property>/sim/current-view/internal</property>
-        </not>
-        <property>controls/engines/engine[0]/reheat</property>
-      </condition>
-      <property>engines/engine[0]/afterburner</property>
-      <volume>
-        <offset>-0.2</offset>
-      </volume>
-      <reference-dist>100</reference-dist>
-      <max-dist>10000</max-dist>
-    </engine>
-	
-    <engine>
-      <name>Sound Barrier</name>
-      <path>Aircraft/Mirage-2000/Sounds/BaBoOn-mirageIV-Sonic-Boom.wav</path>
-      <mode>once</mode>
-      <condition>
-        <property>/engines/engine[0]/running</property>
-        <not>
-          <property>/sim/current-view/internal</property>
-        </not>
-	 <greater-than>
-            <property>/velocities/mach</property>
-              <value>1.00</value>
-        </greater-than>
-	<less-than>
-          <property>/position/altitude-ft</property>
-          <value>5000.0</value>
-        </less-than>
-      </condition>
-      <volume>
-        <property>controls/engines/engine[0]/reheat</property>
-        <factor>2</factor>
-        <min>0</min>
-        <max>4.5</max>
-      </volume>
-      <orientation>
-        <x>0.0</x>
-        <y>0.0</y>
-        <z>180.0</z>
-        <inner-cone>180.0</inner-cone>
-        <outer-cone>360.0</outer-cone>
-        <outer-gain>0.2</outer-gain>
-      </orientation>
-      <reference-dist>100</reference-dist>
-      <max-dist>1000</max-dist>
-    </engine>
-	
     <wind>
       <name>wind</name>
       <mode>looped</mode>
@@ -277,6 +322,8 @@
       <max-dist>1000</max-dist>
     </wind>
 
+
+
     <rumble>
       <name>rumble</name>
       <mode>looped</mode>
@@ -295,6 +342,9 @@
       <reference-dist>100</reference-dist>
       <max-dist>1000</max-dist>
     </rumble>
+
+
+
 
     <gear>
       <name>gear</name>
@@ -383,7 +433,7 @@
 <!--                  Toggle Switches                  -->
     <click>
       <name>Clickon</name>
-      <path>Aircraft/Mirage-2000/Sounds/click.wav</path>
+      <path>Sounds/click.wav</path>
       <condition>
         <property>sim/model/click</property>
       </condition>
@@ -394,7 +444,7 @@
 
     <click>
       <name>Clickoff</name>
-      <path>Aircraft/Mirage-2000/Sounds/click.wav</path>
+      <path>Sounds/click.wav</path>
       <condition>
         <not><property>sim/model/click</property></not>
       </condition>
@@ -402,8 +452,8 @@
         <factor>1.0</factor>
       </volume>
     </click>
+    
 
+   </fx>
 
-  </fx>
- 
 </PropertyList>

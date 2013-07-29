@@ -159,7 +159,7 @@
         <property>autopilot/settings/target-altitude-ft</property>
         <step>-500</step>
         <min>200</min>
-        <max>50000</max>
+        <max>55000</max>
         <wrap>false</wrap>
         <condition>
           <equals>
@@ -188,7 +188,7 @@
         <property>autopilot/settings/target-speed-kt</property>
         <step>5</step>
         <min>150</min>
-        <max>550</max>
+        <max>600</max>
         <wrap>false</wrap>
         <condition>
           <equals>
@@ -216,7 +216,7 @@
         <property>autopilot/settings/target-speed-kt</property>
         <step>-5</step>
         <min>150</min>
-        <max>550</max>
+        <max>600</max>
         <wrap>false</wrap>
         <condition>
           <equals>
@@ -372,6 +372,63 @@
   </action>
 </animation>
 
+
+
+<!-- Select missile -->
+  <animation>
+    <type>pick</type>  
+    <object-name>pot-l1</object-name>
+    <action>
+      <button>0</button>     
+      <repeatable>false</repeatable>
+      <binding>
+        <command>property-toggle</command>
+        <property>sim/model/click</property>
+      </binding>
+      <binding>
+        <condition>
+          <equals>
+            <property>/instrumentation/mfd/modeL</property>
+            <value>1</value>
+          </equals>
+        </condition>
+         <command>nasal</command>
+         <script>load.inscreased_selected_pylon();</script>
+      </binding> 
+    </action>
+  </animation>
+  
+  <!-- Select A/A -->
+  
+  <animation>
+    <type>pick</type>
+    <object-name>bt-h1</object-name>
+    <visible>true</visible>
+    <action>
+      <button>0</button>
+      <repeatable>false</repeatable>
+      <binding>
+        <command>property-toggle</command>
+        <property>sim/model/click</property>
+      </binding>  
+      <binding>
+       <condition>
+          <equals>
+            <property>/instrumentation/mfd/modeL</property>
+            <value>1</value>
+          </equals>
+        </condition>      
+        <command>property-adjust</command>
+        <property>controls/armament/stick-selector</property>
+        <step>1</step>
+        <min>1</min>
+        <max>1</max>
+        <wrap>true</wrap>
+      </binding>     
+    </action>
+  </animation>  
+
+
 <animation>
   <type>select</type>
   <object-name>br-dec</object-name>
@@ -400,10 +457,10 @@
     </offsets>
   </model>
 
-<!--EICAS-->
+<!--ARM-->
   <model>
-    <name>EICAS</name>    
-    <path>Aircraft/Mirage-2000/Models/Interior/Panel/Instruments/Mfd/mfd_eicas.xml</path>
+    <name>ARM</name>    
+    <path>Aircraft/Mirage-2000/Models/Interior/Panel/Instruments/Mfd/mfd_arm.xml</path>
     <condition>
       <equals>
         <property>/instrumentation/mfd/modeL</property>
@@ -415,6 +472,6 @@
       <y-m> 0.00 </y-m>
       <z-m> 0.00 </z-m>
     </offsets>
-  </model>  
+  </model>   
 
 </PropertyList>

@@ -115,7 +115,7 @@
         <property>/instrumentation/mfd/modeR</property>
         <step>1</step>
         <min>0</min>
-        <max>3</max>
+        <max>4</max>
         <wrap>true</wrap>
       </binding>            
     </action>
@@ -1090,6 +1090,23 @@
       <z-m> 0.00 </z-m>
     </offsets>
   </model>
+
+<!--EICAS-->
+  <model>
+    <name>EICAS</name>    
+    <path>Aircraft/Mirage-2000/Models/Interior/Panel/Instruments/Mfd/mfd_eicas.xml</path>
+    <condition>
+      <equals>
+        <property>/instrumentation/mfd/modeR</property>
+        <value> 3 </value>
+      </equals>
+    </condition>
+    <offsets>
+      <x-m> 0.00 </x-m>
+      <y-m> 0.00 </y-m>
+      <z-m> 0.00 </z-m>
+    </offsets>
+  </model> 
 <!--
 <animation>
     <type>scale</type>

@@ -1,5 +1,11 @@
 fire_MG = func {
+        if(getprop("controls/armament/stick-selector")==1){
           setprop("/controls/armament/trigger", 1);
+        }
+        if(getprop("controls/armament/stick-selector")==2){
+           var pylon = getprop("controls/armament/missile/current-pylon");
+           load.dropLoad(pylon);
+        }
 }
 
 stop_MG = func {
@@ -13,9 +19,4 @@ reload_Cannon = func {
         setprop("ai/submodels/submodel[2]/count",75);
         setprop("ai/submodels/submodel[3]/count",75);
 }
-
-
-
-
-
 

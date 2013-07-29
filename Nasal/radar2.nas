@@ -103,6 +103,7 @@ var rdr_loop = func() {
         var display_rdr = DisplayRdr.getBoolValue();
         if ( display_rdr ) {
                 az_scan();
+                settimer(rdr_loop, 0.05);
         } elsif ( size(tgts_list) > 0 ) {
                 foreach( u; tgts_list ) {
                         u.set_display(0);
@@ -116,7 +117,7 @@ var rdr_loop = func() {
         } else {
                 cnt_hud += 0.05;
         }
-        settimer(rdr_loop, 0.05);
+        
 }
 
 var az_scan = func() {
