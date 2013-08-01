@@ -496,21 +496,21 @@ var MISSILE = {
                         # Status = launched. Compute target position relative to seeker head.
 
                         # Get target position.
-                        var t_alt =  me.Tgt.get_altitude();
+                        var t_alt =  me.Tgt.get_altitude();   
                         
-                        #var previsionSpeed = (me.Tgt.get_Speed()*0.5144) *(me.Tgt.get_Speed()*0.5144) / (me.total_speed_ft *FT2M);
-                        #to convert me.Tgt.get_Speed() in M/S
-                        var previsionSpeed = (me.Tgt.get_Speed()*0.5144) *(me.Tgt.get_Speed()*0.5144) / (me.vApproch);
+                        #problem here : We have to calculate de alt difference before calculate the other coord.
                         
                         #Prevision of the next position with speed & heading and dt->time to next position
-                        var nextGeo = nextGeoloc(me.Tgt.get_Latitude(),me.Tgt.get_Longitude(),me.Tgt.get_heading(),previsionSpeed,1);
                         
-                        #Prevision of the next altitude
-                        var next_alt = math.tan(me.Tgt.get_Pitch()*D2R)*nextGeo.distance_to(geo.Coord.new().set_latlon(me.Tgt.get_Latitude(),me.Tgt.get_Longitude()))*M2FT+t_alt;
+                        #Prevision of the next altitude depend on the target appproch on the next second. dt = 0.2
+                        var next_alt = t_alt - math.sin(me.Tgt.get_Pitch()*D2R)*me.Tgt.get_Speed()*0.5144*0.2;
+                        
+                        #NextGeo, depending of the new alt, with a constant speed ooof the aircraft
+                        var nextGeo = nextGeoloc(me.Tgt.get_Latitude(),me.Tgt.get_Longitude(),me.Tgt.get_heading(),me.Tgt.get_Speed()*0.5144,0.2);
+
 
                         t_alt = next_alt;
-                        me.t_coord.set_latlon(nextGeo.lat(),nextGeo.lon(), t_alt);  #me.t_coord.set_latlon(me.Tgt.get_Latitude(),me.Tgt.get_Longitude(), t_alt);
-
+                        me.t_coord.set_latlon(nextGeo.lat(),nextGeo.lon(), t_alt);  
 
                         
                         #print("Alt: ",t_alt," Lat",me.Tgt.get_Latitude()," Long : ",me.Tgt.get_Longitude());
@@ -566,9 +566,12 @@ var MISSILE = {
                         
                         #here is how to calculate the own missile dettection limitatioin
                         if((math.abs(me.curr_tgt_e)>me.missile_fov)or(math.abs(modulo180)>me.missile_fov)){
-                                print("me.missile_fov:", me.missile_fov, "me.curr_tgt_e:" , me.curr_tgt_e, "degree h me.curr_tgt_h:" ,me.curr_tgt_h, "t_course:", t_course,"me.hdg:",me.hdg, "modulo180:",modulo180);
+                                #print("me.missile_fov:", me.missile_fov, "me.curr_tgt_e:" , me.curr_tgt_e, "degree h me.curr_tgt_h:" ,me.curr_tgt_h, "t_course:", t_course,"me.hdg:",me.hdg, "modulo180:",modulo180);
                                 me.free=1;
                         }
+                        #print("Target Elevation(ft): ", t_alt, " Missile Elevation(ft): ", me.alt, " Delta(meters): ",t_alt_delta_m );
+                        #The t_course is false. Prevision is false
+                        #print("The Target is at: ", t_course, " MyCourse: ", me.hdg, " Delta(degrees): ",me.curr_tgt_h );
                         #print("me.curr_tgt_e",me.curr_tgt_e);
 
                         # Compute gain to reduce target deviation to match an optimum 3 deg
@@ -913,7 +916,7 @@ var max_G_Rotation = func(steering_e_deg, steering_h_deg, s_fps, mass, dt,gMax) 
 SW_reticle_Blinker = aircraft.light.new("sim/model/f-14b/lighting/hud-sw-reticle-switch", [0.1, 0.1]);
 #setprop("sim/model/f-14b/lighting/hud-sw-reticle-switch/enabled", 1);
 
-var nextGeoloc =func (long,lat, heading, speed, dt){
+var nextGeoloc =func (long,lat, heading, speed, dt ,alt=100){
 
         #long & lat & heading, in degree, sppeed in nm 
         #This function should send back the futures long lat
@@ -923,7 +926,7 @@ var nextGeoloc =func (long,lat, heading, speed, dt){
         #print("distance ", distance);
 
         #Much simpler than trigo
-        var NextGeo = geo.Coord.new().set_latlon(long, lat, 100);
+        var NextGeo = geo.Coord.new().set_latlon(long, lat, alt);
         NextGeo.apply_course_distance(heading,distance);
 
         return NextGeo;
