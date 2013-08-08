@@ -327,8 +327,8 @@ rwr = func(u) {
                         #u_ecm_type_num = "54";
                         #print("Pouet");
                         u_ecm_type_num = radardist.get_ecm_type_num(u_name);
-                        print("l'avion " ~ u_name ~ " type ECM " ~ u_ecm_type_num ~ "devrait vous accrocher. Carrier  " ~ u_carrier);
-                        print(u_ecm_signal);
+                        #print("l'avion " ~ u_name ~ " type ECM " ~ u_ecm_type_num ~ "devrait vous accrocher. Carrier  " ~ u_carrier);
+                        #print(u_ecm_signal);
                 }
         } else {
                 u_ecm_signal = 0;

@@ -292,10 +292,11 @@ var tank_submodel = func (pylone, select){
 
 var inscreased_selected_pylon = func(){
      var SelectedPylon = getprop("controls/armament/missile/current-pylon");
-     if(SelectedPylon==8){SelectedPylon=-1;}
+     
      var out = 0;
-     var mini = -1;
-     var max = -1;
+     var mini = loadsmini();
+     var max = loadsmaxi();
+     if(SelectedPylon==max){SelectedPylon=-1;}
      
      for(var i = SelectedPylon+1 ;i < 9 ; i = i + 1 ){
             if(getprop("sim/weight["~ i ~"]/selected")){
@@ -315,6 +316,36 @@ var inscreased_selected_pylon = func(){
       setprop("controls/armament/missile/current-pylon",SelectedPylon);
 }
 
+var loadsmini = func(){
+        var out = 0;        
+        for(var i = 0 ;i < 9 ; i = i + 1 ){
+                if(getprop("sim/weight["~ i ~"]/weight-lb")>1){
+                   if(out == 0){
+                        #print("i:",i);
+                        var mini = i;
+                        out = 1;
+                   }
+                   var maxi = i;
+                }
+         }
+         return mini;
+}
+
+
+var loadsmaxi = func(){
+        var out = 0;
+        for(var i = 0 ;i < 9 ; i = i + 1 ){
+                if(getprop("sim/weight["~ i ~"]/weight-lb")>1){
+                   if(out == 0){
+                        #print("i:",i);
+                        var mini = i;
+                        out = 1;
+                   }
+                   var maxi = i;
+                }
+         }
+         return maxi;
+}
         
 
 #next missile after fire
@@ -329,7 +360,7 @@ var after_fire_next = func(){
         
         
         if(getprop("sim/weight["~ SelectedPylon ~"]/weight-lb")<1){
-            for(var i = 1 ;i < 9 ; i = i + 1 ){
+            for(var i = 0 ;i < 9 ; i = i + 1 ){
                 if(getprop("sim/weight["~ i ~"]/weight-lb")>1){
                    if(out == 0){
                         #print("i:",i);

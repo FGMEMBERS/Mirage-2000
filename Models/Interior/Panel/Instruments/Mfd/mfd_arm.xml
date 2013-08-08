@@ -348,7 +348,7 @@
         <value>0</value>
      </equals>
      <greater-than>            
-        <property>sim/weight[7]/weight-lb</property>      
+        <property>sim/weight[0]/weight-lb</property>      
         <value>1</value>
     </greater-than>
    </condition>
@@ -403,7 +403,7 @@
    <condition>            
      <equals>
         <property>controls/armament/missile/current-pylon</property>  
-        <value>4</value>
+        <value>6</value>
      </equals>
    </condition>
  </animation>
@@ -427,7 +427,7 @@
    <condition>            
      <equals>
         <property>controls/armament/missile/current-pylon</property>  
-        <value>6</value>
+        <value>4</value>
      </equals>
    </condition>
  </animation>
