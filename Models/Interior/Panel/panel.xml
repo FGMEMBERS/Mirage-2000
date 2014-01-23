@@ -22,7 +22,7 @@
     </offsets>
   </model>
 
-  <!-- MFD Center -->
+  <!-- MFD Center 
   <model>
     <name>MFD_Center</name>
     <path>Aircraft/Mirage-2000/Models/Interior/Panel/Instruments/Center-mfd/MFD3d.xml</path>
@@ -40,7 +40,7 @@
     <x-offset> 1.00 </x-offset>
     <y-offset> 0.82 </y-offset>
     <z-offset> 0.67 </z-offset>
-  </animation>
+  </animation>-->
   
   <!-- MFD Center border-->
   <model>
@@ -175,17 +175,17 @@
     </offsets>
   </model>
   
-  <!-- Radio -->
+  <!-- Transponder -->
   <model>
-    <path>Aircraft/Mirage-2000/Models/Interior/Panel/Instruments/uhf-box/uhf-box.xml</path>
-    <offsets>
-      <x-m>  0.431 </x-m>
-      <y-m>  0.000 </y-m>
-      <z-m> -0.315 </z-m>
-      <pitch-deg>-5</pitch-deg>
-    </offsets>
-  </model>
-  
+     <path>Aircraft/Mirage-2000/Models/Interior/Panel/Instruments/transpondeur/transpondeur.xml</path>
+     <offsets>
+        <x-m> 0.444 </x-m>
+        <y-m> 0.000 </y-m>
+        <z-m> -0.348 </z-m>
+	<pitch-deg> -10 </pitch-deg>
+      </offsets>
+   </model>
+   
   <!-- Alerts -->
   <model>
     <path>Aircraft/Mirage-2000/Models/Interior/Panel/Instruments/Alerts/alerts.xml</path>
@@ -197,16 +197,27 @@
     </offsets>
   </model>
 
- <!-- Clock -->
+  <!-- Clock -->
   <model>
     <path>Aircraft/Mirage-2000/Models/Interior/Panel/Instruments/clock/clock.xml</path>
     <offsets>
-      <x-m>  0.480 </x-m>
-      <y-m> -0.310 </y-m>
-      <z-m> -0.196 </z-m>
-      <heading-deg> 10 </heading-deg>
-      <pitch-deg>   -5 </pitch-deg>
+      <x-m>  0.420 </x-m>
+      <y-m> -0.300 </y-m>
+      <z-m> -0.192 </z-m>
+      <heading-deg>40 </heading-deg>
+      <pitch-deg>   -10 </pitch-deg>
     </offsets>
   </model>
+  
+  <!-- Autre 
+  <model>
+    <path>Aircraft/Mirage-2000/Models/Interior/Panel/Instruments/autre/autre.xml</path>
+    <offsets>
+      <x-m>  0.53000 </x-m>
+      <y-m> -0.25160 </y-m>
+      <z-m>  0.06641 </z-m>
+      <roll-deg> 43 </roll-deg>
+    </offsets>
+  </model>-->
   
 </PropertyList>

@@ -1,0 +1,42 @@
+01.2013
+
+- ENGINE :
+------------
+- Correction the Nasal
+- Exhaust/thurst update (double nozzle)
+- Improved "Mouse" -> Inlet cones for supersonic flight  ... ( they go out > Mach 1.25 ).
+- Reheat Correction (Using n value, instead of throttle value)
+
+- Electric flight control : 
+---------------------------
+- Slats : they have an automated movement, during flight, and are retracted when landing (but still can be reopened manualy in case of engine failure)
+- SAS System Stabilizer Automatic Flight Stabilizer flight depending on the position of the joystick ( Still job to do to improve that )
+Note : this make stick less sensitive for low stick value or high speed. Also work for the nosewheel : > 10kts it become more stable with speed increasing
+
+- Nasal :
+---------
+- Centralization of "init" functions of the various systems , (to "revive" systems in case of faillure (real or simulated crash) and help "restart" management (in the future)) -> This still need to be improved
+- More reviews in the party " missile.nas " ( <- Not Enough)
+- Correction of some bugs in nav & radar
+
+- Graphical stuff :
+-------------------
+- High resolution texture (2048 * 2048) I made only 2 , but it's really pretty.
+- Adding pilot view
+
+- Instrument/Alert :
+--------------------
+- Jettinson : Yellow and black button to drop the tanks in case of emergency ( I rebossé texture button) and ajjout a keyboard shortcut (Shift + J). This helps unlock the full keypad, and so those who use it for steering can be used without problems.
+- HUD : Change the target display in the HUD : This overlaped and did not read all the infos. Everything is readable now.
+- Stall Warning Alert + stall (On the HUD and on the alert panel)
+- Transponder : Working transponder. Actually only the civilian part of the Transpondeur is working
+
+- Loads :
+---------
+- Quick loads are closer in name and in load to what we can see on a real mirage 2000
+
+-Other Stuff :
+--------------
+- Normalisation in order to make this aircraft available to "Aircraft_Selection_Criteria" (but not finished yet)
+
+

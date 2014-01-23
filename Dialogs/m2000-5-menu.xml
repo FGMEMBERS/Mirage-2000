@@ -35,24 +35,24 @@
         </binding>
       </item>
       <item n="4">
-        <label>Air to Air Middle Distance</label>
+        <label>Config Fox</label>
         <binding>
           <command>nasal</command>
-          <script>load.AirToAirMiddle()</script>
+          <script>load.Fox()</script>
         </binding>
       </item>
       <item n="5">
-        <label>Air to Air Short Distance</label>
+        <label>Config Bravo</label>
         <binding>
           <command>nasal</command>
-          <script>load.AirToAirshort()</script>
+          <script>load.Bravo()</script>
         </binding>
       </item>
       <item n="6">
-        <label>Air to Air Long Distance</label>
+        <label>Config Kilo</label>
         <binding>
           <command>nasal</command>
-          <script>load.AirToAirLong()</script>
+          <script>load.Kilo()</script>
         </binding>
       </item>
       <item n="7">

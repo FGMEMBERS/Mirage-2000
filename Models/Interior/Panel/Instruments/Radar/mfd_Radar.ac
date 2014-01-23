@@ -105,7 +105,7 @@ kids 0
 OBJECT poly
 name "radar_screen"
 loc 0.000875634 0.00843339 -0.00316602
-texture "radar_background.png"
+texture "radar_background.rgb"
 texrep -1 1
 crease 45.000000
 numvert 11

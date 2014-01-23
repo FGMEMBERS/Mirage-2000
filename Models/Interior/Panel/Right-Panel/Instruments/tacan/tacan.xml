@@ -81,13 +81,8 @@
   <animation>
     <type>rotate</type>
     <object-name>buton1</object-name>
-    <condition>
-      <equals>
-        <property>instrumentation/tacan/frequencies/selected-channel[4]</property>
-        <value>X</value>
-      </equals>
-    </condition>
-    <factor> -30 </factor>
+    <property>instrumentation/tacan/frequencies/XPos</property>
+    <factor>  30 </factor>
     <center>
       <x-m>  0.003574 </x-m>
       <y-m> -0.010760 </y-m>
@@ -99,28 +94,7 @@
       <z> 0 </z>
     </axis>
   </animation>
-  
-  <animation>
-    <type>rotate</type>
-    <object-name>buton1</object-name>
-    <condition>
-      <equals>
-        <property>instrumentation/tacan/frequencies/selected-channel[4]</property>
-        <value>Y</value>
-      </equals>
-    </condition>
-    <factor> 30 </factor>
-    <center>
-      <x-m>  0.003574 </x-m>
-      <y-m> -0.010760 </y-m>
-      <z-m> -0.005036 </z-m>
-    </center>
-    <axis>
-      <x> 1 </x>
-      <y> 0 </y>
-      <z> 0 </z>
-    </axis>
-  </animation>
+
   
   <animation>
     <type>textranslate</type>

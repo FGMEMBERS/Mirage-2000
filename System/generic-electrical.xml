@@ -11,7 +11,7 @@
     <prop>/systems/electrical/suppliers/battery[0]</prop>
     <kind>battery</kind>
     <volts>24</volts> <!-- needs to be > 24.5, but this is a guess -->
-    <amps>40</amps>   <!-- I have no idea! -->
+    <amps>40</amps>   <!-- I have no idea! ->5H1N0 to Fgi your guess is right-->
   </supplier>
 
   <supplier>
@@ -20,7 +20,7 @@
     <kind>alternator</kind>
     <rpm-source>/engines/engine[0]/rpm</rpm-source>
     <volts>28</volts> <!-- stubbed in -->
-    <amps>60</amps>   <!-- from the 172S Skyhawk Information Manual -->
+    <amps>150</amps>   <!-- from the 172S Skyhawk Information Manual -->
   </supplier>
   
     <supplier>
@@ -29,7 +29,7 @@
     <kind>alternator</kind>
     <rpm-source>/engines/engine[0]/rpm</rpm-source>
     <volts>28</volts> <!-- stubbed in -->
-    <amps>60</amps>   <!-- from the 172S Skyhawk Information Manual -->
+    <amps>150</amps>   <!-- from the 172S Skyhawk Information Manual -->
   </supplier>
 
   <supplier>

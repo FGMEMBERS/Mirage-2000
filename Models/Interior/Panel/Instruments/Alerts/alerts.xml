@@ -31,8 +31,8 @@
   <animation>
     <type>material</type>
     <object-name>fond</object-name>
-    <object-name>visses</object-name>           
-    <emission>      
+    <object-name>visses</object-name>
+    <emission>
       <factor>0.13</factor>
       <red>   1 </red>
       <green> 1 </green>

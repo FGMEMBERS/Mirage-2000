@@ -29,6 +29,7 @@ Thanks
 ===============
 BARANGER Emmanuel
 April, 14, 2012.
+BARBIER Fabien
 
 http://helijah.free.fr/flightgear/hangar.htm
 embaranger@free.fr
@@ -64,6 +65,7 @@ Remerciements
 ===============
 BARANGER Emmanuel
 14 Avril 2012.
+BARBIER Fabien
 
 http://helijah.free.fr/flightgear/hangar.htm
 embaranger@free.fr

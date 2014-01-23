@@ -27,22 +27,16 @@ var stick_pos = 0;
 var flag = 0;
 #####################################
 
-setlistener("/sim/signals/fdm-initialized", func {
-    setprop("instrumentation/nd/range",wx_range[wx_index]);
-    print("Flight Director ...Check");
-    settimer(update_fd, 5);
-});
 
 ######initialisation
 var init_set=func{
+    setprop("instrumentation/nd/range",wx_range[wx_index]);
     setprop("/autopilot/settings/target-altitude-ft",4000);
     setprop(RMI1prop,"");
     setprop(RMI2prop,"");
+    settimer(update_fd, 5);
 }
-var nasalInit = setlistener("/sim/signals/fdm-initialized", func{
-  settimer(init_set, 2);
-  removelistener(nasalInit);
-});
+
 
 ### AP /FD BUTTONS ####
 
@@ -211,7 +205,7 @@ var update_nav=func{
         var dst=getprop("instrumentation/nav/nav-distance") or 0;
         dst*=0.000539;
         setprop("autopilot/internal/nav-distance",dst);
-        setprop("autopilot/internal/nav-id",getprop("instrumentation/nav/nav-id"));
+        if(getprop("instrumentation/nav/nav-id") != nil){ getprop("autopilot/internal/nav-id",getprop("instrumentation/nav/nav-id"));}
         if(getprop("instrumentation/nav/nav-loc"))sgnl="LOC1";
         if(getprop("instrumentation/nav/has-gs"))sgnl="ILS1";
         if(sgnl=="ILS1")gs = 1;
@@ -387,5 +381,9 @@ var roll_ctrl=getprop("controls/flight/aileron");
      
     count+=1;
     if(count>2)count=0;
-    settimer(update_fd, 0.25);
+    if(pa_stat=="AP1"){
+        settimer(update_fd, 0.25);
+    }else{
+        settimer(update_fd, 1);
+    }
 }

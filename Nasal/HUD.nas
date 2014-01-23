@@ -6,7 +6,7 @@
             SGPropertyNode *chld = models->getChild(i);
             string name;
             name = chld->getName();
-            if (name == "aircraft" || name == "multiplayer") {
+            if (name == "aircraft" || name == "multiplayer" || type == "tanker" || type =="carrier") {
                 string callsign = chld->getStringValue("callsign");
                 if (callsign != "") {
                     float h_deg = chld->getFloatValue("radar/h-offset");

@@ -29,11 +29,8 @@
     <object-name>pot-r3</object-name>
     <object-name>pot-r4</object-name>
 
-
-
     <!-- Objets transparents -->
   </animation>
-  
 
   <animation>
     <type>material</type>
@@ -59,15 +56,30 @@
     <object-name>pot-r3</object-name>
     <object-name>pot-r4</object-name>
     <emission>      
-      <factor>0.13/</factor>
+      <factor> 0.13 </factor>
       <red>   1 </red>
       <green> 1 </green>
       <blue>  1 </blue>
     </emission>
   </animation>
- 
-    
 
-
+  <!-- MFD Center border-->
+  <model>
+    <name>MFD-Screen</name>
+    <path>Aircraft/Mirage-2000/Models/Interior/Panel/Instruments/Center-mfd/MFD3d.xml</path>
+    <offsets>
+      <x-m>  0.011 </x-m>
+      <y-m>  0.000 </y-m>
+      <z-m> -0.015 </z-m>
+    </offsets>
+  </model>
+  
+  <animation>
+    <type>scale</type>
+    <object-name>MFD-Screen</object-name> 
+    <x-offset> 1.00 </x-offset>
+    <y-offset> 0.90 </y-offset>
+    <z-offset> 0.87 </z-offset>
+  </animation>
+  
 </PropertyList>
-

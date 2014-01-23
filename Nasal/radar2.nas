@@ -88,6 +88,11 @@ var u_ecm_signal_norm = 0;
 var u_radar_standby   = 0;
 var u_ecm_type_num    = 0;
 
+
+#setlistener("sim/signals/fdm-initialized", radar.init);
+
+
+
 init = func() {
         var our_ac_name = getprop("sim/aircraft");
         radardist.init();
@@ -439,8 +444,6 @@ radar_mode_toggle = func() {
                 swp_diplay_width = 0.0844;
         }
 }
-
-setlistener("sim/signals/fdm-initialized", init);
 
 # Target class
 var Target = {

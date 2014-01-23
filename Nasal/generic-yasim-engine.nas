@@ -19,7 +19,7 @@
 #
 
 
-var UPDATE_PERIOD = 0.01; # update interval for engine init() functions
+var UPDATE_PERIOD = 0.05; # update interval for engine init() functions
 
 # jet engine class
 var Jet =

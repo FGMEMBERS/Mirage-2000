@@ -4,9 +4,10 @@ var AcModel        = props.globals.getNode("sim/model/m2000-5");
 var OurHdg         = props.globals.getNode("orientation/heading-deg");
 var OurRoll        = props.globals.getNode("orientation/roll-deg");
 var OurPitch       = props.globals.getNode("orientation/pitch-deg");
+
+#Old Stuff from "fox2.nas". can be reused
 #var HudReticleDev  = props.globals.getNode("sim/model/m2000-5/instrumentation/radar-awg-9/hud/reticle-total-deviation", 1);
 #var HudReticleDeg  = props.globals.getNode("sim/model/m2000-5/instrumentation/radar-awg-9/hud/reticle-total-angle", 1);
-
 #var SwSoundOnOff   = AcModel.getNode("systems/armament/aim9/sound-on-off");
 #var SwSoundVol     = AcModel.getNode("systems/armament/aim9/sound-volume");
 #var vol_search     = 0.12;
@@ -126,10 +127,12 @@ var MISSILE = {
                 return MISSILE.active[m.ID] = m;
 
         },
+        #This is the dl function : to delete the objectwhn it's not needed anymore
         del: func {
                 me.model.remove();
                 me.ai.remove();
-                if(me.free == 1){
+                if(me.free == 1 and me.Tgt != nil){
+                        #Just say Missed if it didn't explode
                         var phrase = me.NameOfMissile ~ " Report : Missed";
                         if (getprop("sim/model/m2000-5/systems/armament/mp-messaging")=="true") {
                         setprop("/sim/multiplay/chat", phrase);
@@ -139,6 +142,7 @@ var MISSILE = {
                 }
                 delete(MISSILE.active, me.ID);
         },
+        #This function is the way to reload the 3D model : 1)fired missile with smoke, 2)fired missile without smoke, 3)Exploding missile
         reload_model: func(path) {
                 #Delete the current model
                 me.model.remove();
@@ -161,7 +165,7 @@ var MISSILE = {
                 me.model.getNode("load", 1).remove();
 
         },
-
+        #This function is to convert for the missile from aircraft coordinate to absolute coordinate
         release: func() {
                 me.status = 2;
                 #me.animation_flags_props();
@@ -259,6 +263,7 @@ var MISSILE = {
 
 
         update: func {
+                #Calculate life time of th missile
                 var dt = getprop("sim/time/delta-sec");
                 var init_launch = 0;
                 if ( me.life_time > 0 ) { init_launch = 1 }
@@ -270,9 +275,12 @@ var MISSILE = {
                 #### Calculate speed vector before steering corrections.
 
                 # Cut rocket thrust after boost duration.
+                #Also cut rocket when misile is "dropped", and ignitie it 1 second after
                 var f_lbs = me.force_lbs;
                 if(me.rail=="true"){
-                        if (me.life_time > 2) { f_lbs = me.force_lbs * 0.3; }
+                        if (me.life_time > 0) { f_lbs = me.force_lbs * 2 ;}
+                        if (me.life_time > 4) { f_lbs = me.force_lbs * 0.3;}
+                        
                 }else{
                         f_lbs = 0;
                         if (me.life_time > 1) { f_lbs = me.force_lbs; }
@@ -359,7 +367,8 @@ var MISSILE = {
                 #### Guidance.
 
                 if ( me.status == 2 and me.free == 0) {
-                        me.update_track();
+                        if (me.life_time > 1) { me.update_track();}
+                        #print(me.life_time);
                         if (init_launch == 0 ) {
                                  #Use the rail or a/c pitch for the first frame.
                                 pitch_deg = getprop("orientation/pitch-deg");
@@ -367,7 +376,7 @@ var MISSILE = {
                                 #Here will be set the max angle of pitch and the max angle of heading to avoid G overload
                                      var myG = steering_speed_G(me.track_signal_e, me.track_signal_h, (total_s_ft / dt), mass, dt);
                                      if(me.max_g < myG){
-                                        print("MyG");
+                                        #print("MyG");
                                         var MyCoef = max_G_Rotation(me.track_signal_e, me.track_signal_h, total_s_ft, mass, 1,me.max_g);
                                         me.track_signal_e =  me.track_signal_e * MyCoef;
                                         me.track_signal_h =  me.track_signal_h * MyCoef;
@@ -499,14 +508,18 @@ var MISSILE = {
                         var t_alt =  me.Tgt.get_altitude();   
                         
                         #problem here : We have to calculate de alt difference before calculate the other coord.
-                        
                         #Prevision of the next position with speed & heading and dt->time to next position
+                        #Prevision of the next altitude depend on the target appproch on the next second. dt = 0.1
+                        #me.vApproch;
                         
-                        #Prevision of the next altitude depend on the target appproch on the next second. dt = 0.2
-                        var next_alt = t_alt - math.sin(me.Tgt.get_Pitch()*D2R)*me.Tgt.get_Speed()*0.5144*0.2;
+                        
+                        var next_alt = t_alt - math.sin(me.Tgt.get_Pitch()*D2R)*me.Tgt.get_Speed()*0.5144*0.1;
                         
                         #NextGeo, depending of the new alt, with a constant speed ooof the aircraft
-                        var nextGeo = nextGeoloc(me.Tgt.get_Latitude(),me.Tgt.get_Longitude(),me.Tgt.get_heading(),me.Tgt.get_Speed()*0.5144,0.2);
+                        #0.2 is the "time"of the presicion, in second. This need to be not arbitrary
+                        
+                        
+                        var nextGeo = nextGeoloc(me.Tgt.get_Latitude(),me.Tgt.get_Longitude(),me.Tgt.get_heading(),me.Tgt.get_Speed()*0.5144,0.1);
 
 
                         t_alt = next_alt;

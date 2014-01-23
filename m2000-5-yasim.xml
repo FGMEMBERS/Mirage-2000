@@ -59,7 +59,7 @@
     <control-setting axis="/controls/engines/engine[0]/throttle" value="0.3"/>
     <control-setting axis="/controls/engines/engine[0]/reheat" value="0"/>
     <control-setting axis="/controls/gear/gear-down" value="1"/>
-    <control-setting axis="/controls/flight/slats" value="1"/>
+    <control-setting axis="/controls/flight/slats" value="0"/>
     <control-setting axis="/controls/flight/speedbrake" value="0"/>
   </approach>
 
@@ -116,21 +116,24 @@
     Other values tweaked for solver results.
 
     Airbrakes (spoilers) may be a little too effective, but I didn't adjust them.
+    
+    5H1N0's note : i put 20 intead of 18 : there i a firt stall warning at 20° but the limitation is "not to exceed a 29°" aoa... so we could guess something btween
+    old  sweep="38"  
   -->
   <wing x="-0.9" y="0.247" z="-0.933"
         chord="7.823"
         length="5.5"
         taper="0.08"
-        sweep="38"
+        sweep="38"  
         dihedral="-4"
         incidence="0"
         camber="0.03">
-        <stall aoa="18" width="8" peak="1.7"/>
+        <stall aoa="20" width="8" peak="1.7"/>
         <slat start="0.2" end="0.8" aoa="2" drag="2"/>
         <flap0 start="0.59" end="0.90" lift="1.25" drag="1.2"/>
         <spoiler start="0.59" end="0.90"  lift="1" drag="39.9"/>
 
-        <control-input axis="/controls/flight/aileron" control="FLAP0" split="true"/>
+        <control-input axis="/controls/flight/SAS-roll" control="FLAP0" split="true"/>
         <control-input axis="/controls/flight/aileron-trim" control="FLAP0" split="true"/>
         <control-input axis="/controls/flight/flaps" control="SLAT"/>
         <control-input axis="/controls/flight/spoilers" control="SPOILER"/>
@@ -143,6 +146,7 @@
 
         <control-speed control="FLAP0" transition-time="0"/>
         <control-speed control="SPOILER" transition-time="1.5"/>
+        <control-speed control="SLAT" transition-time="2.6"/>
   </wing>
 
   <!-- Buckaroo Notes:
@@ -174,13 +178,13 @@
          <flap0 start="0.28" end="0.90" lift="1.4" drag="1.35"/>
          <spoiler start="0" end="0.9" lift="0" drag="100"/>
 
-         <control-input axis="/controls/flight/elevator" control="FLAP0"/>
+         <control-input axis="controls/flight/SAS-pitch" control="FLAP0"/>
          <control-input axis="/controls/flight/elevator-trim" control="FLAP0"/>
          <control-input axis="/sim/model/Mirage-2000/controls/flight/chute_deployed" control="SPOILER" />
 
          <control-output control="FLAP0" prop="/surface-positions/elevator-pos-norm"/>
 
-         <control-speed control="FLAP0" transition-time="1.5"/>
+         <control-speed control="FLAP0" transition-time="0.5"/>
   </hstab>
 
   <!-- Buckaroo notes:
@@ -188,17 +192,17 @@
   -->
   <vstab x="-4.646" y="0" z="0.151"
          chord="3.6"
-         length="3.1"
+         length="4.1"
          taper="0.22"
          sweep="38">
          <stall aoa="16" width="4" peak="1.5"/>
          <flap0 start="0.06" end="0.67" lift="1.35" drag="1.3"/>
 
-         <control-input axis="/controls/flight/rudder" control="FLAP0" invert="true"/>
+         <control-input axis="/controls/flight/SAS-yaw" control="FLAP0" invert="false"/>
 
          <control-output control="FLAP0" prop="/surface-positions/rudder-pos-norm"/>
 
-         <control-speed control="FLAP0" transition-time="1.5"/>
+         <control-speed control="FLAP0" transition-time="0.5"/>
   </vstab>
 
   <!-- Engines   source            : http://en.wikipedia.org/wiki/SNECMA_M53
@@ -227,20 +231,21 @@
     rather high at military power takeoff thrust or better. 
 
     <control-input axis="/controls/engines/engine[0]/reheat" control="REHEAT"/>
+    1123 K = 850°C
   -->
   <jet x="-3" y="0" z="-0.480"
        mass="3340"
-       thrust="14300"
-       afterburner="21384"
-       egt="935"
+       thrust="14500"
+       afterburner="21400"
+       egt="1123"
        epr="9.8"
        exhaust-speed="2333"
-       spool-time="6"
-       tsfc="0.2"
-       n1-idle="30.0"
+       spool-time="3"
+       tsfc="0.3"
+       n1-idle="47.0"
        n1-max="105" 
-       n2-idle="45" 
-       n2-max="100"
+       n2-idle="73" 
+       n2-max="110"
        >
        <actionpt x="-6" y="0" z="-0.634"/>
        <control-input axis="/controls/engines/engine[0]/throttle" control="THROTTLE"/>
@@ -255,29 +260,44 @@
   <!-- Buckaroo notes:
     Based on the model, FDM compression values are two great. Maximum extension for each appears to be 0.2 meters at best.
     I didn't adjust these values since the animations are very nice and tied to these particular values.
-  -->
-  <!-- Roue avant -->
-  <gear x="2.996" y="0" z="-2.592"
         retract-time="7"
         compression="0.4"
         spring="1.1"
         damp="1.2"
         sfric="0.8"
         dfric="0.7">
-        <control-input axis="/controls/flight/rudder" control="STEER" src0="-1.0" src1="1.0" dst0="-0.2" dst1="0.2"/>
+  -->
+  
+  <!--Correction from kjchernov-->
+  <!-- Roue avant -->
+  <gear x="2.996" y="0" z="-2.592"
+        retract-time="7"
+        compression="0.4"
+        spring="1.4"
+        damp="2.6"
+        sfric="0.4"
+        dfric="0.2">
+        <control-input axis="/controls/flight/SAS-gear" control="STEER" src0="-1.0" src1="1.0" dst0="-0.25" dst1="0.25"/>
         <control-input axis="/controls/gear/gear-down" control="EXTEND"/>
 
         <control-output control="EXTEND" prop="/gear/gear[0]/position-norm"/>
+        <control-output control="STEER" prop="/surface-positions/nose-wheel-pos-norm"/>
 
         <control-speed control="EXTEND" transition-time="7"/>
   </gear>
+
+<!--old
+        spring="0.85"
+        damp="1.5">
+        -->
+
 
   <!-- Roue gauche -->
   <gear x="-1.948" y="1.673" z="-2.595"
         retract-time="7"
         compression="0.6"
-        spring="0.85"
-        damp="1.5">
+        spring="1.0"
+        damp="1.8">
         <control-input axis="/controls/gear/brake-left" control="BRAKE"/>
         <control-input axis="/controls/gear/brake-parking" control="BRAKE"/>
         <control-input axis="/controls/gear/gear-down" control="EXTEND"/>
@@ -291,8 +311,8 @@
   <gear x="-1.948" y="-1.673" z="-2.595"
         retract-time="7"
         compression="0.6"
-        spring="0.85"
-        damp="1.5">
+        spring="1.0"
+        damp="1.8">
         <control-input axis="/controls/gear/brake-right" control="BRAKE"/>
         <control-input axis="/controls/gear/brake-parking" control="BRAKE"/>
         <control-input axis="/controls/gear/gear-down" control="EXTEND"/>

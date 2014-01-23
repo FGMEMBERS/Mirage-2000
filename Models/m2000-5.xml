@@ -55,6 +55,7 @@
     <object-name>spoilerDB</object-name>
     <object-name>direction</object-name>
     <object-name>entrees</object-name>
+    <object-name>souris</object-name>
     <object-name>canope</object-name>
     <object-name>antennes</object-name>
     <object-name>tuyere</object-name>
@@ -117,6 +118,7 @@
     <object-name>spoilerDB</object-name>
     <object-name>direction</object-name>
     <object-name>entrees</object-name>
+    <object-name>souris</object-name>
     <object-name>canope</object-name>
     <object-name>antennes</object-name>
     <object-name>tuyere</object-name>
@@ -149,20 +151,20 @@
       <green-prop>specular/green</green-prop>
       <blue-prop>specular/blue</blue-prop>
     </specular>
-
-    <!--<emission>
+   
+    <emission>
       <red-prop>emission/red</red-prop>
       <green-prop>emission/green</green-prop>
       <blue-prop>emission/blue</blue-prop>
-    <condition>
-      <not><property>sim/rendering/rembrandt/enabled</property></not>
-    </condition>
-    </emission>-->
-
+      <condition>
+        <not><property>sim/rendering/rembrandt/enabled</property></not>
+      </condition>
+    </emission>
+    
   </animation>
 
-   <effect>
-    <inherits-from>Effects/model-combined-deferred</inherits-from>
+  <effect>
+    <inherits-from>/Effects/model-combined-deferred</inherits-from>
     <condition>
       <property>sim/rendering/rembrandt/enabled</property>
     </condition>
@@ -184,6 +186,7 @@
     <object-name>spoilerDB</object-name>
     <object-name>direction</object-name>
     <object-name>entrees</object-name>
+    <object-name>souris</object-name>
     <object-name>canope</object-name>
     <object-name>antennes</object-name>
     <object-name>tuyere</object-name>
@@ -223,6 +226,7 @@
     <object-name>spoilerDB</object-name>
     <object-name>direction</object-name>
     <object-name>entrees</object-name>
+    <object-name>souris</object-name>
     <object-name>canope</object-name>
     <object-name>antennes</object-name>
     <object-name>tuyere</object-name>
@@ -239,7 +243,8 @@
     <object-name>tmp1</object-name>
   </effect>
 
-  <!--<animation>
+  <!--
+  <animation>
     <type>material</type>
     <object-name>R550</object-name>
     <object-name>ailettes</object-name>
@@ -265,7 +270,8 @@
       <green-prop>emission/green</green-prop>
       <blue-prop>emission/blue</blue-prop>
     </emission>
-  </animation>-->
+  </animation>
+  -->
 
   <animation>
     <type>shader</type>
@@ -1101,8 +1107,8 @@
   <animation>
     <type>rotate</type>
     <object-name>TrainAvant</object-name>
-    <property>surface-positions/rudder-pos-norm</property>
-    <factor> 25 </factor>
+    <property>surface-positions/nose-wheel-pos-norm</property>
+    <factor> -125 </factor>
     <center>
       <x-m> -2.996 </x-m>
       <y-m>  0.000 </y-m>
@@ -1399,4 +1405,21 @@
     </condition>
   </model>-->
 
+  <!-- Sortie de la souris en fonction des Mach -->
+  <animation>
+    <type>translate</type>
+    <object-name>souris</object-name>
+    <property>velocities/mach</property>
+    <interpolation>
+      <entry><ind> 0.00 </ind><dep>  0.0  </dep></entry>
+      <entry><ind> 1.20 </ind><dep>  0.0 </dep></entry>
+      <entry><ind> 2.20 </ind><dep>  -0.4 </dep></entry>
+    </interpolation>
+    <axis>
+      <x> 1 </x>
+      <y> 0 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+ 
 </PropertyList>

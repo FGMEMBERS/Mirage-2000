@@ -11,8 +11,8 @@
 
   <animation>
     <type>material</type>
-    <object-name>fond</object-name>           
-    <emission>      
+    <object-name>fond</object-name>
+    <emission>
       <factor>0.13</factor>
       <red>   1 </red>
       <green> 1 </green>

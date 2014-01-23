@@ -19,21 +19,28 @@
   </animation>
 
   <animation>
-    <type>noshadow</type>
+    <type>shader</type>
+    <shader>chrome</shader>
+    <texture>Aircraft/Mirage-2000/Models/Interior/Panel/Instruments/glass_shader.png</texture>
+    <condition>
+      <not><property>sim/rendering/rembrandt/enabled</property></not>
+    </condition>
     <object-name>vitre</object-name>
   </animation>
 
-  <animation>
-    <type>shader</type>
-    <shader>chrome</shader>
-    <texture>Aircraft/Generic/Effects/glass_shader.png</texture>
+  <!-- working for Rembrandt -->
+  <effect>
+    <inherits-from>Effects/model-transparent</inherits-from>
+    <condition>
+      <property>sim/rendering/rembrandt/enabled</property>
+    </condition>
     <object-name>vitre</object-name>
-  </animation>
+  </effect>
 
   <animation>
     <type>material</type>
-    <object-name>fond</object-name>           
-    <emission>      
+    <object-name>fond</object-name>
+    <emission>
       <factor>0.13</factor>
       <red>   1 </red>
       <green> 1 </green>

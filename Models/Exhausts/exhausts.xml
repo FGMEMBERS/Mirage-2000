@@ -20,8 +20,6 @@
       <y-m> -0.18946 </y-m>
       <z-m>  0.44634 </z-m>
       <roll-deg>   23 </roll-deg>
-      <pitch-deg>   0 </pitch-deg>
-      <heading-deg> 0 </heading-deg>
     </offsets>
   </model>
 
@@ -33,8 +31,6 @@
       <y-m> -0.34632 </y-m>
       <z-m>  0.34632 </z-m>
       <roll-deg>   45 </roll-deg>
-      <pitch-deg>   0 </pitch-deg>
-      <heading-deg> 0 </heading-deg>
     </offsets>
   </model>
 
@@ -46,8 +42,6 @@
       <y-m> -0.44958 </y-m>
       <z-m>  0.18164 </z-m>
       <roll-deg>   68 </roll-deg>
-      <pitch-deg>   0 </pitch-deg>
-      <heading-deg> 0 </heading-deg>
     </offsets>
   </model>
 
@@ -59,8 +53,6 @@
       <y-m> -0.48977 </y-m>
       <z-m>  0.00000 </z-m>
       <roll-deg>   90 </roll-deg>
-      <pitch-deg>   0 </pitch-deg>
-      <heading-deg> 0 </heading-deg>
     </offsets>
   </model>
 
@@ -72,8 +64,6 @@
       <y-m> -0.44634 </y-m>
       <z-m> -0.18946 </z-m>
       <roll-deg>  113 </roll-deg>
-      <pitch-deg>   0 </pitch-deg>
-      <heading-deg> 0 </heading-deg>
     </offsets>
   </model>
 
@@ -85,8 +75,6 @@
       <y-m> -0.34632 </y-m>
       <z-m> -0.34632 </z-m>
       <roll-deg>  135 </roll-deg>
-      <pitch-deg>   0 </pitch-deg>
-      <heading-deg> 0 </heading-deg>
     </offsets>
   </model>
 
@@ -98,8 +86,6 @@
       <y-m> -0.18164 </y-m>
       <z-m> -0.44958 </z-m>
       <roll-deg>  158 </roll-deg>
-      <pitch-deg>   0 </pitch-deg>
-      <heading-deg> 0 </heading-deg>
     </offsets>
   </model>
 
@@ -111,8 +97,6 @@
       <y-m>  0.00000 </y-m>
       <z-m> -0.48977 </z-m>
       <roll-deg>  180 </roll-deg>
-      <pitch-deg>   0 </pitch-deg>
-      <heading-deg> 0 </heading-deg>
     </offsets>
   </model>
 
@@ -124,8 +108,6 @@
       <y-m>  0.18946 </y-m>
       <z-m> -0.44634 </z-m>
       <roll-deg>  203 </roll-deg>
-      <pitch-deg>   0 </pitch-deg>
-      <heading-deg> 0 </heading-deg>
     </offsets>
   </model>
 
@@ -137,8 +119,6 @@
       <y-m>  0.34632 </y-m>
       <z-m> -0.34632 </z-m>
       <roll-deg>  225 </roll-deg>
-      <pitch-deg>   0 </pitch-deg>
-      <heading-deg> 0 </heading-deg>
     </offsets>
   </model>
 
@@ -150,8 +130,6 @@
       <y-m>  0.44958 </y-m>
       <z-m> -0.18164 </z-m>
       <roll-deg>  248 </roll-deg>
-      <pitch-deg>   0 </pitch-deg>
-      <heading-deg> 0 </heading-deg>
     </offsets>
   </model>
 
@@ -163,8 +141,6 @@
       <y-m>  0.48977 </y-m>
       <z-m>  0.00000 </z-m>
       <roll-deg>  270 </roll-deg>
-      <pitch-deg>   0 </pitch-deg>
-      <heading-deg> 0 </heading-deg>
     </offsets>
   </model>
 
@@ -176,8 +152,6 @@
       <y-m>  0.44634 </y-m>
       <z-m>  0.18946 </z-m>
       <roll-deg>  293 </roll-deg>
-      <pitch-deg>   0 </pitch-deg>
-      <heading-deg> 0 </heading-deg>
     </offsets>
   </model>
 
@@ -189,8 +163,6 @@
       <y-m>  0.34632 </y-m>
       <z-m>  0.34632 </z-m>
       <roll-deg>  315 </roll-deg>
-      <pitch-deg>   0 </pitch-deg>
-      <heading-deg> 0 </heading-deg>
     </offsets>
   </model>
 
@@ -202,10 +174,7 @@
       <y-m>  0.18164 </y-m>
       <z-m>  0.44958 </z-m>
       <roll-deg>  338 </roll-deg>
-      <pitch-deg>   0 </pitch-deg>
-      <heading-deg> 0 </heading-deg>
     </offsets>
   </model>
 
 </PropertyList>
-

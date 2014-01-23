@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<PropertyList>
+
+  <path>jettison.ac</path>
+
+  <animation>
+    <object-name>fond</object-name>
+    <object-name>button</object-name>
+  </animation>
+
+  <animation>
+    <type>material</type>
+    <object-name>button</object-name>           
+    <emission>      
+      <factor>0.13</factor>
+      <red>   1 </red>
+      <green> 1 </green>
+      <blue>  1 </blue>
+    </emission>
+  </animation>
+  
+  <!-- Select missile -->
+  <animation>
+    <type>pick</type>  
+    <object-name>button</object-name>
+    <action>
+      <button>0</button>     
+      <repeatable>false</repeatable>
+      <binding>
+        <command>property-toggle</command>
+        <property>sim/model/click</property>
+      </binding>
+      <binding>
+         <command>nasal</command>
+         <script>load.dropTanks();</script>
+      </binding> 
+    </action>
+  </animation>
+
+</PropertyList>
+

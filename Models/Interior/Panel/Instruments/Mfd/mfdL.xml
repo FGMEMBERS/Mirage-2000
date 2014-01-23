@@ -37,26 +37,32 @@
   </animation>
   
   <animation>
-    <type>noshadow</type>
-    <object-name>vitre</object-name>
-  </animation>
-  
-  <animation>
     <type>shader</type>
     <shader>chrome</shader>
     <texture>Aircraft/Mirage-2000/Models/Interior/Panel/Instruments/glass_shader.png</texture>
+    <condition>
+      <not><property>sim/rendering/rembrandt/enabled</property></not>
+    </condition>
     <object-name>vitre</object-name>
   </animation>
-
+  
+  <!-- working for Rembrandt -->
+  <effect>
+    <inherits-from>Effects/model-transparent</inherits-from>
+    <condition>
+      <property>sim/rendering/rembrandt/enabled</property>
+    </condition>
+    <object-name>vitre</object-name>
+  </effect>
+  
   <!--prov hide vitre en attendant l'antibuée :)-->
   <animation>
-  <type>select</type>
-  <object-name>vitre</object-name>
-  <condition>
-    <property>instrumentation/mfd/mfd-glass</property>
-  </condition>
+    <type>select</type>
+    <object-name>vitre</object-name>
+    <condition>
+      <property>instrumentation/mfd/mfd-glass</property>
+    </condition>
   </animation>  
-  
   
   <animation>
     <type>material</type>
@@ -89,8 +95,8 @@
     </emission>
   </animation>
 
-    <!-- __________________ Buttons _____________________-->
-<!--Pages-->
+  <!-- __________________ Buttons _____________________-->
+  <!--Pages-->
   <animation>
     <type>pick</type>
     <object-name>bt-b1</object-name>
@@ -112,7 +118,6 @@
       </binding>     
     </action>
   </animation>  
-  
  
   <!--Pot r1 Altitude-->
   <animation>
@@ -131,7 +136,7 @@
         <property>autopilot/settings/target-altitude-ft</property>
         <step>500</step>
         <min>200</min>
-        <max>50000</max>
+        <max>60000</max>
         <wrap>false</wrap>
         <condition>
           <equals>
@@ -228,8 +233,8 @@
     </action>
   </animation>
 
-<!--DIMM-->
-<!--Pot r4 Luminosite-->
+  <!--DIMM-->
+  <!--Pot r4 Luminosite-->
   <animation>
     <type>pick</type>
     <object-name>pot-r4</object-name>
@@ -275,8 +280,8 @@
   </animation>
 
   <!--Hide/show MFD glass-->
-<!--provisoire en attendant des vitres sans buée :)-->
- <animation>
+  <!--provisoire en attendant des vitres sans buée :)-->
+  <animation>
     <type>pick</type>  
     <object-name>pot-l4</object-name>
     <action>
@@ -293,7 +298,7 @@
     </action>
   </animation>
 
-<!--toggle INHG/HPA display-->
+  <!--toggle INHG/HPA display-->
   <animation>
     <type>pick</type>  
     <object-name>bt-b4</object-name>
@@ -317,64 +322,62 @@
     </action>
   </animation>
 
-<!--Altimeter-setting-->
-<animation>
-  <type>pick</type>
-  <object-name>br-knob</object-name>
-  <action>
-    <button>4</button> <!--  scroll up -->
-    <repeatable>false</repeatable>
+  <!--Altimeter-setting-->
+  <animation>
+    <type>pick</type>
+    <object-name>br-knob</object-name>
+    <action>
+      <button>4</button> <!--  scroll up -->
+      <repeatable>false</repeatable>
+        <binding>
+          <command>property-toggle</command>
+          <property>sim/model/click</property>
+        </binding>    
       <binding>
-        <command>property-toggle</command>
-        <property>sim/model/click</property>
-      </binding>    
-    <binding>
-      <command>property-adjust</command>
-      <property>instrumentation/altimeter/setting-inhg</property>
-      <step>0.01</step>
-      <min>25</min>
-      <max>36</max>
-      <wrap>true</wrap>
-      <condition>
-        <equals>
-          <property>/instrumentation/mfd/modeL</property>
-          <value> 0 </value>
-        </equals>
-      </condition>        
-    </binding>
-  </action>
-</animation>
+        <command>property-adjust</command>
+        <property>instrumentation/altimeter/setting-inhg</property>
+        <step>0.01</step>
+        <min>25</min>
+        <max>36</max>
+        <wrap>true</wrap>
+        <condition>
+          <equals>
+            <property>/instrumentation/mfd/modeL</property>
+            <value> 0 </value>
+          </equals>
+        </condition>        
+      </binding>
+    </action>
+  </animation>
 
-<animation>
-  <type>pick</type>  
-  <object-name>br-knob</object-name>
-  <action>
-    <button>3</button> <!--  scroll down -->
-    <repeatable>false</repeatable>
+  <animation>
+    <type>pick</type>  
+    <object-name>br-knob</object-name>
+    <action>
+      <button>3</button> <!--  scroll down -->
+      <repeatable>false</repeatable>
+        <binding>
+          <command>property-toggle</command>
+          <property>sim/model/click</property>
+        </binding>    
       <binding>
-        <command>property-toggle</command>
-        <property>sim/model/click</property>
-      </binding>    
-    <binding>
-      <command>property-adjust</command>
-      <property>instrumentation/altimeter/setting-inhg</property>
-      <step>-0.01</step>
-      <min>25</min>
-      <max>36</max>
-      <wrap>true</wrap>
-      <condition>
-        <equals>
-          <property>/instrumentation/mfd/modeL</property>
-          <value> 0 </value>
-        </equals>
-      </condition>
-    </binding>  
-  </action>
-</animation>
+        <command>property-adjust</command>
+        <property>instrumentation/altimeter/setting-inhg</property>
+        <step>-0.01</step>
+        <min>25</min>
+        <max>36</max>
+        <wrap>true</wrap>
+        <condition>
+          <equals>
+            <property>/instrumentation/mfd/modeL</property>
+            <value> 0 </value>
+          </equals>
+        </condition>
+      </binding>  
+    </action>
+  </animation>
 
-
-
-<!-- Select missile -->
+  <!-- Select missile -->
   <animation>
     <type>pick</type>  
     <object-name>pot-l1</object-name>
@@ -399,7 +402,6 @@
   </animation>
   
   <!-- Select A/A -->
-  
   <animation>
     <type>pick</type>
     <object-name>bt-h1</object-name>
@@ -428,19 +430,16 @@
     </action>
   </animation>  
 
+  <animation>
+    <type>select</type>
+    <object-name>br-dec</object-name>
+    <object-name>br-inc</object-name>
+    <object-name>bl-dec</object-name>
+    <object-name>bl-inc</object-name>   
+  </animation>
 
-<animation>
-  <type>select</type>
-  <object-name>br-dec</object-name>
-  <object-name>br-inc</object-name>
-  <object-name>bl-dec</object-name>
-  <object-name>bl-inc</object-name>   
-</animation>
- 
   <!-- __________________ End Buttons _____________________-->
-
-  
- <!--EADI-->
+  <!--EADI-->
   <model>
     <name>EADI</name>    
     <path>Aircraft/Mirage-2000/Models/Interior/Panel/Instruments/Mfd/mfd_eadi.xml</path>
@@ -451,13 +450,13 @@
       </equals>
     </condition>
     <offsets>
-      <x-m> 0.00 </x-m>
-      <y-m> 0.00 </y-m>
-      <z-m> 0.00 </z-m>
+      <x-m> 0 </x-m>
+      <y-m> 0 </y-m>
+      <z-m> 0 </z-m>
     </offsets>
   </model>
 
-<!--ARM-->
+  <!--ARM-->
   <model>
     <name>ARM</name>    
     <path>Aircraft/Mirage-2000/Models/Interior/Panel/Instruments/Mfd/mfd_arm.xml</path>
@@ -468,9 +467,9 @@
       </equals>
     </condition>
     <offsets>
-      <x-m> 0.00 </x-m>
-      <y-m> 0.00 </y-m>
-      <z-m> 0.00 </z-m>
+      <x-m> 0 </x-m>
+      <y-m> 0 </y-m>
+      <z-m> 0 </z-m>
     </offsets>
   </model>   
 

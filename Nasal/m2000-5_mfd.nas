@@ -12,11 +12,10 @@ var RMI2dist="instrumentation/mfd/rmi-2-dist";
 var count_2=0;
 var count_3=0;
 
-setlistener("/sim/signals/fdm-initialized", func {
-    
-    print("MFD ...Check");
-    settimer(update_main, 5.0);
-});
+#setlistener("/sim/signals/fdm-initialized", func {
+#    print("MFD ...Check");
+#    settimer(update_main, 5.0);
+#});
 
 
 ########### RMI RADIO MAGNETIC INDICATOR#################
@@ -31,13 +30,13 @@ var update_rmi1=func{
         }
     if(rmi1_src=="NAV1"){
        setprop(RMI1src,getprop("instrumentation/nav/heading-deg"));
-       setprop(RMI1ident,getprop("instrumentation/nav/nav-id"));       
+       if(getprop("instrumentation/nav/nav-id") != nil){setprop(RMI1ident,getprop("instrumentation/nav/nav-id"));}
        if(getprop("instrumentation/nav/dme-in-range")){
            var rmi1_dist=getprop("instrumentation/nav/nav-distance");
            rmi1_dist=rmi1_dist/1852;
            setprop(RMI1dist,rmi1_dist);
            }
-}
+    }
     if(rmi1_src=="TACAN"){
        setprop(RMI1src,getprop("instrumentation/tacan/indicated-bearing-true-deg"));
        setprop(RMI1ident,getprop("instrumentation/tacan/ident"));
@@ -285,6 +284,6 @@ var frequ_adjustL=func(dir){
 var update_main=func(){
     update_rmi1();
     update_rmi2();    
-settimer(update_main,0.5);
+settimer(update_main,0.25);
 }
 

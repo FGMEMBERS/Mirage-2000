@@ -2,37 +2,35 @@
 
 <PropertyList>
 
-   <model>
-        <name>MyRadar</name>
-        <path>mfd.xml</path>
-            <offsets>
-              <x-m>  0.001</x-m>
-              <y-m> -0.001</y-m>
-              <z-m> -0.0011 </z-m>
-            </offsets>
+  <model>
+    <name>MyRadar</name>
+    <path>mfd.xml</path>
+    <offsets>
+      <x-m>  0.001</x-m>
+      <y-m> -0.001</y-m>
+      <z-m> -0.0011 </z-m>
+    </offsets>
   </model>
+  
   <animation>
-        <type>scale</type>
-        <object-name>MyRadar</object-name> 
-        <x-offset>0.5</x-offset>
-        <y-offset>1.1</y-offset>
-        <z-offset>0.74</z-offset>
+    <type>scale</type>
+    <object-name>MyRadar</object-name> 
+    <x-offset> 0.50 </x-offset>
+    <y-offset> 1.10 </y-offset>
+    <z-offset> 0.74 </z-offset>
  </animation>
 
-
-
   <model>
-        <path>radar.ac</path>
+    <path>radar.ac</path>
   </model>
 
   <animation>
     <!-- Objets opaques -->
     <object-name>fond</object-name>
     <object-name>ecran</object-name>
-    
   </animation>
 
-<animation>
+  <animation>
     <type>material</type>
     <object-name>fond</object-name>
     <object-name>ecran</object-name>    
@@ -44,6 +42,4 @@
     </emission>
   </animation>
 
-
 </PropertyList>
-

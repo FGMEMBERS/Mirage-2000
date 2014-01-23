@@ -30,7 +30,7 @@
   <animation>
     <type>rotate</type>
     <object-name>lunettes</object-name>
-    <property>instrumentation/doors/crew/position-norm</property>
+    <property>sim/model/door-positions/crew/position-norm</property>
     <factor> 45</factor>
     <center>
       <x-m> 0.080 </x-m>

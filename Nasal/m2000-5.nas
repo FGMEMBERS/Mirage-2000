@@ -1,14 +1,26 @@
 #### Typhonn systems	
 #### crazy dj nasal from many sources...
 #### and also, almursi work
+#### and 5H1N0B1
+
+var deltaT = 1.0;
+
+
 
 setlistener("/controls/engines/engine[0]/throttle", func(n) {
-    setprop("/controls/engines/engine[0]/reheat", n.getValue() >= 0.75);
+    setprop("/controls/engines/engine[0]/reheat", 105 -( n.getValue() >= 0.75)/(105-95));
 },1);
 
-setlistener("/controls/engines/engine[1]/throttle", func(n) {
-    setprop("/controls/engines/engine[1]/reheat", n.getValue() >= 0.75);
+
+
+setlistener("/instrumentation/tacan/frequencies/selected-channel[4]", func(n) {
+    if(n.getValue() =="X"){
+        setprop("instrumentation/tacan/frequencies/XPos",1);
+    }else{
+        setprop("instrumentation/tacan/frequencies/XPos",-1);
+    }
 },1);
+
 
 setlistener("/gear/gear[2]/wow", func(n) {
     if(getprop("/gear/gear[2]/wow")==1){
@@ -17,27 +29,75 @@ setlistener("/gear/gear[2]/wow", func(n) {
         gui.menuEnable("fuel-and-payload", 0);
     }
 },1);
-setlistener("/controls/gear/gear-down", func(n) {
-        setprop("/controls/flight/flaps", 0);
-},1);
+
+setlistener("/controls/gear/gear-down", func(n) {setprop("/controls/flight/flaps", 0);},1);
 
 # turn off hud in external views
- setlistener("/sim/current-view/view-number", func(n) { setprop("/sim/hud/visibility[1]", n.getValue() == 0) },1);
-
-### Stall warning
-### 
-#var s_warning_state = getprop("/sim/alarms/stall-warning");
-#
-#var stall_warning = func {
-#    # WOW =getprop ("/gear/gear[1]/wow") or getprop ("/gear/gear[2]/wow");
-#    var Estado = 0;
-#    if ( and !WOW) {
-#    } else { 
-#    };
-#   setprop("/sim/alarms/stall-warning", Estado);
-#};
+setlistener("/sim/current-view/view-number", func(n) { setprop("/sim/hud/visibility[1]", n.getValue() == 0) },1);
 
 
+
+var InitListener = setlistener("/sim/signals/fdm-initialized", func {
+        settimer(main_Init_Loop, 5.0);
+        removelistener(InitListener);
+});
+
+
+
+################################################ Main init loop################################################
+#####         Perhaps in the future, make an object for each subsystems, in the same way of "engine"   ########
+################################################################################################################
+var main_Init_Loop = func(){    
+        
+    
+    print("Radar ...Check");
+    settimer(radar.init, 5.0);
+    
+    print("Flight Director ...Check");
+    settimer(mirage2000.init_set, 5.0);
+    
+    print("MFD ...Check");
+    settimer(mirage2000.update_main, 5.0);
+    
+    print("Intrumentation ...Chsck");
+    settimer(instrumentation.initIns, 5.0);
+    
+    print("Transponder ...Check");
+    settimer(init_Transpondeur, 5.0);
+    
+    print("system loop ...Check");
+    settimer(updatefunction, 5.0);
+   
+
+
+}
+##################################################################################################################
+var UpdateHead = func {settimer (updatefunction, 0.05);}
+
+
+var updatefunction = func(){
+     #deltaT = getprop ("sim/time/delta-sec");
+   
+     mirage2000.computeSAS();     
+     mirage2000.UpdateHead();
+}
+
+
+ #################################################################################################################
+ var init_Transpondeur = func() {
+    #Init Transponder
+    var poweroften = [1, 10, 100, 1000];
+    var idcode = getprop('/instrumentation/transponder/id-code');
+        
+    if (idcode != nil)
+    {
+          for (var i = 0; i < 4 ; i = i+1)
+            {
+            setprop("/instrumentation/transponder/inputs/digit[" ~ i ~ "]", math.mod(idcode/poweroften[i], 10) );
+            }
+     }
+} 
+ 
 
 # ================================== Chute ==================================================
 
@@ -67,7 +127,7 @@ var chuteAngle = func {
 
 	var speed = getprop('velocities/airspeed-kt');
 	var aircraftpitch = getprop('orientation/pitch-deg[0]');
-	var aircraftyaw = -getprop('orientation/side-slip-deg'); # inverted after a change in side-slip sign (bug #901)
+	var aircraftyaw = getprop('orientation/side-slip-deg');
 	var chuteyaw = getprop("sim/model/lightning/orientation/chute_yaw");
 	var aircraftroll = getprop('orientation/roll-deg');
 

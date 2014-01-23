@@ -30,7 +30,6 @@
     </emission>
   </animation>
  
-
   <!--  REMBRANDT support for transparent objects-->
   <effect>
     <inherits-from>Effects/model-transparent</inherits-from>
@@ -42,4 +41,3 @@
   </effect>
 
 </PropertyList>
-

@@ -137,7 +137,7 @@
     <object-name>ambreC7</object-name>
     <object-name>ambreD7</object-name>
     <object-name>ambreE7</object-name>
-    <object-name>ambreA8</object-name>
+
     <object-name>ambreB8</object-name>
     <object-name>ambreC8</object-name>
     <object-name>ambreD8</object-name>
@@ -180,7 +180,7 @@
     <object-name>jauneC7</object-name>
     <object-name>jauneD7</object-name>
     <object-name>jauneE7</object-name>
-    <object-name>jauneA8</object-name>
+
     <object-name>jauneB8</object-name>
     <object-name>jauneC8</object-name>
     <object-name>jauneD8</object-name>
@@ -319,10 +319,10 @@
             </emission>
         </animation> 
   
-   <animation>
+   <!--<animation>
     <type>select</type>
       <object-name>jaune</object-name>
-    </animation>
+    </animation>-->
  
  
    <animation>
@@ -365,6 +365,28 @@
        <equals>
         <property>/instrumentation/consumables/bingo_low</property>
         <value>1</value>
+       </equals>
+    </condition>
+  </animation>
+  
+    <animation>
+    <type>select</type>
+    <object-name>jauneA8</object-name>     
+    <condition> 
+       <equals>
+        <property>/sim/alarms/stall-warning</property>
+        <value>1</value>
+       </equals>
+    </condition>
+  </animation>
+  
+  <animation>
+    <type>select</type>
+    <object-name>ambreA8</object-name>     
+    <condition> 
+       <equals>
+        <property>/sim/alarms/stall-warning</property>
+        <value>2</value>
        </equals>
     </condition>
   </animation>
