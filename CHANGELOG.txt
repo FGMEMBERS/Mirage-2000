@@ -1,3 +1,12 @@
+02.2013
+
+
+
+-Correction of tiger2 livery call.
+-Correction of problems on nav intrument (in "no nav-id" zones)
+
+
+
 01.2013
 
 - ENGINE :

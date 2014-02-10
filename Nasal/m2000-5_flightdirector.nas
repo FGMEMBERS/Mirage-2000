@@ -382,7 +382,7 @@ var roll_ctrl=getprop("controls/flight/aileron");
     count+=1;
     if(count>2)count=0;
     if(pa_stat=="AP1"){
-        settimer(update_fd, 0.25);
+        settimer(update_fd, 0.1);
     }else{
         settimer(update_fd, 1);
     }
