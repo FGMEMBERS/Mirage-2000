@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<PropertyList>
+
+  <path>left.ac</path>
+
+  <animation>
+    <!-- Objets opaques -->
+    <object-name>left</object-name>
+
+    <!-- Objets transparents -->
+  </animation>
+ 
+  <!-- Jettison -->
+  <model>
+    <path>Aircraft/Mirage-2000/Models/Interior/Panel/Left-Panel/Instruments/jettison/jettison.xml</path>
+    <offsets>
+      <x-m> -0.05700 </x-m>
+      <y-m>  0.00000 </y-m>
+      <z-m>  0.08400 </z-m>
+      <pitch-deg> -15 </pitch-deg>
+    </offsets>
+  </model>
+  
+</PropertyList>
+

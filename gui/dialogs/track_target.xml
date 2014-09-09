@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<PropertyList>
+   
+  <!-- If you put the dialog file in the Aircraft/aircraftname/gui/dialog the dialog box is loaded -->
+   
+  <name>track_target</name>
+  <modal type="bool">false</modal>
+  <layout>vbox</layout>
+   
+  <nasal>
+    <open>
+      <![CDATA[
+        var self = cmdarg();
+        var dlgN = props.globals.getNode("sim/gui/dialogs/track-target", 1);
+        track_target._dialog_target_types = [];
+        track_target._set_dialog_target = func(type, index)
+        {
+          setprop("autopilot/target-tracking/target-root", "ai/models/" ~ type ~ "[" ~ index ~ "]");
+          var checkboxN = dlgN.getChild("use-" ~ type, index, 1);
+          var nodes = [];
+          for (var i = 0; i < size(track_target._dialog_target_types); i += 1)
+          {
+            foreach (var node; dlgN.getChildren("use-" ~ track_target._dialog_target_types[i]))
+            {
+              if (node.getPath() != checkboxN.getPath()) node.setBoolValue(0);
+            }
+          }
+        };
+        # FIXME: We shouldn't have to redraw the entire GUI just to get a few checkboxes to show/hide themselves
+        var redraw_gui_active = 0;
+        var redraw_gui = func
+        {
+          if (!redraw_gui_active)
+          {
+            redraw_gui_active = 1;
+            settimer(func
+            {
+              redraw_gui_active = 0;
+              fgcommand("gui-redraw");
+            }, 0);
+          }
+        };
+        var Modellist =
+        {
+          new: func(type, group)
+          {
+            var m = { parents: [Modellist] };
+            m.model_type = type;
+            m.dlg_group = group;
+            m.update_listener = setlistener(dlgN.getNode("update-models", 1), func m.update(), 0, 1);
+            append(track_target._dialog_target_types, type);
+            return m;
+          },
+          update: func(redraw = 1)
+          {
+            foreach (var removeme; me.dlg_group.getChildren("checkbox"))
+            {
+              removeme.remove();
+            }
+            var models = props.globals.getNode("ai/models").getChildren(me.model_type);
+            for (var i = 0; i < size(models); i += 1)
+            {
+              var model = models[i];
+              var validN = model.getNode("valid", 0);
+              var valid = validN == nil ? 0 : validN.getBoolValue();
+              if (!valid)
+              {
+                if (i == size(models) - 1)
+                {
+                  setsize(models, i);
+                }
+                else
+                {
+                  for (var j = i + 1; 1; j += 1)
+                  {
+                    if (size(models) <= j or models[j] != nil) break;
+                    models[j - 1] = models[j];
+                  }
+                  setsize(models, size(models) - 1);
+                  i -= 1;
+                }
+              }
+            }
+            for (i = 0; i < size(models); i += 1)
+            {
+              var model = models[i];
+              var dlgP = dlgN.getPath();
+              var checkboxP = dlgP ~ "/use-" ~ me.model_type ~ "[" ~ i ~ "]";
+              var checkbox_name = me.model_type ~ "_list_" ~ i;
+              var checkbox = props.Node.new(
+              {
+                halign: "left",
+                name: checkbox_name,
+                label: model.getNode("callsign", 1).getValue(),
+                property: checkboxP,
+                binding:
+                [
+                  {
+                    command: "dialog-apply",
+                    "object-name": checkbox_name
+                  },
+                  {
+                    command: "nasal",
+                    script:
+                    '
+                    if (props.globals.getNode("' ~ checkboxP ~ '").getBoolValue())
+                    {
+                      track_target._set_dialog_target("' ~ me.model_type ~ '", ' ~ i ~ ');
+                    }
+                    '
+                  }
+                ],
+                live: "true"
+              });
+              props.copy(checkbox, me.dlg_group.getChild("checkbox", i, 1));
+            }
+            if (redraw) redraw_gui();
+          },
+          del: func
+          {
+            removelistener(me.update_listener);
+          }
+        };
+        var ac_list = Modellist.new("tanker", self.getNode("group[2]"));
+        ac_list.update(0);
+        var mp_list = Modellist.new("multiplayer", self.getNode("group[4]"));
+        mp_list.update(0);
+      ]]>
+    </open>
+    <close>
+      track_target._dialog_target_types = nil;
+      track_target._set_dialog_target = nil;
+      ac_list.del();
+      mp_list.del();
+    </close>
+  </nasal>
+ 
+  <group>
+    <layout>hbox</layout>
+    <empty>
+      <stretch>1</stretch>
+    </empty>
+   
+    <text>
+      <label>Target Tracking</label>
+    </text>
+   
+    <empty>
+      <stretch>1</stretch>
+    </empty>
+   
+    <button>
+      <pref-width>16</pref-width>
+      <pref-height>16</pref-height>
+      <legend>
+      </legend>
+      <default>1</default>
+      <keynum>27</keynum>
+      <border>2</border>
+      <binding>
+        <command>dialog-close</command>
+      </binding>
+      <binding>
+        <command>dialog-apply</command>
+      </binding>
+    </button>
+  </group>
+ 
+  <hrule />
+ 
+  <text>
+    <label>Select a target model below.</label>
+  </text>
+ 
+  <group>
+    <layout>table</layout>
+    <hrule>
+      <row>0</row>
+      <col>0</col>
+    </hrule>
+    <text>
+      <row>0</row>
+      <col>1</col>
+      <label>AI/Tanker aircraft</label>
+    </text>
+    <hrule>
+      <row>0</row>
+      <col>2</col>
+    </hrule>
+  </group>
+ 
+  <group>
+    <layout>vbox</layout>
+  </group>
+ 
+  <group>
+    <layout>table</layout>
+    <hrule>
+      <row>0</row>
+      <col>0</col>
+    </hrule>
+    <text>
+      <row>0</row>
+      <col>1</col>
+      <label>Multiplayer aircraft</label>
+    </text>
+    <hrule>
+      <row>0</row>
+      <col>2</col>
+    </hrule>
+  </group>
+ 
+  <group>
+    <layout>vbox</layout>
+  </group>
+ 
+  <button>
+    <legend>Refresh model list</legend>
+    <binding>
+      <command>property-assign</command>
+      <property>/sim/gui/dialogs/track-target/update-models</property>
+      <value type="bool">true</value>
+    </binding>
+  </button>
+ 
+  <hrule />
+ 
+  <group>
+    <layout>table</layout>
+    <text>
+      <row>0</row>
+      <col>0</col>
+      <halign>left</halign>
+      <label>Target range (nm)</label>
+      <padding>10</padding>
+    </text>
+    <input>
+      <row>0</row>
+      <col>1</col>
+      <halign>left</halign>
+      <name>range</name>
+      <property>/autopilot/target-tracking/goal-range-nm</property>
+      <binding>
+        <command>dialog-apply</command>
+        <object-name>range</object-name>
+      </binding>
+      <live type="bool">true</live>
+    </input>
+    <text>
+      <row>1</row>
+      <col>0</col>
+      <halign>left</halign>
+      <label>Minimum airspeed (kt)</label>
+      <padding>10</padding>
+    </text>
+    <input>
+      <row>1</row>
+      <col>1</col>
+      <halign>left</halign>
+      <name>range</name>
+      <property>/autopilot/target-tracking/min-speed-kt</property>
+      <binding>
+        <command>dialog-apply</command>
+        <object-name>range</object-name>
+      </binding>
+      <live type="bool">true</live>
+    </input>
+    <text>
+      <row>2</row>
+      <col>0</col>
+      <halign>left</halign>
+      <label>Update period (sec)</label>
+      <padding>10</padding>
+    </text>
+    <input>
+      <row>2</row>
+      <col>1</col>
+      <halign>left</halign>
+      <name>update-period</name>
+      <property>/autopilot/target-tracking/update-period</property>
+      <binding>
+        <command>dialog-apply</command>
+        <object-name>update-period</object-name>
+      </binding>
+      <live type="bool">true</live>
+    </input>
+    <text>
+      <row>3</row>
+      <col>0</col>
+      <halign>left</halign>
+      <label>Engage autopilot tracking</label>
+      <padding>10</padding>
+    </text>
+    <checkbox>
+      <row>3</row>
+      <col>1</col>
+      <halign>left</halign>
+      <name>engage-tracking</name>
+      <property>/autopilot/target-tracking/enable</property>
+      <binding>
+        <command>dialog-apply</command>
+        <object-name>engage-tracking</object-name>
+      </binding>
+      <live type="bool">true</live>
+    </checkbox>
+  </group>
+
+</PropertyList>
