@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<PropertyList>
+  
+  <!-- If you put the dialog file in the Aircraft/aircraftname/gui/dialog the dialog box is loaded -->
+  <name>start</name>
+  <modal type="bool">false</modal>
+  <layout>vbox</layout>
+  
+  <group>
+    <layout>hbox</layout>
+    <empty>
+      <stretch>1</stretch>
+    </empty>
+    <text>
+      <label>Start de mirage 2000-5</label>
+    </text>
+    <empty>
+      <stretch>1</stretch>
+    </empty>
+    <button>
+      <pref-width>16</pref-width>
+      <pref-height>16</pref-height>
+      <legend>
+      </legend>
+      <default>1</default>
+      <keynum>27</keynum>
+      <border>2</border>
+      <binding>
+        <command>dialog-close</command>
+      </binding>
+      <binding>
+        <command>dialog-apply</command>
+      </binding>
+    </button>
+  </group>
+  
+  <button>
+    <legend>Start Engine</legend>
+    <binding>
+      <command>nasal</command>
+      <script>engines.engine1.autostart();</script>
+    </binding>
+  </button>
+  
+  <!--Separation between old code and new code -->
+  <hrule>
+    <row>0</row>
+    <col>2</col>
+  </hrule>
+  
+  <!--<button>
+    <legend>COUPE FEU</legend> Fermé : Cache relevé. Ouvert, cache rabattu
+  </button>
+  
+  <button>
+    <legend>BP D</legend>  Sur arret au démarrage
+  </button>
+  
+  <button>
+    <legend>BP G</legend>  Sur arret au démarrage
+  </button>
+  
+  <button>
+    <legend>Allumage/ventilation</legend> Sur doit passer sur G = Bougie = allumage 
+  </button>
+  
+  <button>
+    <legend>Cache poussoir démarrage</legend>  relever le cache doit normalement faire passer la BP sur marche 
+  </button>
+  
+  <button>
+  <legend>BP</legend> 
+  </button>
+  
+  <text>
+    <label>Wait the turn OFF of the PB light</label>
+  </text>
+  
+  <button>
+    <legend>Starter!</legend>  clicl on it more than 1 second 
+  </button>-->
+  
+</PropertyList>

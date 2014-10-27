@@ -22,5 +22,14 @@
     </offsets>
   </model>
   
+  <!-- Throttle -->
+  <model>
+    <path>Aircraft/Mirage-2000/Models/Interior/Panel/Left-Panel/Instruments/Throttle/throttle.xml</path>
+    <offsets>
+      <x-m>  0.23825 </x-m>
+      <y-m>  0.02108 </y-m>
+      <z-m> -0.00311 </z-m>
+    </offsets>
+  </model>
+  
 </PropertyList>
-

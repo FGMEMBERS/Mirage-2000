@@ -68,47 +68,36 @@
   </label>-->
   
   <tape>
-          <name>Gyrocompass</name>
-          <input>
-           <property>/orientation/heading-magnetic-deg</property>
-           <factor>0.1</factor>
-          </input>
-
-          <x>-60</x>
-          <y>50</y>
-          <width>120</width>
-          <height>10</height>
-
-          <display-span>4.0</display-span>
-          <modulo>36</modulo>
-
-          <option>top</option>
-          <label-gap-width>10</label-gap-width>
-
-          <major-divisions>1</major-divisions>
-          <minor-divisions>0.5</minor-divisions>
-          <tick-bottom>false</tick-bottom>
-          <tick-top>false</tick-top>
-          <tick-right>false</tick-right>
-          <tick-left>false</tick-left>
-          <cap-bottom>false</cap-bottom>
-          <cap-top>false</cap-top>
-          <cap-right>false</cap-right>
-          <cap-left>false</cap-left>
-          <marker-offset>0.0</marker-offset>
-          <enable-pointer>true</enable-pointer>
-          <pointer-type>fixed</pointer-type>
-          <tick-type>line</tick-type>
-          <tick-length>variable</tick-length>
- </tape>
+    <name>Gyrocompass</name>
+    <input>
+      <property>/orientation/heading-magnetic-deg</property>
+      <factor>0.1</factor>
+    </input>
+    <x>-60</x>
+    <y>50</y>
+    <width>120</width>
+    <height>10</height>
+    <display-span>4.0</display-span>
+    <modulo>36</modulo>
+    <option>top</option>
+    <label-gap-width>10</label-gap-width>
+    <major-divisions>1</major-divisions>
+    <minor-divisions>0.5</minor-divisions>
+    <tick-bottom>false</tick-bottom>
+    <tick-top>false</tick-top>
+    <tick-right>false</tick-right>
+    <tick-left>false</tick-left>
+    <cap-bottom>false</cap-bottom>
+    <cap-top>false</cap-top>
+    <cap-right>false</cap-right>
+    <cap-left>false</cap-left>
+    <marker-offset>0.0</marker-offset>
+    <enable-pointer>true</enable-pointer>
+    <pointer-type>fixed</pointer-type>
+    <tick-type>line</tick-type>
+    <tick-length>variable</tick-length>
+  </tape>
   
-  
-  
-  
-  
-  
-  
-     
   <label>
     <name>KIAS</name>
     <x> -59 </x>
@@ -123,7 +112,7 @@
     <box>false</box>
     <option>right</option>
   </label>
-     
+  
   <label>
     <name>Altitude</name>
     <x>  39 </x>
@@ -134,13 +123,12 @@
       <property>instrumentation/altimeter/indicated-altitude-ft</property>
       <factor>0.01</factor>
     </input>
-    
     <format>%4.0f</format>
     <halign>right</halign>
     <box>false</box>
     <option>left</option>
   </label>
-     
+  
   <label>
     <name>elevation</name>
     <x>24</x>
@@ -157,7 +145,7 @@
       <property>/position/altitude-agl-ft</property>
     </input>
   </label>
-     
+  
   <label>
     <name>Closest Range</name>
     <x>63</x>
@@ -180,7 +168,7 @@
       <property>/ai/closest/range</property>
     </input>
   </label>
-     
+  
   <label>
     <name>Closest Callsign</name>
     <x>63</x>
@@ -203,7 +191,7 @@
     <format>%s</format>
     <halign>right</halign>
   </label>
-     
+  
   <label>
     <name>Closest Altitude</name>
     <x>63</x>
@@ -226,7 +214,7 @@
     <format>%1.0f</format>
     <halign>right</halign>
   </label>
-     
+  
   <label>
     <name>Closest heading</name>
     <x>63</x>
@@ -249,7 +237,7 @@
     <format>%1.0f'</format>
     <halign>right</halign>
   </label>
-     
+  
   <label>
     <name>Closest speed</name>
     <x>63</x>
@@ -272,7 +260,7 @@
     <format>%1.0f</format>
     <halign>right</halign>
   </label>
-     
+  
   <label>
     <name>Closest bearing</name>
     <x>63</x>
@@ -295,7 +283,7 @@
     <format>at %1.0f'</format>
     <halign>right</halign>
   </label>
-     
+  
   <label>
     <name>MACH Number</name>
     <x>-57</x>
@@ -314,7 +302,7 @@
     <format>%4.2f</format>
     <halign>left</halign>
   </label>
-     
+  
   <label>
     <name>off</name>
     <x>-55</x>
@@ -327,7 +315,7 @@
     <format>off</format>
     <halign>left</halign>
   </label>
-     
+  
   <label>
     <name>Starting</name>
     <x>-20</x>
@@ -340,7 +328,7 @@
     <format>Starting</format>
     <halign>left</halign>
   </label>
-     
+  
   <label>
     <name>ECM</name>
     <x> -57 </x>
@@ -353,7 +341,7 @@
     <format>e</format>
     <halign>left</halign>
   </label>
-     
+  
   <label>
     <name>Gear</name>
     <x> -56 </x>
@@ -379,8 +367,8 @@
     <format>B</format>
     <halign>left</halign>
   </label>
-
- <label>
+  
+  <label>
     <name>Guns</name>
     <x> -20 </x>
     <y> -77 </y>
@@ -396,7 +384,7 @@
     <halign>left</halign>
   </label>
   
-    <label>
+  <label>
     <name>Ammos</name>
     <x> -0 </x>
     <y> -80 </y>
@@ -408,10 +396,9 @@
         <value>1</value>
       </equals> 
     </condition>
-    
     <input>
       <property>ai/submodels/submodel/count</property>
-      <factor>10</factor>
+      <!--factor>2</factor>-->
     </input>
     <format>%4.0f</format>
     <halign>left</halign>
@@ -419,8 +406,7 @@
     <option>right</option>
   </label>
   
-  
-   <label>
+  <label>
     <name>StallAlert</name>
     <x> -35 </x>
     <y> -10 </y>
@@ -436,7 +422,7 @@
     <halign>left</halign>
   </label>
   
-     <label>
+  <label>
     <name>StallWarning</name>
     <x> -40 </x>
     <y> -10 </y>
@@ -451,8 +437,6 @@
     <format>STALL WARNING !</format>
     <halign>left</halign>
   </label>
-  
-  
   
   <!--Missiles A/A
    <label>
@@ -471,7 +455,7 @@
     <halign>left</halign>
   </label>-->
   
-     <label>
+  <label>
     <name>Missiles</name>
     <x> -20 </x>
     <y> -77 </y>
@@ -490,7 +474,7 @@
     <halign>left</halign>
   </label>
   
-     <label>
+  <label>
     <name>Missiles</name>
     <x> -20 </x>
     <y> -77 </y>
@@ -506,9 +490,6 @@
     <halign>left</halign>
   </label>
   
-  
-  
-     
   <aiming-reticle>
     <x>-20</x>
     <y>-19</y>
@@ -518,15 +499,15 @@
     <active-condition> 
       <property>/sim/aim/active</property>
     </active-condition>
-       
+    
     <!-- defines the diameter of the adjustable/outer circle -->
     <!--<diameter-input>50</diameter-input> -->
-       
+    
     <!-- The aiming reticule under is for gun-->
   </aiming-reticle>
-         
+  
   <aiming-reticle>
-           
+    
     <condition>
       <equals>
         <property>/sim/current-view/name</property>
@@ -534,58 +515,58 @@
       </equals>
       <property>/sim/aim/tachy</property>
     </condition>
-           
+    
     <active-condition>
-             <property>/sim/aim/active</property>
+      <property>/sim/aim/active</property>
     </active-condition>
-           
+    
     <tachy-condition>
       <property>/sim/aim/tachy</property>
     </tachy-condition>
-           
+    
     <align-condition>
       <property>/sim/aim/align</property>
     </align-condition>
-           
+    
     <yaw-input>
       <property>/orientation/yaw-rate-degps</property>
       <factor>-1.0</factor>
       <damp>2.0</damp>
     </yaw-input>
-           
+    
     <pitch-input>
       <property>/orientation/pitch-rate-degps</property>
       <factor>-1.0</factor>
       <damp>2.0</damp>
     </pitch-input>
-           
+    
     <offset-x-input>
       <property>/sim/aim/offsets/x</property>
     </offset-x-input>
-           
+    
     <offset-y-input>
       <property>/sim/aim/offsets/y</property>
     </offset-y-input>
-           
+    
     <speed-input>
       <property>/sim/aim/speed-fps</property>
       <!--In feet /s ... 1 yard = 3 feet and 1 nm = 2025 yards (and 1000 meters = 1 km)-->
     </speed-input>
-           
+    
     <range-input>
       <property>/sim/aim/range-yds</property>
       <!-- In Yard... -->
     </range-input>
-           
+    
     <!-- defines the diameter and length of the adjustable outer arc -->
     <diameter-input>
       <property>/sim/aim/radius</property>
     </diameter-input>
-           
+    
     <arc-start-input>
       <property>/sim/aim/arc/start-deg</property>
     </arc-start-input>
-           
+    
     <arc-stop-input>
       <property>/sim/aim/arc/stop-deg</property>
     </arc-stop-input>      
@@ -598,5 +579,5 @@
     <limit-x>80</limit-x>
     <limit-y>40</limit-y>
   </aiming-reticle>
-
+  
 </PropertyList>

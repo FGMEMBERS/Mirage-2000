@@ -53,7 +53,7 @@
        second reference is the original FDM cruise of 516 kts at 20000'. Currently the model exceeds the lower reference, but
        won't quite exceed Mach 2, so it's a compromise.
 -->
-<airplane mass="16350">
+<airplane mass="16350" version="YASIM_VERSION_CURRENT">
 
   <approach speed="130" aoa="7" fuel="0.3">
     <control-setting axis="/controls/engines/engine[0]/throttle" value="0.3"/>
@@ -130,7 +130,7 @@
         camber="0.03">
         <stall aoa="20" width="8" peak="1.7"/>
         <slat start="0.2" end="0.8" aoa="2" drag="2"/>
-        <flap0 start="0.59" end="0.90" lift="1.25" drag="1.2"/>
+        <flap0 start="0.59" end="0.90" lift="1.65" drag="1.2"/> <!--1.25-->
         <spoiler start="0.59" end="0.90"  lift="1" drag="39.9"/>
 
         <control-input axis="/controls/flight/SAS-roll" control="FLAP0" split="true"/>
@@ -176,15 +176,17 @@
          dihedral="-4">
          <stall aoa="20" width="4" peak="1.5" />
          <flap0 start="0.28" end="0.90" lift="1.4" drag="1.35"/>
-         <spoiler start="0" end="0.9" lift="0" drag="100"/>
+         <spoiler start="0" end="0.9" lift="0" drag="200"/>
 
          <control-input axis="controls/flight/SAS-pitch" control="FLAP0"/>
          <control-input axis="/controls/flight/elevator-trim" control="FLAP0"/>
-         <control-input axis="/sim/model/Mirage-2000/controls/flight/chute_deployed" control="SPOILER" />
+         <!--
+         <control-input axis="/sim/model/Mirage-2000/controls/flight/chute_deployed" control="SPOILER" />-->
+         <control-input axis="/sim/model/door-positions/parachute/position-norm" control="SPOILER" />
 
          <control-output control="FLAP0" prop="/surface-positions/elevator-pos-norm"/>
 
-         <control-speed control="FLAP0" transition-time="0.5"/>
+         <control-speed control="FLAP0" transition-time="0.01"/>
   </hstab>
 
   <!-- Buckaroo notes:
@@ -240,7 +242,7 @@
        egt="1123"
        epr="9.8"
        exhaust-speed="2333"
-       spool-time="3"
+       spool-time="0.1"
        tsfc="0.3"
        n1-idle="47.0"
        n1-max="105" 
@@ -256,6 +258,23 @@
        <control-speed control="REHEAT" transition-time="2"/>
        
   </jet>
+
+<!-- GUNS RECOIL in 5000 Lbf = 2.5Tf-->
+	<thruster	thrust="5000"
+						x="1.212" y="-0.308" z="-1.183"
+						vx="-1" vy="0" vz="0"
+		>
+		<control-input	axis="/controls/armament/Gun_trigger" control="THROTTLE"/>
+	</thruster>
+	
+	<!-- GUNS RECOIL in 5000 Lbf = 2.5Tf-->
+	<thruster	thrust="5000"
+						x="1.212" y="0.308" z="-1.183"
+						vx="-1" vy="0" vz="0"
+		>
+		<control-input	axis="/controls/armament/Gun_trigger" control="THROTTLE"/>
+	</thruster>
+
 
   <!-- Buckaroo notes:
     Based on the model, FDM compression values are two great. Maximum extension for each appears to be 0.2 meters at best.
@@ -347,7 +366,7 @@
   <!-- Buckaroo notes:
     Modest changes to keep the CG around -1.8. x="3.5" y="0" z="-1"
   -->
-  <ballast x="3.2" y="0" z="-1" mass="1500"/>
+  <ballast x="3.6" y="0" z="-1" mass="1500"/>
 
   <!-- Add weapons system - Helijah - 28-04-2012 -->
   <!-- external loads -->

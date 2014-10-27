@@ -103,24 +103,24 @@
   <animation>
   <type>select</type>
   <!-- Ambre -->
-    <object-name>ambreA1</object-name>
+   <!-- <object-name>ambreA1</object-name>
     <object-name>ambreB1</object-name>
     <object-name>ambreC1</object-name>
-    <object-name>ambreD1</object-name>
+    <object-name>ambreD1</object-name>-->
     <object-name>ambreA2</object-name>
 
     <object-name>ambreC2</object-name>
     <object-name>ambreD2</object-name>
     <object-name>ambreE2</object-name>
-    <object-name>ambreA3</object-name>
+    <!--<object-name>ambreA3</object-name>
     <object-name>ambreB3</object-name>
-    <object-name>ambreC3</object-name>
+    <object-name>ambreC3</object-name>-->
     <object-name>ambreD3</object-name>
     <object-name>ambreE3</object-name>
-    <object-name>ambreA4</object-name>
+    <!--<object-name>ambreA4</object-name>
     <object-name>ambreB4</object-name>
     <object-name>ambreC4</object-name>
-    <object-name>ambreD4</object-name>
+    <object-name>ambreD4</object-name>-->
 
 
     <object-name>ambreB5</object-name>
@@ -391,51 +391,176 @@
     </condition>
   </animation>
 
+ <animation>
+    <type>select</type>
+    <object-name>ambreA1</object-name>
+    <condition> 
+        <not><property>/controls/switches/battery-switch</property></not>
+    </condition>
+  </animation>
+  
+   <animation>
+    <type>select</type>
+    <object-name>ambreB1</object-name>
+    <condition>
+          <not><property>/controls/switches/transformator-switch</property></not>
+    </condition>
+  </animation>
+  
+   <animation>
+    <type>select</type>
+    <object-name>ambreC1</object-name>
+    <condition> 
+        <or>
+          <not><property>/controls/switches/ALT1-switch</property></not>
+            <less-than>
+              <property>/systems/electrical/suppliers/ALT_1</property>
+              <value>115</value> 
+            </less-than>
+        </or>
+    </condition>
+  </animation>
+  
+   <animation>
+    <type>select</type>
+    <object-name>ambreD1</object-name>
+    <condition>
+        <or>
+          <not><property>/controls/switches/ALT2-switch</property></not>
+          <less-than>
+              <property>/systems/electrical/suppliers/ALT_2</property>
+              <value>115</value> 
+            </less-than>
+        </or>
+    </condition>
+  </animation>
+  
+  <animation>
+    <type>select</type>
+    <object-name>ambreA4</object-name>
+    <condition>
+       <less-than>
+           <property>/systems/hydraulical/circuit1_press</property>
+           <value>195</value> 
+       </less-than>
+    </condition>
+  </animation>
+  
+  <animation>
+    <type>select</type>
+    <object-name>ambreB4</object-name>
+    <condition>
+       <less-than>
+           <property>/systems/hydraulical/circuit2_press</property>
+           <value>195</value> 
+       </less-than>
+    </condition>
+  </animation>
+  
+    <animation>
+    <type>select</type>
+    <object-name>ambreC4</object-name>
+    <condition>
+       <less-than>
+           <property>/systems/hydraulical/circuit2_press</property>
+           <value>140</value> 
+       </less-than>
+    </condition>
+  </animation>
+  
+  <!-- This is simplification with the EP-->
+  <animation>
+    <type>select</type>
+    <object-name>ambreD4</object-name>
+    <condition>
+       <less-than>
+           <property>/systems/hydraulical/circuit2_press</property>
+           <value>160</value> 
+       </less-than>
+    </condition>
+  </animation>
+
+  
+   <!-- This is simplification with the BP(LP)-->
+  <animation>
+    <type>select</type>
+    <object-name>ambreA3</object-name>
+    <condition>
+       <less-than>
+           <property>/systems/fuel/suppliers/BP_press</property>
+           <value>1</value> 
+       </less-than>
+    </condition>
+  </animation>
+  
+     <!-- This is simplification with the BPG (LLP)-->
+  <animation>
+    <type>select</type>
+    <object-name>ambreB3</object-name>
+    <condition>
+       <less-than>
+           <property>/systems/fuel/suppliers/FUEL1_press</property>
+           <value>1</value> 
+       </less-than>
+    </condition>
+  </animation>
+
+  <!-- This is simplification with the BPD (RLP)-->
+  <animation>
+    <type>select</type>
+    <object-name>ambreC3</object-name>
+    <condition>
+       <less-than>
+           <property>/systems/fuel/suppliers/FUEL2_press</property>
+           <value>1</value> 
+       </less-than>
+    </condition>
+  </animation>
 
  
   <!-- SWITCH -->
   <model>
     <path>Aircraft/Mirage-2000/Models/Interior/Panel/Right-Panel/Instruments/divers/switch1.xml</path>
     <offsets>
-      <x-m>  0.001685 </x-m>
-      <y-m> -0.031730 </y-m>
-      <z-m>  0.024480 </z-m>
+      <x-m>  0.00169 </x-m>
+      <y-m> -0.03573 </y-m>
+      <z-m>  0.03448 </z-m>
     </offsets>
   </model>
-
+  
   <model>
     <path>Aircraft/Mirage-2000/Models/Interior/Panel/Right-Panel/Instruments/divers/switch2.xml</path>
     <offsets>
-      <x-m>  0.001685 </x-m>
-      <y-m> -0.017380 </y-m>
-      <z-m>  0.024480 </z-m>
+      <x-m>  0.00169 </x-m>
+      <y-m> -0.01838 </y-m>
+      <z-m>  0.03448 </z-m>
     </offsets>
   </model>
-
+  
   <model>
     <path>Aircraft/Mirage-2000/Models/Interior/Panel/Right-Panel/Instruments/divers/switch2.xml</path>
     <offsets>
-      <x-m>  0.001685 </x-m>
-      <y-m> -0.003381 </y-m>
-      <z-m>  0.024480 </z-m>
+      <x-m>  0.00169 </x-m>
+      <y-m> -0.00138 </y-m>
+      <z-m>  0.03448 </z-m>
     </offsets>
   </model>
-
+  
   <model>
     <path>Aircraft/Mirage-2000/Models/Interior/Panel/Right-Panel/Instruments/divers/switch2.xml</path>
     <offsets>
-      <x-m> 0.001685 </x-m>
-      <y-m> 0.009983 </y-m>
-      <z-m> 0.024480 </z-m>
+      <x-m> 0.00169 </x-m>
+      <y-m> 0.01498 </y-m>
+      <z-m> 0.03448 </z-m>
     </offsets>
   </model>
-
+  
   <model>
     <path>Aircraft/Mirage-2000/Models/Interior/Panel/Right-Panel/Instruments/divers/switch2.xml</path>
     <offsets>
-      <x-m> 0.001685 </x-m>
-      <y-m> 0.022980 </y-m>
-      <z-m> 0.017480 </z-m>
+      <x-m> 0.00169 </x-m>
+      <y-m> 0.02798 </y-m>
+      <z-m> 0.02548 </z-m>
       <roll-deg> 90 </roll-deg>
     </offsets>
   </model>

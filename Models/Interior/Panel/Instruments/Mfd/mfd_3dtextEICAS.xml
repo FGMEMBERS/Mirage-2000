@@ -50,6 +50,7 @@
      
      <type>number-value</type>
      <property>engines/engine/rpm</property>
+     <factor>0.01</factor>
      <format>%3.0f</format>
      <truncate>true</truncate> 
      

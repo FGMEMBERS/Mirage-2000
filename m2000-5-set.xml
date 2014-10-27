@@ -6,6 +6,9 @@
 
     <description>Mirage 2000 (YASim)</description>
     <author>BARANGER Emmanuel (3D/FDM), Buckaroo (FDM), 5H1N0B1 (Weapons, system), F-Sig (3D, systems)</author>
+    <aircraft-version>0.5</aircraft-version>
+    <status>0.5 Alpha</status>
+    
     <flight-model>yasim</flight-model>
     <aero>m2000-5-yasim</aero>
 
@@ -19,4 +22,3 @@
   </sim>
 
 </PropertyList>
-

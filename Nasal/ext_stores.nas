@@ -12,6 +12,42 @@ var dropTanks = func(){
 #Here is where quick load management is managed...
 #These 4 function can't be active when flying : This mean a little preparation for the mission
 #It's an anti kiddo script
+
+var Po = func(){
+    if(getprop("/gear/gear[2]/wow")==1){
+        setprop("consumables/fuel/tank[2]/selected", 0);
+        setprop("consumables/fuel/tank[2]/capacity-gal_us", 0);
+        setprop("consumables/fuel/tank[2]/level-gal_us", 0);
+        setprop("consumables/fuel/tank[3]/selected", 0);
+        setprop("consumables/fuel/tank[3]/capacity-gal_us", 0);
+        setprop("consumables/fuel/tank[3]/level-gal_us", 0);
+        setprop("consumables/fuel/tank[4]/selected", 0);
+        setprop("consumables/fuel/tank[4]/capacity-gal_us", 0);
+        setprop("consumables/fuel/tank[4]/level-gal_us", 0);
+
+
+        setprop("sim/weight[1]/selected", "Matra R550 Magic 2");
+        
+        setprop("sim/weight[3]/selected", "1300 l Droptank");
+        setprop("consumables/fuel/tank[3]/selected", 1);
+        setprop("consumables/fuel/tank[3]/capacity-gal_us", 343);
+        setprop("consumables/fuel/tank[3]/level-gal_us", 342);
+        
+        setprop("sim/weight[5]/selected", "Matra R550 Magic 2");
+        
+        setprop("sim/weight[0]/selected", "none");
+        setprop("sim/weight[6]/selected", "none");        
+        setprop("sim/weight[7]/selected", "none");
+        setprop("sim/weight[8]/selected", "none");
+        
+        
+        FireableAgain();
+     }
+
+}
+
+
+
 var Fox = func(){
     if(getprop("/gear/gear[2]/wow")==1){
         setprop("consumables/fuel/tank[2]/selected", 0);
@@ -361,6 +397,7 @@ var loadsmaxi = func(){
 #next missile after fire
 var after_fire_next = func(){
        var SelectedPylon = getprop("controls/armament/missile/current-pylon");
+       if(SelectedPylon == "nil"){SelectedPylon = 0;}
        var out = 0;
     
         if(SelectedPylon == 4){SelectedPylon =2;}elsif(SelectedPylon == 2){SelectedPylon =4;}
@@ -389,6 +426,3 @@ var after_fire_next = func(){
         }
 }
    
-
-
-

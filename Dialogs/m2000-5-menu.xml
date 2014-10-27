@@ -3,7 +3,7 @@
 <PropertyList>
 
   <default>
-    <menu n="10">
+    <menu n="11">
       <label>Mirage 2000</label>
       <enabled type="bool">true</enabled>
       <item n="0">
@@ -13,63 +13,35 @@
           <script>aircraft.livery.dialog.toggle()</script>
         </binding>
       </item>
-      <item n="1">
-        <label>MP Shot Report</label>
-        <binding>
-          <command>nasal</command>
-          <script>missile.MPReport()</script>
-        </binding>
-      </item>
+
       <item n="2">
-        <label>Reload Gun</label>
-        <binding>
-          <command>nasal</command>
-          <script>guns.reload_Cannon()</script>
-        </binding>
-      </item>
-      <item n="3">
-        <label>No load</label>
-        <binding>
-          <command>nasal</command>
-          <script>load.NoLoad()</script>
-        </binding>
-      </item>
-      <item n="4">
-        <label>Config Fox</label>
-        <binding>
-          <command>nasal</command>
-          <script>load.Fox()</script>
-        </binding>
-      </item>
-      <item n="5">
-        <label>Config Bravo</label>
-        <binding>
-          <command>nasal</command>
-          <script>load.Bravo()</script>
-        </binding>
-      </item>
-      <item n="6">
-        <label>Config Kilo</label>
-        <binding>
-          <command>nasal</command>
-          <script>load.Kilo()</script>
-        </binding>
-      </item>
-      <item n="7">
-        <label>Air to Ground</label>
-        <binding>
-          <command>nasal</command>
-          <script>load.AirToGround()</script>
-        </binding>
-      </item> 
-      <item n="8">
-        <label>Target Tracking</label>
-        <name>track_target</name>
+        <label>Fast Config</label>
+        <name>config</name>
         <binding>
            <command>dialog-show</command>
-           <dialog-name>track_target</dialog-name>
+           <dialog-name>config</dialog-name>
         </binding>
-      </item> 
+      </item>
+
+     <item n="3">
+        <label>Start</label>
+        <name>start</name>
+          <binding>
+            <command>nasal</command>
+            <script>engines.engine1.autostart();</script>
+          </binding>
+      </item>
+
+      <!--
+      <item n="10">
+        <label>New Radar On</label>
+        <name>Demo_On</name>
+        <binding>
+          <command>nasal</command>
+          <script>gui.showDialog("newRadar");</script>
+        </binding>
+      </item>
+       -->
     </menu>
   </default>
 

@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
  
 <!-- Generic 28 Volt electrical system -->
-
 <PropertyList>
 
   <!-- Supplier list -->
-
   <supplier>
     <name>Battery 1</name>
     <prop>/systems/electrical/suppliers/battery[0]</prop>
@@ -41,7 +39,6 @@
   </supplier>
 
   <!-- Bus list -->
-
   <bus>
     <name>Master Bus</name>
     <prop>/systems/electrical/outputs/bus[0]</prop>
@@ -83,8 +80,18 @@
   </output>
 
   <output>
-    <name>Fuel Pump Power</name>
-    <prop>/systems/electrical/outputs/fuel-pump</prop>
+    <name>Fuel PumpBPG Power</name>
+    <prop>/systems/electrical/outputs/fuel-pump-BPG</prop>
+  </output>
+  
+  <output>
+    <name>Fuel PumpBPD Power</name>
+    <prop>/systems/electrical/outputs/fuel-pump-BPD</prop>
+  </output>
+  
+   <output>
+    <name>Fuel Pump (Emergency) Power</name>
+    <prop>/systems/electrical/outputs/fuel-pump-Emergency</prop>
   </output>
 
   <output>
@@ -191,9 +198,25 @@
 
   <connector>
     <input>Master Bus</input>
-    <output>Fuel Pump Power</output>
+    <output>Fuel PumpBPG Power</output>
     <switch>
-      <prop>/controls/engines/engine[0]/fuel-pump</prop>
+      <prop>/controls/engines/engine[0]/fuel-pump-BPG</prop>
+    </switch>
+  </connector>
+  
+  <connector>
+    <input>Master Bus</input>
+    <output>Fuel PumpBPD Power</output>
+    <switch>
+      <prop>/controls/engines/engine[0]/fuel-pump-BPD</prop>
+    </switch>
+  </connector>
+  
+    <connector>
+    <input>Master Bus</input>
+    <output>Fuel Pump (Emergency) Power</output>
+    <switch>
+      <prop>/controls/engines/engine[0]/fuel-pump-Emergency</prop>
     </switch>
   </connector>
 

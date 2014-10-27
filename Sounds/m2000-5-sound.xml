@@ -3,261 +3,272 @@
 <!-- Updated by 5H1N0B1 : August 2012
      Updated by Helijah : December 2012 
      Updated by 5H1N0B1 : July 2013
-     -->
- 
+-->
 <PropertyList>
-
-   <fx>
-       <engine>
-              <name>engine-start</name>
-              <mode>once</mode>
-              <path>Sounds/turbine_start.wav</path>
-              <condition>
-                  <property>/controls/engines/engine[0]/starter</property>
-              </condition>
-                 <volume>
-                    <property>engines/engine[0]/thrust-lbs</property>
-                    <factor>0.000012</factor>
-                    <min>0.1</min>
-                    <max>0.2</max>
-                 </volume>
-               <reference-dist>100</reference-dist>
-              <max-dist>1000</max-dist>
-           </engine>
-           
-           <engine>
-              <name>engine-shutdown</name>
-              <mode>once</mode>
-              <path>Sounds/turbine_shutdown.wav</path>
-              <condition>
-                  <property>/controls/engines/engine[0]/cutoff</property> 
-              </condition>
-                 <volume>
-                        <factor>0.2</factor>
-                 </volume>
-               <reference-dist>100</reference-dist>
-              <max-dist>1000</max-dist>
-           </engine>
-   
-      <!-- Engines -->
-      <engine-jet>
-         <name>engine-jet</name>
-         <path>Aircraft/Mirage-2000/Sounds/BaBoOn-mirageIV-Turbine2.wav</path>
-         <mode>looped</mode>
-         <condition>
-                 <property>/engines/engine[0]/running</property>
-            <not>
-               <property>sim/current-view/internal</property>
-            </not>
-            <not>
-               <property>engines/engine[0]/out-of-fuel</property>
-            </not>
-         </condition>
-         <orientation>
-            <x>0.0</x>
-            <y>0.0</y>
-            <z>-180.0</z>
-            <inner-angle>180.0</inner-angle>
-            <outer-angle>360.0</outer-angle>
-            <outer-gain>0.2</outer-gain>
-         </orientation>
-         <pitch>
-            <property>engines/engine[0]/n1</property>
-            <ofset>0.1</ofset>
-            <factor>.001</factor>
-         </pitch>
-         <volume>
-            <property>engines/engine[0]/thrust-lbs</property>
-            <factor>0.000025</factor>
-            <min>0.2</min>
-            <max>0.75</max>
-         </volume>
-      </engine-jet>
-      
-      
-      <engine-rumble>
-         <name>engine-rumble</name>
-         <path>Aircraft/Mirage-2000/Sounds/afterburner.wav</path>
-         <mode>looped</mode>
-         <condition>
-            <property>/engines/engine[0]/running</property>
-            <not>
-               <property>sim/current-view/internal</property>
-            </not>
-            <not>
-               <property>engines/engine[0]/out-of-fuel</property>
-            </not>
-         </condition>
-         <property>engines/engine[0]/afterburner</property>
-         <orientation>
-            <x>0.0</x>
-            <y>0.0</y>
-            <z>-180.0</z>
-            <inner-angle>180.0</inner-angle>
-            <outer-angle>360.0</outer-angle>
-            <outer-gain>0.2</outer-gain>
-         </orientation>
-         <pitch>
-            <property>engines/engine[0]/afterburner</property>
-            <factor>1</factor>
-            <offset>0.3</offset>
-         </pitch>
-         <volume>
-            <property>engines/engine[0]/afterburner</property>
-            <!--<factor>0.7</factor>-->
-            <factor>1.2</factor>
-            <offset>0.15</offset>
-            <!--<max>1</max>-->
-         </volume>
-      </engine-rumble>
-      <engine-rumble>
-         <name>engine-rumble</name>
-         <path>Aircraft/Mirage-2000/Sounds/afterburner.wav</path>
-         <mode>looped</mode>
-         <condition>
-                 <property>/engines/engine[0]/running</property>
-            <property>sim/current-view/internal</property>
-            <not>
-               <property>engines/engine[0]/out-of-fuel</property>
-            </not>
-         </condition>
-         <property>engines/engine[0]/afterburner</property>
-         <orientation>
-            <x>0.0</x>
-            <y>0.0</y>
-            <z>-180.0</z>
-            <inner-angle>180.0</inner-angle>
-            <outer-angle>360.0</outer-angle>
-            <outer-gain>0.2</outer-gain>
-         </orientation>
-         <pitch>
-            <property>engines/engine[0]/afterburner</property>
-            <factor>1</factor>
-            <offset>0.3</offset>
-         </pitch>
-         <volume>
-            <property>engines/engine[0]/afterburner</property>
-            <!--<factor>0.7</factor>-->
-            <factor>0.5</factor>
-            <offset>0.15</offset>
-            <!--<max>1</max>-->
-         </volume>
-      </engine-rumble>
-      
-      
-      <engine-whine-external>
-         <name>external-whine</name>
-         <path>Sounds/turbojet_fan.wav</path>
-         <mode>looped</mode>
-         <condition>
-                 <property>/engines/engine[0]/running</property>
-            <not>
-               <property>sim/current-view/internal</property>
-            </not>
-            <not>
-               <property>engines/engine[0]/out-of-fuel</property>
-            </not>
-         </condition>
-         <orientation>
-            <x>0.0</x>
-            <y>0.0</y>
-            <z>1</z>
-            <inner-angle>180.0</inner-angle>
-            <outer-angle>360.0</outer-angle>
-            <outer-gain>0.5</outer-gain>
-         </orientation>
-         <pitch>
-            <property>engines/engine[0]/n1</property>
-            <ofset>0.7</ofset>
-            <factor>.003</factor>
-         </pitch>
-         <volume>
-            <property>engines/engine/n1</property>
-            <offset>1.0</offset>
-            <factor>-0.008</factor>
-            <max>0.6</max>
-         </volume>
-      </engine-whine-external>
-      <engine-whine-internal>
-         <name>internal-whine</name>
-         <path>Sounds/whine.wav</path>
-         <mode>looped</mode>
-         <condition>
-                 <property>/engines/engine[0]/running</property>
-            <property>sim/current-view/internal</property>
-            <not>
-               <property>engines/engine[0]/out-of-fuel</property>
-            </not>
-         </condition>
-         <pitch>
-            <property>engines/engine[0]/n1</property>
-            <ofset>0.1</ofset>
-            <factor>.0016</factor>
-         </pitch>
-         <volume>
-            <property>engines/engine[0]/thrust-lbs</property>
-            <factor>0.000012</factor>
-            <min>0.2</min>
-            <max>0.6</max>
-         </volume>
-      </engine-whine-internal>
-      <engine-jet-internal>
-         <name>internal-jet</name>
-         <path>Sounds/jet.wav</path>
-         <mode>looped</mode>
-         <condition>
-                 <property>/engines/engine[0]/running</property>
-            <property>sim/current-view/internal</property>
-            <not>
-               <property>engines/engine[0]/out-of-fuel</property>
-            </not>
-         </condition>
-         <pitch>
-            <property>engines/engine[0]/n1</property>
-            <ofset>0.1</ofset>
-            <factor>.0016</factor>
-         </pitch>
-         <volume>
-            <property>engines/engine[0]/thrust-lbs</property>
-            <factor>0.00005</factor>
-            <min>0.1</min>
-            <max>0.8</max>
-         </volume>
-      </engine-jet-internal>
-      
-      
-      
-      
-
-      <!-- stall warnings -->
-      <pre-stall>
-         <name>pre-stall</name>
-         <mode>looped</mode>
-         <path>Aircraft/Mirage-2000/Sounds/stall-600-chopped.wav</path>
-            <condition> 
-               <equals>
-                <property>/sim/alarms/stall-warning</property>
-                <value>1</value>
-               </equals>
-            </condition>
-         <volume><factor>0.3</factor></volume>
-      </pre-stall>
-
-
-      <stall>
-         <name>stall</name>
-         <mode>looped</mode>
-         <path>Aircraft/Mirage-2000/Sounds/stall-600-continue.wav</path>
-            <condition> 
-               <equals>
-                <property>/sim/alarms/stall-warning</property>
-                <value>2</value>
-               </equals>
-            </condition>
-         <volume><factor>0.3</factor></volume>
-      </stall>
-
-
+  
+  <fx>
+    <engine>
+      <name>engine-start</name>
+      <mode>once</mode>
+      <path>Sounds/turbine_start.wav</path>
+      <condition>
+        <property>/controls/engines/engine[0]/starter</property>
+      </condition>
+      <volume>
+        <property>engines/engine[0]/thrust-lbs</property>
+        <factor>0.000012</factor>
+        <min>0.1</min>
+        <max>0.2</max>
+      </volume>
+      <reference-dist>100</reference-dist>
+      <max-dist>1000</max-dist>
+    </engine>
+    
+    <engine>
+      <name>engine-shutdown</name>
+      <mode>once</mode>
+      <path>Sounds/turbine_shutdown.wav</path>
+      <condition>
+        <property>/controls/engines/engine[0]/cutoff</property> 
+      </condition>
+      <volume>
+        <factor>0.2</factor>
+      </volume>
+      <reference-dist>100</reference-dist>
+      <max-dist>1000</max-dist>
+    </engine>
+    
+    <!-- Engines -->
+    <engine-jet>
+      <name>engine-jet</name>
+      <path>Aircraft/Mirage-2000/Sounds/BaBoOn-mirageIV-Turbine2.wav</path>
+      <mode>looped</mode>
+      <condition>
+        <!--engine[0]/running could be problematic in the begining due to the conflict between yasim and engine.nas...
+        To detect if engine is really running, we use rpm-->
+        <greater-than>
+          <property>engines/engine[0]/rpm</property>
+          <value>30</value>
+        </greater-than>
+        <not>
+          <property>sim/current-view/internal</property>
+        </not>
+        <not>
+          <property>engines/engine[0]/out-of-fuel</property>
+        </not>
+      </condition>
+      <orientation>
+        <x>0.0</x>
+        <y>0.0</y>
+        <z>-180.0</z>
+        <inner-angle>180.0</inner-angle>
+        <outer-angle>360.0</outer-angle>
+        <outer-gain>0.2</outer-gain>
+      </orientation>
+      <pitch>
+        <property>engines/engine[0]/n1</property>
+        <ofset>0.1</ofset>
+        <factor>.001</factor>
+      </pitch>
+      <volume>
+        <property>engines/engine[0]/thrust-lbs</property>
+        <factor>0.000025</factor>
+        <min>0.2</min>
+        <max>0.75</max>
+      </volume>
+    </engine-jet>
+    
+    <engine-rumble>
+      <name>engine-rumble</name>
+      <path>Aircraft/Mirage-2000/Sounds/afterburner.wav</path>
+      <mode>looped</mode>
+      <condition>
+        <greater-than>
+          <property>engines/engine[0]/rpm</property>
+          <value>30</value>
+        </greater-than>
+        <not>
+          <property>sim/current-view/internal</property>
+        </not>
+        <not>
+          <property>engines/engine[0]/out-of-fuel</property>
+        </not>
+      </condition>
+      <property>engines/engine[0]/afterburner</property>
+      <orientation>
+        <x>0.0</x>
+        <y>0.0</y>
+        <z>-180.0</z>
+        <inner-angle>180.0</inner-angle>
+        <outer-angle>360.0</outer-angle>
+        <outer-gain>0.2</outer-gain>
+      </orientation>
+      <pitch>
+        <property>engines/engine[0]/afterburner</property>
+        <factor>1</factor>
+        <offset>0.3</offset>
+      </pitch>
+      <volume>
+        <property>engines/engine[0]/afterburner</property>
+        <!--<factor>0.7</factor>-->
+        <factor>1.2</factor>
+        <offset>0.15</offset>
+        <!--<max>1</max>-->
+      </volume>
+    </engine-rumble>
+    <engine-rumble>
+      <name>engine-rumble</name>
+      <path>Aircraft/Mirage-2000/Sounds/afterburner.wav</path>
+      <mode>looped</mode>
+      <condition>
+        <greater-than>
+          <property>engines/engine[0]/rpm</property>
+          <value>30</value>
+        </greater-than>
+        <property>sim/current-view/internal</property>
+        <not>
+          <property>engines/engine[0]/out-of-fuel</property>
+        </not>
+      </condition>
+      <property>engines/engine[0]/afterburner</property>
+      <orientation>
+        <x>0.0</x>
+        <y>0.0</y>
+        <z>-180.0</z>
+        <inner-angle>180.0</inner-angle>
+        <outer-angle>360.0</outer-angle>
+        <outer-gain>0.2</outer-gain>
+      </orientation>
+      <pitch>
+        <property>engines/engine[0]/afterburner</property>
+        <factor>1</factor>
+        <offset>0.3</offset>
+      </pitch>
+      <volume>
+        <property>engines/engine[0]/afterburner</property>
+        <!--<factor>0.7</factor>-->
+        <factor>0.5</factor>
+        <offset>0.15</offset>
+        <!--<max>1</max>-->
+      </volume>
+    </engine-rumble>
+    
+    <engine-whine-external>
+      <name>external-whine</name>
+      <path>Sounds/turbojet_fan.wav</path>
+      <mode>looped</mode>
+      <condition>
+        <greater-than>
+          <property>engines/engine[0]/rpm</property>
+          <value>30</value>
+        </greater-than>
+        <not>
+          <property>sim/current-view/internal</property>
+        </not>
+        <not>
+          <property>engines/engine[0]/out-of-fuel</property>
+        </not>
+      </condition>
+      <orientation>
+        <x>0.0</x>
+        <y>0.0</y>
+        <z>1</z>
+        <inner-angle>180.0</inner-angle>
+        <outer-angle>360.0</outer-angle>
+        <outer-gain>0.5</outer-gain>
+      </orientation>
+      <pitch>
+        <property>engines/engine[0]/n1</property>
+        <ofset>0.7</ofset>
+        <factor>.003</factor>
+      </pitch>
+      <volume>
+        <property>engines/engine/n1</property>
+        <offset>1.0</offset>
+        <factor>-0.008</factor>
+        <max>0.6</max>
+      </volume>
+    </engine-whine-external>
+    <engine-whine-internal>
+      <name>internal-whine</name>
+      <path>Sounds/whine.wav</path>
+      <mode>looped</mode>
+      <condition>
+        <greater-than>
+          <property>engines/engine[0]/rpm</property>
+          <value>30</value>
+        </greater-than>
+        <property>sim/current-view/internal</property>
+        <not>
+          <property>engines/engine[0]/out-of-fuel</property>
+        </not>
+      </condition>
+      <pitch>
+        <property>engines/engine[0]/n1</property>
+        <ofset>0.1</ofset>
+        <factor>.0016</factor>
+      </pitch>
+      <volume>
+        <property>engines/engine[0]/thrust-lbs</property>
+        <factor>0.000012</factor>
+        <min>0.2</min>
+        <max>0.6</max>
+      </volume>
+    </engine-whine-internal>
+    <engine-jet-internal>
+      <name>internal-jet</name>
+      <path>Sounds/jet.wav</path>
+      <mode>looped</mode>
+      <condition>
+        <greater-than>
+          <property>engines/engine[0]/rpm</property>
+          <value>30</value>
+        </greater-than>
+        <property>sim/current-view/internal</property>
+        <not>
+          <property>engines/engine[0]/out-of-fuel</property>
+        </not>
+      </condition>
+      <pitch>
+        <property>engines/engine[0]/n1</property>
+        <ofset>0.1</ofset>
+        <factor>.0016</factor>
+      </pitch>
+      <volume>
+        <property>engines/engine[0]/thrust-lbs</property>
+        <factor>0.00005</factor>
+        <min>0.1</min>
+        <max>0.8</max>
+      </volume>
+    </engine-jet-internal>
+    
+    <!-- stall warnings -->
+    <pre-stall>
+      <name>pre-stall</name>
+      <mode>looped</mode>
+      <path>Aircraft/Mirage-2000/Sounds/stall-600-chopped.wav</path>
+      <condition> 
+        <equals>
+          <property>/sim/alarms/stall-warning</property>
+          <value>1</value>
+        </equals>
+      </condition>
+      <volume><factor>0.3</factor></volume>
+    </pre-stall>
+    
+    <stall>
+      <name>stall</name>
+      <mode>looped</mode>
+      <path>Aircraft/Mirage-2000/Sounds/stall-600-continue.wav</path>
+      <condition> 
+        <equals>
+          <property>/sim/alarms/stall-warning</property>
+          <value>2</value>
+        </equals>
+      </condition>
+      <volume><factor>0.3</factor></volume>
+    </stall>
+    
     <wind>
       <name>wind</name>
       <mode>looped</mode>
@@ -289,9 +300,7 @@
       <reference-dist>100</reference-dist>
       <max-dist>1000</max-dist>
     </wind>
-
-
-
+    
     <rumble>
       <name>rumble</name>
       <mode>looped</mode>
@@ -310,10 +319,7 @@
       <reference-dist>100</reference-dist>
       <max-dist>1000</max-dist>
     </rumble>
-
-
-
-
+    
     <gear>
       <name>gear</name>
       <mode>in-transit</mode>
@@ -327,7 +333,7 @@
       <reference-dist>100</reference-dist>
       <max-dist>1000</max-dist>
     </gear>
-
+    
     <gear>
       <name>gear-lock</name>
       <path>Sounds/gear-lck.wav</path>
@@ -340,7 +346,7 @@
       <reference-dist>100</reference-dist>
       <max-dist>1000</max-dist>
     </gear>
-
+    
     <squeal>
       <name>squeal</name>
       <path>Aircraft/Mirage-2000/Sounds/BaBoOn-mirageIV-Tire-Squeal.wav</path>
@@ -372,7 +378,7 @@
       <reference-dist>100</reference-dist>
       <max-dist>1000</max-dist>
     </squeal>
- 
+    
     <flap>
       <name>flaps</name>
       <mode>in-transit</mode>
@@ -384,21 +390,21 @@
       <reference-dist>100</reference-dist>
       <max-dist>1000</max-dist>
     </flap>
-
+    
     <guns>
       <name>gunfire</name>
       <mode>looped</mode>
       <path>Aircraft/Mirage-2000/Sounds/M-2000-Guns.wav</path>
       <condition> 
-        <property>controls/armament/trigger</property>
+        <property>controls/armament/Gun_trigger</property>
         <property>ai/submodels/submodel/count</property>
       </condition>
       <volume> 
         <value> 1 </value>
       </volume>
     </guns>
-
-<!--                  Toggle Switches                  -->
+    
+    <!--                  Toggle Switches                  -->
     <click>
       <name>Clickon</name>
       <path>Sounds/click.wav</path>
@@ -409,7 +415,7 @@
         <factor>1.0</factor>
       </volume>
     </click>
-
+    
     <click>
       <name>Clickoff</name>
       <path>Sounds/click.wav</path>
@@ -421,7 +427,6 @@
       </volume>
     </click>
     
-
-   </fx>
-
+  </fx>
+  
 </PropertyList>

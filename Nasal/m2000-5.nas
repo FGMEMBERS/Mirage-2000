@@ -5,105 +5,143 @@
 
 var deltaT = 1.0;
 var SAS_Loop_running = 0;
+var Elapsed_time_actual = 0;
+var Elapsed_time_previous = 0;
+var LastTime = 0;
 
-setlistener("/controls/engines/engine[0]/throttle", func(n) {
-    setprop("/controls/engines/engine[0]/reheat", 105 -( n.getValue() >= 0.75)/(105-95));
-},1);
 
-setlistener("/instrumentation/tacan/frequencies/selected-channel[4]", func(n) {
-    if(n.getValue() =="X"){
-        setprop("instrumentation/tacan/frequencies/XPos",1);
-    }else{
-        setprop("instrumentation/tacan/frequencies/XPos",-1);
-    }
-},1);
 
-setlistener("/gear/gear[2]/wow", func(n) {
-    if(getprop("/gear/gear[2]/wow")==1){
-        gui.menuEnable("fuel-and-payload", 1);
-    }else{
-        gui.menuEnable("fuel-and-payload", 0);
-    }
-},1);
-
-setlistener("/controls/gear/gear-down", func(n) {setprop("/controls/flight/flaps", 0);},1);
-
-# turn off hud in external views
-setlistener("/sim/current-view/view-number", func(n) { setprop("/sim/hud/visibility[1]", n.getValue() == 0) },1);
-
-var InitListener = setlistener("/sim/signals/fdm-initialized", func {
+var InitListener = setlistener("/sim/signals/fdm-initialized", func {  
+        
         settimer(main_Init_Loop, 5.0);
         removelistener(InitListener);
 });
 
+
+
 ################################################ Main init loop################################################
 #####         Perhaps in the future, make an object for each subsystems, in the same way of "engine"   ########
-###############################################################################################################
-var main_Init_Loop = func(){    
+################################################################################################################
+var main_Init_Loop = func(){   
 
-    var SAS_rudder   = nil;
-    var SAS_elevator = nil; 
-    var SAS_aileron  = nil;
-
-    print("Radar ...Check");
-    settimer(radar.init, 5.0);
-
-    print("Flight Director ...Check");
-    settimer(mirage2000.init_set, 5.0);
-
-    print("MFD ...Check");
-    settimer(mirage2000.update_main, 5.0);
-
+    # --------- Loop Updated inside
+    #print("Electrical ...Check");
+    settimer(electrics.Electrical_init, 1.0);
+    
+    # --------- Loop Updated inside
+    #print("Hydraulical ...Check");
+    settimer(hydraulics.Hydraulical_init, 1.0);
+    
+    # --------- Loop Updated inside
+    #print("Hydraulical ...Check");
+    settimer(fuel.Fuel_init, 1.0);
+    
+    # --------- Loop Updated bellow
+    print("Stability Augmentation System ...Check");
+    settimer(mirage2000.init_SAS, 4.0);
+    
+    # -------------
     print("Intrumentation ...Chsck");
     settimer(instrumentation.initIns, 5.0);
-
+ 
+    # --------- Loop Updated bellow
+    print("Radar ...Check");
+    settimer(radar.init, 8.0);
+    
+    # --------- Loop Updated bellow
+    print("Flight Director ...Check");
+    settimer(mirage2000.init_set, 8.0);
+    
+    # --------- Loop Updated bellow
+    print("MFD ...Check");
+    settimer(mirage2000.update_main, 8.0);
+    
+    # -------------Transponder
     print("Transponder ...Check");
-    settimer(init_Transpondeur, 5.0);
-
+    settimer(init_Transpondeur, 8.0);
+    
+    # -------------Canvas    <- Old way. Now object is created when selected
+    #Init Canvas for central Mfd
+    #settimer(mirage2000.CANVAS_init,8);
+    
+    # ---------link to bellow
     print("system loop ...Check");
-    settimer(updatefunction, 5.0);
+    settimer(updatefunction, 15.0);
+    
 
-    if(SAS_rudder == nil){
-        var SAS_rudder = setlistener("/controls/flight/rudder", func {
-                #mirage2000.computeSAS();
-                Update_SAS();
-        });
-    }
-    if(SAS_aileron == nil){
-         var SAS_aileron = setlistener("controls/flight/aileron", func {
-                #mirage2000.computeSAS();
-                Update_SAS();
-          });
-    }
-    if(SAS_elevator == nil){
-         var SAS_elevator = setlistener("controls/flight/elevator", func {
-                #mirage2000.computeSAS();
-                Update_SAS();
-          });
-    }
+    
 
 }
 
-######################################SAS double running avoidance #######################################
-var Update_SAS = func (){
 
-    if(SAS_Loop_running == 0){
-        SAS_Loop_running = 1;
-        mirage2000.computeSAS();
-        SAS_Loop_running = 0;
-    } 
-}
 
 
 ##################################################################################################################
-var UpdateMain = func {settimer (updatefunction, 0.25);}
-
+var UpdateMain = func {settimer (mirage2000.updatefunction, 0);}
+#var UpdateMain = func {mirage2000.updatefunction();}
 
 var updatefunction = func(){
      #deltaT = getprop ("sim/time/delta-sec");
-   
-     Update_SAS();
-     #mirage2000.computeSAS();     
+     #print(deltaT);
+     
+     Elapsed_time_actual = int(getprop ("sim/time/elapsed-sec"));
+     FirstTime = getprop ("sim/time/elapsed-sec");
+     #print(FirstTime);
+     
+     #print("Elapsed_time_actual:",Elapsed_time_actual, " Elapsed_time_previous:",Elapsed_time_previous);
+     #print("################ FPS:",1/(FirstTime-LastTime));
+
+
+     #---------------UPDATE SAS---------------------
+     mirage2000.Update_SAS();
+     ##mirage2000.computeSAS();
+     
+     #SASTime = getprop ("sim/time/elapsed-sec");
+     #print(FirstTime-SASTime);
+     
+     
+     #---------------UPDATE RADAR : Radar loop  -----------
+     radar.rdr_loop();
+     
+     #RadarTime = getprop ("sim/time/elapsed-sec");
+     #print(SASTime-RadarTime);
+     
+     
+     #---------------UPDATE Electric : Electrical loop  -----------
+     #electrics.update_electrical();
+     
+     #---------------UPDATE Guns : Electrical loop  -----------
+     #guns.update_guns();
+     
+     
+     #--------------UPDATE MFD : mfd loop-------------------
+     mirage2000.update_main();
+     
+     MfdTime = getprop ("sim/time/elapsed-sec");
+     #print(RadarTime-MfdTime);
+     
+     
+     #-------------UPDATE FLIGHT DIRECTOR : Flight Director (autopilot)--------
+     if(getprop("autopilot/locks/AP-status")=="AP1"){
+        mirage2000.update_fd();
+     }else{
+        #this is a way to reduce autopilot refreshing time when not activated  <-? what
+        if(Elapsed_time_actual != Elapsed_time_previous){
+            mirage2000.update_fd();  
+        }
+        
+     }
+     
+     #FlightDirectorTime = getprop ("sim/time/elapsed-sec");
+     #print(MfdTime-FlightDirectorTime);
+     #if(Elapsed_time_actual != Elapsed_time_previous){
+     #   mirage2000.fuel_managment();
+     #}
+     
+     
+     Elapsed_time_previous = Elapsed_time_actual;
+     LastTime = FirstTime;
+        
      mirage2000.UpdateMain();
 }
 
@@ -145,8 +183,9 @@ controls.deployChute = func(v){
 }
 
 var chuteAngle = func {
-  var chute_open = getprop('sim/model/lightning/controls/flight/chute_open');
 
+  var chute_open = getprop('sim/model/lightning/controls/flight/chute_open');
+  
   if (chute_open != '1') {return();}
 
   var speed = getprop('velocities/airspeed-kt');
@@ -187,10 +226,30 @@ var chuteRepack = func{
 
 } # end func  
 
-##
-# AirBrake handling.
-#
-var fullAirBrakeTime = 1;
-var applyAirBrakes = func(v) {
-  interpolate("/controls/flight/spoilers", v, fullAirBrakeTime);
+
+var fuel_managment = func(){
+  var Externaltank = getprop("/consumables/fuel/tank[2]/empty");
+  Externaltank *= getprop("/consumables/fuel/tank[3]/empty");
+  Externaltank *=getprop("/consumables/fuel/tank[4]/empty");
+  #If only one external Tank is still not empty, then...
+  
+  #systems/refuel/contact = false si pas refuel en cours
+
+  if(getprop("systems/refuel/contact")){
+        setprop("/consumables/fuel/tank[0]/selected",1);
+        setprop("/consumables/fuel/tank[1]/selected",1);
+        
+        setprop("/consumables/fuel/tank[2]/selected",1);
+        setprop("/consumables/fuel/tank[3]/selected",1);
+        setprop("/consumables/fuel/tank[4]/selected",1);   
+        
+  }elsif(Externaltank){
+    setprop("/consumables/fuel/tank[0]/selected",0);
+    setprop("/consumables/fuel/tank[1]/selected",0);
+  }else{
+    setprop("/consumables/fuel/tank[0]/selected",1);
+    setprop("/consumables/fuel/tank[1]/selected",1);
+  }
+
 }
+
