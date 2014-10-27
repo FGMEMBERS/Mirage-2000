@@ -10,9 +10,7 @@ var loads = func(loads){
         }
 }
 
-
 var makestring = func {
-
 
         var thestring = "";
         thestring = thestring ~ "load#" ;
@@ -40,7 +38,6 @@ var makestring = func {
                 
         }
         print(substr(thestring,0,searchString('#',thestring)));
-        
         
         #var count = countSearched('#',thestring);
         #print("count : "~ count);
@@ -82,10 +79,7 @@ var makestring = func {
         
         
        settimer(extractloads, 0.25);
-
 }
-
-
 
 var extractloads = func() {
 

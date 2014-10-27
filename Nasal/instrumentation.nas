@@ -1,30 +1,63 @@
 var blinking = 0;
+var viewNum = 1;
+var isHUDvisible = 1;
 
 
 var initIns = func {
         convertTemp();
         average_fuel();
+        viewHUD();
 
         settimer(initIns, 0.5);
 }
 
+# turn off hud in external views
+var viewHUD = func {
 
-var convertTemp = func{	    
-	        var degF = getprop("engines/engine[0]/egt-degf");
-	        if(degF != nil){
-	                #print(degF);
-	                var degC = (degF - 32) * 5/9;
-	                #print(degC);
-	                setprop("engines/engine[0]/egt-degC", degC);
-	        }
-	        #settimer(convertTemp, 0.2);
+    #Selection of the view number
+    viewNum = getprop("/sim/current-view/view-number");
+    isHUDvisible = getprop("/sim/hud/visibility[1]");
+
+    if( (viewNum ==0 ) and  (isHUDvisible == 0)) {
+        setprop("/sim/hud/visibility[1]",1);
+    }elsif((viewNum !=0) and (isHUDvisible == 1)){
+        setprop("/sim/hud/visibility[1]",0);    
+    }
+}
+
+#When we call this fonction, it swith the menu on/off
+var enableGuiLoad = func() {
+        var searchname = "fuel-and-payload";
+        var state = 0;
+    foreach (var menu; props.globals.getNode("/sim/menubar/default").getChildren("menu")) {
+        foreach (var item; menu.getChildren("item")) {
+            foreach (var name; item.getChildren("name")) {
+                if (name.getValue() == searchname) {
+                  state = item.getNode("enabled").getBoolValue();
+                  #print(name.getValue(),":", state, " next :", !state);
+                  item.getNode("enabled").setBoolValue(!state);
+                }
+            }
+        }
+    }
+}
+
+
+var convertTemp = func{     
+    var degF = getprop("engines/engine[0]/egt-degf");
+    if(degF != nil){
+         #print(degF);
+         var degC = (degF - 32) * 5/9;
+         #print(degC);
+         setprop("engines/engine[0]/egt-degC", degC);
+    }
 }
 
 var average_fuel = func {
         #in kg...
         var consumption = getprop("engines/engine[0]/fuel-flow-gph");
         
-        #1 litter of fuel = 0.87 kg and 1 gallon = 3.7854118
+        #1 litter of fuel = 0.87 kg and 1 gallon = 3.7854118 litters
         
         
         var time = getprop("sim/time/elapsed-sec");
@@ -44,7 +77,7 @@ var average_fuel = func {
                 consumption = consumption / 60;
                 
                 #Old name, need to be changed
-                setprop("instrumentation/consumables/average_consuption_per_min",consumption);
+                setprop("instrumentation/consumables/consumption_per_min",consumption);
                 
                 #Average Consumption 36 kg/min
                 bingo(50);

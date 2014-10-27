@@ -32,6 +32,3 @@ var strobe = aircraft.light.new( "/sim/model/lights/strobe", [0.05, 0.05, 0.05, 
 strobe.interval = 0;
 
 var ap_blink = aircraft.light.new("/sim/model/lights/pa-blink",[0.4, 0.4],"autopilot/locks/FD-status");
-
-
-

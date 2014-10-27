@@ -278,7 +278,7 @@ var MISSILE = {
                 #Also cut rocket when misile is "dropped", and ignitie it 1 second after
                 var f_lbs = me.force_lbs;
                 if(me.rail=="true"){
-                        if (me.life_time > 0) { f_lbs = me.force_lbs * 2 ;}
+                        if (me.life_time > 0) { f_lbs = me.force_lbs * 4 ;}
                         if (me.life_time > 4) { f_lbs = me.force_lbs * 0.3;}
                         
                 }else{

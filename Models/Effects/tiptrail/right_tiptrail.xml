@@ -25,26 +25,14 @@
           <value>180</value>
         </greater-than>
         <or>
-          <or>
-            <less-than>
-              <property>surface-positions/left-aileron-pos-norm</property>
-              <value>-0.01</value>
-            </less-than>
-            <greater-than>
-              <property>surface-positions/left-aileron-pos-norm</property>
-              <value>0.01</value>
-            </greater-than>
-          </or>
-          <or>
-            <less-than>
-              <property>surface-positions/left-elevator-pos-norm</property>
-              <value>-0.01</value>
-            </less-than>
-            <greater-than>
-              <property>surface-positions/left-elevator-pos-norm</property>
-              <value>0.01</value>
-            </greater-than>
-          </or>
+          <less-than>
+            <property>surface-positions/right-aileron-pos-norm</property>
+            <value>-0.2</value>
+          </less-than>
+          <less-than>
+            <property>surface-positions/elevator-pos-norm</property>
+            <value>-0.2</value>
+          </less-than>
         </or>
       </and>
     </condition>

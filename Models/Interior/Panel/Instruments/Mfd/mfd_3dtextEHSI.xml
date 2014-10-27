@@ -282,7 +282,7 @@
      <object-name>crs-nav1</object-name>
      <condition>
        <equals>
-         <property>autopilot/settings//nav-source</property>
+         <property>autopilot/settings/nav-source</property>
          <value>NAV1</value>
        </equals>
      </condition>
@@ -312,8 +312,70 @@
      <object-name>crs-nav2</object-name>
      <condition>
        <equals>
-         <property>autopilot/settings//nav-source</property>
+         <property>autopilot/settings/nav-source</property>
          <value>NAV2</value>
+       </equals>
+     </condition>
+   </animation>
+   <!-- TACAN src display-->
+   <text>
+     <name>crs-TACAN</name>
+     <offsets>
+       <x-m>0.0</x-m>
+       <y-m>0.060</y-m>
+       <z-m>-0.055</z-m>
+     </offsets>
+     <alignment>center-center</alignment>
+     <axis-alignment>yz-plane</axis-alignment>
+     
+     <type>number-value</type>
+     <property>instrumentation/tacan/indicated-bearing-true-deg</property>
+     <format>%3.0f</format>
+     <truncate>true</truncate>    
+     
+     <font>helvetica_bold.txf</font>
+     <character-size>0.009</character-size>     
+   </text>
+   
+   <animation>
+     <type>select</type>
+     <object-name>crs-TACAN</object-name>
+     <condition>
+       <equals>
+         <property>autopilot/settings/nav-source</property>
+         <value>TACAN</value>
+       </equals>
+     </condition>
+   </animation>
+   
+   
+<!-- FMS src display-->
+   <text>
+     <name>crs-FMS</name>
+     <offsets>
+       <x-m>0.0</x-m>
+       <y-m>0.060</y-m>
+       <z-m>-0.055</z-m>
+     </offsets>
+     <alignment>center-center</alignment>
+     <axis-alignment>yz-plane</axis-alignment>
+     
+     <type>number-value</type>
+     <property>autopilot/route-manager/wp/true-bearing-deg</property>
+     <format>%3.0f</format>
+     <truncate>true</truncate>    
+     
+     <font>helvetica_bold.txf</font>
+     <character-size>0.009</character-size>     
+   </text>
+   
+   <animation>
+     <type>select</type>
+     <object-name>crs-FMS</object-name>
+     <condition>
+       <equals>
+         <property>autopilot/settings/nav-source</property>
+         <value>FMS</value>
        </equals>
      </condition>
    </animation>

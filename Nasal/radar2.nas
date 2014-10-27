@@ -106,9 +106,11 @@ init = func() {
 # Main loop ###############
 var rdr_loop = func() {
         var display_rdr = DisplayRdr.getBoolValue();
+        #print("display_rdr : ", display_rdr);
         if ( display_rdr ) {
                 az_scan();
-                settimer(rdr_loop, 0.05);
+                #print("radar loop");
+                #settimer(rdr_loop, 0.05);
         } elsif ( size(tgts_list) > 0 ) {
                 foreach( u; tgts_list ) {
                         u.set_display(0);
@@ -147,7 +149,7 @@ var az_scan = func() {
                 # TODO: Transient move for the sweep marker when changing az scan field. 
                 az_fld = AzField.getValue();
                 range_radar2 = RangeSelected.getValue();
-                if ( range_radar2 == 0 ) { range_radar2 = 0.00000001 }
+                if ( range_radar2 == 0 or range_radar2== nil) { range_radar2 = 0.00000001; }
                 # Reset nearest_range score
                 nearest_u = tmp_nearest_u;
                 nearest_rng = tmp_nearest_rng;
@@ -175,6 +177,7 @@ var az_scan = func() {
                                 u_ecm_type_num    = 0;
                                 if ( u.Range != nil) {
                                         var u_rng = u.get_range();
+                                        if(u_rng == nil){u_rng= 0.00000001;}
                                         if (u_rng < range_radar2 ) {
                                                 u.get_deviation(our_true_heading);
                                                 if ( u.deviation > l_az_fld  and  u.deviation < r_az_fld ) {
@@ -215,6 +218,7 @@ var az_scan = func() {
                         u.get_heading();
                         var horizon = u.get_horizon( our_alt );
                         var u_rng = u.get_range();
+                        u_rng = u_rng == "nil" ? 0.01:u_rng; # To prevent error caused by OpenRadar
                         if ( u_rng < horizon and radardist.radis(u.string, my_radarcorr)) {
                                 # Compute mp position in our B-scan like display. (Bearing/horizontal + Range/Vertical).
                                 u.set_relative_bearing( swp_diplay_width / az_fld * u.deviation );
@@ -458,6 +462,7 @@ var Target = {
                 obj.string = "ai/models/" ~ obj.type ~ "[" ~ obj.index ~ "]";
                 obj.shortstring = obj.type ~ "[" ~ obj.index ~ "]";
                 obj.InstrTgts = props.globals.getNode("instrumentation/radar2/targets", 1);
+                
                 obj.TgtsFiles = obj.InstrTgts.getNode(obj.shortstring, 1);
                 obj.Callsign       = c.getNode("callsign");
 
@@ -482,7 +487,8 @@ var Target = {
                 obj.ClosureRate    = obj.TgtsFiles.getNode("closure-rate-kts", 1);
 
                 obj.TimeLast.setValue(ElapsedSec.getValue());
-                if ( obj.Range != nil) {
+                #if ( obj.Range != nil ) { if gestproperty does not exist, it return nil. GetNode return NaN
+                if ( getprop(obj.string ~ "/range-nm") != nil ) {
                         obj.RangeLast.setValue(obj.Range.getValue());
                 } else {
                         obj.RangeLast.setValue(0);
@@ -495,19 +501,23 @@ var Target = {
         },
         get_Callsign : func {
                 var n = me.Callsign.getValue();
+                if(n == nil){ n="Nothing";}
                 return n;
         },
         get_heading : func {
                 var n = me.Heading.getValue();
+                if(n == nil){ n=0;}
                 me.BHeading.setValue(n);
                 return n;
         },
         get_bearing : func {
                 var n = me.Bearing.getValue();
+                if(n == nil){ n=0;}
                 me.BBearing.setValue(n);
                 return n;
         },
         set_relative_bearing : func(n) {
+                if(n == nil){ n=0;}
                 me.RelBearing.setValue(n);
         },
         get_reciprocal_bearing : func {

@@ -24,7 +24,7 @@
 
     <submodels> 
       <serviceable type="bool">true</serviceable>
-      <path>Aircraft/Mirage-2000/System/submodels.xml</path>
+      <path>Aircraft/Mirage-2000/Models/Effects/guns/submodels.xml</path>
     </submodels>
 
     <startup>
@@ -38,8 +38,8 @@
     <rendering>
       <redout>
         <parameters>
-          <blackout-complete-g>9</blackout-complete-g>
-          <blackout-onset-g>6</blackout-onset-g>
+          <blackout-complete-g>10</blackout-complete-g>
+          <blackout-onset-g>8</blackout-onset-g>
         </parameters>
       </redout>
     </rendering>
@@ -65,15 +65,22 @@
         <int type="bool" n="6" alias="/smoke/active"> 0 </int>                     <!--  6 start smoke -->
         <int type="int" n="7" alias="smoke/particlepersec"> 50 </int>              <!--  7 particlepersec -->
         <int type="int" n="10" alias="controls/armament/trigger">0</int>           <!-- 10 reserved for bombable mode -->
-        <float n="0" alias="/instrumentation/doors/crew/position-norm"/>
-        <float n="1" alias="/instrumentation/doors/passenger/position-norm"/>
+        <float n="0"  alias="/sim/model/door-positions/crew/position-norm"/>
+        <float n="1"  alias="/sim/model/door-positions/passenger/position-norm"/>
         <float n="2" alias="/position/gear-agl-m"> 0 </float>                      <!-- altitude for MP shadow -->
-        <float n="3" alias="/smoke/colors/knob-red">1</float>                      <!-- 3 smoke mixer red setting -->
-        <float n="4" alias="/smoke/colors/knob-green">1</float>                    <!-- 4 smoke mixer green setting -->
-        <float n="5" alias="/smoke/colors/knob-blue">1</float>                     <!-- 5 smoke mixer blue setting -->
-        <float n="8" alias="/engines/engine[0]/afterburner"/>
-        <string n="0" type="string" />
-        <string n="9" type="string" />                                             <!-- string[9] reserved for bombable mode -->
+        <float n="4" alias="/engines/engine[0]/n1"/>
+        <float n="5" alias="/engines/engine[0]/n2"/>
+        <float n="7" alias="/controls/engines/engine[0]/throttle"/>
+        <float n="8" alias="/gear/gear[0]/wow/"/>
+        <float n="9" alias="/gear/gear[1]/wow/"/>
+        <float n="10" alias="/gear/gear[2]/wow/"/>
+        <float n="11" alias="/gear/gear[0]/rollspeed-ms"/>
+        <float n="12" alias="/gear/gear[1]/rollspeed-ms"/>
+        <float n="13" alias="/gear/gear[2]/rollspeed-ms"/>
+        <float n="14" alias="/engines/engine[0]/afterburner"/>
+        <!-- For Bombable -->
+        <int type="int" n="10" alias="controls/armament/trigger">0</int>
+        <string n="9" type="string" />
         <!--                                               For loads 
         <string n="11" alias="/sim/weight[1]/selected"/>
         <string n="12" alias="/sim/weight[2]/selected"/>
@@ -265,10 +272,16 @@
 
     <!--   <offsets><x-m type="double"> -1.265 </x-m><y-m  droite/gauche type="double"> -0.824 </y-m><z-m type="double"> -1.404 </z-m></offsets>-->
 
+    <!--<systems include="System/test-electrical.xml">-->
     <systems>
        <autopilot>
        <path>Aircraft/Mirage-2000/System/m2000-5_autopilot.xml</path>         
        </autopilot>
+       <electrical>
+         <!-- null electrical system path here so we can use a nasal based -->
+         <!-- model defined later in the nasal section of this file. -->
+        <path></path>
+      </electrical>
     </systems>
 
   </sim>
@@ -277,20 +290,63 @@
     <SAS>
 
     </SAS>
+    <lighting>
+      <!--<landing-lights n="0">0</landing-lights>-->
+      <landing-lights n="1">0</landing-lights>
+      <running-lights>0</running-lights>
+      <passing-lights>0</passing-lights>
+      <instruments-norm>1</instruments-norm>
+      <recognition-lights n="0">0</recognition-lights>
+      <recognition-lights n="1">0</recognition-lights>
+      <recognition-lights n="2">0</recognition-lights>
+      <formation-lights>0</formation-lights>
+      <tail-lights>0</tail-lights>
+      <cabin-lights>0</cabin-lights>
+    </lighting>
+    
+    <circuit-breakers>
+      <cabin-lights-pwr>true</cabin-lights-pwr>
+      <instrument-lights>true</instrument-lights>
+    </circuit-breakers>
 
     <gear>
       <brake-parking type="double"> 1 </brake-parking>
     </gear>
-    <engines>
-      <engine n="0">
-        <boost type="double">0</boost>
-        <magnetos>0</magnetos>
-      </engine>
-      <engine n="1">
-        <boost type="double">0</boost>
-        <magnetos>0</magnetos>
-      </engine>
-    </engines>
+      <engines>
+        <engine n="0">
+          <boost type="double">0</boost>
+          <magnetos>0</magnetos>
+          <master-bat type="bool">true</master-bat>
+          <master-alt type="bool">true</master-alt>
+        </engine>
+        <engine>
+          <master-bat type="bool">true</master-bat>
+          <master-alt type="bool">true</master-alt>
+        </engine>
+      </engines>
+      <switches>
+       <master-avionics type="bool">true</master-avionics>
+       <jettinson-button type="bool">false</jettinson-button>  
+
+       <!-- ########## Jet Power On switches  -->
+       <battery-switch type="bool">false</battery-switch>
+       <transformator-switch type="bool">false</transformator-switch>
+       <ALT1-switch type="bool">false</ALT1-switch>
+       <ALT2-switch type="bool">false</ALT2-switch>
+       <hide-cutoff type="bool">true</hide-cutoff>
+       <cutoff type="bool">true</cutoff>
+       <pump-BP type="bool">false</pump-BP>
+       <pump-BPG type="bool">false</pump-BPG>
+       <pump-BPD type="bool">false</pump-BPD>
+       <vent-allumage type="bool">false</vent-allumage>
+       <hide-starter type="bool">false</hide-starter>
+       <starter type="bool">false</starter>    
+       
+       <!--    Transponder  -->        
+       <transponder type="bool">true</transponder>     
+      </switches>
+
+      
     <armament>
       <!--Missile property. the value here doesn't really count, beacause it's reloaded by a Nasal for each missile. Anyway this is nessecary for variable declaration -->
       <missile>
@@ -365,13 +421,13 @@
   <engines>
     <engine n="0">
       <engine-num type="int">0</engine-num>
-      <rpm>500</rpm>
       <egt-degC type="float">0</egt-degC>
       <running>false</running>
     </engine>
   </engines>
 
   <instrumentation>
+    <efis><Mode>OLD</Mode></efis>
     <ejection type="bool">false</ejection>
     <doors>
       <crew>
@@ -383,7 +439,7 @@
     </doors>
     <!-- fuel features -->
     <consumables>
-        <average_consuption_per_min type="double">0</average_consuption_per_min>
+        <consumption_per_min type="double">0</consumption_per_min>
         <remain_fuel type="double">0</remain_fuel>   
         <bingo_fuel type="double">0</bingo_fuel>
         <bingo_low type="int">0</bingo_low>
@@ -465,8 +521,8 @@
     </tacan>
     <!--Thanks to the CitationX guy !! -->
     <nd>
-      <radar-texture-path type="string">Aircraft/Mirage-2000/Models/Interior/Panel/Instruments/Center-mfd/radar.png</radar-texture-path>
-      <symbol-texture-path type="string">Aircraft/Mirage-2000/Models/Interior/Panel/Instruments/Center-mfd/symbols.png</symbol-texture-path>
+      <radar-texture-path type="string">Aircraft/Mirage-2000/Models/Interior/Panel/Instruments/Center-mfd/Old/radar.png</radar-texture-path>
+      <symbol-texture-path type="string">Aircraft/Mirage-2000/Models/Interior/Panel/Instruments/Center-mfd/Old/symbols.png</symbol-texture-path>
       <font>
         <color>
           <red type="float">   0.7 </red>
@@ -548,12 +604,12 @@
     <refuel>
       <type>probe</type>
       <serviceable type="bool">true</serviceable>
+      <!--Around max : 1400 l/min  1400 * 1.918021 = 2685 lbs/min so I put 3000-->
+      <max-fuel-transfer-lbs-min>3000</max-fuel-transfer-lbs-min>
     </refuel>
-    <electrical>
-      <outputs>
-        <adf1 type="float">28.0</adf1>
-      </outputs>
-    </electrical>
+    <!--<electrical include="System/Oldgeneric-electrical.xml"></electrical>-->
+    <!--<hydraulics include="Aircraft/Mirage-2000/System/hydraulics.xml">
+    </hydraulics>-->
   </systems>
 
   <consumables>
@@ -635,15 +691,33 @@
     <doors>
       <file>Aircraft/Mirage-2000/Nasal/doors.nas</file>
     </doors>
+    <controls>
+      <file>Aircraft/Mirage-2000/Nasal/m2000-5-controls.nas</file>
+    </controls>
+    
     <mirage2000>
       <file>Aircraft/Mirage-2000/Nasal/m2000-5_mfd.nas</file>
       <file>Aircraft/Mirage-2000/Nasal/liveries.nas</file>
       <file>Aircraft/Mirage-2000/Nasal/light.nas</file>
       <file>Aircraft/Mirage-2000/Nasal/m2000-5.nas</file>
       <file>Aircraft/Mirage-2000/Nasal/m2000-5_flightdirector.nas</file>
-      <file>Aircraft/Mirage-2000/Nasal/SAS.nas</file>  
-      <file>Aircraft/Mirage-2000/Models/Interior/Panel/Instruments/transpondeur/transpondeur.nas</file>  
+      <file>Aircraft/Mirage-2000/Nasal/SAS.nas</file>
+      <file>Aircraft/Mirage-2000/Models/Interior/Panel/Instruments/transpondeur/transpondeur.nas</file> 
+      <file>Aircraft/Mirage-2000/Models/Interior/Panel/Instruments/Center-mfd/ND.nas</file>
+ 
     </mirage2000>
+    
+    <electrics>
+      <file>Aircraft/Mirage-2000/Nasal/m2000-5-electrical.nas</file>
+    </electrics>
+    
+    <hydraulics>
+      <file>Aircraft/Mirage-2000/Nasal/m2000-5-hydraulical.nas</file>
+    </hydraulics>
+    <fuel>
+      <file>Aircraft/Mirage-2000/Nasal/m2000-5-fuel.nas</file>
+    </fuel>
+    
     <aar>
       <file>Aircraft/Generic/aar.nas</file>
     </aar>
@@ -655,17 +729,16 @@
     </hud>
     <radar>
       <file>Aircraft/Mirage-2000/Nasal/radar2.nas</file> 
-      <!--<file>Aircraft/Instruments-3d/radar2/radar2.nas</file>-->
     </radar>
     <environment>
       <file>Aircraft/Mirage-2000/Nasal/environment.nas</file>
     </environment>
+    
     <guns>
       <file>Aircraft/Mirage-2000/Nasal/weapons.nas</file>
     </guns>
     <instrumentation>
       <file>Aircraft/Mirage-2000/Nasal/instrumentation.nas</file>
-      <script>#instrumentation.initIns();</script>
     </instrumentation>
     <load>
       <file>Aircraft/Mirage-2000/Nasal/ext_stores.nas</file>
@@ -674,20 +747,22 @@
       <file>Aircraft/Mirage-2000/Nasal/missile.nas</file>
       <file>Aircraft/Mirage-2000/Missiles/Loading_Missiles.nas</file>
     </missile>
-    <engines>
+    
+   <engines>
       <file>Aircraft/Mirage-2000/Nasal/generic-yasim-engine.nas</file>
       <script>
-        var engine1 = engines.Jet.new(0, 0, 0.01, 5.21, 3, 5, 1, 6);
-        setlistener("sim/signals/fdm-initialized", func
+        var engine1 = engines.Jet.new(0, 0, 0.01, 20, 3, 5, 30, 15);
+        var EngineListener = setlistener("sim/signals/fdm-initialized", func
         {
           engine1.init();
+          removelistener(EngineListener);
         }, 0, 0);
        </script>
     </engines>
-    <MP>
+    <!--<MP>
       <file>Aircraft/Mirage-2000/Nasal/MPstring.nas</file>
       <script>#MP.makestring();</script>
-    </MP>
+    </MP>-->
     <tanker>
       <file>Aircraft/Mirage-2000/Nasal/tanker.nas</file>
     </tanker>

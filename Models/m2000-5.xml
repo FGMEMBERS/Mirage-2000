@@ -18,9 +18,9 @@
       var float_0 = self.getNode("sim/multiplay/generic/float[0]", 1);
       var float_1 = self.getNode("sim/multiplay/generic/float[1]", 1);
       
-      var crew_door = self.getNode("instrumentation/doors/crew/position-norm", 1);
-      var passenger_door = self.getNode("instrumentation/doors/passenger/position-norm", 1);
-    
+      var crew_door = self.getNode("sim/model/door-positions/crew/position-norm", 1);
+      var passenger_door = self.getNode("sim/model/door-positions/passenger/position-norm", 1);
+      
       crew_door.alias(float_0);
       passenger_door.alias(float_1);
       #print("multiplay");
@@ -146,68 +146,15 @@
     <property-base>sim/model/livery</property-base>
     <texture-prop>texture</texture-prop>
     <texture>texture.png</texture>
-    <specular>
-      <red-prop>specular/red</red-prop>
-      <green-prop>specular/green</green-prop>
-      <blue-prop>specular/blue</blue-prop>
-    </specular>
-   
     <emission>
       <red-prop>emission/red</red-prop>
       <green-prop>emission/green</green-prop>
       <blue-prop>emission/blue</blue-prop>
-      <condition>
-        <not><property>sim/rendering/rembrandt/enabled</property></not>
-      </condition>
     </emission>
-    
   </animation>
 
   <effect>
-    <inherits-from>/Effects/model-combined-deferred</inherits-from>
-    <condition>
-      <property>sim/rendering/rembrandt/enabled</property>
-    </condition>
-    <object-name>fuselage</object-name>
-    <object-name>queue</object-name>
-    <object-name>ailes</object-name>
-    <object-name>slatG1</object-name>
-    <object-name>slatG2</object-name>
-    <object-name>slatD1</object-name>
-    <object-name>slatD2</object-name>
-    <object-name>aileronG</object-name>
-    <object-name>elevonG</object-name>
-    <object-name>aileronD</object-name>
-    <object-name>elevonD</object-name>
-    <object-name>direction</object-name>
-    <object-name>spoilerGH</object-name>
-    <object-name>spoilerDH</object-name>
-    <object-name>spoilerGB</object-name>
-    <object-name>spoilerDB</object-name>
-    <object-name>direction</object-name>
-    <object-name>entrees</object-name>
-    <object-name>souris</object-name>
-    <object-name>canope</object-name>
-    <object-name>antennes</object-name>
-    <object-name>tuyere</object-name>
-    <object-name>porteA1</object-name>
-    <object-name>porteA2</object-name>
-    <object-name>porteG1</object-name>
-    <object-name>porteG2</object-name>
-    <object-name>porteD1</object-name>
-    <object-name>porteD2</object-name>
-    <object-name>air</object-name>
-    <object-name>perche</object-name>
-    <object-name>ailettes</object-name>
-    <object-name>tmp0</object-name>
-    <object-name>tmp1</object-name>
-  </effect>
-
-  <effect>
     <inherits-from>Aircraft/Generic/Effects/Fuselagereflect</inherits-from>
-    <condition>
-      <not><property>sim/rendering/rembrandt/enabled</property></not>
-    </condition>
     <object-name>fuselage</object-name>
     <object-name>queue</object-name>
     <object-name>ailes</object-name>
@@ -259,12 +206,6 @@
     <property-base>sim/model/livery-tank</property-base>
     <texture-prop>texture</texture-prop>
     <texture>External-objects/tank1700l/tank1700.png</texture>
-    <specular>
-      <red-prop>specular/red</red-prop>
-      <green-prop>specular/green</green-prop>
-      <blue-prop>specular/blue</blue-prop>
-    </specular>
-
     <emission>
       <red-prop>emission/red</red-prop>
       <green-prop>emission/green</green-prop>
@@ -273,41 +214,25 @@
   </animation>
   -->
 
-  <animation>
-    <type>shader</type>
-    <shader>chrome</shader>
-    <texture>Aircraft/Generic/Effects/glass_shader.png</texture>
-    <object-name>vitres</object-name>
-    <object-name>verriere</object-name>
-  </animation>
-
-  <animation>
-    <type>noshadow</type>
-    <object-name>vitres</object-name>
-    <object-name>verriere</object-name>
-  </animation>
-
-  <!--  REMBRANDT support for transparent objects-->
+  <!-- working for Rembrandt -->
   <effect>
-    <inherits-from>Effects/model-transparent</inherits-from>
-    <condition>
-      <property>sim/rendering/rembrandt/enabled</property>
-    </condition>
+    <inherits-from>Aircraft/Mirage-2000/Models/Effects/Glass/glass</inherits-from>
     <object-name>vitres</object-name>
     <object-name>verriere</object-name>
   </effect>
-
+  
+  <!-- working for Rembrandt -->
+  <effect>
+    <inherits-from>Effects/model-transparent</inherits-from>
+    <object-name>vitres</object-name>
+    <object-name>verriere</object-name>
+  </effect>
+  
   <!-- Intérieur -->
   <model>
-    <name>Interieur</name>
+    <usage>interior</usage>
     <path>Aircraft/Mirage-2000/Models/Interior/interior.xml</path>
   </model>
-
-  <!-- For Rembrandt-->
-  <animation>
-    <type>noshadow</type>
-    <object-name>Interieur</object-name>
-  </animation>
 
   <!-- Externals objects  -->
   <model>
@@ -344,7 +269,7 @@
     <offsets>
       <x-m> 6.970 </x-m>
       <y-m> 0.000 </y-m>
-      <z-m> 0.150 </z-m>
+      <z-m> -1.1 </z-m>
     </offsets>
   </model> 
 
@@ -379,16 +304,6 @@
     </offsets>
   </model>
 
-  <!-- Flamme
-  <model>
-    <path>Aircraft/Mirage-2000/Models/Effects/flammes/flamme.xml</path>
-    <offsets>
-      <x-m>  6.319 </x-m>
-      <y-m>  0.000 </y-m>
-      <z-m> -0.527 </z-m>
-    </offsets>
-  </model> -->
-
   <!-- Flamme -->
   <model>
     <path>Aircraft/Mirage-2000/Models/Effects/flammes/combustion.xml</path>
@@ -419,7 +334,7 @@
   </model>
 
   <model>
-    <path>Aircraft/Mirage-2000/Models/Effects/tiptrail/tiptrail.xml</path>
+    <path>Aircraft/Mirage-2000/Models/Effects/tiptrail/left_tiptrail.xml</path>
     <offsets>
       <x-m>  4.871 </x-m>
       <y-m> -4.518 </y-m>
@@ -428,14 +343,33 @@
   </model>
 
   <model>
-    <path>Aircraft/Mirage-2000/Models/Effects/tiptrail/tiptrail.xml</path>
+    <path>Aircraft/Mirage-2000/Models/Effects/tiptrail/right_tiptrail.xml</path>
     <offsets>
       <x-m>  4.871 </x-m>
       <y-m>  4.518 </y-m>
       <z-m> -1.296 </z-m>
     </offsets>
   </model>
-
+ 
+  <!-- Ailettes -->
+  <model>
+    <path>Aircraft/Mirage-2000/Models/Effects/tiptrail/left_tiptrail.xml</path>
+    <offsets>
+      <x-m> -1.02687 </x-m>
+      <y-m> -1.12742 </y-m>
+      <z-m> -0.41660 </z-m>
+    </offsets>
+  </model>
+  
+  <model>
+    <path>Aircraft/Mirage-2000/Models/Effects/tiptrail/right_tiptrail.xml</path>
+    <offsets>
+      <x-m> -1.02687 </x-m>
+      <y-m>  1.12742 </y-m>
+      <z-m> -0.41660 </z-m>
+    </offsets>
+  </model>
+  
   <!-- Effets sur le sol -->
   <!-- Roue avant -->
   <model>
@@ -472,7 +406,7 @@
     <type>rotate</type>
     <object-name>aileronG</object-name>
     <property>surface-positions/left-aileron-pos-norm</property>
-    <factor> 10 </factor>
+    <factor> 16 </factor>
     <axis>
       <x1-m>  4.321 </x1-m>
       <y1-m> -4.290 </y1-m>
@@ -487,7 +421,7 @@
     <type>rotate</type>
     <object-name>aileronG</object-name>
     <property>surface-positions/elevator-pos-norm</property>
-    <factor> 10 </factor>
+    <factor> 16 </factor>
     <axis>
       <x1-m>  4.321 </x1-m>
       <y1-m> -4.290 </y1-m>
@@ -502,7 +436,7 @@
     <type>rotate</type>
     <object-name>aileronD</object-name>
     <property>surface-positions/right-aileron-pos-norm</property>
-    <factor> 10 </factor>
+    <factor> 16 </factor>
     <axis>
       <x1-m>  4.309 </x1-m>
       <y1-m>  2.324 </y1-m>
@@ -517,7 +451,7 @@
     <type>rotate</type>
     <object-name>aileronD</object-name>
     <property>surface-positions/elevator-pos-norm</property>
-    <factor> 10 </factor>
+    <factor> 16 </factor>
     <axis>
       <x1-m>  4.309 </x1-m>
       <y1-m>  2.324 </y1-m>
@@ -533,7 +467,7 @@
     <type>rotate</type>
     <object-name>elevonG</object-name>
     <property>surface-positions/elevator-pos-norm</property>
-    <factor> 10 </factor>
+    <factor> 16 </factor>
     <axis>
       <x1-m>  4.309 </x1-m>
       <y1-m> -2.322 </y1-m>
@@ -548,7 +482,7 @@
     <type>rotate</type>
     <object-name>elevonD</object-name>
     <property>surface-positions/elevator-pos-norm</property>
-    <factor> 10 </factor>
+    <factor> 16 </factor>
     <axis>
       <x1-m>  4.308 </x1-m>
       <y1-m>  0.873 </y1-m>
@@ -564,7 +498,7 @@
     <type>rotate</type>
     <object-name>direction</object-name>
     <property>surface-positions/rudder-pos-norm</property>
-    <factor> -15 </factor>
+    <factor> -14 </factor>
     <axis>
       <x1-m> 5.895 </x1-m>
       <y1-m> 0.000 </y1-m>
@@ -575,6 +509,209 @@
     </axis>
   </animation>
 
+  <!-- Slats -->
+  <animation>
+    <type>translate</type>
+    <object-name>slatG1</object-name>
+    <property>surface-positions/slat-pos-norm</property>
+    <factor> -0.15 </factor>
+    <axis>
+      <x> 1 </x>
+      <y> 0 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+  
+  <animation>
+    <type>translate</type>
+    <object-name>slatG1</object-name>
+    <property>surface-positions/slat-pos-norm</property>
+    <factor> -0.1 </factor>
+    <axis>
+      <x> 0 </x>
+      <y> 1 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+  
+  <animation>
+    <type>rotate</type>
+    <object-name>slatG1</object-name>
+    <property>surface-positions/slat-pos-norm</property>
+    <factor> -5 </factor>
+    <axis>
+      <x1-m>  1.377 </x1-m>
+      <y1-m> -2.529 </y1-m>
+      <z1-m> -1.122 </z1-m>
+      <x2-m> -0.700 </x2-m>
+      <y2-m> -1.198 </y2-m>
+      <z2-m> -1.014 </z2-m>
+    </axis>
+  </animation>
+  
+  <animation>
+    <type>translate</type>
+    <object-name>slatD1</object-name>
+    <property>surface-positions/slat-pos-norm</property>
+    <factor> -0.15 </factor>
+    <axis>
+      <x> 1 </x>
+      <y> 0 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+  
+  <animation>
+    <type>translate</type>
+    <object-name>slatD1</object-name>
+    <property>surface-positions/slat-pos-norm</property>
+    <factor> 0.1 </factor>
+    <axis>
+      <x> 0 </x>
+      <y> 1 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+  
+  <animation>
+    <type>rotate</type>
+    <object-name>slatD1</object-name>
+    <property>surface-positions/slat-pos-norm</property>
+    <factor> -5 </factor>
+    <axis>
+      <x1-m> -0.700 </x1-m>
+      <y1-m>  1.198 </y1-m>
+      <z1-m> -1.014 </z1-m>
+      <x2-m>  1.377 </x2-m>
+      <y2-m>  2.529 </y2-m>
+      <z2-m> -1.122 </z2-m>
+    </axis>
+  </animation>
+  
+  <animation>
+    <type>translate</type>
+    <object-name>slatG2</object-name>
+    <property>surface-positions/slat-pos-norm</property>
+    <factor> -0.15 </factor>
+    <axis>
+      <x> 1 </x>
+      <y> 0 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+  
+  <animation>
+    <type>translate</type>
+    <object-name>slatG2</object-name>
+    <property>surface-positions/slat-pos-norm</property>
+    <factor> -0.1 </factor>
+    <axis>
+      <x> 0 </x>
+      <y> 1 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+  
+  <animation>
+    <type>rotate</type>
+    <object-name>slatG2</object-name>
+    <property>surface-positions/slat-pos-norm</property>
+    <interpolation>
+      <entry><ind>  0.0 </ind><dep>  0 </dep></entry>
+      <entry><ind>  0.3 </ind><dep>  0 </dep></entry>
+      <entry><ind>  1.0 </ind><dep> -1 </dep></entry>
+    </interpolation>
+    <axis>
+      <x1-m>  1.37804 </x1-m>
+      <y1-m> -2.52930 </y1-m>
+      <z1-m> -1.07597 </z1-m>
+      <x2-m>  1.37709 </x2-m>
+      <y2-m> -2.52926 </y2-m>
+      <z2-m> -1.16815 </z2-m>
+    </axis>
+  </animation>
+  
+  <animation>
+    <type>rotate</type>
+    <object-name>slatG2</object-name>
+    <property>surface-positions/slat-pos-norm</property>
+    <interpolation>
+      <entry><ind>  0.0 </ind><dep>   0 </dep></entry>
+      <entry><ind>  0.3 </ind><dep>   0 </dep></entry>
+      <entry><ind>  1.0 </ind><dep> -35 </dep></entry>
+    </interpolation>
+    <axis>
+      <x1-m>  3.894 </x1-m>
+      <y1-m> -4.142 </y1-m>
+      <z1-m> -1.245 </z1-m>
+      <x2-m>  1.377 </x2-m>
+      <y2-m> -2.529 </y2-m>
+      <z2-m> -1.122 </z2-m>
+    </axis>
+  </animation>
+  
+  <animation>
+    <type>translate</type>
+    <object-name>slatD2</object-name>
+    <property>surface-positions/slat-pos-norm</property>
+    <factor> -0.15 </factor>
+    <axis>
+      <x> 1 </x>
+      <y> 0 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+  
+  <animation>
+    <type>translate</type>
+    <object-name>slatD2</object-name>
+    <property>surface-positions/slat-pos-norm</property>
+    <factor> 0.1 </factor>
+    <axis>
+      <x> 0 </x>
+      <y> 1 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+  
+  <animation>
+    <type>rotate</type>
+    <object-name>slatD2</object-name>
+    <property>surface-positions/slat-pos-norm</property>
+    <interpolation>
+      <entry><ind>  0.0 </ind><dep> 0 </dep></entry>
+      <entry><ind>  0.3 </ind><dep> 0 </dep></entry>
+      <entry><ind>  1.0 </ind><dep> 1 </dep></entry>
+    </interpolation>
+    <axis>
+      <x1-m>  1.37804 </x1-m>
+      <y1-m>  2.52930 </y1-m>
+      <z1-m> -1.07597 </z1-m>
+      <x2-m>  1.37709 </x2-m>
+      <y2-m>  2.52926 </y2-m>
+      <z2-m> -1.16815 </z2-m>
+    </axis>
+  </animation>
+  
+  <animation>
+    <type>rotate</type>
+    <object-name>slatD2</object-name>
+    <property>surface-positions/slat-pos-norm</property>
+    <interpolation>
+      <entry><ind>  0.0 </ind><dep>   0 </dep></entry>
+      <entry><ind>  0.3 </ind><dep>   0 </dep></entry>
+      <entry><ind>  1.0 </ind><dep> -35 </dep></entry>
+    </interpolation>
+    <axis>
+      <x1-m>  1.377 </x1-m>
+      <y1-m>  2.529 </y1-m>
+      <z1-m> -1.122 </z1-m>
+      <x2-m>  3.894 </x2-m>
+      <y2-m>  4.142 </y2-m>
+      <z2-m> -1.245 </z2-m>
+    </axis>
+  </animation>
+  
   <!-- Spoilers -->
   <animation>
     <type>rotate</type>
@@ -1214,115 +1351,6 @@
     </axis>
   </animation>
 
-  <!-- Slats -->
-  <animation>
-    <type>translate</type>
-    <object-name>slatG1</object-name>
-    <property>surface-positions/slat-pos-norm</property>
-    <factor> -0.15 </factor>
-    <axis>
-      <x> 1 </x>
-      <y> 0 </y>
-      <z> 0 </z>
-    </axis>
-  </animation>
-
-  <animation>
-    <type>rotate</type>
-    <object-name>slatG1</object-name>
-    <property>surface-positions/slat-pos-norm</property>
-    <factor> -5 </factor>
-    <axis>
-      <x1-m>  1.378 </x1-m>
-      <y1-m> -2.529 </y1-m>
-      <z1-m> -1.110 </z1-m>
-      <x2-m> -0.701 </x2-m>
-      <y2-m> -1.198 </y2-m>
-      <z2-m> -1.001 </z2-m>
-    </axis>
-  </animation>
-
-  <animation>
-    <type>translate</type>
-    <object-name>slatD1</object-name>
-    <property>surface-positions/slat-pos-norm</property>
-    <factor> -0.15 </factor>
-    <axis>
-      <x> 1 </x>
-      <y> 0 </y>
-      <z> 0 </z>
-    </axis>
-  </animation>
-
-  <animation>
-    <type>rotate</type>
-    <object-name>slatD1</object-name>
-    <property>surface-positions/slat-pos-norm</property>
-    <factor> -5 </factor>
-    <axis>
-      <x1-m> -0.701 </x1-m>
-      <y1-m>  1.198 </y1-m>
-      <z1-m> -1.001 </z1-m>
-      <x2-m>  1.378 </x2-m>
-      <y2-m>  2.529 </y2-m>
-      <z2-m> -1.110 </z2-m>
-    </axis>
-  </animation>
-
-  <animation>
-    <type>translate</type>
-    <object-name>slatG2</object-name>
-    <property>surface-positions/slat-pos-norm</property>
-    <factor> -0.18 </factor>
-    <axis>
-      <x> 1 </x>
-      <y> 0 </y>
-      <z> 0 </z>
-    </axis>
-  </animation>
-
-  <animation>
-    <type>rotate</type>
-    <object-name>slatG2</object-name>
-    <property>surface-positions/slat-pos-norm</property>
-    <factor> -7 </factor>
-    <axis>
-      <x1-m>  3.894 </x1-m>
-      <y1-m> -4.142 </y1-m>
-      <z1-m> -1.241 </z1-m>
-      <x2-m>  1.378 </x2-m>
-      <y2-m> -2.529 </y2-m>
-      <z2-m> -1.110 </z2-m>
-    </axis>
-  </animation>
-
-  <animation>
-    <type>translate</type>
-    <object-name>slatD2</object-name>
-    <property>surface-positions/slat-pos-norm</property>
-    <factor> -0.18 </factor>
-    <axis>
-      <x> 1 </x>
-      <y> 0 </y>
-      <z> 0 </z>
-    </axis>
-  </animation>
-
-  <animation>
-    <type>rotate</type>
-    <object-name>slatD2</object-name>
-    <property>surface-positions/slat-pos-norm</property>
-    <factor> -7 </factor>
-    <axis>
-      <x1-m>  1.378 </x1-m>
-      <y1-m>  2.529 </y1-m>
-      <z1-m> -1.110 </z1-m>
-      <x2-m>  3.894 </x2-m>
-      <y2-m>  4.142 </y2-m>
-      <z2-m> -1.241 </z2-m>
-    </axis>
-  </animation>
-
   <!-- Ajout des effets lumineux -->
   <model>
     <path>Aircraft/Mirage-2000/Models/lights/beacon.xml</path>
@@ -1352,6 +1380,15 @@
   </model>
 
   <model>
+    <path>Aircraft/Mirage-2000/Models/lights/StrobeLight.xml</path>
+    <offsets>
+      <x-m>  4.119 </x-m>
+      <y-m> -4.408 </y-m>
+      <z-m> -1.263 </z-m>
+    </offsets>
+  </model>
+  
+  <model>
     <path>Aircraft/Mirage-2000/Models/lights/GreenLight.xml</path>
     <offsets>
       <x-m>  4.070 </x-m>
@@ -1361,16 +1398,7 @@
   </model>
 
   <model>
-    <path>Aircraft/Mirage-2000/Models/lights/StrobeWhite.xml</path>
-    <offsets>
-      <x-m>  4.119 </x-m>
-      <y-m> -4.408 </y-m>
-      <z-m> -1.263 </z-m>
-    </offsets>
-  </model>
-
-  <model>
-    <path>Aircraft/Mirage-2000/Models/lights/StrobeWhite.xml</path>
+    <path>Aircraft/Mirage-2000/Models/lights/StrobeLight.xml</path>
     <offsets>
       <x-m>  4.119 </x-m>
       <y-m>  4.408 </y-m>

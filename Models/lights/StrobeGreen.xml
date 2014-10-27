@@ -58,4 +58,12 @@
     </interpolation>
   </animation>
 
+  <animation>
+    <type>select</type>
+    <object-name>Light</object-name>
+    <condition>
+      <property>/systems/electrical/volts</property>
+    </condition>
+  </animation>
+  
 </PropertyList>
