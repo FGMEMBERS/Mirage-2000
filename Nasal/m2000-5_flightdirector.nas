@@ -100,15 +100,16 @@ var FD_set_mode = func(btn){
     }
 
 ########  FMS/NAV BUTTONS  ############
+#Selection of the Autopilot source
 var nav_src_set=func(){
     setprop(Lateral_arm,"");
     setprop(Vertical_arm,"");
     count_1+=1;
-    if(count_1>1)count_1=0;    
+    if(count_1>3)count_1=0;    
     if(count_1==0)setprop(NAVprop,"NAV1");
     if(count_1==1)setprop(NAVprop,"NAV2");
-#   if(count_1==2)setprop(NAVprop,"TACAN"); 
-#   if(count_1==3)setprop(NAVprop,"FMS");          
+   if(count_1==2)setprop(NAVprop,"TACAN"); 
+   if(count_1==3)setprop(NAVprop,"FMS");          
 }
 
 ########### ARM VALID NAV MODE ################
@@ -125,6 +126,8 @@ var set_nav_mode=func{
             if(getprop("instrumentation/nav[1]/nav-loc"))setprop(Lateral_arm,"LOC") else setprop(Lateral_arm,"VOR");
             setprop(Lateral,"HDG");
         }
+    }elsif(NAVSRC=="TACAN"){
+        if(getprop("instrumentation/tacan/in-range"))setprop(Lateral,"LNAV");
     }elsif(NAVSRC=="FMS"){
         if(getprop("autopilot/route-manager/active"))setprop(Lateral,"LNAV");
     }
@@ -196,6 +199,7 @@ setlistener(NAVprop, func(Nv) {
 var update_nav=func{
     var sgnl = "- - -";
     var gs =0;
+
     if(NAVSRC == "NAV1"){
 
         if(getprop("instrumentation/nav/data-is-valid"))
@@ -237,16 +241,34 @@ var update_nav=func{
         setprop("autopilot/internal/to-flag",getprop("instrumentation/nav[1]/to-flag"));
         setprop("autopilot/internal/from-flag",getprop("instrumentation/nav[1]/from-flag"));
         setprop(DMEprop,"instrumentation/nav[1]/frequencies/selected-mhz");
+        
+    }elsif(NAVSRC == "TACAN"){
+            if(getprop("instrumentation/tacan/indicated-bearing-true-deg")!= nil){        
+                setprop("autopilot/internal/in-range",getprop("instrumentation/tacan/in-range"));
+                var dst=getprop("instrumentation/tacan/indicated-distance-nm") or 0;
+                dst*=0.000539; # <- dont know why but Ok
+                setprop("autopilot/internal/nav-distance",dst);
+                setprop("autopilot/internal/nav-id",getprop("instrumentation/tacan/ident")); #
+                
+                course_offset("instrumentation/tacan/indicated-bearing-true-deg");
+                setprop("autopilot/internal/radial-selected-deg",getprop("instrumentation/tacan/indicated-bearing-true-deg"));
+            }
 
     }elsif(NAVSRC == "FMS"){
-        setprop("autopilot/internal/nav-type","FMS1");
-        setprop("autopilot/internal/in-range",1);
-        setprop("autopilot/internal/gs-in-range",0);
-        setprop("autopilot/internal/nav-distance",getprop("instrumentation/gps/wp/wp[1]/distance-nm"));
-        setprop("autopilot/internal/nav-id",getprop("instrumentation/gps/wp/wp[1]/ID"));
-        course_offset("instrumentation/gps/wp/wp[1]/bearing-mag-deg");
-        setprop("autopilot/internal/to-flag",getprop("instrumentation/gps/wp/wp[1]/to-flag"));
-        setprop("autopilot/internal/from-flag",getprop("instrumentation/gps/wp/wp[1]/from-flag"));
+        
+        
+        if(getprop("autopilot/route-manager/wp/bearing-deg") != nil){
+    
+                setprop("autopilot/internal/nav-type","FMS1");
+                setprop("autopilot/internal/in-range",1);
+                setprop("autopilot/internal/gs-in-range",0);
+                setprop("autopilot/internal/nav-distance",getprop("autopilot/route-manager/wp/dist"));
+                setprop("autopilot/internal/nav-id",getprop("autopilot/route-manager/wp/id"));
+                course_offset("autopilot/route-manager/wp/bearing-deg");
+                setprop("autopilot/internal/radial-selected-deg",getprop("autopilot/route-manager/wp/bearing-deg"));
+                #setprop("autopilot/internal/to-flag",getprop("instrumentation/gps/wp/wp[1]/to-flag"));
+                #setprop("autopilot/internal/from-flag",getprop("instrumentation/gps/wp/wp[1]/from-flag"));
+        }
     }
 }
 
@@ -361,7 +383,7 @@ var elev_ctrl=getprop("controls/flight/elevator");
 var roll_ctrl=getprop("controls/flight/aileron");
 
 #--Control stick position
-	stick_pos = ((elev_ctrl > deadZ_pitch or -deadZ_pitch > elev_ctrl) or (roll_ctrl > deadZ_roll or -deadZ_roll > roll_ctrl)) ? 1 : 0;
+  stick_pos = ((elev_ctrl > deadZ_pitch or -deadZ_pitch > elev_ctrl) or (roll_ctrl > deadZ_roll or -deadZ_roll > roll_ctrl)) ? 1 : 0;
 
     var L_mode=getprop(Lateral);
     var V_mode=getprop(Vertical);
@@ -381,9 +403,10 @@ var roll_ctrl=getprop("controls/flight/aileron");
      
     count+=1;
     if(count>2)count=0;
-    if(pa_stat=="AP1"){
-        settimer(update_fd, 0.1);
-    }else{
-        settimer(update_fd, 1);
-    }
+    
+    #if(pa_stat=="AP1"){
+        #settimer(update_fd, 0.1);
+    #}else{
+        #settimer(update_fd, 1);
+    #}
 }

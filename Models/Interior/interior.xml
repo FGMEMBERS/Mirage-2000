@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 
 <PropertyList>
-
   <path>interior.ac</path>
 
   <animation>
@@ -15,31 +14,14 @@
     <object-name>intverriere</object-name>
   </animation>
 
-  <animation>
-    <type>shader</type>
-    <shader>chrome</shader>
-    <texture>Aircraft/Generic/Effects/glass_shader.png</texture>
-    <object-name>intvitres</object-name>
-    <object-name>intverriere</object-name>
-  </animation>
-
-  <animation>
-    <type>noshadow</type>
-    <object-name>intvitres</object-name>
-    <object-name>intverriere</object-name>
-  </animation>
-
-  <!--  REMBRANDT support for transparent objects-->
+  <!-- working for Rembrandt -->
   <effect>
-    <inherits-from>Effects/model-transparent</inherits-from>
-    <condition>
-      <property>sim/rendering/rembrandt/enabled</property>
-    </condition>
+    <inherits-from>Aircraft/Mirage-2000/Models/Effects/Glass/glass</inherits-from>
     <object-name>intvitres</object-name>
     <object-name>intverriere</object-name>
-  </effect> 
-
-  <!-- Tableau de bord -->
+  </effect>
+  
+    <!-- Tableau de bord -->
   <model>
     <name>Panel</name>
     <path>Aircraft/Mirage-2000/Models/Interior/Panel/panel.xml</path>

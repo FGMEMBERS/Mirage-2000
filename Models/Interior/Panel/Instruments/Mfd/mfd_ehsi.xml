@@ -252,6 +252,7 @@
     <type>rotate</type>
     <object-name>EHSI-w-arrow</object-name>
     <property>orientation/heading-magnetic-deg</property>
+    <offset-deg>180</offset-deg>
     <center>
       <x-m>-0.010</x-m>
       <y-m> 0.059</y-m>

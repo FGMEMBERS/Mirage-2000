@@ -401,7 +401,7 @@
     </action>
   </animation>
   
-  <!-- Select A/A -->
+  <!-- Select A/A 
   <animation>
     <type>pick</type>
     <object-name>bt-h1</object-name>
@@ -428,7 +428,7 @@
         <wrap>true</wrap>
       </binding>     
     </action>
-  </animation>  
+  </animation>  -->
 
   <animation>
     <type>select</type>

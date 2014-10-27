@@ -8,11 +8,8 @@
     <texture>smoke.png</texture>
 
     <condition>
-      <property>controls/armament/trigger</property>
-      <greater-than>
-         <property>ai/submodels/submodel/count</property>
-         <value>0</value>
-      </greater-than>
+      <property>controls/armament/Gun_trigger</property>
+      <!-- <property>sim/multiplay/generic/int[10]</property> -->
     </condition>
 
     <emissive>true</emissive>
@@ -30,8 +27,9 @@
       <phi-min-deg>   -1.5 </phi-min-deg>
       <phi-max-deg>    1.5 </phi-max-deg>
       <speed-mps>
-        <value>  2 </value>
-        <spread> 0 </spread>
+        <property>/instrumentation/airspeed-indicator/indicated-speed-kt</property>
+        <factor>-0.257</factor>
+        <spread>15</spread>
       </speed-mps>
       <rotation-speed>
         <x-min-deg-sec>  5 </x-min-deg-sec>
@@ -49,9 +47,9 @@
         <spread>   0 </spread>
       </particles-per-sec>
     </counter>
-      
+
     <align>billboard</align>
-    
+
     <particle>
       <start>
         <color>
@@ -64,6 +62,7 @@
           <value> 0.01 </value>
         </size>
       </start>
+
       <end>
         <color>
           <red><value>   0.8 </value></red>
@@ -75,22 +74,21 @@
           <value> 0.15 </value>
         </size>
       </end>
-        
+
       <life-sec>
         <value> 0.10 </value>
       </life-sec>
-        
+
       <mass-kg>  0.25 </mass-kg>
       <radius-m> 0.10 </radius-m>
     </particle>
-      
+
     <program>
       <fluid>     air </fluid>
       <gravity> false </gravity>
       <wind>    false </wind>
     </program>
-      
+
   </particlesystem>
 
 </PropertyList>
-

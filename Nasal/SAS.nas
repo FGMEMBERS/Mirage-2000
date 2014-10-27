@@ -6,7 +6,7 @@ var t_increment     = 0.0075;
 var p_lo_speed      = 300;
 var p_lo_speed_sqr  = p_lo_speed * p_lo_speed;
 var p_vlo_speed     = 160;
-var gear_lo_speed   = 10;
+var gear_lo_speed   = 15;
 var gear_lo_speed_sqr = gear_lo_speed * gear_lo_speed;
 
 
@@ -26,7 +26,7 @@ var maxG = 10 ; #mirage 2000 max everyday 9 G; overload 11G and 12 G will damage
 var minG = -4; #-3.5
 
 # Orientation and velocities
-var Roll       = props.globals.getNode("orientation/roll-deg");
+var RollRate   = props.globals.getNode("orientation/roll-rate-degps");
 var PitchRate  = props.globals.getNode("orientation/pitch-rate-degps", 1);
 var YawRate    = props.globals.getNode("orientation/yaw-rate-degps", 1);
 var AirSpeed   = props.globals.getNode("velocities/airspeed-kt");
@@ -73,6 +73,7 @@ var w_sweep        = 0;
 # var e_trim         = 0;
 var steering       = 0;
 var dt_mva_vec     = [0,0,0,0,0,0,0];
+var dt_Roll_vec    = [0,0,0,0,0,0,0];
 
 
 
@@ -80,16 +81,60 @@ var dt_mva_vec     = [0,0,0,0,0,0,0];
 if ( ElevatorTrim.getValue() != nil ) { e_trim = ElevatorTrim.getValue() }
 
 var trimUp = func {
-	e_trim += (airspeed < 120.0) ? t_increment : t_increment * 14400 / airspeed_sqr;
-	if (e_trim > 1) e_trim = 1;
-	ElevatorTrim.setValue(e_trim);
+  e_trim += (airspeed < 120.0) ? t_increment : t_increment * 14400 / airspeed_sqr;
+  if (e_trim > 1) e_trim = 1;
+  ElevatorTrim.setValue(e_trim);
 }
 
 var trimDown = func {
-	e_trim -= (airspeed < 120.0) ? t_increment : t_increment * 14400 / airspeed_sqr;
-	if (e_trim < -1) e_trim = -1;
-	ElevatorTrim.setValue(e_trim);
+  e_trim -= (airspeed < 120.0) ? t_increment : t_increment * 14400 / airspeed_sqr;
+  if (e_trim < -1) e_trim = -1;
+  ElevatorTrim.setValue(e_trim);
 }
+
+
+
+######################################SAS initialisation #######################################
+var init_SAS = func {
+
+    var SAS_rudder   = nil;
+    var SAS_elevator = nil; 
+    var SAS_aileron  = nil;
+
+
+    #if(SAS_rudder == nil){
+    #    var SAS_rudder = setlistener("/controls/flight/rudder", func {
+    #            Update_SAS();
+    #    });
+    #}
+    #if(SAS_aileron == nil){
+    #     var SAS_aileron = setlistener("controls/flight/aileron", func {
+    #            Update_SAS();
+    #      });
+    #}
+    #if(SAS_elevator == nil){
+    #     var SAS_elevator = setlistener("controls/flight/elevator", func {
+    #            Update_SAS();
+    #      });
+    #}
+
+
+}
+
+
+######################################SAS double running avoidance #######################################
+var Update_SAS = func (){
+    
+    if(SAS_Loop_running == 0){
+        SAS_Loop_running = 1;
+        computeSAS();
+        
+        
+        #settimer(computeSAS,0.025);    
+        #SAS_Loop_running = 0;
+    } 
+}
+
 
 
 
@@ -133,13 +178,13 @@ var computeSAS = func {
 
 
 
-	var roll     = Roll.getValue();
-	var roll_rad = roll * 0.017453293;
-	airspeed     = AirSpeed.getValue();
-	airspeed_sqr = airspeed * airspeed;
-	var raw_e    = RawElev.getValue();
-	var raw_a    = RawAileron.getValue();
-	var a_trim   = AileronTrim.getValue();
+  var roll     = RollRate.getValue();
+  var roll_rad = roll * 0.017453293;
+  airspeed     = AirSpeed.getValue();
+  airspeed_sqr = airspeed * airspeed;
+  var raw_e    = RawElev.getValue();
+  var raw_a    = RawAileron.getValue();
+  var a_trim   = AileronTrim.getValue();
         var alpha = getprop ("/orientation/alpha-deg");
         var  gload = getprop ("/accelerations/pilot-g");
         var raw_r    = RawRudder.getValue();
@@ -152,92 +197,118 @@ if(getprop ("/autopilot/locks/AP-status")=="AP1"){
         SasRoll.setValue(raw_a);
         SasYaw.setValue(raw_r);
         SasGear.setValue(raw_r);
- }else{
+  
+  
+        
+ #############The electrics commands are feeded by the hydraulique circuit n°1       
+ }elsif (getprop("/systems/hydraulical/circuit1_press")<190){
+ 
+ SasPitch.setValue(1);
+ SasRoll.setValue(0);
+ SasYaw.setValue(0);
+ SasGear.setValue(0);
+ #airbrakes should here
 
-		# Pitch Channel
-		var pitch_rate = PitchRate.getValue();
-		var yaw_rate   = YawRate.getValue();
-		var p_bias     = 0;
-		var smooth_e   = raw_e;
-		var dlc_trim   = 0;
-		var gain       = 0;
-		
-		
-		#Sqare gain :Attenuate neutral positions
-		p_input = raw_e * raw_e;
-		#p_input = math.int(p_input/1000)*1000;
-		if(raw_e<0){ p_input *= -1;}
-		
-		#var wbody = getprop("/velocities/wBody-fps")*FT2M;
-		#print("gload :", gload, " wBody : ",getprop("/velocities/wBody-fps")*FT2M," ratio :", 2*(wbody)/gload);
-		
-		 #NB : airspeed in this case has to be changed in "absolute" speed
-		if(myMach > (0.8)){
-		
-		  #if(p_input
-		  #p_input *= (600/p_lo_speed_sqr) / (myMach*myMach);  
-		  #p_input = raw_e * raw_e* raw_e;
-		
-		}elsif(airspeed < p_vlo_speed){
-		#Gain depend of Aoas
-		
-		}
-		
-			
-		
-		last_e = p_input;
-		SasPitch.setValue(p_input);
-		#SASpitch = p_input; # Used by adverse.nas        
+############################SAS PART###################################
+} else{
+    # Pitch Channel
+    var pitch_rate = PitchRate.getValue();
+    var yaw_rate   = YawRate.getValue();
+    var p_bias     = 0;
+    var smooth_e   = raw_e;
+    var dlc_trim   = 0;
+    var gain       = 0;
+    
+    
+    #Sqare gain :Attenuate neutral positions
+    p_input = raw_e * raw_e;
+    #p_input = math.int(p_input/1000)*1000;
+    if(raw_e<0){ p_input *= -1;}
+    
+    #var wbody = getprop("/velocities/wBody-fps")*FT2M;
+    #print("gload :", gload, " wBody : ",getprop("/velocities/wBody-fps")*FT2M," ratio :", 2*(wbody)/gload);
+    
+     #NB : airspeed in this case has to be changed in "absolute" speed
+    if(myMach > (0.8)){
+    
+      #if(p_input
+      #p_input *= (600/p_lo_speed_sqr) / (myMach*myMach);  
+      #p_input = raw_e * raw_e* raw_e;
+    
+    }elsif(airspeed < p_vlo_speed){
+    #Gain depend of Aoas
+    
+    }
+    
+      
+    
+    last_e = p_input;
+    SasPitch.setValue(p_input);
+    #SASpitch = p_input; # Used by adverse.nas        
         
 #########################################################################################        
 
-		# Roll Channel
-		var sas_roll = 0;
-		# Squares roll input, then applies quadratic law.
-		#if (SasRollOn.getValue()) {
-		
+    # Roll Channel
+    var sas_roll = 0;
+    # Squares roll input, then applies quadratic law.
+    #if (SasRollOn.getValue()) {
+    
+                  #print("Roll rate in deg :", roll);
                   sas_roll = (raw_a * raw_a);
                   if (raw_a < 0 ) { sas_roll *= -1 }
                   sas_roll += a_trim;
-                  if (myMach > (600 /roll_lo_speed)) {
-                  sas_roll *= ((600 /roll_lo_speed)*(600 /roll_lo_speed)) / (myMach*myMach);
-				
-		  }
-		#} else {
-		#	sas_roll = raw_a + a_trim;
-		#}
-		#SASroll = sas_roll; # Used by adverse.nas
-		SasRoll.setValue(sas_roll);
-		
+                  if (myMach > (500 /roll_lo_speed)) {
+                    sas_roll *= ((500 /roll_lo_speed)*(500 /roll_lo_speed)) / (myMach*myMach);
+                  }
+                  
+                  
+                  #var tot = dt_Roll_vec[6];
+                  #for(var i=0; i < 6; i+=1) { 
+                  #    tot += dt_Roll_vec[i];
+                  #    dt_Roll_vec[i+1] = dt_Roll_vec[i];
+                  #}
+                  #print(tot/7);
+                  #dt_Roll_vec[0] = sas_roll;
+                  
+                  
+                  
+    #} else {
+    # sas_roll = raw_a + a_trim;
+    #}
+    #SASroll = sas_roll; # Used by adverse.nas
+    SasRoll.setValue(sas_roll);
+    
 #
 
 #########################################################################################
-	# Yaw Channel
-	
-	var smooth_r = raw_r;
-	#if (SasYawOn.getValue()) {
-		smooth_r = last_r + ((raw_r - last_r) * r_smooth_factor);
-		last_r = smooth_r;
-	#}
-	SasYaw.setValue(smooth_r);
-	
-	
-	
-	#Gear Channel
-	#Appli Quadratic law from low speed
-	
-	var gear_input  = raw_r;
-	
-	if (airspeed > gear_lo_speed) {
+  # Yaw Channel
+  
+  var smooth_r = raw_r;
+  #if (SasYawOn.getValue()) {
+    smooth_r = last_r + ((raw_r - last_r) * r_smooth_factor);
+    last_r = smooth_r;
+  #}
+  SasYaw.setValue(smooth_r);
+  
+  
+  
+  ################Gear Channel
+  #Appli Quadratic law from low speed#
+  #Actually, this is working in the good way with gear.
+  #We should/could add an antiskid effect to prevent little slidding
+  
+  var gear_input  = raw_r;
+  
+  if (airspeed > gear_lo_speed) {
            gear_input *= gear_lo_speed_sqr / airspeed_sqr;
            #print("raw :", raw_r," Factor :", gear_lo_speed_sqr / airspeed_sqr," gear_input :", gear_input);
-				
+        
         }
-	SasGear.setValue(gear_input);
-	
-}	
-	
-	
+  SasGear.setValue(gear_input);
+  
+} 
+  
+  
 #########################################################################################"
      #To calculate the best slats position
 
@@ -256,6 +327,17 @@ if(getprop ("/autopilot/locks/AP-status")=="AP1"){
        setprop("/controls/flight/flaps", slats);
      }
      
+ ###########################################################################################    
+ ##########  GAZ ######
+ ####Should be on the engine part !!  
+ #finally nope : The engine have a computer driven throttle
+ 
+ setprop("/controls/engines/engine[0]/reheat", 105 -( getprop("/controls/engines/engine[0]/throttle") >= 0.75)/(105-95));
+ 
+     
+     
+ #########################################################################    
+ #Stall warning !! should be in intruments   
      var stallwarning  = "0";
      if(getprop ("/gear/gear[2]/wow") == 0) {
         
@@ -267,6 +349,7 @@ if(getprop ("/autopilot/locks/AP-status")=="AP1"){
         elsif(alpha>=20){stallwarning = "1";}
         elsif(airspeed < 130){stallwarning = "1";}       
      } 
-     setprop("/sim/alarms/stall-warning", stallwarning); 
+     setprop("/sim/alarms/stall-warning", stallwarning);
+     SAS_Loop_running = 0;
 
 }

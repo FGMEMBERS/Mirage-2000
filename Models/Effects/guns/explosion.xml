@@ -37,7 +37,7 @@
 
     <counter>
       <particles-per-sec>
-        <value>  150 </value>
+        <value>  15 </value>
         <spread>   0 </spread>
       </particles-per-sec>
     </counter>
@@ -83,4 +83,3 @@
   </particlesystem>
 
 </PropertyList>
-

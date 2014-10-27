@@ -198,6 +198,8 @@ var targeted = func(){
                 latitude = MyTarget.get_Latitude();
                 bearing = MyTarget.get_bearing();
                 
+                if(speed == nil){speed=0;}
+                
                 setprop("/ai/closest/range",closeRange);
                 setprop("/ai/closest/bearing",bearing);
                 setprop("/ai/closest/heading",heading);

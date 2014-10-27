@@ -859,6 +859,14 @@
         <script>mirage2000.MOLETTE_haut();</script>     
       </binding>   
     </action>
+    <hovered>
+        <binding>
+           <command>set-tooltip</command>
+           <tooltip-id>mode-transp</tooltip-id>
+           <label>Transpondeur : %s</label>
+           <property>/instrumentation/transponder/switch/MoletteTrans</property>  
+        </binding>
+    </hovered>
   </animation>
   
     <animation>

@@ -29,14 +29,42 @@
       <repeatable>false</repeatable>
       <binding>
         <command>property-toggle</command>
-        <property>sim/model/click</property>
+        <property>/controls/switches/jettinson-button</property>
       </binding>
       <binding>
          <command>nasal</command>
          <script>load.dropTanks();</script>
       </binding> 
+      <mod-up>
+        <binding>
+         <command>property-toggle</command>
+         <property>/controls/switches/jettinson-button</property>
+        </binding>
+      </mod-up>
     </action>
+    <hovered>
+      <binding>
+         <command>set-tooltip</command>
+         <tooltip-id>jettison</tooltip-id>
+         <label>Jettison Tank</label>
+         <!--<property>instrumentation/airspeed-indicator/indicated-speed-kt</property>-->
+      </binding>
+   </hovered>
   </animation>
+  
+  <animation>
+    <type>translate</type>
+    <object-name>button</object-name>
+    <property>/controls/switches/jettinson-button</property>
+    <factor>0.003</factor>
+    <axis>
+      <x>-1</x>
+      <y>0</y>
+      <z>0</z>
+    </axis>
+  </animation>
+  
+  
 
 </PropertyList>
 

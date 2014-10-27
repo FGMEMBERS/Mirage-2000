@@ -239,11 +239,11 @@ var frequ_swapR=func(){
         if(dir==1 or dir==-1){
            frequ="instrumentation/tacan/frequencies/stby-can2";
            adj_tacan_sign();
-           }
-        else{frequ="instrumentation/tacan/frequencies/stby-can";         
-        adj_tacan();
+        }else{
+           frequ="instrumentation/tacan/frequencies/stby-can";         
+           adj_tacan();
         }        
-        }
+     }
  }
 
 ############ Ajustage frequences COMM et NAV
@@ -284,6 +284,6 @@ var frequ_adjustL=func(dir){
 var update_main=func(){
     update_rmi1();
     update_rmi2();    
-settimer(update_main,0.25);
+#settimer(update_main,0.25);
 }
 

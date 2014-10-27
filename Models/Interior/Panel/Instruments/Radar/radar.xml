@@ -41,5 +41,24 @@
       <blue>  1 </blue>
     </emission>
   </animation>
+  
+   <animation>
+      <type>pick</type>
+      <object-name>fond</object-name>
+      <object-name>ecran</object-name>
+      <hovered>
+        <binding>
+           <command>set-tooltip</command>
+           <tooltip-id>radar</tooltip-id>
+           <label>Radar</label>
+        </binding>
+      </hovered>
+   </animation>
+  
+  
+  
+  
+  
+  
 
 </PropertyList>
