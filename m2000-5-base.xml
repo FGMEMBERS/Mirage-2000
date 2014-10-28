@@ -68,6 +68,7 @@
         <float n="0"  alias="/sim/model/door-positions/crew/position-norm"/>
         <float n="1"  alias="/sim/model/door-positions/passenger/position-norm"/>
         <float n="2" alias="/position/gear-agl-m"> 0 </float>                      <!-- altitude for MP shadow -->
+        <float n="3" alias="/position/altitude-agl-ft"> 0 </float>
         <float n="4" alias="/engines/engine[0]/n1"/>
         <float n="5" alias="/engines/engine[0]/n2"/>
         <float n="7" alias="/controls/engines/engine[0]/throttle"/>

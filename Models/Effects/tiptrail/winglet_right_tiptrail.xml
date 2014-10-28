@@ -24,16 +24,10 @@
           <property>velocities/airspeed-kt</property>
           <value>180</value>
         </greater-than>
-        <or>
-          <less-than>
-                <property>surface-positions/left-aileron-pos-norm</property>
-                <value>-0.2</value>
-          </less-than>
-          <less-than>
-            <property>surface-positions/elevator-pos-norm</property>
-            <value>-0.3</value>
-          </less-than>
-        </or>
+        <less-than>
+          <property>surface-positions/elevator-pos-norm</property>
+          <value>-0.5</value>
+        </less-than>
       </and>
     </condition>
 
