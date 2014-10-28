@@ -366,7 +366,7 @@
   <!-- Buckaroo notes:
     Modest changes to keep the CG around -1.8. x="3.5" y="0" z="-1"
   -->
-  <ballast x="3.6" y="0" z="-1" mass="1500"/>
+  <ballast x="3.2" y="0" z="-1" mass="1500"/>
 
   <!-- Add weapons system - Helijah - 28-04-2012 -->
   <!-- external loads -->

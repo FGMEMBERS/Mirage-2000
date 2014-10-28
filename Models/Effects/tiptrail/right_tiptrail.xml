@@ -31,7 +31,7 @@
           </less-than>
           <less-than>
             <property>surface-positions/elevator-pos-norm</property>
-            <value>-0.2</value>
+            <value>-0.3</value>
           </less-than>
         </or>
       </and>

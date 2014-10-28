@@ -134,9 +134,11 @@ var updatefunction = func(){
      
      #FlightDirectorTime = getprop ("sim/time/elapsed-sec");
      #print(MfdTime-FlightDirectorTime);
-     #if(Elapsed_time_actual != Elapsed_time_previous){
-     #   mirage2000.fuel_managment();
-     #}
+     
+     if(Elapsed_time_actual != Elapsed_time_previous){
+        mirage2000.fuel_managment();
+        #print("Im here");
+     }
      
      
      Elapsed_time_previous = Elapsed_time_actual;
@@ -233,6 +235,8 @@ var fuel_managment = func(){
   Externaltank *=getprop("/consumables/fuel/tank[4]/empty");
   #If only one external Tank is still not empty, then...
   
+  #print("Is my ext fuel tanks empty ",Externaltank);
+  
   #systems/refuel/contact = false si pas refuel en cours
 
   if(getprop("systems/refuel/contact")){
@@ -244,11 +248,14 @@ var fuel_managment = func(){
         setprop("/consumables/fuel/tank[4]/selected",1);   
         
   }elsif(Externaltank){
-    setprop("/consumables/fuel/tank[0]/selected",0);
-    setprop("/consumables/fuel/tank[1]/selected",0);
-  }else{
     setprop("/consumables/fuel/tank[0]/selected",1);
     setprop("/consumables/fuel/tank[1]/selected",1);
+  }else{
+    setprop("/consumables/fuel/tank[0]/selected",0);
+    setprop("/consumables/fuel/tank[1]/selected",0);
+    if(!getprop("/consumables/fuel/tank[2]/empty")){setprop("/consumables/fuel/tank[2]/selected",1);}
+    if(!getprop("/consumables/fuel/tank[3]/empty")){setprop("/consumables/fuel/tank[3]/selected",1);}
+    if(!getprop("/consumables/fuel/tank[4]/empty")){setprop("/consumables/fuel/tank[4]/selected",1);} 
   }
 
 }
