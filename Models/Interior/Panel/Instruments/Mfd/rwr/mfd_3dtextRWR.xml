@@ -15,7 +15,6 @@
     <text>RWR</text>
     <font>helvetica_bold.txf</font>
     <character-size>0.006</character-size>
-    
   </text>
    
   <animation>
@@ -46,4 +45,3 @@
   </animation>
    
 </PropertyList>
- 

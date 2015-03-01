@@ -40,14 +40,13 @@
     <type>material</type>
     <!--<object-name>cadre</object-name>    
     <object-name>vis</object-name>    -->
-    
    <object-name>blackbkd</object-name>
     <emission>      
       <red>   1 </red>
       <green> 1 </green>
       <blue>  1 </blue>
     </emission>
-    </animation>
+  </animation>
   
   <animation>
     <type>material</type>
@@ -112,7 +111,7 @@
     <object-name>pot-r3</object-name>
     <object-name>pot-r4</object-name>
     <condition>
-        <property>sim/rendering/rembrandt/enabled</property>
+      <property>sim/rendering/rembrandt/enabled</property>
     </condition>
     <emission>      
       <red>   0.05 </red>
@@ -120,7 +119,6 @@
       <blue>  0.05 </blue>
     </emission>
   </animation>
-
   
   <!--<animation>
     <type>pick</type>
@@ -220,7 +218,7 @@
       </binding>
       <binding>
         <command>property-assign</command>
-	<property>/instrumentation/nd/display/arpt</property>
+        <property>/instrumentation/nd/display/arpt</property>
         <property>/instrumentation/efis/inputs/arpt</property>
       </binding>
     </action>
@@ -269,7 +267,7 @@
       </binding>
       <binding>
         <command>property-assign</command>
-	<property>/instrumentation/nd/display/fix</property>
+        <property>/instrumentation/nd/display/fix</property>
         <property>/instrumentation/efis/inputs/wpt</property>
       </binding>
     </action>
@@ -295,7 +293,7 @@
       </binding>
       <binding>
         <command>property-assign</command>
-	<property>/instrumentation/nd/display/vor</property>
+        <property>/instrumentation/nd/display/vor</property>
         <property>/instrumentation/efis/inputs/pos</property>
       </binding>
     </action>
@@ -390,11 +388,7 @@
     </action>
   </animation>
   
-  
   <!--End of Distance management -->
-  
-  
-  
   <animation>
     <type>pick</type>
     <object-name>trim2</object-name>
@@ -509,10 +503,10 @@
         <equals>
           <property>/instrumentation/efis/Mode</property>
           <value>CANVAS</value>
-        </equals>
-	<greater-than>
-            <property>/systems/electrical/volts</property>
-            <value>12</value> 
+        </equals>   
+        <greater-than>
+          <property>/systems/electrical/volts</property>
+          <value>12</value> 
         </greater-than>
         </and>
     </condition>
@@ -529,8 +523,8 @@
           <value>OLD</value>
         </equals>
         <greater-than>
-            <property>/systems/electrical/volts</property>
-            <value>12</value> 
+          <property>/systems/electrical/volts</property>
+          <value>12</value> 
         </greater-than>
       </and>
     </condition>
@@ -545,12 +539,11 @@
     <type>scale</type>
     <object-name>MFD-Screen</object-name>
     <condition>
-        <equals>
-          <property>/instrumentation/efis/Mode</property>
-          <value>OLD</value>
-        </equals>
+      <equals>
+        <property>/instrumentation/efis/Mode</property>
+        <value>OLD</value>
+      </equals>
     </condition>
-    
     <x-offset> 1.00 </x-offset>
     <y-offset> 0.90 </y-offset>
     <z-offset> 0.87 </z-offset>
