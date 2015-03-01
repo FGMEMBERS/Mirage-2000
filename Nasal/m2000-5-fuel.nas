@@ -1,8 +1,3 @@
-
-
-
-
-
 var last_time = 0.0;
 var FUEL1_deb = props.globals.getNode("/systems/fuel/suppliers/FUEL1_deb",1);
 var FUEL1_press = props.globals.getNode("/systems/fuel/suppliers/FUEL1_press",1);
@@ -116,7 +111,7 @@ Fuel_init = func () {
 var update_virtual_circuits = func(dt) {
 
 
-    
+    var Tank = fuelTankTotal.getValue();
     var fuelpress_1 = fuel_1.get_output_bars_engine();
     var fuelpress_2 = fuel_2.get_output_bars_engine();
     var BPpress = fuel_BP.get_output_bars_electric();
@@ -132,11 +127,11 @@ var update_virtual_circuits = func(dt) {
 
     
     #in order to return what is working or not
-    if(fuelTankTotal.getValue != 0 ){
-      if(getprop("/controls/switches/pump-BPG")){FUEL1_press.setValue(fuelpress_1);}else{FUEL1_press.setValue(0);}
-      if(getprop("/controls/switches/pump-BPD")){FUEL2_press.setValue(fuelpress_2);}else{FUEL2_press.setValue(0);}
-      if(getprop("/controls/switches/pump-BP")){BP_press.setValue(BPpress);}else{BP_press.setValue(0);}
-     }
+    #if(fuelTankTotal.getValue > 100 ){
+      if(getprop("/controls/switches/pump-BPG")and(Tank >100)){FUEL1_press.setValue(fuelpress_1);}else{FUEL1_press.setValue(0);}
+      if(getprop("/controls/switches/pump-BPD")and(Tank >100)){FUEL2_press.setValue(fuelpress_2);}else{FUEL2_press.setValue(0);}
+      if(getprop("/controls/switches/pump-BP")and(Tank >100)){BP_press.setValue(BPpress);}else{BP_press.setValue(0);}
+     #}
     
     #FUEL1_deb.setValue(fuelDeb_1 );
     #FUEL2_deb.setValue(fuelDeb_2 );
@@ -155,5 +150,3 @@ var update_fuel = func {
     update_virtual_circuits(dt);
     settimer(update_fuel, 1);
 }
-
-

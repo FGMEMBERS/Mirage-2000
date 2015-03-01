@@ -1,5 +1,3 @@
-
-
 var AcModel        = props.globals.getNode("sim/model/m2000-5");
 var OurHdg         = props.globals.getNode("orientation/heading-deg");
 var OurRoll        = props.globals.getNode("orientation/roll-deg");
@@ -16,7 +14,6 @@ var OurPitch       = props.globals.getNode("orientation/pitch-deg");
 
 var g_fps        = 9.80665 * M2FT;
 var slugs_to_lbs = 32.1740485564;
-
 
 var MISSILE = {
         new : func (p) {
@@ -82,8 +79,6 @@ var MISSILE = {
                 m.rail              = getprop("controls/armament/missile/rail");
                 m.cruisealt         = getprop("controls/armament/missile/cruise_alt");
                 m.last_coord       = nil;
-
-
 
                 # Find the next index for "models/model" and create property node.
                 # Find the next index for "ai/models/missile" and create property node.
@@ -163,7 +158,6 @@ var MISSILE = {
                 me.model.getNode("pitch-deg-prop", 1).setValue(me.pitchN.getPath());
                 me.model.getNode("roll-deg-prop", 1).setValue(me.rollN.getPath());
                 me.model.getNode("load", 1).remove();
-
         },
         #This function is to convert for the missile from aircraft coordinate to absolute coordinate
         release: func() {
@@ -255,12 +249,7 @@ var MISSILE = {
                 }
 
                 me.update();
-
         },
-
-
-
-
 
         update: func {
                 #Calculate life time of th missile
@@ -270,7 +259,6 @@ var MISSILE = {
                 me.life_time += dt;
                 # record coords so we can give the latest nearest position for impact.
                 me.last_coord = geo.Coord.new().set_latlon(me.coord.lat(), me.coord.lon(), me.coord.alt());
-
 
                 #### Calculate speed vector before steering corrections.
 
@@ -350,11 +338,8 @@ var MISSILE = {
                 var speed_north_fps = math.cos(hdg_deg * D2R) * speed_horizontal_fps;
                 var speed_east_fps = math.sin(hdg_deg * D2R) * speed_horizontal_fps;
 
-               
-
                 # Add gravity to the vertical speed (no ground interaction yet).
                 speed_down_fps -= 32.1740485564 * dt;
-
                 
                 # Calculate altitude and elevation velocity vector (no incidence here).
                 var alt_ft = me.altN.getValue() + (speed_down_fps * dt);
@@ -362,7 +347,6 @@ var MISSILE = {
                 me.pitch = pitch_deg;
                 
                 var dist_h_m = speed_horizontal_fps * dt * FT2M;
-
 
                 #### Guidance.
 
@@ -385,16 +369,12 @@ var MISSILE = {
                                         pitch_deg += me.track_signal_e;
                                         hdg_deg += me.track_signal_h;
 
-                                
-
                                 #print("Still Tracking : Elevation ",me.track_signal_e,"Heading ",me.track_signal_h," Gload : ", myG );
                         }
-                        
                 }
         
                 #print("status :",me.status,"free ",me.free,"init_launch : ", init_launch);
                 #print("**Altitude : ",alt_ft, " NextGroundElevation : ", me.nextGroundElevation,"Heading : " ,hdg_deg," **Pitch : ",pitch_deg, "**Speed : " ,speed_m, " dt :",dt );
-                
 
                 # Get horizontal distance and set position and orientation.
                 var dist_h_m = speed_horizontal_fps * dt * FT2M;
@@ -405,7 +385,6 @@ var MISSILE = {
                 me.coord.set_alt(alt_ft);
                 me.pitchN.setDoubleValue(pitch_deg);
                 me.hdgN.setDoubleValue(hdg_deg);
-
 
                 #This is for ground detection fr A/G cruise missile
                 if(alt_ft<1000){
@@ -447,8 +426,6 @@ var MISSILE = {
                                         return;
                                 }
                          }
-                       
-                        
                 }
                 # record the velocities for the next loop.
                 me.s_north = speed_north_fps;
@@ -459,13 +436,7 @@ var MISSILE = {
                 me.pitch = pitch_deg;
                 me.hdg = hdg_deg;
                 if (me.life_time < me.Life){settimer(func me.update(), 0);}
-                
         },
-
-
-
-
-
 
         update_track: func() {
                 if ( me.Tgt == nil ) { return(1); }
@@ -512,22 +483,17 @@ var MISSILE = {
                         #Prevision of the next altitude depend on the target appproch on the next second. dt = 0.1
                         #me.vApproch;
                         
-                        
                         var next_alt = t_alt - math.sin(me.Tgt.get_Pitch()*D2R)*me.Tgt.get_Speed()*0.5144*0.1;
                         
                         #NextGeo, depending of the new alt, with a constant speed ooof the aircraft
                         #0.2 is the "time"of the presicion, in second. This need to be not arbitrary
                         
-                        
                         var nextGeo = nextGeoloc(me.Tgt.get_Latitude(),me.Tgt.get_Longitude(),me.Tgt.get_heading(),me.Tgt.get_Speed()*0.5144,0.1);
-
 
                         t_alt = next_alt;
                         me.t_coord.set_latlon(nextGeo.lat(),nextGeo.lon(), t_alt);  
-
                         
                         #print("Alt: ",t_alt," Lat",me.Tgt.get_Latitude()," Long : ",me.Tgt.get_Longitude());
-
 
                         # Calculate current target elevation and azimut deviation.
                         var t_dist_m = me.coord.distance_to(me.t_coord);
@@ -565,8 +531,6 @@ var MISSILE = {
                         }
                         
                         me.curr_tgt_e = t_elev_deg - me.pitch;
-
-
 
                         #print(me.curr_tgt_e);
                         
@@ -621,7 +585,6 @@ var MISSILE = {
 #print(" me.track_signal_e = ", me.track_signal_e," me.track_signal_h = ", me.track_signal_h);
 #print ("**** curr_tgt_e = ", me.curr_tgt_e," curr_tgt_h = ", me.curr_tgt_h, " me.track_signal_e = ", me.track_signal_e," me.track_signal_h = ", me.track_signal_h);
 
-
                 }
                 # Compute HUD reticle position.
                 if ( me.status == 1 ) {
@@ -648,9 +611,6 @@ var MISSILE = {
                 return(1);
         },
 
-
-
-
         poximity_detection: func {
                 me.t_coord.set_latlon(me.Tgt.get_Latitude(),me.Tgt.get_Longitude(), me.Tgt.get_altitude());
                 var cur_dir_dist_m = me.coord.direct_distance_to(me.t_coord);
@@ -670,11 +630,8 @@ var MISSILE = {
 #C is the target. A is the last missile positioin and B tha actual. For very high speed (more than 1000 m /seconds) we need to know if,
 #between the position A and the position B, the distance x to the target is enough short to proxiimity detection.
 
-                
-
                 # Get current direct distance.
                 #print("me.direct_dist_m = ",me.direct_dist_m);
-                
                 
                 if ( me.direct_dist_m != nil ) {
 
@@ -688,7 +645,6 @@ var MISSILE = {
 
                         #print(me.last_coord.alt());
                         #print("cur_dir_dist_m = ",cur_dir_dist_m," me.direct_dist_m = ",me.direct_dist_m);
-
 
                  if(me.tpsApproch ==0){
                         me.tpsApproch = props.globals.getNode("/sim/time/elapsed-sec", 1).getValue();
@@ -733,8 +689,6 @@ var MISSILE = {
                 return(1);
         },
 
-
-
         check_t_in_fov: func {
                 # Used only when not launched.
                 # Compute seeker total angular position clamped to seeker max total angular rotation.
@@ -758,7 +712,6 @@ var MISSILE = {
                 return(1);
         },
 
-
         search: func (c){
                                 var tgt = c;
 
@@ -779,19 +732,12 @@ var MISSILE = {
                                 if(me.free == 0 and me.life_time > me.Life){
                                         settimer(func me.update_track(), 2);
                                 }
-
-        
-
         },
-
-
 
         reset_steering: func {
                 me.track_signal_e = 0;
                 me.track_signal_h = 0;
         },
-
-
 
         reset_seeker: func {
                 me.curr_tgt_e     = 0;
@@ -803,8 +749,6 @@ var MISSILE = {
                 me.reset_steering()
         },
 
-
-
         clamp_min_max: func (v, mm) {
                 if ( v < -mm ) {
                         v = -mm;
@@ -813,7 +757,6 @@ var MISSILE = {
                 }
         return(v);
         },
-
 
 ##To be corrected...
         animation_flags_props: func {
@@ -827,8 +770,6 @@ var MISSILE = {
                 var explode_smoke_path = "armament/MatraMICA/flags/explode-smoke-id-" ~ me.ID;
                 me.explode_smoke_prop = props.globals.initNode( explode_smoke_path, 0, "BOOL" );
         },
-
-
 
         animate_explosion: func {
 
@@ -845,11 +786,8 @@ var MISSILE = {
                 #settimer( func me.explode_smoke_prop.setBoolValue(0), 3 );
         },
 
-
-
         active: {},
 };
-
 
 # Create impact report.
 
@@ -864,7 +802,6 @@ var MISSILE = {
 #        speed-mps DOUBLE
 #        type STRING
 #valid "true" BOOL
-
 
 var impact_report = func(pos, mass_slug, string) {
 
@@ -885,7 +822,6 @@ var impact_report = func(pos, mass_slug, string) {
 
         var impact_str = "/ai/models/" ~ string ~ "[" ~ i ~ "]";
         setprop("ai/models/model-impact", impact_str);
-
 }
 
 steering_speed_G = func(steering_e_deg, steering_h_deg, s_fps, mass, dt) {
@@ -924,7 +860,6 @@ var max_G_Rotation = func(steering_e_deg, steering_h_deg, s_fps, mass, dt,gMax) 
         return(steer_deg_theoric/steer_deg);
 }
 
-
 # HUD clamped target blinker
 SW_reticle_Blinker = aircraft.light.new("sim/model/f-14b/lighting/hud-sw-reticle-switch", [0.1, 0.1]);
 #setprop("sim/model/f-14b/lighting/hud-sw-reticle-switch/enabled", 1);
@@ -943,12 +878,7 @@ var nextGeoloc =func (long,lat, heading, speed, dt ,alt=100){
         NextGeo.apply_course_distance(heading,distance);
 
         return NextGeo;
-
 }
-
-
-
-
 
 var MPReport = func () {
         if (getprop("sim/model/m2000-5/systems/armament/mp-messaging")=="true") {
@@ -959,7 +889,3 @@ var MPReport = func () {
         var phrase = "MP messaging : " ~ getprop("sim/model/m2000-5/systems/armament/mp-messaging");
         setprop("/sim/messages/atc", phrase);
 }
-
-
-
-

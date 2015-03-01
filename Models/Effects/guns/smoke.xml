@@ -35,8 +35,8 @@
     
     <counter>
       <particles-per-sec>
-        <value>  15 </value>
-        <spread> 80 </spread>
+        <value>  5 </value>
+        <spread> 30 </spread>
       </particles-per-sec>
     </counter>
     
@@ -62,9 +62,9 @@
         <size><value> 1 </value></size>
       </end>
       <life-sec>
-        <value> 1 </value>
+        <value> 0.5 </value>
       </life-sec>
-      <mass-kg>  0.025 </mass-kg>
+      <mass-kg>  0.005 </mass-kg>
       <radius-m> 0.175 </radius-m>
     </particle>
     

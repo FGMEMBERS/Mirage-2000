@@ -144,7 +144,7 @@
         <control-output control="SPOILER" prop="/surface-positions/spoiler-pos-norm" invert="true" />
         <control-output control="SLAT" prop="/surface-positions/slat-pos-norm"/>
 
-        <control-speed control="FLAP0" transition-time="0"/>
+        <control-speed control="FLAP0" transition-time="0.08"/>
         <control-speed control="SPOILER" transition-time="1.5"/>
         <control-speed control="SLAT" transition-time="2.6"/>
   </wing>
@@ -166,7 +166,7 @@
     this seems OK for now.
 
     The 'spoiler' here is likely for use with a parachute simulation. I didn't modify it.
--->
+  -->
   <hstab x="-5" y="0.5" z="-0.933"
          chord="1"
          length="4"
@@ -186,7 +186,7 @@
 
          <control-output control="FLAP0" prop="/surface-positions/elevator-pos-norm"/>
 
-         <control-speed control="FLAP0" transition-time="0.01"/>
+         <control-speed control="FLAP0" transition-time="0.08"/>
   </hstab>
 
   <!-- Buckaroo notes:
@@ -247,38 +247,34 @@
        n1-idle="47.0"
        n1-max="105" 
        n2-idle="73" 
-       n2-max="110"
-       >
+       n2-max="110">
        <actionpt x="-6" y="0" z="-0.634"/>
        <control-input axis="/controls/engines/engine[0]/throttle" control="THROTTLE"/>
        <control-input axis="/controls/engines/engine[0]/throttle" control="REHEAT" src0="0.85" src1="1.0" dst0="0.0" dst1="1.0"/>
 
        <control-output control="REHEAT" prop="engines/engine[0]/afterburner" />
+       
        <control-speed control="THROTTLE" transition-time="2"/>
        <control-speed control="REHEAT" transition-time="2"/>
-       
   </jet>
 
-<!-- GUNS RECOIL in 5000 Lbf = 2.5Tf-->
-	<thruster	thrust="5000"
-						x="1.212" y="-0.308" z="-1.183"
-						vx="-1" vy="0" vz="0"
-		>
-		<control-input	axis="/controls/armament/Gun_trigger" control="THROTTLE"/>
-	</thruster>
-	
-	<!-- GUNS RECOIL in 5000 Lbf = 2.5Tf-->
-	<thruster	thrust="5000"
-						x="1.212" y="0.308" z="-1.183"
-						vx="-1" vy="0" vz="0"
-		>
-		<control-input	axis="/controls/armament/Gun_trigger" control="THROTTLE"/>
-	</thruster>
-
+  <!-- GUNS RECOIL in 5000 Lbf = 2.5Tf negative angle of the gun : -2°-->
+  <thruster thrust="5000"
+            x="1.212" y="-0.308" z="-1.183"
+            vx="-0.999390827" vy="0" vz="0.03489949">
+            <control-input  axis="/controls/armament/Gun_trigger" control="THROTTLE"/>
+  </thruster>
+  
+  <!-- GUNS RECOIL in 5000 Lbf = 2.5Tf-->
+  <thruster thrust="5000"
+            x="1.212" y="0.308" z="-1.183"
+            vx="-0.999390827" vy="0" vz="0.03489949">
+            <control-input  axis="/controls/armament/Gun_trigger" control="THROTTLE"/>
+  </thruster>
 
   <!-- Buckaroo notes:
-    Based on the model, FDM compression values are two great. Maximum extension for each appears to be 0.2 meters at best.
-    I didn't adjust these values since the animations are very nice and tied to these particular values.
+       Based on the model, FDM compression values are two great. Maximum extension for each appears to be 0.2 meters at best.
+       I didn't adjust these values since the animations are very nice and tied to these particular values.
         retract-time="7"
         compression="0.4"
         spring="1.1"
@@ -286,7 +282,6 @@
         sfric="0.8"
         dfric="0.7">
   -->
-  
   <!--Correction from kjchernov-->
   <!-- Roue avant -->
   <gear x="2.996" y="0" z="-2.592"
@@ -305,11 +300,11 @@
         <control-speed control="EXTEND" transition-time="7"/>
   </gear>
 
-<!--old
+  <!--
+        old
         spring="0.85"
         damp="1.5">
-        -->
-
+  -->
 
   <!-- Roue gauche -->
   <gear x="-1.948" y="1.673" z="-2.595"
@@ -345,17 +340,17 @@
   <!-- Total : 4000 l = 2 x 2000 l = 2 x 527.7 gal = 2 x 3546.144 lbs -->
   <tank x="-1.600" y=" 1.667" z="-1.032" jet="true" capacity="3546.144"/>
   <tank x="-1.600" y="-1.667" z="-1.032" jet="true" capacity="3546.144"/>
-<!--
+  <!--
   <tank x=" 1.300" y=" 0.000" z="-0.100" jet="true" capacity="1031"/>
--->
+  -->
 
   <!-- left wing tanks
   <tank x="-1.3" y=" 1.0" z=" 0.15" jet="true" capacity="1031"/>
--->
+  -->
 
   <!-- right wing tanks
   <tank x="-1.3" y="-1.0" z=" 0.150" jet="true" capacity="1031"/>
--->
+  -->
 
   <!-- drop tanks -->
   <tank x="-1.047" y=" 2.359" z="-1.556" jet="true" capacity="0"/>
@@ -366,7 +361,7 @@
   <!-- Buckaroo notes:
     Modest changes to keep the CG around -1.8. x="3.5" y="0" z="-1"
   -->
-  <ballast x="3.2" y="0" z="-1" mass="1500"/>
+  <ballast x="3.2" y="0" z="-1" mass="1700"/>
 
   <!-- Add weapons system - Helijah - 28-04-2012 -->
   <!-- external loads -->

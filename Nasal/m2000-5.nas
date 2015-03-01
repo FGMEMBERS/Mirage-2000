@@ -5,9 +5,16 @@
 
 var deltaT = 1.0;
 var SAS_Loop_running = 0;
-var Elapsed_time_actual = 0;
+var Elapsed_time_Seconds = 0;
 var Elapsed_time_previous = 0;
 var LastTime = 0;
+    
+#Elapsed for time > 0.25 sec
+var Elapsed = 0;
+#Need some simplification in the way to manage the interval
+
+
+var engine1 = engines.Jet.new(0, 0, 0.01, 20, 3, 5, 30, 15);
 
 
 
@@ -38,27 +45,31 @@ var main_Init_Loop = func(){
     
     # --------- Loop Updated bellow
     print("Stability Augmentation System ...Check");
-    settimer(mirage2000.init_SAS, 4.0);
+    settimer(mirage2000.init_SAS, 2.0);
+    
+    #Engine
+    print("Engine ...Check");
+    engine1.init();
     
     # -------------
     print("Intrumentation ...Chsck");
-    settimer(instrumentation.initIns, 5.0);
+    settimer(instrumentation.initIns, 2.0);
  
     # --------- Loop Updated bellow
     print("Radar ...Check");
-    settimer(radar.init, 8.0);
+    settimer(radar.init, 4.0);
     
     # --------- Loop Updated bellow
     print("Flight Director ...Check");
-    settimer(mirage2000.init_set, 8.0);
+    settimer(mirage2000.init_set, 4.0);
     
     # --------- Loop Updated bellow
     print("MFD ...Check");
-    settimer(mirage2000.update_main, 8.0);
+    settimer(mirage2000.update_main, 4.0);
     
     # -------------Transponder
     print("Transponder ...Check");
-    settimer(init_Transpondeur, 8.0);
+    settimer(init_Transpondeur, 4.0);
     
     # -------------Canvas    <- Old way. Now object is created when selected
     #Init Canvas for central Mfd
@@ -66,7 +77,7 @@ var main_Init_Loop = func(){
     
     # ---------link to bellow
     print("system loop ...Check");
-    settimer(updatefunction, 15.0);
+    settimer(updatefunction, 8.0);
     
 
     
@@ -81,70 +92,81 @@ var UpdateMain = func {settimer (mirage2000.updatefunction, 0);}
 #var UpdateMain = func {mirage2000.updatefunction();}
 
 var updatefunction = func(){
-     #deltaT = getprop ("sim/time/delta-sec");
-     #print(deltaT);
+    #deltaT = getprop ("sim/time/delta-sec");
+    #print(deltaT);
      
-     Elapsed_time_actual = int(getprop ("sim/time/elapsed-sec"));
-     FirstTime = getprop ("sim/time/elapsed-sec");
-     #print(FirstTime);
      
-     #print("Elapsed_time_actual:",Elapsed_time_actual, " Elapsed_time_previous:",Elapsed_time_previous);
-     #print("################ FPS:",1/(FirstTime-LastTime));
+    Elapsed_time_Seconds = int(getprop ("sim/time/elapsed-sec"));
+    AbsoluteTime = getprop ("sim/time/elapsed-sec");
+    #print(AbsoluteTime);
+     
+    #print("Elapsed_time_Seconds:",Elapsed_time_Seconds, " Elapsed_time_previous:",Elapsed_time_previous);
+    #print("################ FPS:",1/(AbsoluteTime-LastTime));
+     
+    #---------------UPDATE ENGINE---------------------
+    #print("update");
+    #engine1.update;
 
 
-     #---------------UPDATE SAS---------------------
-     mirage2000.Update_SAS();
-     ##mirage2000.computeSAS();
+    #---------------UPDATE SAS---------------------
+    mirage2000.Update_SAS();
+    ##mirage2000.computeSAS();
      
-     #SASTime = getprop ("sim/time/elapsed-sec");
-     #print(FirstTime-SASTime);
-     
-     
-     #---------------UPDATE RADAR : Radar loop  -----------
-     radar.rdr_loop();
-     
-     #RadarTime = getprop ("sim/time/elapsed-sec");
-     #print(SASTime-RadarTime);
+    #SASTime = getprop ("sim/time/elapsed-sec");
+    #print(AbsoluteTime-SASTime);
      
      
-     #---------------UPDATE Electric : Electrical loop  -----------
-     #electrics.update_electrical();
+    #---------------UPDATE RADAR : Radar loop  -----------
+    radar.rdr_loop();
      
-     #---------------UPDATE Guns : Electrical loop  -----------
-     #guns.update_guns();
-     
-     
-     #--------------UPDATE MFD : mfd loop-------------------
-     mirage2000.update_main();
-     
-     MfdTime = getprop ("sim/time/elapsed-sec");
-     #print(RadarTime-MfdTime);
+    #RadarTime = getprop ("sim/time/elapsed-sec");
+    #print(SASTime-RadarTime);
      
      
-     #-------------UPDATE FLIGHT DIRECTOR : Flight Director (autopilot)--------
-     if(getprop("autopilot/locks/AP-status")=="AP1"){
-        mirage2000.update_fd();
-     }else{
-        #this is a way to reduce autopilot refreshing time when not activated  <-? what
-        if(Elapsed_time_actual != Elapsed_time_previous){
-            mirage2000.update_fd();  
-        }
+    #---------------UPDATE Electric : Electrical loop  -----------
+    #electrics.update_electrical();
+     
+    #---------------UPDATE Guns : Electrical loop  -----------
+    #guns.update_guns();
+     
+     
+    #--------------UPDATE MFD : mfd loop-------------------
+    mirage2000.update_main();
+     
+    MfdTime = getprop ("sim/time/elapsed-sec");
+    #print(RadarTime-MfdTime);
+    
+    #--------------UPDATE LOAD -------------------
+    if(AbsoluteTime - Elapsed >0.5){
+        m2000_load.Encode_Load();
+        #print(Elapsed_time_Seconds - Elapsed);
+        Elapsed = Elapsed_time_Seconds;
+    }
+     
+     
+    #-------------UPDATE FLIGHT DIRECTOR : Flight Director (autopilot)--------
+    if(getprop("autopilot/locks/AP-status")=="AP1"){
+       mirage2000.update_fd();
+    }else{
+       #this is a way to reduce autopilot refreshing time when not activated  <-? what
+       if(Elapsed_time_Seconds != Elapsed_time_previous){
+           mirage2000.update_fd();  
+       }  
+    }
+     
+    #FlightDirectorTime = getprop ("sim/time/elapsed-sec");
+    #print(MfdTime-FlightDirectorTime);
+     
+    if(Elapsed_time_Seconds != Elapsed_time_previous){
+       mirage2000.fuel_managment();
+       #print("Im here");
+    }
+     
+     
+    Elapsed_time_previous = Elapsed_time_Seconds;
+    LastTime = AbsoluteTime;
         
-     }
-     
-     #FlightDirectorTime = getprop ("sim/time/elapsed-sec");
-     #print(MfdTime-FlightDirectorTime);
-     
-     if(Elapsed_time_actual != Elapsed_time_previous){
-        mirage2000.fuel_managment();
-        #print("Im here");
-     }
-     
-     
-     Elapsed_time_previous = Elapsed_time_actual;
-     LastTime = FirstTime;
-        
-     mirage2000.UpdateMain();
+    mirage2000.UpdateMain();
 }
 
 
@@ -240,12 +262,12 @@ var fuel_managment = func(){
   #systems/refuel/contact = false si pas refuel en cours
 
   if(getprop("systems/refuel/contact")){
-        setprop("/consumables/fuel/tank[0]/selected",1);
-        setprop("/consumables/fuel/tank[1]/selected",1);
+    setprop("/consumables/fuel/tank[0]/selected",1);
+    setprop("/consumables/fuel/tank[1]/selected",1);
         
-        setprop("/consumables/fuel/tank[2]/selected",1);
-        setprop("/consumables/fuel/tank[3]/selected",1);
-        setprop("/consumables/fuel/tank[4]/selected",1);   
+    if(getprop("/consumables/fuel/tank[2]/level-kg")>40){setprop("/consumables/fuel/tank[2]/selected",1);}
+    if(getprop("/consumables/fuel/tank[3]/level-kg")>40){setprop("/consumables/fuel/tank[3]/selected",1);}
+    if(getprop("/consumables/fuel/tank[4]/level-kg")>40){setprop("/consumables/fuel/tank[4]/selected",1);}    
         
   }elsif(Externaltank){
     setprop("/consumables/fuel/tank[0]/selected",1);
@@ -253,9 +275,9 @@ var fuel_managment = func(){
   }else{
     setprop("/consumables/fuel/tank[0]/selected",0);
     setprop("/consumables/fuel/tank[1]/selected",0);
-    if(!getprop("/consumables/fuel/tank[2]/empty")){setprop("/consumables/fuel/tank[2]/selected",1);}
-    if(!getprop("/consumables/fuel/tank[3]/empty")){setprop("/consumables/fuel/tank[3]/selected",1);}
-    if(!getprop("/consumables/fuel/tank[4]/empty")){setprop("/consumables/fuel/tank[4]/selected",1);} 
+    if(getprop("/consumables/fuel/tank[2]/level-kg")>40){setprop("/consumables/fuel/tank[2]/selected",1);}
+    if(getprop("/consumables/fuel/tank[3]/level-kg")>40){setprop("/consumables/fuel/tank[3]/selected",1);}
+    if(getprop("/consumables/fuel/tank[4]/level-kg")>40){setprop("/consumables/fuel/tank[4]/selected",1);} 
   }
 
 }

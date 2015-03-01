@@ -42,12 +42,12 @@
       <wind>         Set to true if you want the submodel to react to the wind.  Default is "false". 
 -->  
 
-
-<!-- Each canon : 120 ammo each, rate 1800 round/min (= 30 r/sec = delay : 1/30 = 0.033) for air-air, (for memory usage, this has been / 2)
- and can be slowed to 1100 round/min (delay : 0.05454) in air-ground-->
- <!--Aircraft/Mirage-2000/Models/Effects/guns/apibullet-tracer.xml-->
+  <!-- Each canon : 120 ammo each, rate 1800 round/min (= 30 r/sec = delay : 1/30 = 0.033) for air-air,
+       (for memory usage, this has been / 2) and can be slowed to 1100 round/min (delay : 0.05454) in 
+       air-ground-->
+  <!--Aircraft/Mirage-2000/Models/Effects/guns/apibullet-tracer.xml-->
   <!--Aircraft/Mirage-2000/Models/Effects/guns/tracer.xml-->
- <!--Aircraft/f-14b/Models/Stores/M61A1/apibullet-tracer.xml-->
+  <!--Aircraft/f-14b/Models/Stores/M61A1/apibullet-tracer.xml-->
   <cannon>
     <model>Aircraft/Mirage-2000/Models/Effects/guns/tracer.xml</model>
     <speed>3363.0</speed>
@@ -68,8 +68,11 @@
     <submodel-path>Aircraft/Mirage-2000/Models/Effects/guns/bullet-submodel.xml</submodel-path>
     <impact-reports>sim/ai/aircraft/collision/cannon</impact-reports>
     <yaw-offset>0</yaw-offset>
-    <pitch-offset>0.1</pitch-offset>
+    <!--The m2000-5's guns have a negatif angle : -2°-->
+    <pitch-offset>0</pitch-offset>
   </cannon>
+  <!--Aircraft/f-14b/Models/Stores/M61A1/M61A1-submodels.xml
+      Aircraft/Mirage-2000/Models/Effects/guns/bullet-submodel.xml-->
 
   <submodel>
     <name>left gun</name>
@@ -96,24 +99,24 @@
     <pitch-offset alias="../../cannon/pitch-offset"/>
   </submodel>
 
-  <submodel>
+  <!--<submodel>
     <name>left smoke</name>
     <model>Aircraft/Mirage-2000/Models/Effects/guns/smoke.xml</model>
     <trigger alias="../../cannon/trigger"/>
     <speed>20</speed>
     <repeat>true</repeat>
-    <delay>0.03</delay>
-    <count>120</count>
-    <x-offset>  3.98 </x-offset> <!-- -1.212 m =  3.98 ft -->
-    <y-offset>  1.01 </y-offset> <!-- -0.308 m =  1.01 ft -->
-    <z-offset> -3.88 </z-offset> <!-- -1.183 m = -3.88 ft -->
+    <delay>0.1</delay>
+    <count>36</count>
+    <x-offset>  3.98 </x-offset> 
+    <y-offset>  1.01 </y-offset> 
+    <z-offset> -3.88 </z-offset>
     <yaw-offset>-60</yaw-offset>
     <pitch-offset>-60</pitch-offset>
     <eda>10</eda>
     <wind>true</wind>
     <buoyancy>40</buoyancy>
     <life>1.5</life>
-  </submodel>
+  </submodel>-->
 
   <submodel>
     <name>right gun</name>
@@ -140,24 +143,24 @@
     <pitch-offset alias="../../cannon/pitch-offset"/>
   </submodel>
 
-  <submodel>
+ <!--<submodel>
     <name>right smoke</name>
     <model>Aircraft/Mirage-2000/Models/Effects/guns/smoke.xml</model>
     <trigger alias="../../cannon/trigger"/>
     <speed>20</speed>
     <repeat>true</repeat>
-    <delay>0.03</delay>
-    <count>120</count>
-    <x-offset>  3.98 </x-offset> <!-- -1.212 m =  3.98 ft -->
-    <y-offset> -1.01 </y-offset> <!--  0.308 m = -1.01 ft -->
-    <z-offset> -3.88 </z-offset> <!-- -1.183 m = -3.88 ft -->
+    <delay>0.1</delay>
+    <count>36</count>
+    <x-offset>  3.98 </x-offset> 
+    <y-offset> -1.01 </y-offset> 
+    <z-offset> -3.88 </z-offset> 
     <yaw-offset>-60</yaw-offset>
     <pitch-offset>-60</pitch-offset>
     <eda>10</eda>
     <wind>true</wind>
     <buoyancy>40</buoyancy>
     <life>1.5</life>
-  </submodel>
+  </submodel>-->
   <!-- pylon options -->
   <!--                  /-\
                        /   \

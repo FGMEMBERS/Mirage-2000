@@ -45,7 +45,7 @@
     <object-name>pa-stby-on</object-name>
     <object-name>pa-hdg-on</object-name>
     <emission>
-      <factor>1</factor>
+      <factor-prop>/systems/electrical/outputs/instrument-lights</factor-prop>
       <red>   0.6 </red>
       <green> 0.5 </green>
       <blue>  0.5 </blue>
@@ -56,13 +56,35 @@
     <type>material</type>
     <object-name>fond</object-name>
     <object-name>label</object-name>
+    <condition>
+      <not>
+        <property>sim/rendering/rembrandt/enabled</property>
+      </not>
+    </condition>
     <emission>
-      <factor>0.15</factor>
-      <red>   1 </red>
-      <green> 1 </green>
-      <blue>  1 </blue>
+      <red>   0.13 </red>
+      <green> 0.13 </green>
+      <blue>  0.13 </blue>
     </emission>
   </animation>
+  
+  <animation>
+    <type>material</type>
+    <object-name>fond</object-name>
+    <object-name>label</object-name>
+    <condition>
+        <property>sim/rendering/rembrandt/enabled</property>
+    </condition>
+    <emission>      
+      <red>   0.05 </red>
+      <green> 0.05 </green>
+      <blue>  0.05 </blue>
+    </emission>
+  </animation>
+  
+  
+  
+  
   
   <animation>
     <type>select</type>

@@ -2,20 +2,22 @@
 
 <PropertyList>
   
-  <!--<key n="101">
-  <name>e</name>
-  <desc>Guns</desc>
-  <binding>
-  <command>nasal</command>
-  <script>guns.fire_MG()</script>
-  </binding>
-  <mod-up>
-  <binding>
-  <command>nasal</command>
-  <script>guns.stop_MG()</script>
-  </binding>
-  </mod-up>
-  </key>-->
+  <!--
+  <key n="101">
+    <name>e</name>
+    <desc>Guns</desc>
+    <binding>
+      <command>nasal</command>
+      <script>guns.fire_MG()</script>
+    </binding>
+    <mod-up>
+      <binding>
+        <command>nasal</command>
+        <script>guns.stop_MG()</script>
+      </binding>
+    </mod-up>
+  </key>
+  -->
   
   <key n="101">
     <name>e</name>
@@ -32,23 +34,25 @@
     </mod-up>
   </key>
   
-  <!--<key n="101">
-  <name>e</name>
-  <desc>Missiles</desc>
-  <binding>
-  <condition>
-  <greater-than>
-  <property>controls/armament/stick-selector</property>
-  <value>1</value>
-  </greater-than>
-  </condition>
-  <command>nasal</command>
-  <script>
-  var pylon = getprop("controls/armament/missile/current-pylon");
-  load.dropLoad(pylon);
-  </script>
-  </binding>
-  </key>-->
+  <!--
+  <key n="101">
+    <name>e</name>
+    <desc>Missiles</desc>
+    <binding>
+      <condition>
+        <greater-than>
+          <property>controls/armament/stick-selector</property>
+          <value>1</value>
+        </greater-than>
+      </condition>
+      <command>nasal</command>
+      <script>
+        var pylon = getprop("controls/armament/missile/current-pylon");
+        load.dropLoad(pylon);
+      </script>
+    </binding>
+  </key>
+  -->
   
   <key n="68">
     <name>D</name>
@@ -96,95 +100,97 @@
   </key>
   
   <!--____________________Lanch________________________-->
-  <!--<key n="48">
-  <name>0</name>
-  <desc>Drop Tanks</desc>
-  <binding>
-  <command>nasal</command>
-  <script>load.dropTanks()</script>
-  </binding>
-  </key>-->
+  <!--
+  <key n="48">
+    <name>0</name>
+    <desc>Drop Tanks</desc>
+    <binding>
+      <command>nasal</command>
+      <script>load.dropTanks()</script>
+    </binding>
+  </key>
   
-  <!-- <key n="49">
-  <name>1</name>
-  <desc>Missile 1</desc>
-  <binding>
-  <command>nasal</command>
-  <script>load.dropLoad(1)</script>
-  </binding>
+  <key n="49">
+    <name>1</name>
+    <desc>Missile 1</desc>
+    <binding>
+      <command>nasal</command>
+      <script>load.dropLoad(1)</script>
+    </binding>
   </key>
   
   <key n="50">
-  <name>2</name>
-  <desc>Drop load</desc>
-  <binding>
-  <command>nasal</command>
-  <script>load.dropLoad(7)</script>
-  </binding>
+    <name>2</name>
+    <desc>Drop load</desc>
+    <binding>
+      <command>nasal</command>
+      <script>load.dropLoad(7)</script>
+    </binding>
   </key>
   
   <key n="51">
-  <name>3</name>
-  <desc>Drop load</desc>
-  <binding>
-  <command>nasal</command>
-  <script>load.dropLoad(5)</script>
-  </binding>
+    <name>3</name>
+    <desc>Drop load</desc>
+    <binding>
+      <command>nasal</command>
+      <script>load.dropLoad(5)</script>
+    </binding>
   </key>
   
   <key n="52">
-  <name>4</name>
-  <desc>Missile 2</desc>
-  <binding>
-  <command>nasal</command>
-  <script>load.dropLoad(2)</script>
-  </binding>
+    <name>4</name>
+    <desc>Missile 2</desc>
+    <binding>
+      <command>nasal</command>
+      <script>load.dropLoad(2)</script>
+    </binding>
   </key>
   
   <key n="53">
-  <name>5</name>
-  <desc>Missile 5</desc>
-  <binding>
-  <command>nasal</command>
-  <script>load.dropLoad(3)</script>
-  </binding>
+    <name>5</name>
+    <desc>Missile 5</desc>
+    <binding>
+      <command>nasal</command>
+      <script>load.dropLoad(3)</script>
+    </binding>
   </key>
   
   <key n="54">
-  <name>6</name>
-  <desc>Missile 6</desc>
-  <binding>
-  <command>nasal</command>
-  <script>load.dropLoad(4)</script>
-  </binding>
+    <name>6</name>
+    <desc>Missile 6</desc>
+    <binding>
+      <command>nasal</command>
+      <script>load.dropLoad(4)</script>
+    </binding>
   </key>
   
   <key n="55">
-  <name>7</name>
-  <desc>Missile 0</desc>
-  <binding>
-  <command>nasal</command>
-  <script>load.dropLoad(0)</script>
-  </binding>
+    <name>7</name>
+    <desc>Missile 0</desc>
+    <binding>
+      <command>nasal</command>
+      <script>load.dropLoad(0)</script>
+    </binding>
   </key>
   
   <key n="56">
-  <name>8</name>
-  <desc>Missile 8</desc>
-  <binding>
-  <command>nasal</command>
-  <script>load.dropLoad(8)</script>
-  </binding>
+    <name>8</name>
+    <desc>Missile 8</desc>
+    <binding>
+      <command>nasal</command>
+      <script>load.dropLoad(8)</script>
+    </binding>
   </key>
   
   <key n="57">
-  <name>9</name>
-  <desc>Missile 6</desc>
-  <binding>
-  <command>nasal</command>
-  <script>load.dropLoad(6)</script>
-  </binding>
-  </key>-->
+    <name>9</name>
+    <desc>Missile 6</desc>
+    <binding>
+      <command>nasal</command>
+      <script>load.dropLoad(6)</script>
+    </binding>
+  </key>
+  -->
   
   <!--__________________End Launch ______________________-->
   
@@ -243,7 +249,7 @@
     <desc>Engine Autostart</desc>
     <binding>
       <command>nasal</command>
-      <script>engines.engine1.autostart();</script>
+      <script>mirage2000.engine1.autostart();</script>
     </binding>
   </key>
   

@@ -36,8 +36,11 @@
     <object-name>button2.2</object-name>
     <object-name>background</object-name>
   </animation>
-
+  
+  
+  <!--LIGHT EMISSION -->
   <animation>
+    <type>material</type>
     <object-name>fond</object-name>
     <object-name>visses</object-name>
     <object-name>switch1</object-name>
@@ -59,13 +62,54 @@
     <object-name>textebutton2</object-name>
     <object-name>button2.1</object-name>
     <object-name>button2.2</object-name>
+    <condition>
+      <not>
+        <property>sim/rendering/rembrandt/enabled</property>
+      </not>
+    </condition>
     <emission>      
-      <factor> 0.13 </factor>
-      <red>   1 </red>
-      <green> 1 </green>
-      <blue>  1 </blue>
+      <red>   0.13 </red>
+      <green> 0.13 </green>
+      <blue>  0.13 </blue>
     </emission>
   </animation>
+  
+  <animation>
+    <type>material</type>
+    <object-name>fond</object-name>
+    <object-name>visses</object-name>
+    <object-name>switch1</object-name>
+    <object-name>switch2</object-name>
+    <object-name>switch3</object-name>
+    <object-name>switch4</object-name>
+    <object-name>switch5</object-name>
+    <object-name>switch6</object-name>
+    <object-name>switch7</object-name>
+    <object-name>molete1</object-name>
+    <object-name>molete2</object-name>
+    <object-name>molete3</object-name>
+    <object-name>molete4</object-name>
+    <object-name>molete5</object-name>
+    <object-name>molete6</object-name>
+    <object-name>textebutton1</object-name>
+    <object-name>button1.1</object-name>
+    <object-name>button1.2</object-name>
+    <object-name>textebutton2</object-name>
+    <object-name>button2.1</object-name>
+    <object-name>button2.2</object-name>
+    <condition>
+        <property>sim/rendering/rembrandt/enabled</property>
+    </condition>
+    <emission>      
+      <red>   0.05 </red>
+      <green> 0.05 </green>
+      <blue>  0.05 </blue>
+    </emission>
+  </animation>  
+  
+  
+  
+  
 
   <animation>
     <type>material</type>

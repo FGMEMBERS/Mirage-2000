@@ -22,6 +22,44 @@
     <!-- Objets transparents -->
   </animation>
 
+   <!-- Objets Lights -->
+    <animation>
+    <type>material</type>
+    <object-name>texte</object-name>
+    <emission>
+      <factor-prop>/systems/electrical/outputs/instrument-lights</factor-prop>
+      <red>   0.50 </red>
+      <green> 0.25 </green>
+      <blue>  0.25 </blue>
+    </emission>
+  </animation>
+
+  <animation>
+    <type>material</type>
+    <object-name>base</object-name>
+    <object-name>visses</object-name>
+    <object-name>starter</object-name>
+    <object-name>cachestart</object-name>
+    <object-name>pompe</object-name>
+    <object-name>pompes</object-name>
+    <object-name>dm</object-name>
+    <object-name>vent</object-name>
+    <object-name>coupefeu</object-name>
+    <object-name>cachecoupefeu</object-name>
+    <object-name>textecoupefeu</object-name> 
+    <condition>
+      <not>
+        <property>sim/rendering/rembrandt/enabled</property>
+      </not>
+    </condition>
+    <emission>      
+      <red>   0.13 </red>
+      <green> 0.13 </green>
+      <blue>  0.13 </blue>
+    </emission>
+  </animation>
+  
+
    <!--#####   switch cache starter  ########-->
    <animation>
      <type>pick</type>

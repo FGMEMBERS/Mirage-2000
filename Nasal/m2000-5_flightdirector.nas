@@ -30,7 +30,7 @@ var flag = 0;
 
 ######initialisation
 var init_set=func{
-    setprop("instrumentation/nd/range",wx_range[wx_index]);
+    #setprop("instrumentation/nd/range",wx_range[wx_index]);
     setprop("/autopilot/settings/target-altitude-ft",4000);
     setprop(RMI1prop,"");
     setprop(RMI2prop,"");
@@ -354,7 +354,7 @@ var kill_Ap = func(msg){
     set_pitch();
     set_roll();
     flag = 0;
-#    setprop(pitch_trim,0);
+    setprop(pitch_trim,0);
     setprop(roll_trim,0);
 }
 

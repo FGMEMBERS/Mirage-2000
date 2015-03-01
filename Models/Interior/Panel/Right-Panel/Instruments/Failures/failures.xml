@@ -196,8 +196,45 @@
     </condition>
     </animation>
   
+     <!-- Objets Lights -->
+    <animation>
+    <type>material</type>
+    <object-name>traits</object-name>
+    <emission>
+      <factor-prop>/systems/electrical/outputs/instrument-lights</factor-prop>
+      <red>   0.5 </red>
+      <green> 0.25 </green>
+      <blue>  0.25 </blue>
+    </emission>
+  </animation>
   
+   <animation>
+    <type>material</type>
+    <object-name>fond</object-name> 
+    <condition>
+      <not>
+        <property>sim/rendering/rembrandt/enabled</property>
+      </not>
+    </condition>
+    <emission>      
+      <red>   0.13 </red>
+      <green> 0.13 </green>
+      <blue>  0.13 </blue>
+    </emission>
+  </animation>
   
+  <animation>
+    <type>material</type>
+    <object-name>fond</object-name> 
+    <condition>
+        <property>sim/rendering/rembrandt/enabled</property>
+    </condition>
+    <emission>      
+      <red>   0.05 </red>
+      <green> 0.05 </green>
+      <blue>  0.05 </blue>
+    </emission>
+  </animation>
   
   
    <!--  REMBRANDT support for transparent objects-->
@@ -207,8 +244,8 @@
                 <property>sim/rendering/rembrandt/enabled</property>
          </condition>
          
-             <object-name>fond</object-name>
-             <object-name>traits</object-name>
+         <!--<object-name>fond</object-name
+             <object-name>traits</object-name>>-->
              <!-- Off -->
              <object-name>failures</object-name>
              <object-name>ambre</object-name>

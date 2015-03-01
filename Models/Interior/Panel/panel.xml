@@ -12,6 +12,69 @@
     <!-- Objets transparents -->
   </animation>
  
+  <!-- LIGHTS -->
+  
+  <!--Light Top LEFT -->
+  <model>
+    <path>Aircraft/Mirage-2000/Models/Interior/Panel/Instruments/Lights/lights.xml</path>
+    <offsets>
+      <x-m>  0.50719 </x-m>
+      <y-m> -0.20777 </y-m>
+      <z-m>  0.03983 </z-m>
+      <roll-deg> 41.51 </roll-deg>
+    </offsets>
+  </model>
+  
+  <!-- Effect Top Left -->
+  <model>
+  <path>Aircraft/Mirage-2000/Models/Interior/Panel/Instruments/Lights/Light-EffectUp.xml</path>
+    <offsets>
+      <x-m>  0.50719 </x-m>
+      <y-m> -0.20777 </y-m>
+      <z-m>  0.03983 </z-m>     
+      <pitch-deg> 93 </pitch-deg>
+      <heading-deg>5 </heading-deg>
+    </offsets>
+  </model>
+  
+    <!--Light Top RIGHT -->
+  <model>
+    <path>Aircraft/Mirage-2000/Models/Interior/Panel/Instruments/Lights/lights.xml</path>
+    <offsets>
+      <x-m> 0.50719 </x-m>
+      <y-m> 0.20777 </y-m>
+      <z-m> 0.03983 </z-m>
+      <roll-deg> -41.51 </roll-deg>
+    </offsets>
+  </model>
+  <!-- Effect Top RIGHT -->
+  <model>
+  <path>Aircraft/Mirage-2000/Models/Interior/Panel/Instruments/Lights/Light-EffectUp.xml</path>
+    <offsets>
+      <x-m>  0.50719 </x-m>
+      <y-m> 0.20777 </y-m>
+      <z-m>  0.03983 </z-m>     
+      <pitch-deg> 90 </pitch-deg>
+      <heading-deg>0 </heading-deg>
+    </offsets>
+  </model>
+  
+  
+   <!-- Effect BANQUETTE RIGHT -->
+  <model>
+  <path>Aircraft/Mirage-2000/Models/Interior/Panel/Instruments/Lights/Light-EffectSide.xml</path>
+    <offsets>
+      <x-m>  0.7 </x-m>
+      <y-m> 0.38 </y-m>
+      <z-m>  -0.26 </z-m>    
+      <pitch-deg> 15 </pitch-deg>
+      <heading-deg>0 </heading-deg>
+      <roll-deg> 0 </roll-deg>
+    </offsets>
+  </model>
+
+  
+  
   <!-- MFD Left -->
   <model>
     <path>Aircraft/Mirage-2000/Models/Interior/Panel/Instruments/Mfd/mfdL.xml</path>
@@ -21,7 +84,6 @@
       <z-m> -0.118 </z-m>
     </offsets>
   </model>
-
   
   <!-- MFD Center border  -->
   <model>
