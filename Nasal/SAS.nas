@@ -32,6 +32,7 @@ var YawRate    = props.globals.getNode("orientation/yaw-rate-degps", 1);
 var AirSpeed   = props.globals.getNode("velocities/airspeed-kt");
 var GroundSpeed   = props.globals.getNode("velocities/groundspeed-kt");
 var mach       = props.globals.getNode("velocities/mach");
+var slideDeg   = props.globals.getNode("orientation/side-slip-deg");
 
 
 # SAS and Autopilot Controls
@@ -101,7 +102,6 @@ var init_SAS = func {
     var SAS_elevator = nil; 
     var SAS_aileron  = nil;
 
-
     #if(SAS_rudder == nil){
     #    var SAS_rudder = setlistener("/controls/flight/rudder", func {
     #            Update_SAS();
@@ -117,10 +117,7 @@ var init_SAS = func {
     #            Update_SAS();
     #      });
     #}
-
-
 }
-
 
 ######################################SAS double running avoidance #######################################
 var Update_SAS = func (){
@@ -129,18 +126,13 @@ var Update_SAS = func (){
         SAS_Loop_running = 1;
         computeSAS();
         
-        
         #settimer(computeSAS,0.025);    
         #SAS_Loop_running = 0;
     } 
 }
 
-
-
-
 # Stability Augmentation System
 var computeSAS = func {
-
 
 #Mirage 2000
 #I) Elevator :
@@ -161,8 +153,6 @@ var computeSAS = func {
 #3)Anti skid function : when "no yaw", and order is gived to the rudder to keep transversal acceleratioon to 0
 #4)When gears are out, yaw' order authority is increased in order to cover crosswind landing
 
-
-
 #IV)Slat
 #1)Slats depend of the incidences
 #2)start at aoa = 4 and are fully out at aoa = 10
@@ -170,13 +160,10 @@ var computeSAS = func {
 #4)open speed is : 2,6 sec from 0 to fullly open.
 #5)if oil presure < 180 bars this time is 5.2 sec
 
-
 #V)Gear
 #Special flightgear :
 #1) depend of the yaw order
 #2) The turn has to be very high for very low speed and have to decrease a lot while take off acceeleration
-
-
 
   var roll     = RollRate.getValue();
   var roll_rad = roll * 0.017453293;
@@ -197,8 +184,6 @@ if(getprop ("/autopilot/locks/AP-status")=="AP1"){
         SasRoll.setValue(raw_a);
         SasYaw.setValue(raw_r);
         SasGear.setValue(raw_r);
-  
-  
         
  #############The electrics commands are feeded by the hydraulique circuit n°1       
  }elsif (getprop("/systems/hydraulical/circuit1_press")<190){
@@ -218,7 +203,6 @@ if(getprop ("/autopilot/locks/AP-status")=="AP1"){
     var smooth_e   = raw_e;
     var dlc_trim   = 0;
     var gain       = 0;
-    
     
     #Sqare gain :Attenuate neutral positions
     p_input = raw_e * raw_e;
@@ -240,8 +224,6 @@ if(getprop ("/autopilot/locks/AP-status")=="AP1"){
     
     }
     
-      
-    
     last_e = p_input;
     SasPitch.setValue(p_input);
     #SASpitch = p_input; # Used by adverse.nas        
@@ -250,11 +232,39 @@ if(getprop ("/autopilot/locks/AP-status")=="AP1"){
 
     # Roll Channel
     var sas_roll = 0;
+    
+    #Add smooth
+    sas_roll = (raw_a * raw_a);
+    
+    
+    if( math.abs(roll) > 270){
+        #print("Roll over Rate : " ~ roll);  
+        #decrease Roll value
+        if(last_a != 0){
+          sas_roll = (math.abs(last_a) - 0.05)*math.abs(last_a)/last_a;
+        }
+    }
+    if( math.abs(roll) > 300){
+        #print("OMG : Roll over Rate : " ~ roll);  
+        #decrease Roll value
+        if(last_a != 0){
+          sas_roll = (math.abs(last_a) - 0.1)*math.abs(last_a)/last_a;
+        }
+    }
+    
+    if( math.abs(roll) > 360){
+        #print("OMG : Roll over Rate : " ~ roll);  
+        #decrease Roll value
+        if(last_a != 0){
+          sas_roll = 0;
+        }
+    }
+    
     # Squares roll input, then applies quadratic law.
     #if (SasRollOn.getValue()) {
     
                   #print("Roll rate in deg :", roll);
-                  sas_roll = (raw_a * raw_a);
+                  
                   if (raw_a < 0 ) { sas_roll *= -1 }
                   sas_roll += a_trim;
                   if (myMach > (500 /roll_lo_speed)) {
@@ -276,6 +286,7 @@ if(getprop ("/autopilot/locks/AP-status")=="AP1"){
     # sas_roll = raw_a + a_trim;
     #}
     #SASroll = sas_roll; # Used by adverse.nas
+    last_a = sas_roll;
     SasRoll.setValue(sas_roll);
     
 #
@@ -284,13 +295,17 @@ if(getprop ("/autopilot/locks/AP-status")=="AP1"){
   # Yaw Channel
   
   var smooth_r = raw_r;
-  #if (SasYawOn.getValue()) {
-    smooth_r = last_r + ((raw_r - last_r) * r_smooth_factor);
-    last_r = smooth_r;
-  #}
+  if(raw_r != 0 ){
+   #if (SasYawOn.getValue()) {
+   smooth_r = last_r + ((raw_r - last_r) * r_smooth_factor);
+   last_r = smooth_r;
+   
+  }
+  
+  #print(slideDeg.getValue());
+  
+  
   SasYaw.setValue(smooth_r);
-  
-  
   
   ################Gear Channel
   #Appli Quadratic law from low speed#
@@ -307,7 +322,6 @@ if(getprop ("/autopilot/locks/AP-status")=="AP1"){
   SasGear.setValue(gear_input);
   
 } 
-  
   
 #########################################################################################"
      #To calculate the best slats position
@@ -333,8 +347,6 @@ if(getprop ("/autopilot/locks/AP-status")=="AP1"){
  #finally nope : The engine have a computer driven throttle
  
  setprop("/controls/engines/engine[0]/reheat", 105 -( getprop("/controls/engines/engine[0]/throttle") >= 0.75)/(105-95));
- 
-     
      
  #########################################################################    
  #Stall warning !! should be in intruments   

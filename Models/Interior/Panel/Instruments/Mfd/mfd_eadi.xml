@@ -60,31 +60,30 @@
     <object-name>EADI-alt-marker---</object-name>
     <object-name>EADI-ais-marker</object-name>
     <emission>      
-      <factor-prop>instrumentation/mfd/dimm-l</factor-prop>
-      <red>   1 </red>
-      <green> 1 </green>
-      <blue>  1 </blue>
+      <factor-prop>/systems/electrical/outputs/instrument-lights</factor-prop>
+      <red>   0.5 </red>
+      <green> 0.5 </green>
+      <blue>  0.5 </blue>
     </emission>
     <ambient>
-    <factor-prop>instrumentation/mfd/dimm-l</factor-prop>
+    <factor-prop>instrumentation/mfd/dimm-r</factor-prop>
       <red>   1 </red>
       <green> 1 </green>
       <blue>  1 </blue>
     </ambient>
     <diffuse>
-    <factor-prop>instrumentation/mfd/dimm-l</factor-prop>
+    <factor-prop>instrumentation/mfd/dimm-r</factor-prop>
       <red>   1 </red>
       <green> 1 </green>
       <blue>  1 </blue>
     </diffuse>
     <specular>
-     <factor-prop>instrumentation/mfd/dimm-l</factor-prop>
+     <factor-prop>instrumentation/mfd/dimm-r</factor-prop>
       <red>   1 </red>
       <green> 1 </green>
       <blue>  1 </blue>
     </specular>
-   </animation>    
-
+   </animation> 
  
   <!-- ***************EADI************* -->
   <animation>

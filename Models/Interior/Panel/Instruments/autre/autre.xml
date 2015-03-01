@@ -11,11 +11,10 @@
   <animation>
     <type>material</type>
     <object-name>autre</object-name>
-    <emission>
-      <factor>0.13</factor>
-      <red>   1 </red>
-      <green> 1 </green>
-      <blue>  1 </blue>
+    <emission>      
+      <red>   0.13 </red>
+      <green> 0.13 </green>
+      <blue>  0.13 </blue>
     </emission>
   </animation>
 

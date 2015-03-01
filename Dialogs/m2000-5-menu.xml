@@ -14,6 +14,14 @@
         </binding>
       </item>
 
+      <item n="1">
+        <label>Select Logos</label>
+        <binding>
+          <command>nasal</command>
+          <script>mirage2000.logo_dialog.toggle()</script>
+        </binding>
+      </item>
+      
       <item n="2">
         <label>Fast Config</label>
         <name>config</name>
@@ -28,7 +36,16 @@
         <name>start</name>
           <binding>
             <command>nasal</command>
-            <script>engines.engine1.autostart();</script>
+            <script>mirage2000.engine1.autostart();</script>
+          </binding>
+      </item>
+      
+      <item n="4">
+        <label>Toggle Pilot</label>
+        <name>togglepilote</name>
+          <binding>
+             <command>property-toggle</command>
+             <property>/controls/seat/pilot</property>
           </binding>
       </item>
 

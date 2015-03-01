@@ -20,25 +20,25 @@
     <object-name>rep-airbrake</object-name>
     <object-name>rep-slats</object-name>
     <emission>
-      <factor-prop>instrumentation/mfd/dimm-l</factor-prop>
+      <factor-prop>/systems/electrical/outputs/instrument-lights</factor-prop>
       <red>   1 </red>
       <green> 1 </green>
       <blue>  1 </blue>
     </emission>
     <ambient>
-    <factor-prop>instrumentation/mfd/dimm-l</factor-prop>
+    <factor-prop>/systems/electrical/outputs/instrument-lights</factor-prop>
       <red>   1 </red>
       <green> 1 </green>
       <blue>  1 </blue>
     </ambient>
     <diffuse>
-    <factor-prop>instrumentation/mfd/dimm-l</factor-prop>
+    <factor-prop>/systems/electrical/outputs/instrument-lights</factor-prop>
       <red>   1 </red>
       <green> 1 </green>
       <blue>  1 </blue>
     </diffuse>
     <specular>
-     <factor-prop>instrumentation/mfd/dimm-l</factor-prop>
+     <factor-prop>/systems/electrical/outputs/instrument-lights</factor-prop>
       <red>   1 </red>
       <green> 1 </green>
       <blue>  1 </blue>
@@ -51,13 +51,35 @@
     <object-name>vis</object-name>
     <object-name>text1</object-name>
     <object-name>text2</object-name>
-    <emission>
-      <factor>0.15</factor>
-      <red>   1 </red>
-      <green> 1 </green>
-      <blue>  1 </blue>
+    <condition>
+      <not>
+        <property>sim/rendering/rembrandt/enabled</property>
+      </not>
+    </condition>
+    <emission>      
+      <red>   0.13 </red>
+      <green> 0.13 </green>
+      <blue>  0.13 </blue>
     </emission>
   </animation>
+  
+  <animation>
+    <type>material</type>
+    <object-name>cadre</object-name>
+    <object-name>vis</object-name>
+    <object-name>text1</object-name>
+    <object-name>text2</object-name>
+    <condition>
+        <property>sim/rendering/rembrandt/enabled</property>
+    </condition>
+    <emission>      
+      <red>   0.05 </red>
+      <green> 0.05 </green>
+      <blue>  0.05 </blue>
+    </emission>
+  </animation>
+  
+  
 
 <!--Airbrakes-->
 <animation>

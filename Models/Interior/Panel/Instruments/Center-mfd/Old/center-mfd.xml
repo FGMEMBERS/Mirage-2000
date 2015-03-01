@@ -56,10 +56,9 @@
     <object-name>pot-r3</object-name>
     <object-name>pot-r4</object-name>
     <emission>      
-      <factor> 0.13 </factor>
-      <red>   1 </red>
-      <green> 1 </green>
-      <blue>  1 </blue>
+      <red>   0.13 </red>
+      <green> 0.13 </green>
+      <blue>  0.13 </blue>
     </emission>
   </animation>
 

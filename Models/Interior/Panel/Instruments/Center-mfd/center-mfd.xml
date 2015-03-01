@@ -31,14 +31,28 @@
     <object-name>pot-r3</object-name>
     <object-name>pot-r4</object-name>
     <object-name>blackbkd</object-name>
+    <object-name>blackbkdOFF</object-name>
     
     <!-- Objets transparents -->
   </animation>
   
   <animation>
     <type>material</type>
+    <!--<object-name>cadre</object-name>    
+    <object-name>vis</object-name>    -->
+    
+   <object-name>blackbkd</object-name>
+    <emission>      
+      <red>   1 </red>
+      <green> 1 </green>
+      <blue>  1 </blue>
+    </emission>
+    </animation>
+  
+  <animation>
+    <type>material</type>
     <object-name>cadre</object-name>    
-    <object-name>vis</object-name>    
+    <object-name>vis</object-name>
     <object-name>trim1</object-name>
     <object-name>trim2</object-name>
     <object-name>trim3</object-name>
@@ -60,16 +74,55 @@
     <object-name>pot-r2</object-name>
     <object-name>pot-r3</object-name>
     <object-name>pot-r4</object-name>
-    <object-name>blackbkd</object-name>
+    <condition>
+      <not>
+        <property>sim/rendering/rembrandt/enabled</property>
+      </not>
+    </condition>
     <emission>      
-      <factor> 0.13 </factor>
-      <red>   1 </red>
-      <green> 1 </green>
-      <blue>  1 </blue>
+      <red>   0.13 </red>
+      <green> 0.13 </green>
+      <blue>  0.13 </blue>
     </emission>
   </animation>
   
   <animation>
+    <type>material</type>
+    <object-name>cadre</object-name>    
+    <object-name>vis</object-name>
+    <object-name>trim1</object-name>
+    <object-name>trim2</object-name>
+    <object-name>trim3</object-name>
+    <object-name>bt-b1</object-name>
+    <object-name>bt-b2</object-name>
+    <object-name>bt-b3</object-name>
+    <object-name>bt-b4</object-name>
+    <object-name>bt-b5</object-name>
+    <object-name>bt-h1</object-name>
+    <object-name>bt-h2</object-name>
+    <object-name>bt-h3</object-name>
+    <object-name>bt-h4</object-name>
+    <object-name>bt-h5</object-name>
+    <object-name>pot-l1</object-name>
+    <object-name>pot-l2</object-name>
+    <object-name>pot-l3</object-name>
+    <object-name>pot-l4</object-name>
+    <object-name>pot-r1</object-name>
+    <object-name>pot-r2</object-name>
+    <object-name>pot-r3</object-name>
+    <object-name>pot-r4</object-name>
+    <condition>
+        <property>sim/rendering/rembrandt/enabled</property>
+    </condition>
+    <emission>      
+      <red>   0.05 </red>
+      <green> 0.05 </green>
+      <blue>  0.05 </blue>
+    </emission>
+  </animation>
+
+  
+  <!--<animation>
     <type>pick</type>
     <object-name>blackbkd</object-name>
     <action>
@@ -80,7 +133,7 @@
         <script>mirage2000.showNd();</script>
       </binding>
     </action>
-  </animation>
+  </animation>-->
   
   <!--######################## Change display mode  ############################-->
   <animation>
@@ -165,6 +218,11 @@
         <command>property-toggle</command>
         <property>/instrumentation/efis/inputs/arpt</property>
       </binding>
+      <binding>
+        <command>property-assign</command>
+	<property>/instrumentation/nd/display/arpt</property>
+        <property>/instrumentation/efis/inputs/arpt</property>
+      </binding>
     </action>
     <hovered>
       <binding>
@@ -209,6 +267,11 @@
         <command>property-toggle</command>
         <property>/instrumentation/efis/inputs/wpt</property>
       </binding>
+      <binding>
+        <command>property-assign</command>
+	<property>/instrumentation/nd/display/fix</property>
+        <property>/instrumentation/efis/inputs/wpt</property>
+      </binding>
     </action>
     <hovered>
       <binding>
@@ -228,6 +291,11 @@
       <button>0</button>
       <binding>
         <command>property-toggle</command>
+        <property>/instrumentation/efis/inputs/pos</property>
+      </binding>
+      <binding>
+        <command>property-assign</command>
+	<property>/instrumentation/nd/display/vor</property>
         <property>/instrumentation/efis/inputs/pos</property>
       </binding>
     </action>
@@ -278,7 +346,17 @@
         <value>80</value>
         <value>160</value>
         <value>320</value>
-      </binding>   
+      </binding>
+      <binding>
+        <command>property-assign</command>
+        <property>instrumentation/tcas/range</property>
+        <property>/instrumentation/efis/inputs/range-nm</property>
+      </binding>
+      <binding>
+        <command>property-assign</command>
+        <property>instrumentation/nd/range</property>
+        <property>/instrumentation/efis/inputs/range-nm</property>  
+      </binding> 
     </action>
   </animation>
   
@@ -298,9 +376,24 @@
         <value>40</value>
         <value>20</value>
         <value>10</value>              
-      </binding>   
+      </binding>    
+      <binding>
+        <command>property-assign</command>
+        <property>instrumentation/tcas/range</property>
+        <property>/instrumentation/efis/inputs/range-nm</property>
+      </binding> 
+      <binding>
+        <command>property-assign</command>
+        <property>instrumentation/nd/range</property>
+        <property>/instrumentation/efis/inputs/range-nm</property>              
+      </binding> 
     </action>
   </animation>
+  
+  
+  <!--End of Distance management -->
+  
+  
   
   <animation>
     <type>pick</type>
@@ -326,12 +419,12 @@
         <property>/instrumentation/efis/Mode</property>
         <value>CANVAS</value>
         <value>OLD</value>
-        <!--<value>OFF</value>-->
+        <value>OFF</value>
       </binding>
       <binding>
         <command>nasal</command>
         <script>mirage2000.mdfselection();</script>
-      </binding>  
+      </binding>
     </action>  
   </animation>
   
@@ -345,14 +438,14 @@
       <binding>
         <command>property-cycle</command>
         <property>/instrumentation/efis/Mode</property>
-        <!--<value>OFF</value>-->
+        <value>OFF</value>
         <value>OLD</value>
         <value>CANVAS</value>
       </binding>   
       <binding>
         <command>nasal</command>
         <script>mirage2000.mdfselection();</script>
-      </binding> 
+      </binding>
     </action>
   </animation>
   
@@ -391,14 +484,37 @@
     </action>
   </animation>
   
+   <animation>
+    <type>select</type>
+    <object-name>blackbkdOFF</object-name>
+    <condition>
+      <or>
+        <equals>
+          <property>/instrumentation/efis/Mode</property>
+          <value>OFF</value>
+        </equals>
+        <less-than>
+          <property>/systems/electrical/volts</property>
+          <value>12</value> 
+        </less-than>
+      </or>
+    </condition>
+  </animation> 
+  
   <animation>
     <type>select</type>
     <object-name>blackbkd</object-name>
     <condition>
-      <equals>
-        <property>/instrumentation/efis/Mode</property>
-        <value>CANVAS</value>
-      </equals>
+      <and>
+        <equals>
+          <property>/instrumentation/efis/Mode</property>
+          <value>CANVAS</value>
+        </equals>
+	<greater-than>
+            <property>/systems/electrical/volts</property>
+            <value>12</value> 
+        </greater-than>
+        </and>
     </condition>
   </animation> 
   
@@ -407,10 +523,16 @@
     <name>MFD-Screen</name>
     <path>Aircraft/Mirage-2000/Models/Interior/Panel/Instruments/Center-mfd/Old/MFD3d.xml</path>
     <condition>
-      <equals>
-        <property>/instrumentation/efis/Mode</property>
-        <value>OLD</value>
-      </equals>
+      <and>
+        <equals>
+          <property>/instrumentation/efis/Mode</property>
+          <value>OLD</value>
+        </equals>
+        <greater-than>
+            <property>/systems/electrical/volts</property>
+            <value>12</value> 
+        </greater-than>
+      </and>
     </condition>
     <offsets>
       <x-m>  0.0115 </x-m>
@@ -423,10 +545,10 @@
     <type>scale</type>
     <object-name>MFD-Screen</object-name>
     <condition>
-      <equals>
-        <property>/instrumentation/efis/Mode</property>
-        <value>OLD</value>
-      </equals>
+        <equals>
+          <property>/instrumentation/efis/Mode</property>
+          <value>OLD</value>
+        </equals>
     </condition>
     
     <x-offset> 1.00 </x-offset>

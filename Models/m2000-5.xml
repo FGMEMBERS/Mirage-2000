@@ -10,16 +10,57 @@
       # The on-load Nasal is not executed when this file is loaded as the user
       # aircraft.
       ##############################################################################
-                
-      var livery_update = aircraft.livery_update.new("Aircraft/Mirage-2000/Models/Liveries", 10);
+      
+      # Load the needed modules if it hasn't been done yet.
+      # load handles broadcast of:
+      #   - external load set.
+      if (!contains(globals, "m2000_load")) {
+        var file = call(func getprop("/sim/fg-aircraft") ~ "/Mirage-2000/Nasal/ext_stores.nas", nil, var err = []);
+        var code = call(func compile(io.readfile(file), file), nil, err);
+        print("Path 1. Error : " ~size(err));
+        if(size(err) == 0 ){
+          io.load_nasal(file, "m2000_load");
+        }
+      }
+      if (!contains(globals, "m2000_load")) {
+        var file = call(func getprop("/sim/fg-aircraft[1]") ~ "/Mirage-2000/Nasal/ext_stores.nas", nil, var err = []);
+        var code = call(func compile(io.readfile(file), file), nil, err);
+        print("Path 2. Error : " ~size(err));
+        if(size(err) == 0 ){
+          io.load_nasal(file, "m2000_load");
+        }     
+      }
+      if (!contains(globals, "m2000_load")) {
+        var file = call(func getprop("/sim/fg-root") ~ "/Aircraft/Mirage-2000/Nasal/ext_stores.nas", nil, var err = []);
+        var code = call(func compile(io.readfile(file), file), nil, err);
+        print("Path 3. Error : " ~size(err));
+        if(size(err) == 0 ){
+          io.load_nasal(file, "m2000_load");
+        }
+      }
+      
+      var update = aircraft.overlay_update.new();
+      update.add("Aircraft/Mirage-2000/Models/Liveries", "sim/model/livery/file");
+      update.add("Aircraft/Mirage-2000/Models/Logos/", "sim/multiplay/generic/string");
+      
+      #var livery_update = aircraft.livery_update.new("Aircraft/Mirage-2000/Models/Liveries", 10);
+      #var update = aircraft.overlay_update.new();
+      #update.add("Aircraft/F4U/Models/Logos", "sim/multiplay/generic/string");
 
       var self = cmdarg();
-
+      
       var float_0 = self.getNode("sim/multiplay/generic/float[0]", 1);
       var float_1 = self.getNode("sim/multiplay/generic/float[1]", 1);
       
+      var myLoadString = self.getNode("sim/multiplay/generic/string[1]",1);
+      
       var crew_door = self.getNode("sim/model/door-positions/crew/position-norm", 1);
       var passenger_door = self.getNode("sim/model/door-positions/passenger/position-norm", 1);
+      
+      #Update Time
+      #print("Creatingthe Decodeur");
+      var myDecodeur = m2000_load.Decode_Load.new(self,myLoadString,0.5);
+      myDecodeur.decode();
       
       crew_door.alias(float_0);
       passenger_door.alias(float_1);
@@ -28,7 +69,9 @@
     </load>
 
     <unload>
-      livery_update.stop();
+      myDecodeur.stop();
+      #livery_update.stop();
+      update.stop();
       crew_door.unalias();
       passenger_door.unalias();
       #MP.loads(0);
@@ -92,7 +135,9 @@
     <object-name>axeD3</object-name>
     <object-name>axeD4</object-name>
     <object-name>roueD</object-name>
-
+    <object-name>turbine</object-name>
+    <object-name>bruleur</object-name>
+    
     <!-- Objets transparents -->
     <object-name>vitres</object-name>
     <object-name>verriere</object-name>
@@ -133,24 +178,39 @@
     <object-name>ailettes</object-name>
     <object-name>tmp0</object-name>
     <object-name>tmp1</object-name>
-
+    
     <object-name>guns</object-name>
     <object-name>trous</object-name>
-    <object-name>axeA</object-name>
+    <object-name>axeAH</object-name>
+    <object-name>axeAB</object-name>
+    <object-name>axeA1</object-name>
+    <object-name>axeA2</object-name>
     <object-name>roueA</object-name>
-    <object-name>axeG</object-name>
+    <object-name>axeGH</object-name>
+    <object-name>axeGB</object-name>
+    <object-name>axeG1</object-name>
+    <object-name>axeG2</object-name>
+    <object-name>axeG3</object-name>
+    <object-name>axeG4</object-name>
     <object-name>roueG</object-name>
-    <object-name>axeD</object-name>
+    <object-name>axeDH</object-name>
+    <object-name>axeDB</object-name>
+    <object-name>axeD1</object-name>
+    <object-name>axeD2</object-name>
+    <object-name>axeD3</object-name>
+    <object-name>axeD4</object-name>
     <object-name>roueD</object-name>
-
+    <object-name>turbine</object-name>
+    <object-name>bruleur</object-name>
+    
     <property-base>sim/model/livery</property-base>
     <texture-prop>texture</texture-prop>
     <texture>texture.png</texture>
-    <emission>
+    <specular>
       <red-prop>emission/red</red-prop>
       <green-prop>emission/green</green-prop>
       <blue-prop>emission/blue</blue-prop>
-    </emission>
+    </specular>
   </animation>
 
   <effect>
@@ -230,10 +290,16 @@
   
   <!-- Intérieur -->
   <model>
-    <usage>interior</usage>
+    <!--<usage>interior</usage>-->
     <path>Aircraft/Mirage-2000/Models/Interior/interior.xml</path>
   </model>
 
+  <!-- Logos -->
+  <model>
+    <!--<usage>interior</usage>-->
+    <path>Aircraft/Mirage-2000/Models/Logos/logos.xml</path>
+  </model>
+  
   <!-- Externals objects  -->
   <model>
     <path>Aircraft/Mirage-2000/Models/External-objects/loads.xml</path>
@@ -254,7 +320,7 @@
     <path>Aircraft/Mirage-2000/Models/Effects/fx/fx2.xml</path>
   </model> 
 
-  <!-- Une ombre pour OSG -->
+  <!-- Une ombre pour OSG
   <model>
     <path>Aircraft/Mirage-2000/Models/shadow.xml</path>
     <offsets>
@@ -262,7 +328,7 @@
       <y-m>  0.000 </y-m>
       <z-m> -2.400 </z-m>
     </offsets>
-  </model>
+  </model> -->
 
   <model>
     <path>Aircraft/Mirage-2000/Models/Effects/chute/parachute.xml</path>
@@ -324,6 +390,24 @@
     </offsets>
   </model>
 
+  <animation>
+    <type>spin</type>
+    <object-name>turbine</object-name>
+    <!-- engines/engine[0]/n1 -->
+    <property>sim/multiplay/generic/float[4]</property>
+    <factor> 240 </factor>
+    <center>
+      <x-m>  3.84070 </x-m>
+      <y-m>  0.00000 </y-m>
+      <z-m> -0.53366 </z-m>
+    </center>
+    <axis>
+      <x> 1 </x>
+      <y> 0 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+  
   <!-- Particules OSG -->
   <model>
     <path>Aircraft/Mirage-2000/Models/Effects/trail/trail.xml</path>
@@ -343,7 +427,7 @@
     </offsets>
   </model>
   
-<!-- Tiptrail Wings -->
+  <!-- Tiptrail Wings -->
   <model>
     <path>Aircraft/Mirage-2000/Models/Effects/tiptrail/left_tiptrail.xml</path>
     <offsets>
@@ -362,8 +446,7 @@
     </offsets>
   </model>
 
-<!-- Tiptrail Winglet -->
-
+  <!-- Tiptrail Winglet -->
   <model>
     <path>Aircraft/Mirage-2000/Models/Effects/tiptrail/winglet_left_tiptrail.xml</path>
     <offsets>
@@ -381,10 +464,6 @@
       <z-m> -0.41660 </z-m>
     </offsets>
   </model>
-
-
-
-
 
   <!-- Effets sur le sol -->
   <!-- Roue avant -->
@@ -1422,32 +1501,33 @@
     </offsets>
   </model>
   
-    <!-- Landing Lights 
+  <!-- Landing Lights 
   <model>
     <path>Aircraft/Mirage-2000/Models/lights/light-cone.xml</path>
+    <condition> 
+      <property>/controls/gear/gear-down</property> 
+    </condition>
     <offsets>
       <x-m> -3.08 </x-m>
       <y-m> -0.110 </y-m>
       <z-m> -1.84 </z-m>
       <heading-deg> 10 </heading-deg>
     </offsets>
-    <condition> 
-      <property>/controls/gear/gear-down</property> 
-    </condition>
   </model>
 
   <model>
     <path>Aircraft/Mirage-2000/Models/lights/light-cone.xml</path>
+    <condition> 
+      <property>/controls/gear/gear-down</property>
+    </condition>
     <offsets>
       <x-m> -3.08 </x-m>
       <y-m>  0.110 </y-m>
       <z-m> -1.84 </z-m>
       <heading-deg> -10 </heading-deg>
     </offsets>
-    <condition> 
-      <property>/controls/gear/gear-down</property>
-    </condition>
-  </model>-->
+  </model>
+  -->
 
   <!-- Sortie de la souris en fonction des Mach -->
   <animation>
@@ -1455,9 +1535,9 @@
     <object-name>souris</object-name>
     <property>velocities/mach</property>
     <interpolation>
-      <entry><ind> 0.00 </ind><dep>  0.0  </dep></entry>
+      <entry><ind> 0.00 </ind><dep>  0.0 </dep></entry>
       <entry><ind> 1.20 </ind><dep>  0.0 </dep></entry>
-      <entry><ind> 2.20 </ind><dep>  -0.4 </dep></entry>
+      <entry><ind> 2.20 </ind><dep> -0.4 </dep></entry>
     </interpolation>
     <axis>
       <x> 1 </x>

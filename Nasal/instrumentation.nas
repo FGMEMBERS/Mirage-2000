@@ -16,11 +16,11 @@ var viewHUD = func {
 
     #Selection of the view number
     viewNum = getprop("/sim/current-view/view-number");
-    isHUDvisible = getprop("/sim/hud/visibility[1]");
+    voltsHud = getprop("/systems/electrical/volts");
 
-    if( (viewNum ==0 ) and  (isHUDvisible == 0)) {
+    if( (viewNum ==0 and voltsHud > 12) ) {
         setprop("/sim/hud/visibility[1]",1);
-    }elsif((viewNum !=0) and (isHUDvisible == 1)){
+    }else{
         setprop("/sim/hud/visibility[1]",0);    
     }
 }

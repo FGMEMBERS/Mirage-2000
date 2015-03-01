@@ -43,7 +43,7 @@
 
     <counter>
       <particles-per-sec>
-        <value>  150 </value>
+        <value>  12 </value>
         <spread>   0 </spread>
       </particles-per-sec>
     </counter>
@@ -76,7 +76,7 @@
       </end>
 
       <life-sec>
-        <value> 0.10 </value>
+        <value> 1 </value>
       </life-sec>
 
       <mass-kg>  0.25 </mass-kg>

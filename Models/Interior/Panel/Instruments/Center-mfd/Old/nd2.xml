@@ -12,7 +12,7 @@
 
     <layer>
       <texture>
-        <path>Aircraft/Mirage-2000/Models/Interior/Panel/Instruments/Center-mfd/radar.png</path>
+        <path>Aircraft/Mirage-2000/Models/Interior/Panel/Instruments/Center-mfd/Old/radar.png</path>
         <x1> 0.170 </x1>
         <y1> 0.000 </y1>
         <x2> 0.830 </x2>

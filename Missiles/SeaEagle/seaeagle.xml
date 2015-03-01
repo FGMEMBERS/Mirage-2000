@@ -3,5 +3,8 @@
 <PropertyList>
 
   <path>seaEagle.ac</path>
+  <animation>
+    <enable-hot type="bool">false</enable-hot>
+  </animation>
 
 </PropertyList>

@@ -58,10 +58,10 @@
     <object-name>EHSI-w-arrow</object-name>
     <object-name>EHSI-w-rep</object-name>
     <emission>      
-      <factor-prop>instrumentation/mfd/dimm-r</factor-prop>
-      <red>   1 </red>
-      <green> 1 </green>
-      <blue>  1 </blue>
+      <factor-prop>/systems/electrical/outputs/instrument-lights</factor-prop>
+      <red>   0.5 </red>
+      <green> 0.5 </green>
+      <blue>  0.5 </blue>
     </emission>
     <ambient>
     <factor-prop>instrumentation/mfd/dimm-r</factor-prop>

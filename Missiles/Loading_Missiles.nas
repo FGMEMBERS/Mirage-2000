@@ -123,8 +123,8 @@ var Loading_missile = func(name) {
     thrustdurationsec =0;                         # <!-- Mk.36 Mod.7,8 -->
     weightlaunchlbs=550;
     weightwarheadlbs=450;
-    dragcoeff=0.462;                              # <!-- guess; original 0.05-->
-    dragarea = 0.425;                             # <!-- sq ft -->
+    dragcoeff=0.10;                              # <!-- guess; original 0.05-->
+    dragarea = 0.195;                             # <!-- sq ft -->
     maxExplosionRange =40;                        # <!--Due to the code, more the speed is important, more we need to have this figure high-->
     maxspeed = 1.5;                               # <!-- In Mach -->
     life=120;
@@ -144,8 +144,8 @@ var Loading_missile = func(name) {
     thrustdurationsec =0;                         # <!-- Mk.36 Mod.7,8 -->
     weightlaunchlbs=610;
     weightwarheadlbs=190;
-    dragcoeff=0.409;                              # <!-- guess; original 0.05-->
-    dragarea = 0.380;                             # <!-- sq ft -->
+    dragcoeff=0.10;                              # <!-- guess; original 0.05-->
+    dragarea = 0.19;                             # <!-- sq ft -->
     maxExplosionRange =40;                        # <!--Due to the code, more the speed is important, more we need to have this figure high-->
     maxspeed = 1.5;                               # <!-- In Mach -->
     life=120;
@@ -155,7 +155,6 @@ var Loading_missile = func(name) {
   }elsif(name =="AGM65"){
     address="Aircraft/Mirage-2000/Missiles/AGM65/AGM65_smoke.xml";
     NoSmoke="Aircraft/Mirage-2000/Missiles/AGM65/AGM65.xml";
-    Explosion="Aircraft/Mirage-2000/Missiles/AGM65/explosion.xml";
     #
     maxdetectionrngnm = 14;                       # <!-- Not real Impact yet-->
     fovdeg =25;                                   # <!-- seeker optical FOV -->
@@ -242,7 +241,6 @@ var Loading_missile = func(name) {
     #Meteor max range 180 km for actual version. ->100 nm.. at mach 5.8 it's about 95 sec. I put a life of 140, and thurst duration to 100% the travel time, and have vectorial thurst (So 35 G more than a similar missile wich have not vectorial thurst)
     address="Aircraft/Mirage-2000/Missiles/Meteor/Meteor_smoke.xml";
     NoSmoke="Aircraft/Mirage-2000/Missiles/Meteor/Meteor.xml";
-    Explosion="Aircraft/Mirage-2000/Missiles/Meteor/explosion.xml";
     #
     maxdetectionrngnm = 100;                      # <!-- Not real Impact yet-->
     fovdeg =25;                                   # <!-- seeker optical FOV -->
