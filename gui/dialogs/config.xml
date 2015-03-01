@@ -61,6 +61,16 @@
   
   <hrule />
   
+    <button>
+    <legend>Create a target</legend>
+    <binding>
+      <command>nasal</command>
+      <script>missile.targetingGround()</script>
+    </binding>
+  </button>
+  
+    <hrule />
+  
   <text>
     <label>Select a Config bellow</label>
   </text>
@@ -69,35 +79,35 @@
     <legend>No load</legend>
     <binding>
       <command>nasal</command>
-      <script>load.NoLoad()</script>
+      <script>m2000_load.NoLoad()</script>
     </binding>
   </button>
   <button>
     <legend>PO</legend>
     <binding>
       <command>nasal</command>
-      <script>load.Po()</script>
+      <script>m2000_load.Po()</script>
     </binding>
   </button>
   <button>
     <legend>Fox</legend>
     <binding>
       <command>nasal</command>
-      <script>load.Fox()</script>
+      <script>m2000_load.Fox()</script>
     </binding>
   </button>
   <button>
     <legend>Bravo</legend>
     <binding>
       <command>nasal</command>
-      <script>load.Bravo()</script>
+      <script>m2000_load.Bravo()</script>
     </binding>
   </button>
   <button>
     <legend>Kilo</legend>
     <binding>
       <command>nasal</command>
-      <script>load.Kilo()</script>
+      <script>m2000_load.Kilo()</script>
     </binding>
   </button>
   
@@ -105,7 +115,7 @@
     <legend>Air to Ground</legend>
     <binding>
       <command>nasal</command>
-      <script>load.AirToGround()</script>
+      <script>m2000_load.AirToGround()</script>
     </binding>
   </button>
   

@@ -5,7 +5,9 @@
 ##########################################################
 ##########################################################
 ######## Modified by Clement DE L'HAMAIDE for DC-3 #######
-########       Modified by PAF team for DC-3       #######
+######## Modified by PAF team for DC-3             #######
+########                                           #######
+######## Modifed & adapted by 5H1N0B1 (2014-10)    #######
 ##########################################################
 
 var last_time = 0.0;
@@ -121,8 +123,6 @@ var alternator_2 = Alternator.new("/engines/engine[0]/rpm", 4400.0, 28.0, 119.0)
 ############################################################################
 ############# Définition des proppriétés à l'initialisation ################
 ############################################################################
-
-
 
 Electrical_init = func () {
     foreach(var a; props.globals.getNode("/systems/electrical/outputs").getChildren()){
@@ -339,7 +339,7 @@ var electrical_bus = func(bus_volts){
     } else {
         OutPuts.getNode("cabin-lights",1).setValue(0.0);
     }
-
+    
     if(props.globals.getNode("/controls/anti-ice/engine/carb-heat").getBoolValue()){
         OutPuts.getNode("carb-heat",1).setValue(bus_volts);
         load += 0.00002;
@@ -378,12 +378,12 @@ var electrical_bus = func(bus_volts){
 
     if (props.globals.getNode("/controls/engines/engine[0]/starter").getBoolValue()){
         starter_voltsL = bus_volts;
-        load += 0.01;
+        load += 0.001;
     }
 
     if (props.globals.getNode("/controls/engines/engine[0]/starter").getBoolValue()){
         starter_voltsR = bus_volts;
-        load += 0.01;
+        load += 0.001;
     }
     OutPuts.getNode("starter",1).setValue(starter_voltsL);
     OutPuts.getNode("starter[1]",1).setValue(starter_voltsR);
@@ -400,13 +400,33 @@ var avionics_bus = func(bus_volts) {
 
     if (props.globals.getNode("/controls/lighting/instrument-lights").getBoolValue() and props.globals.getNode("/controls/circuit-breakers/instrument-lights").getBoolValue()){
         var instr_norm = props.globals.getNode("/controls/lighting/instruments-norm").getValue();
-        var v = instr_norm * bus_volts;
+        var v = instr_norm * bus_volts*0.08;# *0.08 -> 100% = 12 (property max 0.50)
         OutPuts.getNode("instrument-lights",1).setValue(v);
         load += 0.000025;
     } else {
         OutPuts.getNode("instrument-lights",1).setValue(0.0);
     }
+    
+    if (props.globals.getNode("/controls/lighting/instrument-lights").getBoolValue() and props.globals.getNode("/controls/circuit-breakers/instrument-lights").getBoolValue()){
+        var sideLightUV = props.globals.getNode("/controls/lighting/sideLightUV").getValue();
+        var v = sideLightUV * bus_volts * 0.5;   # *0.08 -> 100% = 12 (property max 0.50)
+        OutPuts.getNode("sideLightUV",1).setValue(v);
+        load += 0.000025;
+    } else {
+        OutPuts.getNode("sideLightUV",1).setValue(0.0);
+    }
+    
+    if (props.globals.getNode("/controls/lighting/instrument-lights").getBoolValue() and props.globals.getNode("/controls/circuit-breakers/instrument-lights").getBoolValue()){
+        var boardLightUV = props.globals.getNode("/controls/lighting/boardLightUV").getValue();
+        var v = boardLightUV * bus_volts *0.5;   # *0.08 -> 100% = 12 (property max 0.50)
+        OutPuts.getNode("boardLightUV",1).setValue(v);
+        load += 0.000025;
+    } else {
+        OutPuts.getNode("boardLightUV",1).setValue(0.0);
+    } 
 
+    
+    
     if (props.globals.getNode("/instrumentation/comm/serviceable").getBoolValue() and props.globals.getNode("/sim/failure-manager/instrumentation/comm/serviceable").getBoolValue()){
         OutPuts.getNode("comm",1).setValue(bus_volts);
         load += 0.00015;
@@ -462,8 +482,6 @@ var avionics_bus = func(bus_volts) {
     } else {
         OutPuts.getNode("dme",1).setValue(0.0);
     }
-    
-
     
     if (props.globals.getNode("/instrumentation/gps/serviceable").getBoolValue() ){
         OutPuts.getNode("gps",1).setValue(bus_volts);

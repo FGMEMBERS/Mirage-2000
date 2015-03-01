@@ -17,7 +17,6 @@ var count_3=0;
 #    settimer(update_main, 5.0);
 #});
 
-
 ########### RMI RADIO MAGNETIC INDICATOR#################
 
 ########### Update RMI 1
@@ -286,4 +285,3 @@ var update_main=func(){
     update_rmi2();    
 #settimer(update_main,0.25);
 }
-

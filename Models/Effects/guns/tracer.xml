@@ -3,14 +3,13 @@
 <!-- Red Tracer -->
 <PropertyList>
   
-  <!--<path>tracer.ac</path>-->
-  <!--<path>tracer.ac</path>-->
   <path>tracer.ac</path>
   
   <animation>
     <enable-hot type="bool">false</enable-hot>
   </animation>
   
+  <!--
   <model>
     <path>Aircraft/Mirage-2000/Models/Effects/guns/smoke.xml</path>
     <name>smoke</name>
@@ -21,11 +20,12 @@
     </offsets>
   </model>
   
-  <!--<effect>
+  <effect>
     <inherits-from>Effects/model-transparent</inherits-from>
     <object-name>tracer</object-name>
     <object-name>smoke</object-name>
-  </effect>-->
+  </effect>
+  -->
   
   <animation>
     <type>dist-scale</type>
@@ -40,9 +40,9 @@
     <emission>
       <factor>1</factor>
       <offset>1</offset>
-      <red>   0.75 </red>
-      <green> 0.25 </green>
-      <blue>  0.25 </blue>
+      <red>   1 </red>
+      <green> 0.333 </green>
+      <blue>  0.333 </blue>
     </emission>
   </animation>
   

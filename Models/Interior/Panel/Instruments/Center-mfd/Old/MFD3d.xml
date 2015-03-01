@@ -92,9 +92,9 @@
     <object-name>rng2.10</object-name>
     <object-name>rng2.1</object-name>
     <emission>      
-      <red>   2 </red>
-      <green> 2 </green>
-      <blue>  2 </blue>
+      <red>   1 </red>
+      <green> 1 </green>
+      <blue>  1 </blue>
     </emission>
   </animation>
   

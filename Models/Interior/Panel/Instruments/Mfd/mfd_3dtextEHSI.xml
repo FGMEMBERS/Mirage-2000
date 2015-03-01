@@ -490,7 +490,7 @@
     <object-name>wind-kt</object-name>
     <object-name>oat</object-name>  
     <emission>
-      <factor-prop>instrumentation/mfd/dimm-r</factor-prop> 
+      <factor-prop>/systems/electrical/outputs/instrument-lights</factor-prop>
       <red>   0.0 </red>
       <green> 0.9 </green>
       <blue>  0.0 </blue>
@@ -521,7 +521,7 @@
      <object-name>button_h1</object-name>
      <object-name>button_h5</object-name>
      <emission>
-       <factor-prop>instrumentation/mfd/dimm-r</factor-prop>
+       <factor-prop>/systems/electrical/outputs/instrument-lights</factor-prop>
        <red>0.9</red>
        <green>0</green>
        <blue>0</blue>
@@ -553,7 +553,7 @@
      <object-name>crs-nav1</object-name>
      <object-name>crs-nav2</object-name>
      <emission>
-       <factor-prop>instrumentation/mfd/dimm-r</factor-prop>
+       <factor-prop>/systems/electrical/outputs/instrument-lights</factor-prop>
        <red>0.3</red>
        <green>0.45</green>
        <blue>0.9</blue>
@@ -582,7 +582,7 @@
     <type>material</type>        
     <object-name>button_h2</object-name>
     <emission>
-      <factor-prop>instrumentation/mfd/dimm-r</factor-prop>
+      <factor-prop>/systems/electrical/outputs/instrument-lights</factor-prop>
       <red>   0.9 </red>
       <green> 0.9 </green>
       <blue>  0.0 </blue>
@@ -610,7 +610,7 @@
     <type>material</type>        
     <object-name>hdg_bug</object-name>
     <emission>
-      <factor-prop>instrumentation/mfd/dimm-r</factor-prop>
+      <factor-prop>/systems/electrical/outputs/instrument-lights</factor-prop>
       <red>   0.9 </red>
       <green> 0.9 </green>
       <blue>  0.9 </blue>

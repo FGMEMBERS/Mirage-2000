@@ -88,10 +88,7 @@ var u_ecm_signal_norm = 0;
 var u_radar_standby   = 0;
 var u_ecm_type_num    = 0;
 
-
 #setlistener("sim/signals/fdm-initialized", radar.init);
-
-
 
 init = func() {
         var our_ac_name = getprop("sim/aircraft");
@@ -124,7 +121,6 @@ var rdr_loop = func() {
         } else {
                 cnt_hud += 0.05;
         }
-        
 }
 
 var az_scan = func() {
@@ -175,13 +171,15 @@ var az_scan = func() {
                                 u_ecm_signal_norm = 0;
                                 u_radar_standby   = 0;
                                 u_ecm_type_num    = 0;
-                                if ( u.Range != nil) {
+                                if ( u.Range != nil) {     
                                         var u_rng = u.get_range();
                                         if(u_rng == nil){u_rng= 0.00000001;}
                                         if (u_rng < range_radar2 ) {
                                                 u.get_deviation(our_true_heading);
+                                                #print(u.get_Callsign() ~"u_rng:"~ u_rng ~" range_radar2:"~ range_radar2);
                                                 if ( u.deviation > l_az_fld  and  u.deviation < r_az_fld ) {
                                                         append(tgts_list, u);
+                                                        
                                                 } else {
                                                         u.set_display(0);
                                                 }
@@ -216,10 +214,16 @@ var az_scan = func() {
                         or ( ! swp_dir and swp_deg <= u.deviation and u.deviation < swp_deg_last )) {
                         u.get_bearing();
                         u.get_heading();
+                        
                         var horizon = u.get_horizon( our_alt );
                         var u_rng = u.get_range();
+                        
+                        horizon = horizon =="nil" ? 0.01:horizon;# To prevent error caused by OpenRadar
                         u_rng = u_rng == "nil" ? 0.01:u_rng; # To prevent error caused by OpenRadar
-                        if ( u_rng < horizon and radardist.radis(u.string, my_radarcorr)) {
+                        var theradis = radardist.radis(u.string, my_radarcorr) =="nil" ?0.01:radardist.radis(u.string, my_radarcorr); # To prevent error caused by OpenRadar
+                        
+                        if ( u_rng < horizon and theradis) {
+
                                 # Compute mp position in our B-scan like display. (Bearing/horizontal + Range/Vertical).
                                 u.set_relative_bearing( swp_diplay_width / az_fld * u.deviation );
                                 var factor_range_radar = rng_diplay_width / range_radar2; # Length of the distance range on the B-scan screen.
@@ -251,9 +255,7 @@ var az_scan = func() {
         cnt += 0.05;
 }
 
-
 var hud_nearest_tgt = func() {
-        
 
         # Computes nearest_u position in the HUD
         if ( nearest_u != nil ) {
@@ -313,7 +315,6 @@ var hud_nearest_tgt = func() {
 Clamp_Blinker = aircraft.light.new("instrumentation/radar2/hud/target-clamped-blinker", [0.1, 0.1]);
 setprop("instrumentation/radar2/hud/target-clamped-blinker/enabled", 1);
 
-
 # ECM: Radar Warning Receiver
 rwr = func(u) {
         var u_name = radardist.get_aircraft_name(u.string);
@@ -362,7 +363,6 @@ rwr = func(u) {
         u.EcmTypeNum.setIntValue(u_ecm_type_num);
 }
 
-
 # Utilities.
 var deviation_normdeg = func(our_heading, target_bearing) {
         var dev_norm = our_heading - target_bearing;
@@ -370,7 +370,6 @@ var deviation_normdeg = func(our_heading, target_bearing) {
         while (dev_norm > 180) dev_norm -= 360;
         return(dev_norm);
 }
-
 
 var rounding1000 = func(n) {
         var a = int( n / 1000 );
@@ -612,5 +611,3 @@ var Target = {
         },
         list : [],
 };
-
-

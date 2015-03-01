@@ -53,8 +53,9 @@ var switch_distance = func() {
          }
          
        setprop("instrumentation/radar/range",range);
-       if(range<101){setprop("instrumentation/nd/range",range);}
        setprop("instrumentation/radar/range-selected",range);
+       
+       #if(range<101){setprop("instrumentation/nd/range",range);}
        #remove_target();
       
          
@@ -135,6 +136,7 @@ var choosen_Target_List = func (){
                             
                          if (type == "multiplayer" or type == "tanker" or type =="carrier" or type =="aircraft") {
                                 var maTarget = Threat.new(c);
+                                
                                 var u_rng = maTarget.get_range();
                                 if(math.abs(maTarget.get_bearing()-getprop("orientation/heading-deg"))<=5){
                                         if(math.abs( (math.atan2((maTarget.get_altitude() - getprop("position/altitude-ft"))*FT2M,u_rng *1852)*R2D) - getprop("orientation/pitch-deg")) <= 5 ){

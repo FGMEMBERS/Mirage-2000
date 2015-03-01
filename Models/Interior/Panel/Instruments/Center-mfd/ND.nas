@@ -1,8 +1,10 @@
 ##
 # storage container for all ND instances 
 var nd_display = {};
-var NDCpt = {};
+#var NDCpt = {};
 var IsIntialised = 0;
+var ND = 0 ;
+var NDCpt = 0;
 
 
 
@@ -55,14 +57,14 @@ var IsIntialised = 0;
 
 var CANVAS_init = func () {
 	# get a handle to the NavDisplay in canvas namespace (for now), see $FG_ROOT/Nasal/canvas/map/navdisplay.mfd
-	var ND = canvas.NavDisplay;
+	ND = canvas.NavDisplay;
 	IsIntialised = 1;
 
 	##
 	# set up a  new ND instance, under 'instrumentation/efis' and use the 
 	# myCockpit_switches hash to map control properties
 
-	var NDCpt = ND.new("instrumentation/efis", myCockpit_switches);
+	NDCpt = ND.new("instrumentation/efis", myCockpit_switches);
 	
 	nd_display.cpt = canvas.new({
 		"name": "ND",
@@ -87,5 +89,14 @@ var showNd = func(pilot='cpt') {
 var mdfselection = func() {
    if(getprop("/instrumentation/efis/Mode")=="CANVAS" and IsIntialised == 0){
         mirage2000.CANVAS_init();      
+   }else{
+   #Kill
+   if(IsIntialised == 1){
+     ND.del;
+     NDCpt.del;
+     nd_display.cpt.del;
+     print("Killed?");
+   }
+   
    }
 }

@@ -8,11 +8,9 @@ if (globals["tanker"] != nil) {
 
 var oclock = func(bearing) int(0.5 + geo.normdeg(bearing) / 30) or 12;
 
-
 var tanker_msg = func setprop("sim/messages/ai-plane", call(sprintf, arg));
 var pilot_msg = func setprop("/sim/messages/pilot", call(sprintf, arg));
 var atc_msg = func setprop("sim/messages/atc", call(sprintf, arg));
-
 
 var skip_cloud_layer = func(alt) {
   var c = [];
@@ -32,7 +30,6 @@ var skip_cloud_layer = func(alt) {
     return alt;
   }
 }
-
 
 var identity = {
   get: func {
@@ -67,7 +64,6 @@ var identity = {
     MOBIL1: ["060X", rand()], MOBIL2: ["061X", rand()], MOBIL3: ["062X", rand()],
   },
 };
-
 
 var Tanker = {
   new: func(aiid, callsign, tacan, type, model, kias, maxfuel, pattern, heading, coord) {
@@ -364,4 +360,3 @@ _setlistener("/sim/signals/nasal-dir-initialized", func {
 
   setlistener("/sim/signals/reinit", reinit, 1);
 });
-
