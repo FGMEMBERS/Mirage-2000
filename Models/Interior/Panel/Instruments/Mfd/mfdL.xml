@@ -36,22 +36,14 @@
     <object-name>vitre</object-name>
   </animation>
   
-  <animation>
-    <type>shader</type>
-    <shader>chrome</shader>
-    <texture>Aircraft/Mirage-2000/Models/Interior/Panel/Instruments/glass_shader.png</texture>
-    <condition>
-      <not><property>sim/rendering/rembrandt/enabled</property></not>
-    </condition>
-    <object-name>vitre</object-name>
-  </animation>
-  
   <!-- working for Rembrandt -->
   <effect>
+    <inherits-from>Aircraft/Mirage-2000/Models/Effects/Glass/glass</inherits-from>
+    <object-name>vitre</object-name>
+  </effect>
+  
+  <effect>
     <inherits-from>Effects/model-transparent</inherits-from>
-    <condition>
-      <property>sim/rendering/rembrandt/enabled</property>
-    </condition>
     <object-name>vitre</object-name>
   </effect>
   
@@ -62,7 +54,7 @@
     <condition>
       <property>instrumentation/mfd/mfd-glass</property>
     </condition>
-  </animation>  
+  </animation> 
   
   <animation>
     <type>material</type>
@@ -433,7 +425,7 @@
           </equals>
         </condition>
          <command>nasal</command>
-         <script>load.inscreased_selected_pylon();</script>
+         <script>m2000_load.inscreased_selected_pylon();</script>
       </binding> 
     </action>
   </animation>

@@ -13,12 +13,13 @@
     <object-name>verre2</object-name>
   </animation>
  
-  <animation>
-    <type>noshadow</type>
+  <!--  REMBRANDT support for transparent objects-->
+  <effect>
+    <inherits-from>Effects/model-transparent</inherits-from>
     <object-name>verre1</object-name>
     <object-name>verre2</object-name>
-  </animation>
-
+  </effect>
+  
   <animation>
     <type>material</type>
     <object-name>fond</object-name>    
@@ -29,14 +30,4 @@
     </emission>
   </animation>
  
-  <!--  REMBRANDT support for transparent objects-->
-  <effect>
-    <inherits-from>Effects/model-transparent</inherits-from>
-    <condition>
-      <property>sim/rendering/rembrandt/enabled</property>
-    </condition>
-    <object-name>verre1</object-name>
-    <object-name>verre2</object-name>
-  </effect>
-
 </PropertyList>

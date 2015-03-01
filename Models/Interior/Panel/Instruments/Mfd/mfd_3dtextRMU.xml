@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 
- <PropertyList>   
-   
+<PropertyList>   
+  
   <text>
     <name>button_b1</name>
     <offsets>
@@ -12,13 +12,13 @@
     
     <type>literal</type>
     <text>RMU</text>    
-
-   <alignment>center-center</alignment>
+    
+    <alignment>center-center</alignment>
     <axis-alignment>yz-plane</axis-alignment>
     <font>helvetica_bold.txf</font>
     <character-size>0.006</character-size>    
   </text> 
-
+  
   <text>
     <name>comm1_sel</name>
     <offsets>
@@ -26,18 +26,18 @@
       <y-m> -0.043 </y-m>
       <z-m>  0.045 </z-m>
     </offsets>
-   
+    
     <type>number-value</type>
     <property>instrumentation/comm/frequencies/selected-mhz</property>
     <format>%3.2f</format>
     <truncate>false</truncate>
-
+    
     <alignment>center-center</alignment>
     <axis-alignment>yz-plane</axis-alignment>
     <font>helvetica_bold.txf</font>
     <character-size>0.0075</character-size>    
   </text>
-
+  
   <text>
     <name>comm1_stb</name>
     <offsets>
@@ -45,18 +45,18 @@
       <y-m> -0.015 </y-m>
       <z-m>  0.045 </z-m>
     </offsets>
-   
+    
     <type>number-value</type>
     <property>instrumentation/comm/frequencies/standby-mhz</property>
     <format>%3.2f</format>
     <truncate>false</truncate>
-
+    
     <alignment>center-center</alignment>
     <axis-alignment>yz-plane</axis-alignment>
     <font>helvetica_bold.txf</font>
     <character-size>0.0075</character-size>    
   </text> 
-
+  
   <text>
     <name>comm2_sel</name>
     <offsets>
@@ -64,18 +64,18 @@
       <y-m> -0.043 </y-m>
       <z-m>  0.015 </z-m>
     </offsets>
-   
+    
     <type>number-value</type>
     <property>instrumentation/comm[1]/frequencies/selected-mhz</property>
     <format>%3.2f</format>
     <truncate>false</truncate>
-
+    
     <alignment>center-center</alignment>
     <axis-alignment>yz-plane</axis-alignment>
     <font>helvetica_bold.txf</font>
     <character-size>0.0075</character-size>    
   </text>
-
+  
   <text>
     <name>comm2_stb</name>
     <offsets>
@@ -83,18 +83,18 @@
       <y-m> -0.015 </y-m>
       <z-m>  0.015 </z-m>
     </offsets>
-   
+    
     <type>number-value</type>
     <property>instrumentation/comm[1]/frequencies/standby-mhz</property>
     <format>%3.2f</format>
     <truncate>false</truncate>
-
+    
     <alignment>center-center</alignment>
     <axis-alignment>yz-plane</axis-alignment>
     <font>helvetica_bold.txf</font>
     <character-size>0.0075</character-size>    
   </text> 
-
+  
   <text>
     <name>nav1_sel</name>
     <offsets>
@@ -102,18 +102,18 @@
       <y-m> -0.043 </y-m>
       <z-m> -0.016 </z-m>
     </offsets>
-   
+    
     <type>number-value</type>
     <property>instrumentation/nav[0]/frequencies/selected-mhz</property>
     <format>%3.2f</format>
     <truncate>false</truncate>
-
+    
     <alignment>center-center</alignment>
     <axis-alignment>yz-plane</axis-alignment>
     <font>helvetica_bold.txf</font>
     <character-size>0.0075</character-size>    
   </text>
-
+  
   <text>
     <name>nav1_stb</name>
     <offsets>
@@ -121,18 +121,18 @@
       <y-m> -0.015 </y-m>
       <z-m> -0.016 </z-m>
     </offsets>
-   
+    
     <type>number-value</type>
     <property>instrumentation/nav[0]/frequencies/standby-mhz</property>
     <format>%3.2f</format>
     <truncate>false</truncate>
-
+    
     <alignment>center-center</alignment>
     <axis-alignment>yz-plane</axis-alignment>
     <font>helvetica_bold.txf</font>
     <character-size>0.0075</character-size>    
   </text>
-
+  
   <text>
     <name>nav2_sel</name>
     <offsets>
@@ -140,18 +140,18 @@
       <y-m> -0.043 </y-m>
       <z-m> -0.045 </z-m>
     </offsets>
-   
+    
     <type>number-value</type>
     <property>instrumentation/nav[1]/frequencies/selected-mhz</property>
     <format>%3.2f</format>
     <truncate>false</truncate>
-
+    
     <alignment>center-center</alignment>
     <axis-alignment>yz-plane</axis-alignment>
     <font>helvetica_bold.txf</font>
     <character-size>0.0075</character-size>    
   </text>
-
+  
   <text>
     <name>nav2_stb</name>
     <offsets>
@@ -159,18 +159,18 @@
       <y-m> -0.015 </y-m>
       <z-m> -0.045 </z-m>
     </offsets>
-   
+    
     <type>number-value</type>
     <property>instrumentation/nav[1]/frequencies/standby-mhz</property>
     <format>%3.2f</format>
     <truncate>false</truncate>
-
+    
     <alignment>center-center</alignment>
     <axis-alignment>yz-plane</axis-alignment>
     <font>helvetica_bold.txf</font>
     <character-size>0.0075</character-size>    
   </text>
-
+  
   <text>
     <name>adf1_sel</name>
     <offsets>
@@ -178,18 +178,18 @@
       <y-m>  0.015 </y-m>
       <z-m>  0.045 </z-m>
     </offsets>
-   
+    
     <type>number-value</type>
     <property>instrumentation/adf/frequencies/selected-khz</property>
     <format>%4.0f</format>
     <truncate>false</truncate>
-
+    
     <alignment>center-center</alignment>
     <axis-alignment>yz-plane</axis-alignment>
     <font>helvetica_bold.txf</font>
     <character-size>0.0075</character-size>    
   </text>
-
+  
   <text>
     <name>adf1_stb</name>
     <offsets>
@@ -197,18 +197,18 @@
       <y-m>  0.043 </y-m>
       <z-m>  0.045 </z-m>
     </offsets>
-   
+    
     <type>number-value</type>
     <property>instrumentation/adf/frequencies/standby-khz</property>
     <format>%4.0f</format>
     <truncate>false</truncate>
-
+    
     <alignment>center-center</alignment>
     <axis-alignment>yz-plane</axis-alignment>
     <font>helvetica_bold.txf</font>
     <character-size>0.0075</character-size>    
   </text>
-
+  
   <text>
     <name>adf2_sel</name>
     <offsets>
@@ -216,18 +216,18 @@
       <y-m>  0.015 </y-m>
       <z-m>  0.015 </z-m>
     </offsets>
-   
+    
     <type>number-value</type>
     <property>instrumentation/adf[1]/frequencies/selected-khz</property>
     <format>%4.0f</format>
     <truncate>false</truncate>
-
+    
     <alignment>center-center</alignment>
     <axis-alignment>yz-plane</axis-alignment>
     <font>helvetica_bold.txf</font>
     <character-size>0.0075</character-size>    
   </text>
-
+  
   <text>
     <name>adf2_stb</name>
     <offsets>
@@ -235,18 +235,18 @@
       <y-m>  0.043 </y-m>
       <z-m>  0.015 </z-m>
     </offsets>
-   
+    
     <type>number-value</type>
     <property>instrumentation/adf[1]/frequencies/standby-khz</property>
     <format>%4.0f</format>
     <truncate>false</truncate>
-
+    
     <alignment>center-center</alignment>
     <axis-alignment>yz-plane</axis-alignment>
     <font>helvetica_bold.txf</font>
     <character-size>0.0075</character-size>    
   </text>
-
+  
   <text>
     <name>tacan_sel</name>
     <offsets>
@@ -254,18 +254,18 @@
       <y-m>  0.012 </y-m>
       <z-m> -0.016 </z-m>
     </offsets>
-   
+    
     <type>number-value</type>
     <property>instrumentation/tacan/frequencies/selected-channel</property>
     <format>%4.0f</format>
     <truncate>false</truncate>
-
+    
     <alignment>center-center</alignment>
     <axis-alignment>yz-plane</axis-alignment>
     <font>helvetica_bold.txf</font>
     <character-size>0.0075</character-size>    
   </text>
-
+  
   <text>
     <name>tacan_sel_xy</name>
     <offsets>
@@ -273,16 +273,16 @@
       <y-m>  0.022 </y-m>
       <z-m> -0.016 </z-m>
     </offsets>    
-
+    
     <type type="string">text-value</type>
     <property>instrumentation/tacan/frequencies/selected-channel[4]</property>
-
+    
     <alignment>center-center</alignment>
     <axis-alignment>yz-plane</axis-alignment>
     <font>helvetica_bold.txf</font>
     <character-size>0.0075</character-size>    
   </text>
-
+  
   <text>
     <name>tacan_sel_0</name>
     <offsets>
@@ -290,16 +290,16 @@
       <y-m>  0.009 </y-m>
       <z-m> -0.016 </z-m>
     </offsets>    
-
+    
     <type type="string">text-value</type>
     <property>instrumentation/tacan/frequencies/selected-channel[1]</property>
-
+    
     <alignment>center-center</alignment>
     <axis-alignment>yz-plane</axis-alignment>
     <font>helvetica_bold.txf</font>
     <character-size>0.0075</character-size>    
   </text>
-
+  
   <animation>
     <type>select</type>
     <object-name>tacan_sel_0</object-name>
@@ -310,7 +310,7 @@
       </less-than>
     </condition>
   </animation>
-
+  
   <text>
     <name>tacan_stb</name>
     <offsets>
@@ -318,18 +318,18 @@
       <y-m>  0.040 </y-m>
       <z-m> -0.016 </z-m>
     </offsets>
-   
+    
     <type>number-value</type>
     <property>instrumentation/tacan/frequencies/stby-can</property>
     <format>%4.0f</format>
     <truncate>false</truncate>
-
+    
     <alignment>center-center</alignment>
     <axis-alignment>yz-plane</axis-alignment>
     <font>helvetica_bold.txf</font>
     <character-size>0.0075</character-size>    
   </text>
-
+  
   <text>
     <name>tacan_stb_xy</name>
     <offsets>
@@ -337,16 +337,16 @@
       <y-m>  0.050 </y-m>
       <z-m> -0.016 </z-m>
     </offsets>    
-
+    
     <type type="string">text-value</type>
     <property>instrumentation/tacan/frequencies/stby-can2</property>
-
+    
     <alignment>center-center</alignment>
     <axis-alignment>yz-plane</axis-alignment>
     <font>helvetica_bold.txf</font>
     <character-size>0.0075</character-size>    
   </text>
-
+  
   <text>
     <name>tacan_stb_0</name>
     <offsets>
@@ -354,16 +354,16 @@
       <y-m>  0.037 </y-m>
       <z-m> -0.016 </z-m>
     </offsets>    
-
+    
     <type type="string">text-value</type>
     <property>instrumentation/tacan/frequencies/stby-can1</property>
-
+    
     <alignment>center-center</alignment>
     <axis-alignment>yz-plane</axis-alignment>
     <font>helvetica_bold.txf</font>
     <character-size>0.0075</character-size>    
   </text>
-
+  
   <animation>
     <type>select</type>
     <object-name>tacan_stb_0</object-name>
@@ -374,8 +374,6 @@
       </less-than>
     </condition>
   </animation>
-
-
   
   <animation>
     <name>red</name>
@@ -413,14 +411,13 @@
       <blue>  0 </blue>
     </specular>
   </animation>
-
-<!--
+  
+  <!--
   <animation>
-    <name>green</name>
+   <name>green</name>
     <type>material</type>     
-    
     <emission>
-      <factor-prop>instrumentation/mfd/dimm-r</factor-prop>
+    <factor-prop>instrumentation/mfd/dimm-r</factor-prop>
       <red>   0.0 </red>
       <green> 0.9 </green>
       <blue>  0.0 </blue>
@@ -442,7 +439,7 @@
       <blue>  0 </blue>
     </specular>
   </animation>
--->
+  -->
   <animation>
     <name>yellow</name>
     <type>material</type>
@@ -478,6 +475,5 @@
       <blue>  0 </blue>
     </specular>
   </animation>
-   
+  
 </PropertyList>
- 
