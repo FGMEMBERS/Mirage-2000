@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 
 <PropertyList>
-
+  
   <path>vsi.ac</path>
-
+  
   <animation>
     <object-name>fond</object-name>
     <object-name>disc</object-name>
   </animation>
-
+  
   <animation>
     <type>material</type>
     <object-name>fond</object-name>
@@ -19,7 +19,7 @@
       <blue>  1 </blue>
     </emission>
   </animation>
-
+  
   <animation>
     <type>material</type>
     <object-name>disc</object-name>
@@ -30,7 +30,7 @@
       <blue>  0.3 </blue>
     </emission>
   </animation>
-
+  
   <animation>
     <type>rotate</type>
     <object-name>disc</object-name>
@@ -55,17 +55,16 @@
   </animation>
   
   <animation>
-      <type>pick</type>
-      <object-name>fond</object-name>
-      <object-name>disc</object-name>
-      <hovered>
-        <binding>
-           <command>set-tooltip</command>
-           <tooltip-id>vsi</tooltip-id>
-           <label>VSI</label>
-        </binding>
-      </hovered>
-   </animation>
-
+    <type>pick</type>
+    <object-name>fond</object-name>
+    <object-name>disc</object-name>
+    <hovered>
+      <binding>
+        <command>set-tooltip</command>
+        <tooltip-id>vsi</tooltip-id>
+        <label>VSI</label>
+      </binding>
+    </hovered>
+  </animation>
+  
 </PropertyList>
-

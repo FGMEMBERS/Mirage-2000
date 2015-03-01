@@ -36,22 +36,14 @@
     <object-name>vitre</object-name>  
   </animation>
   
-  <animation>
-    <type>shader</type>
-    <shader>chrome</shader>
-    <texture>Aircraft/Mirage-2000/Models/Interior/Panel/Instruments/glass_shader.png</texture>
-    <condition>
-      <not><property>sim/rendering/rembrandt/enabled</property></not>
-    </condition>
-    <object-name>vitre</object-name>
-  </animation>
-  
   <!-- working for Rembrandt -->
   <effect>
+    <inherits-from>Aircraft/Mirage-2000/Models/Effects/Glass/glass</inherits-from>
+    <object-name>vitre</object-name>
+  </effect>
+  
+  <effect>
     <inherits-from>Effects/model-transparent</inherits-from>
-    <condition>
-      <property>sim/rendering/rembrandt/enabled</property>
-    </condition>
     <object-name>vitre</object-name>
   </effect>
   
@@ -62,7 +54,7 @@
     <condition>
       <property>instrumentation/mfd/mfd-glass</property>
     </condition>
-  </animation>   
+  </animation> 
   
   <animation>
     <type>material</type>
@@ -123,7 +115,7 @@
     <object-name>pot-r3</object-name>
     <object-name>pot-r4</object-name>
     <condition>
-        <property>sim/rendering/rembrandt/enabled</property>
+      <property>sim/rendering/rembrandt/enabled</property>
     </condition>
     <emission>      
       <red>   0.05 </red>
@@ -132,7 +124,7 @@
     </emission>
   </animation> 
 
-<!--
+  <!--
   <animation>
     <type>scale</type>
     <object-name>RWR</object-name> 
@@ -140,7 +132,7 @@
     <y-offset> 1.4 </y-offset>
     <z-offset> 1.4 </z-offset>
   </animation>
--->
+  -->
   <!-- __________________ Buttons _____________________-->
   <!--Pages-->
   <animation>
@@ -188,11 +180,11 @@
       </binding>          
     </action>
     <hovered>
-          <binding>
-             <command>set-tooltip</command>
-             <tooltip-id>nav_src_mode</tooltip-id>
-             <label>Set Navigation Source</label>
-          </binding>
+      <binding>
+        <command>set-tooltip</command>
+        <tooltip-id>nav_src_mode</tooltip-id>
+        <label>Set Navigation Source</label>
+      </binding>
     </hovered>
   </animation>
 
@@ -308,24 +300,24 @@
         <property>instrumentation/mfd/wind-display</property>
       </binding>
       <condition>
-          <equals> 
-            <property>/instrumentation/mfd/modeR</property>           
-            <value> 0 </value>
-            </equals>
-          </condition>       
+        <equals> 
+          <property>/instrumentation/mfd/modeR</property>           
+          <value> 0 </value>
+          </equals>
+        </condition>       
       <binding>
         <command>property-adjust</command>
-          <property>instrumentation/mfd/rmuR</property>
-          <step>1</step>
-          <min>0</min>
-          <max>4</max>
-          <wrap>true</wrap>
+        <property>instrumentation/mfd/rmuR</property>
+        <step>1</step>
+        <min>0</min>
+        <max>4</max>
+        <wrap>true</wrap>
         <condition>
           <equals> 
             <property>/instrumentation/mfd/modeR</property>           
             <value> 1 </value>
-            </equals>
-          </condition>     
+          </equals>
+        </condition>     
       </binding>            
     </action>
   </animation>
@@ -1123,7 +1115,7 @@
     <path>Aircraft/Mirage-2000/Models/Interior/Panel/Instruments/Mfd/mfd_rmu.xml</path>
     <condition>
       <and>
-	<equals>
+  <equals>
           <property>/instrumentation/mfd/modeR</property>
           <value> 1 </value>
         </equals>
