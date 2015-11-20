@@ -1,30 +1,32 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="iso-8859-1"?>
 
 <PropertyList>
 
   <path>switch2.ac</path>
 
   <animation>
+
     <!-- Objets opaques -->
     <object-name>fond</object-name>
     <object-name>switch</object-name>
 
     <!-- Objets transparents -->
+
   </animation>
- 
-   <!--Offset -->
-    <animation>
+
+  <!--Offset -->
+  <animation>
     <type>rotate</type>
     <object-name>switch</object-name>
     <offset-deg>-25</offset-deg>
     <axis>
-      <x>  0 </x>
-      <y> -1 </y>
-      <z>  0 </z>
+      <x> 0</x>
+      <y>-1</y>
+      <z> 0</z>
     </axis>
-  </animation> 
- 
- <animation>
+  </animation>
+
+  <animation>
     <type>pick</type>
     <object-name>switch</object-name>
     <action>
@@ -43,24 +45,17 @@
       </binding>
     </action>
   </animation>
-  
-   <animation>
+
+  <animation>
     <type>rotate</type>
     <object-name>switch</object-name>
     <property>/controls/switches/transformator-switch</property>
-    <factor>  50 </factor>
+    <factor>50</factor>
     <axis>
-      <x>  0 </x>
-      <y> -1 </y>
-      <z>  0 </z>
+      <x> 0</x>
+      <y>-1</y>
+      <z> 0</z>
     </axis>
-  </animation> 
- 
- 
- 
- 
- 
- 
- 
-</PropertyList>
+  </animation>
 
+</PropertyList>

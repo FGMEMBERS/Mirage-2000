@@ -1,14 +1,14 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml version="1.0" encoding="iso-8859-1"?>
 
 <!-- Red Tracer -->
 <PropertyList>
-  
+
   <path>tracer.ac</path>
-  
+
   <animation>
     <enable-hot type="bool">false</enable-hot>
   </animation>
-  
+
   <!--
   <model>
     <path>Aircraft/Mirage-2000/Models/Effects/guns/smoke.xml</path>
@@ -26,24 +26,24 @@
     <object-name>smoke</object-name>
   </effect>
   -->
-  
+
   <animation>
     <type>dist-scale</type>
     <object-name>tracer</object-name>
     <factor>0.001</factor>
     <offset>0</offset>
   </animation>
-  
+
   <animation>
     <type>material</type>
     <object-name>tracer</object-name>
     <emission>
       <factor>1</factor>
       <offset>1</offset>
-      <red>   1 </red>
+      <red>   1.000 </red>
       <green> 0.333 </green>
       <blue>  0.333 </blue>
     </emission>
   </animation>
-  
+
 </PropertyList>

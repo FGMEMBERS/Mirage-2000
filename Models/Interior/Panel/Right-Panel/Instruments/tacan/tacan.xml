@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml version="1.0" encoding="iso-8859-1"?>
 
 <PropertyList>
 
@@ -16,8 +16,9 @@
     <object-name>butonX</object-name>
     <object-name>butonY</object-name>
     <object-name>buton2</object-name>
-    
+
     <!-- Objets transparents -->
+
   </animation>
 
   <animation>
@@ -30,7 +31,7 @@
       </equals>
     </condition>
   </animation>
-  
+
   <animation>
     <type>select</type>
     <object-name>alphaY</object-name>
@@ -56,7 +57,7 @@
       </binding>
     </action>
   </animation>
-  
+
   <animation>
     <type>pick</type>
     <object-name>butonY</object-name>
@@ -71,7 +72,7 @@
       </binding>
     </action>
   </animation>
-  
+
   <animation>
     <name>buton1</name>
     <object-name>butonX</object-name>
@@ -82,20 +83,19 @@
     <type>rotate</type>
     <object-name>buton1</object-name>
     <property>instrumentation/tacan/frequencies/XPos</property>
-    <factor>  30 </factor>
+    <factor>30</factor>
     <center>
-      <x-m>  0.003574 </x-m>
-      <y-m> -0.010760 </y-m>
-      <z-m> -0.005036 </z-m>
+      <x-m> 0.003574</x-m>
+      <y-m>-0.010760</y-m>
+      <z-m>-0.005036</z-m>
     </center>
     <axis>
-      <x> 1 </x>
-      <y> 0 </y>
-      <z> 0 </z>
+      <x>1</x>
+      <y>0</y>
+      <z>0</z>
     </axis>
   </animation>
 
-  
   <animation>
     <type>textranslate</type>
     <object-name>num-0</object-name>
@@ -103,12 +103,12 @@
     <factor>-0.1</factor>
     <offset>0</offset>
     <axis>
-      <x>  0 </x>
-      <y> -1 </y>
-      <z>  0 </z>
+      <x> 0</x>
+      <y>-1</y>
+      <z> 0</z>
     </axis>
   </animation>
-        
+
   <animation>
     <type>textranslate</type>
     <object-name>num-1</object-name>
@@ -116,12 +116,12 @@
     <factor>-0.1</factor>
     <offset>0</offset>
     <axis>
-      <x>  0 </x>
-      <y> -1 </y>
-      <z>  0 </z>
+      <x> 0</x>
+      <y>-1</y>
+      <z> 0</z>
     </axis>
   </animation>
- 
+
   <animation>
     <type>textranslate</type>
     <object-name>num-2</object-name>
@@ -129,12 +129,12 @@
     <factor>-0.1</factor>
     <offset>0</offset>
     <axis>
-      <x>  0 </x>
-      <y> -1 </y>
-      <z>  0 </z>
+      <x> 0</x>
+      <y>-1</y>
+      <z> 0</z>
     </axis>
   </animation>
-        
+
   <!--
   Position centre button2 (gauche)
   
@@ -142,4 +142,5 @@
   y :  0.010760
   z : -0.005036
   -->
+
 </PropertyList>

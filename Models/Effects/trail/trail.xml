@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml version="1.0" encoding="iso-8859-1"?>
 
 <PropertyList>
 
@@ -13,11 +13,11 @@
     <condition>
       <and>
         <greater-than>
-          <!-- engines/engine[0]/n2 ok why not. Permet d'activer la property en multi-->
+          <!-- engines/engine[0]/n2 ok why not. Permit the activation in multiplayer -->
           <property>sim/multiplay/generic/float[5]</property>
           <value>50</value>
         </greater-than>
-        <!-- position/altitude-ft Il est possible d'en avoir, même près du sol !! bon il faut qu'il fasse -39 degC -->
+        <!-- position/altitude-ft possible, even near ground !! ok, we should have a temperature of -39 degC -->
         <!--
         <greater-than>
           <property>sim/multiplay/generic/float[3]</property>
@@ -38,7 +38,7 @@
     <attach>world</attach>
 
     <placer>
-      <type>point</type> 
+      <type>point</type>
     </placer>
 
     <shooter>
@@ -70,15 +70,17 @@
     <align>billboard</align>
 
     <particle>
+
       <start>
         <color>
-          <red><value>   0.7 </value></red>
-          <green><value> 0.7 </value></green>
-          <blue><value>  0.7 </value></blue>
+          <red><value>   1 </value></red>
+          <green><value> 1 </value></green>
+          <blue><value>  1 </value></blue>
           <alpha><value> 0.3 </value></alpha>
         </color>
         <size>
-          <value>1.8</value><!--0.25-->
+          <value>2</value>
+          <!--0.25-->
         </size>
       </start>
 
@@ -90,22 +92,21 @@
           <alpha><value> 1 </value></alpha>
         </color>
         <size>
-          <value>7</value><!-- 4 -->
+          <value>9</value>
         </size>
       </end>
 
       <life-sec>
-        <value>15</value>
+        <value>20</value>
       </life-sec>
-
-      <mass-kg>  0.5 </mass-kg>
-      <radius-m> 0.5 </radius-m>
+      <mass-kg>0.5</mass-kg>
+      <radius-m>0.5</radius-m>
     </particle>
 
     <program>
-      <fluid>               air  </fluid>
-      <gravity type="bool"> true </gravity>
-      <wind typ="bool">     true </wind>
+      <fluid> air </fluid>
+      <gravity type="bool">true</gravity>
+      <wind typ="bool">    true</wind>
     </program>
 
   </particlesystem>

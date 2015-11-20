@@ -1,36 +1,40 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml version="1.0" encoding="iso-8859-1"?>
 
 <PropertyList>
-
-  <!-- pylon options                     
-      _________________|___|_________________
-      \                |   |                /
-       \               |   |               /
-        \2.L        4.L|   |4.R        2.R/
-         (1)        (7)|   |(8)        (5)
-          \   3.L      |   |      3.R   /
-           \  (2)      |   |      (4)  /   
-            \          |   |          /    
-             \         |   |         /
-              \        |   |        /
-               \       |.C |       / 
-                \      |(3)|      /
-                 \     |   |     /
-                  \ 1.L|   |1.R /
-                   \(0)|   |(6)/
-                    \  |   |  /
-                     \ |   | /
-                      \|___|/
-  -->                   
+  <!--
+'''' note :
+' pylon options
+'
+' BOTTOM VIEW
+'  _________________|___|_________________
+'  \                |   |                /
+'   \               |   |               /
+'    \2.L        4.L|   |4.R        2.R/
+'     (1)        (7)|   |(8)        (5)
+'      \   3.L      |   |      3.R   /
+'       \  (2)      |   |      (4)  /
+'        \          |   |          /
+'         \         |   |         /
+'          \        |   |        /
+'           \       |.C |       /
+'            \      |(3)|      /
+'             \     |   |     /
+'              \ 1.L|   |1.R /
+'               \(0)|   |(6)/
+'                \  |   |  /
+'                 \ |   | /
+'                  \|___|/
+'
+  -->
 
   <!-- station left 1 (Index 0) -->
   <model>
     <name>left-pos-1</name>
     <path>Aircraft/Mirage-2000/Missiles/MatraR550Magic2/MatraR550Magic2.xml</path>
     <offsets>
-      <x-m> -1.265 </x-m>
-      <y-m> -0.824 </y-m>
-      <z-m> -1.404 </z-m>
+      <x-m>-1.265</x-m>
+      <y-m>-0.824</y-m>
+      <z-m>-1.404</z-m>
     </offsets>
   </model>
 
@@ -38,9 +42,9 @@
     <name>AIM120L</name>
     <path>Aircraft/Mirage-2000/Missiles/AIM-120/AIM-120.xml</path>
     <offsets>
-      <x-m> -1.265 </x-m>
-      <y-m> -0.824 </y-m>
-      <z-m> -1.404 </z-m>
+      <x-m>-1.265</x-m>
+      <y-m>-0.824</y-m>
+      <z-m>-1.404</z-m>
     </offsets>
   </model>
 
@@ -48,18 +52,19 @@
     <name>left-pos-1-MICA</name>
     <path>Aircraft/Mirage-2000/Missiles/MatraMica/MatraMica.xml</path>
     <offsets>
-      <x-m> -1.265 </x-m>
-      <y-m> -0.824 </y-m>
-      <z-m> -1.404 </z-m>
+      <x-m>-1.265</x-m>
+      <y-m>-0.824</y-m>
+      <z-m>-1.404</z-m>
     </offsets>
   </model>
+
   <model>
     <name>left-GBU16</name>
     <path>Aircraft/Mirage-2000/Missiles/GBU16/gbu16.xml</path>
     <offsets>
-      <x-m> -1.265 </x-m>
-      <y-m> -0.824 </y-m>
-      <z-m> -1.404 </z-m>
+      <x-m>-1.265</x-m>
+      <y-m>-0.824</y-m>
+      <z-m>-1.404</z-m>
     </offsets>
   </model>
 
@@ -67,9 +72,9 @@
     <name>left-GBU12</name>
     <path>Aircraft/Mirage-2000/Missiles/GBU12/GBU12.xml</path>
     <offsets>
-      <x-m> -1.265 </x-m>
-      <y-m> -0.824 </y-m>
-      <z-m> -1.404 </z-m>
+      <x-m>-1.265</x-m>
+      <y-m>-0.824</y-m>
+      <z-m>-1.404</z-m>
     </offsets>
   </model>
 
@@ -78,19 +83,19 @@
     <name>left-pos-2</name>
     <path>Aircraft/Mirage-2000/Missiles/MatraR550Magic2/MatraR550Magic2.xml</path>
     <offsets>
-      <x-m>  2.373 </x-m>
-      <y-m> -3.278 </y-m>
-      <z-m> -1.494 </z-m>
+      <x-m> 2.373</x-m>
+      <y-m>-3.278</y-m>
+      <z-m>-1.494</z-m>
     </offsets>
   </model>
-	
+
   <model>
     <name>aim-9L</name>
     <path>Aircraft/Mirage-2000/Missiles/aim-9/aim-9.xml</path>
     <offsets>
-      <x-m>  2.373 </x-m>
-      <y-m> -3.278 </y-m>
-      <z-m> -1.494 </z-m>
+      <x-m> 2.373</x-m>
+      <y-m>-3.278</y-m>
+      <z-m>-1.494</z-m>
     </offsets>
   </model>
 
@@ -98,19 +103,29 @@
     <name>left-pos-2-MICA</name>
     <path>Aircraft/Mirage-2000/Missiles/MatraMica/MatraMica.xml</path>
     <offsets>
-      <x-m>  2.373 </x-m>
-      <y-m> -3.278 </y-m>
-      <z-m> -1.494 </z-m>
+      <x-m> 2.373</x-m>
+      <y-m>-3.278</y-m>
+      <z-m>-1.494</z-m>
     </offsets>
   </model>
-  
-    <model>
+
+  <model>
     <name>left-pos-2-R74</name>
     <path>Aircraft/Mirage-2000/Missiles/R74/R-74.xml</path>
     <offsets>
-      <x-m>  2.373 </x-m>
-      <y-m> -3.278 </y-m>
-      <z-m> -1.494 </z-m>
+      <x-m> 2.373</x-m>
+      <y-m>-3.278</y-m>
+      <z-m>-1.494</z-m>
+    </offsets>
+  </model>
+
+  <model>
+    <name>left-pos-2-SmokePod</name>
+    <path>Aircraft/Mirage-2000/Missiles/SmokePod/SmokePod.xml</path>
+    <offsets>
+      <x-m> 2.373</x-m>
+      <y-m>-3.278</y-m>
+      <z-m>-1.494</z-m>
     </offsets>
   </model>
 
@@ -119,19 +134,19 @@
     <name>left-large-tank</name>
     <path>Aircraft/Mirage-2000/Models/External-objects/tank1700l/tank1700l.xml</path>
     <offsets>
-      <x-m>  1.047 </x-m>
-      <y-m> -2.359 </y-m>
-      <z-m> -1.556 </z-m>
+      <x-m> 1.047</x-m>
+      <y-m>-2.359</y-m>
+      <z-m>-1.556</z-m>
     </offsets>
-  </model>	
+  </model>
 
   <model>
     <name>left-tank</name>
     <path>Aircraft/Mirage-2000/Models/External-objects/tank1300l/tank1300l.xml</path>
     <offsets>
-      <x-m>  1.047 </x-m>
-      <y-m> -2.359 </y-m>
-      <z-m> -1.556 </z-m>
+      <x-m> 1.047</x-m>
+      <y-m>-2.359</y-m>
+      <z-m>-1.556</z-m>
     </offsets>
   </model>
 
@@ -139,9 +154,9 @@
     <name>left-magic-2</name>
     <path>Aircraft/Mirage-2000/Missiles/MatraR550Magic2/MatraR550Magic2.xml</path>
     <offsets>
-      <x-m>  1.047 </x-m>
-      <y-m> -2.359 </y-m>
-      <z-m> -1.556 </z-m>
+      <x-m> 1.047</x-m>
+      <y-m>-2.359</y-m>
+      <z-m>-1.556</z-m>
     </offsets>
   </model>
 
@@ -149,19 +164,19 @@
     <name>left-MICA</name>
     <path>Aircraft/Mirage-2000/Missiles/MatraMica/MatraMica.xml</path>
     <offsets>
-      <x-m>  1.047 </x-m>
-      <y-m> -2.359 </y-m>
-      <z-m> -1.556 </z-m>
+      <x-m> 1.047</x-m>
+      <y-m>-2.359</y-m>
+      <z-m>-1.556</z-m>
     </offsets>
   </model>
-  
+
   <model>
     <name>Sea_EagleL</name>
     <path>Aircraft/Mirage-2000/Missiles/SeaEagle/seaeagle.xml</path>
     <offsets>
-      <x-m>  1.447 </x-m>
-      <y-m> -2.359 </y-m>
-      <z-m> -1.556 </z-m>
+      <x-m> 1.447</x-m>
+      <y-m>-2.359</y-m>
+      <z-m>-1.556</z-m>
     </offsets>
   </model>
 
@@ -170,9 +185,9 @@
     <name>center-tank</name>
     <path>Aircraft/Mirage-2000/Models/External-objects/tank1300l/tank1300l.xml</path>
     <offsets>
-      <x-m>  1.082 </x-m>
-      <y-m>  0.000 </y-m>
-      <z-m> -1.656 </z-m>
+      <x-m> 1.082</x-m>
+      <y-m> 0.000</y-m>
+      <z-m>-1.656</z-m>
     </offsets>
   </model>
 
@@ -180,9 +195,9 @@
     <name>Center-GBU16</name>
     <path>Aircraft/Mirage-2000/Missiles/GBU16/gbu16.xml</path>
     <offsets>
-      <x-m>  1.082 </x-m>
-      <y-m>  0.000 </y-m>
-      <z-m> -1.656 </z-m>
+      <x-m> 1.082</x-m>
+      <y-m> 0.000</y-m>
+      <z-m>-1.656</z-m>
     </offsets>
   </model>
 
@@ -190,29 +205,29 @@
     <name>Center-GBU12</name>
     <path>Aircraft/Mirage-2000/Missiles/GBU12/GBU12.xml</path>
     <offsets>
-      <x-m>  1.082 </x-m>
-      <y-m>  0.000 </y-m>
-      <z-m> -1.656 </z-m>
+      <x-m> 1.082</x-m>
+      <y-m> 0.000</y-m>
+      <z-m>-1.656</z-m>
     </offsets>
   </model>
-  
+
   <model>
     <name>SCALP</name>
     <path>Aircraft/Mirage-2000/Missiles/SCALP/SCALP.xml</path>
     <offsets>
-      <x-m>  1.082 </x-m>
-      <y-m>  0.000 </y-m>
-      <z-m> -1.656 </z-m>
+      <x-m> 1.082</x-m>
+      <y-m> 0.000</y-m>
+      <z-m>-1.656</z-m>
     </offsets>
   </model>
-  
+
   <model>
     <name>AIM-54</name>
     <path>Aircraft/Mirage-2000/Missiles/AIM-54/AIM-54.xml</path>
     <offsets>
-      <x-m>  1.082 </x-m>
-      <y-m>  0.000 </y-m>
-      <z-m> -1.656 </z-m>
+      <x-m> 1.082</x-m>
+      <y-m> 0.000</y-m>
+      <z-m>-1.656</z-m>
     </offsets>
   </model>
 
@@ -220,101 +235,100 @@
     <name>Sea_Eagle</name>
     <path>Aircraft/Mirage-2000/Missiles/SeaEagle/seaeagle.xml</path>
     <offsets>
-      <x-m>  1.082 </x-m>
-      <y-m>  0.000 </y-m>
-      <z-m> -1.656 </z-m>
+      <x-m> 1.082</x-m>
+      <y-m> 0.000</y-m>
+      <z-m>-1.656</z-m>
     </offsets>
   </model>
-  
+
   <model>
     <name>MATRA-R530</name>
     <path>Aircraft/Mirage-2000/Missiles/MATRA-R530/MATRA-R530.xml</path>
     <offsets>
-      <x-m>  1.082 </x-m>
-      <y-m>  0.000 </y-m>
-      <z-m> -1.656 </z-m>
+      <x-m> 1.082</x-m>
+      <y-m> 0.000</y-m>
+      <z-m>-1.656</z-m>
     </offsets>
   </model>
-  
+
   <model>
     <name>Meteor</name>
     <path>Aircraft/Mirage-2000/Missiles/Meteor/Meteor.xml</path>
     <offsets>
-      <x-m>  1.082 </x-m>
-      <y-m>  0.000 </y-m>
-      <z-m> -1.656 </z-m>
+      <x-m> 1.082</x-m>
+      <y-m> 0.000</y-m>
+      <z-m>-1.656</z-m>
     </offsets>
   </model>
-  
+
   <model>
     <name>AGM65</name>
     <path>Aircraft/Mirage-2000/Missiles/AGM65/AGM65.xml</path>
     <offsets>
-      <x-m>  1.082 </x-m>
-      <y-m>  0.000 </y-m>
-      <z-m> -1.656 </z-m>
+      <x-m> 1.082</x-m>
+      <y-m> 0.000</y-m>
+      <z-m>-1.656</z-m>
     </offsets>
   </model>
-  
+
   <model>
     <name>R77</name>
     <path>Aircraft/Mirage-2000/Missiles/R77/R77.xml</path>
     <offsets>
-      <x-m>  1.082 </x-m>
-      <y-m>  0.000 </y-m>
-      <z-m> -1.656 </z-m>
+      <x-m> 1.082</x-m>
+      <y-m> 0.000</y-m>
+      <z-m>-1.656</z-m>
     </offsets>
   </model>
-  
 
   <!-- station right 3 (Index 4)-->
   <model>
     <name>right-large-tank</name>
     <path>Aircraft/Mirage-2000/Models/External-objects/tank1700l/tank1700l.xml</path>
     <offsets>
-      <x-m>  1.047 </x-m>
-      <y-m>  2.359 </y-m>
-      <z-m> -1.556 </z-m>
+      <x-m> 1.047</x-m>
+      <y-m> 2.359</y-m>
+      <z-m>-1.556</z-m>
     </offsets>
-  </model>	
+  </model>
 
   <model>
     <name>right-tank</name>
     <path>Aircraft/Mirage-2000/Models/External-objects/tank1300l/tank1300l.xml</path>
     <offsets>
-      <x-m>  1.047 </x-m>
-      <y-m>  2.359 </y-m>
-      <z-m> -1.556 </z-m>
+      <x-m> 1.047</x-m>
+      <y-m> 2.359</y-m>
+      <z-m>-1.556</z-m>
     </offsets>
-  </model>	
+  </model>
 
   <model>
     <name>right-magic-2</name>
     <path>Aircraft/Mirage-2000/Missiles/MatraR550Magic2/MatraR550Magic2.xml</path>
     <offsets>
-      <x-m>  1.047 </x-m>
-      <y-m>  2.359 </y-m>
-      <z-m> -1.556 </z-m>
+      <x-m> 1.047</x-m>
+      <y-m> 2.359</y-m>
+      <z-m>-1.556</z-m>
     </offsets>
   </model>
-	
+
   <model>
     <name>right-MICA</name>
     <path>Aircraft/Mirage-2000/Missiles/MatraMica/MatraMica.xml</path>
     <offsets>
-      <x-m>  1.047 </x-m>
-      <y-m>  2.359 </y-m>
-      <z-m> -1.556 </z-m>
+      <x-m> 1.047</x-m>
+      <y-m> 2.359</y-m>
+      <z-m>-1.556</z-m>
     </offsets>
   </model>
-  
+
   <model>
     <name>Sea_EagleR</name>
     <path>Aircraft/Mirage-2000/Missiles/SeaEagle/seaeagle.xml</path>
     <offsets>
-      <x-m>  1.447 </x-m>
-      <y-m>  2.359 </y-m>
-      <z-m> -1.556 </z-m>
+      <x-m> 1.447</x-m>
+      <y-m> 2.359</y-m>
+      <z-m>-1.556</z-m>
     </offsets>
   </model>
 
@@ -323,19 +337,19 @@
     <name>right-pos-2</name>
     <path>Aircraft/Mirage-2000/Missiles/MatraR550Magic2/MatraR550Magic2.xml</path>
     <offsets>
-      <x-m>  2.373 </x-m>
-      <y-m>  3.278 </y-m>
-      <z-m> -1.494 </z-m>
+      <x-m> 2.373</x-m>
+      <y-m> 3.278</y-m>
+      <z-m>-1.494</z-m>
     </offsets>
-  </model>	
+  </model>
 
   <model>
     <name>aim-9R</name>
     <path>Aircraft/Mirage-2000/Missiles/aim-9/aim-9.xml</path>
     <offsets>
-      <x-m>  2.373 </x-m>
-      <y-m>  3.278 </y-m>
-      <z-m> -1.494 </z-m>
+      <x-m> 2.373</x-m>
+      <y-m> 3.278</y-m>
+      <z-m>-1.494</z-m>
     </offsets>
   </model>
 
@@ -343,9 +357,9 @@
     <name>right-pos-2-MICA</name>
     <path>Aircraft/Mirage-2000/Missiles/MatraMica/MatraMica.xml</path>
     <offsets>
-      <x-m>  2.373 </x-m>
-      <y-m>  3.278 </y-m>
-      <z-m> -1.494 </z-m>
+      <x-m> 2.373</x-m>
+      <y-m> 3.278</y-m>
+      <z-m>-1.494</z-m>
     </offsets>
   </model>
 
@@ -353,50 +367,60 @@
     <name>right-pos-2-R74</name>
     <path>Aircraft/Mirage-2000/Missiles/R74/R-74.xml</path>
     <offsets>
-      <x-m>  2.373 </x-m>
-      <y-m>  3.278 </y-m>
-      <z-m> -1.494 </z-m>
+      <x-m> 2.373</x-m>
+      <y-m> 3.278</y-m>
+      <z-m>-1.494</z-m>
     </offsets>
-  </model>	
+  </model>
+  
+  <model>
+    <name>right-pos-2-SmokePod</name>
+    <path>Aircraft/Mirage-2000/Missiles/SmokePod/SmokePod.xml</path>
+    <offsets>
+      <x-m> 2.373</x-m>
+      <y-m> 3.278</y-m>
+      <z-m>-1.494</z-m>
+    </offsets>
+  </model>
 
   <!-- station right 1 (Index 6) -->
   <model>
     <name>right-pos-1</name>
     <path>Aircraft/Mirage-2000/Missiles/MatraR550Magic2/MatraR550Magic2.xml</path>
     <offsets>
-      <x-m> -1.265 </x-m>
-      <y-m>  0.824 </y-m>
-      <z-m> -1.404 </z-m>
+      <x-m>-1.265</x-m>
+      <y-m> 0.824</y-m>
+      <z-m>-1.404</z-m>
     </offsets>
-  </model>	
+  </model>
 
   <model>
-    <name>AIM120R</name>    
+    <name>AIM120R</name>
     <path>Aircraft/Mirage-2000/Missiles/AIM-120/AIM-120.xml</path>
     <offsets>
-      <x-m> -1.265 </x-m>
-      <y-m>  0.824 </y-m>
-      <z-m> -1.404 </z-m>
-    </offsets> 
+      <x-m>-1.265</x-m>
+      <y-m> 0.824</y-m>
+      <z-m>-1.404</z-m>
+    </offsets>
   </model>
 
   <model>
     <name>right-pos-1-MICA</name>
     <path>Aircraft/Mirage-2000/Missiles/MatraMica/MatraMica.xml</path>
     <offsets>
-      <x-m> -1.265 </x-m>
-      <y-m>  0.824 </y-m>
-      <z-m> -1.404 </z-m>
+      <x-m>-1.265</x-m>
+      <y-m> 0.824</y-m>
+      <z-m>-1.404</z-m>
     </offsets>
   </model>
-  
+
   <model>
     <name>right-GBU16</name>
     <path>Aircraft/Mirage-2000/Missiles/GBU16/gbu16.xml</path>
     <offsets>
-      <x-m> -1.265 </x-m>
-      <y-m>  0.824 </y-m>
-      <z-m> -1.404 </z-m>
+      <x-m>-1.265</x-m>
+      <y-m> 0.824</y-m>
+      <z-m>-1.404</z-m>
     </offsets>
   </model>
 
@@ -404,30 +428,30 @@
     <name>right-GBU12</name>
     <path>Aircraft/Mirage-2000/Missiles/GBU12/GBU12.xml</path>
     <offsets>
-      <x-m> -1.265 </x-m>
-      <y-m>  0.824 </y-m>
-      <z-m> -1.404 </z-m>
+      <x-m>-1.265</x-m>
+      <y-m> 0.824</y-m>
+      <z-m>-1.404</z-m>
     </offsets>
   </model>
-  
+
   <!-- station back right (Index 7) -->
   <model>
     <name>MICABL</name>
     <path>Aircraft/Mirage-2000/Missiles/MatraMica/MatraMica.xml</path>
     <offsets>
-      <x-m>  3.36 </x-m>
-      <y-m>  -0.92 </y-m>
-      <z-m> -1.404 </z-m>
+      <x-m> 3.360</x-m>
+      <y-m>-0.920</y-m>
+      <z-m>-1.404</z-m>
     </offsets>
   </model>
-  
+
   <model>
     <name>GBU16BL</name>
     <path>Aircraft/Mirage-2000/Missiles/GBU16/gbu16.xml</path>
     <offsets>
-      <x-m>  3.36 </x-m>
-      <y-m>  -0.92 </y-m>
-      <z-m> -1.404 </z-m>
+      <x-m> 3.360</x-m>
+      <y-m>-0.920</y-m>
+      <z-m>-1.404</z-m>
     </offsets>
   </model>
 
@@ -435,30 +459,30 @@
     <name>GBU12BL</name>
     <path>Aircraft/Mirage-2000/Missiles/GBU12/GBU12.xml</path>
     <offsets>
-      <x-m>  3.36 </x-m>
-      <y-m>  -0.92 </y-m>
-      <z-m> -1.404 </z-m>
+      <x-m> 3.360</x-m>
+      <y-m>-0.920</y-m>
+      <z-m>-1.404</z-m>
     </offsets>
   </model>
-  
+
   <!-- station back right (Index 8) -->
   <model>
     <name>MICABR</name>
     <path>Aircraft/Mirage-2000/Missiles/MatraMica/MatraMica.xml</path>
     <offsets>
-      <x-m>  3.36 </x-m>
-      <y-m>  0.92 </y-m>
-      <z-m> -1.404 </z-m>
+      <x-m> 3.360</x-m>
+      <y-m> 0.920</y-m>
+      <z-m>-1.404</z-m>
     </offsets>
   </model>
-  
+
   <model>
     <name>GBU16BR</name>
     <path>Aircraft/Mirage-2000/Missiles/GBU16/gbu16.xml</path>
     <offsets>
-      <x-m>  3.36 </x-m>
-      <y-m>  0.92 </y-m>
-      <z-m> -1.404 </z-m>
+      <x-m> 3.360</x-m>
+      <y-m> 0.920</y-m>
+      <z-m>-1.404</z-m>
     </offsets>
   </model>
 
@@ -466,10 +490,11 @@
     <name>GBU12BR</name>
     <path>Aircraft/Mirage-2000/Missiles/GBU12/GBU12.xml</path>
     <offsets>
-      <x-m>  3.36 </x-m>
-      <y-m>  0.92 </y-m>
-      <z-m> -1.404 </z-m>
+      <x-m> 3.360</x-m>
+      <y-m> 0.920</y-m>
+      <z-m>-1.404</z-m>
     </offsets>
+
   </model>
 
 </PropertyList>

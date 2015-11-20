@@ -1,18 +1,15 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml version="1.0" encoding="iso-8859-1"?>
 
 <!-- sweat by maggse -->
 <PropertyList>
 
   <particlesystem>
-  <!-- <type>trail</type>-->
-  <name>flare</name>
-  <texture>puff.png</texture>
-  <emissive>true</emissive>
-  <lighting>false</lighting>
+    <!-- <type>trail</type>-->
+    <name>flare</name>
+    <texture>puff.png</texture>
+    <emissive>true</emissive>
+    <lighting>false</lighting>
     <offsets>
-      <x-m> 0 </x-m>
-      <y-m> 0 </y-m>
-      <z-m> 0 </z-m>
       <pitch-deg> 90 </pitch-deg>
     </offsets>
 
@@ -43,14 +40,15 @@
 
     <counter>
       <particles-per-sec>
-        <value>20</value>
-        <spread>0</spread>
+        <value> 20 </value>
+        <spread> 0 </spread>
       </particles-per-sec>
     </counter>
 
     <align>billboard</align>
 
     <particle>
+
       <start>
         <color>
           <red><value>   0.9 </value></red>
@@ -58,8 +56,11 @@
           <blue><value>  0.5 </value></blue>
           <alpha><value> 0.4 </value></alpha>
         </color>
-        <size><value> 1.6 </value></size>
+        <size>
+          <value> 1.6 </value>
+        </size>
       </start>
+
       <end>
         <color>
           <red><value>   0.65 </value></red>
@@ -67,19 +68,23 @@
           <blue><value>  0.35 </value></blue>
           <alpha><value> 0.20 </value></alpha>
         </color>
-        <size><value> 0.4 </value></size>
+        <size>
+          <value> 0.4 </value>
+        </size>
       </end>
+
       <life-sec>
-        <value> 1 </value>
+        <value>1</value>
       </life-sec>
+      
       <mass-kg>  0.5 </mass-kg>
       <radius-m> 0.1 </radius-m>
     </particle>
 
     <program>
-      <fluid>                 air </fluid>
-      <gravity type="bool">  true </gravity>
-      <wind type="bool">    false </wind>
+      <fluid>              air </fluid>
+      <gravity type="bool">true</gravity>
+      <wind type="bool">   false</wind>
     </program>
 
   </particlesystem>

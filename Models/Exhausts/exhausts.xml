@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml version="1.0" encoding="iso-8859-1"?>
 
 <PropertyList>
 
@@ -6,9 +6,9 @@
   <model>
     <path>Aircraft/Mirage-2000/Models/Exhausts/exhaust.xml</path>
     <offsets>
-      <x-m>  0.00000 </x-m>
-      <y-m>  0.00000 </y-m>
-      <z-m>  0.48977 </z-m>
+      <x-m> 0.00000 </x-m>
+      <y-m> 0.00000 </y-m>
+      <z-m> 0.48977 </z-m>
     </offsets>
   </model>
 
@@ -17,9 +17,9 @@
     <path>Aircraft/Mirage-2000/Models/Exhausts/exhaust.xml</path>
     <offsets>
       <x-m>  0.00000 </x-m>
-      <y-m> -0.18946 </y-m>
+      <y-m> -0.18946</y-m>
       <z-m>  0.44634 </z-m>
-      <roll-deg>  23 </roll-deg>
+      <roll-deg> 23 </roll-deg>
     </offsets>
   </model>
 
@@ -30,7 +30,7 @@
       <x-m>  0.00000 </x-m>
       <y-m> -0.34632 </y-m>
       <z-m>  0.34632 </z-m>
-      <roll-deg>  45 </roll-deg>
+      <roll-deg> 45 </roll-deg>
     </offsets>
   </model>
 
@@ -41,7 +41,7 @@
       <x-m>  0.00000 </x-m>
       <y-m> -0.44958 </y-m>
       <z-m>  0.18164 </z-m>
-      <roll-deg>  68 </roll-deg>
+      <roll-deg> 68 </roll-deg>
     </offsets>
   </model>
 
@@ -52,7 +52,7 @@
       <x-m>  0.00000 </x-m>
       <y-m> -0.48977 </y-m>
       <z-m>  0.00000 </z-m>
-      <roll-deg>  90 </roll-deg>
+      <roll-deg> 90 </roll-deg>
     </offsets>
   </model>
 
@@ -137,9 +137,9 @@
   <model>
     <path>Aircraft/Mirage-2000/Models/Exhausts/exhaust.xml</path>
     <offsets>
-      <x-m>  0.00000 </x-m>
-      <y-m>  0.48977 </y-m>
-      <z-m>  0.00000 </z-m>
+      <x-m> 0.00000 </x-m>
+      <y-m> 0.48977 </y-m>
+      <z-m> 0.00000 </z-m>
       <roll-deg> 270 </roll-deg>
     </offsets>
   </model>
@@ -148,9 +148,9 @@
   <model>
     <path>Aircraft/Mirage-2000/Models/Exhausts/exhaust.xml</path>
     <offsets>
-      <x-m>  0.00000 </x-m>
-      <y-m>  0.44634 </y-m>
-      <z-m>  0.18946 </z-m>
+      <x-m> 0.00000 </x-m>
+      <y-m> 0.44634 </y-m>
+      <z-m> 0.18946 </z-m>
       <roll-deg> 293 </roll-deg>
     </offsets>
   </model>
@@ -159,9 +159,9 @@
   <model>
     <path>Aircraft/Mirage-2000/Models/Exhausts/exhaust.xml</path>
     <offsets>
-      <x-m>  0.00000 </x-m>
-      <y-m>  0.34632 </y-m>
-      <z-m>  0.34632 </z-m>
+      <x-m> 0.00000 </x-m>
+      <y-m> 0.34632 </y-m>
+      <z-m> 0.34632 </z-m>
       <roll-deg> 315 </roll-deg>
     </offsets>
   </model>
@@ -170,9 +170,9 @@
   <model>
     <path>Aircraft/Mirage-2000/Models/Exhausts/exhaust.xml</path>
     <offsets>
-      <x-m>  0.00000 </x-m>
-      <y-m>  0.18164 </y-m>
-      <z-m>  0.44958 </z-m>
+      <x-m> 0.00000 </x-m>
+      <y-m> 0.18164 </y-m>
+      <z-m> 0.44958 </z-m>
       <roll-deg> 338 </roll-deg>
     </offsets>
   </model>

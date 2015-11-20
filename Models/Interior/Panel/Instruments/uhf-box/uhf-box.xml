@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="iso-8859-1"?>
 
 <PropertyList>
 
@@ -55,8 +55,8 @@
     <object-name>molette1</object-name>
     <object-name>molette2</object-name>
     <object-name>molette3</object-name>
-    <object-name>molette4</object-name>       
-    <emission>      
+    <object-name>molette4</object-name>
+    <emission>
       <factor>0.2</factor>
       <red>   1 </red>
       <green> 1 </green>
@@ -90,10 +90,6 @@
     <action>
       <button>0</button>
       <repeatable>false</repeatable>
-<!--
-      <binding>
-      </binding>
--->
     </action>
   </animation>
 
@@ -104,17 +100,13 @@
     <action>
       <button>0</button>
       <repeatable>false</repeatable>
-<!--
-      <binding>
-      </binding>
--->
     </action>
   </animation>
 
   <animation>
     <type>rotate</type>
     <object-name>choice1</object-name>
-<!-- property
+    <!-- property
     <interpolation>
       <entry><ind> ? </ind><dep>   0 </dep></entry>
       <entry><ind> ? </ind><dep>  60 </dep></entry>
@@ -124,14 +116,14 @@
     </interpolation>
 -->
     <center>
-      <x-m> -0.002 </x-m>
-      <y-m> -0.056 </y-m>
-      <z-m> -0.036 </z-m>
+      <x-m>-0.002</x-m>
+      <y-m>-0.056</y-m>
+      <z-m>-0.036</z-m>
     </center>
     <axis>
-      <x> 1 </x>
-      <y> 0 </y>
-      <z> 0 </z>
+      <x>1</x>
+      <y>0</y>
+      <z>0</z>
     </axis>
   </animation>
 
@@ -142,10 +134,6 @@
     <action>
       <button>0</button>
       <repeatable>false</repeatable>
-<!--
-      <binding>
-      </binding>
--->
     </action>
   </animation>
 
@@ -156,17 +144,13 @@
     <action>
       <button>0</button>
       <repeatable>false</repeatable>
-<!--
-      <binding>
-      </binding>
--->
     </action>
   </animation>
 
   <animation>
     <type>rotate</type>
     <object-name>choice1</object-name>
-<!-- property
+    <!-- property
     <interpolation>
       <entry><ind> ? </ind><dep>   0 </dep></entry>
       <entry><ind> ? </ind><dep>  60 </dep></entry>
@@ -174,14 +158,14 @@
     </interpolation>
 -->
     <center>
-      <x-m> -0.002 </x-m>
-      <y-m>  0.011 </y-m>
-      <z-m> -0.036 </z-m>
+      <x-m>-0.002</x-m>
+      <y-m>0.011</y-m>
+      <z-m>-0.036</z-m>
     </center>
     <axis>
-      <x> 1 </x>
-      <y> 0 </y>
-      <z> 0 </z>
+      <x>1</x>
+      <y>0</y>
+      <z>0</z>
     </axis>
   </animation>
 
@@ -193,10 +177,6 @@
     <action>
       <button>0</button>
       <repeatable>false</repeatable>
-<!--
-      <binding>
-      </binding>
--->
     </action>
   </animation>
 
@@ -207,43 +187,37 @@
     <action>
       <button>0</button>
       <repeatable>false</repeatable>
-<!--
-      <binding>
-      </binding>
--->
     </action>
   </animation>
 
   <animation>
     <type>rotate</type>
     <object-name>select</object-name>
-<!-- property -->
-<!-- <factor> ? </factor> -->
     <center>
-      <x-m>  0.011 </x-m>
-      <y-m>  0.058 </y-m>
-      <z-m> -0.027 </z-m>
+      <x-m>0.011</x-m>
+      <y-m>0.058</y-m>
+      <z-m>-0.027</z-m>
     </center>
     <axis>
-      <x> 1 </x>
-      <y> 0 </y>
-      <z> 0 </z>
+      <x>1</x>
+      <y>0</y>
+      <z>0</z>
     </axis>
   </animation>
 
   <animation>
     <type>textranslate</type>
     <object-name>chiffre6</object-name>
-<!-- property -->
-<!-- <factor> ? </factor> -->
-<!-- <step> ? </step> -->
+    <!-- property -->
+    <!-- <factor> ? </factor> -->
+    <!-- <step> ? </step> -->
     <axis>
-      <x> 0 </x>
-      <y> 1 </y>
-      <z> 0 </z>
+      <x>0</x>
+      <y>1</y>
+      <z>0</z>
     </axis>
   </animation>
- 
+
   <animation>
     <type>pick</type>
     <object-name>clicplus1</object-name>
@@ -318,7 +292,6 @@
       <max>999.99</max>
     </action>
   </animation>
-
   <animation>
     <type>pick</type>
     <object-name>switch1</object-name>
@@ -326,10 +299,6 @@
     <action>
       <button>0</button>
       <repeatable>false</repeatable>
-<!--
-      <binding>
-      </binding>
--->
     </action>
   </animation>
 
@@ -411,17 +380,15 @@
   <animation>
     <type>rotate</type>
     <object-name>switch1</object-name>
-<!-- property -->
-<!-- <factor> ? </factor> -->
     <center>
-      <x-m>  0.004 </x-m>
-      <y-m> -0.020 </y-m>
-      <z-m> -0.033 </z-m>
+      <x-m>0.004</x-m>
+      <y-m>-0.020</y-m>
+      <z-m>-0.033</z-m>
     </center>
     <axis>
-      <x>  0 </x>
-      <y> -1 </y>
-      <z>  0 </z>
+      <x> 0</x>
+      <y>-1</y>
+      <z> 0</z>
     </axis>
   </animation>
 
@@ -432,12 +399,12 @@
     <factor>0.001</factor>
     <step type="double">100</step>
     <axis>
-      <x> 0 </x>
-      <y> 1 </y>
-      <z> 0 </z>
+      <x>0</x>
+      <y>1</y>
+      <z>0</z>
     </axis>
   </animation>
- 
+
   <animation>
     <type>textranslate</type>
     <object-name>chiffre2</object-name>
@@ -445,12 +412,12 @@
     <factor>0.01</factor>
     <step type="double">10</step>
     <axis>
-      <x> 0 </x>
-      <y> 1 </y>
-      <z> 0 </z>
+      <x>0</x>
+      <y>1</y>
+      <z>0</z>
     </axis>
   </animation>
- 
+
   <animation>
     <type>textranslate</type>
     <object-name>chiffre3</object-name>
@@ -458,12 +425,12 @@
     <factor>0.1</factor>
     <step type="double">1</step>
     <axis>
-      <x> 0 </x>
-      <y> 1 </y>
-      <z> 0 </z>
+      <x>0</x>
+      <y>1</y>
+      <z>0</z>
     </axis>
   </animation>
- 
+
   <animation>
     <type>textranslate</type>
     <object-name>chiffre4</object-name>
@@ -471,12 +438,12 @@
     <factor>1</factor>
     <step type="double">0.1</step>
     <axis>
-      <x> 0 </x>
-      <y> 1 </y>
-      <z> 0 </z>
+      <x>0</x>
+      <y>1</y>
+      <z>0</z>
     </axis>
   </animation>
- 
+
   <animation>
     <type>textranslate</type>
     <object-name>chiffre5</object-name>
@@ -484,94 +451,84 @@
     <factor>10</factor>
     <step type="double">0.01</step>
     <axis>
-      <x> 0 </x>
-      <y> 1 </y>
-      <z> 0 </z>
+      <x>0</x>
+      <y>1</y>
+      <z>0</z>
     </axis>
   </animation>
- 
+
   <animation>
     <type>rotate</type>
     <object-name>molette1</object-name>
-<!-- property -->
-<!-- <factor> ? </factor> -->
     <center>
-      <x-m> -0.002 </x-m>
-      <y-m> -0.064 </y-m>
-      <z-m>  0.002 </z-m>
+      <x-m>-0.002</x-m>
+      <y-m>-0.064</y-m>
+      <z-m>0.002</z-m>
     </center>
     <axis>
-      <x> 0 </x>
-      <y> 1 </y>
-      <z> 0 </z>
+      <x>0</x>
+      <y>1</y>
+      <z>0</z>
     </axis>
   </animation>
 
   <animation>
     <type>rotate</type>
     <object-name>molette2</object-name>
-<!-- property -->
-<!-- <factor> ? </factor> -->
     <center>
-      <x-m> -0.002 </x-m>
-      <y-m> -0.046 </y-m>
-      <z-m>  0.002 </z-m>
+      <x-m>-0.002</x-m>
+      <y-m>-0.046</y-m>
+      <z-m>0.002</z-m>
     </center>
     <axis>
-      <x> 0 </x>
-      <y> 1 </y>
-      <z> 0 </z>
+      <x>0</x>
+      <y>1</y>
+      <z>0</z>
     </axis>
   </animation>
 
   <animation>
     <type>rotate</type>
     <object-name>molette3</object-name>
-<!-- property -->
-<!-- <factor> ? </factor> -->
     <center>
-      <x-m> -0.002 </x-m>
-      <y-m> -0.028 </y-m>
-      <z-m>  0.002 </z-m>
+      <x-m>-0.002</x-m>
+      <y-m>-0.028</y-m>
+      <z-m>0.002</z-m>
     </center>
     <axis>
-      <x> 0 </x>
-      <y> 1 </y>
-      <z> 0 </z>
+      <x>0</x>
+      <y>1</y>
+      <z>0</z>
     </axis>
   </animation>
 
   <animation>
     <type>rotate</type>
     <object-name>molette4</object-name>
-<!-- property -->
-<!-- <factor> ? </factor> -->
     <center>
-      <x-m> -0.002 </x-m>
-      <y-m> -0.010 </y-m>
-      <z-m>  0.002 </z-m>
+      <x-m>-0.002</x-m>
+      <y-m>-0.010</y-m>
+      <z-m>0.002</z-m>
     </center>
     <axis>
-      <x> 0 </x>
-      <y> 1 </y>
-      <z> 0 </z>
+      <x>0</x>
+      <y>1</y>
+      <z>0</z>
     </axis>
   </animation>
 
   <animation>
     <type>rotate</type>
     <object-name>molette5</object-name>
-<!-- property -->
-<!-- <factor> ? </factor> -->
     <center>
-      <x-m> -0.002 </x-m>
-      <y-m>  0.008 </y-m>
-      <z-m>  0.002 </z-m>
+      <x-m>-0.002</x-m>
+      <y-m>0.008</y-m>
+      <z-m>0.002</z-m>
     </center>
     <axis>
-      <x> 0 </x>
-      <y> 1 </y>
-      <z> 0 </z>
+      <x>0</x>
+      <y>1</y>
+      <z>0</z>
     </axis>
   </animation>
 
@@ -583,27 +540,21 @@
     <action>
       <button>0</button>
       <repeatable>false</repeatable>
-<!--
-      <binding>
-      </binding>
--->
     </action>
   </animation>
 
   <animation>
     <type>rotate</type>
     <object-name>switch2</object-name>
-<!-- property -->
-<!-- <factor> ? </factor> -->
     <center>
-      <x-m>  0.004 </x-m>
-      <y-m> -0.014 </y-m>
-      <z-m>  0.031 </z-m>
+      <x-m>0.004</x-m>
+      <y-m>-0.014</y-m>
+      <z-m>0.031</z-m>
     </center>
     <axis>
-      <x>  0 </x>
-      <y> -1 </y>
-      <z>  0 </z>
+      <x>0</x>
+      <y>-1</y>
+      <z>0</z>
     </axis>
   </animation>
 

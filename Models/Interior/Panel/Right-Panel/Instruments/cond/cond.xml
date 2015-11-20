@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml version="1.0" encoding="iso-8859-1"?>
 
 <PropertyList>
 
@@ -18,8 +18,9 @@
     <object-name>lampeF-ON</object-name>
     <object-name>lampeC-OFF</object-name>
     <object-name>lampeF-OFF</object-name>
-    
+
     <!-- Objets transparents -->
+
   </animation>
 
   <animation>
@@ -32,7 +33,7 @@
       <blue>  2 </blue>
     </emission>
   </animation>
-  
+
   <animation>
     <type>material</type>
     <object-name>lampeC-OFF</object-name>
@@ -43,7 +44,7 @@
       <blue>  0.2 </blue>
     </emission>
   </animation>
-  
+
   <!--
   Centre de rotation de molette
   
@@ -53,13 +54,11 @@
   y : 0.01128
   z : 0.00068
   
-    0 Â° sur axe X -> en haut
-   90 Â° sur axe X -> Ã  droite
-  180 Â° sur axe X -> en bas
-  270 Â° sur axe X -> Ã  gauche
-  -->
+    0° on X axis -> top
+   90° on X axis -> right
+  180° on X axis -> bottom
+  270° on X axis -> left
   
-  <!--
   Centre de rotation de switch0
   
   Objet : AUTO/MAN
@@ -68,10 +67,8 @@
   y : -0.03364
   z :  0.00097
   
-  50 Â° sur axe Y 
-  -->
+  50 ° sur axe Y
   
-  <!--
   Centre de rotation de switch1
   
   Objet : DEPOLL
@@ -80,10 +77,8 @@
   y : -0.00820
   z : -0.00523
   
-  50 Â° sur axe Y 
-  -->
+  50 ° sur axe Y
   
-  <!--
   Centre de rotation de switch2
   
   Objet : COND
@@ -92,10 +87,8 @@
   y : -0.00820
   z :  0.00885
   
-  50 Â° sur axe Y 
-  -->
+  50 ° sur axe Y
   
-  <!--
   Centre de rotation de switch3
   
   Objet : DESEMB
@@ -104,7 +97,7 @@
   y : -0.03418
   z :  0.00877
   
-  50 Â° sur axe Y 
+  50 ° sur axe Y
   -->
-  
+
 </PropertyList>

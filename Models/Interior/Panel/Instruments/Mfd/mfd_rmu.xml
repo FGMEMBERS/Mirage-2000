@@ -1,27 +1,27 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml version="1.0" encoding="iso-8859-1"?>
 
 <PropertyList>
-  
+
   <path>mfd_rmu.ac</path>
-  
+
   <!-- *************Text*************** -->
   <model>
-    <name>text3dEADI</name>
+    <name>text3dRMU</name>
     <path>Aircraft/Mirage-2000/Models/Interior/Panel/Instruments/Mfd/mfd_3dtextRMU.xml</path>
     <offsets>
-      <x-m> -0.008 </x-m>
-      <y-m>  0.000 </y-m>
-      <z-m>  0.000 </z-m>
+      <x-m>-0.008</x-m>
+      <y-m>0.000</y-m>
+      <z-m>0.000</z-m>
       <pitch-deg>0</pitch-deg>
     </offsets>
     <condition>
       <equals>
         <property>/instrumentation/mfd/modeR</property>
-        <value> 1 </value>
+        <value>1</value>
       </equals>
-    </condition>    
+    </condition>
   </model>
-  
+
   <!-- RMU -->
   <object-name>RMU-ecran</object-name>
   <object-name>RMU-rep-bt</object-name>
@@ -32,13 +32,13 @@
   <object-name>RMU-rep-nav1</object-name>
   <object-name>RMU-rep-nav2</object-name>
   <object-name>RMU-rep-tacan</object-name>
-  <object-name>text3dRMU</object-name>  
-  
+  <object-name>text3dRMU</object-name>
+
   <animation>
     <type>material</type>
-    <object-name>RMU-ecran</object-name>    
+    <object-name>RMU-ecran</object-name>
     <object-name>RMU-rep-bt</object-name>
-    <emission>      
+    <emission>
       <factor-prop>instrumentation/mfd/dimm-r</factor-prop>
       <red>   1 </red>
       <green> 1 </green>
@@ -63,9 +63,9 @@
       <blue>  1 </blue>
     </specular>
   </animation>
-  
+
   <animation>
-    <type>material</type>    
+    <type>material</type>
     <object-name>RMU-rep-adf1</object-name>
     <object-name>RMU-rep-adf2</object-name>
     <object-name>RMU-rep-comm1</object-name>
@@ -73,7 +73,7 @@
     <object-name>RMU-rep-nav1</object-name>
     <object-name>RMU-rep-nav2</object-name>
     <object-name>RMU-rep-tacan</object-name>
-    <emission>      
+    <emission>
       <factor-prop>instrumentation/mfd/dimm-r</factor-prop>
       <red>   0.7 </red>
       <green> 0.7 </green>
@@ -97,83 +97,83 @@
       <green> 1 </green>
       <blue>  1 </blue>
     </specular>
-  </animation>  
-  
+  </animation>
+
   <animation>
     <type>select</type>
     <object-name>RMU-rep-comm1</object-name>
-    <condition>            
-      <equals>            
-        <property>instrumentation/mfd/rmuL</property>      
+    <condition>
+      <equals>
+        <property>instrumentation/mfd/rmuL</property>
         <value>1</value>
       </equals>
     </condition>
-  </animation>  
-  
+  </animation>
+
   <animation>
     <type>select</type>
     <object-name>RMU-rep-comm2</object-name>
     <condition>
-      <equals>            
-        <property>instrumentation/mfd/rmuL</property>      
+      <equals>
+        <property>instrumentation/mfd/rmuL</property>
         <value>2</value>
       </equals>
     </condition>
   </animation>
-  
+
   <animation>
     <type>select</type>
     <object-name>RMU-rep-nav1</object-name>
     <condition>
-      <equals>            
-        <property>instrumentation/mfd/rmuL</property>      
+      <equals>
+        <property>instrumentation/mfd/rmuL</property>
         <value>3</value>
       </equals>
     </condition>
   </animation>
-  
+
   <animation>
     <type>select</type>
     <object-name>RMU-rep-nav2</object-name>
     <condition>
-      <equals>            
-        <property>instrumentation/mfd/rmuL</property>      
+      <equals>
+        <property>instrumentation/mfd/rmuL</property>
         <value>4</value>
       </equals>
     </condition>
   </animation>
-  
+
   <animation>
     <type>select</type>
     <object-name>RMU-rep-adf1</object-name>
     <condition>
-      <equals>            
-        <property>instrumentation/mfd/rmuR</property>      
+      <equals>
+        <property>instrumentation/mfd/rmuR</property>
         <value>1</value>
       </equals>
     </condition>
   </animation>
-  
+
   <animation>
     <type>select</type>
     <object-name>RMU-rep-adf2</object-name>
     <condition>
-      <equals>            
-        <property>instrumentation/mfd/rmuR</property>      
+      <equals>
+        <property>instrumentation/mfd/rmuR</property>
         <value>2</value>
       </equals>
     </condition>
   </animation>
-  
+
   <animation>
     <type>select</type>
     <object-name>RMU-rep-tacan</object-name>
     <condition>
-      <equals>            
-        <property>instrumentation/mfd/rmuR</property>      
+      <equals>
+        <property>instrumentation/mfd/rmuR</property>
         <value>3</value>
       </equals>
     </condition>
   </animation>
-  
+
 </PropertyList>

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml version="1.0" encoding="iso-8859-1"?>
 
 <PropertyList>
 
@@ -14,7 +14,7 @@
     <object-name>calageantenne</object-name>
     <object-name>lanceleurres</object-name>
   </animation>
-  
+
   <animation>
     <name>ManetteGaz</name>
     <object-name>throttle</object-name>
@@ -25,17 +25,17 @@
     <object-name>calageantenne</object-name>
     <object-name>lanceleurres</object-name>
   </animation>
-      
+
   <animation>
     <type>translate</type>
     <object-name>ManetteGaz</object-name>
     <property>/controls/engines/engine/throttle</property>
-    <factor> -0.16 </factor>
+    <factor>-0.16</factor>
     <axis>
-      <x> 1 </x>
-      <y> 0 </y>
-      <z> 0 </z>
+      <x>1</x>
+      <y>0</y>
+      <z>0</z>
     </axis>
-  </animation> 
-  
+  </animation>
+
 </PropertyList>

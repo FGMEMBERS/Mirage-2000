@@ -1,9 +1,11 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml version="1.0" encoding="iso-8859-1"?>
 
 <PropertyList>
+
   <path>interior.ac</path>
 
   <animation>
+
     <!-- Objets opaques -->
     <object-name>interieur</object-name>
     <object-name>inttour</object-name>
@@ -12,6 +14,7 @@
     <!-- Objets transparents -->
     <object-name>intvitres</object-name>
     <object-name>intverriere</object-name>
+
   </animation>
 
   <!-- working for Rembrandt -->
@@ -20,8 +23,8 @@
     <object-name>intvitres</object-name>
     <object-name>intverriere</object-name>
   </effect>
-  
-    <!-- Tableau de bord -->
+
+  <!-- Tableau de bord -->
   <model>
     <name>Panel</name>
     <path>Aircraft/Mirage-2000/Models/Interior/Panel/panel.xml</path>
@@ -29,11 +32,11 @@
       <x-m> -3.653 </x-m>
       <y-m>  0.000 </y-m>
       <z-m> -0.297 </z-m>
-      <pitch-deg>  -14 </pitch-deg>
+      <pitch-deg> -14 </pitch-deg>
     </offsets>
   </model>
 
-  <!-- Partie gauche -->
+  <!-- left part -->
   <model>
     <path>Aircraft/Mirage-2000/Models/Interior/Panel/Left-Panel/left.xml</path>
     <offsets>
@@ -43,7 +46,7 @@
     </offsets>
   </model>
 
-  <!-- Partie right -->
+  <!-- right part -->
   <model>
     <path>Aircraft/Mirage-2000/Models/Interior/Panel/Right-Panel/right.xml</path>
     <offsets>
@@ -53,7 +56,17 @@
     </offsets>
   </model>
 
-  <!-- Pilote -->
+  <!-- Retro -->
+  <model>
+    <path>Aircraft/Mirage-2000/Models/Interior/Panel/Instruments/Retro/retro.xml</path>
+    <offsets>
+      <x-m> -3.35121 </x-m>
+      <y-m>  0.00000 </y-m>
+      <z-m>  0.17168 </z-m>
+    </offsets>
+  </model>
+  
+  <!-- pilot -->
   <model>
     <path>Aircraft/Mirage-2000/Models/Pilot/pilot.xml</path>
     <condition>
@@ -75,7 +88,7 @@
           </equals>
         </not>
       </or>
-    </condition>  
+    </condition>
     <offsets>
       <x-m> -2.518 </x-m>
       <y-m>  0.000 </y-m>
@@ -109,7 +122,7 @@
       <repeatable>false</repeatable>
       <binding>
         <command>nasal</command>
-        <script>doors.crew.toggle();</script>
+        <script>doors.move_canopy();</script>
       </binding>
     </action>
   </animation>
@@ -119,8 +132,8 @@
     <object-name>IntEnsembleCanope</object-name>
     <property>sim/model/door-positions/crew/position-norm</property>
     <interpolation>
-      <entry><ind> 0 </ind><dep>  0 </dep></entry>
-      <entry><ind> 1 </ind><dep> 45 </dep></entry>
+      <entry><ind>0</ind><dep> 0</dep></entry>
+      <entry><ind>1</ind><dep>45</dep></entry>
     </interpolation>
     <center>
       <x-m> -2.017 </x-m>
@@ -133,7 +146,7 @@
       <z> 0 </z>
     </axis>
   </animation>
-  
+
   <!-- LoD -->
   <animation>
     <object-name>Panel</object-name>

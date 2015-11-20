@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml version="1.0" encoding="iso-8859-1"?>
 
 <PropertyList>
 
@@ -11,7 +11,7 @@
 
     <attach>world</attach>
     <placer>
-      <type>point</type> 
+      <type>point</type>
     </placer>
 
     <shooter>
@@ -35,11 +35,11 @@
 
     <counter>
       <particles-per-sec>
-        <value>  300 </value>
-        <spread>   0 </spread>
+        <value>300</value>
+        <spread>0</spread>
       </particles-per-sec>
     </counter>
-      
+
     <align>billboard</align>
 
     <particle>
@@ -51,7 +51,7 @@
           <alpha><value> 0.5 </value></alpha>
         </color>
         <size>
-          <value> 1.5 </value>
+          <value>1.5</value>
         </size>
       </start>
 
@@ -63,24 +63,25 @@
           <alpha><value> 0.1 </value></alpha>
         </color>
         <size>
-          <value> 3 </value>
+          <value>3</value>
         </size>
       </end>
 
       <life-sec>
-        <value> 60 </value>
+        <value>60</value>
       </life-sec>
-        
-      <mass-kg>  0.5 </mass-kg>
-      <radius-m> 0.5 </radius-m>
+      <mass-kg>0.5</mass-kg>
+      <radius-m>0.5</radius-m>
+
     </particle>
 
     <program>
-      <fluid>               air  </fluid>
-      <gravity type="bool"> true </gravity>
-      <wind typ="bool">     true </wind>
+      <fluid>              air </fluid>
+      <gravity type="bool">true</gravity>
+      <wind typ="bool">    true</wind>
     </program>
 
   </particlesystem>
 
 </PropertyList>
+

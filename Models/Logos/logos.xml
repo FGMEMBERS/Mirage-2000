@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml version="1.0" encoding="iso-8859-1"?>
 
 <PropertyList>
 
   <path>logos.ac</path>
-  
+
   <animation>
     <object-name>logos</object-name>
     <object-name>logospoilerG</object-name>
@@ -15,7 +15,7 @@
     <object-name>logosdirection</object-name>
     <object-name>serial</object-name>
   </animation>
-  
+
   <!-- working for Rembrandt -->
   <effect>
     <inherits-from>Effects/model-transparent</inherits-from>
@@ -29,7 +29,7 @@
     <object-name>logosdirection</object-name>
     <object-name>serial</object-name>
   </effect>
-  
+
   <animation>
     <type>material</type>
     <object-name>logos</object-name>
@@ -41,7 +41,7 @@
     <object-name>logoselevonD</object-name>
     <object-name>logosdirection</object-name>
     <object-name>serial</object-name>
-    
+
     <property-base>sim/model/logos</property-base>
     <texture-prop>texture</texture-prop>
     <texture>default.png</texture>
@@ -51,15 +51,15 @@
       <blue-prop>emission/blue</blue-prop>
     </specular>
   </animation>
-  
+
   <!-- Spoilers -->
   <animation>
     <type>rotate</type>
     <object-name>logospoilerG</object-name>
     <property>surface-positions/spoiler-pos-norm</property>
     <interpolation>
-      <entry><ind>  0 </ind><dep>   0 </dep></entry>
-      <entry><ind>  1 </ind><dep> -80 </dep></entry>
+      <entry><ind> 0 </ind><dep>   0 </dep></entry>
+      <entry><ind> 1 </ind><dep> -80 </dep></entry>
     </interpolation>
     <axis>
       <x1-m>  0.913 </x1-m>
@@ -70,14 +70,14 @@
       <z2-m> -0.841 </z2-m>
     </axis>
   </animation>
-  
+
   <animation>
     <type>rotate</type>
     <object-name>logospoilerD</object-name>
     <property>surface-positions/spoiler-pos-norm</property>
     <interpolation>
-      <entry><ind>  0 </ind><dep>   0 </dep></entry>
-      <entry><ind>  1 </ind><dep> -80 </dep></entry>
+      <entry><ind> 0 </ind><dep>   0 </dep></entry>
+      <entry><ind> 1 </ind><dep> -80 </dep></entry>
     </interpolation>
     <axis>
       <x1-m>  0.913 </x1-m>
@@ -88,7 +88,7 @@
       <z2-m> -0.866 </z2-m>
     </axis>
   </animation>
-  
+
   <!-- Gouverne de direction -->
   <animation>
     <type>rotate</type>
@@ -96,15 +96,15 @@
     <property>surface-positions/rudder-pos-norm</property>
     <factor> -14 </factor>
     <axis>
-      <x1-m> 5.895 </x1-m>
-      <y1-m> 0.000 </y1-m>
-      <z1-m> 0.357 </z1-m>
-      <x2-m> 6.439 </x2-m>
-      <y2-m> 0.000 </y2-m>
-      <z2-m> 1.778 </z2-m>
+      <x1-m>5.895</x1-m>
+      <y1-m>0.000</y1-m>
+      <z1-m>0.357</z1-m>
+      <x2-m>6.439</x2-m>
+      <y2-m>0.000</y2-m>
+      <z2-m>1.778</z2-m>
     </axis>
   </animation>
-  
+
   <!-- Animations des ailerons -->
   <animation>
     <type>rotate</type>
@@ -112,15 +112,15 @@
     <property>surface-positions/left-aileron-pos-norm</property>
     <factor> 16 </factor>
     <axis>
-      <x1-m>  4.321 </x1-m>
-      <y1-m> -4.290 </y1-m>
-      <z1-m> -1.250 </z1-m>
-      <x2-m>  4.309 </x2-m>
-      <y2-m> -2.324 </y2-m>
-      <z2-m> -1.093 </z2-m>
+      <x1-m> 4.321</x1-m>
+      <y1-m>-4.290</y1-m>
+      <z1-m>-1.250</z1-m>
+      <x2-m> 4.309</x2-m>
+      <y2-m>-2.324</y2-m>
+      <z2-m>-1.093</z2-m>
     </axis>
   </animation>
-  
+
   <animation>
     <type>rotate</type>
     <object-name>logosaileronG</object-name>
@@ -135,7 +135,7 @@
       <z2-m> -1.093 </z2-m>
     </axis>
   </animation>
-  
+
   <animation>
     <type>rotate</type>
     <object-name>logosaileronD</object-name>
@@ -150,7 +150,7 @@
       <z2-m> -1.250 </z2-m>
     </axis>
   </animation>
-  
+
   <animation>
     <type>rotate</type>
     <object-name>logosaileronD</object-name>
@@ -165,8 +165,8 @@
       <z2-m> -1.250 </z2-m>
     </axis>
   </animation>
-  
-  <!-- Animations des élevons -->
+
+  <!-- Animations des elevons -->
   <animation>
     <type>rotate</type>
     <object-name>logoselevonG</object-name>
@@ -181,7 +181,7 @@
       <z2-m> -0.973 </z2-m>
     </axis>
   </animation>
-  
+
   <animation>
     <type>rotate</type>
     <object-name>logoselevonD</object-name>
@@ -196,7 +196,7 @@
       <z2-m> -1.093 </z2-m>
     </axis>
   </animation>
-  
+
   <!-- Animation des portes des train -->
   <animation>
     <type>rotate</type>
@@ -218,5 +218,5 @@
       <z> 0 </z>
     </axis>
   </animation>
-  
+
 </PropertyList>

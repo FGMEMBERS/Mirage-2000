@@ -1,14 +1,14 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml version="1.0" encoding="iso-8859-1"?>
 
 <PropertyList>
-  
+
   <path>center-mfd.ac</path>
-  
+
   <animation>
     <!-- Objets opaques -->
     <type>material</type>
-    <object-name>cadre</object-name>    
-    <object-name>vis</object-name>    
+    <object-name>cadre</object-name>
+    <object-name>vis</object-name>
     <object-name>trim1</object-name>
     <object-name>trim2</object-name>
     <object-name>trim3</object-name>
@@ -32,25 +32,26 @@
     <object-name>pot-r4</object-name>
     <object-name>blackbkd</object-name>
     <object-name>blackbkdOFF</object-name>
-    
+
     <!-- Objets transparents -->
+
   </animation>
-  
+
   <animation>
     <type>material</type>
-    <!--<object-name>cadre</object-name>    
-    <object-name>vis</object-name>    -->
-   <object-name>blackbkd</object-name>
-    <emission>      
+    <!--object-name>cadre</object-name>
+    <object-name>vis</object-name-->
+    <object-name>blackbkd</object-name>
+    <emission>
       <red>   1 </red>
       <green> 1 </green>
       <blue>  1 </blue>
     </emission>
   </animation>
-  
+
   <animation>
     <type>material</type>
-    <object-name>cadre</object-name>    
+    <object-name>cadre</object-name>
     <object-name>vis</object-name>
     <object-name>trim1</object-name>
     <object-name>trim2</object-name>
@@ -78,16 +79,16 @@
         <property>sim/rendering/rembrandt/enabled</property>
       </not>
     </condition>
-    <emission>      
+    <emission>
       <red>   0.13 </red>
       <green> 0.13 </green>
       <blue>  0.13 </blue>
     </emission>
   </animation>
-  
+
   <animation>
     <type>material</type>
-    <object-name>cadre</object-name>    
+    <object-name>cadre</object-name>
     <object-name>vis</object-name>
     <object-name>trim1</object-name>
     <object-name>trim2</object-name>
@@ -113,26 +114,13 @@
     <condition>
       <property>sim/rendering/rembrandt/enabled</property>
     </condition>
-    <emission>      
+    <emission>
       <red>   0.05 </red>
       <green> 0.05 </green>
       <blue>  0.05 </blue>
     </emission>
   </animation>
-  
-  <!--<animation>
-    <type>pick</type>
-    <object-name>blackbkd</object-name>
-    <action>
-      <button>0</button>
-      <repeatable>false</repeatable>
-      <binding>
-        <command>nasal</command>
-        <script>mirage2000.showNd();</script>
-      </binding>
-    </action>
-  </animation>-->
-  
+
   <!--######################## Change display mode  ############################-->
   <animation>
     <type>pick</type>
@@ -158,7 +146,7 @@
       </binding>
     </hovered>
   </animation>
-  
+
   <!--######################## Change display type  ############################-->
   <animation>
     <type>pick</type>
@@ -182,7 +170,7 @@
       </binding>
     </hovered>
   </animation>
-  
+
   <!--######################## Center ND modes   ############################-->
   <animation>
     <type>pick</type>
@@ -204,7 +192,7 @@
       </binding>
     </hovered>
   </animation>
-  
+
   <!--######################## Airports ############################-->
   <animation>
     <type>pick</type>
@@ -230,7 +218,7 @@
       </binding>
     </hovered>
   </animation>
-  
+
   <!--######################## Display way point data ############################-->
   <animation>
     <type>pick</type>
@@ -253,7 +241,7 @@
       </binding>
     </hovered>
   </animation>
-  
+
   <!--######################## Wpt ############################-->
   <animation>
     <type>pick</type>
@@ -279,7 +267,7 @@
       </binding>
     </hovered>
   </animation>
-  
+
   <!--######################## Position point ############################-->
   <animation>
     <type>pick</type>
@@ -305,7 +293,7 @@
       </binding>
     </hovered>
   </animation>
-  
+
   <!--######################## Weather ############################-->
   <animation>
     <type>pick</type>
@@ -326,7 +314,7 @@
       </binding>
     </hovered>
   </animation>
-  
+
   <!-- ###################### Distance #############################-->
   <animation>
     <type>pick</type>
@@ -334,7 +322,7 @@
     <action>
       <button>4</button>
       <!--  scroll down -->
-      <repeatable>false</repeatable>   
+      <repeatable>false</repeatable>
       <binding>
         <command>property-cycle</command>
         <property>/instrumentation/efis/inputs/range-nm</property>
@@ -353,11 +341,11 @@
       <binding>
         <command>property-assign</command>
         <property>instrumentation/nd/range</property>
-        <property>/instrumentation/efis/inputs/range-nm</property>  
-      </binding> 
+        <property>/instrumentation/efis/inputs/range-nm</property>
+      </binding>
     </action>
   </animation>
-  
+
   <animation>
     <type>pick</type>
     <object-name>trim1</object-name>
@@ -373,21 +361,21 @@
         <value>80</value>
         <value>40</value>
         <value>20</value>
-        <value>10</value>              
-      </binding>    
+        <value>10</value>
+      </binding>
       <binding>
         <command>property-assign</command>
         <property>instrumentation/tcas/range</property>
         <property>/instrumentation/efis/inputs/range-nm</property>
-      </binding> 
+      </binding>
       <binding>
         <command>property-assign</command>
         <property>instrumentation/nd/range</property>
-        <property>/instrumentation/efis/inputs/range-nm</property>              
-      </binding> 
+        <property>/instrumentation/efis/inputs/range-nm</property>
+      </binding>
     </action>
   </animation>
-  
+
   <!--End of Distance management -->
   <animation>
     <type>pick</type>
@@ -400,14 +388,14 @@
       </binding>
     </action>
   </animation>
-  
+
   <animation>
     <type>pick</type>
     <object-name>trim2</object-name>
     <action>
       <button>3</button>
       <!--  scroll up -->
-      <repeatable>false</repeatable>   
+      <repeatable>false</repeatable>
       <binding>
         <command>property-cycle</command>
         <property>/instrumentation/efis/Mode</property>
@@ -415,34 +403,34 @@
         <value>OLD</value>
         <value>OFF</value>
       </binding>
-      <binding>
-        <command>nasal</command>
-        <script>mirage2000.mdfselection();</script>
-      </binding>
-    </action>  
-  </animation>
-  
-  <animation>
-    <type>pick</type>
-    <object-name>trim2</object-name>
-    <action>
-      <button>4</button>
-      <!--  scroll down -->
-      <repeatable>false</repeatable>   
-      <binding>
-        <command>property-cycle</command>
-        <property>/instrumentation/efis/Mode</property>
-        <value>OFF</value>
-        <value>OLD</value>
-        <value>CANVAS</value>
-      </binding>   
       <binding>
         <command>nasal</command>
         <script>mirage2000.mdfselection();</script>
       </binding>
     </action>
   </animation>
-  
+
+  <animation>
+    <type>pick</type>
+    <object-name>trim2</object-name>
+    <action>
+      <button>4</button>
+      <!--  scroll down -->
+      <repeatable>false</repeatable>
+      <binding>
+        <command>property-cycle</command>
+        <property>/instrumentation/efis/Mode</property>
+        <value>OFF</value>
+        <value>OLD</value>
+        <value>CANVAS</value>
+      </binding>
+      <binding>
+        <command>nasal</command>
+        <script>mirage2000.mdfselection();</script>
+      </binding>
+    </action>
+  </animation>
+
   <!--######################Tooltips###########################-->
   <animation>
     <type>pick</type>
@@ -456,7 +444,7 @@
       </binding>
     </hovered>
   </animation>
-  
+
   <animation>
     <type>pick</type>
     <object-name>trim1</object-name>
@@ -469,16 +457,15 @@
       </binding>
     </hovered>
   </animation>
-  
+
   <animation>
     <type>pick</type>
     <object-name>bt-b4</object-name>
     <visible>true</visible>
-    <action>
-    </action>
+    <action></action>
   </animation>
-  
-   <animation>
+
+  <animation>
     <type>select</type>
     <object-name>blackbkdOFF</object-name>
     <condition>
@@ -489,12 +476,12 @@
         </equals>
         <less-than>
           <property>/systems/electrical/volts</property>
-          <value>12</value> 
+          <value>12</value>
         </less-than>
       </or>
     </condition>
-  </animation> 
-  
+  </animation>
+
   <animation>
     <type>select</type>
     <object-name>blackbkd</object-name>
@@ -503,15 +490,15 @@
         <equals>
           <property>/instrumentation/efis/Mode</property>
           <value>CANVAS</value>
-        </equals>   
+        </equals>
         <greater-than>
           <property>/systems/electrical/volts</property>
-          <value>12</value> 
+          <value>12</value>
         </greater-than>
-        </and>
+      </and>
     </condition>
-  </animation> 
-  
+  </animation>
+
   <!-- MFD Center border-->
   <model>
     <name>MFD-Screen</name>
@@ -524,17 +511,17 @@
         </equals>
         <greater-than>
           <property>/systems/electrical/volts</property>
-          <value>12</value> 
+          <value>12</value>
         </greater-than>
       </and>
     </condition>
     <offsets>
-      <x-m>  0.0115 </x-m>
-      <y-m>  0.000 </y-m>
-      <z-m> -0.015 </z-m>
+      <x-m>0.0115</x-m>
+      <y-m>0.000</y-m>
+      <z-m>-0.015</z-m>
     </offsets>
   </model>
-  
+
   <animation>
     <type>scale</type>
     <object-name>MFD-Screen</object-name>
@@ -544,9 +531,9 @@
         <value>OLD</value>
       </equals>
     </condition>
-    <x-offset> 1.00 </x-offset>
-    <y-offset> 0.90 </y-offset>
-    <z-offset> 0.87 </z-offset>
+    <x-offset>1.00</x-offset>
+    <y-offset>0.90</y-offset>
+    <z-offset>0.87</z-offset>
   </animation>
-  
+
 </PropertyList>

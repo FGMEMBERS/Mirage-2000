@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml version="1.0" encoding="iso-8859-1"?>
 
 <PropertyList>
 
@@ -8,12 +8,12 @@
     <!-- Objets opaques -->
     <object-name>panel</object-name>
     <object-name>support</object-name>
-    
+
     <!-- Objets transparents -->
+
   </animation>
- 
+
   <!-- LIGHTS -->
-  
   <!--Light Top LEFT -->
   <model>
     <path>Aircraft/Mirage-2000/Models/Interior/Panel/Instruments/Lights/lights.xml</path>
@@ -24,20 +24,21 @@
       <roll-deg> 41.51 </roll-deg>
     </offsets>
   </model>
-  
-  <!-- Effect Top Left -->
+
+  <!-- Effect Top Left
   <model>
-  <path>Aircraft/Mirage-2000/Models/Interior/Panel/Instruments/Lights/Light-EffectUp.xml</path>
+    <path>Aircraft/Mirage-2000/Models/Interior/Panel/Instruments/Lights/Light-EffectUp.xml</path>
     <offsets>
       <x-m>  0.50719 </x-m>
       <y-m> -0.20777 </y-m>
-      <z-m>  0.03983 </z-m>     
-      <pitch-deg> 93 </pitch-deg>
-      <heading-deg>5 </heading-deg>
+      <z-m>  0.03983 </z-m>
+      <pitch-deg>  93 </pitch-deg>
+      <heading-deg> 5 </heading-deg>
     </offsets>
   </model>
-  
-    <!--Light Top RIGHT -->
+  -->
+
+  <!--Light Top RIGHT -->
   <model>
     <path>Aircraft/Mirage-2000/Models/Interior/Panel/Instruments/Lights/lights.xml</path>
     <offsets>
@@ -47,34 +48,31 @@
       <roll-deg> -41.51 </roll-deg>
     </offsets>
   </model>
-  <!-- Effect Top RIGHT -->
-  <model>
-  <path>Aircraft/Mirage-2000/Models/Interior/Panel/Instruments/Lights/Light-EffectUp.xml</path>
-    <offsets>
-      <x-m>  0.50719 </x-m>
-      <y-m> 0.20777 </y-m>
-      <z-m>  0.03983 </z-m>     
-      <pitch-deg> 90 </pitch-deg>
-      <heading-deg>0 </heading-deg>
-    </offsets>
-  </model>
-  
-  
-   <!-- Effect BANQUETTE RIGHT -->
-  <model>
-  <path>Aircraft/Mirage-2000/Models/Interior/Panel/Instruments/Lights/Light-EffectSide.xml</path>
-    <offsets>
-      <x-m>  0.7 </x-m>
-      <y-m> 0.38 </y-m>
-      <z-m>  -0.26 </z-m>    
-      <pitch-deg> 15 </pitch-deg>
-      <heading-deg>0 </heading-deg>
-      <roll-deg> 0 </roll-deg>
-    </offsets>
-  </model>
 
-  
-  
+  <!-- Effect Top RIGHT
+  <model>
+    <path>Aircraft/Mirage-2000/Models/Interior/Panel/Instruments/Lights/Light-EffectUp.xml</path>
+    <offsets>
+      <x-m> 0.50719 </x-m>
+      <y-m> 0.20777 </y-m>
+      <z-m> 0.03983 </z-m>
+      <pitch-deg> 90 </pitch-deg>
+    </offsets>
+  </model>
+  -->
+
+  <!-- Effect BANQUETTE RIGHT
+  <model>
+    <path>Aircraft/Mirage-2000/Models/Interior/Panel/Instruments/Lights/Light-EffectSide.xml</path>
+    <offsets>
+      <x-m>  0.70 </x-m>
+      <y-m>  0.38 </y-m>
+      <z-m> -0.26 </z-m>
+      <pitch-deg> 15 </pitch-deg>
+    </offsets>
+  </model>
+  -->
+
   <!-- MFD Left -->
   <model>
     <path>Aircraft/Mirage-2000/Models/Interior/Panel/Instruments/Mfd/mfdL.xml</path>
@@ -84,12 +82,11 @@
       <z-m> -0.118 </z-m>
     </offsets>
   </model>
-  
+
   <!-- MFD Center border  -->
   <model>
     <name>MFD_Center_border</name>
-    <condition>
-    </condition>
+    <condition></condition>
     <path>Aircraft/Mirage-2000/Models/Interior/Panel/Instruments/Center-mfd/center-mfd.xml</path>
     <offsets>
       <x-m>  0.400 </x-m>
@@ -133,19 +130,19 @@
   <model>
     <path>Aircraft/Mirage-2000/Models/Interior/Panel/Instruments/AP/ap.xml</path>
     <offsets>
-      <x-m>  0.3760 </x-m>
+      <x-m>  0.376 </x-m>
       <y-m> -0.183 </y-m>
       <z-m>  0.048 </z-m>
     </offsets>
   </model>
 
-<!-- SURF-INDIC -->
+  <!-- SURF-INDIC -->
   <model>
     <path>Aircraft/Mirage-2000/Models/Interior/Panel/Instruments/Surf-indic/surf-indic.xml</path>
     <offsets>
       <x-m>  0.37426 </x-m>
-      <y-m> -0.182 </y-m>
-      <z-m>  0.048 </z-m>
+      <y-m> -0.18200 </y-m>
+      <z-m>  0.04800 </z-m>
     </offsets>
   </model>
 
@@ -164,8 +161,8 @@
     <path>Aircraft/Mirage-2000/Models/Interior/Panel/Instruments/Vsi/vsi.xml</path>
     <offsets>
       <x-m> 0.3785 </x-m>
-      <y-m> 0.125 </y-m>
-      <z-m> 0.065 </z-m>
+      <y-m> 0.1250 </y-m>
+      <z-m> 0.0650 </z-m>
     </offsets>
   </model>
 
@@ -183,16 +180,15 @@
     <!-- Just a diamond displayed in the HUD above the nearest target -->
     <name>HUD_ADDS</name>
     <path>Aircraft/Mirage-2000/Models/Interior/Panel/Instruments/HUD/hud.xml</path>
-    <name>diamond</name>
+    <name>diamond</name>  <!-- FIXME : name already defined ! -->
     <offsets>
-      <x-m> 0.6 </x-m>
-      <y-m> 0.00000 </y-m>
-      <z-m> 0.1945</z-m>
-      <pitch-deg>0</pitch-deg>
+      <x-m> 0.6000 </x-m>
+      <y-m> 0.0000 </y-m>
+      <z-m> 0.1945 </z-m>
     </offsets>
   </model>
- 
-   <!-- Carburants -->
+
+  <!-- Carburants -->
   <model>
     <path>Aircraft/Mirage-2000/Models/Interior/Panel/Instruments/Carburant/carburant.xml</path>
     <offsets>
@@ -211,26 +207,26 @@
       <z-m> -0.24200 </z-m>
     </offsets>
   </model>
-  
+
   <!-- Transponder -->
   <model>
-     <path>Aircraft/Mirage-2000/Models/Interior/Panel/Instruments/transpondeur/transpondeur.xml</path>
-     <offsets>
-        <x-m> 0.444 </x-m>
-        <y-m> 0.000 </y-m>
-        <z-m> -0.348 </z-m>
-	<pitch-deg> -10 </pitch-deg>
-      </offsets>
-   </model>
-   
+    <path>Aircraft/Mirage-2000/Models/Interior/Panel/Instruments/transpondeur/transpondeur.xml</path>
+    <offsets>
+      <x-m>  0.444 </x-m>
+      <y-m>  0.000 </y-m>
+      <z-m> -0.348 </z-m>
+      <pitch-deg> -10 </pitch-deg>
+    </offsets>
+  </model>
+
   <!-- Alerts -->
   <model>
     <path>Aircraft/Mirage-2000/Models/Interior/Panel/Instruments/Alerts/alerts.xml</path>
     <offsets>
       <x-m>  0.395 </x-m>
-      <y-m> -0.17000 </y-m>
+      <y-m> -0.170 </y-m>
       <z-m> -0.231 </z-m>
-      <pitch-deg>-5</pitch-deg>
+      <pitch-deg> -5 </pitch-deg>
     </offsets>
   </model>
 
@@ -241,20 +237,9 @@
       <x-m>  0.420 </x-m>
       <y-m> -0.300 </y-m>
       <z-m> -0.192 </z-m>
-      <heading-deg>40 </heading-deg>
-      <pitch-deg>   -10 </pitch-deg>
+      <heading-deg> 40 </heading-deg>
+      <pitch-deg>  -10 </pitch-deg>
     </offsets>
   </model>
-  
-  <!-- Autre 
-  <model>
-    <path>Aircraft/Mirage-2000/Models/Interior/Panel/Instruments/autre/autre.xml</path>
-    <offsets>
-      <x-m>  0.53000 </x-m>
-      <y-m> -0.25160 </y-m>
-      <z-m>  0.06641 </z-m>
-      <roll-deg> 43 </roll-deg>
-    </offsets>
-  </model>-->
-  
+
 </PropertyList>
