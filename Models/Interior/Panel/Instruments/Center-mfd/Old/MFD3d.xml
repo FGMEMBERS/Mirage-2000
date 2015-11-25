@@ -1,7 +1,8 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
-
-<!-- Author  : Syd Adams Primus 2000 MFD 
-     Upadted : Helijah January 2014    -->
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!--
+Author  : Syd Adams Primus 2000 MFD
+Updated : Helijah January 2014
+-->
 <PropertyList>
 
   <path>mfd3d.ac</path>
@@ -48,7 +49,7 @@
     <object-name>rng2.10</object-name>
     <object-name>rng2.1</object-name>
   </animation>
-
+  
   <animation>
     <type>material</type>
     <object-name>MFD.hsi</object-name>
@@ -91,40 +92,40 @@
     <object-name>rng2.100</object-name>
     <object-name>rng2.10</object-name>
     <object-name>rng2.1</object-name>
-    <emission>      
+    <emission>
       <red>   1 </red>
       <green> 1 </green>
       <blue>  1 </blue>
     </emission>
   </animation>
-  
+
   <panel>
     <name>panel-area</name>
     <path>Aircraft/Mirage-2000/Models/Interior/Panel/Instruments/Center-mfd/Old/nd.xml</path>
     <bottom-left>
-      <x-m>  0.00025 </x-m>
-      <y-m> -0.08000 </y-m>
-      <z-m> -0.08000 </z-m>
+      <x-m> 0.00025</x-m>
+      <y-m>-0.08000</y-m>
+      <z-m>-0.08000</z-m>
     </bottom-left>
     <bottom-right>
-      <x-m>  0.00025 </x-m>
-      <y-m>  0.08000 </y-m>
-      <z-m> -0.08000 </z-m>
+      <x-m> 0.00025</x-m>
+      <y-m> 0.08000</y-m>
+      <z-m>-0.08000</z-m>
     </bottom-right>
     <top-left>
-      <x-m>  0.00025 </x-m>
-      <y-m> -0.08000 </y-m>
-      <z-m>  0.10800 </z-m>
+      <x-m> 0.00025</x-m>
+      <y-m>-0.08000</y-m>
+      <z-m> 0.10800</z-m>
     </top-left>
   </panel>
-  
+
   <model>
     <name>Mtext3d</name>
     <path>Aircraft/Mirage-2000/Models/Interior/Panel/Instruments/Center-mfd/Old/Mtext3d.xml</path>
     <offsets>
-      <x-m> 0.0005 </x-m>
-      <y-m> 0.0000 </y-m>
-      <z-m> 0.0000 </z-m>
+      <x-m>0.0005</x-m>
+      <y-m>0.0000</y-m>
+      <z-m>0.0000</z-m>
     </offsets>
   </model>
 
@@ -133,14 +134,14 @@
     <object-name>MFD.hsi</object-name>
     <property>orientation/heading-magnetic-deg</property>
     <center>
-      <x> 0.5 </x>
-      <y> 0.5 </y>
-      <z> 0.0 </z>
+      <x>0.5</x>
+      <y>0.5</y>
+      <z>0.0</z>
     </center>
     <axis>
-      <x>  0 </x>
-      <y>  0 </y>
-      <z> -1 </z>
+      <x> 0</x>
+      <y> 0</y>
+      <z>-1</z>
     </axis>
   </animation>
 
@@ -159,14 +160,14 @@
     <object-name>MFD.hdg-bug</object-name>
     <property>autopilot/internal/heading-bug-error-deg</property>
     <center>
-      <x-m> 0.000 </x-m>
-      <y-m> 0.000 </y-m>
-      <z-m> 0.018 </z-m>
+      <x-m>0.000</x-m>
+      <y-m>0.000</y-m>
+      <z-m>0.018</z-m>
     </center>
     <axis>
-      <x> -1 </x>
-      <y>  0 </y>
-      <z>  0 </z>
+      <x>-1</x>
+      <y> 0</y>
+      <z> 0</z>
     </axis>
   </animation>
 
@@ -266,11 +267,11 @@
     <type>textranslate</type>
     <object-name>MFD.menu</object-name>
     <property>instrumentation/primus2000/mfd/menu-num</property>
-    <factor> 0.05 </factor>
+    <factor>0.05</factor>
     <axis>
-      <x>  0 </x>
-      <y> -1 </y>
-      <z>  0 </z>
+      <x> 0</x>
+      <y>-1</y>
+      <z> 0</z>
     </axis>
   </animation>
 
@@ -279,14 +280,14 @@
     <object-name>MFD.plane</object-name>
     <property>orientation/heading-deg</property>
     <center>
-      <x-m> 0.000 </x-m>
-      <y-m> 0.000 </y-m>
-      <z-m> 0.018 </z-m>
+      <x-m>0.000</x-m>
+      <y-m>0.000</y-m>
+      <z-m>0.018</z-m>
     </center>
     <axis>
-      <x> -1 </x>
-      <y>  0 </y>
-      <z>  0 </z>
+      <x>-1</x>
+      <y> 0</y>
+      <z> 0</z>
     </axis>
   </animation>
 
@@ -301,7 +302,7 @@
       </greater-than>
     </condition>
   </animation>
-  
+
   <animation>
     <type>select</type>
     <object-name>hdg100</object-name>
@@ -312,7 +313,7 @@
       </greater-than>
     </condition>
   </animation>
-  
+
   <animation>
     <type>textranslate</type>
     <object-name>hdg1</object-name>
@@ -320,9 +321,9 @@
     <factor>0.1</factor>
     <step>1</step>
     <axis>
-      <x> 0 </x>
-      <y> 1 </y>
-      <z> 0 </z>
+      <x>0</x>
+      <y>1</y>
+      <z>0</z>
     </axis>
   </animation>
 
@@ -333,9 +334,9 @@
     <factor>0.01</factor>
     <step>10</step>
     <axis>
-      <x> 0 </x>
-      <y> 1 </y>
-      <z> 0 </z>
+      <x>0</x>
+      <y>1</y>
+      <z>0</z>
     </axis>
   </animation>
 
@@ -346,12 +347,12 @@
     <factor>0.001</factor>
     <step>100</step>
     <axis>
-      <x> 0 </x>
-      <y> 1 </y>
-      <z> 0 </z>
+      <x>0</x>
+      <y>1</y>
+      <z>0</z>
     </axis>
   </animation>
-  
+
   <!-- Heading bug deg -->
   <animation>
     <type>select</type>
@@ -363,7 +364,7 @@
       </greater-than>
     </condition>
   </animation>
-  
+
   <animation>
     <type>select</type>
     <object-name>heading100</object-name>
@@ -374,7 +375,7 @@
       </greater-than>
     </condition>
   </animation>
-  
+
   <animation>
     <type>textranslate</type>
     <object-name>heading1</object-name>
@@ -382,9 +383,9 @@
     <factor>0.1</factor>
     <step>1</step>
     <axis>
-      <x> 0 </x>
-      <y> 1 </y>
-      <z> 0 </z>
+      <x>0</x>
+      <y>1</y>
+      <z>0</z>
     </axis>
   </animation>
 
@@ -395,9 +396,9 @@
     <factor>0.01</factor>
     <step>10</step>
     <axis>
-      <x> 0 </x>
-      <y> 1 </y>
-      <z> 0 </z>
+      <x>0</x>
+      <y>1</y>
+      <z>0</z>
     </axis>
   </animation>
 
@@ -408,12 +409,12 @@
     <factor>0.001</factor>
     <step>100</step>
     <axis>
-      <x> 0 </x>
-      <y> 1 </y>
-      <z> 0 </z>
+      <x>0</x>
+      <y>1</y>
+      <z>0</z>
     </axis>
   </animation>
-  
+
   <!-- SAT -->
   <animation>
     <type>select</type>
@@ -433,9 +434,9 @@
     <factor>0.1</factor>
     <step>1</step>
     <axis>
-      <x> 0 </x>
-      <y> 1 </y>
-      <z> 0 </z>
+      <x>0</x>
+      <y>1</y>
+      <z>0</z>
     </axis>
   </animation>
 
@@ -446,9 +447,9 @@
     <factor>0.01</factor>
     <step>10</step>
     <axis>
-      <x> 0 </x>
-      <y> 1 </y>
-      <z> 0 </z>
+      <x>0</x>
+      <y>1</y>
+      <z>0</z>
     </axis>
   </animation>
 
@@ -463,7 +464,7 @@
       </greater-than>
     </condition>
   </animation>
-  
+
   <animation>
     <type>select</type>
     <object-name>tas100</object-name>
@@ -474,7 +475,7 @@
       </greater-than>
     </condition>
   </animation>
-  
+
   <animation>
     <type>textranslate</type>
     <object-name>tas1</object-name>
@@ -482,9 +483,9 @@
     <factor>0.1</factor>
     <step>1</step>
     <axis>
-      <x> 0 </x>
-      <y> 1 </y>
-      <z> 0 </z>
+      <x>0</x>
+      <y>1</y>
+      <z>0</z>
     </axis>
   </animation>
 
@@ -495,9 +496,9 @@
     <factor>0.01</factor>
     <step>10</step>
     <axis>
-      <x> 0 </x>
-      <y> 1 </y>
-      <z> 0 </z>
+      <x>0</x>
+      <y>1</y>
+      <z>0</z>
     </axis>
   </animation>
 
@@ -508,12 +509,12 @@
     <factor>0.001</factor>
     <step>100</step>
     <axis>
-      <x> 0 </x>
-      <y> 1 </y>
-      <z> 0 </z>
+      <x>0</x>
+      <y>1</y>
+      <z>0</z>
     </axis>
   </animation>
-  
+
   <!-- GSPD -->
   <animation>
     <type>select</type>
@@ -525,7 +526,7 @@
       </greater-than>
     </condition>
   </animation>
-  
+
   <animation>
     <type>select</type>
     <object-name>gspd100</object-name>
@@ -536,7 +537,7 @@
       </greater-than>
     </condition>
   </animation>
-  
+
   <animation>
     <type>textranslate</type>
     <object-name>gspd1</object-name>
@@ -544,9 +545,9 @@
     <factor>0.1</factor>
     <step>1</step>
     <axis>
-      <x> 0 </x>
-      <y> 1 </y>
-      <z> 0 </z>
+      <x>0</x>
+      <y>1</y>
+      <z>0</z>
     </axis>
   </animation>
 
@@ -557,9 +558,9 @@
     <factor>0.01</factor>
     <step>10</step>
     <axis>
-      <x> 0 </x>
-      <y> 1 </y>
-      <z> 0 </z>
+      <x>0</x>
+      <y>1</y>
+      <z>0</z>
     </axis>
   </animation>
 
@@ -570,12 +571,12 @@
     <factor>0.001</factor>
     <step>100</step>
     <axis>
-      <x> 0 </x>
-      <y> 1 </y>
-      <z> 0 </z>
+      <x>0</x>
+      <y>1</y>
+      <z>0</z>
     </axis>
   </animation>
-  
+
   <!-- RNG1 -->
   <animation>
     <type>select</type>
@@ -587,7 +588,7 @@
       </greater-than>
     </condition>
   </animation>
-  
+
   <animation>
     <type>select</type>
     <object-name>rng1.100</object-name>
@@ -598,7 +599,7 @@
       </greater-than>
     </condition>
   </animation>
-  
+
   <animation>
     <type>textranslate</type>
     <object-name>rng1.1</object-name>
@@ -606,9 +607,9 @@
     <factor>0.05</factor>
     <step>1</step>
     <axis>
-      <x> 0 </x>
-      <y> 1 </y>
-      <z> 0 </z>
+      <x>0</x>
+      <y>1</y>
+      <z>0</z>
     </axis>
   </animation>
 
@@ -619,9 +620,9 @@
     <factor>0.005</factor>
     <step>10</step>
     <axis>
-      <x> 0 </x>
-      <y> 1 </y>
-      <z> 0 </z>
+      <x>0</x>
+      <y>1</y>
+      <z>0</z>
     </axis>
   </animation>
 
@@ -632,12 +633,12 @@
     <factor>0.0005</factor>
     <step>100</step>
     <axis>
-      <x> 0 </x>
-      <y> 1 </y>
-      <z> 0 </z>
+      <x>0</x>
+      <y>1</y>
+      <z>0</z>
     </axis>
   </animation>
-  
+
   <!-- RNG2 -->
   <animation>
     <type>select</type>
@@ -649,7 +650,7 @@
       </greater-than>
     </condition>
   </animation>
-  
+
   <animation>
     <type>select</type>
     <object-name>rng2.100</object-name>
@@ -660,7 +661,7 @@
       </greater-than>
     </condition>
   </animation>
-  
+
   <animation>
     <type>textranslate</type>
     <object-name>rng2.1</object-name>
@@ -668,9 +669,9 @@
     <factor>0.05</factor>
     <step>1</step>
     <axis>
-      <x> 0 </x>
-      <y> 1 </y>
-      <z> 0 </z>
+      <x>0</x>
+      <y>1</y>
+      <z>0</z>
     </axis>
   </animation>
 
@@ -681,9 +682,9 @@
     <factor>0.005</factor>
     <step>10</step>
     <axis>
-      <x> 0 </x>
-      <y> 1 </y>
-      <z> 0 </z>
+      <x>0</x>
+      <y>1</y>
+      <z>0</z>
     </axis>
   </animation>
 
@@ -694,10 +695,10 @@
     <factor>0.0005</factor>
     <step>100</step>
     <axis>
-      <x> 0 </x>
-      <y> 1 </y>
-      <z> 0 </z>
+      <x>0</x>
+      <y>1</y>
+      <z>0</z>
     </axis>
   </animation>
-  
+
 </PropertyList>

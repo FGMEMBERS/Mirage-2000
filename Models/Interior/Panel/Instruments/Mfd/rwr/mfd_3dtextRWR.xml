@@ -1,29 +1,29 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml version="1.0" encoding="iso-8859-1"?>
 
- <PropertyList>
-   
+<PropertyList>
+
   <text>
     <name>button_b1</name>
     <offsets>
-      <x-m>  0.000 </x-m>
-      <y-m> -0.037 </y-m>
-      <z-m> -0.055 </z-m>
+      <x-m> 0.000</x-m>
+      <y-m>-0.037</y-m>
+      <z-m>-0.055</z-m>
     </offsets>
     <alignment>center-center</alignment>
     <axis-alignment>yz-plane</axis-alignment>
     <type>literal</type>
     <text>RWR</text>
-    <font>helvetica_bold.txf</font>
+    <font>helvetica.txf</font>
     <character-size>0.006</character-size>
   </text>
-   
+
   <animation>
-    <name>red</name>
-    <type>material</type>        
+    <name>green</name>
+    <type>material</type>
     <object-name>button_b1</object-name>
     <emission>
-      <red>   0.9 </red>
-      <green> 0.0 </green>
+      <red>   0.0 </red>
+      <green> 0.9 </green>
       <blue>  0.0 </blue>
       <alpha> 1.0 </alpha>
     </emission>
@@ -43,5 +43,5 @@
       <blue>  0 </blue>
     </specular>
   </animation>
-   
+
 </PropertyList>

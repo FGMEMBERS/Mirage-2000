@@ -1,22 +1,25 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml version="1.0" encoding="iso-8859-1"?>
 
 <PropertyList include="m2000-5-base.xml">
 
   <sim>
 
     <description>Mirage 2000 (YASim)</description>
-    <author>BARANGER Emmanuel (3D/FDM), Buckaroo (FDM), 5H1N0B1 (Weapons, system), F-Sig (3D, systems)</author>
-    <aircraft-version>0.5</aircraft-version>
-    <status>0.5 Alpha</status>
+
+    <author>BARANGER Emmanuel (3D/FDM), Buckaroo (FDM), 5H1N0B1 (Weapons, system), F-Sig and hardball (3D, ssystems)</author>
     
+    <aircraft-version>2015-09-16</aircraft-version>
+    <status>production</status>
+
     <flight-model>yasim</flight-model>
+
     <aero>m2000-5-yasim</aero>
 
     <rating>
-      <FDM type="int">     4 </FDM>
+      <FDM     type="int"> 4 </FDM>
       <systems type="int"> 4 </systems>
       <cockpit type="int"> 3 </cockpit>
-      <model type="int">   4 </model>
+      <model   type="int"> 4 </model>
     </rating>
 
   </sim>

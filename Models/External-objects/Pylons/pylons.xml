@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml version="1.0" encoding="iso-8859-1"?>
 
 <PropertyList>
 
   <path>pylons.ac</path>
- 
+
   <animation>
     <object-name>pylon1.L</object-name>
     <object-name>pylon2.L</object-name>
@@ -15,7 +15,7 @@
     <object-name>pylon2.R</object-name>
     <object-name>pylon1.R</object-name>
   </animation>
- 
+
   <!-- pylon options
       _________________|___|_________________
       \                |   |                /
@@ -23,11 +23,11 @@
         \2.L        4.L|   |4.R        2.R/
          (1)        (7)|   |(8)        (5)
           \   3.L      |   |      3.R   /
-           \  (2)      |   |      (4)  /   
-            \          |   |          /    
+           \  (2)      |   |      (4)  /
+            \          |   |          /
              \         |   |         /
               \        |   |        /
-               \       |.C |       / 
+               \       |.C |       /
                 \      |(3)|      /
                  \     |   |     /
                   \ 1.L|   |1.R /
@@ -35,11 +35,11 @@
                     \  |   |  /
                      \ |   | /
                       \|___|/
-  -->                   
+  -->
 
   <animation>
     <type>select</type>
-    <object-name>pylon1.L</object-name>      
+    <object-name>pylon1.L</object-name>
     <condition>
       <not-equals>
         <property>sim/weight[0]/selected</property>
@@ -47,10 +47,10 @@
       </not-equals>
     </condition>
   </animation>
- 
+
   <animation>
     <type>select</type>
-    <object-name>pylon2.L</object-name>      
+    <object-name>pylon2.L</object-name>
     <condition>
       <not-equals>
         <property>sim/weight[1]/selected</property>
@@ -58,10 +58,10 @@
       </not-equals>
     </condition>
   </animation>
- 
+
   <animation>
     <type>select</type>
-    <object-name>pylon3.L</object-name>      
+    <object-name>pylon3.L</object-name>
     <condition>
       <not-equals>
         <property>sim/weight[2]/selected</property>
@@ -69,10 +69,10 @@
       </not-equals>
     </condition>
   </animation>
-  
+
   <animation>
     <type>select</type>
-    <object-name>pylon4.L</object-name>      
+    <object-name>pylon4.L</object-name>
     <condition>
       <not-equals>
         <property>sim/weight[7]/selected</property>
@@ -80,10 +80,10 @@
       </not-equals>
     </condition>
   </animation>
-  
+
   <animation>
     <type>select</type>
-    <object-name>pylon.C</object-name>      
+    <object-name>pylon.C</object-name>
     <condition>
       <not-equals>
         <property>sim/weight[3]/selected</property>
@@ -91,10 +91,10 @@
       </not-equals>
     </condition>
   </animation>
- 
+
   <animation>
     <type>select</type>
-    <object-name>pylon1.R</object-name>      
+    <object-name>pylon1.R</object-name>
     <condition>
       <not-equals>
         <property>sim/weight[6]/selected</property>
@@ -102,10 +102,10 @@
       </not-equals>
     </condition>
   </animation>
-  
+
   <animation>
     <type>select</type>
-    <object-name>pylon2.R</object-name>      
+    <object-name>pylon2.R</object-name>
     <condition>
       <not-equals>
         <property>sim/weight[5]/selected</property>
@@ -113,10 +113,10 @@
       </not-equals>
     </condition>
   </animation>
-  
+
   <animation>
     <type>select</type>
-    <object-name>pylon3.R</object-name>      
+    <object-name>pylon3.R</object-name>
     <condition>
       <not-equals>
         <property>sim/weight[4]/selected</property>
@@ -124,10 +124,10 @@
       </not-equals>
     </condition>
   </animation>
-  
+
   <animation>
     <type>select</type>
-    <object-name>pylon4.R</object-name>      
+    <object-name>pylon4.R</object-name>
     <condition>
       <not-equals>
         <property>sim/weight[8]/selected</property>
@@ -135,5 +135,5 @@
       </not-equals>
     </condition>
   </animation>
-  
+
 </PropertyList>

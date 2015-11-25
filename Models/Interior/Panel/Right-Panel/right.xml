@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml version="1.0" encoding="iso-8859-1"?>
 
 <PropertyList>
 
@@ -10,7 +10,7 @@
 
     <!-- Objets transparents -->
   </animation>
- 
+
   <!-- FAILURES -->
   <model>
     <path>Aircraft/Mirage-2000/Models/Interior/Panel/Right-Panel/Instruments/Failures/failures.xml</path>
@@ -43,7 +43,7 @@
       <pitch-deg> -90 </pitch-deg>
     </offsets>
   </model>
-  
+
   <!-- STARTER -->
   <model>
     <path>Aircraft/Mirage-2000/Models/Interior/Panel/Right-Panel/Instruments/starter/starter.xml</path>
@@ -54,7 +54,7 @@
       <pitch-deg> -90 </pitch-deg>
     </offsets>
   </model>
-  
+
   <!-- COND -->
   <model>
     <path>Aircraft/Mirage-2000/Models/Interior/Panel/Right-Panel/Instruments/cond/cond.xml</path>
@@ -65,7 +65,7 @@
       <pitch-deg> -90 </pitch-deg>
     </offsets>
   </model>
-  
+
   <!-- MODES -->
   <model>
     <path>Aircraft/Mirage-2000/Models/Interior/Panel/Right-Panel/Instruments/modes/modes.xml</path>
@@ -76,7 +76,7 @@
       <pitch-deg> -90 </pitch-deg>
     </offsets>
   </model>
-  
+
   <!-- U.V. -->
   <model>
     <path>Aircraft/Mirage-2000/Models/Interior/Panel/Right-Panel/Instruments/banq/banq.xml</path>
@@ -87,5 +87,5 @@
       <pitch-deg> -90 </pitch-deg>
     </offsets>
   </model>
-  
+
 </PropertyList>

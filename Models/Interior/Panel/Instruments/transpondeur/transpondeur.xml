@@ -1,4 +1,5 @@
-<?xml version="1.0" encoding="ISO-8859-1"?> 
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!-- can help : http://fr.wikipedia.org/wiki/Radar_secondaire -->
 
 <PropertyList>
 
@@ -36,8 +37,7 @@
     <object-name>button2.2</object-name>
     <object-name>background</object-name>
   </animation>
-  
-  
+
   <!--LIGHT EMISSION -->
   <animation>
     <type>material</type>
@@ -67,13 +67,13 @@
         <property>sim/rendering/rembrandt/enabled</property>
       </not>
     </condition>
-    <emission>      
+    <emission>
       <red>   0.13 </red>
       <green> 0.13 </green>
       <blue>  0.13 </blue>
     </emission>
   </animation>
-  
+
   <animation>
     <type>material</type>
     <object-name>fond</object-name>
@@ -98,18 +98,14 @@
     <object-name>button2.1</object-name>
     <object-name>button2.2</object-name>
     <condition>
-        <property>sim/rendering/rembrandt/enabled</property>
+      <property>sim/rendering/rembrandt/enabled</property>
     </condition>
-    <emission>      
+    <emission>
       <red>   0.05 </red>
       <green> 0.05 </green>
       <blue>  0.05 </blue>
     </emission>
-  </animation>  
-  
-  
-  
-  
+  </animation>
 
   <animation>
     <type>material</type>
@@ -130,7 +126,6 @@
   </animation>
 
   <!--=================================== Molette 1 et valeur 1 =================================-->
-
   <animation>
     <type>pick</type>
     <object-name>molete1</object-name>
@@ -141,19 +136,19 @@
       <binding>
         <command>property-toggle</command>
         <property>sim/model/click</property>
-      </binding>   
+      </binding>
       <binding>
         <command>property-adjust</command>
         <property>/instrumentation/transponder/inputs/digit[0]</property>
         <step>1</step>
         <min>0</min>
         <max>7</max>
-        <wrap>false</wrap>     
-      </binding>   
+        <wrap>false</wrap>
+      </binding>
     </action>
   </animation>
-  
-    <animation>
+
+  <animation>
     <type>pick</type>
     <object-name>molete1</object-name>
     <action>
@@ -163,34 +158,35 @@
       <binding>
         <command>property-toggle</command>
         <property>sim/model/click</property>
-      </binding>   
+      </binding>
       <binding>
         <command>property-adjust</command>
         <property>/instrumentation/transponder/inputs/digit[0]</property>
         <step>-1</step>
         <min>0</min>
         <max>7</max>
-        <wrap>false</wrap>     
-      </binding>   
+        <wrap>false</wrap>
+      </binding>
     </action>
   </animation>
+
   <animation>
     <type>rotate</type>
     <object-name>molete1</object-name>
     <property>/instrumentation/transponder/inputs/digit[0]</property>
-    <factor>  72 </factor>
+    <factor>72</factor>
     <center>
-      <x-m> -0.00787 </x-m>
-      <y-m>  0.04533 </y-m>
-      <z-m>  0.05442 </z-m>
+      <x-m>-0.00787</x-m>
+      <y-m> 0.04533</y-m>
+      <z-m> 0.05442</z-m>
     </center>
     <axis>
-      <x>  0 </x>
-      <y> -1 </y>
-      <z>  0 </z>
+      <x> 0</x>
+      <y>-1</y>
+      <z> 0</z>
     </axis>
   </animation>
- 
+
   <animation>
     <type>textranslate</type>
     <object-name>value1</object-name>
@@ -198,14 +194,13 @@
     <factor>0.1</factor>
     <step>1</step>
     <axis>
-      <x> 0 </x>
-      <y> 1 </y>
-      <z> 0 </z>
+      <x>0</x>
+      <y>1</y>
+      <z>0</z>
     </axis>
-  </animation> 
+  </animation>
 
   <!-- Molette 2 et valeur 2 === -->
-  
   <animation>
     <type>pick</type>
     <object-name>molete2</object-name>
@@ -216,19 +211,19 @@
       <binding>
         <command>property-toggle</command>
         <property>sim/model/click</property>
-      </binding>   
+      </binding>
       <binding>
         <command>property-adjust</command>
         <property>/instrumentation/transponder/inputs/digit[1]</property>
         <step>1</step>
         <min>0</min>
         <max>7</max>
-        <wrap>false</wrap>     
-      </binding>   
+        <wrap>false</wrap>
+      </binding>
     </action>
   </animation>
-  
-    <animation>
+
+  <animation>
     <type>pick</type>
     <object-name>molete2</object-name>
     <action>
@@ -238,34 +233,35 @@
       <binding>
         <command>property-toggle</command>
         <property>sim/model/click</property>
-      </binding>   
+      </binding>
       <binding>
         <command>property-adjust</command>
         <property>/instrumentation/transponder/inputs/digit[1]</property>
         <step>-1</step>
         <min>0</min>
         <max>7</max>
-        <wrap>false</wrap>     
-      </binding>   
+        <wrap>false</wrap>
+      </binding>
     </action>
   </animation>
+
   <animation>
     <type>rotate</type>
     <object-name>molete2</object-name>
     <property>/instrumentation/transponder/inputs/digit[1]</property>
-    <factor>  72 </factor>
+    <factor>72</factor>
     <center>
-      <x-m> -0.00787 </x-m>
-      <y-m>  0.04533 </y-m>
-      <z-m>  0.05442 </z-m>
+      <x-m>-0.00787</x-m>
+      <y-m> 0.04533</y-m>
+      <z-m> 0.05442</z-m>
     </center>
     <axis>
-      <x>  0 </x>
-      <y> -1 </y>
-      <z>  0 </z>
+      <x> 0</x>
+      <y>-1</y>
+      <z> 0</z>
     </axis>
   </animation>
- 
+
   <animation>
     <type>textranslate</type>
     <object-name>value2</object-name>
@@ -273,17 +269,13 @@
     <factor>0.1</factor>
     <step>1</step>
     <axis>
-      <x> 0 </x>
-      <y> 1 </y>
-      <z> 0 </z>
+      <x>0</x>
+      <y>1</y>
+      <z>0</z>
     </axis>
-  </animation> 
-  
- 
+  </animation>
 
   <!-- Molette 3 et valeur 3 -->
-  
-  
   <animation>
     <type>pick</type>
     <object-name>molete3</object-name>
@@ -294,19 +286,19 @@
       <binding>
         <command>property-toggle</command>
         <property>sim/model/click</property>
-      </binding>   
+      </binding>
       <binding>
         <command>property-adjust</command>
         <property>/instrumentation/transponder/inputs/digit[2]</property>
         <step>1</step>
         <min>0</min>
         <max>7</max>
-        <wrap>false</wrap>     
-      </binding>   
+        <wrap>false</wrap>
+      </binding>
     </action>
   </animation>
-  
-    <animation>
+
+  <animation>
     <type>pick</type>
     <object-name>molete3</object-name>
     <action>
@@ -316,34 +308,35 @@
       <binding>
         <command>property-toggle</command>
         <property>sim/model/click</property>
-      </binding>   
+      </binding>
       <binding>
         <command>property-adjust</command>
         <property>/instrumentation/transponder/inputs/digit[2]</property>
         <step>-1</step>
         <min>0</min>
         <max>7</max>
-        <wrap>false</wrap>     
-      </binding>   
+        <wrap>false</wrap>
+      </binding>
     </action>
   </animation>
+
   <animation>
     <type>rotate</type>
     <object-name>molete3</object-name>
     <property>/instrumentation/transponder/inputs/digit[2]</property>
-    <factor>  72 </factor>
+    <factor>72</factor>
     <center>
-      <x-m> -0.00787 </x-m>
-      <y-m>  0.04533 </y-m>
-      <z-m>  0.05442 </z-m>
+      <x-m>-0.00787</x-m>
+      <y-m> 0.04533</y-m>
+      <z-m> 0.05442</z-m>
     </center>
     <axis>
-      <x>  0 </x>
-      <y> -1 </y>
-      <z>  0 </z>
+      <x> 0</x>
+      <y>-1</y>
+      <z> 0</z>
     </axis>
   </animation>
- 
+
   <animation>
     <type>textranslate</type>
     <object-name>value3</object-name>
@@ -351,16 +344,13 @@
     <factor>0.1</factor>
     <step>1</step>
     <axis>
-      <x> 0 </x>
-      <y> 1 </y>
-      <z> 0 </z>
+      <x>0</x>
+      <y>1</y>
+      <z>0</z>
     </axis>
-  </animation> 
-  
-  
+  </animation>
 
   <!-- Molette 4 et valeur 4 -->
-  
   <animation>
     <type>pick</type>
     <object-name>molete4</object-name>
@@ -371,19 +361,19 @@
       <binding>
         <command>property-toggle</command>
         <property>sim/model/click</property>
-      </binding>   
+      </binding>
       <binding>
         <command>property-adjust</command>
         <property>/instrumentation/transponder/inputs/digit[3]</property>
         <step>1</step>
         <min>0</min>
         <max>7</max>
-        <wrap>false</wrap>     
-      </binding>   
+        <wrap>false</wrap>
+      </binding>
     </action>
   </animation>
-  
-    <animation>
+
+  <animation>
     <type>pick</type>
     <object-name>molete4</object-name>
     <action>
@@ -393,34 +383,35 @@
       <binding>
         <command>property-toggle</command>
         <property>sim/model/click</property>
-      </binding>   
+      </binding>
       <binding>
         <command>property-adjust</command>
         <property>/instrumentation/transponder/inputs/digit[3]</property>
         <step>-1</step>
         <min>0</min>
         <max>7</max>
-        <wrap>false</wrap>     
-      </binding>   
+        <wrap>false</wrap>
+      </binding>
     </action>
   </animation>
+
   <animation>
     <type>rotate</type>
     <object-name>molete4</object-name>
     <property>/instrumentation/transponder/inputs/digit[3]</property>
-    <factor>  72 </factor>
+    <factor>72</factor>
     <center>
-      <x-m> -0.00787 </x-m>
-      <y-m>  0.04533 </y-m>
-      <z-m>  0.05442 </z-m>
+      <x-m>-0.00787</x-m>
+      <y-m> 0.04533</y-m>
+      <z-m> 0.05442</z-m>
     </center>
     <axis>
-      <x>  0 </x>
-      <y> -1 </y>
-      <z>  0 </z>
+      <x> 0</x>
+      <y>-1</y>
+      <z> 0</z>
     </axis>
   </animation>
- 
+
   <animation>
     <type>textranslate</type>
     <object-name>value4</object-name>
@@ -428,13 +419,12 @@
     <factor>0.1</factor>
     <step>1</step>
     <axis>
-      <x> 0 </x>
-      <y> 1 </y>
-      <z> 0 </z>
+      <x>0</x>
+      <y>1</y>
+      <z>0</z>
     </axis>
-  </animation> 
-  
-  
+  </animation>
+
   <!--
   <animation>
     <type>pick</type>
@@ -452,16 +442,16 @@
     <type>rotate</type>
     <object-name>molete4</object-name>
     <property>...</property>
-    <factor>  36 </factor>
+    <factor>36</factor>
     <center>
-      <x-m> -0.00787 </x-m>
-      <y-m>  0.00093 </y-m>
-      <z-m>  0.05442 </z-m>
+      <x-m>-0.00787</x-m>
+      <y-m> 0.00093</y-m>
+      <z-m> 0.05442</z-m>
     </center>
     <axis>
-      <x>  0 </x>
-      <y> -1 </y>
-      <z>  0 </z>
+      <x> 0</x>
+      <y>-1</y>
+      <z> 0</z>
     </axis>
   </animation>
  
@@ -472,9 +462,9 @@
     <factor>...</factor>
     <step>...</step>
     <axis>
-      <x> 0 </x>
-      <y> 1 </y>
-      <z> 0 </z>
+      <x>0</x>
+      <y>1</y>
+      <z>0</z>
     </axis>
   </animation> -->
 
@@ -495,16 +485,16 @@
     <type>rotate</type>
     <object-name>molete5</object-name>
     <property>...</property>
-    <factor>  36 </factor>
+    <factor>36</factor>
     <center>
-      <x-m> -0.00787 </x-m>
-      <y-m> -0.01921 </y-m>
-      <z-m>  0.05442 </z-m>
+      <x-m>-0.00787</x-m>
+      <y-m>-0.01921</y-m>
+      <z-m> 0.05442</z-m>
     </center>
     <axis>
-      <x>  0 </x>
-      <y> -1 </y>
-      <z>  0 </z>
+      <x> 0</x>
+      <y>-1</y>
+      <z> 0</z>
     </axis>
   </animation>
  
@@ -515,9 +505,9 @@
     <factor>...</factor>
     <step>...</step>
     <axis>
-      <x> 0 </x>
-      <y> 1 </y>
-      <z> 0 </z>
+      <x>0</x>
+      <y>1</y>
+      <z>0</z>
     </axis>
   </animation> -->
 
@@ -538,16 +528,16 @@
     <type>rotate</type>
     <object-name>molete6</object-name>
     <property>...</property>
-    <factor>  36 </factor>
+    <factor>36</factor>
     <center>
-      <x-m> -0.00787 </x-m>
-      <y-m> -0.03369 </y-m>
-      <z-m>  0.05442 </z-m>
+      <x-m>-0.00787</x-m>
+      <y-m>-0.03369</y-m>
+      <z-m> 0.05442</z-m>
     </center>
     <axis>
-      <x>  0 </x>
-      <y> -1 </y>
-      <z>  0 </z>
+      <x> 0</x>
+      <y>-1</y>
+      <z> 0</z>
     </axis>
   </animation>
   
@@ -558,13 +548,13 @@
     <factor>...</factor>
     <step>...</step>
     <axis>
-      <x> 0 </x>
-      <y> 1 </y>
-      <z> 0 </z>
+      <x>0</x>
+      <y>1</y>
+      <z>0</z>
     </axis>
   </animation> -->
-  
- <!--  Switch 1-->
+
+  <!--  Switch 1-->
   <animation>
     <type>pick</type>
     <object-name>switch1</object-name>
@@ -581,19 +571,19 @@
     <type>rotate</type>
     <object-name>switch1</object-name>
     <property>/instrumentation/transponder/inputs/ident-btn</property>
-    <factor>  70 </factor>
+    <factor>70</factor>
     <center>
-      <x-m> -0.00266 </x-m>
-      <y-m> -0.05195 </y-m>
-      <z-m>  0.01089 </z-m>
+      <x-m>-0.00266</x-m>
+      <y-m>-0.05195</y-m>
+      <z-m> 0.01089</z-m>
     </center>
     <axis>
-      <x>  0 </x>
-      <y> -1 </y>
-      <z>  0 </z>
+      <x> 0</x>
+      <y>-1</y>
+      <z> 0</z>
     </axis>
-  </animation> 
- 
+  </animation>
+
   <!-- Switch 2
   <animation>
     <type>pick</type>
@@ -611,19 +601,19 @@
     <type>rotate</type>
     <object-name>switch2</object-name>
     <property>...</property>
-    <factor>  70 </factor>
+    <factor>70</factor>
     <center>
-      <x-m> -0.00266 </x-m>
-      <y-m> -0.02002 </y-m>
-      <z-m>  0.01089 </z-m>
+      <x-m>-0.00266</x-m>
+      <y-m>-0.02002</y-m>
+      <z-m> 0.01089</z-m>
     </center>
     <axis>
-      <x>  0 </x>
-      <y> -1 </y>
-      <z>  0 </z>
+      <x> 0</x>
+      <y>-1</y>
+      <z> 0</z>
     </axis>
   </animation> -->
- 
+
   <!-- Switch 3
   <animation>
     <type>pick</type>
@@ -641,19 +631,19 @@
     <type>rotate</type>
     <object-name>switch3</object-name>
     <property>...</property>
-    <factor>  70 </factor>
+    <factor>70</factor>
     <center>
-      <x-m> -0.00266 </x-m>
-      <y-m>  0.00144 </y-m>
-      <z-m>  0.01089 </z-m>
+      <x-m>-0.00266</x-m>
+      <y-m> 0.00144</y-m>
+      <z-m> 0.01089</z-m>
     </center>
     <axis>
-      <x>  0 </x>
-      <y> -1 </y>
-      <z>  0 </z>
+      <x> 0</x>
+      <y>-1</y>
+      <z> 0</z>
     </axis>
   </animation> -->
- 
+
   <!-- Switch 4 -->
   <animation>
     <type>pick</type>
@@ -666,7 +656,7 @@
       </binding>
       <binding>
         <command>nasal</command>
-        <script>mirage2000.IDENT();</script> 
+        <script>mirage2000.IDENT();</script>
       </binding>
     </action>
   </animation>
@@ -675,19 +665,19 @@
     <type>rotate</type>
     <object-name>switch4</object-name>
     <property>/instrumentation/transponder/switch/IDENTIFICATION</property>
-    <factor>  70 </factor>
+    <factor>70</factor>
     <center>
-      <x-m> -0.00266 </x-m>
-      <y-m>  0.02080 </y-m>
-      <z-m>  0.01089 </z-m>
+      <x-m>-0.00266</x-m>
+      <y-m> 0.02080</y-m>
+      <z-m> 0.01089</z-m>
     </center>
     <axis>
-      <x>  0 </x>
-      <y> -1 </y>
-      <z>  0 </z>
+      <x> 0</x>
+      <y>-1</y>
+      <z> 0</z>
     </axis>
-  </animation> 
- 
+  </animation>
+
   <!-- Switch 5 -->
   <animation>
     <type>pick</type>
@@ -695,12 +685,12 @@
     <action>
       <button>0</button>
       <binding>
-         <command>property-toggle</command>
-         <property>/instrumentation/transponder/switch/ALTITUDE</property>
+        <command>property-toggle</command>
+        <property>/instrumentation/transponder/switch/ALTITUDE</property>
       </binding>
       <binding>
-         <command>nasal</command>
-         <script>mirage2000.ALTITUDE();</script> 
+        <command>nasal</command>
+        <script>mirage2000.ALTITUDE();</script>
       </binding>
     </action>
   </animation>
@@ -710,19 +700,19 @@
     <object-name>switch5</object-name>
     <property>/instrumentation/transponder/switch/ALTITUDE</property>
     <value>1</value>
-    <factor>  70 </factor>
+    <factor>70</factor>
     <center>
-      <x-m> -0.00266 </x-m>
-      <y-m>  0.04093 </y-m>
-      <z-m>  0.01089 </z-m>
+      <x-m>-0.00266</x-m>
+      <y-m> 0.04093</y-m>
+      <z-m> 0.01089</z-m>
     </center>
     <axis>
-      <x>  0 </x>
-      <y> -1 </y>
-      <z>  0 </z>
+      <x> 0</x>
+      <y>-1</y>
+      <z> 0</z>
     </axis>
   </animation>
- 
+
   <!-- Switch 6
   <animation>
     <type>pick</type>
@@ -740,19 +730,19 @@
     <type>rotate</type>
     <object-name>switch6</object-name>
     <property>...</property>
-    <factor>  70 </factor>
+    <factor>70</factor>
     <center>
-      <x-m> -0.00266 </x-m>
-      <y-m> -0.05996 </y-m>
-      <z-m> -0.03938 </z-m>
+      <x-m>-0.00266</x-m>
+      <y-m>-0.05996</y-m>
+      <z-m>-0.03938</z-m>
     </center>
     <axis>
-      <x>  0 </x>
-      <y> -1 </y>
-      <z>  0 </z>
+      <x> 0</x>
+      <y>-1</y>
+      <z> 0</z>
     </axis>
   </animation> -->
- 
+
   <!-- Switch 7
   <animation>
     <type>pick</type>
@@ -770,19 +760,19 @@
     <type>rotate</type>
     <object-name>switch7</object-name>
     <property>...</property>
-    <factor>  70 </factor>
+    <factor>70</factor>
     <center>
-      <x-m> -0.00266 </x-m>
-      <y-m> -0.04556 </y-m>
-      <z-m> -0.05966 </z-m>
+      <x-m>-0.00266</x-m>
+      <y-m>-0.04556</y-m>
+      <z-m>-0.05966</z-m>
     </center>
     <axis>
-      <x>  0 </x>
-      <y> -1 </y>
-      <z>  0 </z>
+      <x> 0</x>
+      <y>-1</y>
+      <z> 0</z>
     </axis>
   </animation> -->
- 
+
   <!-- button1.1
   <animation>
     <type>pick</type>
@@ -802,19 +792,19 @@
     <object-name>button1.1</object-name>
     <object-name>textebutton2</object-name>
     <property>...</property>
-    <factor>  45 </factor>
+    <factor>45</factor>
     <center>
-      <x-m>  0.00395 </x-m>
-      <y-m> -0.02391 </y-m>
-      <z-m> -0.02300 </z-m>
+      <x-m> 0.00395</x-m>
+      <y-m>-0.02391</y-m>
+      <z-m>-0.02300</z-m>
     </center>
     <axis>
-      <x> 1 </x>
-      <y> 0 </y>
-      <z> 0 </z>
+      <x>1</x>
+      <y>0</y>
+      <z>0</z>
     </axis>
   </animation> -->
- 
+
   <!-- button1.2
   <animation>
     <type>pick</type>
@@ -832,53 +822,49 @@
     <type>rotate</type>
     <object-name>button1.2</object-name>
     <property>...</property>
-    <factor>  45 </factor>
+    <factor>45</factor>
     <center>
-      <x-m>  0.00395 </x-m>
-      <y-m> -0.02391 </y-m>
-      <z-m> -0.02300 </z-m>
+      <x-m> 0.00395</x-m>
+      <y-m>-0.02391</y-m>
+      <z-m>-0.02300</z-m>
     </center>
     <axis>
-      <x> 1 </x>
-      <y> 0 </y>
-      <z> 0 </z>
+      <x>1</x>
+      <y>0</y>
+      <z>0</z>
     </axis>
   </animation> -->
-  
+
   <animation>
     <name>MoletteIFF</name>
     <object-name>button1.1</object-name>
     <object-name>button1.2</object-name>
     <object-name>textebutton1</object-name>
   </animation>
-  
-    <animation>
+
+  <animation>
     <type>rotate</type>
     <object-name>MoletteIFF</object-name>
     <offset-deg>48</offset-deg>
     <center>
-      <x-m>  0.00395 </x-m>
-      <y-m> -0.02391 </y-m>
-      <z-m> -0.02300 </z-m>
+      <x-m> 0.00395</x-m>
+      <y-m>-0.02391</y-m>
+      <z-m>-0.02300</z-m>
     </center>
     <axis>
-      <x> 1 </x>
-      <y> 0 </y>
-      <z> 0 </z>
+      <x>1</x>
+      <y>0</y>
+      <z>0</z>
     </axis>
+  </animation>
 
-  </animation> 
-  
- 
- 
-  
-   <animation>
+  <animation>
     <name>MoletteTransponder</name>
     <object-name>button2.1</object-name>
     <object-name>button2.2</object-name>
     <object-name>textebutton2</object-name>
   </animation>
- 
+
   <animation>
     <type>pick</type>
     <object-name>MoletteTransponder</object-name>
@@ -889,7 +875,7 @@
       <binding>
         <command>property-toggle</command>
         <property>sim/model/click</property>
-      </binding>   
+      </binding>
       <binding>
         <command>property-adjust</command>
         <property>/instrumentation/transponder/switch/MoletteTrans</property>
@@ -900,20 +886,20 @@
       </binding>
       <binding>
         <command>nasal</command>
-        <script>mirage2000.MOLETTE_haut();</script>     
-      </binding>   
+        <script>mirage2000.MOLETTE_haut();</script>
+      </binding>
     </action>
     <hovered>
-        <binding>
-           <command>set-tooltip</command>
-           <tooltip-id>mode-transp</tooltip-id>
-           <label>Transpondeur : %s</label>
-           <property>/instrumentation/transponder/switch/MoletteTrans</property>  
-        </binding>
+      <binding>
+        <command>set-tooltip</command>
+        <tooltip-id>mode-transp</tooltip-id>
+        <label>Transpondeur : %s</label>
+        <property>/instrumentation/transponder/switch/MoletteTrans</property>
+      </binding>
     </hovered>
   </animation>
-  
-    <animation>
+
+  <animation>
     <type>pick</type>
     <object-name>MoletteTransponder</object-name>
     <action>
@@ -923,7 +909,7 @@
       <binding>
         <command>property-toggle</command>
         <property>sim/model/click</property>
-      </binding>   
+      </binding>
       <binding>
         <command>property-adjust</command>
         <property>/instrumentation/transponder/switch/MoletteTrans</property>
@@ -934,29 +920,26 @@
       </binding>
       <binding>
         <command>nasal</command>
-        <script>mirage2000.MOLETTE_bas();</script>       
-      </binding>   
+        <script>mirage2000.MOLETTE_bas();</script>
+      </binding>
     </action>
   </animation>
-  
+
   <animation>
     <type>rotate</type>
     <object-name>MoletteTransponder</object-name>
     <property>/instrumentation/transponder/switch/MoletteTrans</property>
-    <factor>  20 </factor>
+    <factor>20</factor>
     <center>
-      <x-m>  0.00395 </x-m>
-      <y-m>  0.03385 </y-m>
-      <z-m> -0.02300 </z-m>
+      <x-m> 0.00395</x-m>
+      <y-m> 0.03385</y-m>
+      <z-m>-0.02300</z-m>
     </center>
     <axis>
-      <x> -1 </x>
-      <y> 0 </y>
-      <z> 0 </z>
+      <x>-1</x>
+      <y> 0</y>
+      <z> 0</z>
     </axis>
   </animation>
- 
- 
-<!-- can help : http://fr.wikipedia.org/wiki/Radar_secondaire -->
- 
+
 </PropertyList>

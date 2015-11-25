@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml version="1.0" encoding="iso-8859-1"?>
 
 <PropertyList>
 
@@ -12,7 +12,7 @@
     <inherits-from>Effects/model-transparent</inherits-from>
     <object-name>Light</object-name>
   </effect>
-  
+
   <animation>
     <type>billboard</type>
     <object-name>Light</object-name>
@@ -42,9 +42,9 @@
     <type>dist-scale</type>
     <object-name>Light</object-name>
     <interpolation>
-      <entry><ind>    0 </ind><dep> 0.25 </dep></entry>
-      <entry><ind>   20 </ind><dep> 0.50 </dep></entry>
-      <entry><ind> 1500 </ind><dep> 5.00 </dep></entry>
+      <entry><ind>   0</ind><dep>0.25</dep></entry>
+      <entry><ind>  20</ind><dep>0.50</dep></entry>
+      <entry><ind>1500</ind><dep>5.00</dep></entry>
     </interpolation>
   </animation>
 
@@ -55,5 +55,5 @@
       <property>/systems/electrical/volts</property>
     </condition>
   </animation>
-  
+
 </PropertyList>

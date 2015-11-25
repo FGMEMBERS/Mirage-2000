@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml version="1.0" encoding="iso-8859-1"?>
 
 <PropertyList>
 
   <path>mfd_cadre.ac</path>
-  
+
   <animation>
     <!-- Objets opaques -->
     <object-name>cadre</object-name>
@@ -11,7 +11,7 @@
     <object-name>br-inc</object-name>
     <object-name>bl-dec</object-name>
     <object-name>bl-inc</object-name>
-    <object-name>vis</object-name>    
+    <object-name>vis</object-name>
     <object-name>Course-knob</object-name>
     <object-name>HDG-knob</object-name>
     <object-name>bt-b1</object-name>
@@ -30,36 +30,35 @@
     <object-name>pot-r1</object-name>
     <object-name>pot-r2</object-name>
     <object-name>pot-r3</object-name>
-    <object-name>pot-r4</object-name>  
-    
+    <object-name>pot-r4</object-name>
     <!-- Objets transparents -->
-    <object-name>vitre</object-name>  
+    <object-name>vitre</object-name>
   </animation>
-  
+
   <!-- working for Rembrandt -->
   <effect>
     <inherits-from>Aircraft/Mirage-2000/Models/Effects/Glass/glass</inherits-from>
     <object-name>vitre</object-name>
   </effect>
-  
+
   <effect>
     <inherits-from>Effects/model-transparent</inherits-from>
     <object-name>vitre</object-name>
   </effect>
-  
-  <!--prov hide vitre en attendant l'antibuée :)-->
+
+  <!--temporary hide windshield waiting anti-fog :)-->
   <animation>
     <type>select</type>
     <object-name>vitre</object-name>
     <condition>
       <property>instrumentation/mfd/mfd-glass</property>
     </condition>
-  </animation> 
-  
+  </animation>
+
   <animation>
     <type>material</type>
-    <object-name>cadre</object-name>    
-    <object-name>vis</object-name>    
+    <object-name>cadre</object-name>
+    <object-name>vis</object-name>
     <object-name>br-knob</object-name>
     <object-name>bl-knob</object-name>
     <object-name>bt-b1</object-name>
@@ -84,17 +83,17 @@
         <property>sim/rendering/rembrandt/enabled</property>
       </not>
     </condition>
-    <emission>      
+    <emission>
       <red>   0.13 </red>
       <green> 0.13 </green>
       <blue>  0.13 </blue>
     </emission>
-  </animation> 
+  </animation>
 
   <animation>
     <type>material</type>
-    <object-name>cadre</object-name>    
-    <object-name>vis</object-name>    
+    <object-name>cadre</object-name>
+    <object-name>vis</object-name>
     <object-name>br-knob</object-name>
     <object-name>bl-knob</object-name>
     <object-name>bt-b1</object-name>
@@ -117,17 +116,17 @@
     <condition>
       <property>sim/rendering/rembrandt/enabled</property>
     </condition>
-    <emission>      
+    <emission>
       <red>   0.05 </red>
       <green> 0.05 </green>
       <blue>  0.05 </blue>
     </emission>
-  </animation> 
+  </animation>
 
   <!--
   <animation>
     <type>scale</type>
-    <object-name>RWR</object-name> 
+    <object-name>RWR</object-name>
     <x-offset> 1.2 </x-offset>
     <y-offset> 1.4 </y-offset>
     <z-offset> 1.4 </z-offset>
@@ -153,7 +152,7 @@
         <min>0</min>
         <max>4</max>
         <wrap>true</wrap>
-      </binding>            
+      </binding>
     </action>
   </animation>
 
@@ -167,17 +166,17 @@
       <binding>
         <command>property-toggle</command>
         <property>sim/model/click</property>
-      </binding> 
+      </binding>
       <binding>
         <command>nasal</command>
-          <script>mirage2000.nav_src_set();</script>
-          <condition>
-            <equals>
-              <property>/instrumentation/mfd/modeR</property>
-              <value> 0 </value>
-            </equals>
-          </condition> 
-      </binding>          
+        <script>mirage2000.nav_src_set();</script>
+        <condition>
+          <equals>
+            <property>/instrumentation/mfd/modeR</property>
+            <value>0</value>
+          </equals>
+        </condition>
+      </binding>
     </action>
     <hovered>
       <binding>
@@ -198,30 +197,30 @@
       <binding>
         <command>property-toggle</command>
         <property>sim/model/click</property>
-      </binding>   
+      </binding>
       <binding>
         <command>nasal</command>
         <script>mirage2000.rmi1_src_set();</script>
         <condition>
-          <equals> 
-            <property>/instrumentation/mfd/modeR</property>           
-            <value> 0 </value>
-            </equals>
-          </condition>     
+          <equals>
+            <property>/instrumentation/mfd/modeR</property>
+            <value>0</value>
+          </equals>
+        </condition>
       </binding>
       <binding>
         <command>property-adjust</command>
-          <property>instrumentation/mfd/rmuL</property>
-          <step>1</step>
-          <min>0</min>
-          <max>5</max>
-          <wrap>true</wrap>
+        <property>instrumentation/mfd/rmuL</property>
+        <step>1</step>
+        <min>0</min>
+        <max>5</max>
+        <wrap>true</wrap>
         <condition>
-          <equals> 
-            <property>/instrumentation/mfd/modeR</property>           
-            <value> 1 </value>
-            </equals>
-          </condition>     
+          <equals>
+            <property>/instrumentation/mfd/modeR</property>
+            <value>1</value>
+          </equals>
+        </condition>
       </binding>
     </action>
   </animation>
@@ -236,27 +235,27 @@
       <binding>
         <command>property-toggle</command>
         <property>sim/model/click</property>
-      </binding>   
+      </binding>
       <binding>
         <command>nasal</command>
         <script>mirage2000.rmi2_src_set();</script>
         <condition>
           <equals>
             <property>/instrumentation/mfd/modeR</property>
-            <value> 0 </value>
+            <value>0</value>
           </equals>
-        </condition>      
+        </condition>
       </binding>
-      <binding>        
+      <binding>
         <command>nasal</command>
         <script>mirage2000.frequ_swapL()</script>
         <condition>
-          <equals> 
-            <property>/instrumentation/mfd/modeR</property>           
-            <value> 1 </value>
+          <equals>
+            <property>/instrumentation/mfd/modeR</property>
+            <value>1</value>
           </equals>
-        </condition>     
-      </binding>      
+        </condition>
+      </binding>
     </action>
   </animation>
 
@@ -270,17 +269,17 @@
       <binding>
         <command>property-toggle</command>
         <property>sim/model/click</property>
-      </binding>        
-      <binding>        
+      </binding>
+      <binding>
         <command>nasal</command>
         <script>mirage2000.frequ_swapR()</script>
         <condition>
-          <equals> 
-            <property>/instrumentation/mfd/modeR</property>           
-            <value> 1 </value>
+          <equals>
+            <property>/instrumentation/mfd/modeR</property>
+            <value>1</value>
           </equals>
-        </condition>     
-      </binding>      
+        </condition>
+      </binding>
     </action>
   </animation>
 
@@ -300,11 +299,11 @@
         <property>instrumentation/mfd/wind-display</property>
       </binding>
       <condition>
-        <equals> 
-          <property>/instrumentation/mfd/modeR</property>           
-          <value> 0 </value>
-          </equals>
-        </condition>       
+        <equals>
+          <property>/instrumentation/mfd/modeR</property>
+          <value>0</value>
+        </equals>
+      </condition>
       <binding>
         <command>property-adjust</command>
         <property>instrumentation/mfd/rmuR</property>
@@ -313,12 +312,12 @@
         <max>4</max>
         <wrap>true</wrap>
         <condition>
-          <equals> 
-            <property>/instrumentation/mfd/modeR</property>           
-            <value> 1 </value>
+          <equals>
+            <property>/instrumentation/mfd/modeR</property>
+            <value>1</value>
           </equals>
-        </condition>     
-      </binding>            
+        </condition>
+      </binding>
     </action>
   </animation>
 
@@ -333,22 +332,22 @@
       <binding>
         <command>property-toggle</command>
         <property>sim/model/click</property>
-      </binding>  
+      </binding>
       <binding>
         <command>nasal</command>
         <script>mirage2000.frequ_adjustR(10)</script>
         <condition>
           <equals>
             <property>/instrumentation/mfd/modeR</property>
-            <value> 1 </value>
+            <value>1</value>
           </equals>
         </condition>
       </binding>
     </action>
   </animation>
- 
+
   <animation>
-    <type>pick</type>  
+    <type>pick</type>
     <object-name>pot-r1</object-name>
     <action>
       <button>3</button>
@@ -357,17 +356,17 @@
       <binding>
         <command>property-toggle</command>
         <property>sim/model/click</property>
-      </binding> 
+      </binding>
       <binding>
         <command>nasal</command>
         <script>mirage2000.frequ_adjustR(-10)</script>
         <condition>
           <equals>
             <property>/instrumentation/mfd/modeR</property>
-            <value> 1 </value>
+            <value>1</value>
           </equals>
-        </condition>        
-      </binding> 
+        </condition>
+      </binding>
     </action>
   </animation>
 
@@ -382,22 +381,22 @@
       <binding>
         <command>property-toggle</command>
         <property>sim/model/click</property>
-      </binding>  
+      </binding>
       <binding>
         <command>nasal</command>
         <script>mirage2000.frequ_adjustR(1)</script>
         <condition>
           <equals>
             <property>/instrumentation/mfd/modeR</property>
-            <value> 1 </value>
+            <value>1</value>
           </equals>
-        </condition>        
+        </condition>
       </binding>
     </action>
   </animation>
- 
+
   <animation>
-    <type>pick</type>  
+    <type>pick</type>
     <object-name>pot-r2</object-name>
     <action>
       <button>3</button>
@@ -406,17 +405,17 @@
       <binding>
         <command>property-toggle</command>
         <property>sim/model/click</property>
-      </binding> 
+      </binding>
       <binding>
         <command>nasal</command>
         <script>mirage2000.frequ_adjustR(-1)</script>
         <condition>
           <equals>
             <property>/instrumentation/mfd/modeR</property>
-            <value> 1 </value>
+            <value>1</value>
           </equals>
-        </condition>        
-      </binding> 
+        </condition>
+      </binding>
     </action>
   </animation>
 
@@ -432,7 +431,7 @@
       <binding>
         <command>property-toggle</command>
         <property>sim/model/click</property>
-      </binding>  
+      </binding>
       <binding>
         <command>property-adjust</command>
         <property>instrumentation/mfd/dimm-r</property>
@@ -443,9 +442,9 @@
       </binding>
     </action>
   </animation>
- 
+
   <animation>
-    <type>pick</type>  
+    <type>pick</type>
     <object-name>pot-r4</object-name>
     <action>
       <button>3</button>
@@ -454,7 +453,7 @@
       <binding>
         <command>property-toggle</command>
         <property>sim/model/click</property>
-      </binding> 
+      </binding>
       <binding>
         <command>property-adjust</command>
         <property>instrumentation/mfd/dimm-r</property>
@@ -462,7 +461,7 @@
         <min>0</min>
         <max>1</max>
         <wrap>false</wrap>
-      </binding> 
+      </binding>
     </action>
   </animation>
 
@@ -477,22 +476,22 @@
       <binding>
         <command>property-toggle</command>
         <property>sim/model/click</property>
-      </binding>  
+      </binding>
       <binding>
         <command>nasal</command>
         <script>mirage2000.frequ_adjustL(1)</script>
         <condition>
           <equals>
             <property>/instrumentation/mfd/modeR</property>
-            <value> 1 </value>
+            <value>1</value>
           </equals>
         </condition>
       </binding>
     </action>
   </animation>
- 
+
   <animation>
-    <type>pick</type>  
+    <type>pick</type>
     <object-name>pot-l1</object-name>
     <action>
       <button>3</button>
@@ -501,17 +500,17 @@
       <binding>
         <command>property-toggle</command>
         <property>sim/model/click</property>
-      </binding> 
+      </binding>
       <binding>
         <command>nasal</command>
         <script>mirage2000.frequ_adjustL(-1)</script>
         <condition>
           <equals>
             <property>/instrumentation/mfd/modeR</property>
-            <value> 1 </value>
+            <value>1</value>
           </equals>
         </condition>
-      </binding> 
+      </binding>
     </action>
   </animation>
 
@@ -526,22 +525,22 @@
       <binding>
         <command>property-toggle</command>
         <property>sim/model/click</property>
-      </binding>  
+      </binding>
       <binding>
         <command>nasal</command>
         <script>mirage2000.frequ_adjustL(0.05)</script>
         <condition>
           <equals>
             <property>/instrumentation/mfd/modeR</property>
-            <value> 1 </value>
+            <value>1</value>
           </equals>
         </condition>
       </binding>
     </action>
   </animation>
- 
+
   <animation>
-    <type>pick</type>  
+    <type>pick</type>
     <object-name>pot-l2</object-name>
     <action>
       <button>3</button>
@@ -550,36 +549,36 @@
       <binding>
         <command>property-toggle</command>
         <property>sim/model/click</property>
-      </binding> 
-        <binding>
-         <command>nasal</command>
-         <script>mirage2000.frequ_adjustL(-0.05)</script>
-         <condition>
+      </binding>
+      <binding>
+        <command>nasal</command>
+        <script>mirage2000.frequ_adjustL(-0.05)</script>
+        <condition>
           <equals>
             <property>/instrumentation/mfd/modeR</property>
-            <value> 1 </value>
+            <value>1</value>
           </equals>
-         </condition>
-       </binding> 
+        </condition>
+      </binding>
     </action>
   </animation>
 
   <!--Hide/show MFD glass-->
-  <!--provisoire en attendant des vitres sans buée :)-->
+  <!--temporary hide windshield waiting anti-fog :)-->
   <animation>
-    <type>pick</type>  
+    <type>pick</type>
     <object-name>pot-l4</object-name>
     <action>
-      <button>0</button>     
+      <button>0</button>
       <repeatable>false</repeatable>
       <binding>
         <command>property-toggle</command>
         <property>sim/model/click</property>
-      </binding> 
+      </binding>
       <binding>
         <command>property-toggle</command>
         <property>instrumentation/mfd/mfd-glass</property>
-      </binding> 
+      </binding>
     </action>
   </animation>
 
@@ -588,12 +587,12 @@
     <type>pick</type>
     <object-name>br-knob</object-name>
     <action>
-      <button>4</button> <!--  scroll up -->
+      <button>4</button>      <!--  scroll up -->
       <repeatable>false</repeatable>
       <binding>
         <command>property-toggle</command>
         <property>sim/model/click</property>
-      </binding> 
+      </binding>
       <binding>
         <command>property-adjust</command>
         <property>instrumentation/nav/radials/selected-deg</property>
@@ -605,11 +604,11 @@
           <and>
             <equals>
               <property>/instrumentation/mfd/modeR</property>
-              <value> 0 </value>
+              <value>0</value>
             </equals>
             <equals>
               <property>autopilot/settings/nav-source</property>
-              <value>NAV1</value>  
+              <value>NAV1</value>
             </equals>
           </and>
         </condition>
@@ -625,28 +624,29 @@
           <and>
             <equals>
               <property>/instrumentation/mfd/modeR</property>
-              <value> 0 </value>
+              <value>0</value>
             </equals>
             <equals>
               <property>autopilot/settings/nav-source</property>
-              <value>NAV2</value>  
+              <value>NAV2</value>
             </equals>
           </and>
         </condition>
-      </binding>    
+      </binding>
     </action>
   </animation>
 
   <animation>
-    <type>pick</type>  
+    <type>pick</type>
     <object-name>br-knob</object-name>
     <action>
-      <button>3</button> <!--  scroll down -->
+      <button>3</button>
+      <!--  scroll down -->
       <repeatable>false</repeatable>
       <binding>
         <command>property-toggle</command>
         <property>sim/model/click</property>
-      </binding>     
+      </binding>
       <binding>
         <command>property-adjust</command>
         <property>instrumentation/nav/radials/selected-deg</property>
@@ -658,11 +658,11 @@
           <and>
             <equals>
               <property>/instrumentation/mfd/modeR</property>
-              <value> 0 </value>
+              <value>0</value>
             </equals>
             <equals>
               <property>autopilot/settings/nav-source</property>
-              <value>NAV1</value>  
+              <value>NAV1</value>
             </equals>
           </and>
         </condition>
@@ -678,21 +678,21 @@
           <and>
             <equals>
               <property>/instrumentation/mfd/modeR</property>
-              <value> 0 </value>
+              <value>0</value>
             </equals>
             <equals>
               <property>autopilot/settings/nav-source</property>
-              <value>NAV2</value>  
+              <value>NAV2</value>
             </equals>
           </and>
         </condition>
-      </binding>     
+      </binding>
     </action>
   </animation>
 
   <!--    CW      -->
   <animation>
-    <type>pick</type>        
+    <type>pick</type>
     <visible>false</visible>
     <object-name>br-inc</object-name>
     <action>
@@ -702,7 +702,7 @@
       <binding>
         <command>property-toggle</command>
         <property>sim/model/click</property>
-      </binding>           
+      </binding>
       <binding>
         <command>property-adjust</command>
         <property>instrumentation/nav/radials/selected-deg</property>
@@ -714,11 +714,11 @@
           <and>
             <equals>
               <property>/instrumentation/mfd/modeR</property>
-              <value> 0 </value>
+              <value>0</value>
             </equals>
             <equals>
               <property>autopilot/settings/nav-source</property>
-              <value>NAV1</value>  
+              <value>NAV1</value>
             </equals>
           </and>
         </condition>
@@ -734,11 +734,11 @@
           <and>
             <equals>
               <property>/instrumentation/mfd/modeR</property>
-              <value> 0 </value>
+              <value>0</value>
             </equals>
             <equals>
               <property>autopilot/settings/nav-source</property>
-              <value>NAV2</value>  
+              <value>NAV2</value>
             </equals>
           </and>
         </condition>
@@ -757,7 +757,7 @@
       <binding>
         <command>property-toggle</command>
         <property>sim/model/click</property>
-      </binding> 
+      </binding>
       <binding>
         <command>property-adjust</command>
         <property>instrumentation/nav/radials/selected-deg</property>
@@ -769,11 +769,11 @@
           <and>
             <equals>
               <property>/instrumentation/mfd/modeR</property>
-              <value> 0 </value>
+              <value>0</value>
             </equals>
             <equals>
               <property>autopilot/settings/nav-source</property>
-              <value>NAV1</value>  
+              <value>NAV1</value>
             </equals>
           </and>
         </condition>
@@ -789,11 +789,11 @@
           <and>
             <equals>
               <property>/instrumentation/mfd/modeR</property>
-              <value> 0 </value>
+              <value>0</value>
             </equals>
             <equals>
               <property>autopilot/settings/nav-source</property>
-              <value>NAV2</value>  
+              <value>NAV2</value>
             </equals>
           </and>
         </condition>
@@ -810,10 +810,10 @@
       <button>0</button>
       <repeatable>true</repeatable>
       <interval-sec>0.2</interval-sec>
-        <binding>
-          <command>property-toggle</command>
-          <property>sim/model/click</property>
-        </binding> 
+      <binding>
+        <command>property-toggle</command>
+        <property>sim/model/click</property>
+      </binding>
       <binding>
         <command>property-adjust</command>
         <property>instrumentation/nav/radials/selected-deg</property>
@@ -822,17 +822,17 @@
         <max>361</max>
         <wrap>true</wrap>
         <condition>
-        <and>
-        <equals>
-          <property>/instrumentation/mfd/modeR</property>
-          <value> 0 </value>
-        </equals>
-        <equals>
-          <property>autopilot/settings/nav-source</property>
-          <value>NAV1</value>  
-        </equals>
-        </and>
-      </condition>
+          <and>
+            <equals>
+              <property>/instrumentation/mfd/modeR</property>
+              <value>0</value>
+            </equals>
+            <equals>
+              <property>autopilot/settings/nav-source</property>
+              <value>NAV1</value>
+            </equals>
+          </and>
+        </condition>
       </binding>
       <binding>
         <command>property-adjust</command>
@@ -842,17 +842,17 @@
         <max>361</max>
         <wrap>true</wrap>
         <condition>
-        <and>
-        <equals>
-          <property>/instrumentation/mfd/modeR</property>
-          <value> 0 </value>
-        </equals>
-        <equals>
-          <property>autopilot/settings/nav-source</property>
-          <value>NAV2</value>  
-        </equals>
-        </and>
-      </condition>
+          <and>
+            <equals>
+              <property>/instrumentation/mfd/modeR</property>
+              <value>0</value>
+            </equals>
+            <equals>
+              <property>autopilot/settings/nav-source</property>
+              <value>NAV2</value>
+            </equals>
+          </and>
+        </condition>
       </binding>
     </action>
   </animation>
@@ -865,10 +865,10 @@
       <button>1</button>
       <repeatable>true</repeatable>
       <interval-sec>0.2</interval-sec>
-        <binding>
-          <command>property-toggle</command>
-          <property>sim/model/click</property>
-        </binding> 
+      <binding>
+        <command>property-toggle</command>
+        <property>sim/model/click</property>
+      </binding>
       <binding>
         <command>property-adjust</command>
         <property>instrumentation/nav/radials/selected-deg</property>
@@ -877,17 +877,17 @@
         <max>361</max>
         <wrap>true</wrap>
         <condition>
-        <and>
-        <equals>
-          <property>/instrumentation/mfd/modeR</property>
-          <value> 0 </value>
-        </equals>
-        <equals>
-          <property>autopilot/settings/nav-source</property>
-          <value>NAV1</value>  
-        </equals>
-        </and>
-      </condition>
+          <and>
+            <equals>
+              <property>/instrumentation/mfd/modeR</property>
+              <value>0</value>
+            </equals>
+            <equals>
+              <property>autopilot/settings/nav-source</property>
+              <value>NAV1</value>
+            </equals>
+          </and>
+        </condition>
       </binding>
       <binding>
         <command>property-adjust</command>
@@ -897,17 +897,17 @@
         <max>361</max>
         <wrap>true</wrap>
         <condition>
-        <and>
-        <equals>
-          <property>/instrumentation/mfd/modeR</property>
-          <value> 0 </value>
-        </equals>
-        <equals>
-          <property>autopilot/settings/nav-source</property>
-          <value>NAV2</value>  
-        </equals>
-        </and>
-      </condition>
+          <and>
+            <equals>
+              <property>/instrumentation/mfd/modeR</property>
+              <value>0</value>
+            </equals>
+            <equals>
+              <property>autopilot/settings/nav-source</property>
+              <value>NAV2</value>
+            </equals>
+          </and>
+        </condition>
       </binding>
     </action>
   </animation>
@@ -917,12 +917,12 @@
     <object-name>br-knob</object-name>
     <property>instrumentation/nav/radials/selected-deg</property>
     <axis>
-      <x1-m>  0.000912 </x1-m>
-      <y1-m>  0.060490 </y1-m>
-      <z1-m> -0.068850 </z1-m>
-      <x2-m>  0.012980 </x2-m>
-      <y2-m>  0.060490 </y2-m>
-      <z2-m> -0.062840 </z2-m>
+      <x1-m>0.000912</x1-m>
+      <y1-m>0.060490</y1-m>
+      <z1-m>-0.068850</z1-m>
+      <x2-m>0.012980</x2-m>
+      <y2-m>0.060490</y2-m>
+      <z2-m>-0.062840</z2-m>
     </axis>
   </animation>
 
@@ -933,12 +933,12 @@
     <action>
       <button>4</button>
       <repeatable>false</repeatable>
-        <binding>
-          <command>property-toggle</command>
-          <property>sim/model/click</property>
-        </binding> 
       <binding>
-        <command>property-adjust</command>                                        
+        <command>property-toggle</command>
+        <property>sim/model/click</property>
+      </binding>
+      <binding>
+        <command>property-adjust</command>
         <property>autopilot/settings/heading-bug-deg</property>
         <step>1</step>
         <min>1</min>
@@ -947,11 +947,11 @@
       </binding>
     </action>
     <hovered>
-        <binding>
-           <command>set-tooltip</command>
-           <tooltip-id>heading_bug</tooltip-id>
-           <label>Heading Bug</label>
-        </binding>
+      <binding>
+        <command>set-tooltip</command>
+        <tooltip-id>heading_bug</tooltip-id>
+        <label>Heading Bug</label>
+      </binding>
     </hovered>
   </animation>
 
@@ -961,12 +961,12 @@
     <action>
       <button>3</button>
       <repeatable>false</repeatable>
-        <binding>
-          <command>property-toggle</command>
-          <property>sim/model/click</property>
-        </binding> 
       <binding>
-        <command>property-adjust</command>                                        
+        <command>property-toggle</command>
+        <property>sim/model/click</property>
+      </binding>
+      <binding>
+        <command>property-adjust</command>
         <property>autopilot/settings/heading-bug-deg</property>
         <step>-1</step>
         <min>1</min>
@@ -982,15 +982,15 @@
     <visible>false</visible>
     <object-name>bl-inc</object-name>
     <action>
-      <button>0</button>          
+      <button>0</button>
       <repeatable>true</repeatable>
       <interval-sec>0.2</interval-sec>
-        <binding>
-          <command>property-toggle</command>
-          <property>sim/model/click</property>
-        </binding> 
       <binding>
-        <command>property-adjust</command>                                        
+        <command>property-toggle</command>
+        <property>sim/model/click</property>
+      </binding>
+      <binding>
+        <command>property-adjust</command>
         <property>autopilot/settings/heading-bug-deg</property>
         <step>1</step>
         <min>0</min>
@@ -1008,12 +1008,12 @@
       <button>1</button>
       <repeatable>true</repeatable>
       <interval-sec>0.2</interval-sec>
-        <binding>
-          <command>property-toggle</command>
-          <property>sim/model/click</property>
-        </binding> 
       <binding>
-        <command>property-adjust</command>                        
+        <command>property-toggle</command>
+        <property>sim/model/click</property>
+      </binding>
+      <binding>
+        <command>property-adjust</command>
         <property>autopilot/settings/heading-bug-deg</property>
         <step>10</step>
         <min>0</min>
@@ -1032,12 +1032,12 @@
       <button>0</button>
       <repeatable>true</repeatable>
       <interval-sec>0.2</interval-sec>
-        <binding>
-          <command>property-toggle</command>
-          <property>sim/model/click</property>
-        </binding> 
       <binding>
-        <command>property-adjust</command>                        
+        <command>property-toggle</command>
+        <property>sim/model/click</property>
+      </binding>
+      <binding>
+        <command>property-adjust</command>
         <property>autopilot/settings/heading-bug-deg</property>
         <step>-1</step>
         <min>0</min>
@@ -1055,12 +1055,12 @@
       <button>1</button>
       <repeatable>true</repeatable>
       <interval-sec>0.2</interval-sec>
-        <binding>
-          <command>property-toggle</command>
-          <property>sim/model/click</property>
-        </binding> 
       <binding>
-        <command>property-adjust</command>                        
+        <command>property-toggle</command>
+        <property>sim/model/click</property>
+      </binding>
+      <binding>
+        <command>property-adjust</command>
         <property>autopilot/settings/heading-bug-deg</property>
         <step>-10</step>
         <min>0</min>
@@ -1072,119 +1072,117 @@
 
   <animation>
     <type>rotate</type>
-    <object-name>bl-knob</object-name> 
+    <object-name>bl-knob</object-name>
     <property>autopilot/settings/heading-bug-deg</property>
     <axis>
-      <x1-m>  0.000912 </x1-m>
-      <y1-m> -0.060490 </y1-m>
-      <z1-m> -0.068850 </z1-m>
-      <x2-m>  0.012980 </x2-m>
-      <y2-m> -0.060490 </y2-m>
-      <z2-m> -0.062840 </z2-m>
+      <x1-m>0.000912</x1-m>
+      <y1-m>-0.060490</y1-m>
+      <z1-m>-0.068850</z1-m>
+      <x2-m>0.012980</x2-m>
+      <y2-m>-0.060490</y2-m>
+      <z2-m>-0.062840</z2-m>
     </axis>
-  </animation> 
- 
-  <!-- __________________ End Buttons _____________________-->
+  </animation>
 
+  <!-- __________________ End Buttons _____________________-->
   <!--EHSI-->
   <model>
-    <name>EHSI</name>    
+    <name>EHSI</name>
     <path>Aircraft/Mirage-2000/Models/Interior/Panel/Instruments/Mfd/mfd_ehsi.xml</path>
     <condition>
       <and>
         <equals>
           <property>/instrumentation/mfd/modeR</property>
-          <value> 0 </value>
+          <value>0</value>
         </equals>
         <greater-than>
           <property>/systems/electrical/volts</property>
-          <value>12</value> 
+          <value>12</value>
         </greater-than>
       </and>
     </condition>
     <offsets>
-      <x-m> 0 </x-m>
-      <y-m> 0 </y-m>
-      <z-m> 0 </z-m>
+      <x-m>0</x-m>
+      <y-m>0</y-m>
+      <z-m>0</z-m>
     </offsets>
   </model>
 
   <!--RMU-->
   <model>
-    <name>RMU</name>    
+    <name>RMU</name>
     <path>Aircraft/Mirage-2000/Models/Interior/Panel/Instruments/Mfd/mfd_rmu.xml</path>
     <condition>
       <and>
-  <equals>
+        <equals>
           <property>/instrumentation/mfd/modeR</property>
-          <value> 1 </value>
+          <value>1</value>
         </equals>
         <greater-than>
           <property>/systems/electrical/volts</property>
-          <value>12</value> 
+          <value>12</value>
         </greater-than>
       </and>
     </condition>
     <offsets>
-      <x-m> 0 </x-m>
-      <y-m> 0 </y-m>
-      <z-m> 0 </z-m>
+      <x-m>0</x-m>
+      <y-m>0</y-m>
+      <z-m>0</z-m>
     </offsets>
   </model>
 
   <!--RWR-->
   <model>
-    <name>RWR</name>    
+    <name>RWR</name>
     <path>Aircraft/Mirage-2000/Models/Interior/Panel/Instruments/Mfd/rwr/rwr.xml</path>
     <condition>
       <and>
         <equals>
           <property>/instrumentation/mfd/modeR</property>
-          <value> 2 </value>
+          <value>2</value>
         </equals>
         <greater-than>
           <property>/systems/electrical/volts</property>
-          <value>12</value> 
+          <value>12</value>
         </greater-than>
       </and>
     </condition>
     <offsets>
-      <x-m> -0.005 </x-m>
-      <y-m>  0.000 </y-m>
-      <z-m>  0.000 </z-m>
+      <x-m>-0.005</x-m>
+      <y-m>0.000</y-m>
+      <z-m>0.000</z-m>
     </offsets>
   </model>
 
   <!--EICAS-->
   <model>
-    <name>EICAS</name>    
+    <name>EICAS</name>
     <path>Aircraft/Mirage-2000/Models/Interior/Panel/Instruments/Mfd/mfd_eicas.xml</path>
     <condition>
       <and>
         <equals>
           <property>/instrumentation/mfd/modeR</property>
-          <value> 3 </value>
+          <value>3</value>
         </equals>
         <greater-than>
           <property>/systems/electrical/volts</property>
-          <value>12</value> 
+          <value>12</value>
         </greater-than>
       </and>
     </condition>
     <offsets>
-      <x-m> 0 </x-m>
-      <y-m> 0 </y-m>
-      <z-m> 0 </z-m>
+      <x-m>0</x-m>
+      <y-m>0</y-m>
+      <z-m>0</z-m>
     </offsets>
-  </model> 
+  </model>
   <!--
   <animation>
     <type>scale</type>
-    <object-name>RWR</object-name> 
+    <object-name>RWR</object-name>
     <x-offset> 1.2 </x-offset>
     <y-offset> 1.4 </y-offset>
     <z-offset> 1.4 </z-offset>
   </animation>
   -->
-
 </PropertyList>

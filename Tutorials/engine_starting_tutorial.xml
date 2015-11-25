@@ -1,7 +1,7 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml version="1.0" encoding="iso-8859-1"?>
 
 <PropertyList>
-  
+
   <name>Engine Starting Tutorial</name>
   <description>This tutorial teaches how to start the m2000 Engine</description>
 
@@ -12,6 +12,7 @@
     </set>
   </init>
 
+  <!-- ~~~~~~~~~~~~~~~~~~ battery -->
   <step>
     <view>
       <heading-offset-deg>334</heading-offset-deg>
@@ -21,22 +22,21 @@
     </view>
     <!--
     <marker>
-      <x-m>0</x-m>
-      <y-m></y-m>
-      <z-m>0</z-m>
-      <scale>1</scale>
+      <x-m> 0 </x-m>
+      <y-m> 0 </y-m>
+      <z-m> 0 </z-m>
+      <scale> 1 </scale>
     </marker>
     -->
-    <message>
-      Switch the Battery on : "BATT ON"
-    </message>
+    <message>Switch the Battery on : "BATT ON"</message>
     <exit>
       <condition>
-      <property>/controls/switches/battery-switch</property>
+        <property>/controls/switches/battery-switch</property>
       </condition>
     </exit>
   </step>
-  
+
+  <!-- ~~~~~~~~~~~~~~~~~~ alternators -->
   <step>
     <view>
       <heading-offset-deg>334</heading-offset-deg>
@@ -44,18 +44,17 @@
       <roll-offset-deg>0.0</roll-offset-deg>
       <field-of-view>24</field-of-view>
     </view>
-    <message>
-      Switch the Alternators and the transformator on.
-    </message>
+    <message>Switch the Alternators and the transformator on.</message>
     <exit>
       <condition>
-      <property>/controls/switches/ALT1-switch</property>
-      <property>/controls/switches/ALT2-switch</property>
-      <property>/controls/switches/transformator-switch</property>
+        <property>/controls/switches/ALT1-switch</property>
+        <property>/controls/switches/ALT2-switch</property>
+        <property>/controls/switches/transformator-switch</property>
       </condition>
     </exit>
   </step>
-  
+
+  <!-- ~~~~~~~~~~~~~~~~~~ cut off -->
   <step>
     <view>
       <heading-offset-deg>313</heading-offset-deg>
@@ -63,17 +62,20 @@
       <roll-offset-deg>0.0</roll-offset-deg>
       <field-of-view>21.4</field-of-view>
     </view>
-    <message>
-      Switch the cutoff, and secure it.
-    </message>
+    <message>Switch the cutoff, and secure it.</message>
     <exit>
       <condition>
-        <not><property>/controls/engines/engine/cutoff</property></not>
-        <not><property>/controls/switches/hide-cutoff</property></not>
+        <not>
+          <property>/controls/engines/engine/cutoff</property>
+        </not>
+        <not>
+          <property>/controls/switches/hide-cutoff</property>
+        </not>
       </condition>
     </exit>
   </step>
-  
+
+  <!-- ~~~~~~~~~~~~~~~~~~ pumps -->
   <step>
     <view>
       <heading-offset-deg>313</heading-offset-deg>
@@ -81,18 +83,17 @@
       <roll-offset-deg>0.0</roll-offset-deg>
       <field-of-view>21.4</field-of-view>
     </view>
-    <message>
-      Switch on "M" the pump (POMPES) "G" and "D", and switch the "VENT ON"
-    </message>
+    <message>Switch on "M" the pump (POMPES) "G" and "D", and switch the "VENT ON"</message>
     <exit>
       <condition>
-      <property>/controls/switches/pump-BPG</property>
-      <property>/controls/switches/pump-BPD</property>
-      <property>/controls/switches/vent-allumage</property>
+        <property>/controls/switches/pump-BPG</property>
+        <property>/controls/switches/pump-BPD</property>
+        <property>/controls/switches/vent-allumage</property>
       </condition>
     </exit>
   </step>
-  
+
+  <!-- ~~~~~~~~~~~~~~~~~~ unhide starter -->
   <step>
     <view>
       <heading-offset-deg>313</heading-offset-deg>
@@ -100,34 +101,33 @@
       <roll-offset-deg>0.0</roll-offset-deg>
       <field-of-view>21.4</field-of-view>
     </view>
-    <message>
-      Unhide the starter, check that the BP button has been switched
-    </message>
+    <message>Unhide the starter, check that the BP button has been switched</message>
     <exit>
       <condition>
-      <property>/controls/switches/pump-BP</property>
-      <not><property>/controls/switches/hide-cutoff</property></not>
+        <property>/controls/switches/pump-BP</property>
+        <not>
+          <property>/controls/switches/hide-cutoff</property>
+        </not>
       </condition>
     </exit>
   </step>
-  
-    <step>
+
+  <!-- ~~~~~~~~~~~~~~~~~~ press start -->
+  <step>
     <view>
       <heading-offset-deg>313</heading-offset-deg>
       <pitch-offset-deg>-53.47</pitch-offset-deg>
       <roll-offset-deg>0.0</roll-offset-deg>
       <field-of-view>21.4</field-of-view>
     </view>
-    <message>
-      Press the starter during 1 second
-    </message>
+    <message>Press the starter during 1 second</message>
     <exit>
       <condition>
         <property>/controls/engines/engine/starter</property>
       </condition>
     </exit>
   </step>
-  
+
   <!--
   <step>
     <view>
@@ -140,14 +140,14 @@
       <field-of-view>26.2</field-of-view>
     </view>
     <marker>
-      <x-m>-4.3331</x-m>
-      <y-m>-0.3124</y-m>
-      <z-m>-0.6702</z-m>
-      <scale>4.0000</scale>
+      <x-m>  -4.3331 </x-m>
+      <y-m>  -0.3124 </y-m>
+      <z-m>  -0.6702 </z-m>
+      <scale> 4.0000 </scale>
     </marker>
     <message>
       Press Fuel P button.
-      It needs about 30 sec. 
+      It needs about 30 sec.
       On the real thing you don't see any effect, on this model the FUEL-P sign on the warning panel may dissapear.
     </message>
     <error>
@@ -161,10 +161,10 @@
     </error>
     <exit>
       <condition>
-      <greater-than>
-        <property>/controls/fuel/tank/fuellines_filled</property>
-      <value>0.98</value>
-      </greater-than>
+        <greater-than>
+          <property>/controls/fuel/tank/fuellines_filled</property>
+          <value>0.98</value>
+        </greater-than>
       </condition>
     </exit>
   </step>
@@ -180,67 +180,66 @@
       <field-of-view>32.6</field-of-view>
     </view>
     <marker>
-      <x-m>-4-4892</x-m>
-      <y-m>-0.3207</y-m>
-      <z-m>-0.5174</z-m>
-      <scale>2.0000</scale>
+      <x-m>  -4-4892 </x-m>
+      <y-m>  -0.3207 </y-m>
+      <z-m>  -0.5174 </z-m>
+      <scale> 2.0000 </scale>
     </marker>
     <message>
     Open the guard and switch the Start Selector to "On"
     </message>
     <exit>
       <condition>
-      <property>/controls/engines/engine/switchguard</property>
-      <property>/controls/engines/engine/startselector</property>
+        <property>/controls/engines/engine/switchguard</property>
+        <property>/controls/engines/engine/startselector</property>
       </condition>
     </exit>
   </step>
   
   <step>
     <view>
-      <heading-offset-deg>331.4</heading-offset-deg>
-      <pitch-offset-deg>-22.8</pitch-offset-deg>
-      <roll-offset-deg>0.0</roll-offset-deg>
-      <x-offset-m>-0.7</x-offset-m>
-      <y-offset-m>0.03</y-offset-m>
-      <z-offset-m>-3.9</z-offset-m>
-      <field-of-view>44.1</field-of-view>
+      <heading-offset-deg> 331.4 </heading-offset-deg>
+      <pitch-offset-deg> -22.8 </pitch-offset-deg>
+      <roll-offset-deg> 0.0 </roll-offset-deg>
+      <x-offset-m> -0.70 </x-offset-m>
+      <y-offset-m>  0.03 </y-offset-m>
+      <z-offset-m> -3.90 </z-offset-m>
+      <field-of-view> 44.1 </field-of-view>
     </view>
     <message>
       The engine will spool up now!
     </message>
     <exit>
       <condition>
-      <greater-than>
-      <property>/engines/engine/n2-pct</property>
-      <value>66</value>
-      </greater-than>
+        <greater-than>
+          <property>/engines/engine/n2-pct</property>
+          <value>66</value>
+        </greater-than>
       </condition>
     </exit>
-  </step> 
+  </step>
   
   <step>
     <view>
-      <heading-offset-deg>338</heading-offset-deg>
-      <pitch-offset-deg>-33</pitch-offset-deg>
-      <roll-offset-deg>0.0</roll-offset-deg>
-      <x-offset-m>-0.67</x-offset-m>
-      <y-offset-m>0.03</y-offset-m>
-      <z-offset-m>-3.93</z-offset-m>
-      <field-of-view>52.3</field-of-view>
+      <heading-offset-deg> 338 </heading-offset-deg>
+      <pitch-offset-deg> -33 </pitch-offset-deg>
+      <roll-offset-deg> 0.0 </roll-offset-deg>
+      <x-offset-m> -0.67 </x-offset-m>
+      <y-offset-m>  0.03 </y-offset-m>
+      <z-offset-m> -3.93 </z-offset-m>
+      <field-of-view> 52.3 </field-of-view>
     </view>
     <message>
       External power isn't needed anymore- deselect "Supply External Power" if needed
     </message>
     <exit>
       <condition>
-      <not>
-      <property>/controls/electric/external-power</property>
-      </not>
+        <not>
+          <property>/controls/electric/external-power</property>
+        </not>
       </condition>
     </exit>
   </step>
-  
   <step>
     <view>
       <heading-offset-deg>320</heading-offset-deg>
@@ -252,10 +251,10 @@
       <field-of-view>31</field-of-view>
     </view>
     <marker>
-      <x-m>-4.3322</x-m>
-      <y-m>-0.2992</y-m>
-      <z-m>-0.6669</z-m>
-      <scale>1.7</scale>
+      <x-m>  -4.3322 </x-m>
+      <y-m>  -0.2992 </y-m>
+      <z-m>  -0.6669 </z-m>
+      <scale> 1.7000 </scale>
     </marker>
     <message>
       set Fuel P off
@@ -263,9 +262,9 @@
     </message>
     <exit>
       <condition>
-      <not>
-      <property>/controls/electric/external-power</property>
-      </not>
+        <not>
+          <property>/controls/electric/external-power</property>
+        </not>
       </condition>
     </exit>
   </step>
@@ -274,7 +273,7 @@
   <end>
     <!--
     <message>
-      The engine is running in Idle now- but you can't fly yet!. 
+      The engine is running in Idle now- but you can't fly yet!.
     </message>
     <view>
       <heading-offset-deg>347</heading-offset-deg>
@@ -283,5 +282,5 @@
     </view>
     -->
   </end>
-  
+
 </PropertyList>

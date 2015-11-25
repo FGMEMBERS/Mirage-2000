@@ -1,4 +1,3 @@
-
 "******************************************************************************"
 "*                                   ________                                 *"
 "*                                  |  ____  |                                *"
@@ -14,8 +13,6 @@
 Make with Audacity on Ubuntu 10.10 The Maverick Meerkat
 All Sound are sampled and recorded by BaBoOn November 2010
 
-
-
 Bank of Sounds:
 
           - BaBoOn-mirageIV-Turbine1
@@ -24,16 +21,8 @@ Bank of Sounds:
           - BaBoOn-mirageIV-Wind
           - BaBoOn-mirageIV-Tire-Squeal
 
-
-
 Email: baboon922@hotmail.com
 
-
-
-
 Thanks to Emmanuel BARANGER, Flavien BLANC and to equipe-flightgear.forumactif.com
-
-
-
 
 BACON Guillaume

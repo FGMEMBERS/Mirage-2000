@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml version="1.0" encoding="iso-8859-1"?>
 
 <PropertyList>
 
@@ -47,22 +47,22 @@
         <property>sim/rendering/rembrandt/enabled</property>
       </not>
     </condition>
-    <emission>      
+    <emission>
       <red>   0.13 </red>
       <green> 0.13 </green>
       <blue>  0.13 </blue>
     </emission>
   </animation>
-  
+
   <animation>
     <type>material</type>
     <object-name>base</object-name>
     <object-name>visses</object-name>
     <object-name>knob</object-name>
     <condition>
-        <property>sim/rendering/rembrandt/enabled</property>
+      <property>sim/rendering/rembrandt/enabled</property>
     </condition>
-    <emission>      
+    <emission>
       <red>   0.05 </red>
       <green> 0.05 </green>
       <blue>  0.05 </blue>
@@ -100,7 +100,7 @@
       <blue>  0.25 </blue>
       <factor-prop>/systems/electrical/outputs/instrument-lights</factor-prop>
     </emission>
-  </animation>    
+  </animation>
 
   <animation>
     <type>material</type>
@@ -111,7 +111,7 @@
       <green> 2 </green>
       <blue>  2 </blue>
     </emission>
-  </animation>    
+  </animation>
 
   <animation>
     <type>material</type>
@@ -122,7 +122,7 @@
       <green> 0 </green>
       <blue>  0 </blue>
     </emission>
-  </animation>    
+  </animation>
 
   <!-- Fuel in total fuel in kg -->
   <animation>
@@ -132,9 +132,9 @@
     <factor>0.0001</factor>
     <step>1000</step>
     <axis>
-      <x> 0 </x>
-      <y> 1 </y>
-      <z> 0 </z>
+      <x>0</x>
+      <y>1</y>
+      <z>0</z>
     </axis>
   </animation>
 
@@ -145,9 +145,9 @@
     <factor>0.001</factor>
     <step>100</step>
     <axis>
-      <x> 0 </x>
-      <y> 1 </y>
-      <z> 0 </z>
+      <x>0</x>
+      <y>1</y>
+      <z>0</z>
     </axis>
   </animation>
 
@@ -158,11 +158,11 @@
     <factor>0.01</factor>
     <step>10</step>
     <axis>
-      <x> 0 </x>
-      <y> 1 </y>
-      <z> 0 </z>
+      <x>0</x>
+      <y>1</y>
+      <z>0</z>
     </axis>
-</animation>
+  </animation>
 
   <animation>
     <type>textranslate</type>
@@ -171,9 +171,9 @@
     <factor>0.1</factor>
     <step>1</step>
     <axis>
-      <x> 0 </x>
-      <y> 1 </y>
-      <z> 0 </z>
+      <x>0</x>
+      <y>1</y>
+      <z>0</z>
     </axis>
   </animation>
 
@@ -185,9 +185,9 @@
     <factor>0.0001</factor>
     <step>1000</step>
     <axis>
-      <x> 0 </x>
-      <y> 1 </y>
-      <z> 0 </z>
+      <x>0</x>
+      <y>1</y>
+      <z>0</z>
     </axis>
   </animation>
 
@@ -198,9 +198,9 @@
     <factor>0.001</factor>
     <step>100</step>
     <axis>
-      <x> 0 </x>
-      <y> 1 </y>
-      <z> 0 </z>
+      <x>0</x>
+      <y>1</y>
+      <z>0</z>
     </axis>
   </animation>
 
@@ -211,9 +211,9 @@
     <factor>0.01</factor>
     <step>10</step>
     <axis>
-      <x> 0 </x>
-      <y> 1 </y>
-      <z> 0 </z>
+      <x>0</x>
+      <y>1</y>
+      <z>0</z>
     </axis>
   </animation>
 
@@ -224,9 +224,9 @@
     <factor>0.1</factor>
     <step>1</step>
     <axis>
-      <x> 0 </x>
-      <y> 1 </y>
-      <z> 0 </z>
+      <x>0</x>
+      <y>1</y>
+      <z>0</z>
     </axis>
   </animation>
 
@@ -238,9 +238,9 @@
     <factor>0.0001</factor>
     <step>1000</step>
     <axis>
-      <x> 0 </x>
-      <y> 1 </y>
-      <z> 0 </z>
+      <x>0</x>
+      <y>1</y>
+      <z>0</z>
     </axis>
   </animation>
 
@@ -251,9 +251,9 @@
     <factor>0.001</factor>
     <step>100</step>
     <axis>
-      <x> 0 </x>
-      <y> 1 </y>
-      <z> 0 </z>
+      <x>0</x>
+      <y>1</y>
+      <z>0</z>
     </axis>
   </animation>
 
@@ -264,9 +264,9 @@
     <factor>0.01</factor>
     <step>10</step>
     <axis>
-      <x> 0 </x>
-      <y> 1 </y>
-      <z> 0 </z>
+      <x>0</x>
+      <y>1</y>
+      <z>0</z>
     </axis>
   </animation>
 
@@ -277,33 +277,33 @@
     <factor>0.1</factor>
     <step>1</step>
     <axis>
-      <x> 0 </x>
-      <y> 1 </y>
-      <z> 0 </z>
+      <x>0</x>
+      <y>1</y>
+      <z>0</z>
     </axis>
   </animation>
 
   <animation>
     <type>select</type>
-    <object-name>lefttank</object-name>      
+    <object-name>lefttank</object-name>
     <condition>
       <property>/consumables/fuel/tank[2]/selected</property>
       <value>true</value>
     </condition>
   </animation>
-  
+
   <animation>
     <type>select</type>
-    <object-name>middletank</object-name>      
+    <object-name>middletank</object-name>
     <condition>
       <property>/consumables/fuel/tank[3]/selected</property>
       <value>true</value>
     </condition>
   </animation>
-  
+
   <animation>
     <type>select</type>
-    <object-name>righttank</object-name>      
+    <object-name>righttank</object-name>
     <condition>
       <property>/consumables/fuel/tank[4]/selected</property>
       <value>true</value>
@@ -317,11 +317,11 @@
     <factor>0.000322</factor>
     <step>0.001</step>
     <axis>
-      <x> 0 </x>
-      <y> 1 </y>
+      <x>0</x>
+      <y>1</y>
     </axis>
   </animation>
-  
+
   <animation>
     <type>textranslate</type>
     <object-name>rightgauge</object-name>
@@ -329,15 +329,15 @@
     <factor>0.000322</factor>
     <step>0.001</step>
     <axis>
-      <x> 0 </x>
-      <y> 1 </y>
+      <x>0</x>
+      <y>1</y>
     </axis>
   </animation>
-  
+
   <animation>
     <type>select</type>
-    <object-name>warningblancL</object-name> 
-    <object-name>warningblancR</object-name>       
+    <object-name>warningblancL</object-name>
+    <object-name>warningblancR</object-name>
     <condition>
       <equals>
         <property>instrumentation/consumables/bingo_low</property>
@@ -345,11 +345,11 @@
       </equals>
     </condition>
   </animation>
-  
+
   <animation>
     <type>select</type>
-    <object-name>warningrougeL</object-name> 
-    <object-name>warningrougeR</object-name>       
+    <object-name>warningrougeL</object-name>
+    <object-name>warningrougeR</object-name>
     <condition>
       <equals>
         <property>/instrumentation/consumables/bingo_low</property>
@@ -357,7 +357,7 @@
       </equals>
     </condition>
   </animation>
-  
+
   <!-- low fuel warning -->
   <!-- Below 100 kg -->
   <animation>
@@ -382,8 +382,8 @@
       </greater-than>
     </condition>
   </animation>
-  
-  <!-- Temporairement identique à la précédente -->
+
+  <!-- Temporarly same as previous -->
   <animation>
     <type>select</type>
     <object-name>low-lamp2</object-name>

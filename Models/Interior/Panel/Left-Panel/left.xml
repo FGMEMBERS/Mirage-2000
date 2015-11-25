@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml version="1.0" encoding="iso-8859-1"?>
 
 <PropertyList>
 
@@ -10,7 +10,7 @@
 
     <!-- Objets transparents -->
   </animation>
- 
+
   <!-- Jettison -->
   <model>
     <path>Aircraft/Mirage-2000/Models/Interior/Panel/Left-Panel/Instruments/jettison/jettison.xml</path>
@@ -21,7 +21,7 @@
       <pitch-deg> -15 </pitch-deg>
     </offsets>
   </model>
-  
+
   <!-- Throttle -->
   <model>
     <path>Aircraft/Mirage-2000/Models/Interior/Panel/Left-Panel/Instruments/Throttle/throttle.xml</path>
@@ -31,7 +31,7 @@
       <z-m> -0.00311 </z-m>
     </offsets>
   </model>
-  
+
   <!-- Gears -->
   <model>
     <path>Aircraft/Mirage-2000/Models/Interior/Panel/Left-Panel/Instruments/Gears/gears.xml</path>
@@ -42,5 +42,5 @@
       <pitch-deg> -15 </pitch-deg>
     </offsets>
   </model>
-  
+
 </PropertyList>

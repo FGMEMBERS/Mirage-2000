@@ -1,17 +1,17 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml version="1.0" encoding="iso-8859-1"?>
 
 <PropertyList>
 
   <path>mfd_cadre.ac</path>
 
-   <animation>
+  <animation>
     <!-- Objets opaques -->
     <object-name>cadre</object-name>
     <object-name>br-dec</object-name>
     <object-name>br-inc</object-name>
     <object-name>bl-dec</object-name>
     <object-name>bl-inc</object-name>
-    <object-name>vis</object-name>    
+    <object-name>vis</object-name>
     <object-name>br-knob</object-name>
     <object-name>bl-knob</object-name>
     <object-name>bt-b1</object-name>
@@ -30,36 +30,35 @@
     <object-name>pot-r1</object-name>
     <object-name>pot-r2</object-name>
     <object-name>pot-r3</object-name>
-    <object-name>pot-r4</object-name>    
-    
+    <object-name>pot-r4</object-name>
     <!-- Objets transparents -->
     <object-name>vitre</object-name>
   </animation>
-  
+
   <!-- working for Rembrandt -->
   <effect>
     <inherits-from>Aircraft/Mirage-2000/Models/Effects/Glass/glass</inherits-from>
     <object-name>vitre</object-name>
   </effect>
-  
+
   <effect>
     <inherits-from>Effects/model-transparent</inherits-from>
     <object-name>vitre</object-name>
   </effect>
-  
-  <!--prov hide vitre en attendant l'antibuée :)-->
+
+  <!--temporary hide windshield waiting anti-fog :)-->
   <animation>
     <type>select</type>
     <object-name>vitre</object-name>
     <condition>
       <property>instrumentation/mfd/mfd-glass</property>
     </condition>
-  </animation> 
-  
+  </animation>
+
   <animation>
     <type>material</type>
-    <object-name>cadre</object-name>    
-    <object-name>vis</object-name>    
+    <object-name>cadre</object-name>
+    <object-name>vis</object-name>
     <object-name>br-knob</object-name>
     <object-name>bl-knob</object-name>
     <object-name>bt-b1</object-name>
@@ -84,17 +83,17 @@
         <property>sim/rendering/rembrandt/enabled</property>
       </not>
     </condition>
-    <emission>      
+    <emission>
       <red>   0.13 </red>
       <green> 0.13 </green>
       <blue>  0.13 </blue>
     </emission>
   </animation>
-  
+
   <animation>
     <type>material</type>
-    <object-name>cadre</object-name>    
-    <object-name>vis</object-name>    
+    <object-name>cadre</object-name>
+    <object-name>vis</object-name>
     <object-name>br-knob</object-name>
     <object-name>bl-knob</object-name>
     <object-name>bt-b1</object-name>
@@ -115,9 +114,9 @@
     <object-name>pot-r3</object-name>
     <object-name>pot-r4</object-name>
     <condition>
-        <property>sim/rendering/rembrandt/enabled</property>
+      <property>sim/rendering/rembrandt/enabled</property>
     </condition>
-    <emission>      
+    <emission>
       <red>   0.05 </red>
       <green> 0.05 </green>
       <blue>  0.05 </blue>
@@ -136,7 +135,7 @@
       <binding>
         <command>property-toggle</command>
         <property>sim/model/click</property>
-      </binding>  
+      </binding>
       <binding>
         <command>property-adjust</command>
         <property>/instrumentation/mfd/modeL</property>
@@ -144,10 +143,10 @@
         <min>0</min>
         <max>2</max>
         <wrap>true</wrap>
-      </binding>     
+      </binding>
     </action>
-  </animation>  
- 
+  </animation>
+
   <!--Pot r1 Altitude-->
   <animation>
     <type>pick</type>
@@ -159,7 +158,7 @@
       <binding>
         <command>property-toggle</command>
         <property>sim/model/click</property>
-      </binding>   
+      </binding>
       <binding>
         <command>property-adjust</command>
         <property>autopilot/settings/target-altitude-ft</property>
@@ -170,15 +169,15 @@
         <condition>
           <equals>
             <property>/instrumentation/mfd/modeL</property>
-            <value> 0 </value>
+            <value>0</value>
           </equals>
-        </condition>        
-      </binding>   
+        </condition>
+      </binding>
     </action>
   </animation>
 
   <animation>
-    <type>pick</type>  
+    <type>pick</type>
     <object-name>pot-r1</object-name>
     <action>
       <button>3</button>
@@ -198,13 +197,13 @@
         <condition>
           <equals>
             <property>/instrumentation/mfd/modeL</property>
-            <value> 0 </value>
+            <value>0</value>
           </equals>
         </condition>
       </binding>
     </action>
   </animation>
- 
+
   <!--Pot l1 Speed-->
   <animation>
     <type>pick</type>
@@ -216,7 +215,7 @@
       <binding>
         <command>property-toggle</command>
         <property>sim/model/click</property>
-      </binding> 
+      </binding>
       <binding>
         <command>property-adjust</command>
         <property>autopilot/settings/target-speed-kt</property>
@@ -227,15 +226,15 @@
         <condition>
           <equals>
             <property>/instrumentation/mfd/modeL</property>
-            <value> 0 </value>
+            <value>0</value>
           </equals>
-        </condition>        
+        </condition>
       </binding>
     </action>
   </animation>
- 
+
   <animation>
-    <type>pick</type>  
+    <type>pick</type>
     <object-name>pot-l1</object-name>
     <action>
       <button>3</button>
@@ -255,10 +254,10 @@
         <condition>
           <equals>
             <property>instrumentation/mfd/modeL</property>
-            <value> 0 </value>
+            <value>0</value>
           </equals>
         </condition>
-      </binding> 
+      </binding>
     </action>
   </animation>
 
@@ -274,7 +273,7 @@
       <binding>
         <command>property-toggle</command>
         <property>sim/model/click</property>
-      </binding> 
+      </binding>
       <binding>
         <command>property-adjust</command>
         <property>instrumentation/mfd/dimm-l</property>
@@ -285,9 +284,9 @@
       </binding>
     </action>
   </animation>
- 
+
   <animation>
-    <type>pick</type>  
+    <type>pick</type>
     <object-name>pot-r4</object-name>
     <action>
       <button>3</button>
@@ -304,17 +303,17 @@
         <min>0</min>
         <max>1</max>
         <wrap>false</wrap>
-      </binding> 
+      </binding>
     </action>
   </animation>
 
   <!--Hide/show MFD glass-->
-  <!--provisoire en attendant des vitres sans buée :)-->
+  <!--temporary hide windshield waiting anti-fog :)-->
   <animation>
-    <type>pick</type>  
+    <type>pick</type>
     <object-name>pot-l4</object-name>
     <action>
-      <button>0</button>     
+      <button>0</button>
       <repeatable>false</repeatable>
       <binding>
         <command>property-toggle</command>
@@ -323,16 +322,16 @@
       <binding>
         <command>property-toggle</command>
         <property>instrumentation/mfd/mfd-glass</property>
-      </binding> 
+      </binding>
     </action>
   </animation>
 
   <!--toggle INHG/HPA display-->
   <animation>
-    <type>pick</type>  
+    <type>pick</type>
     <object-name>bt-b4</object-name>
     <action>
-      <button>0</button>     
+      <button>0</button>
       <repeatable>false</repeatable>
       <binding>
         <command>property-toggle</command>
@@ -344,10 +343,10 @@
         <condition>
           <equals>
             <property>instrumentation/mfd/modeL</property>
-            <value> 0 </value>
+            <value>0</value>
           </equals>
         </condition>
-      </binding> 
+      </binding>
     </action>
   </animation>
 
@@ -356,12 +355,13 @@
     <type>pick</type>
     <object-name>br-knob</object-name>
     <action>
-      <button>4</button> <!--  scroll up -->
+      <button>4</button>
+      <!--  scroll up -->
       <repeatable>false</repeatable>
-        <binding>
-          <command>property-toggle</command>
-          <property>sim/model/click</property>
-        </binding>    
+      <binding>
+        <command>property-toggle</command>
+        <property>sim/model/click</property>
+      </binding>
       <binding>
         <command>property-adjust</command>
         <property>instrumentation/altimeter/setting-inhg</property>
@@ -372,23 +372,24 @@
         <condition>
           <equals>
             <property>/instrumentation/mfd/modeL</property>
-            <value> 0 </value>
+            <value>0</value>
           </equals>
-        </condition>        
+        </condition>
       </binding>
     </action>
   </animation>
 
   <animation>
-    <type>pick</type>  
+    <type>pick</type>
     <object-name>br-knob</object-name>
     <action>
-      <button>3</button> <!--  scroll down -->
+      <button>3</button>
+      <!--  scroll down -->
       <repeatable>false</repeatable>
-        <binding>
-          <command>property-toggle</command>
-          <property>sim/model/click</property>
-        </binding>    
+      <binding>
+        <command>property-toggle</command>
+        <property>sim/model/click</property>
+      </binding>
       <binding>
         <command>property-adjust</command>
         <property>instrumentation/altimeter/setting-inhg</property>
@@ -399,19 +400,19 @@
         <condition>
           <equals>
             <property>/instrumentation/mfd/modeL</property>
-            <value> 0 </value>
+            <value>0</value>
           </equals>
         </condition>
-      </binding>  
+      </binding>
     </action>
   </animation>
 
   <!-- Select missile -->
   <animation>
-    <type>pick</type>  
+    <type>pick</type>
     <object-name>pot-l1</object-name>
     <action>
-      <button>0</button>     
+      <button>0</button>
       <repeatable>false</repeatable>
       <binding>
         <command>property-toggle</command>
@@ -424,13 +425,13 @@
             <value>1</value>
           </equals>
         </condition>
-         <command>nasal</command>
-         <script>m2000_load.inscreased_selected_pylon();</script>
-      </binding> 
+        <command>nasal</command>
+        <script>m2000_load.inscreased_selected_pylon();</script>
+      </binding>
     </action>
   </animation>
-  
-  <!-- Select A/A 
+
+  <!-- Select A/A
   <animation>
     <type>pick</type>
     <object-name>bt-h1</object-name>
@@ -441,21 +442,21 @@
       <binding>
         <command>property-toggle</command>
         <property>sim/model/click</property>
-      </binding>  
+      </binding>
       <binding>
        <condition>
           <equals>
             <property>/instrumentation/mfd/modeL</property>
             <value>1</value>
           </equals>
-        </condition>      
+        </condition>
         <command>property-adjust</command>
         <property>controls/armament/stick-selector</property>
         <step>1</step>
         <min>1</min>
         <max>1</max>
         <wrap>true</wrap>
-      </binding>     
+      </binding>
     </action>
   </animation>  -->
 
@@ -464,54 +465,54 @@
     <object-name>br-dec</object-name>
     <object-name>br-inc</object-name>
     <object-name>bl-dec</object-name>
-    <object-name>bl-inc</object-name>   
+    <object-name>bl-inc</object-name>
   </animation>
 
   <!-- __________________ End Buttons _____________________-->
   <!--EADI-->
   <model>
-    <name>EADI</name>    
+    <name>EADI</name>
     <path>Aircraft/Mirage-2000/Models/Interior/Panel/Instruments/Mfd/mfd_eadi.xml</path>
     <condition>
       <and>
         <equals>
           <property>/instrumentation/mfd/modeL</property>
-          <value> 0 </value>
+          <value>0</value>
         </equals>
         <greater-than>
           <property>/systems/electrical/volts</property>
-          <value>12</value> 
+          <value>12</value>
         </greater-than>
       </and>
     </condition>
     <offsets>
-      <x-m> 0 </x-m>
-      <y-m> 0 </y-m>
-      <z-m> 0 </z-m>
+      <x-m>0</x-m>
+      <y-m>0</y-m>
+      <z-m>0</z-m>
     </offsets>
   </model>
 
   <!--ARM-->
   <model>
-    <name>ARM</name>    
+    <name>ARM</name>
     <path>Aircraft/Mirage-2000/Models/Interior/Panel/Instruments/Mfd/mfd_arm.xml</path>
     <condition>
       <and>
         <equals>
           <property>/instrumentation/mfd/modeL</property>
-          <value> 1 </value>
+          <value>1</value>
         </equals>
         <greater-than>
           <property>/systems/electrical/volts</property>
-          <value>12</value> 
+          <value>12</value>
         </greater-than>
-       </and>
+      </and>
     </condition>
     <offsets>
-      <x-m> 0 </x-m>
-      <y-m> 0 </y-m>
-      <z-m> 0 </z-m>
+      <x-m>0</x-m>
+      <y-m>0</y-m>
+      <z-m>0</z-m>
     </offsets>
-  </model>   
+  </model>
 
 </PropertyList>

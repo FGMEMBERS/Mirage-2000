@@ -1,13 +1,13 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml version="1.0" encoding="iso-8859-1"?>
 
 <PropertyList>
 
   <text>
     <name>Nav-src</name>
     <offsets>
-      <x-m> 0.000 </x-m>
-      <y-m> 0.073 </y-m>
-      <z-m> 0.090 </z-m> <!-- 0.102 - 0.012 -->
+      <x-m>0.000</x-m>
+      <y-m>0.073</y-m>
+      <z-m>0.090</z-m>      <!-- 0.102 - 0.012 -->
     </offsets>
     <alignment>right-center</alignment>
     <axis-alignment>yz-plane</axis-alignment>
@@ -25,9 +25,9 @@
   <text>
     <name>Nav-dst</name>
     <offsets>
-      <x-m> 0.000 </x-m>
-      <y-m> 0.073 </y-m>
-      <z-m> 0.083 </z-m> <!-- 0.095 - 0.012 -->
+      <x-m>0.000</x-m>
+      <y-m>0.073</y-m>
+      <z-m>0.083</z-m>      <!-- 0.095 - 0.012 -->
     </offsets>
     <alignment>right-center</alignment>
     <axis-alignment>yz-plane</axis-alignment>
@@ -46,9 +46,9 @@
   <text>
     <name>Nav-id</name>
     <offsets>
-      <x-m> 0.000 </x-m>
-      <y-m> 0.073 </y-m>
-      <z-m> 0.076 </z-m> <!-- 0.088 - 0.012 -->
+      <x-m>0.000</x-m>
+      <y-m>0.073</y-m>
+      <z-m>0.076</z-m>      <!-- 0.088 - 0.012 -->
     </offsets>
     <alignment>right-center</alignment>
     <axis-alignment>yz-plane</axis-alignment>
@@ -67,9 +67,9 @@
   <text>
     <name>Nav-ttw</name>
     <offsets>
-      <x-m> 0.000 </x-m>
-      <y-m> 0.073 </y-m>
-      <z-m> 0.068 </z-m> <!-- 0.081 - 0.013 -->
+      <x-m>0.000</x-m>
+      <y-m>0.073</y-m>
+      <z-m>0.068</z-m>      <!-- 0.081 - 0.013 -->
     </offsets>
     <alignment>right-center</alignment>
     <axis-alignment>yz-plane</axis-alignment>

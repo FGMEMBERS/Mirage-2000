@@ -1,7 +1,7 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml version="1.0" encoding="iso-8859-1"?>
 
 <PropertyList>
-  
+
   <!-- ======  Lateral Modes  ====== -->
   <pid-controller>
     <name>ROLL hold</name>
@@ -22,7 +22,7 @@
     <config>
       <Kp>0.5</Kp>
       <beta>1.0</beta>
-      <alpha>0.1</alpha>
+      <alpha> 0.1 </alpha>
       <gamma>0.0</gamma>
       <Ti>1.0</Ti>
       <Td>0.00001</Td>
@@ -30,7 +30,7 @@
       <max>65</max>
     </config>
   </pid-controller>
-  
+
   <pi-simple-controller>
     <name>Heading Bug Hold</name>
     <debug>false</debug>
@@ -63,7 +63,7 @@
       </max>
     </config>
   </pi-simple-controller>
-  
+
   <pid-controller>
     <name>Nav1</name>
     <debug>false</debug>
@@ -83,7 +83,7 @@
     <config>
       <Kp>-1.5</Kp>
       <beta>1.0</beta>
-      <alpha>0.1</alpha>
+      <alpha> 0.1 </alpha>
       <gamma>0.0</gamma>
       <Ti>10</Ti>
       <Td>0.0</Td>
@@ -95,7 +95,7 @@
       </max>
     </config>
   </pid-controller>
-  
+
   <pid-controller>
     <name>Loc</name>
     <debug>false</debug>
@@ -113,9 +113,9 @@
       <prop>autopilot/internal/roll-filter</prop>
     </output>
     <config>
-      <Kp>-2.0G</Kp> <!--1.5-->
+      <Kp>-2.0G</Kp>
       <beta>1.0</beta>
-      <alpha>0.1</alpha>
+      <alpha> 0.1 </alpha>
       <gamma>0.0</gamma>
       <Ti>10</Ti>
       <Td>0.0</Td>
@@ -127,7 +127,7 @@
       </max>
     </config>
   </pid-controller>
-  
+
   <!--
   <pi-simple-controller>
   <name>Loc</name>
@@ -181,7 +181,7 @@
       <max>30</max>
     </config>
   </pi-simple-controller>
-  
+
   <filter>
     <name>roll command</name>
     <debug>false</debug>
@@ -199,7 +199,6 @@
     <type>noise-spike</type>
     <max-rate-of-change>7</max-rate-of-change>
   </filter>
-  
   <pid-controller>
     <name>Aileron Control</name>
     <debug>false</debug>
@@ -219,7 +218,7 @@
     <config>
       <Kp>0.15</Kp>
       <beta>1.0</beta>
-      <alpha>0.1</alpha>
+      <alpha> 0.1 </alpha>
       <gamma>0.0</gamma>
       <Ti>10.0</Ti>
       <Td>0.00001</Td>
@@ -227,7 +226,7 @@
       <max>1</max>
     </config>
   </pid-controller>
-  
+
   <!-- ======= Vertical Modes ======= -->
   <filter>
     <name>pitch control</name>
@@ -249,7 +248,7 @@
     <type>noise-spike</type>
     <max-rate-of-change>20.0</max-rate-of-change>
   </filter>
-  
+
   <pi-simple-controller>
     <name>Altitude Hold 1</name>
     <debug>false</debug>
@@ -273,7 +272,7 @@
       <max>220.0</max>
     </config>
   </pi-simple-controller>
-  
+
   <pid-controller>
     <name>Altitude 2</name>
     <debug>false</debug>
@@ -293,7 +292,7 @@
     <config>
       <Kp>0.20</Kp>
       <beta>1.0</beta>
-      <alpha>0.1</alpha>
+      <alpha> 0.1 </alpha>
       <gamma>0.0</gamma>
       <Ti>10.0</Ti>
       <Td>0.00001</Td>
@@ -301,7 +300,7 @@
       <max>5</max>
     </config>
   </pid-controller>
-  
+
   <pi-simple-controller>
     <name>GS</name>
     <debug>false</debug>
@@ -323,13 +322,13 @@
       <prop>autopilot/internal/pitch-filter</prop>
     </output>
     <config>
-      <Kp>0.25</Kp> <!--0.5-->
+      <Kp>0.25</Kp>
       <Ki>0.5</Ki>
-      <min>-5.0</min><!---15-->
-      <max> 5.0</max><!-- 15-->
+      <min>-5.0</min>
+      <max>5.0</max>
     </config>
   </pi-simple-controller>
-  
+
   <pid-controller>
     <name>Vertical Speed Hold</name>
     <debug>false</debug>
@@ -349,7 +348,7 @@
     <config>
       <Kp>0.015</Kp>
       <beta>1.0</beta>
-      <alpha>0.1</alpha>
+      <alpha> 0.1 </alpha>
       <gamma>0.0</gamma>
       <Ti>10.0</Ti>
       <Td>0.1</Td>
@@ -357,112 +356,113 @@
       <max>20</max>
     </config>
   </pid-controller>
-  
+
   <!--
   <pid-controller>
-  <name>Vnav Hold 1</name>
-  <debug>false</debug>
-  <enable>
-  <prop>/autopilot/locks/altitude</prop>
-  <value>VALT</value>
-  </enable>
-  <input>
-  <prop>instrumentation/altimeter/indicated-altitude-ft</prop>
-  </input>
-  <reference>
-  <prop>instrumentation/gps/wp/wp[1]/altitude-ft</prop>
-  </reference>
-  <output>
-  <prop>/autopilot/internal/target-climb-rate-fps</prop>
-  </output>
-  <config>
-  <Kp>0.25</Kp>
-  <beta>1.0</beta>
-  <alpha>0.1</alpha>
-  <gamma>0.0</gamma>
-  <Ti>10.0</Ti>
-  <Td>0.000001</Td>
-  <min>-30</min>
-  <max>66</max>
-  </config>
+    <name>Vnav Hold 1</name>
+    <debug>false</debug>
+    <enable>
+      <prop>/autopilot/locks/altitude</prop>
+      <value>VALT</value>
+    </enable>
+    <input>
+      <prop>instrumentation/altimeter/indicated-altitude-ft</prop>
+    </input>
+    <reference>
+      <prop>instrumentation/gps/wp/wp[1]/altitude-ft</prop>
+    </reference>
+    <output>
+      <prop>/autopilot/internal/target-climb-rate-fps</prop>
+    </output>
+    <config>
+      <Kp>    0.250000 </Kp>
+      <beta>  1.000000 </beta>
+      <alpha> 0.100000 </alpha>
+      <gamma> 0.000000 </gamma>
+      <Ti>   10.000000 </Ti>
+      <Td>    0.000001 </Td>
+      <min> -30.000000 </min>
+      <max>  66.000000 </max>
+    </config>
   </pid-controller>
   
   <pi-simple-controller>
-  <name>Vnav 2</name>
-  <debug>false</debug>
-  <enable>
-  <prop>/autopilot/locks/altitude</prop>
-  <value>VALT</value>
-  </enable>
-  <input>
-  <prop>velocities/vertical-speed-fps</prop>
-  </input>
-  <reference>
-  <prop>autopilot/internal/target-climb-rate-fps</prop>
-  </reference>
-  <output>
-  <prop>autopilot/internal/pitch-filter</prop>
-  </output>
-  <config>
-  <Kp>0.15</Kp>
-  <Ki>0.0</Ki>
-  <min>-20</min>
-  <max>20</max>
-  </config>
+    <name>Vnav 2</name>
+    <debug>false</debug>
+    <enable>
+      <prop>/autopilot/locks/altitude</prop>
+      <value>VALT</value>
+    </enable>
+    <input>
+      <prop>velocities/vertical-speed-fps</prop>
+    </input>
+    <reference>
+      <prop>autopilot/internal/target-climb-rate-fps</prop>
+    </reference>
+    <output>
+      <prop>autopilot/internal/pitch-filter</prop>
+    </output>
+    <config>
+      <Kp>    0.15 </Kp>
+      <Ki>    0.00 </Ki>
+      <min> -20.00 </min>
+      <max>  20.00 </max>
+    </config>
   </pi-simple-controller>
   
   <pi-simple-controller>
-  <name>flc</name>
-  <debug>false</debug>
-  <enable>
-  <condition>
-  <or>
-  <equals>
-  <property>/autopilot/locks/altitude</property>
-  <value>FLC</value>
-  </equals>
-  <equals>
-  <property>/autopilot/locks/altitude</property>
-  <value>VFLC</value>
-  </equals>
-  </or>
-  </condition>
-  </enable>
-  <input>
-  <prop>instrumentation/airspeed-indicator/indicated-speed-kt</prop>
-  </input>
-  <reference>
-  <prop>autopilot/settings/target-speed-kt</prop>
-  </reference>
-  <output>
-  <prop>autopilot/internal/pitch-filter</prop>
-  </output>
-  <config>
-  <Kp>-0.5</Kp>
-  <Ki>0.0</Ki>
-  <min>-15</min>
-  <max>15</max>
-  </config>
+    <name>flc</name>
+    <debug>false</debug>
+    <enable>
+      <condition>
+        <or>
+          <equals>
+            <property>/autopilot/locks/altitude</property>
+            <value>FLC</value>
+          </equals>
+          <equals>
+            <property>/autopilot/locks/altitude</property>
+            <value>VFLC</value>
+          </equals>
+        </or>
+      </condition>
+    </enable>
+    <input>
+      <prop>instrumentation/airspeed-indicator/indicated-speed-kt</prop>
+    </input>
+    <reference>
+      <prop>autopilot/settings/target-speed-kt</prop>
+    </reference>
+    <output>
+      <prop>autopilot/internal/pitch-filter</prop>
+    </output>
+    <config>
+      <Kp>   -0.5 </Kp>
+      <Ki>    0.0 </Ki>
+      <min> -15.0 </min>
+      <max>  15.0 </max>
+    </config>
   </pi-simple-controller>
   
   <filter>
-  <name>pitch command</name>
-  <debug>false</debug>
-  <feedback-if-disabled>true</feedback-if-disabled>
-  <initialize-to>output</initialize-to>
-  <enable>
-  <condition>
-  <property>autopilot/locks/FD-status</property>
-  </condition>
-  </enable>
-  <input>
-  <property>autopilot/internal/pitch-filter</property>
-  </input>
-  <output>autopilot/internal/pitch-bars</output>
-  <type>noise-spike</type>
-  <max-rate-of-change>5.0</max-rate-of-change>
+    <name>pitch command</name>
+    <debug>false</debug>
+    <feedback-if-disabled>true</feedback-if-disabled>
+    <initialize-to>output</initialize-to>
+    <enable>
+      <condition>
+        <property>autopilot/locks/FD-status</property>
+      </condition>
+    </enable>
+    <input>
+      <property>autopilot/internal/pitch-filter</property>
+    </input>
+    <output>autopilot/internal/pitch-bars</output>
+    <type>noise-spike</type>
+    <max-rate-of-change>5.0</max-rate-of-change>
   </filter>
   -->
+  
   <pid-controller>
     <name>Elevator Trim Control</name>
     <debug>false</debug>
@@ -476,21 +476,21 @@
     <reference>
       <prop>autopilot/internal/pitch-filter</prop>
     </reference>
-    <output>            
+    <output>
       <prop>controls/flight/elevator-trim</prop>
     </output>
     <config>
-      <Kp>-0.03</Kp>          <!---0.015-->>
+      <Kp>-0.03</Kp>
       <beta>1.0</beta>
-      <alpha>0.1</alpha>
+      <alpha> 0.1 </alpha>
       <gamma>0.0</gamma>
-      <Ti>8.0</Ti>             <!--10-->
+      <Ti>8.0</Ti>
       <Td>0.01</Td>
       <min>-1</min>
       <max>1</max>
     </config>
   </pid-controller>
-  
+
   <!-- Internal Tests  -->
   <filter>
     <name>nav1 heading deflection</name>
@@ -513,7 +513,7 @@
     <type>noise-spike</type>
     <max-rate-of-change>20</max-rate-of-change>
   </filter>
-  
+
   <filter>
     <name>nav1 gs deflection</name>
     <debug>false</debug>
@@ -534,7 +534,7 @@
     <type>noise-spike</type>
     <max-rate-of-change>1</max-rate-of-change>
   </filter>
-  
+
   <filter>
     <name>nav1 gs drate</name>
     <debug>false</debug>
@@ -555,7 +555,7 @@
     <type>noise-spike</type>
     <max-rate-of-change>10</max-rate-of-change>
   </filter>
-  
+
   <filter>
     <name>nav2 heading deflection</name>
     <debug>false</debug>
@@ -577,7 +577,7 @@
     <type>noise-spike</type>
     <max-rate-of-change>10</max-rate-of-change>
   </filter>
-  
+
   <filter>
     <name>nav2 gs deflection</name>
     <debug>false</debug>
@@ -598,7 +598,7 @@
     <type>noise-spike</type>
     <max-rate-of-change>1</max-rate-of-change>
   </filter>
-  
+
   <filter>
     <name>nav2 gs rate</name>
     <debug>false</debug>
@@ -619,7 +619,7 @@
     <type>noise-spike</type>
     <max-rate-of-change>10</max-rate-of-change>
   </filter>
-  
+
   <filter>
     <name>fms heading deflection</name>
     <debug>false</debug>
@@ -641,7 +641,7 @@
     <type>noise-spike</type>
     <max-rate-of-change>10</max-rate-of-change>
   </filter>
-  
+
   <filter>
     <name>fms gs deflection</name>
     <debug>false</debug>
@@ -662,7 +662,7 @@
     <type>noise-spike</type>
     <max-rate-of-change>1</max-rate-of-change>
   </filter>
-  
+
   <filter>
     <name>vnav alt</name>
     <debug>false</debug>
@@ -681,9 +681,9 @@
     <type>noise-spike</type>
     <max-rate-of-change>500</max-rate-of-change>
   </filter>
-  
+
   <pi-simple-controller>
-    <name>NAV1 bearing </name>
+    <name>NAV1 bearing</name>
     <debug>false</debug>
     <enable>
       <prop>/instrumentation/primus2000/sc840/nav1ptr</prop>
@@ -705,7 +705,7 @@
       <max>360.0</max>
     </config>
   </pi-simple-controller>
-  
+
   <filter>
     <name>ADF1 pointer</name>
     <debug>false</debug>
@@ -724,9 +724,9 @@
     <type>noise-spike</type>
     <max-rate-of-change>90</max-rate-of-change>
   </filter>
-  
+
   <pi-simple-controller>
-    <name>FMS1 bearing </name>
+    <name>FMS1 bearing</name>
     <debug>false</debug>
     <enable>
       <prop>/instrumentation/primus2000/sc840/nav1ptr</prop>
@@ -748,9 +748,9 @@
       <max>360.0</max>
     </config>
   </pi-simple-controller>
-  
+
   <pi-simple-controller>
-    <name>NAV2 bearing </name>
+    <name>NAV2 bearing</name>
     <debug>false</debug>
     <enable>
       <prop>/instrumentation/primus2000/sc840/nav2ptr</prop>
@@ -772,7 +772,7 @@
       <max>360.0</max>
     </config>
   </pi-simple-controller>
-  
+
   <filter>
     <name>ADF2 pointer</name>
     <debug>false</debug>
@@ -791,9 +791,9 @@
     <type>noise-spike</type>
     <max-rate-of-change>90</max-rate-of-change>
   </filter>
-  
+
   <pi-simple-controller>
-    <name>FMS2 bearing </name>
+    <name>FMS2 bearing</name>
     <debug>false</debug>
     <enable>
       <prop>/instrumentation/primus2000/sc840/nav2ptr</prop>
@@ -815,11 +815,11 @@
       <max>360.0</max>
     </config>
   </pi-simple-controller>
-  
+
   <!-- =============================================================== -->
   <!-- Velocity Modes                                                  -->
   <!-- =============================================================== -->
-  
+
   <!-- Auto throttle -->
   <pid-controller>
     <name>Auto Throttle (5 sec lookahead)</name>
@@ -829,28 +829,28 @@
       <value>SPD</value>
     </enable>
     <input>
-      <prop>/autopilot/internal/lookahead-5-sec-airspeed-kt</prop> 
+      <prop>/autopilot/internal/lookahead-5-sec-airspeed-kt</prop>
       <prop>/velocities/airspeed-kt</prop>
     </input>
     <reference>
       <prop>/autopilot/settings/target-speed-kt</prop>
     </reference>
     <output>
-      <prop>/controls/engines/engine[0]/throttle</prop>     
+      <prop>/controls/engines/engine[0]/throttle</prop>
     </output>
     <config>
       <Kp>0.06</Kp>        <!-- proportional gain **0.1**-->
-      <beta>1.0</beta>    <!-- input value weighing factor -->
-      <alpha>0.1</alpha>  <!-- low pass filter weighing factor -->
-      <gamma>0.0</gamma>  <!-- input value weighing factor for -->
-      <!-- unfiltered derivative error -->
-      <Ti>10.0</Ti>       <!-- integrator time -->
-      <Td>0.00001</Td>    <!-- derivator time -->
-      <u_min>0.0</u_min>  <!-- minimum output clamp -->
-      <u_max>1.0</u_max>  <!-- maximum output clamp -->
+      <beta>1.0</beta>     <!-- input value weighing factor -->
+      <alpha> 0.1 </alpha> <!-- low pass filter weighing factor -->
+      <gamma>0.0</gamma>   <!-- input value weighing factor for -->
+                           <!-- unfiltered derivative error -->
+      <Ti>10.0</Ti>        <!-- integrator time -->
+      <Td>0.00001</Td>     <!-- derivator time -->
+      <u_min>0.0</u_min>   <!-- minimum output clamp -->
+      <u_max>1.0</u_max>   <!-- maximum output clamp -->
     </config>
   </pid-controller>
-  
+
   <!-- Hold speed by varying pitch trim (Two stage cascading controller) -->
   <pid-controller>
     <name>Speed hold (vary pitch trim) Stage #1</name>
@@ -869,18 +869,19 @@
       <prop>/autopilot/settings/target-pitch-deg</prop>
     </output>
     <config>
-      <Kp>-1.0</Kp>       <!-- proportional gain -->
-      <beta>1.0</beta>    <!-- input value weighing factor -->
-      <alpha>0.1</alpha>  <!-- low pass filter weighing factor -->
-      <gamma>0.0</gamma>  <!-- input value weighing factor for -->
-      <!-- unfiltered derivative error -->
-      <Ti>1.0</Ti>        <!-- integrator time -->
-      <Td>0.00001</Td>    <!-- derivator time -->
-      <u_min>-15.0</u_min><!-- minimum output clamp -->
-      <u_max>15.0</u_max> <!-- maximum output clamp -->
+      <Kp>-1.0</Kp>        <!-- proportional gain -->
+      <beta>1.0</beta>     <!-- input value weighing factor -->
+      <alpha> 0.1 </alpha> <!-- low pass filter weighing factor -->
+      <gamma>0.0</gamma>   <!-- input value weighing factor for -->
+                           <!-- unfiltered derivative error -->
+      <Ti>1.0</Ti>         <!-- integrator time -->
+      <Td>0.00001</Td>     <!-- derivator time -->
+      <u_min>-15.0</u_min> <!-- minimum output clamp -->
+      <u_max>15.0</u_max>
+                           <!-- maximum output clamp -->
     </config>
   </pid-controller>
-  
+
   <pid-controller>
     <name>Speed hold (vary pitch trim) Stage #2</name>
     <debug>false</debug>
@@ -899,15 +900,15 @@
     </output>
     <config>
       <Kp>-0.002</Kp>      <!-- proportional gain -->
-      <beta>1.0</beta>    <!-- input value weighing factor -->
-      <alpha>0.1</alpha>  <!-- low pass filter weighing factor -->
-      <gamma>0.0</gamma>  <!-- input value weighing factor for -->
-      <!-- unfiltered derivative error -->
-      <Ti>1.0</Ti>        <!-- integrator time -->
-      <Td>0.00001</Td>    <!-- derivator time -->
-      <u_min>-1.0</u_min> <!-- minimum output clamp -->
-      <u_max>1.0</u_max>  <!-- maximum output clamp -->
+      <beta>1.0</beta>     <!-- input value weighing factor -->
+      <alpha> 0.1 </alpha> <!-- low pass filter weighing factor -->
+      <gamma>0.0</gamma>   <!-- input value weighing factor for -->
+                           <!-- unfiltered derivative error -->
+      <Ti>1.0</Ti>         <!-- integrator time -->
+      <Td>0.00001</Td>     <!-- derivator time -->
+      <u_min>-1.0</u_min>  <!-- minimum output clamp -->
+      <u_max>1.0</u_max>   <!-- maximum output clamp -->
     </config>
   </pid-controller>
-  
+
 </PropertyList>

@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml version="1.0" encoding="iso-8859-1"?>
 
 <PropertyList>
-  
+
   <path>ap.ac</path>
-  
+
   <animation>
     <object-name>fond</object-name>
     <object-name>label</object-name>
@@ -13,7 +13,7 @@
     <object-name>pa-vs</object-name>
     <object-name>pa-nav</object-name>
     <object-name>pa-spd</object-name>
-    <object-name>pa-app</object-name> 
+    <object-name>pa-app</object-name>
     <object-name>pa-stby</object-name>
     <object-name>pa-hdg</object-name>
     <object-name>pa-on</object-name>
@@ -21,19 +21,19 @@
     <object-name>pa-vs-on</object-name>
     <object-name>pa-nav-on</object-name>
     <object-name>pa-spd-on</object-name>
-    <object-name>pa-app-on</object-name> 
+    <object-name>pa-app-on</object-name>
     <object-name>pa-stby-on</object-name>
     <object-name>pa-hdg-on</object-name>
   </animation>
-  
+
   <animation>
-    <type>material</type>    
+    <type>material</type>
     <object-name>pa</object-name>
     <object-name>pa-alt</object-name>
     <object-name>pa-vs</object-name>
     <object-name>pa-nav</object-name>
     <object-name>pa-spd</object-name>
-    <object-name>pa-app</object-name> 
+    <object-name>pa-app</object-name>
     <object-name>pa-stby</object-name>
     <object-name>pa-hdg</object-name>
     <object-name>pa-on</object-name>
@@ -41,7 +41,7 @@
     <object-name>pa-vs-on</object-name>
     <object-name>pa-nav-on</object-name>
     <object-name>pa-spd-on</object-name>
-    <object-name>pa-app-on</object-name> 
+    <object-name>pa-app-on</object-name>
     <object-name>pa-stby-on</object-name>
     <object-name>pa-hdg-on</object-name>
     <emission>
@@ -51,7 +51,7 @@
       <blue>  0.5 </blue>
     </emission>
   </animation>
-  
+
   <animation>
     <type>material</type>
     <object-name>fond</object-name>
@@ -67,25 +67,21 @@
       <blue>  0.13 </blue>
     </emission>
   </animation>
-  
+
   <animation>
     <type>material</type>
     <object-name>fond</object-name>
     <object-name>label</object-name>
     <condition>
-        <property>sim/rendering/rembrandt/enabled</property>
+      <property>sim/rendering/rembrandt/enabled</property>
     </condition>
-    <emission>      
+    <emission>
       <red>   0.05 </red>
       <green> 0.05 </green>
       <blue>  0.05 </blue>
     </emission>
   </animation>
-  
-  
-  
-  
-  
+
   <animation>
     <type>select</type>
     <object-name>pa-on</object-name>
@@ -108,7 +104,7 @@
       </or>
     </condition>
   </animation>
-  
+
   <animation>
     <type>select</type>
     <object-name>pa-stby-on</object-name>
@@ -125,7 +121,7 @@
       </and>
     </condition>
   </animation>
-  
+
   <animation>
     <type>select</type>
     <object-name>pa-hdg-on</object-name>
@@ -136,7 +132,7 @@
       </equals>
     </condition>
   </animation>
-  
+
   <animation>
     <type>select</type>
     <object-name>pa-nav-on</object-name>
@@ -164,8 +160,8 @@
         </equals>
       </or>
     </condition>
-  </animation>    
-  
+  </animation>
+
   <animation>
     <type>select</type>
     <object-name>pa-app-on</object-name>
@@ -182,7 +178,7 @@
       </or>
     </condition>
   </animation>
-  
+
   <animation>
     <type>select</type>
     <object-name>pa-alt-on</object-name>
@@ -192,8 +188,8 @@
         <value>ALT</value>
       </equals>
     </condition>
-  </animation>    
-  
+  </animation>
+
   <animation>
     <type>select</type>
     <object-name>pa-vs-on</object-name>
@@ -204,7 +200,7 @@
       </equals>
     </condition>
   </animation>
-  
+
   <animation>
     <type>select</type>
     <object-name>pa-spd-on</object-name>
@@ -214,8 +210,8 @@
         <value>SPD</value>
       </equals>
     </condition>
-  </animation>    
-  
+  </animation>
+
   <!--BOUTONS-->
   <animation>
     <type>pick</type>
@@ -234,7 +230,7 @@
       </binding>
     </action>
   </animation>
-  
+
   <animation>
     <type>pick</type>
     <object-name>pa-alt</object-name>
@@ -252,7 +248,7 @@
       </binding>
     </action>
   </animation>
-  
+
   <animation>
     <type>pick</type>
     <object-name>pa-nav</object-name>
@@ -270,7 +266,7 @@
       </binding>
     </action>
   </animation>
-  
+
   <animation>
     <type>pick</type>
     <object-name>pa-app</object-name>
@@ -287,8 +283,8 @@
         <script>mirage2000.FD_set_mode("app")</script>
       </binding>
     </action>
-  </animation>    
-  
+  </animation>
+
   <animation>
     <type>pick</type>
     <object-name>pa-vs</object-name>
@@ -305,8 +301,8 @@
         <script>mirage2000.FD_set_mode("vs")</script>
       </binding>
     </action>
-  </animation>    
-  
+  </animation>
+
   <animation>
     <type>pick</type>
     <object-name>pa-stby</object-name>
@@ -324,7 +320,7 @@
       </binding>
     </action>
   </animation>
-  
+
   <animation>
     <type>pick</type>
     <object-name>pa-pitch</object-name>
@@ -378,24 +374,24 @@
       </binding>
     </action>
   </animation>
-  
+
   <animation>
     <type>rotate</type>
     <object-name>pa-pitch</object-name>
     <property>autopilot/settings/target-pitch-deg</property>
     <factor>10</factor>
     <center>
-      <x-m> -0.02470 </x-m>
-      <y-m>  0.02378 </y-m>
-      <z-m> -0.04915 </z-m>
+      <x-m>-0.02470</x-m>
+      <y-m> 0.02378</y-m>
+      <z-m>-0.04915</z-m>
     </center>
     <axis>
-      <x> 0 </x>
-      <y> 1 </y>
-      <z> 0 </z>
+      <x>0</x>
+      <y>1</y>
+      <z>0</z>
     </axis>
   </animation>
-  
+
   <animation>
     <type>pick</type>
     <object-name>pa</object-name>
@@ -413,7 +409,7 @@
       </binding>
     </action>
   </animation>
-  
+
   <animation>
     <type>pick</type>
     <object-name>pa-spd</object-name>
@@ -431,7 +427,7 @@
       </binding>
     </action>
   </animation>
-  
+
   <animation>
     <type>pick</type>
     <object-name>pa-spd</object-name>
@@ -449,12 +445,12 @@
       </binding>
     </action>
   </animation>
-  
+
   <!--  Pick animation to place here the hovered property in order to give help to users -->
   <animation>
     <type>pick</type>
     <object-name>pa</object-name>
-    <object-name>pa-on</object-name>      
+    <object-name>pa-on</object-name>
     <hovered>
       <binding>
         <command>set-tooltip</command>
@@ -463,11 +459,11 @@
       </binding>
     </hovered>
   </animation>
-  
+
   <animation>
     <type>pick</type>
     <object-name>pa-alt</object-name>
-    <object-name>pa-alt-on</object-name>     
+    <object-name>pa-alt-on</object-name>
     <hovered>
       <binding>
         <command>set-tooltip</command>
@@ -476,11 +472,11 @@
       </binding>
     </hovered>
   </animation>
-  
+
   <animation>
     <type>pick</type>
     <object-name>pa-vs</object-name>
-    <object-name>pa-vs-on</object-name>    
+    <object-name>pa-vs-on</object-name>
     <hovered>
       <binding>
         <command>set-tooltip</command>
@@ -489,11 +485,11 @@
       </binding>
     </hovered>
   </animation>
-  
+
   <animation>
     <type>pick</type>
     <object-name>pa-hdg</object-name>
-    <object-name>pa-hdg-on</object-name>   
+    <object-name>pa-hdg-on</object-name>
     <hovered>
       <binding>
         <command>set-tooltip</command>
@@ -502,11 +498,11 @@
       </binding>
     </hovered>
   </animation>
-  
+
   <animation>
     <type>pick</type>
     <object-name>pa-spd</object-name>
-    <object-name>pa-spd-on</object-name>   
+    <object-name>pa-spd-on</object-name>
     <hovered>
       <binding>
         <command>set-tooltip</command>
@@ -515,11 +511,11 @@
       </binding>
     </hovered>
   </animation>
-  
+
   <animation>
     <type>pick</type>
     <object-name>pa-nav</object-name>
-    <object-name>pa-nav-on</object-name>   
+    <object-name>pa-nav-on</object-name>
     <hovered>
       <binding>
         <command>set-tooltip</command>
@@ -529,7 +525,7 @@
       </binding>
     </hovered>
   </animation>
-  
+
   <animation>
     <type>pick</type>
     <object-name>pa-pitch</object-name>
@@ -542,8 +538,8 @@
       </binding>
     </hovered>
   </animation>
-  
-  <!--  
+
+  <!--
   <object-name>pa</object-name>
   <object-name>pa-on</object-name>
   <object-name>pa-alt</object-name>
@@ -555,11 +551,11 @@
   <object-name>pa-spd</object-name>
   <object-name>pa-nav</object-name>
   <object-name>pa-nav-on</object-name>
-  <object-name>pa-app</object-name> 
+  <object-name>pa-app</object-name>
   <object-name>pa-stby</object-name>
-  <object-name>pa-app-on</object-name> 
+  <object-name>pa-app-on</object-name>
   <object-name>pa-stby-on</object-name>
   </animation>
   -->
-  
+
 </PropertyList>

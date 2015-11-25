@@ -1,32 +1,36 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml version="1.0" encoding="iso-8859-1"?>
 
 <PropertyList include="loads_models.xml">
-
-  <!-- pylon options                     
-      _________________|___|_________________
-      \                |   |                /
-       \               |   |               /
-        \2.L        4.L|   |4.R        2.R/
-         (1)        (7)|   |(8)        (5)
-          \   3.L      |   |      3.R   /
-           \  (2)      |   |      (4)  /   
-            \          |   |          /    
-             \         |   |         /
-              \        |   |        /
-               \       |.C |       / 
-                \      |(3)|      /
-                 \     |   |     /
-                  \ 1.L|   |1.R /
-                   \(0)|   |(6)/
-                    \  |   |  /
-                     \ |   | /
-                      \|___|/
-  -->                   
+  <!--
+'''' note :
+' pylon options
+'
+' BOTTOM VIEW
+'  _________________|___|_________________
+'  \                |   |                /
+'   \               |   |               /
+'    \2.L        4.L|   |4.R        2.R/
+'     (1)        (7)|   |(8)        (5)
+'      \   3.L      |   |      3.R   /
+'       \  (2)      |   |      (4)  /
+'        \          |   |          /
+'         \         |   |         /
+'          \        |   |        /
+'           \       |.C |       /
+'            \      |(3)|      /
+'             \     |   |     /
+'              \ 1.L|   |1.R /
+'               \(0)|   |(6)/
+'                \  |   |  /
+'                 \ |   | /
+'                  \|___|/
+'
+  -->
 
   <!-- station left 1 (Index 0) -->
   <animation>
     <type>select</type>
-    <object-name>left-pos-1</object-name>      
+    <object-name>left-pos-1</object-name>
     <condition>
       <and>
         <equals>
@@ -43,7 +47,7 @@
 
   <animation>
     <type>select</type>
-    <object-name>AIM120L</object-name>      
+    <object-name>AIM120L</object-name>
     <condition>
       <and>
         <equals>
@@ -60,7 +64,7 @@
 
   <animation>
     <type>select</type>
-    <object-name>left-pos-1-MICA</object-name>      
+    <object-name>left-pos-1-MICA</object-name>
     <condition>
       <and>
         <equals>
@@ -74,10 +78,11 @@
       </and>
     </condition>
   </animation>
-    <!-- left GBU16 -->
+
+  <!-- left GBU16 -->
   <animation>
     <type>select</type>
-    <object-name>left-GBU16</object-name>      
+    <object-name>left-GBU16</object-name>
     <condition>
       <and>
         <equals>
@@ -95,7 +100,7 @@
   <!-- Center GBU12 -->
   <animation>
     <type>select</type>
-    <object-name>left-GBU12</object-name>      
+    <object-name>left-GBU12</object-name>
     <condition>
       <and>
         <equals>
@@ -108,12 +113,12 @@
         </equals>
       </and>
     </condition>
-  </animation>	
+  </animation>
 
   <!-- station left 2 (Index 1) -->
   <animation>
     <type>select</type>
-    <object-name>left-pos-2</object-name>      
+    <object-name>left-pos-2</object-name>
     <condition>
       <and>
         <equals>
@@ -130,7 +135,7 @@
 
   <animation>
     <type>select</type>
-    <object-name>aim-9L</object-name>      
+    <object-name>aim-9L</object-name>
     <condition>
       <and>
         <equals>
@@ -147,7 +152,7 @@
 
   <animation>
     <type>select</type>
-    <object-name>left-pos-2-MICA</object-name>      
+    <object-name>left-pos-2-MICA</object-name>
     <condition>
       <and>
         <equals>
@@ -161,10 +166,10 @@
       </and>
     </condition>
   </animation>
-  
-    <animation>
+
+  <animation>
     <type>select</type>
-    <object-name>left-pos-2-R74</object-name>      
+    <object-name>left-pos-2-R74</object-name>
     <condition>
       <and>
         <equals>
@@ -178,11 +183,25 @@
       </and>
     </condition>
   </animation>
+  
+  <!-- station left 2 (Index 1) -->
+  <animation>
+    <type>select</type>
+    <object-name>left-pos-2-SmokePod</object-name>
+    <condition>
+      <and>
+        <equals>
+          <property>sim/weight[1]/selected</property>
+          <value>SmokePod</value>
+        </equals>
+      </and>
+    </condition>
+  </animation>
 
   <!-- station left 3 (Index 2) -->
   <animation>
     <type>select</type>
-    <object-name>left-large-tank</object-name>      
+    <object-name>left-large-tank</object-name>
     <condition>
       <and>
         <equals>
@@ -199,7 +218,7 @@
 
   <animation>
     <type>select</type>
-    <object-name>left-tank</object-name>      
+    <object-name>left-tank</object-name>
     <condition>
       <and>
         <equals>
@@ -213,10 +232,10 @@
       </and>
     </condition>
   </animation>
-	
+
   <animation>
     <type>select</type>
-    <object-name>left-magic-2</object-name>      
+    <object-name>left-magic-2</object-name>
     <condition>
       <and>
         <equals>
@@ -233,7 +252,7 @@
 
   <animation>
     <type>select</type>
-    <object-name>left-MICA</object-name>      
+    <object-name>left-MICA</object-name>
     <condition>
       <and>
         <equals>
@@ -247,11 +266,11 @@
       </and>
     </condition>
   </animation>
-  
+
   <!-- Sea Eagle -->
   <animation>
     <type>select</type>
-    <object-name>Sea_EagleL</object-name>      
+    <object-name>Sea_EagleL</object-name>
     <condition>
       <and>
         <equals>
@@ -269,7 +288,7 @@
   <!-- center station (Index 3) -->
   <animation>
     <type>select</type>
-    <object-name>center-tank</object-name>      
+    <object-name>center-tank</object-name>
     <condition>
       <and>
         <equals>
@@ -287,7 +306,7 @@
   <!-- Center GBU16 -->
   <animation>
     <type>select</type>
-    <object-name>Center-GBU16</object-name>      
+    <object-name>Center-GBU16</object-name>
     <condition>
       <and>
         <equals>
@@ -305,7 +324,7 @@
   <!-- Center GBU12 -->
   <animation>
     <type>select</type>
-    <object-name>Center-GBU12</object-name>      
+    <object-name>Center-GBU12</object-name>
     <condition>
       <and>
         <equals>
@@ -318,12 +337,12 @@
         </equals>
       </and>
     </condition>
-  </animation>		
+  </animation>
 
   <!-- Center SCALP -->
   <animation>
     <type>select</type>
-    <object-name>SCALP</object-name>      
+    <object-name>SCALP</object-name>
     <condition>
       <and>
         <equals>
@@ -341,7 +360,7 @@
   <!-- AIM-54 -->
   <animation>
     <type>select</type>
-    <object-name>AIM-54</object-name>      
+    <object-name>AIM-54</object-name>
     <condition>
       <and>
         <equals>
@@ -359,7 +378,7 @@
   <!-- Sea Eagle -->
   <animation>
     <type>select</type>
-    <object-name>Sea_Eagle</object-name>      
+    <object-name>Sea_Eagle</object-name>
     <condition>
       <and>
         <equals>
@@ -373,11 +392,11 @@
       </and>
     </condition>
   </animation>
-  
+
   <!-- MATRA-R530 -->
   <animation>
     <type>select</type>
-    <object-name>MATRA-R530</object-name>      
+    <object-name>MATRA-R530</object-name>
     <condition>
       <and>
         <equals>
@@ -391,11 +410,11 @@
       </and>
     </condition>
   </animation>
-  
-    <!-- Meteor -->
+
+  <!-- Meteor -->
   <animation>
     <type>select</type>
-    <object-name>Meteor</object-name>      
+    <object-name>Meteor</object-name>
     <condition>
       <and>
         <equals>
@@ -409,11 +428,11 @@
       </and>
     </condition>
   </animation>
-  
+
   <!-- AGM65 -->
   <animation>
     <type>select</type>
-    <object-name>AGM65</object-name>      
+    <object-name>AGM65</object-name>
     <condition>
       <and>
         <equals>
@@ -427,11 +446,11 @@
       </and>
     </condition>
   </animation>
-  
-    <!-- R77s -->
+  <!-- R77s -->
+
   <animation>
     <type>select</type>
-    <object-name>R77</object-name>      
+    <object-name>R77</object-name>
     <condition>
       <and>
         <equals>
@@ -449,7 +468,7 @@
   <!-- station right 3 (Index 4)-->
   <animation>
     <type>select</type>
-    <object-name>right-large-tank</object-name>      
+    <object-name>right-large-tank</object-name>
     <condition>
       <and>
         <equals>
@@ -466,7 +485,7 @@
 
   <animation>
     <type>select</type>
-    <object-name>right-tank</object-name>      
+    <object-name>right-tank</object-name>
     <condition>
       <and>
         <equals>
@@ -483,7 +502,7 @@
 
   <animation>
     <type>select</type>
-    <object-name>right-magic-2</object-name>      
+    <object-name>right-magic-2</object-name>
     <condition>
       <and>
         <equals>
@@ -500,7 +519,7 @@
 
   <animation>
     <type>select</type>
-    <object-name>right-MICA</object-name>      
+    <object-name>right-MICA</object-name>
     <condition>
       <and>
         <equals>
@@ -514,11 +533,11 @@
       </and>
     </condition>
   </animation>
-  
+
   <!-- Sea Eagle -->
   <animation>
     <type>select</type>
-    <object-name>Sea_EagleR</object-name>      
+    <object-name>Sea_EagleR</object-name>
     <condition>
       <and>
         <equals>
@@ -536,7 +555,7 @@
   <!-- station right 2 (Index 5) -->
   <animation>
     <type>select</type>
-    <object-name>right-pos-2</object-name>      
+    <object-name>right-pos-2</object-name>
     <condition>
       <and>
         <equals>
@@ -549,11 +568,11 @@
         </equals>
       </and>
     </condition>
-  </animation>	
+  </animation>
 
   <animation>
     <type>select</type>
-    <object-name>aim-9R</object-name>      
+    <object-name>aim-9R</object-name>
     <condition>
       <and>
         <equals>
@@ -570,7 +589,7 @@
 
   <animation>
     <type>select</type>
-    <object-name>right-pos-2-R74</object-name>      
+    <object-name>right-pos-2-R74</object-name>
     <condition>
       <and>
         <equals>
@@ -583,11 +602,11 @@
         </equals>
       </and>
     </condition>
-  </animation>	
-  
+  </animation>
+
   <animation>
     <type>select</type>
-    <object-name>right-pos-2-MICA</object-name>      
+    <object-name>right-pos-2-MICA</object-name>
     <condition>
       <and>
         <equals>
@@ -601,11 +620,24 @@
       </and>
     </condition>
   </animation>
+  
+    <animation>
+    <type>select</type>
+    <object-name>right-pos-2-SmokePod</object-name>
+    <condition>
+      <and>
+        <equals>
+          <property>sim/weight[5]/selected</property>
+          <value>SmokePod</value>
+        </equals>
+      </and>
+    </condition>
+  </animation>
 
   <!-- station right 1 (Index 6) -->
   <animation>
     <type>select</type>
-    <object-name>right-pos-1</object-name>      
+    <object-name>right-pos-1</object-name>
     <condition>
       <and>
         <equals>
@@ -639,7 +671,7 @@
 
   <animation>
     <type>select</type>
-    <object-name>right-pos-1-MICA</object-name>      
+    <object-name>right-pos-1-MICA</object-name>
     <condition>
       <and>
         <equals>
@@ -657,7 +689,7 @@
   <!-- right GBU16 -->
   <animation>
     <type>select</type>
-    <object-name>right-GBU16</object-name>      
+    <object-name>right-GBU16</object-name>
     <condition>
       <and>
         <equals>
@@ -675,7 +707,7 @@
   <!-- Center GBU12 -->
   <animation>
     <type>select</type>
-    <object-name>right-GBU12</object-name>      
+    <object-name>right-GBU12</object-name>
     <condition>
       <and>
         <equals>
@@ -688,12 +720,12 @@
         </equals>
       </and>
     </condition>
-  </animation>	
+  </animation>
 
   <!-- station back left (Index 7) -->
   <animation>
     <type>select</type>
-    <object-name>MICABL</object-name>      
+    <object-name>MICABL</object-name>
     <condition>
       <and>
         <equals>
@@ -711,7 +743,7 @@
   <!-- right GBU16 -->
   <animation>
     <type>select</type>
-    <object-name>GBU16BL</object-name>      
+    <object-name>GBU16BL</object-name>
     <condition>
       <and>
         <equals>
@@ -729,7 +761,7 @@
   <!-- Center GBU12 -->
   <animation>
     <type>select</type>
-    <object-name>GBU12BL</object-name>      
+    <object-name>GBU12BL</object-name>
     <condition>
       <and>
         <equals>
@@ -742,12 +774,12 @@
         </equals>
       </and>
     </condition>
-  </animation>	
+  </animation>
 
   <!-- station back right (Index 8) -->
   <animation>
     <type>select</type>
-    <object-name>MICABR</object-name>      
+    <object-name>MICABR</object-name>
     <condition>
       <and>
         <equals>
@@ -765,7 +797,7 @@
   <!-- right GBU16 -->
   <animation>
     <type>select</type>
-    <object-name>GBU16BR</object-name>      
+    <object-name>GBU16BR</object-name>
     <condition>
       <and>
         <equals>
@@ -783,7 +815,7 @@
   <!-- Center GBU12 -->
   <animation>
     <type>select</type>
-    <object-name>GBU12BR</object-name>      
+    <object-name>GBU12BR</object-name>
     <condition>
       <and>
         <equals>
@@ -796,6 +828,6 @@
         </equals>
       </and>
     </condition>
-  </animation>	
+  </animation>
 
 </PropertyList>

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml version="1.0" encoding="iso-8859-1"?>
 
 <PropertyList>
 
@@ -15,11 +15,12 @@
     <object-name>but1</object-name>
     <object-name>but2</object-name>
     <object-name>but3</object-name>
-    
+
     <!-- Objets transparents -->
+
   </animation>
- 
-    <animation>
+
+  <animation>
     <type>material</type>
     <object-name>texte</object-name>
     <emission>
@@ -29,7 +30,7 @@
       <blue>  0.25 </blue>
     </emission>
   </animation>
-  
+
   <animation>
     <type>material</type>
     <object-name>base</object-name>
@@ -39,22 +40,20 @@
     <object-name>bigbut1</object-name>
     <object-name>but1</object-name>
     <object-name>but2</object-name>
-    <object-name>but3</object-name> 
+    <object-name>but3</object-name>
     <condition>
       <not>
         <property>sim/rendering/rembrandt/enabled</property>
       </not>
-    </condition>   
-    <emission>      
+    </condition>
+    <emission>
       <red>   0.13 </red>
       <green> 0.13 </green>
       <blue>  0.13 </blue>
     </emission>
   </animation>
-  
-  
-  
-    <!--
+
+  <!--
   Centre de rotation de but0 et bigbut0
   
   Objet : Planche de bord
@@ -63,7 +62,7 @@
   y : -0.02388
   z :  0.00016
   
-  180 Â° sur axe X
+  180 ° sur axe X
   -->
   <animation>
     <type>pick</type>
@@ -71,7 +70,7 @@
     <action>
       <button>4</button>
       <!--  scroll up -->
-        <binding>
+      <binding>
         <command>property-adjust</command>
         <property>/controls/lighting/boardLightUV</property>
         <step>0.04</step>
@@ -81,14 +80,14 @@
       </binding>
     </action>
   </animation>
-  
-    <animation>
+
+  <animation>
     <type>pick</type>
     <object-name>but0</object-name>
     <action>
       <button>3</button>
       <!--  scroll down -->
-        <binding>
+      <binding>
         <command>property-adjust</command>
         <property>/controls/lighting/boardLightUV</property>
         <step>-0.04</step>
@@ -98,32 +97,27 @@
       </binding>
     </action>
   </animation>
-  
+
   <animation>
     <type>rotate</type>
     <object-name>but0</object-name>
     <object-name>bigbut0</object-name>
     <property>/controls/lighting/boardLightUV</property>
-    <factor>  180 </factor>
+    <factor>180</factor>
     <offset-deg>-180</offset-deg>
     <center>
-      <x-m>  0.00153 </x-m>
-      <y-m>  -0.02388 </y-m>
-      <z-m> 0.00016 </z-m>
+      <x-m> 0.00153</x-m>
+      <y-m>-0.02388</y-m>
+      <z-m> 0.00016</z-m>
     </center>
     <axis>
-      <x> -1 </x>
-      <y> 0 </y>
-      <z> 0 </z>
+      <x>-1</x>
+      <y> 0</y>
+      <z> 0</z>
     </axis>
   </animation>
-  
 
-  
-  
-  
-  
-    <!--
+  <!--
   Centre de rotation de but1 et bigbut1
   
   Objet : BANQUETTES
@@ -132,7 +126,7 @@
   y : -0.00022
   z :  0.00016
   
-  180 Â° sur axe X
+  180 ° sur axe X
   -->
   <animation>
     <type>pick</type>
@@ -140,7 +134,7 @@
     <action>
       <button>4</button>
       <!--  scroll up -->
-        <binding>
+      <binding>
         <command>property-adjust</command>
         <property>/controls/lighting/sideLightUV</property>
         <step>0.04</step>
@@ -150,14 +144,14 @@
       </binding>
     </action>
   </animation>
-  
-    <animation>
+
+  <animation>
     <type>pick</type>
     <object-name>but1</object-name>
     <action>
       <button>3</button>
       <!--  scroll down -->
-        <binding>
+      <binding>
         <command>property-adjust</command>
         <property>/controls/lighting/sideLightUV</property>
         <step>-0.04</step>
@@ -167,28 +161,27 @@
       </binding>
     </action>
   </animation>
-  
+
   <animation>
     <type>rotate</type>
     <object-name>but1</object-name>
     <object-name>bigbut1</object-name>
     <property>/controls/lighting/sideLightUV</property>
-    <factor>  180 </factor>
+    <factor>180</factor>
     <offset-deg>-180</offset-deg>
     <center>
-      <x-m>  0.00153 </x-m>
-      <y-m>  -0.00022 </y-m>
-      <z-m> 0.00016 </z-m>
+      <x-m> 0.00153</x-m>
+      <y-m>-0.00022</y-m>
+      <z-m> 0.00016</z-m>
     </center>
     <axis>
-      <x> -1 </x>
-      <y> 0 </y>
-      <z> 0 </z>
+      <x>-1</x>
+      <y> 0</y>
+      <z> 0</z>
     </axis>
   </animation>
 
-  
-    <!--
+  <!--
   Centre de rotation de but2
   
   Objet : VOYANTS
@@ -197,16 +190,15 @@
   y : 0.01629
   z : 0.00016
   
-  180 Â° sur axe X 
+  180 ° sur axe X
   -->
-  
-    <animation>
+  <animation>
     <type>pick</type>
     <object-name>but2</object-name>
     <action>
       <button>4</button>
       <!--  scroll up -->
-        <binding>
+      <binding>
         <command>property-adjust</command>
         <property>/controls/lighting/instruments-norm</property>
         <step>0.04</step>
@@ -216,14 +208,14 @@
       </binding>
     </action>
   </animation>
-  
-    <animation>
+
+  <animation>
     <type>pick</type>
     <object-name>but2</object-name>
     <action>
       <button>3</button>
       <!--  scroll down -->
-        <binding>
+      <binding>
         <command>property-adjust</command>
         <property>/controls/lighting/instruments-norm</property>
         <step>-0.04</step>
@@ -233,26 +225,25 @@
       </binding>
     </action>
   </animation>
-  
+
   <animation>
     <type>rotate</type>
     <object-name>but2</object-name>
     <property>/controls/lighting/instruments-norm</property>
-    <factor>  270 </factor>
+    <factor>270</factor>
     <offset-deg>-270</offset-deg>
     <center>
-      <x-m>  0.00152 </x-m>
-      <y-m>  0.01629 </y-m>
-      <z-m> 0.00016 </z-m>
+      <x-m>0.00152</x-m>
+      <y-m>0.01629</y-m>
+      <z-m>0.00016</z-m>
     </center>
     <axis>
-      <x> -1 </x>
-      <y> 0 </y>
-      <z> 0 </z>
+      <x>-1</x>
+      <y> 0</y>
+      <z> 0</z>
     </axis>
   </animation>
-  
-  
+
   <!--
   Centre de rotation de but3
   
@@ -262,7 +253,7 @@
   y : 0.03458
   z : 0.00016
   
-  180 Â° sur axe X
+  180 ° sur axe X
   -->
-  
+
 </PropertyList>

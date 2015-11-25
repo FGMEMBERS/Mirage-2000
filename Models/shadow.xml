@@ -1,13 +1,13 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml version="1.0" encoding="iso-8859-1"?>
 
 <PropertyList>
 
   <path>shadow.ac</path>
 
   <animation>
-    <!-- Objets opaques -->
+    <!-- opaques objects  -->
 
-    <!-- Objets transparents -->
+    <!-- transparents objects  -->
     <object-name>shadow</object-name>
   </animation>
 
@@ -27,7 +27,7 @@
     </condition>
   </animation>
 
-  <!-- Une ombre pour OSG en attendant mieux ;) basé sur l'ombre du DC 3-->
+  <!-- A shadow for OSG waiting better ;) based on DC3's shadow -->
   <!-- pitch -->
   <animation>
     <type>rotate</type>
@@ -54,17 +54,17 @@
     </axis>
   </animation>
 
-  <!-- Translate to ground level -->
+  <!-- translate to ground level -->
   <animation>
-   <type>translate</type>
-   <object-name>shadow</object-name>
-   <property>sim/multiplay/generic/float[2]</property>
-   <factor> -1 </factor>
-   <axis>
-     <x> 0 </x>
-     <y> 0 </y>
-     <z> 1 </z>
-   </axis>
- </animation>
+    <type>translate</type>
+    <object-name>shadow</object-name>
+    <property>sim/multiplay/generic/float[2]</property>
+    <factor> -1 </factor>
+    <axis>
+      <x> 0 </x>
+      <y> 0 </y>
+      <z> 1 </z>
+    </axis>
+  </animation>
 
 </PropertyList>

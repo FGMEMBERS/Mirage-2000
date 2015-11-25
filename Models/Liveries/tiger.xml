@@ -1,12 +1,14 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml version="1.0" encoding="iso-8859-1"?>
 
 <PropertyList>
 
   <sim>
     <model>
       <livery>
-        <name type="string">Tiger</name>
+
+        <name type="string">Tiger Meet [special]</name>
         <texture>Liveries/1024x1024/tiger.png</texture>
+
         <specular>
           <red>   0.3 </red>
           <green> 0.3 </green>

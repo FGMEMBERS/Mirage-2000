@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml version="1.0" encoding="iso-8859-1"?>
 
 <PropertyList>
 
@@ -7,11 +7,11 @@
   <!-- ******************************************************************* -->
   <!-- Condensation                                                        -->
   <!-- ******************************************************************* -->
-  
+
   <!--  REMBRANDT support for transparent objects-->
   <effect>
     <inherits-from>Effects/model-transparent</inherits-from>
-    <object-name>ShockWave</object-name> 
+    <object-name>ShockWave</object-name>
     <condition>
       <property>sim/rendering/rembrandt/enabled</property>
     </condition>
@@ -24,7 +24,7 @@
     <condition>
       <and>
         <not>
-          <or> 
+          <or>
             <less-than>
               <property>/velocities/mach</property>
               <value>0.89</value>
@@ -33,7 +33,7 @@
               <property>/velocities/mach</property>
               <value>1.05</value>
             </greater-than>
-          </or> 
+          </or>
         </not>
         <less-than>
           <property>/position/altitude-ft</property>

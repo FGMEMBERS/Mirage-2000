@@ -1,44 +1,51 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml version="1.0" encoding="iso-8859-1"?>
 
+<!-- changelog
+
+       02/08/2015 Updated by Hardball : added comments
+-->
 <PropertyList>
 
   <path>m2000-5.ac</path>
 
   <nasal>
     <load>
-      ##############################################################################
-      # The on-load Nasal is not executed when this file is loaded as the user
-      # aircraft.
-      ##############################################################################
-      
-      # Load the needed modules if it hasn't been done yet.
+      # WARNING : The on-load Nasal is not executed when this file is loaded as the
+      # user aircraft.
+      #
+      # load the needed modules if it hasn't been done yet.
       # load handles broadcast of:
       #   - external load set.
-      if (!contains(globals, "m2000_load")) {
-        var file = call(func getprop("/sim/fg-aircraft") ~ "/Mirage-2000/Nasal/ext_stores.nas", nil, var err = []);
-        var code = call(func compile(io.readfile(file), file), nil, err);
-        print("Path 1. Error : " ~size(err));
-        if(size(err) == 0 ){
-          io.load_nasal(file, "m2000_load");
-        }
+      if(! contains(globals, "m2000_load"))
+      {
+          var file = call(func getprop("/sim/fg-aircraft") ~ "/Mirage-2000/Nasal/ext_stores.nas", nil, var err = []);
+          var code = call(func compile(io.readfile(file), file), nil, err);
+          print("Path 1. Error : " ~size(err));
+          if(size(err) == 0)
+          {
+              io.load_nasal(file, "m2000_load");
+          }
       }
-      if (!contains(globals, "m2000_load")) {
-        var file = call(func getprop("/sim/fg-aircraft[1]") ~ "/Mirage-2000/Nasal/ext_stores.nas", nil, var err = []);
-        var code = call(func compile(io.readfile(file), file), nil, err);
-        print("Path 2. Error : " ~size(err));
-        if(size(err) == 0 ){
-          io.load_nasal(file, "m2000_load");
-        }     
+      if(! contains(globals, "m2000_load"))
+      {
+          var file = call(func getprop("/sim/fg-aircraft[1]") ~ "/Mirage-2000/Nasal/ext_stores.nas", nil, var err = []);
+          var code = call(func compile(io.readfile(file), file), nil, err);
+          print("Path 2. Error : " ~size(err));
+          if(size(err) == 0)
+          {
+              io.load_nasal(file, "m2000_load");
+          }
       }
-      if (!contains(globals, "m2000_load")) {
-        var file = call(func getprop("/sim/fg-root") ~ "/Aircraft/Mirage-2000/Nasal/ext_stores.nas", nil, var err = []);
-        var code = call(func compile(io.readfile(file), file), nil, err);
-        print("Path 3. Error : " ~size(err));
-        if(size(err) == 0 ){
-          io.load_nasal(file, "m2000_load");
-        }
+      if(! contains(globals, "m2000_load"))
+      {
+          var file = call(func getprop("/sim/fg-root") ~ "/Aircraft/Mirage-2000/Nasal/ext_stores.nas", nil, var err = []);
+          var code = call(func compile(io.readfile(file), file), nil, err);
+          print("Path 3. Error : " ~ size(err));
+          if(size(err) == 0)
+          {
+              io.load_nasal(file, "m2000_load");
+          }
       }
-      
       var update = aircraft.overlay_update.new();
       update.add("Aircraft/Mirage-2000/Models/Liveries", "sim/model/livery/file");
       update.add("Aircraft/Mirage-2000/Models/Logos/", "sim/multiplay/generic/string");
@@ -46,9 +53,8 @@
       #var livery_update = aircraft.livery_update.new("Aircraft/Mirage-2000/Models/Liveries", 10);
       #var update = aircraft.overlay_update.new();
       #update.add("Aircraft/F4U/Models/Logos", "sim/multiplay/generic/string");
-
-      var self = cmdarg();
       
+      var self = cmdarg();
       var float_0 = self.getNode("sim/multiplay/generic/float[0]", 1);
       var float_1 = self.getNode("sim/multiplay/generic/float[1]", 1);
       
@@ -57,8 +63,8 @@
       var crew_door = self.getNode("sim/model/door-positions/crew/position-norm", 1);
       var passenger_door = self.getNode("sim/model/door-positions/passenger/position-norm", 1);
       
-      #Update Time
-      #print("Creatingthe Decodeur");
+      # Update Time
+      #print("Creating the Decodeur");
       var myDecodeur = m2000_load.Decode_Load.new(self,myLoadString,0.5);
       myDecodeur.decode();
       
@@ -67,7 +73,6 @@
       #print("multiplay");
       #MP.loads(1);
     </load>
-
     <unload>
       myDecodeur.stop();
       #livery_update.stop();
@@ -79,8 +84,14 @@
   </nasal>
 
   <animation>
-    <!-- Objets opaques -->
+    <!-- ~~~~~~~~~~~~~~~~~~ opaque objects -->
     <object-name>fuselage</object-name>
+    <object-name>paletteHG</object-name>
+    <object-name>paletteHD</object-name>
+    <object-name>paletteBG1</object-name>
+    <object-name>paletteBD1</object-name>
+    <object-name>paletteBG2</object-name>
+    <object-name>paletteBD2</object-name>
     <object-name>queue</object-name>
     <object-name>ailes</object-name>
     <object-name>slatG1</object-name>
@@ -113,7 +124,9 @@
     <object-name>ailettes</object-name>
     <object-name>tmp0</object-name>
     <object-name>tmp1</object-name>
-
+    <object-name>anneau</object-name>
+    <object-name>spirales</object-name>
+    
     <object-name>guns</object-name>
     <object-name>trous</object-name>
     <object-name>axeAH</object-name>
@@ -137,15 +150,21 @@
     <object-name>roueD</object-name>
     <object-name>turbine</object-name>
     <object-name>bruleur</object-name>
-    
-    <!-- Objets transparents -->
+
+    <!-- ~~~~~~~~~~~~~~~~~~ transparent objects -->
     <object-name>vitres</object-name>
     <object-name>verriere</object-name>
   </animation>
-
+  
   <animation>
     <type>material</type>
     <object-name>fuselage</object-name>
+    <object-name>paletteHG</object-name>
+    <object-name>paletteHD</object-name>
+    <object-name>paletteBG1</object-name>
+    <object-name>paletteBD1</object-name>
+    <object-name>paletteBG2</object-name>
+    <object-name>paletteBD2</object-name>
     <object-name>queue</object-name>
     <object-name>ailes</object-name>
     <object-name>slatG1</object-name>
@@ -178,6 +197,8 @@
     <object-name>ailettes</object-name>
     <object-name>tmp0</object-name>
     <object-name>tmp1</object-name>
+    <object-name>anneau</object-name>
+    <object-name>spirales</object-name>
     
     <object-name>guns</object-name>
     <object-name>trous</object-name>
@@ -202,10 +223,12 @@
     <object-name>roueD</object-name>
     <object-name>turbine</object-name>
     <object-name>bruleur</object-name>
-    
+
+    <!-- ~~~~~~~~~~~~~~~~~~ textures -->
     <property-base>sim/model/livery</property-base>
     <texture-prop>texture</texture-prop>
     <texture>texture.png</texture>
+    <!-- ~~~~~~~~~~~~~~~~~~ specular -->
     <specular>
       <red-prop>emission/red</red-prop>
       <green-prop>emission/green</green-prop>
@@ -216,6 +239,12 @@
   <effect>
     <inherits-from>Aircraft/Generic/Effects/Fuselagereflect</inherits-from>
     <object-name>fuselage</object-name>
+    <object-name>paletteHG</object-name>
+    <object-name>paletteHD</object-name>
+    <object-name>paletteBG1</object-name>
+    <object-name>paletteBD1</object-name>
+    <object-name>paletteBG2</object-name>
+    <object-name>paletteBD2</object-name>
     <object-name>queue</object-name>
     <object-name>ailes</object-name>
     <object-name>slatG1</object-name>
@@ -248,6 +277,15 @@
     <object-name>ailettes</object-name>
     <object-name>tmp0</object-name>
     <object-name>tmp1</object-name>
+    <object-name>anneau</object-name>
+    <object-name>spirales</object-name>
+  </effect>
+  
+  <!-- working for Rembrandt -->
+  <effect>
+    <inherits-from>Aircraft/Mirage-2000/Models/Effects/Glass/glass</inherits-from>
+    <object-name>vitres</object-name>
+    <object-name>verriere</object-name>
   </effect>
 
   <!--
@@ -274,33 +312,19 @@
   </animation>
   -->
 
-  <!-- working for Rembrandt -->
-  <effect>
-    <inherits-from>Aircraft/Mirage-2000/Models/Effects/Glass/glass</inherits-from>
-    <object-name>vitres</object-name>
-    <object-name>verriere</object-name>
-  </effect>
-  
-  <!-- working for Rembrandt -->
-  <effect>
-    <inherits-from>Effects/model-transparent</inherits-from>
-    <object-name>vitres</object-name>
-    <object-name>verriere</object-name>
-  </effect>
-  
-  <!-- Intérieur -->
   <model>
-    <!--<usage>interior</usage>-->
     <path>Aircraft/Mirage-2000/Models/Interior/interior.xml</path>
   </model>
 
-  <!-- Logos -->
   <model>
-    <!--<usage>interior</usage>-->
+    <path>Models/Aircraft/marker.xml</path>
+  </model>
+
+  <model>
     <path>Aircraft/Mirage-2000/Models/Logos/logos.xml</path>
   </model>
-  
-  <!-- Externals objects  -->
+
+  <!-- ~~~~~~~~~~~~~~~~~~ externals objects -->
   <model>
     <path>Aircraft/Mirage-2000/Models/External-objects/loads.xml</path>
   </model>
@@ -309,18 +333,16 @@
     <path>Aircraft/Mirage-2000/Models/External-objects/Pylons/pylons.xml</path>
   </model>
 
-  <!-- ******************************************************************* -->
-  <!-- FX                                                                  -->
-  <!-- ******************************************************************* -->
+  <!-- ~~~~~~~~~~~~~~~~~~ effects -->
   <model>
     <path>Aircraft/Mirage-2000/Models/Effects/fx/fx.xml</path>
-  </model> 
-	
+  </model>
+
   <model>
     <path>Aircraft/Mirage-2000/Models/Effects/fx/fx2.xml</path>
-  </model> 
+  </model>
 
-  <!-- Une ombre pour OSG
+  <!-- shadow for osg -->
   <model>
     <path>Aircraft/Mirage-2000/Models/shadow.xml</path>
     <offsets>
@@ -328,18 +350,18 @@
       <y-m>  0.000 </y-m>
       <z-m> -2.400 </z-m>
     </offsets>
-  </model> -->
+  </model>
 
   <model>
     <path>Aircraft/Mirage-2000/Models/Effects/chute/parachute.xml</path>
     <offsets>
-      <x-m> 6.970 </x-m>
-      <y-m> 0.000 </y-m>
-      <z-m> -1.1 </z-m>
+      <x-m>  6.970 </x-m>
+      <y-m>  0.000 </y-m>
+      <z-m> -1.100 </z-m>
     </offsets>
-  </model> 
+  </model>
 
-  <!-- Effets de tir -->
+  <!-- shooting effects -->
   <model>
     <path>Aircraft/Mirage-2000/Models/Effects/guns/fire.xml</path>
     <offsets>
@@ -360,7 +382,6 @@
     </offsets>
   </model>
 
-  <!-- Exhausts -->
   <model>
     <path>Aircraft/Mirage-2000/Models/Exhausts/exhausts.xml</path>
     <offsets>
@@ -370,7 +391,7 @@
     </offsets>
   </model>
 
-  <!-- Flamme
+  <!--
   <model>
     <path>Aircraft/Mirage-2000/Models/Effects/flammes/flamme.xml</path>
     <offsets>
@@ -378,9 +399,9 @@
       <y-m>  0.000 </y-m>
       <z-m> -0.527 </z-m>
     </offsets>
-  </model> -->
+  </model>
+  -->
 
-  <!-- Flamme -->
   <model>
     <path>Aircraft/Mirage-2000/Models/Effects/flammes/combustion.xml</path>
     <offsets>
@@ -395,7 +416,7 @@
     <object-name>turbine</object-name>
     <!-- engines/engine[0]/n1 -->
     <property>sim/multiplay/generic/float[4]</property>
-    <factor> 240 </factor>
+    <factor>240</factor>
     <center>
       <x-m>  3.84070 </x-m>
       <y-m>  0.00000 </y-m>
@@ -407,12 +428,24 @@
       <z> 0 </z>
     </axis>
   </animation>
+
+  <!-- bruleur
+  <animation>
+    <type>material</type>
+    <object-name>bruleur</object-name>
+    <emission>
+      <red>   1.00 </red>
+      <green> 0.20 </green>
+      <blue>  0.05 </blue>
+    </emission>
+  </animation>
+  -->
   
   <!-- Particules OSG -->
   <model>
     <path>Aircraft/Mirage-2000/Models/Effects/trail/trail.xml</path>
     <offsets>
-      <x-m>  12 </x-m>
+      <x-m> 16.000 </x-m>
       <y-m>  0.000 </y-m>
       <z-m> -0.527 </z-m>
     </offsets>
@@ -421,12 +454,12 @@
   <model>
     <path>Aircraft/Mirage-2000/Models/Effects/smoke/smoke.xml</path>
     <offsets>
-      <x-m>  6.319 </x-m>
+      <x-m>  7.319 </x-m>
       <y-m>  0.000 </y-m>
       <z-m> -0.527 </z-m>
     </offsets>
   </model>
-  
+
   <!-- Tiptrail Wings -->
   <model>
     <path>Aircraft/Mirage-2000/Models/Effects/tiptrail/left_tiptrail.xml</path>
@@ -465,10 +498,10 @@
     </offsets>
   </model>
 
-  <!-- Effets sur le sol -->
-  <!-- Roue avant -->
+  <!-- ~~~~~~~~~~~~~~~~~~ ground effects -->
+  <!-- front gear -->
   <model>
-    <path>Aircraft/Mirage-2000/Models/Effects/ground/ground0.xml</path>   
+    <path>Aircraft/Mirage-2000/Models/Effects/ground/ground0.xml</path>
     <offsets>
       <x-m> -2.996 </x-m>
       <y-m>  0.000 </y-m>
@@ -476,7 +509,17 @@
     </offsets>
   </model>
 
-  <!-- Roue gauche -->
+  <!-- front gear touchdown-->
+  <model>
+    <path>Aircraft/Mirage-2000/Models/Effects/ground/ground0_touchdown.xml</path>
+    <offsets>
+      <x-m> -2.996 </x-m>
+      <y-m>  0.000 </y-m>
+      <z-m> -2.592 </z-m>
+    </offsets>
+  </model>
+  
+  <!-- left gear -->
   <model>
     <path>Aircraft/Mirage-2000/Models/Effects/ground/ground1.xml</path>
     <offsets>
@@ -485,8 +528,18 @@
       <z-m> -2.595 </z-m>
     </offsets>
   </model>
+  
+  <!-- left gear touchdown -->
+  <model>
+    <path>Aircraft/Mirage-2000/Models/Effects/ground/ground1_touchdown.xml</path>
+    <offsets>
+      <x-m>  1.948 </x-m>
+      <y-m> -1.673 </y-m>
+      <z-m> -2.595 </z-m>
+    </offsets>
+  </model>
 
-  <!-- Roue droite -->
+  <!-- right gear -->
   <model>
     <path>Aircraft/Mirage-2000/Models/Effects/ground/ground2.xml</path>
     <offsets>
@@ -495,8 +548,18 @@
       <z-m> -2.595 </z-m>
     </offsets>
   </model>
+  
+  <!-- right gear -->
+  <model>
+    <path>Aircraft/Mirage-2000/Models/Effects/ground/ground2_touchdown.xml</path>
+    <offsets>
+      <x-m>  1.948 </x-m>
+      <y-m>  1.673 </y-m>
+      <z-m> -2.595 </z-m>
+    </offsets>
+  </model>
 
-  <!-- Animations des ailerons -->
+  <!-- ~~~~~~~~~~~~~~~~~~ left ailerons animation -->
   <animation>
     <type>rotate</type>
     <object-name>aileronG</object-name>
@@ -527,6 +590,7 @@
     </axis>
   </animation>
 
+  <!-- ~~~~~~~~~~~~~~~~~~ right ailerons animation -->
   <animation>
     <type>rotate</type>
     <object-name>aileronD</object-name>
@@ -557,7 +621,7 @@
     </axis>
   </animation>
 
-  <!-- Animations des élevons -->
+  <!-- ~~~~~~~~~~~~~~~~~~ left elevons animation -->
   <animation>
     <type>rotate</type>
     <object-name>elevonG</object-name>
@@ -573,6 +637,7 @@
     </axis>
   </animation>
 
+  <!-- ~~~~~~~~~~~~~~~~~~ right elevons animation -->
   <animation>
     <type>rotate</type>
     <object-name>elevonD</object-name>
@@ -604,7 +669,7 @@
     </axis>
   </animation>
 
-  <!-- Slats -->
+  <!-- ~~~~~~~~~~~~~~~~~~ first left slat : translate + rotate -->
   <animation>
     <type>translate</type>
     <object-name>slatG1</object-name>
@@ -616,7 +681,7 @@
       <z> 0 </z>
     </axis>
   </animation>
-  
+
   <animation>
     <type>translate</type>
     <object-name>slatG1</object-name>
@@ -628,7 +693,7 @@
       <z> 0 </z>
     </axis>
   </animation>
-  
+
   <animation>
     <type>rotate</type>
     <object-name>slatG1</object-name>
@@ -643,7 +708,8 @@
       <z2-m> -1.014 </z2-m>
     </axis>
   </animation>
-  
+
+  <!-- ~~~~~~~~~~~~~~~~~~ first right slat : translate + rotate -->
   <animation>
     <type>translate</type>
     <object-name>slatD1</object-name>
@@ -655,7 +721,7 @@
       <z> 0 </z>
     </axis>
   </animation>
-  
+
   <animation>
     <type>translate</type>
     <object-name>slatD1</object-name>
@@ -667,7 +733,7 @@
       <z> 0 </z>
     </axis>
   </animation>
-  
+
   <animation>
     <type>rotate</type>
     <object-name>slatD1</object-name>
@@ -682,7 +748,8 @@
       <z2-m> -1.122 </z2-m>
     </axis>
   </animation>
-  
+
+  <!-- ~~~~~~~~~~~~~~~~~~ second left slat : translate + rotate -->
   <animation>
     <type>translate</type>
     <object-name>slatG2</object-name>
@@ -694,7 +761,7 @@
       <z> 0 </z>
     </axis>
   </animation>
-  
+
   <animation>
     <type>translate</type>
     <object-name>slatG2</object-name>
@@ -706,15 +773,15 @@
       <z> 0 </z>
     </axis>
   </animation>
-  
+
   <animation>
     <type>rotate</type>
     <object-name>slatG2</object-name>
     <property>surface-positions/slat-pos-norm</property>
     <interpolation>
-      <entry><ind>  0.0 </ind><dep>  0 </dep></entry>
-      <entry><ind>  0.3 </ind><dep>  0 </dep></entry>
-      <entry><ind>  1.0 </ind><dep> -1 </dep></entry>
+      <entry><ind> 0.0 </ind><dep>  0 </dep></entry>
+      <entry><ind> 0.3 </ind><dep>  0 </dep></entry>
+      <entry><ind> 1.0 </ind><dep> -1 </dep></entry>
     </interpolation>
     <axis>
       <x1-m>  1.37804 </x1-m>
@@ -725,15 +792,15 @@
       <z2-m> -1.16815 </z2-m>
     </axis>
   </animation>
-  
+
   <animation>
     <type>rotate</type>
     <object-name>slatG2</object-name>
     <property>surface-positions/slat-pos-norm</property>
     <interpolation>
-      <entry><ind>  0.0 </ind><dep>   0 </dep></entry>
-      <entry><ind>  0.3 </ind><dep>   0 </dep></entry>
-      <entry><ind>  1.0 </ind><dep> -35 </dep></entry>
+      <entry><ind> 0.0 </ind><dep>   0 </dep></entry>
+      <entry><ind> 0.3 </ind><dep>   0 </dep></entry>
+      <entry><ind> 1.0 </ind><dep> -35 </dep></entry>
     </interpolation>
     <axis>
       <x1-m>  3.894 </x1-m>
@@ -744,7 +811,8 @@
       <z2-m> -1.122 </z2-m>
     </axis>
   </animation>
-  
+
+  <!-- ~~~~~~~~~~~~~~~~~~ second right slat : translate + rotate -->
   <animation>
     <type>translate</type>
     <object-name>slatD2</object-name>
@@ -756,7 +824,7 @@
       <z> 0 </z>
     </axis>
   </animation>
-  
+
   <animation>
     <type>translate</type>
     <object-name>slatD2</object-name>
@@ -768,15 +836,15 @@
       <z> 0 </z>
     </axis>
   </animation>
-  
+
   <animation>
     <type>rotate</type>
     <object-name>slatD2</object-name>
     <property>surface-positions/slat-pos-norm</property>
     <interpolation>
-      <entry><ind>  0.0 </ind><dep> 0 </dep></entry>
-      <entry><ind>  0.3 </ind><dep> 0 </dep></entry>
-      <entry><ind>  1.0 </ind><dep> 1 </dep></entry>
+      <entry><ind> 0.0 </ind><dep> 0 </dep></entry>
+      <entry><ind> 0.3 </ind><dep> 0 </dep></entry>
+      <entry><ind> 1.0 </ind><dep> 1 </dep></entry>
     </interpolation>
     <axis>
       <x1-m>  1.37804 </x1-m>
@@ -787,15 +855,15 @@
       <z2-m> -1.16815 </z2-m>
     </axis>
   </animation>
-  
+
   <animation>
     <type>rotate</type>
     <object-name>slatD2</object-name>
     <property>surface-positions/slat-pos-norm</property>
     <interpolation>
-      <entry><ind>  0.0 </ind><dep>   0 </dep></entry>
-      <entry><ind>  0.3 </ind><dep>   0 </dep></entry>
-      <entry><ind>  1.0 </ind><dep> -35 </dep></entry>
+      <entry><ind> 0.0 </ind><dep>   0 </dep></entry>
+      <entry><ind> 0.3 </ind><dep>   0 </dep></entry>
+      <entry><ind> 1.0 </ind><dep> -35 </dep></entry>
     </interpolation>
     <axis>
       <x1-m>  1.377 </x1-m>
@@ -806,15 +874,15 @@
       <z2-m> -1.245 </z2-m>
     </axis>
   </animation>
-  
-  <!-- Spoilers -->
+
+  <!-- ~~~~~~~~~~~~~~~~~~ top left spoiler -->
   <animation>
     <type>rotate</type>
     <object-name>spoilerGH</object-name>
     <property>surface-positions/spoiler-pos-norm</property>
     <interpolation>
-      <entry><ind>  0 </ind><dep>   0 </dep></entry>
-      <entry><ind>  1 </ind><dep> -80 </dep></entry>
+      <entry><ind> 0 </ind><dep>   0 </dep></entry>
+      <entry><ind> 1 </ind><dep> -80 </dep></entry>
     </interpolation>
     <axis>
       <x1-m>  0.913 </x1-m>
@@ -826,13 +894,14 @@
     </axis>
   </animation>
 
+  <!-- ~~~~~~~~~~~~~~~~~~ bottom left spoiler -->
   <animation>
     <type>rotate</type>
     <object-name>spoilerGB</object-name>
     <property>surface-positions/spoiler-pos-norm</property>
     <interpolation>
-      <entry><ind>  0 </ind><dep>  0 </dep></entry>
-      <entry><ind>  1 </ind><dep> 80 </dep></entry>
+      <entry><ind> 0 </ind><dep>  0 </dep></entry>
+      <entry><ind> 1 </ind><dep> 80 </dep></entry>
     </interpolation>
     <axis>
       <x1-m>  0.904 </x1-m>
@@ -844,13 +913,14 @@
     </axis>
   </animation>
 
+  <!-- ~~~~~~~~~~~~~~~~~~ top right spoiler -->
   <animation>
     <type>rotate</type>
     <object-name>spoilerDH</object-name>
     <property>surface-positions/spoiler-pos-norm</property>
     <interpolation>
-      <entry><ind>  0 </ind><dep>   0 </dep></entry>
-      <entry><ind>  1 </ind><dep> -80 </dep></entry>
+      <entry><ind> 0 </ind><dep>   0 </dep></entry>
+      <entry><ind> 1 </ind><dep> -80 </dep></entry>
     </interpolation>
     <axis>
       <x1-m>  0.913 </x1-m>
@@ -862,13 +932,14 @@
     </axis>
   </animation>
 
+  <!-- ~~~~~~~~~~~~~~~~~~ bottom right spoiler -->
   <animation>
     <type>rotate</type>
     <object-name>spoilerDB</object-name>
     <property>surface-positions/spoiler-pos-norm</property>
     <interpolation>
-      <entry><ind>  0 </ind><dep>  0 </dep></entry>
-      <entry><ind>  1 </ind><dep> 80 </dep></entry>
+      <entry><ind> 0 </ind><dep>  0 </dep></entry>
+      <entry><ind> 1 </ind><dep> 80 </dep></entry>
     </interpolation>
     <axis>
       <x1-m>  0.904 </x1-m>
@@ -880,7 +951,7 @@
     </axis>
   </animation>
 
-  <!-- Animation des portes des train -->
+  <!-- ~~~~~~~~~~~~~~~~~~ front gear doors -->
   <animation>
     <type>rotate</type>
     <object-name>porteA1</object-name>
@@ -922,6 +993,7 @@
     </axis>
   </animation>
 
+  <!-- ~~~~~~~~~~~~~~~~~~ left gear doors -->
   <animation>
     <type>rotate</type>
     <object-name>porteG1</object-name>
@@ -941,7 +1013,7 @@
       <z2-m> -1.236 </z2-m>
     </axis>
   </animation>
- 
+
   <animation>
     <type>rotate</type>
     <object-name>porteG2</object-name>
@@ -960,7 +1032,8 @@
       <z2-m> -1.210 </z2-m>
     </axis>
   </animation>
- 
+
+  <!-- ~~~~~~~~~~~~~~~~~~ right gear doors -->
   <animation>
     <type>rotate</type>
     <object-name>porteD1</object-name>
@@ -972,15 +1045,15 @@
       <entry><ind> 1.00 </ind><dep>   0 </dep></entry>
     </interpolation>
     <axis>
-      <x1-m>  1.531 </x1-m>
-      <y1-m>  0.380 </y1-m>
-      <z1-m> -1.236 </z1-m>
-      <x2-m>  0.981 </x2-m>
-      <y2-m>  0.380 </y2-m>
-      <z2-m> -1.232 </z2-m>
+      <x1-m>  1.531</x1-m>
+      <y1-m>  0.380</y1-m>
+      <z1-m> -1.236</z1-m>
+      <x2-m>  0.981</x2-m>
+      <y2-m>  0.380</y2-m>
+      <z2-m> -1.232</z2-m>
     </axis>
   </animation>
- 
+
   <animation>
     <type>rotate</type>
     <object-name>porteD2</object-name>
@@ -999,8 +1072,8 @@
       <z2-m> -1.211 </z2-m>
     </axis>
   </animation>
- 
-  <!-- Rentrée des roues -->
+
+  <!-- ~~~~~~~~~~~~~~~~~~ front gear -->
   <animation>
     <name>TrainAvant</name>
     <object-name>axeAH</object-name>
@@ -1031,6 +1104,7 @@
     </axis>
   </animation>
 
+  <!-- ~~~~~~~~~~~~~~~~~~ front wheels -->
   <animation>
     <name>RoueGauche</name>
     <object-name>roueG</object-name>
@@ -1042,6 +1116,7 @@
     <object-name>axeG4</object-name>
   </animation>
 
+  <!-- ~~~~~~~~~~~~~~~~~~ left wheels -->
   <animation>
     <type>rotate</type>
     <object-name>RoueGauche</object-name>
@@ -1061,12 +1136,12 @@
     </axis>
   </animation>
 
+  <!-- ~~~~~~~~~~~~~~~~~~ left gear -->
   <animation>
     <name>BrasGauche</name>
     <object-name>axeG3</object-name>
     <object-name>axeG4</object-name>
   </animation>
-
   <animation>
     <type>rotate</type>
     <object-name>BrasGauche</object-name>
@@ -1086,6 +1161,7 @@
     </axis>
   </animation>
 
+  <!-- ~~~~~~~~~~~~~~~~~~ right wheels -->
   <animation>
     <name>RoueDroite</name>
     <object-name>roueD</object-name>
@@ -1116,6 +1192,7 @@
     </axis>
   </animation>
 
+  <!-- ~~~~~~~~~~~~~~~~~~ right gear -->
   <animation>
     <name>BrasDroit</name>
     <object-name>axeD3</object-name>
@@ -1141,7 +1218,7 @@
     </axis>
   </animation>
 
-  <!-- Suspensions -->
+  <!-- ~~~~~~~~~~~~~~~~~~ front (translate : suspension + rotate : compas) -->
   <animation>
     <name>AxeAvant</name>
     <object-name>axeAB</object-name>
@@ -1164,15 +1241,15 @@
       <z> 1 </z>
     </axis>
   </animation>
- 
+
   <animation>
     <type>rotate</type>
     <object-name>axeA2</object-name>
     <property>gear/gear[0]/compression-norm</property>
     <interpolation>
-      <entry><ind> 0.00000000 </ind><dep>  -5 </dep></entry>
-      <entry><ind> 0.00350742 </ind><dep>   0 </dep></entry>
-      <entry><ind> 1.00000000 </ind><dep>  30 </dep></entry>
+      <entry><ind> 0.00000000 </ind><dep> -5 </dep></entry>
+      <entry><ind> 0.00350742 </ind><dep>  0 </dep></entry>
+      <entry><ind> 1.00000000 </ind><dep> 30 </dep></entry>
     </interpolation>
     <center>
       <x-m> -2.998 </x-m>
@@ -1207,6 +1284,7 @@
     </axis>
   </animation>
 
+  <!-- ~~~~~~~~~~~~~~~~~~ left (translate : suspension + rotate : compas) -->
   <animation>
     <name>AxeGauche</name>
     <object-name>axeGB</object-name>
@@ -1232,15 +1310,15 @@
       <z2-m> -1.332 </z2-m>
     </axis>
   </animation>
- 
+
   <animation>
     <type>rotate</type>
     <object-name>axeG2</object-name>
     <property>gear/gear[1]/compression-norm</property>
     <interpolation>
-      <entry><ind> 0.000000 </ind><dep>  -5 </dep></entry>
-      <entry><ind> 0.190642 </ind><dep>   0 </dep></entry>
-      <entry><ind> 1.000000 </ind><dep>  30 </dep></entry>
+      <entry><ind> 0.000000 </ind><dep> -5 </dep></entry>
+      <entry><ind> 0.190642 </ind><dep>  0 </dep></entry>
+      <entry><ind> 1.000000 </ind><dep> 30 </dep></entry>
     </interpolation>
     <axis>
       <x1-m>  2.005 </x1-m>
@@ -1271,6 +1349,7 @@
     </axis>
   </animation>
 
+  <!-- ~~~~~~~~~~~~~~~~~~ right (translate : suspension + rotate : compas) -->
   <animation>
     <name>AxeDroit</name>
     <object-name>axeDB</object-name>
@@ -1296,15 +1375,15 @@
       <z2-m> -1.810 </z2-m>
     </axis>
   </animation>
- 
+
   <animation>
     <type>rotate</type>
     <object-name>axeD2</object-name>
     <property>gear/gear[2]/compression-norm</property>
     <interpolation>
-      <entry><ind> 0.000000 </ind><dep>  -5 </dep></entry>
-      <entry><ind> 0.190642 </ind><dep>   0 </dep></entry>
-      <entry><ind> 1.000000 </ind><dep>  30 </dep></entry>
+      <entry><ind> 0.000000 </ind><dep> -5 </dep></entry>
+      <entry><ind> 0.190642 </ind><dep>  0 </dep></entry>
+      <entry><ind> 1.000000 </ind><dep> 30 </dep></entry>
     </interpolation>
     <axis>
       <x1-m>  2.005 </x1-m>
@@ -1375,7 +1454,7 @@
     <type>spin</type>
     <object-name>roueG</object-name>
     <property>gear/gear[1]/rollspeed-ms</property>
-    <factor> 30 </factor>
+    <factor>30</factor>
     <center>
       <x-m>  1.948 </x-m>
       <y-m> -1.673 </y-m>
@@ -1405,7 +1484,6 @@
     </axis>
   </animation>
 
-  <!-- Canopy -->
   <animation>
     <name>EnsembleCanope</name>
     <object-name>canope</object-name>
@@ -1421,7 +1499,7 @@
       <repeatable>false</repeatable>
       <binding>
         <command>nasal</command>
-        <script>doors.crew.toggle();</script>
+        <script>doors.move_canopy();</script>
       </binding>
     </action>
   </animation>
@@ -1482,7 +1560,7 @@
       <z-m> -1.263 </z-m>
     </offsets>
   </model>
-  
+
   <model>
     <path>Aircraft/Mirage-2000/Models/lights/GreenLight.xml</path>
     <offsets>
@@ -1500,34 +1578,31 @@
       <z-m> -1.263 </z-m>
     </offsets>
   </model>
+
+  <model>
+    <path>Aircraft/Mirage-2000/Models/lights/position.xml</path>
+  </model>
   
-  <!-- Landing Lights 
+  <!-- Landing Lights -->
   <model>
     <path>Aircraft/Mirage-2000/Models/lights/light-cone.xml</path>
-    <condition> 
-      <property>/controls/gear/gear-down</property> 
-    </condition>
     <offsets>
-      <x-m> -3.08 </x-m>
+      <x-m> -3.080 </x-m>
       <y-m> -0.110 </y-m>
-      <z-m> -1.84 </z-m>
+      <z-m> -1.840 </z-m>
       <heading-deg> 10 </heading-deg>
     </offsets>
   </model>
 
   <model>
     <path>Aircraft/Mirage-2000/Models/lights/light-cone.xml</path>
-    <condition> 
-      <property>/controls/gear/gear-down</property>
-    </condition>
     <offsets>
-      <x-m> -3.08 </x-m>
+      <x-m> -3.080 </x-m>
       <y-m>  0.110 </y-m>
-      <z-m> -1.84 </z-m>
+      <z-m> -1.840 </z-m>
       <heading-deg> -10 </heading-deg>
     </offsets>
   </model>
-  -->
 
   <!-- Sortie de la souris en fonction des Mach -->
   <animation>
@@ -1545,5 +1620,114 @@
       <z> 0 </z>
     </axis>
   </animation>
- 
+
+   <animation>
+    <type>rotate</type>
+    <object-name>paletteHG</object-name>
+    <property>engines/engine[0]/massic-debit_div2</property>
+    <interpolation>
+      <entry><ind> 120 </ind><dep>  0 </dep></entry>
+      <entry><ind>  70 </ind><dep> 30 </dep></entry>
+    </interpolation>
+    <axis>
+      <x1-m> -1.34326 </x1-m>
+      <y1-m> -0.72795 </y1-m>
+      <z1-m> -0.31599 </z1-m>
+      <x2-m> -1.34326 </x2-m>
+      <y2-m> -0.60748 </y2-m>
+      <z2-m> -0.24983 </z2-m>
+    </axis>
+  </animation>
+  
+  <animation>
+    <type>rotate</type>
+    <object-name>paletteHD</object-name>
+    <property>engines/engine[0]/massic-debit_div2</property>
+    <interpolation>
+      <entry><ind> 120 </ind><dep>  0 </dep></entry>
+      <entry><ind>  70 </ind><dep> 30 </dep></entry>
+    </interpolation>
+    <axis>
+      <x1-m> -1.34326 </x1-m>
+      <y1-m>  0.60748 </y1-m>
+      <z1-m> -0.24983 </z1-m>
+      <x2-m> -1.34326 </x2-m>
+      <y2-m>  0.72795 </y2-m>
+      <z2-m> -0.31599 </z2-m>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>paletteBG1</object-name>
+    <property>engines/engine[0]/massic-debit_div2</property>
+    <interpolation>
+      <entry><ind> 120 </ind><dep>   0 </dep></entry>
+      <entry><ind>  70 </ind><dep> -30 </dep></entry>
+    </interpolation>
+    <axis>
+      <x1-m> -1.37614 </x1-m>
+      <y1-m> -0.64867 </y1-m>
+      <z1-m> -1.14988 </z1-m>
+      <x2-m> -1.37614 </x2-m>
+      <y2-m> -0.53433 </y2-m>
+      <z2-m> -1.15041 </z2-m>
+    </axis>
+  </animation>
+  
+  <animation>
+    <type>rotate</type>
+    <object-name>paletteBD1</object-name>
+    <property>engines/engine[0]/massic-debit_div2</property>
+    <interpolation>
+      <entry><ind> 120 </ind><dep>   0 </dep></entry>
+      <entry><ind>  70 </ind><dep> -30 </dep></entry>
+    </interpolation>
+    <axis>
+      <x1-m> -1.37614 </x1-m>
+      <y1-m>  0.53433 </y1-m>
+      <z1-m> -1.15041 </z1-m>
+      <x2-m> -1.37614 </x2-m>
+      <y2-m>  0.64867 </y2-m>
+      <z2-m> -1.14988 </z2-m>
+    </axis>
+  </animation>
+  
+  <!-- Ecopes To 0-->
+  <animation>
+    <type>rotate</type>
+    <object-name>paletteBG2</object-name>
+    <property>engines/engine[0]/pelle</property>
+      <interpolation>
+      <entry><ind>  0 </ind><dep>   0 </dep></entry>
+      <entry><ind> 20 </ind><dep> -45 </dep></entry>
+    </interpolation>
+    <axis>
+      <x1-m> -1.17794 </x1-m>
+      <y1-m> -0.75262 </y1-m>
+      <z1-m> -1.15556 </z1-m>
+      <x2-m> -1.17794 </x2-m>
+      <y2-m> -0.49501 </y2-m>
+      <z2-m> -1.16788 </z2-m>
+    </axis>
+  </animation>
+  
+  <animation>
+    <type>rotate</type>
+    <object-name>paletteBD2</object-name>
+      <property>engines/engine[0]/pelle</property>
+      <interpolation>
+      <entry><ind>  0 </ind><dep>   0 </dep></entry>
+      <entry><ind> 20 </ind><dep> -45 </dep></entry>
+    </interpolation>
+    <axis>
+      <x1-m> -1.17794 </x1-m>
+      <y1-m>  0.49501 </y1-m>
+      <z1-m> -1.16788 </z1-m>
+      <x2-m> -1.17794 </x2-m>
+      <y2-m>  0.75262 </y2-m>
+      <z2-m> -1.15556 </z2-m>
+    </axis>
+  </animation>
+  
 </PropertyList>

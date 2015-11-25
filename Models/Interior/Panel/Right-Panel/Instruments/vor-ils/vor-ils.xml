@@ -1,10 +1,11 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml version="1.0" encoding="iso-8859-1"?>
 
 <PropertyList>
 
   <path>vor-ils.ac</path>
 
   <animation>
+
     <!-- Objets opaques -->
     <object-name>base</object-name>
     <object-name>texte</object-name>
@@ -15,10 +16,10 @@
     <object-name>num-4</object-name>
     <object-name>buton1</object-name>
     <object-name>buton2</object-name>
-    
-    <!-- Objets transparents -->
-  </animation>
 
+    <!-- Objets transparents -->
+
+  </animation>
   <!--
   
   Position centre button1 (gauche)
@@ -34,5 +35,5 @@
   z : -0.010730
   
   -->
-</PropertyList>
 
+</PropertyList>

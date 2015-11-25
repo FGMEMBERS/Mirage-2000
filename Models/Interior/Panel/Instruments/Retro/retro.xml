@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<PropertyList>
+
+  <path>retro.ac</path>
+
+  <animation>
+    <object-name>base</object-name>
+    <object-name>retro</object-name>
+  </animation>
+
+</PropertyList>

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml version="1.0" encoding="iso-8859-1"?>
 
 <PropertyList>
 
@@ -11,47 +11,47 @@
 
   <animation>
     <type>material</type>
-    <object-name>button</object-name>           
-    <emission>      
+    <object-name>button</object-name>
+    <emission>
       <factor>0.13</factor>
       <red>   1 </red>
       <green> 1 </green>
       <blue>  1 </blue>
     </emission>
   </animation>
-  
+
   <!-- Select missile -->
   <animation>
-    <type>pick</type>  
+    <type>pick</type>
     <object-name>button</object-name>
     <action>
-      <button>0</button>     
+      <button>0</button>
       <repeatable>false</repeatable>
       <binding>
         <command>property-toggle</command>
         <property>/controls/switches/jettinson-button</property>
       </binding>
       <binding>
-         <command>nasal</command>
-         <script>load.dropTanks();</script>
-      </binding> 
+        <command>nasal</command>
+        <script>m2000_load.dropTanks();</script>
+      </binding>
       <mod-up>
         <binding>
-         <command>property-toggle</command>
-         <property>/controls/switches/jettinson-button</property>
+          <command>property-toggle</command>
+          <property>/controls/switches/jettinson-button</property>
         </binding>
       </mod-up>
     </action>
     <hovered>
       <binding>
-         <command>set-tooltip</command>
-         <tooltip-id>jettison</tooltip-id>
-         <label>Jettison Tank</label>
-         <!--<property>instrumentation/airspeed-indicator/indicated-speed-kt</property>-->
+        <command>set-tooltip</command>
+        <tooltip-id>jettison</tooltip-id>
+        <label>Jettison Tank</label>
+        <!--<property>instrumentation/airspeed-indicator/indicated-speed-kt</property>-->
       </binding>
-   </hovered>
+    </hovered>
   </animation>
-  
+
   <animation>
     <type>translate</type>
     <object-name>button</object-name>
@@ -59,12 +59,9 @@
     <factor>0.003</factor>
     <axis>
       <x>-1</x>
-      <y>0</y>
-      <z>0</z>
+      <y> 0</y>
+      <z> 0</z>
     </axis>
   </animation>
-  
-  
 
 </PropertyList>
-
