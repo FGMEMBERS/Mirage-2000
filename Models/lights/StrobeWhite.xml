@@ -14,6 +14,11 @@
   </effect>
 
   <animation>
+    <type>alpha-test</type>
+    <alpha-factor> 0.01 </alpha-factor>
+  </animation>
+  
+  <animation>
     <type>billboard</type>
     <object-name>Light</object-name>
     <spherical type="bool">true</spherical>
@@ -23,10 +28,10 @@
     <type>select</type>
     <object-name>Light</object-name>
     <condition>
-      <property>/sim/model/lights/sbc1/state</property>
+      <property>sim/model/lights/tailLight/state</property>
     </condition>
   </animation>
-
+  
   <animation>
     <type>material</type>
     <object-name>Light</object-name>
@@ -34,7 +39,6 @@
       <red>   2 </red>
       <green> 2 </green>
       <blue>  2 </blue>
-      <factor-prop>/systems/electrical/outputs/instrument-lights</factor-prop>
     </emission>
   </animation>
 
@@ -42,18 +46,10 @@
     <type>dist-scale</type>
     <object-name>Light</object-name>
     <interpolation>
-      <entry><ind>   0</ind><dep>0.25</dep></entry>
-      <entry><ind>  20</ind><dep>0.50</dep></entry>
-      <entry><ind>1500</ind><dep>5.00</dep></entry>
+      <entry><ind>    0 </ind><dep> 0.25 </dep></entry>
+      <entry><ind>   20 </ind><dep> 0.50 </dep></entry>
+      <entry><ind> 1500 </ind><dep> 2.00 </dep></entry>
     </interpolation>
-  </animation>
-
-  <animation>
-    <type>select</type>
-    <object-name>Light</object-name>
-    <condition>
-      <property>/systems/electrical/volts</property>
-    </condition>
   </animation>
 
 </PropertyList>

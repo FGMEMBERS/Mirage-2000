@@ -74,8 +74,8 @@
       </binding>
     </key>
     
-    <key n="84">
-      <name>t</name>
+    <key n="81">
+      <name>Q</name>
       <desc>Active ECM</desc>
       <binding>
         <command>nasal</command>
@@ -88,16 +88,46 @@
       <desc>Active Telemeter</desc>
       <binding>
         <command>nasal</command>
-        <script>hud.activate_Telemeter()</script>
+        <!--<script>hud.activate_Telemeter()</script>-->
+        <script>
+          setprop("instrumentation/radar/az-field",mirage2000.myRadar3.radar_mode_toggle());
+        </script>
       </binding>
+      <!--      <binding>
+      <command>property-toggle</command>
+      <property>/ai/closest/range</property>
+      <value>-2</value>
+      <value>-1</value>
+      </binding>-->
     </key>
     
     <key n="116">
       <name>t</name>
-      <desc>Ajusting Radar Distance</desc>
+      <desc>Increase Radar Distance</desc>
       <binding>
         <command>nasal</command>
-        <script>hud.switch_distance()</script>
+        <script>
+          mirage2000.myRadar3.switch_distance_ics();
+          setprop("instrumentation/radar/range", mirage2000.myRadar3.get_radar_distance());
+          setprop("/instrumentation/radar/range-selected",mirage2000.myRadar3.get_radar_distance());
+        </script>
+        
+        <!--        <script>hud.switch_distance()</script>-->
+      </binding>
+    </key>
+    
+    <key n="84">
+      <name>T</name>
+      <desc>Decrease Radar Distance</desc>
+      <binding>
+        <command>nasal</command>
+        <script>
+          mirage2000.myRadar3.switch_distance_dcs();
+          setprop("instrumentation/radar/range", mirage2000.myRadar3.get_radar_distance());
+          setprop("/instrumentation/radar/range-selected",mirage2000.myRadar3.get_radar_distance());
+        </script>
+        
+        <!--        <script>hud.switch_distance()</script>-->
       </binding>
     </key>
     
@@ -140,8 +170,8 @@
       <binding>
         <command>property-toggle</command>
         <property>/controls/lighting/landing-lights</property>
-         <value>0</value>
-         <value>1</value>
+        <value>0</value>
+        <value>1</value>
       </binding>
     </key>
     
@@ -156,21 +186,21 @@
     </key>
     
     <!-- This is to toggle radar az_scan. Could be used to reboot the radar-->
-    <key n="81">
-      <name>q</name>
-      <desc>Toggle radar standby mode</desc>
-      <binding>
-        <command>property-toggle</command>
-        <property>instrumentation/radar/display-rdr</property>
-      </binding>
-    </key>
+    <!--    <key n="81">
+    <name>q</name>
+    <desc>Toggle radar standby mode</desc>
+    <binding>
+    <command>property-toggle</command>
+    <property>instrumentation/radar/display-rdr</property>
+    </binding>
+    </key>-->
     
     <key n="110">
       <name>n</name>
       <desc>Changes Target</desc>
       <binding>
         <command>nasal</command>
-        <script>hud.next_Target_Index()</script>
+        <script>mirage2000.myRadar3.next_Target_Index()</script>
       </binding>
     </key>
     
@@ -179,7 +209,7 @@
       <desc>Changes Target</desc>
       <binding>
         <command>nasal</command>
-        <script>hud.previous_Target_Index()</script>
+        <script>mirage2000.myRadar3.previous_Target_Index()</script>
       </binding>
     </key>
     

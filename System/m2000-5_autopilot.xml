@@ -1,495 +1,765 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
 
 <PropertyList>
+  <!-- There is a large flaw in FG's standard pid-controller which
+       keeps it from working when the reference changes suddendly. The
+       controllers below are implemented by combining a gain filter
+       with integrator and derivative filters (using a final gain
+       filter to sum them)
 
-  <!-- ======  Lateral Modes  ====== -->
-  <pid-controller>
-    <name>ROLL hold</name>
-    <debug>false</debug>
-    <enable>
-      <property>autopilot/locks/heading</property>
-      <value>ROLL</value>
-    </enable>
+       The two following filters allow mixing values depending on
+       speed so that one value will be chosen at speeds below 400 kts,
+       another value will be chosen at speeds above 600 kts and
+       intermediate values will be chosen in between.
+  -->
+  <filter>
+    <name>high-speed-weight</name>
+    <type>gain</type>
+    <input><expression><table>
+      <property>/velocities/airspeed-kt</property>
+      <entry><ind>400</ind><dep>0.0</dep></entry>
+      <entry><ind>600</ind><dep>1.0</dep></entry>
+    </table></expression></input>
+    <output>/autopilot/internal/speed-weight-high</output>
+    <value>0.0</value>
+    <gain>1</gain>
+  </filter>
+
+  <filter>
+    <name>speed-weight-low</name>
+    <type>gain</type>
+    <input>/autopilot/internal/speed-weight-high</input>
+    <reference>1</reference>
+    <output>/autopilot/internal/speed-weight-low</output>
+    <gain>1</gain>
+  </filter>
+
+  <!-- =============================================================== -->
+  <!-- Lateral Modes                                                   -->
+  <!-- =============================================================== -->
+
+  <!-- PID controller that sets the aileron trim to follow a
+       reference roll when AP-status is AP1.
+
+       Input:     /orientation/roll-deg
+       Reference: /autopilot/settings/target-roll-deg
+       Internals: /autopilot/internal/aileron-pid/*
+       Condition: /autopilot/locks/AP-status == "AP1"
+       Output:    /controls/flight/aileron-trim
+
+       At 200 kts, 5000 ft:
+       Ku: 1.55
+       Fu: 1.58 Hz
+
+       At 700 kts, 40000 ft:
+       Ku: 0.64
+       Fu: 8.28 Hz
+
+       At 850 kts, 20000 ft:
+       Ku: 0.09
+       Fu: 4.59 Hz
+  -->
+  <filter>
+    <name>aileron-pid/Kp</name>
+    <type>gain</type>
+    <reference><expression><product>
+      <property>/autopilot/internal/aileron-pid/kp-low</property>
+      <property>/autopilot/internal/speed-weight-low</property>
+    </product></expression></reference>
+    <input><expression><product>
+      <property>/autopilot/internal/aileron-pid/kp-high</property>
+      <property>/autopilot/internal/speed-weight-high</property>
+    </product></expression></input>
+    <output>/autopilot/internal/aileron-pid/kp</output>
+    <gain>1</gain>
+  </filter>
+
+  <filter>
+    <name>aileron-pid/Ki</name>
+    <type>gain</type>
+    <reference><expression><product>
+      <property>/autopilot/internal/aileron-pid/ki-low</property>
+      <property>/autopilot/internal/speed-weight-low</property>
+    </product></expression></reference>
+    <input><expression><product>
+      <property>/autopilot/internal/aileron-pid/ki-high</property>
+      <property>/autopilot/internal/speed-weight-high</property>
+    </product></expression></input>
+    <output>/autopilot/internal/aileron-pid/ki</output>
+    <gain>1</gain>
+  </filter>
+
+  <filter>
+    <name>aileron-pid/Kd</name>
+    <type>gain</type>
+    <reference><expression><product>
+      <property>/autopilot/internal/aileron-pid/kd-low</property>
+      <property>/autopilot/internal/speed-weight-low</property>
+    </product></expression></reference>
+    <input><expression><product>
+      <property>/autopilot/internal/aileron-pid/kd-high</property>
+      <property>/autopilot/internal/speed-weight-high</property>
+    </product></expression></input>
+    <output>/autopilot/internal/aileron-pid/kd</output>
+    <gain>1</gain>
+  </filter>
+
+  <filter>
+    <name>aileron-pid/P</name>
+    <type>gain</type>
+    <input>/orientation/roll-deg</input>
+    <reference>/autopilot/settings/target-roll-deg</reference>
+    <output>/autopilot/internal/aileron-pid/p-output</output>
+    <gain>/autopilot/internal/aileron-pid/kp</gain>
+  </filter>
+
+  <filter>
+    <name>aileron-pid/I</name>
+    <type>integrator</type>
     <input>
-      <property>orientation/roll-deg</property>
-    </input>
-    <reference>
-      <property>autopilot/settings/target-roll-deg</property>
-    </reference>
-    <output>
-      <prop>autopilot/internal/roll-filter</prop>
-    </output>
-    <config>
-      <Kp>0.5</Kp>
-      <beta>1.0</beta>
-      <alpha> 0.1 </alpha>
-      <gamma>0.0</gamma>
-      <Ti>1.0</Ti>
-      <Td>0.00001</Td>
-      <min>-65</min>
-      <max>65</max>
-    </config>
-  </pid-controller>
-
-  <pi-simple-controller>
-    <name>Heading Bug Hold</name>
-    <debug>false</debug>
-    <enable>
+      <property>/orientation/roll-deg</property>
       <condition>
+        <equals>
+          <property>/autopilot/locks/AP-status</property>
+          <value>AP1</value>
+        </equals>
+      </condition>
+    </input>
+    <input>
+      <!-- This causes the integrator to reset when AP is disabled -->
+      <expression>
+        <sum>
+          <property>/autopilot/settings/target-roll-deg</property>
+          <product>
+            <value>-100.0</value>
+            <property>/autopilot/internal/aileron-pid/i-output</property>
+          </product>
+        </sum>
+      </expression>
+    </input>
+    <reference>/autopilot/settings/target-roll-deg</reference>
+    <output>/autopilot/internal/aileron-pid/i-output</output>
+    <initialize-to>input</initialize-to>
+    <gain>/autopilot/internal/aileron-pid/ki</gain>
+    <u_min>-1.0</u_min>
+    <u_max>1.0</u_max>
+  </filter>
+
+  <filter>
+    <name>aileron-pid/D</name>
+    <type>derivative</type>
+    <input>/orientation/roll-deg</input>
+    <reference>/autopilot/settings/target-roll-deg</reference>
+    <output>/autopilot/internal/aileron-pid/d-output</output>
+    <filter-time>/autopilot/internal/aileron-pid/kd</filter-time>
+  </filter>
+
+  <filter>
+    <name>aileron-pid</name>
+    <type>gain</type>
+    <enable>
+      <property>/autopilot/locks/AP-status</property>
+      <value>AP1</value>
+    </enable>
+    <input>0.0</input>
+    <reference><expression><sum>
+      <property>/autopilot/internal/aileron-pid/p-output</property>
+      <property>/autopilot/internal/aileron-pid/i-output</property>
+      <property>/autopilot/internal/aileron-pid/d-output</property>
+    </sum></expression></reference>
+    <output>/controls/flight/aileron-trim</output>
+    <min>-1.0</min>
+    <max>1.0</max>
+  </filter>
+
+  <!-- P controller that sets the target roll to follow a given
+       heading when AP is in heading mode.
+
+       Note that the input is selected dynamically depending on the
+       mode (Heading bug or NAV) and source.
+
+       Input:     /autopilot/internal/target-heading-p/course-offset
+       Reference: 0.0
+       Internals: /autopilot/internal/target-heading-p/*
+       Condition: /autopilot/locks/heading == "AP1"
+       Output:    /autopilot/settings/target-roll-deg
+
+       At 200 kts, 5000 ft:
+       Ku: 28
+       Fu: 12 Hz
+
+       At 500 kts, 20000 ft:
+       Ku: 6.8
+       Fu: 4.6 Hz
+  -->
+  <filter><!-- Select the appropriate NAV reference -->
+    <name>target-heading-p/Course-offset</name>
+    <type>gain</type>
+
+    <input>
+      <property>/instrumentation/nav[0]/radials/selected-deg</property>
+      <condition><equals>
+        <property>/autopilot/settings/nav-source</property>
+        <value>NAV1</value>
+      </equals></condition>
+    </input>
+    <input>
+      <property>/instrumentation/nav[1]/radials/selected-deg</property>
+      <condition><equals>
+        <property>/autopilot/settings/nav-source</property>
+        <value>NAV2</value>
+      </equals></condition>
+    </input>
+    <input>
+      <property>/instrumentation/tacan/indicated-bearing-true-deg</property>
+      <condition><equals>
+        <property>/autopilot/settings/nav-source</property>
+        <value>TACAN</value>
+      </equals></condition>
+    </input>
+    <input>
+      <property>/autopilot/route-manager/wp/bearing-deg</property>
+      <condition><equals>
+        <property>/autopilot/settings/nav-source</property>
+        <value>FMS</value>
+      </equals></condition>
+    </input>
+
+    <reference><expression><difference>
+      <property>/orientation/heading-magnetic-deg</property>
+      <property>/autopilot/internal/cdi</property>
+    </difference></expression></reference>
+    <output>/autopilot/internal/target-heading-p/course-offset</output>
+    <period><min>-180</min><max>180</max></period>
+  </filter>
+
+  <filter>
+    <name>target-heading-p/Input</name>
+    <type>gain</type>
+    <input>
+      <property>/autopilot/internal/target-heading-p/course-offset</property>
+      <condition><or>
         <equals>
           <property>autopilot/locks/heading</property>
-          <value>HDG</value>
+          <value>VOR</value>
         </equals>
-      </condition>
-    </enable>
-    <input>
-      <prop>autopilot/internal/heading-bug-error-deg</prop>
+        <equals>
+          <property>autopilot/locks/heading</property>
+          <value>LOC</value>
+        </equals>
+        <equals>
+          <property>autopilot/locks/heading</property>
+          <value>LNAV</value>
+        </equals>
+      </or></condition>
     </input>
-    <reference>
-      <value>0.0</value>
-    </reference>
-    <output>
-      <prop>autopilot/internal/roll-filter</prop>
-    </output>
-    <config>
-      <Kp>-1.5</Kp>
-      <Ki>0.0</Ki>
-      <min>
-        <property>autopilot/settings/bank-limit</property>
-        <scale>-1</scale>
-      </min>
-      <max>
-        <property>autopilot/settings/bank-limit</property>
-      </max>
-    </config>
-  </pi-simple-controller>
-
-  <pid-controller>
-    <name>Nav1</name>
-    <debug>false</debug>
-    <enable>
-      <prop>autopilot/locks/heading</prop>
-      <value>VOR</value>
-    </enable>
-    <input>
-      <prop>autopilot/internal/ap_crs</prop>
-    </input>
-    <reference>
-      <value>0.0</value>
-    </reference>
-    <output>
-      <prop>autopilot/internal/roll-filter</prop>
-    </output>
-    <config>
-      <Kp>-1.5</Kp>
-      <beta>1.0</beta>
-      <alpha> 0.1 </alpha>
-      <gamma>0.0</gamma>
-      <Ti>10</Ti>
-      <Td>0.0</Td>
-      <min>
-        <value>-47</value>
-      </min>
-      <max>
-        <value>47</value>
-      </max>
-    </config>
-  </pid-controller>
-
-  <pid-controller>
-    <name>Loc</name>
-    <debug>false</debug>
-    <enable>
-      <prop>autopilot/locks/heading</prop>
-      <value>LOC</value>
-    </enable>
-    <input>
-      <prop>autopilot/internal/ap_crs</prop>
-    </input>
-    <reference>
-      <value>0.0</value>
-    </reference>
-    <output>
-      <prop>autopilot/internal/roll-filter</prop>
-    </output>
-    <config>
-      <Kp>-2.0G</Kp>
-      <beta>1.0</beta>
-      <alpha> 0.1 </alpha>
-      <gamma>0.0</gamma>
-      <Ti>10</Ti>
-      <Td>0.0</Td>
-      <min>
-        <value>-47</value>
-      </min>
-      <max>
-        <value>47</value>
-      </max>
-    </config>
-  </pid-controller>
-
-  <!--
-  <pi-simple-controller>
-  <name>Loc</name>
-  <debug>false</debug>
-  <enable>
-  <prop>autopilot/locks/heading</prop>
-  <value>LOC</value>
-  </enable>
-  <input>
-  <prop>autopilot/internal/ap_crs</prop>
-  </input>
-  <reference>
-  <value>0.0</value>
-  </reference>
-  <output>
-  <prop>autopilot/internal/roll-filter</prop>
-  </output>
-  <config>
-  <Kp>-0.5</Kp>
-  <Ki>0.0</Ki>
-  <min>
-  <property>autopilot/settings/bank-limit</property>
-  <scale>-1</scale>
-  </min>
-  <max>
-  <property>autopilot/settings/bank-limit</property>
-  </max>
-  </config>
-  </pi-simple-controller>
-  -->
-  <pi-simple-controller>
-    <name>Lnav</name>
-    <debug>false</debug>
-    <enable>
-      <prop>autopilot/locks/heading</prop>
-      <value>LNAV</value>
-    </enable>
-    <input>
-      <prop>autopilot/internal/ap_crs</prop>
-    </input>
-    <reference>
-      <value>0.0</value>
-    </reference>
-    <output>
-      <prop>autopilot/internal/roll-filter</prop>
-    </output>
-    <config>
-      <Kp>-2.0</Kp>
-      <Ki>0.0</Ki>
-      <min>-30</min>
-      <max>30</max>
-    </config>
-  </pi-simple-controller>
-
-  <filter>
-    <name>roll command</name>
-    <debug>false</debug>
-    <feedback-if-disabled>true</feedback-if-disabled>
-    <initialize-to>output</initialize-to>
-    <enable>
-      <condition>
-        <property>autopilot/locks/FD-status</property>
-      </condition>
-    </enable>
-    <input>
-      <property>autopilot/internal/roll-filter</property>
-    </input>
-    <output>autopilot/internal/roll-bars</output>
-    <type>noise-spike</type>
-    <max-rate-of-change>7</max-rate-of-change>
+    <input>/autopilot/internal/heading-bug-error-deg</input>
+    <output>/autopilot/internal/target-heading-p/target-heading-error-deg</output>
+    <gain>-1</gain>
   </filter>
-  <pid-controller>
-    <name>Aileron Control</name>
-    <debug>false</debug>
-    <enable>
-      <prop>autopilot/locks/AP-status</prop>
-      <value>AP1</value>
-    </enable>
-    <input>
-      <prop>/orientation/roll-deg</prop>
-    </input>
-    <reference>
-      <prop>autopilot/internal/roll-filter</prop>
-    </reference>
-    <output>
-      <prop>/controls/flight/aileron-trim</prop>
-    </output>
-    <config>
-      <Kp>0.15</Kp>
-      <beta>1.0</beta>
-      <alpha> 0.1 </alpha>
-      <gamma>0.0</gamma>
-      <Ti>10.0</Ti>
-      <Td>0.00001</Td>
-      <min>-1</min>
-      <max>1</max>
-    </config>
-  </pid-controller>
 
-  <!-- ======= Vertical Modes ======= -->
   <filter>
-    <name>pitch control</name>
-    <debug>false</debug>
-    <feedback-if-disabled>true</feedback-if-disabled>
-    <initialize-to>output</initialize-to>
-    <enable>
+    <name>target-heading-p/P</name>
+    <type>gain</type>
+    <enable><condition><or>
+      <equals>
+        <property>autopilot/locks/heading</property>
+        <value>VOR</value>
+      </equals>
+      <equals>
+        <property>autopilot/locks/heading</property>
+        <value>LOC</value>
+      </equals>
+      <equals>
+        <property>autopilot/locks/heading</property>
+        <value>LNAV</value>
+      </equals>
+      <equals>
+        <property>/autopilot/locks/heading</property>
+        <value>HDG</value>
+      </equals>
+    </or></condition></enable>
+    <input>0.0</input>
+    <reference>/autopilot/internal/target-heading-p/target-heading-error-deg</reference>
+    <output>/autopilot/settings/target-roll-deg</output>
+    <gain>
+      <property>/autopilot/internal/target-heading-p/kp</property>
+      <value>3.4</value>
+    </gain>
+    <min>
+      <property>/autopilot/settings/bank-limit</property>
+      <scale>-1</scale>
+    </min>
+    <max>
+      <property>/autopilot/settings/bank-limit</property>
+    </max>
+  </filter>
+
+  <!-- =============================================================== -->
+  <!-- Vertical Modes                                                  -->
+  <!-- =============================================================== -->
+
+  <!-- PID controller that sets the elevator trim to follow a
+       reference pitch when AP-status is AP1.
+
+       Input:     /orientation/pitch-deg
+       Reference: /autopilot/settings/target-pitch-deg
+       Internals: /autopilot/internal/target-pitch-pid/*
+       Condition: /autopilot/locks/AP-status == "AP1"
+       Output:    /controls/flight/elevator-trim
+
+       At 200 kts, 5000 ft:
+       Ku: 3.5
+       Fu: 3.1 Hz
+
+       At 700 kts, 40000 ft:
+       Ku: 0.8
+       Fu: 6.2 Hz
+
+       At 850 kts, 20000 ft:
+       Ku: 0.054
+       Fu: 3.05 Hz
+  -->
+  <filter>
+    <name>target-pitch-pid/Kp</name>
+    <type>gain</type>
+    <reference><expression><product>
+      <property>/autopilot/internal/target-pitch-pid/kp-low</property>
+      <property>/autopilot/internal/speed-weight-low</property>
+    </product></expression></reference>
+    <input><expression><product>
+      <property>/autopilot/internal/target-pitch-pid/kp-high</property>
+      <property>/autopilot/internal/speed-weight-high</property>
+    </product></expression></input>
+    <output>/autopilot/internal/target-pitch-pid/kp</output>
+    <gain>1</gain>
+  </filter>
+
+  <filter>
+    <name>target-pitch-pid/Ki</name>
+    <type>gain</type>
+    <reference><expression><product>
+      <property>/autopilot/internal/target-pitch-pid/ki-low</property>
+      <property>/autopilot/internal/speed-weight-low</property>
+    </product></expression></reference>
+    <input><expression><product>
+      <property>/autopilot/internal/target-pitch-pid/ki-high</property>
+      <property>/autopilot/internal/speed-weight-high</property>
+    </product></expression></input>
+    <output>/autopilot/internal/target-pitch-pid/ki</output>
+    <gain>1</gain>
+  </filter>
+
+  <filter>
+    <name>target-pitch-pid/Kd</name>
+    <type>gain</type>
+    <reference><expression><product>
+      <property>/autopilot/internal/target-pitch-pid/kd-low</property>
+      <property>/autopilot/internal/speed-weight-low</property>
+    </product></expression></reference>
+    <input><expression><product>
+      <property>/autopilot/internal/target-pitch-pid/kd-high</property>
+      <property>/autopilot/internal/speed-weight-high</property>
+    </product></expression></input>
+    <output>/autopilot/internal/target-pitch-pid/kd</output>
+    <gain>1</gain>
+  </filter>
+
+  <filter>
+    <name>target-pitch-pid/P</name>
+    <type>gain</type>
+    <input>/orientation/pitch-deg</input>
+    <reference>/autopilot/settings/target-pitch-deg</reference>
+    <output>/autopilot/internal/target-pitch-pid/p-output</output>
+    <gain>/autopilot/internal/target-pitch-pid/kp</gain>
+  </filter>
+
+  <filter>
+    <name>target-pitch-pid/I</name>
+    <type>integrator</type>
+    <input>
+      <property>/orientation/pitch-deg</property>
       <condition>
         <equals>
-          <property>autopilot/locks/altitude</property>
-          <value>PTCH</value>
+          <property>/autopilot/locks/AP-status</property>
+          <value>AP1</value>
         </equals>
       </condition>
-    </enable>
-    <input>
-      <property>autopilot/settings/target-pitch-deg</property>
     </input>
-    <output>autopilot/internal/pitch-filter</output>
-    <type>noise-spike</type>
-    <max-rate-of-change>20.0</max-rate-of-change>
+    <input>
+      <!-- This causes the integrator to reset when AP is disabled -->
+      <expression>
+        <sum>
+          <property>/autopilot/settings/target-pitch-deg</property>
+          <product>
+            <value>-100.0</value>
+            <property>/autopilot/internal/target-pitch-pid/i-output</property>
+          </product>
+        </sum>
+      </expression>
+    </input>
+    <reference>/autopilot/settings/target-pitch-deg</reference>
+    <output>/autopilot/internal/target-pitch-pid/i-output</output>
+    <initialize-to>input</initialize-to>
+    <gain>/autopilot/internal/target-pitch-pid/ki</gain>
+    <u_min>-1.0</u_min>
+    <u_max>1.0</u_max>
   </filter>
 
-  <pi-simple-controller>
-    <name>Altitude Hold 1</name>
-    <debug>false</debug>
-    <enable>
-      <prop>/autopilot/locks/altitude</prop>
-      <value>ALT</value>
-    </enable>
-    <input>
-      <prop>instrumentation/altimeter/indicated-altitude-ft</prop>
-    </input>
-    <reference>
-      <prop>/autopilot/settings/target-altitude-ft</prop>
-    </reference>
-    <output>
-      <prop>/autopilot/internal/target-climb-rate-fps</prop>
-    </output>
-    <config>
-      <Kp>0.5</Kp>
-      <Ki>0.0</Ki>
-      <min>-120.0</min>
-      <max>220.0</max>
-    </config>
-  </pi-simple-controller>
-
-  <pid-controller>
-    <name>Altitude 2</name>
-    <debug>false</debug>
-    <enable>
-      <prop>/autopilot/locks/altitude</prop>
-      <value>ALT</value>
-    </enable>
-    <input>
-      <prop>velocities/vertical-speed-fps</prop>
-    </input>
-    <reference>
-      <prop>autopilot/internal/target-climb-rate-fps</prop>
-    </reference>
-    <output>
-      <prop>/autopilot/internal/pitch-filter</prop>
-    </output>
-    <config>
-      <Kp>0.20</Kp>
-      <beta>1.0</beta>
-      <alpha> 0.1 </alpha>
-      <gamma>0.0</gamma>
-      <Ti>10.0</Ti>
-      <Td>0.00001</Td>
-      <min>-5</min>
-      <max>5</max>
-    </config>
-  </pid-controller>
-
-  <pi-simple-controller>
-    <name>GS</name>
-    <debug>false</debug>
-    <enable>
-      <condition>
-        <equals>
-          <property>/autopilot/locks/altitude</property>
-          <value>GS</value>
-        </equals>
-      </condition>
-    </enable>
-    <input>
-      <prop>velocities/vertical-speed-fps</prop>
-    </input>
-    <reference>
-      <prop>autopilot/internal/gs-rate-fps</prop>
-    </reference>
-    <output>
-      <prop>autopilot/internal/pitch-filter</prop>
-    </output>
-    <config>
-      <Kp>0.25</Kp>
-      <Ki>0.5</Ki>
-      <min>-5.0</min>
-      <max>5.0</max>
-    </config>
-  </pi-simple-controller>
-
-  <pid-controller>
-    <name>Vertical Speed Hold</name>
-    <debug>false</debug>
-    <enable>
-      <prop>/autopilot/locks/altitude</prop>
-      <value>VS</value>
-    </enable>
-    <input>
-      <prop>/autopilot/internal/vert-speed-fpm</prop>
-    </input>
-    <reference>
-      <prop>/autopilot/settings/vertical-speed-fpm</prop>
-    </reference>
-    <output>
-      <prop>autopilot/internal/pitch-filter</prop>
-    </output>
-    <config>
-      <Kp>0.015</Kp>
-      <beta>1.0</beta>
-      <alpha> 0.1 </alpha>
-      <gamma>0.0</gamma>
-      <Ti>10.0</Ti>
-      <Td>0.1</Td>
-      <min>-5</min>
-      <max>20</max>
-    </config>
-  </pid-controller>
-
-  <!--
-  <pid-controller>
-    <name>Vnav Hold 1</name>
-    <debug>false</debug>
-    <enable>
-      <prop>/autopilot/locks/altitude</prop>
-      <value>VALT</value>
-    </enable>
-    <input>
-      <prop>instrumentation/altimeter/indicated-altitude-ft</prop>
-    </input>
-    <reference>
-      <prop>instrumentation/gps/wp/wp[1]/altitude-ft</prop>
-    </reference>
-    <output>
-      <prop>/autopilot/internal/target-climb-rate-fps</prop>
-    </output>
-    <config>
-      <Kp>    0.250000 </Kp>
-      <beta>  1.000000 </beta>
-      <alpha> 0.100000 </alpha>
-      <gamma> 0.000000 </gamma>
-      <Ti>   10.000000 </Ti>
-      <Td>    0.000001 </Td>
-      <min> -30.000000 </min>
-      <max>  66.000000 </max>
-    </config>
-  </pid-controller>
-  
-  <pi-simple-controller>
-    <name>Vnav 2</name>
-    <debug>false</debug>
-    <enable>
-      <prop>/autopilot/locks/altitude</prop>
-      <value>VALT</value>
-    </enable>
-    <input>
-      <prop>velocities/vertical-speed-fps</prop>
-    </input>
-    <reference>
-      <prop>autopilot/internal/target-climb-rate-fps</prop>
-    </reference>
-    <output>
-      <prop>autopilot/internal/pitch-filter</prop>
-    </output>
-    <config>
-      <Kp>    0.15 </Kp>
-      <Ki>    0.00 </Ki>
-      <min> -20.00 </min>
-      <max>  20.00 </max>
-    </config>
-  </pi-simple-controller>
-  
-  <pi-simple-controller>
-    <name>flc</name>
-    <debug>false</debug>
-    <enable>
-      <condition>
-        <or>
-          <equals>
-            <property>/autopilot/locks/altitude</property>
-            <value>FLC</value>
-          </equals>
-          <equals>
-            <property>/autopilot/locks/altitude</property>
-            <value>VFLC</value>
-          </equals>
-        </or>
-      </condition>
-    </enable>
-    <input>
-      <prop>instrumentation/airspeed-indicator/indicated-speed-kt</prop>
-    </input>
-    <reference>
-      <prop>autopilot/settings/target-speed-kt</prop>
-    </reference>
-    <output>
-      <prop>autopilot/internal/pitch-filter</prop>
-    </output>
-    <config>
-      <Kp>   -0.5 </Kp>
-      <Ki>    0.0 </Ki>
-      <min> -15.0 </min>
-      <max>  15.0 </max>
-    </config>
-  </pi-simple-controller>
-  
   <filter>
-    <name>pitch command</name>
-    <debug>false</debug>
-    <feedback-if-disabled>true</feedback-if-disabled>
-    <initialize-to>output</initialize-to>
-    <enable>
-      <condition>
-        <property>autopilot/locks/FD-status</property>
-      </condition>
-    </enable>
-    <input>
-      <property>autopilot/internal/pitch-filter</property>
-    </input>
-    <output>autopilot/internal/pitch-bars</output>
-    <type>noise-spike</type>
-    <max-rate-of-change>5.0</max-rate-of-change>
+    <name>target-pitch-pid/D</name>
+    <type>derivative</type>
+    <input>/orientation/pitch-deg</input>
+    <reference>/autopilot/settings/target-pitch-deg</reference>
+    <output>/autopilot/internal/target-pitch-pid/d-output</output>
+    <filter-time>/autopilot/internal/target-pitch-pid/kd</filter-time>
   </filter>
-  -->
-  
-  <pid-controller>
-    <name>Elevator Trim Control</name>
-    <debug>false</debug>
+
+  <filter>
+    <name>target-pitch-pid</name>
+    <type>gain</type>
     <enable>
-      <prop>autopilot/locks/AP-status</prop>
+      <property>/autopilot/locks/AP-status</property>
       <value>AP1</value>
     </enable>
+    <input><expression><sum>
+      <property>/autopilot/internal/target-pitch-pid/p-output</property>
+      <property>/autopilot/internal/target-pitch-pid/i-output</property>
+      <property>/autopilot/internal/target-pitch-pid/d-output</property>
+    </sum></expression></input>
+    <output>/controls/flight/elevator-trim</output>
+    <min>-1.0</min>
+    <max>1.0</max>
+  </filter>
+
+  <!-- PID controller that sets the target vertical speed to maintain
+       altitude when AP-status is ALT or TF. Note that it would be
+       theoretically possible to maintain altitude by controlling the
+       pitch directly, but this proved unreliable at low speed: the
+       controller was unable to keep enough positive pitch to maintain
+       altitude.
+
+       Input:     /instrumentation/altimeter/indicated-altitude-ft
+       Reference: /autopilot/settings/target-altitude-ft (ALT)
+       Reference: /autopilot/internal/altitude-pid/tf-altitude-offset-ft (TF)
+       Internals: /autopilot/internal/altitude-pid/*
+       Condition: /autopilot/locks/altitude == "ALT" or
+                  /autopilot/locks/altitude == "TF"
+       Output:    /autopilot/settings/vertical-speed-fpm
+
+       Ku: 140
+       Fu: 0.22 Hz
+  -->
+  <logic>
+    <input><equals>
+      <property>/autopilot/locks/altitude</property>
+      <value>ALT</value>
+    </equals></input>
+    <output>/autopilot/internal/altitude-pid/mode-alt</output>
+  </logic>
+  <logic>
+    <input><equals>
+      <property>/autopilot/locks/altitude</property>
+      <value>TF</value>
+    </equals></input>
+    <output>/autopilot/internal/altitude-pid/mode-tf</output>
+  </logic>
+  <logic>
+    <input><or>
+      <property>/autopilot/internal/altitude-pid/mode-alt</property>
+      <property>/autopilot/internal/altitude-pid/mode-tf</property>
+    </or></input>
+    <output>/autopilot/internal/altitude-pid/enabled</output>
+  </logic>
+
+  <filter>
+    <name>altitude-pid/TFS</name>
+    <type>moving-average</type>
+    <samples><expression><product>
+      <value>120</value> <!-- Assumes that the simulation runs at 120Hz -->
+      <property>/autopilot/settings/tf-mode</property>
+    </product></expression></samples>
+    <input>/position/altitude-ft</input>
+    <reference>/instrumentation/tfs/ground-altitude-ft</reference>
+    <output>/autopilot/internal/altitude-pid/tf-altitude-offset-ft</output>
+  </filter>
+
+  <filter>
+    <!-- This LP filter is needed to smooth some noise in the
+      indicated altitude that causes the D controller to give
+      spurious results. -->
+    <name>altitude-pid/LP</name>
+    <type>exponential</type>
     <input>
-      <prop>orientation/pitch-deg</prop>
+      <property>/instrumentation/altimeter/indicated-altitude-ft</property>
+      <condition><property>/autopilot/internal/altitude-pid/mode-alt</property></condition>
     </input>
-    <reference>
-      <prop>autopilot/internal/pitch-filter</prop>
-    </reference>
-    <output>
-      <prop>controls/flight/elevator-trim</prop>
-    </output>
-    <config>
-      <Kp>-0.03</Kp>
-      <beta>1.0</beta>
-      <alpha> 0.1 </alpha>
-      <gamma>0.0</gamma>
-      <Ti>8.0</Ti>
-      <Td>0.01</Td>
-      <min>-1</min>
-      <max>1</max>
-    </config>
-  </pid-controller>
+    <input>
+      <property>/autopilot/internal/altitude-pid/tf-altitude-offset-ft</property>
+      <condition><property>/autopilot/internal/altitude-pid/mode-tf</property></condition>
+    </input>
+    <output>/autopilot/internal/altitude-pid/lp-output</output>
+    <filter-time>0.16</filter-time>
+  </filter>
+
+  <filter>
+    <name>altitude-pid/P</name>
+    <type>gain</type>
+    <input>/autopilot/internal/altitude-pid/lp-output</input>
+    <reference>/autopilot/settings/target-altitude-ft</reference>
+    <output>/autopilot/internal/altitude-pid/p-output</output>
+    <gain>
+      <property>/autopilot/internal/altitude-pid/kp</property>
+      <value>28.0</value>
+    </gain>
+  </filter>
+
+  <filter>
+    <name>altitude-pid/I</name>
+    <type>integrator</type>
+    <input>
+      <property>/autopilot/internal/altitude-pid/lp-output</property>
+      <condition><property>/autopilot/internal/altitude-pid/enabled</property></condition>
+    </input>
+    <input>
+      <!-- This causes the integrator to reset when AP is disabled -->
+      <expression>
+        <sum>
+          <property>/autopilot/settings/target-altitude-ft</property>
+          <product>
+            <value>-100.0</value>
+            <property>/autopilot/internal/altitude-pid/i-output</property>
+          </product>
+        </sum>
+      </expression>
+    </input>
+    <reference>/autopilot/settings/target-altitude-ft</reference>
+    <output>/autopilot/internal/altitude-pid/i-output</output>
+    <initialize-to>input</initialize-to>
+    <gain>
+      <property>/autopilot/internal/altitude-pid/ki</property>
+      <value>12.32</value>
+    </gain>
+    <u_min>-100.0</u_min>
+    <u_max>100.0</u_max>
+  </filter>
+
+  <filter>
+    <name>altitude-pid/D</name>
+    <type>derivative</type>
+    <input>/autopilot/internal/altitude-pid/lp-output</input>
+    <reference>/autopilot/settings/target-altitude-ft</reference>
+    <output>/autopilot/internal/altitude-pid/d-output</output>
+    <filter-time>
+      <property>/autopilot/internal/altitude-pid/kd</property>
+      <value>42.42</value>
+    </filter-time>
+  </filter>
+
+  <filter>
+    <name>altitude-pid</name>
+    <type>gain</type>
+    <enable>/autopilot/internal/altitude-pid/enabled</enable>
+    <input>0.0</input>
+    <reference><expression><sum>
+      <property>/autopilot/internal/altitude-pid/p-output</property>
+      <property>/autopilot/internal/altitude-pid/i-output</property>
+      <property>/autopilot/internal/altitude-pid/d-output</property>
+    </sum></expression></reference>
+    <output>/autopilot/settings/vertical-speed-fpm</output>
+    <!-- Unlimited output, we rely on the pitch control to keep
+      reasonable values -->
+  </filter>
+
+  <!-- PID controller that sets the target pitch to maintain a given
+  vertical speed.
+
+  Input:     /velocities/vertical-speed-fps
+  Reference: /autopilot/internal/gs-rate-fps (GS mode)
+  Reference: /autopilot/settings/vertical-speed-fpm (VS mode)
+  Internals: /autopilot/internal/vertical-speed-pid/*
+  Condition: /autopilot/locks/altitude == "GS" (GS mode)
+  Condition: /autopilot/locks/altitude == "VS" (VS mode)
+  Condition: /autopilot/internal/altitude-pid/enabled (VS mode)
+  Output:    /autopilot/settings/target-pitch-deg
+
+  At 200 kts, 5000 ft:
+  Ku: 0.67
+  Fu: 4.41 Hz
+
+  At 700 kts, 40000 ft:
+  Ku: 0.34
+  Fu: 2.21 Hz
+  Safety margin: 50%
+
+  Note that at high speed, the "standard no overshoot" formula
+  still gave unstable results. Hence the 50% safety margin from
+  the standard parameters.
+  -->
+  <logic>
+    <input><equals>
+      <property>/autopilot/locks/altitude</property>
+      <value>GS</value>
+    </equals></input>
+    <output>/autopilot/internal/vertical-speed-pid/mode-gs</output>
+  </logic>
+  <logic>
+    <input><or>
+      <equals>
+        <property>/autopilot/locks/altitude</property>
+        <value>VS</value>
+      </equals>
+      <property>/autopilot/internal/altitude-pid/enabled</property>
+    </or></input>
+    <output>/autopilot/internal/vertical-speed-pid/mode-vs</output>
+  </logic>
+  <logic>
+    <input><or>
+      <property>/autopilot/internal/vertical-speed-pid/mode-gs</property>
+      <property>/autopilot/internal/vertical-speed-pid/mode-vs</property>
+    </or></input>
+    <output>/autopilot/internal/vertical-speed-pid/enabled</output>
+  </logic>
+
+  <filter>
+    <!-- At low speeds, we want to allow higher pitch values to
+    compensate for the lowered lift. -->
+    <name>vertical-speed-pid/output-limits-offset</name>
+    <type>gain</type>
+    <input><expression><table>
+      <property>/velocities/airspeed-kt</property>
+      <entry><ind>150</ind><dep>7.5</dep></entry>
+      <entry><ind>400</ind><dep>0.0</dep></entry>
+    </table></expression></input>
+    <output>/autopilot/internal/vertical-speed-pid/output-limits-offset</output>
+    <gain>1</gain>
+  </filter>
+
+  <filter>
+    <name>vertical-speed-pid/Reference</name>
+    <type>gain</type>
+    <input>
+      <condition>
+        <property>/autopilot/internal/vertical-speed-pid/mode-gs</property>
+      </condition>
+      <property>autopilot/internal/gs-rate-fps</property>
+    </input>
+    <input>
+      <condition>
+        <property>/autopilot/internal/vertical-speed-pid/mode-vs</property>
+      </condition>
+      <property>/autopilot/settings/vertical-speed-fpm</property>
+      <scale>0.016667</scale>   <!-- Convert to FPS -->
+    </input>
+    <input>0.0</input>
+    <output>/autopilot/internal/vertical-speed-pid/reference</output>
+    <gain>1</gain>
+  </filter>
+
+  <filter>
+    <!-- This LP filter is needed to smooth some noise in the
+    indicated altitude that causes the D controller to give
+    spurious results. -->
+    <name>vertical-speed-pid/LP</name>
+    <type>exponential</type>
+    <input>/velocities/vertical-speed-fps</input>
+    <output>/autopilot/internal/vertical-speed-pid/input</output>
+    <filter-time>0.16</filter-time>
+  </filter>
+
+  <filter>
+    <name>vertical-speed-pid/P</name>
+    <type>gain</type>
+    <input>/autopilot/internal/vertical-speed-pid/input</input>
+    <reference>/autopilot/internal/vertical-speed-pid/reference</reference>
+    <output>/autopilot/internal/vertical-speed-pid/p-output</output>
+    <gain>/autopilot/internal/vertical-speed-pid/kp</gain>
+  </filter>
+
+  <filter>
+    <name>vertical-speed-pid/I</name>
+    <type>integrator</type>
+    <input>
+      <property>/autopilot/internal/vertical-speed-pid/input</property>
+      <condition>
+        <property>/autopilot/internal/vertical-speed-pid/enabled</property>
+      </condition>
+    </input>
+    <input>
+      <!-- This causes the integrator to reset when AP is disabled -->
+      <expression><sum>
+        <property>/autopilot/internal/vertical-speed-pid/reference</property>
+        <product>
+          <value>-100.0</value>
+          <property>/autopilot/internal/vertical-speed-pid/i-output</property>
+        </product>
+      </sum></expression>
+    </input>
+    <reference>/autopilot/internal/vertical-speed-pid/reference</reference>
+    <output>/autopilot/internal/vertical-speed-pid/i-output</output>
+    <initialize-to>input</initialize-to>
+    <gain>/autopilot/internal/vertical-speed-pid/ki</gain>
+    <u_min>
+      <property>/autopilot/internal/vertical-speed-pid/output-limits-offset</property>
+      <scale>-1</scale>
+      <offset>-5.0</offset>
+    </u_min>
+    <u_max>
+      <property>/autopilot/internal/vertical-speed-pid/output-limits-offset</property>
+      <scale>-1</scale>
+      <offset>5.0</offset>
+    </u_max>
+  </filter>
+
+  <filter>
+    <name>vertical-speed-pid/D</name>
+    <type>derivative</type>
+    <input>/autopilot/internal/vertical-speed-pid/input</input>
+    <reference>/autopilot/internal/vertical-speed-pid/reference</reference>
+    <output>/autopilot/internal/vertical-speed-pid/d-output</output>
+    <filter-time>/autopilot/internal/vertical-speed-pid/kd</filter-time>
+  </filter>
+
+  <filter>
+    <name>vertical-speed-pid</name>
+    <type>gain</type>
+    <enable><condition><or>
+        <property>/autopilot/internal/vertical-speed-pid/mode-gs</property>
+        <property>/autopilot/internal/vertical-speed-pid/mode-vs</property>
+    </or></condition></enable>
+    <input>0.0</input>
+    <reference><expression><sum>
+      <property>/autopilot/internal/vertical-speed-pid/p-output</property>
+      <property>/autopilot/internal/vertical-speed-pid/i-output</property>
+      <property>/autopilot/internal/vertical-speed-pid/d-output</property>
+    </sum></expression></reference>
+    <output>/autopilot/internal/vertical-speed-pid/output</output>
+    <min>-5.0</min> <!-- Note that using output-limits-offset here does not work with ILS nor TF -->
+    <max>
+      <!-- This allows extra pitch when in TF mode -->
+      <condition><property>/autopilot/internal/altitude-pid/mode-tf</property></condition>
+      <value>25</value>
+    </max>
+    <max>
+      <property>/autopilot/internal/vertical-speed-pid/output-limits-offset</property>
+      <offset>5.0</offset>
+    </max>
+  </filter>
+
+  <!-- Rate limit filter to avoid violent movements at high speed -->
+  <filter>
+    <name>vertical-speed-pid/out-filter</name>
+    <type>noise-spike</type>
+    <enable><condition>
+      <property>/autopilot/internal/vertical-speed-pid/enabled</property>
+    </condition></enable>
+    <input>/autopilot/internal/vertical-speed-pid/output</input>
+    <output>/autopilot/settings/target-pitch-deg</output>
+    <max-rate-of-change><expression><div>
+      <value>3500</value>
+      <property>/velocities/airspeed-kt</property>
+    </div></expression></max-rate-of-change>
+  </filter>
 
   <!-- Internal Tests  -->
   <filter>
@@ -839,75 +1109,14 @@
       <prop>/controls/engines/engine[0]/throttle</prop>
     </output>
     <config>
-      <Kp>0.06</Kp>        <!-- proportional gain **0.1**-->
-      <beta>1.0</beta>     <!-- input value weighing factor -->
-      <alpha> 0.1 </alpha> <!-- low pass filter weighing factor -->
-      <gamma>0.0</gamma>   <!-- input value weighing factor for -->
-                           <!-- unfiltered derivative error -->
-      <Ti>10.0</Ti>        <!-- integrator time -->
-      <Td>0.00001</Td>     <!-- derivator time -->
-      <u_min>0.0</u_min>   <!-- minimum output clamp -->
-      <u_max>1.0</u_max>   <!-- maximum output clamp -->
-    </config>
-  </pid-controller>
-
-  <!-- Hold speed by varying pitch trim (Two stage cascading controller) -->
-  <pid-controller>
-    <name>Speed hold (vary pitch trim) Stage #1</name>
-    <debug>false</debug>
-    <enable>
-      <prop>/autopilot/locks/speed</prop>
-      <value>speed-with-pitch-trim</value>
-    </enable>
-    <input>
-      <prop>/autopilot/internal/lookahead-5-sec-airspeed-kt</prop>
-    </input>
-    <reference>
-      <prop>/autopilot/settings/target-speed-kt</prop>
-    </reference>
-    <output>
-      <prop>/autopilot/settings/target-pitch-deg</prop>
-    </output>
-    <config>
-      <Kp>-1.0</Kp>        <!-- proportional gain -->
-      <beta>1.0</beta>     <!-- input value weighing factor -->
-      <alpha> 0.1 </alpha> <!-- low pass filter weighing factor -->
-      <gamma>0.0</gamma>   <!-- input value weighing factor for -->
-                           <!-- unfiltered derivative error -->
-      <Ti>1.0</Ti>         <!-- integrator time -->
-      <Td>0.00001</Td>     <!-- derivator time -->
-      <u_min>-15.0</u_min> <!-- minimum output clamp -->
-      <u_max>15.0</u_max>
-                           <!-- maximum output clamp -->
-    </config>
-  </pid-controller>
-
-  <pid-controller>
-    <name>Speed hold (vary pitch trim) Stage #2</name>
-    <debug>false</debug>
-    <enable>
-      <prop>/autopilot/locks/speed</prop>
-      <value>speed-with-pitch-trim</value>
-    </enable>
-    <input>
-      <prop>/orientation/pitch-deg</prop>
-    </input>
-    <reference>
-      <prop>/autopilot/settings/target-pitch-deg</prop>
-    </reference>
-    <output>
-      <prop>/controls/flight/elevator-trim</prop>
-    </output>
-    <config>
-      <Kp>-0.002</Kp>      <!-- proportional gain -->
-      <beta>1.0</beta>     <!-- input value weighing factor -->
-      <alpha> 0.1 </alpha> <!-- low pass filter weighing factor -->
-      <gamma>0.0</gamma>   <!-- input value weighing factor for -->
-                           <!-- unfiltered derivative error -->
-      <Ti>1.0</Ti>         <!-- integrator time -->
-      <Td>0.00001</Td>     <!-- derivator time -->
-      <u_min>-1.0</u_min>  <!-- minimum output clamp -->
-      <u_max>1.0</u_max>   <!-- maximum output clamp -->
+      <Kp>0.06</Kp>
+      <beta>1.0</beta>
+      <alpha>0.1</alpha>
+      <gamma>0.0</gamma>
+      <Ti>3.2</Ti>
+      <Td>0.8</Td>
+      <u_min>0.0</u_min>
+      <u_max>0.8</u_max>        <!-- Limit to 80% (ie. not afterburners) -->
     </config>
   </pid-controller>
 

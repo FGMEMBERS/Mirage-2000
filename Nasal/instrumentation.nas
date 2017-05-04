@@ -13,7 +13,8 @@ var isHUDvisible = 1;
 var viewHUD = func()
 {
     voltsHud = getprop("/systems/electrical/volts");
-    if(voltsHud > 12)
+    var internalHUD_selected = getprop("/controls/hud");
+    if(voltsHud > 12 and internalHUD_selected)
     {
         setprop("/sim/hud/visibility[1]", 1);
     }

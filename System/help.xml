@@ -16,12 +16,27 @@
 
   <key>
     <name>t</name>
-    <desc>Change Radar Distances (10, 20 40,60,160)</desc>
+    <desc>Increase Radar Distances (10, 20 40,60,160)</desc>
+  </key>
+  
+  <key>
+    <name>T</name>
+    <desc>Decrease Radar Distances (10, 20 40,60,160)</desc>
   </key>
 
   <key>
     <name>R</name>
     <desc>Activate/desactivate targeting (the target have to be bellow radar range)</desc>
+  </key>
+  
+  <key>
+    <name>q</name>
+    <desc>Toggle Radar</desc>
+  </key>
+  
+  <key>
+    <name>Q</name>
+    <desc>Toggle ECM (not really working)</desc>
   </key>
 
   <key>
@@ -34,10 +49,7 @@
     <desc>Previous Target</desc>
   </key>
 
-  <key>
-    <name>T</name>
-    <desc>Toggle RWR</desc>
-  </key>
+
 
   <key>
     <name>w</name>

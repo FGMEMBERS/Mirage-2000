@@ -19,7 +19,7 @@
              compression-norm : ~0.20 : charge / ~0.14 : decharge / 0 : en vol
       -->
       <and>
-        <property>sim/multiplay/generic/float[9]</property>
+        <property>gear/gear[1]/wow</property>
         <greater-than>
           <property>sim/multiplay/generic/float[12]</property>
           <value>5</value>
@@ -29,11 +29,11 @@
           <value>90</value>
         </less-than>
         <greater-than>
-          <property>/gear/gear[1]/compression-norm</property>
+          <property>gear/gear[1]/compression-norm</property>
           <value>0.0001</value>
         </greater-than>
         <less-than>
-          <property>/gear/gear[1]/compression-norm</property>
+          <property>gear/gear[1]/compression-norm</property>
           <value>0.05</value>
         </less-than>
       </and>

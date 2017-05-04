@@ -421,10 +421,10 @@ refs 3
 36 0.683880984783 0.893558382988
 kids 0
 OBJECT poly
-name "ailettes"
+name "Magic2Ailettes"
 loc 0 0 -0
 data 8
-ailettes
+Magic2Ailettes
 texture "external-objects.png"
 texrep 1 1
 crease 30.000001

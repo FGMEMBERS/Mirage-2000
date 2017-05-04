@@ -40,7 +40,7 @@
 
   <model>
     <name>AIM120L</name>
-    <path>Aircraft/Mirage-2000/Missiles/AIM-120/AIM-120.xml</path>
+    <path>Aircraft/Mirage-2000/Missiles/AIM120/AIM-120.xml</path>
     <offsets>
       <x-m>-1.265</x-m>
       <y-m>-0.824</y-m>
@@ -54,7 +54,10 @@
     <offsets>
       <x-m>-1.265</x-m>
       <y-m>-0.824</y-m>
-      <z-m>-1.404</z-m>
+      <z-m>-1.370</z-m>
+      <heading-deg>-1</heading-deg>
+      <roll-deg>0</roll-deg>
+      <pitch-deg>1</pitch-deg>
     </offsets>
   </model>
 
@@ -108,6 +111,16 @@
       <z-m>-1.494</z-m>
     </offsets>
   </model>
+  
+  <model>
+    <name>left-pos-2-MICA_IR</name>
+    <path>Aircraft/Mirage-2000/Missiles/MatraMicaIR/MicaIR.xml</path>
+    <offsets>
+      <x-m> 2.373</x-m>
+      <y-m>-3.278</y-m>
+      <z-m>-1.494</z-m>
+    </offsets>
+  </model>
 
   <model>
     <name>left-pos-2-R74</name>
@@ -149,6 +162,18 @@
       <z-m>-1.556</z-m>
     </offsets>
   </model>
+  
+  <model>
+    <name>left-exocet</name>
+    <path>Aircraft/Mirage-2000/Missiles/Exocet/Exocet.xml</path>
+    <offsets>
+      <x-m> 1.047</x-m>
+      <y-m>-2.359</y-m>
+      <z-m>-1.556</z-m>
+    </offsets>
+  </model>
+  
+  
 
   <model>
     <name>left-magic-2</name>
@@ -169,10 +194,40 @@
       <z-m>-1.556</z-m>
     </offsets>
   </model>
+  
+  <model>
+    <name>left-MICA-IR</name>
+    <path>Aircraft/Mirage-2000/Missiles/MatraMicaIR/MicaIR.xml</path>
+    <offsets>
+      <x-m> 1.047</x-m>
+      <y-m>-2.359</y-m>
+      <z-m>-1.556</z-m>
+    </offsets>
+  </model>
 
   <model>
     <name>Sea_EagleL</name>
     <path>Aircraft/Mirage-2000/Missiles/SeaEagle/seaeagle.xml</path>
+    <offsets>
+      <x-m> 1.447</x-m>
+      <y-m>-2.359</y-m>
+      <z-m>-1.556</z-m>
+    </offsets>
+  </model>
+  
+    <model>
+    <name>P3L-GBU16</name>
+    <path>Aircraft/Mirage-2000/Missiles/GBU16/gbu16.xml</path>
+    <offsets>
+      <x-m> 1.447</x-m>
+      <y-m>-2.359</y-m>
+      <z-m>-1.556</z-m>
+    </offsets>
+  </model>
+
+  <model>
+    <name>P3L-GBU12</name>
+    <path>Aircraft/Mirage-2000/Missiles/GBU12/GBU12.xml</path>
     <offsets>
       <x-m> 1.447</x-m>
       <y-m>-2.359</y-m>
@@ -190,6 +245,18 @@
       <z-m>-1.656</z-m>
     </offsets>
   </model>
+  
+  <model>
+    <name>center-exocet</name>
+    <path>Aircraft/Mirage-2000/Missiles/Exocet/Exocet.xml</path>
+    <offsets>
+      <x-m> 1.082</x-m>
+      <y-m> 0.000</y-m>
+      <z-m>-1.656</z-m>
+    </offsets>
+  </model>
+  
+  
 
   <model>
     <name>Center-GBU16</name>
@@ -260,6 +327,16 @@
       <z-m>-1.656</z-m>
     </offsets>
   </model>
+  
+  <model>
+    <name>ASMP</name>
+    <path>Aircraft/Mirage-2000/Missiles/asmp/ASMP.xml</path>
+    <offsets>
+      <x-m> 1.082</x-m>
+      <y-m> 0.000</y-m>
+      <z-m>-1.656</z-m>
+    </offsets>
+  </model>
 
   <model>
     <name>AGM65</name>
@@ -301,6 +378,16 @@
       <z-m>-1.556</z-m>
     </offsets>
   </model>
+  
+  <model>
+    <name>right-exocet</name>
+    <path>Aircraft/Mirage-2000/Missiles/Exocet/Exocet.xml</path>
+    <offsets>
+      <x-m> 1.047</x-m>
+      <y-m> 2.359</y-m>
+      <z-m>-1.556</z-m>
+    </offsets>
+  </model>
 
   <model>
     <name>right-magic-2</name>
@@ -321,10 +408,40 @@
       <z-m>-1.556</z-m>
     </offsets>
   </model>
+  
+  <model>
+    <name>right-MICA-IR</name>
+    <path>Aircraft/Mirage-2000/Missiles/MatraMicaIR/MicaIR.xml</path>
+    <offsets>
+      <x-m> 1.047</x-m>
+      <y-m> 2.359</y-m>
+      <z-m>-1.556</z-m>
+    </offsets>
+  </model>
 
   <model>
     <name>Sea_EagleR</name>
     <path>Aircraft/Mirage-2000/Missiles/SeaEagle/seaeagle.xml</path>
+    <offsets>
+      <x-m> 1.447</x-m>
+      <y-m> 2.359</y-m>
+      <z-m>-1.556</z-m>
+    </offsets>
+  </model>
+  
+  <model>
+    <name>P3R-GBU16</name>
+    <path>Aircraft/Mirage-2000/Missiles/GBU16/gbu16.xml</path>
+    <offsets>
+      <x-m> 1.447</x-m>
+      <y-m> 2.359</y-m>
+      <z-m>-1.556</z-m>
+    </offsets>
+  </model>
+
+  <model>
+    <name>P3R-GBU12</name>
+    <path>Aircraft/Mirage-2000/Missiles/GBU12/GBU12.xml</path>
     <offsets>
       <x-m> 1.447</x-m>
       <y-m> 2.359</y-m>
@@ -364,6 +481,16 @@
   </model>
 
   <model>
+    <name>right-pos-2-MICA_IR</name>
+    <path>Aircraft/Mirage-2000/Missiles/MatraMicaIR/MicaIR.xml</path>
+    <offsets>
+      <x-m> 2.373</x-m>
+      <y-m> 3.278</y-m>
+      <z-m>-1.494</z-m>
+    </offsets>
+  </model>
+  
+  <model>
     <name>right-pos-2-R74</name>
     <path>Aircraft/Mirage-2000/Missiles/R74/R-74.xml</path>
     <offsets>
@@ -396,7 +523,7 @@
 
   <model>
     <name>AIM120R</name>
-    <path>Aircraft/Mirage-2000/Missiles/AIM-120/AIM-120.xml</path>
+    <path>Aircraft/Mirage-2000/Missiles/AIM120/AIM-120.xml</path>
     <offsets>
       <x-m>-1.265</x-m>
       <y-m> 0.824</y-m>
@@ -410,10 +537,13 @@
     <offsets>
       <x-m>-1.265</x-m>
       <y-m> 0.824</y-m>
-      <z-m>-1.404</z-m>
+      <z-m>-1.370</z-m>
+      <heading-deg>1</heading-deg>
+      <roll-deg>0</roll-deg>
+      <pitch-deg>1</pitch-deg>
     </offsets>
   </model>
-
+  
   <model>
     <name>right-GBU16</name>
     <path>Aircraft/Mirage-2000/Missiles/GBU16/gbu16.xml</path>
@@ -433,15 +563,28 @@
       <z-m>-1.404</z-m>
     </offsets>
   </model>
+  
+    <model>
+    <name>PDLCT</name>
+    <path>Aircraft/Mirage-2000/Missiles/pdlct/POD.xml</path>
+    <offsets>
+      <x-m>-1.265</x-m>
+      <y-m> 0.824</y-m>
+      <z-m>-1.404</z-m>
+    </offsets>
+  </model>
 
-  <!-- station back right (Index 7) -->
+  <!-- station back left (Index 7) -->
   <model>
     <name>MICABL</name>
     <path>Aircraft/Mirage-2000/Missiles/MatraMica/MatraMica.xml</path>
     <offsets>
       <x-m> 3.360</x-m>
       <y-m>-0.920</y-m>
-      <z-m>-1.404</z-m>
+      <z-m>-1.380</z-m>
+      <heading-deg>1</heading-deg>
+      <roll-deg>0</roll-deg>
+      <pitch-deg>-2</pitch-deg>
     </offsets>
   </model>
 
@@ -472,7 +615,10 @@
     <offsets>
       <x-m> 3.360</x-m>
       <y-m> 0.920</y-m>
-      <z-m>-1.404</z-m>
+      <z-m>-1.380</z-m>
+      <heading-deg>-1</heading-deg>
+      <roll-deg>0</roll-deg>
+      <pitch-deg>-2</pitch-deg>
     </offsets>
   </model>
 

@@ -82,6 +82,13 @@ var groud_target = {
     init: func()
     {
         me.coord = geo.click_position();
+        
+        if(me.coord==nil){
+          me.coord = geo.Coord.new(geo.aircraft_position());
+          me.coord.apply_course_distance(getprop("orientation/heading-deg"),15000);
+          me.coord.set_alt(geo.elevation(me.coord.lat(),me.coord.lon()));  
+          #print("lat:"~me.coord.lat()~" lon:"~me.coord.lon()~" alt:"~me.coord.alt());
+        }
         var tempLat = me.coord.lat();
         var tempLon = me.coord.lon();
         var tempAlt = me.coord.alt();
@@ -123,8 +130,8 @@ var groud_target = {
     update: func()
     {
         # update me.coord : Could be a selectionnable option. The goal should to select multiple ground target
-        me.coord = geo.click_position();
-        
+        me.coord = geo.click_position()==nil?me.coord:geo.click_position();
+     
         # update Position of the Object
         var tempLat = me.coord.lat();
         var tempLon = me.coord.lon();

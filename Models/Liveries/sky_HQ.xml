@@ -6,8 +6,9 @@
     <model>
       <livery>
 
-        <name type="string">sky (HQ) [2000 C]</name>
+        <name type="string">1-official HQ 2000-C/B</name>
         <texture>Liveries/2048x2048/sky_HQ.png</texture>
+        <texture-tank-1700>tank1700.png</texture-tank-1700>
 
         <specular>
           <red>   0.3 </red>

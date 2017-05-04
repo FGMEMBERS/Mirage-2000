@@ -8,6 +8,7 @@ print("*** LOADING weapons.nas ... ***");
 var dt = 0;
 var isFiring = 0;
 var splashdt = 0;
+var tokenFlare = 0;
 var MPMessaging = props.globals.getNode("/controls/armament/mp-messaging", 1);
 
 fire_MG = func(b) {
@@ -48,9 +49,39 @@ var stopFiring = func() {
 reload_Cannon = func() {
     setprop("/ai/submodels/submodel/count",    120);
     setprop("/ai/submodels/submodel[1]/count", 120);
-    setprop("/ai/submodels/submodel[2]/count", 120);
-    setprop("/ai/submodels/submodel[3]/count", 120);
 }
+
+Cannon_rate = func() {
+    var rate = getprop("/ai/submodels/submodel/delay");
+    setprop("/ai/submodels/submodel[1]/delay", rate);
+    if(rate > 0.07){
+      Cannon_lQ_HQ_trigger("LQ");
+    }else{
+      Cannon_lQ_HQ_trigger("HQ");
+    }
+    
+}
+
+Cannon_lQ_HQ_trigger = func(Qual) {
+  var path = getprop("/ai/submodels/submodel/submodel");
+  
+  #if(path == "Aircraft/Mirage-2000/Models/Effects/guns/LQ-submodels.xml"){
+  if(Qual == "HQ"){
+    #path = "Aircraft/Mirage-2000/Models/Effects/guns/bullet-submodel.xml";
+    setprop("controls/armament/gunQuality",1);
+  }else{
+    #path = "Aircraft/Mirage-2000/Models/Effects/guns/LQ-submodels.xml";
+    setprop("controls/armament/gunQuality",0);
+  }
+  print("Submodels Path" ~ path);
+  setprop("/ai/submodels/submodel/submodel", path);
+  setprop("/ai/submodels/submodel[1]/submodel", path);
+  
+  #Aircraft/A-10/Models/Stores/GAU-8A/gau-8a-submodels.xml
+  #Aircraft/Mirage-2000/Models/Effects/guns/bullet-submodel.xml
+}
+
+
 
 # This is to detect collision when balistic are shooted.
 # The goal is to put an automatic message for gun splash
@@ -96,7 +127,7 @@ var Impact = func() {
     var time = getprop("/sim/time/elapsed-sec");
     if(splashOn != "Nothing" and (time - splashdt) > 1)
     {
-        var phrase = "Gun Splash On :" ~ splashOn~". "~ numberOfSplash ~" hits";
+        var phrase = "Gun Splash On : " ~ splashOn;
         if(MPMessaging.getValue() == 1)
         {
             setprop("/sim/multiplay/chat", phrase);
@@ -131,9 +162,9 @@ var Nb_Impact = func() {
 }
 
 # We mesure the minimum distance to all contact. This allow us to deduce who is the MP
-var findmultiplayer = func(targetCoord) {
+var findmultiplayer = func(targetCoord, dist = 20) {
     var raw_list = Mp.getChildren();
-    var dist  = 1000;
+    #var dist  = 20;
     var SelectedMP = "Nothing";
     foreach(var c ; raw_list)
     {
@@ -146,7 +177,7 @@ var findmultiplayer = func(targetCoord) {
         var HavePosition = c.getNode("position", 1);
         var name = c.getNode("callsign", 1);
         
-        if(type == "multiplayer" and HavePosition != nil and targetCoord != nil and name != nil)
+        if((type == "multiplayer" or type == "tanker" or type == "aircraft") and HavePosition != nil and targetCoord != nil and name != nil)
         {
             var elev = HavePosition.getNode("altitude-m", 1).getValue();
             var lat = HavePosition.getNode("latitude-deg", 1).getValue();
@@ -171,4 +202,20 @@ var findmultiplayer = func(targetCoord) {
     }
     #print("Splash on : Callsign:"~SelectedMP);
     return SelectedMP;
+}
+
+var flare = func(){
+if(tokenFlare==0){
+    tokenFlare= 1;
+    setprop("rotors/main/blade[3]/flap-deg", rand());
+    settimer(initFlare,0.5);
+    settimer(initToken,1);
+  } 
+}
+
+var initFlare = func(){
+  setprop("rotors/main/blade[3]/flap-deg", 0); 
+}
+var initToken = func(){
+  tokenFlare= 0;
 }

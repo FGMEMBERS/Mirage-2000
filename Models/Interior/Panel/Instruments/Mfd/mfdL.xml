@@ -162,7 +162,7 @@
       <binding>
         <command>property-adjust</command>
         <property>autopilot/settings/target-altitude-ft</property>
-        <step>500</step>
+        <step>50</step>
         <min>200</min>
         <max>60000</max>
         <wrap>false</wrap>
@@ -190,7 +190,7 @@
       <binding>
         <command>property-adjust</command>
         <property>autopilot/settings/target-altitude-ft</property>
-        <step>-500</step>
+        <step>-50</step>
         <min>200</min>
         <max>55000</max>
         <wrap>false</wrap>

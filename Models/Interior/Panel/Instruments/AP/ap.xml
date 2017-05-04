@@ -183,10 +183,19 @@
     <type>select</type>
     <object-name>pa-alt-on</object-name>
     <condition>
-      <equals>
-        <property>autopilot/locks/altitude</property>
-        <value>ALT</value>
-      </equals>
+      <or>
+        <equals>
+          <property>autopilot/locks/altitude</property>
+          <value>ALT</value>
+        </equals>
+        <and>
+          <equals>
+            <property>autopilot/locks/altitude</property>
+            <value>TF</value>
+          </equals>
+          <property>sim/model/lights/pa-blink/state</property>
+        </and>
+      </or>
     </condition>
   </animation>
 

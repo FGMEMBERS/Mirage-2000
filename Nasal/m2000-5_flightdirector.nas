@@ -24,7 +24,7 @@ var count           = 0;
 var count_1         = 0;
 var count_AP_SRC    = 0;
 var cycle_AP_SRC    = ["NAV1", "NAV2", "TACAN", "FMS"];
-var minimums        = getprop("/autopilot/settings/minimums");
+# var minimums        = getprop("/autopilot/settings/minimums");
 var wx_range        = [10, 25, 50, 100, 200, 300];
 var wx_index        = 3;
 var deadZ_pitch     = 0.05;
@@ -63,7 +63,7 @@ var FD_set_mode = func(btn)
             {
                 set_roll();
             }
-            if(getprop("/position/altitude-agl-ft") > minimums)
+            if(getprop("/position/altitude-agl-ft") > getprop("/autopilot/settings/minimums"))
             {
                 setprop(AP, "AP1");
             }
@@ -90,14 +90,26 @@ var FD_set_mode = func(btn)
     {
         setprop(Lateral_arm, "");
         setprop(Vertical_arm, "");
-        if(Vmode != "ALT")
+        if ((Vmode == "ALT") and (!getprop ("/instrumentation/tfs/malfunction")))
         {
-            setprop(Vertical, "ALT");
-            setprop("/autopilot/settings/target-altitude_ft", getprop("/instrumentation/altimeter/mode-c-alt-ft"));
+            setprop (Vertical, "TF");
+            var target = getprop ("/position/altitude-agl-ft");
+            target = 50 * int (target / 50 + 0.5);
+            setprop ("/autopilot/settings/target-altitude-ft", target);
+            setprop ("/autopilot/settings/minimums", 0);
+        }
+        else if (Vmode == "TF")
+        {
+            set_pitch();
+            var target = getprop ("/instrumentation/altimeter/mode-c-alt-ft");
+            target = 100 * int (target / 100 + 0.5);
+            setprop ("/autopilot/settings/target-altitude-ft", target);
+            setprop ("/autopilot/settings/minimums", 200);
         }
         else
         {
-            set_pitch();
+            setprop(Vertical, "ALT");
+            #setprop("/autopilot/settings/target-altitude-ft", getprop("/instrumentation/altimeter/mode-c-alt-ft"));
         }
     }
     elsif(btn == "nav")
@@ -141,6 +153,18 @@ var FD_set_mode = func(btn)
         else
         {
             setprop(SPD, "");
+        }
+    }
+    elsif(btn == "vs")
+    {      
+        if(Vmode != "VS")
+        {
+            setprop(Vertical, "VS");
+            setprop("/autopilot/settings/vertical-speed-fpm", getprop("/autopilot/internal/vert-speed-fpm"));
+        }
+        else
+        {
+            set_pitch();
         }
     }
 }
@@ -266,9 +290,9 @@ var set_apr = func() {
     }
 }
 
-setlistener("autopilot/settings/minimums", func(mn) {
-    minimums = mn.getValue();
-}, 1, 0);
+# setlistener("autopilot/settings/minimums", func(mn) {
+#     minimums = mn.getValue();
+# }, 1, 0);
 
 setlistener(NAVprop, func(Nv) {
     NAVSRC = Nv.getValue();
@@ -475,7 +499,8 @@ var monitor_V_armed = func() {
                     {
                         setprop(Vertical, "GS");
                         setprop(Vertical_arm, "");
-                        minimums = 100; # mini 100ft si GS
+                        # minimums = 100; # mini 100ft si GS
+                        setprop ("/autopilot/settings/minimums", 100);
                     }
                 }
             }
@@ -486,7 +511,7 @@ var monitor_V_armed = func() {
 # Tests PA-Limits
 var monitor_AP_errors = func() {
     var ralt = getprop("/position/altitude-agl-ft");
-    if(ralt < minimums)
+    if(ralt < getprop("/autopilot/settings/minimums"))
     {
         kill_Ap("AP-<MINI-ALTITUDE");
     }
@@ -509,8 +534,10 @@ var kill_Ap = func(msg) {
     set_pitch();
     set_roll();
     flag = 0;
-    setprop(pitch_trim, 0);
-    setprop(roll_trim, 0);
+    
+    #Trim management is done on SAS so put it to 0 cause strange behaviour
+    #setprop(pitch_trim, 0);
+    #setprop(roll_trim, 0);
 }
 
 # Temporarly disengage Autopilot when control stick steering
@@ -539,7 +566,7 @@ var pa_stb_on = func() {
 var update_fd = func() {
     var elev_ctrl = getprop("/controls/flight/elevator");
     var roll_ctrl = getprop("/controls/flight/aileron");
-    
+
     # Control stick position
     stick_pos = (elev_ctrl > deadZ_pitch
         or -deadZ_pitch > elev_ctrl
@@ -562,6 +589,14 @@ var update_fd = func() {
         and stick_pos == 0)
     {
         pa_stb_on();
+    }
+    if (V_mode == "TF" and stick_pos == 1)
+    {
+        setprop (Vertical, "TEMP DISENGAGE");
+    }
+    elsif (V_mode == "TEMP DISENGAGE" and stick_pos == 0)
+    {
+        setprop (Vertical, "TF");
     }
     update_nav();
     if(count == 0)

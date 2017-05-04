@@ -67,6 +67,7 @@
   <animation>
     <type>pick</type>
     <object-name>but0</object-name>
+    <condition><property>sim/rendering/rembrandt/enabled</property></condition>
     <action>
       <button>4</button>
       <!--  scroll up -->
@@ -84,6 +85,7 @@
   <animation>
     <type>pick</type>
     <object-name>but0</object-name>
+    <condition><property>sim/rendering/rembrandt/enabled</property></condition>
     <action>
       <button>3</button>
       <!--  scroll down -->
@@ -102,6 +104,7 @@
     <type>rotate</type>
     <object-name>but0</object-name>
     <object-name>bigbut0</object-name>
+    <condition><property>sim/rendering/rembrandt/enabled</property></condition>
     <property>/controls/lighting/boardLightUV</property>
     <factor>180</factor>
     <offset-deg>-180</offset-deg>
@@ -131,6 +134,7 @@
   <animation>
     <type>pick</type>
     <object-name>but1</object-name>
+    <condition><property>sim/rendering/rembrandt/enabled</property></condition>
     <action>
       <button>4</button>
       <!--  scroll up -->
@@ -148,6 +152,7 @@
   <animation>
     <type>pick</type>
     <object-name>but1</object-name>
+    <condition><property>sim/rendering/rembrandt/enabled</property></condition>
     <action>
       <button>3</button>
       <!--  scroll down -->
@@ -166,6 +171,7 @@
     <type>rotate</type>
     <object-name>but1</object-name>
     <object-name>bigbut1</object-name>
+    <condition><property>sim/rendering/rembrandt/enabled</property></condition>
     <property>/controls/lighting/sideLightUV</property>
     <factor>180</factor>
     <offset-deg>-180</offset-deg>
