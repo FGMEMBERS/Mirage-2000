@@ -2,27 +2,36 @@
 
 <PropertyList>
   
-  <SAS></SAS>
+  <SAS>
+    <autotrim type="bool">true</autotrim>
+    <cat type="int">true</cat>
+  </SAS>
   
   <lighting>
-    <landing-lights n="0" type="int">0</landing-lights>
-    <landing-lights n="1" type="int">0</landing-lights>
+    <landing-lights n="0" type="bool">false</landing-lights>
+    <landing-lights n="1" type="bool">false</landing-lights>
     <running-lights>0</running-lights>
     <passing-lights>0</passing-lights>
     <instruments-norm>1</instruments-norm>
     <recognition-lights n="0">0</recognition-lights>
     <recognition-lights n="1">0</recognition-lights>
     <recognition-lights n="2">0</recognition-lights>
-    <formation-lights>0</formation-lights>
     <tail-lights>0 </tail-lights>
     <cabin-lights>0</cabin-lights>
+    <strobe type="bool">true</strobe>
+    <strobeBelly type="bool">true</strobeBelly>
+    <tailLight type="bool">true</tailLight>
+    <position type="bool">true</position>
+    <formation-lights type="bool">true</formation-lights>
   </lighting>
   
   <circuit-breakers>
     <cabin-lights-pwr>true</cabin-lights-pwr>
     <instrument-lights>true</instrument-lights>
   </circuit-breakers>
-  
+
+  <hud type="bool">true</hud>
+
   <gear>
     <brake-parking type="double"> 1 </brake-parking>
   </gear>
@@ -66,6 +75,7 @@
         Missile property. the value here doesn't really count, beacause it's reloaded
         by a Nasal for each missile. Anyway this is nessecary for variable declaration
     -->
+    <automissileview type="bool">true</automissileview>
     <missile>
       <name>Matra MICA</name>
       <address>Aircraft/Mirage-2000/Missiles/MatraMica/MatraMica.xml</address>
@@ -126,8 +136,11 @@
     </missile>
     
     <trigger type="bool">false</trigger>
+    <gunQuality type="bool">true</gunQuality>
+    
     <master-arm type="bool">true</master-arm>
     <!-- ' 0=OFF, 1=GUN, 2=A/A, 3=A/G -->
+    
     <stick-selector type="int">0</stick-selector>
     <position-norm type="int">1</position-norm>
     
@@ -178,9 +191,15 @@
     </station>
     
   </armament>
-  
+
   <seat>
     <pilot type="bool">true</pilot>
   </seat>
-  
+
+  <ground-equipment type="bool">true</ground-equipment>
+
+  <cabin>
+    <shake-effect type="bool">true</shake-effect>
+  </cabin>
+
 </PropertyList>

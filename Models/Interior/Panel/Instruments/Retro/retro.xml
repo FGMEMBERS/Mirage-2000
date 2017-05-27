@@ -9,4 +9,9 @@
     <object-name>retro</object-name>
   </animation>
 
+  <effect>
+    <inherits-from>Aircraft/Mirage-2000/Models/Effects/mirror/mirror</inherits-from>
+    <object-name>retro</object-name>
+  </effect>
+
 </PropertyList>

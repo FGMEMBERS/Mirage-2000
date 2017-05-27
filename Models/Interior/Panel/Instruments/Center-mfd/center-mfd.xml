@@ -398,14 +398,9 @@
       <repeatable>false</repeatable>
       <binding>
         <command>property-cycle</command>
-        <property>/instrumentation/efis/Mode</property>
-        <value>CANVAS</value>
-        <value>OLD</value>
-        <value>OFF</value>
-      </binding>
-      <binding>
-        <command>nasal</command>
-        <script>mirage2000.mdfselection();</script>
+        <property>/instrumentation/efis/on</property>
+        <value>1</value>
+        <value>0</value>
       </binding>
     </action>
   </animation>
@@ -419,20 +414,15 @@
       <repeatable>false</repeatable>
       <binding>
         <command>property-cycle</command>
-        <property>/instrumentation/efis/Mode</property>
-        <value>OFF</value>
-        <value>OLD</value>
-        <value>CANVAS</value>
-      </binding>
-      <binding>
-        <command>nasal</command>
-        <script>mirage2000.mdfselection();</script>
+        <property>/instrumentation/efis/on</property>
+        <value>0</value>
+        <value>1</value>
       </binding>
     </action>
   </animation>
 
   <!--######################Tooltips###########################-->
-  <animation>
+<!--  <animation>
     <type>pick</type>
     <object-name>trim2</object-name>
     <hovered>
@@ -440,12 +430,12 @@
         <command>set-tooltip</command>
         <tooltip-id>mode-mfd</tooltip-id>
         <label>Mode : %s</label>
-        <property>/instrumentation/efis/Mode</property>
+        <property>/instrumentation/efis/on</property>
       </binding>
     </hovered>
-  </animation>
+  </animation>-->
 
-  <animation>
+<!--  <animation>
     <type>pick</type>
     <object-name>trim1</object-name>
     <hovered>
@@ -456,7 +446,7 @@
         <property>/instrumentation/efis/inputs/range-nm</property>
       </binding>
     </hovered>
-  </animation>
+  </animation>-->
 
   <animation>
     <type>pick</type>
@@ -470,10 +460,7 @@
     <object-name>blackbkdOFF</object-name>
     <condition>
       <or>
-        <equals>
-          <property>/instrumentation/efis/Mode</property>
-          <value>OFF</value>
-        </equals>
+        <not><property>/instrumentation/efis/on</property></not>
         <less-than>
           <property>/systems/electrical/volts</property>
           <value>12</value>
@@ -487,10 +474,8 @@
     <object-name>blackbkd</object-name>
     <condition>
       <and>
-        <equals>
-          <property>/instrumentation/efis/Mode</property>
-          <value>CANVAS</value>
-        </equals>
+        <property>/instrumentation/efis/Mode</property>
+        <property>/instrumentation/efis/on</property>
         <greater-than>
           <property>/systems/electrical/volts</property>
           <value>12</value>
@@ -505,10 +490,8 @@
     <path>Aircraft/Mirage-2000/Models/Interior/Panel/Instruments/Center-mfd/Old/MFD3d.xml</path>
     <condition>
       <and>
-        <equals>
-          <property>/instrumentation/efis/Mode</property>
-          <value>OLD</value>
-        </equals>
+        <not><property>/instrumentation/efis/Mode</property></not>
+        <property>/instrumentation/efis/on</property>
         <greater-than>
           <property>/systems/electrical/volts</property>
           <value>12</value>
@@ -526,10 +509,10 @@
     <type>scale</type>
     <object-name>MFD-Screen</object-name>
     <condition>
-      <equals>
-        <property>/instrumentation/efis/Mode</property>
-        <value>OLD</value>
-      </equals>
+      <and>
+        <not><property>/instrumentation/efis/Mode</property></not>
+        <property>/instrumentation/efis/on</property>
+      </and>
     </condition>
     <x-offset>1.00</x-offset>
     <y-offset>0.90</y-offset>

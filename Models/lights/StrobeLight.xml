@@ -8,7 +8,6 @@
     <object-name>Light</object-name>
   </animation>
 
-  <!-- Transparency for Rembrandt -->
   <effect>
     <inherits-from>Effects/model-transparent</inherits-from>
     <object-name>Light</object-name>
@@ -29,7 +28,7 @@
     <type>select</type>
     <object-name>Light</object-name>
     <condition>
-      <property>/sim/model/lights/sbc1/state</property>
+      <property>sim/model/lights/strobe2/state</property>
     </condition>
   </animation>
 
@@ -47,12 +46,13 @@
     <type>dist-scale</type>
     <object-name>Light</object-name>
     <interpolation>
-      <entry><ind>   0</ind><dep>0.25</dep></entry>
-      <entry><ind>  20</ind><dep>0.50</dep></entry>
-      <entry><ind>1500</ind><dep>5.00</dep></entry>
+      <entry><ind>    0 </ind><dep> 0.25 </dep></entry>
+      <entry><ind>   20 </ind><dep> 0.50 </dep></entry>
+      <entry><ind> 1500 </ind><dep> 2.00 </dep></entry>
     </interpolation>
   </animation>
 
+  <!--
   <animation>
     <type>select</type>
     <object-name>Light</object-name>
@@ -60,5 +60,6 @@
       <property>/systems/electrical/volts</property>
     </condition>
   </animation>
+  -->
 
 </PropertyList>

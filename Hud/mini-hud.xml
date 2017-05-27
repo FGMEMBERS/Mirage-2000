@@ -26,7 +26,7 @@
     <width>20</width>
     <height>8</height>
     <input>
-      <property>/orientation/heading-deg</property>
+      <property>/orientation/heading-magnetic-deg</property>
     </input>
     <format>%3.0f</format>
     <halign>center</halign>

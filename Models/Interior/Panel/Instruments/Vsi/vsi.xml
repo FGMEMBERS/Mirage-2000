@@ -54,17 +54,5 @@
     </axis>
   </animation>
 
-  <animation>
-    <type>pick</type>
-    <object-name>fond</object-name>
-    <object-name>disc</object-name>
-    <hovered>
-      <binding>
-        <command>set-tooltip</command>
-        <tooltip-id>vsi</tooltip-id>
-        <label>VSI</label>
-      </binding>
-    </hovered>
-  </animation>
 
 </PropertyList>

@@ -83,7 +83,9 @@ var showNd = func(pilot='cpt')
 
 var mdfselection = func()
 {
-    if(getprop("/instrumentation/efis/Mode") == "CANVAS" and IsIntialised == 0)
+    print("That worked");
+    
+    if(getprop("/instrumentation/efis/Mode") and IsIntialised != 1)
     {
         mirage2000.CANVAS_init();
     }

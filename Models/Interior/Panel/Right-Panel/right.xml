@@ -81,11 +81,22 @@
   <model>
     <path>Aircraft/Mirage-2000/Models/Interior/Panel/Right-Panel/Instruments/banq/banq.xml</path>
     <offsets>
-      <x-m>  0.24900 </x-m>
-      <y-m>  0.02200 </y-m>
-      <z-m> -0.00100 </z-m>
+      <x-m>  0.249 </x-m>
+      <y-m>  0.022 </y-m>
+      <z-m> -0.001 </z-m>
       <pitch-deg> -90 </pitch-deg>
     </offsets>
   </model>
 
+  <!-- Fusibles -->
+  <model>
+    <path>Aircraft/Mirage-2000/Models/Interior/Panel/Right-Panel/Instruments/fusibles/fusibles.xml</path>
+    <offsets>
+      <x-m>  0.365 </x-m>
+      <y-m>  0.022 </y-m>
+      <z-m> -0.001 </z-m>
+      <pitch-deg> -90 </pitch-deg>
+    </offsets>
+  </model>
+  
 </PropertyList>

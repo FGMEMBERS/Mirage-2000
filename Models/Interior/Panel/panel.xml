@@ -25,18 +25,35 @@
     </offsets>
   </model>
 
-  <!-- Effect Top Left
+  <!-- Effect Top Left-->
   <model>
     <path>Aircraft/Mirage-2000/Models/Interior/Panel/Instruments/Lights/Light-EffectUp.xml</path>
+    <name>EffectTopLeft</name>
     <offsets>
       <x-m>  0.50719 </x-m>
       <y-m> -0.20777 </y-m>
       <z-m>  0.03983 </z-m>
-      <pitch-deg>  93 </pitch-deg>
-      <heading-deg> 5 </heading-deg>
+      <pitch-deg>93</pitch-deg>
+      <heading-deg>5</heading-deg>
     </offsets>
   </model>
-  -->
+  
+  <animation>
+    <type>select</type>
+    <object-name>EffectTopLeft</object-name>
+    <condition>
+      <and>
+        <property>sim/rendering/rembrandt/enabled</property>
+        <not>
+          <equals>
+            <property>/systems/electrical/outputs/boardLightUV</property>
+            <value>0</value>
+          </equals>
+        </not>
+      </and>
+    </condition>
+  </animation>
+
 
   <!--Light Top RIGHT -->
   <model>
@@ -49,9 +66,10 @@
     </offsets>
   </model>
 
-  <!-- Effect Top RIGHT
+  <!-- Effect Top RIGHT-->
   <model>
     <path>Aircraft/Mirage-2000/Models/Interior/Panel/Instruments/Lights/Light-EffectUp.xml</path>
+    <name>EffectTopRight</name>
     <offsets>
       <x-m> 0.50719 </x-m>
       <y-m> 0.20777 </y-m>
@@ -59,11 +77,28 @@
       <pitch-deg> 90 </pitch-deg>
     </offsets>
   </model>
-  -->
+  
 
-  <!-- Effect BANQUETTE RIGHT
+  <animation>
+    <type>select</type>
+    <object-name>EffectTopRight</object-name>
+    <condition>
+      <and>
+        <property>sim/rendering/rembrandt/enabled</property>
+        <not>
+          <equals>
+            <property>/systems/electrical/outputs/boardLightUV</property>
+            <value>0</value>
+          </equals>
+        </not>
+      </and>
+    </condition>
+  </animation>
+  
+  <!-- Effect BANQUETTE RIGHT-->
   <model>
     <path>Aircraft/Mirage-2000/Models/Interior/Panel/Instruments/Lights/Light-EffectSide.xml</path>
+    <name>banqRight</name>
     <offsets>
       <x-m>  0.70 </x-m>
       <y-m>  0.38 </y-m>
@@ -71,7 +106,23 @@
       <pitch-deg> 15 </pitch-deg>
     </offsets>
   </model>
-  -->
+  
+  <animation>
+    <type>select</type>
+    <object-name>banqRight</object-name>
+    <condition>
+      <and>
+        <property>sim/rendering/rembrandt/enabled</property>
+        <not>
+          <equals>
+            <property>/systems/electrical/outputs/sideLightUV</property>
+            <value>0</value>
+          </equals>
+        </not>
+      </and>
+    </condition>
+  </animation>
+
 
   <!-- MFD Left -->
   <model>

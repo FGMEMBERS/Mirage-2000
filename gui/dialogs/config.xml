@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
 
 <PropertyList>
-
+  
   <!-- If you put the dialog file in the Aircraft/aircraftname/gui/dialog the dialog box is loaded -->
   <name>config</name>
   <modal type="bool">false</modal>
   <layout>vbox</layout>
-
+  
   <group>
     <layout>hbox</layout>
     <empty>
       <stretch>1</stretch>
     </empty>
-
+    
     <text>
       <label>Load Fast Configuration</label>
     </text>
-
+    
     <empty>
       <stretch>1</stretch>
     </empty>
-
+    
     <button>
       <pref-width>16</pref-width>
       <pref-height>16</pref-height>
       <legend></legend>
-
+      
       <default>1</default>
       <keynum>27</keynum>
       <border>2</border>
@@ -38,6 +38,9 @@
     </button>
   </group>
 
+  <hrule />
+
+  <!--
   <button>
     <legend>MP Shot Report</legend>
     <binding>
@@ -45,19 +48,34 @@
       <script>missile.MPReport()</script>
     </binding>
   </button>
-  <hrule />
-  <text>
-    <label>Everything bellow is only available on GROUND!</label>
-  </text>
+  -->
+  <group>
+    <layout>hbox</layout>
+    <text><label>MP Shot Report</label></text>
+    <checkbox>
+      <property>/controls/armament/mp-messaging</property>
+      <live>true</live>
+      <binding>
+        <command>nasal</command>
+        <script>m2000_load.MPReport()</script>
+      </binding>
+    </checkbox>
+  </group>
+
   <hrule />
 
-  <button>
-    <legend>Reload Gun</legend>
-    <binding>
-      <command>nasal</command>
-      <script>guns.reload_Cannon()</script>
-    </binding>
-  </button>
+  <group>
+    <layout>hbox</layout>
+    <text><label>Activate Auto missile view</label></text>
+    <checkbox>
+      <property>/controls/armament/automissileview</property>
+      <live>true</live>
+        <binding>
+          <command>property-toggle</command>
+          <property>/controls/armament/automissileview</property>
+        </binding>
+    </checkbox>
+  </group>
 
   <hrule />
 
@@ -71,8 +89,54 @@
 
   <hrule />
 
+  <button>
+    <legend>Reload Gun</legend>
+    <binding>
+      <command>nasal</command>
+      <script>guns.reload_Cannon()</script>
+    </binding>
+  </button>
+
+  <hrule />
+
+  <text><label>Rate of Fire </label></text>
+  <text><label>A/A => A/G => Lower..</label></text>
+  <group>
+    <layout>hbox</layout>
+    <group>
+      <layout>vbox</layout>
+      <halign>left</halign>
+      <text><label>1800rnd/min-1100rnd/min-Lower</label></text>
+    </group>
+    
+    <group>
+      <layout>vbox</layout>
+      <halign>right</halign>
+      <slider>
+        <name>Rate</name>
+        <property>/ai/submodels/submodel/delay</property>
+        <live>1</live>
+        <min>0.03</min>
+        <max>0.09</max>
+        <step>0.03</step>
+        <binding>
+          <command>dialog-apply</command>
+        </binding>
+        <binding>
+          <command>nasal</command>
+          <script>guns.Cannon_rate()</script>
+        </binding>
+      </slider>
+    </group>
+  </group>
+
+  <hrule />
+
   <text>
-    <label>Select a Config bellow</label>
+    <label>Everything below is only available on GROUND!</label>
+  </text>
+  <text>
+    <label>Select a Config below</label>
   </text>
 
   <button>
@@ -110,12 +174,18 @@
       <script>m2000_load.Kilo()</script>
     </binding>
   </button>
-
   <button>
     <legend>Air to Ground</legend>
     <binding>
       <command>nasal</command>
       <script>m2000_load.AirToGround()</script>
+    </binding>
+  </button>
+  <button>
+    <legend>m2000N</legend>
+    <binding>
+      <command>nasal</command>
+      <script>m2000_load.m2000N()</script>
     </binding>
   </button>
 

@@ -436,7 +436,7 @@
     <condition>
       <property>/controls/gear/brake-parking</property>
     </condition>
-    <format>break</format>
+    <format>brakes</format>
     <halign>left</halign>
   </label>
 

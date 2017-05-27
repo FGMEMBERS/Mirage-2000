@@ -3,7 +3,8 @@
 <PropertyList>
   
   <efis>
-    <Mode>OLD</Mode>
+    <Mode type="bool">0</Mode>
+    <on type="bool">1</on>
     <inputs>
       <range-nm>20</range-nm>
       <arpt type="bool">1</arpt>
@@ -64,7 +65,7 @@
     <range-selected type="double"> 20 </range-selected>
     <radar2-range type="double"> 150 </radar2-range>
     <display-rdr type="bool">true</display-rdr>
-    <radar-standby type="int">0</radar-standby>
+    <radar-standby type="int">1</radar-standby>
     <mode>
       <rws type="bool">true</rws>
       <tws-auto type="bool">false</tws-auto>

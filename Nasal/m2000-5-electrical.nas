@@ -138,7 +138,7 @@ Electrical_init = func()
     foreach(var a ; props.globals.getNode("/controls/lighting").getChildren())
     {
         a.setValue(1);
-    }  
+    }
     props.globals.getNode("/controls/lighting/landing-lights", 1).setBoolValue(0);
     props.globals.getNode("/controls/lighting/landing-lights[0]", 1).setBoolValue(0);
     props.globals.getNode("/controls/lighting/instrument-lights", 1).setBoolValue(1);
@@ -380,6 +380,49 @@ var electrical_bus = func(bus_volts)
         OutPuts.getNode("tail-lights", 1).setValue(0.0);
     }
     
+    #Dorsal Light
+    if(props.globals.getNode("/controls/lighting/strobe").getBoolValue())
+    {
+        OutPuts.getNode("strobe", 1).setValue(bus_volts);
+        load += 0.000002;
+    }
+    else
+    {
+        OutPuts.getNode("strobe", 1).setValue(0.0);
+    }
+    
+    #Belly Light
+    if(props.globals.getNode("/controls/lighting/strobeBelly").getBoolValue())
+    {
+        OutPuts.getNode("strobe2", 1).setValue(bus_volts);
+        load += 0.000002;
+    }
+    else
+    {
+        OutPuts.getNode("strobe2", 1).setValue(0.0);
+    }
+    
+    #Tail lights
+    if(props.globals.getNode("/controls/lighting/tailLight").getBoolValue())
+    {
+        OutPuts.getNode("tailLight", 1).setValue(bus_volts);
+        load += 0.000002;
+    }
+    else
+    {
+        OutPuts.getNode("tailLight", 1).setValue(0.0);
+    }
+    #Position lights
+    if(props.globals.getNode("/controls/lighting/position").getBoolValue())
+    {
+        OutPuts.getNode("position", 1).setValue(bus_volts);
+        load += 0.000002;
+    }
+    else
+    {
+        OutPuts.getNode("position", 1).setValue(0.0);
+    }
+    
     if(props.globals.getNode("/controls/lighting/cabin-lights").getBoolValue())
     {
         OutPuts.getNode("cabin-lights", 1).setValue(bus_volts);
@@ -523,7 +566,7 @@ var avionics_bus = func(bus_volts)
         OutPuts.getNode("transponder", 1).setValue(0.0);
     }
     
-    if(! props.globals.getNode("/instrumentation/radar/radar-standby").getBoolValue())
+    if(props.globals.getNode("/instrumentation/radar/radar-standby").getBoolValue())
     {
         OutPuts.getNode("radar", 1).setValue(bus_volts);
         load += 0.00015;

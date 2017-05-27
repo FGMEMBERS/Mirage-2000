@@ -14,6 +14,8 @@
     <object-name>logoselevonD</object-name>
     <object-name>logosdirection</object-name>
     <object-name>serial</object-name>
+    <object-name>logos-BIPLACE</object-name>
+    <object-name>logos-MONOPLACE</object-name>
   </animation>
 
   <!-- working for Rembrandt -->
@@ -28,6 +30,8 @@
     <object-name>logoselevonD</object-name>
     <object-name>logosdirection</object-name>
     <object-name>serial</object-name>
+    <object-name>logos-BIPLACE</object-name>
+    <object-name>logos-MONOPLACE</object-name>
   </effect>
 
   <animation>
@@ -41,6 +45,8 @@
     <object-name>logoselevonD</object-name>
     <object-name>logosdirection</object-name>
     <object-name>serial</object-name>
+    <object-name>logos-BIPLACE</object-name>
+    <object-name>logos-MONOPLACE</object-name>
 
     <property-base>sim/model/logos</property-base>
     <texture-prop>texture</texture-prop>
@@ -50,6 +56,15 @@
       <green-prop>emission/green</green-prop>
       <blue-prop>emission/blue</blue-prop>
     </specular>
+  </animation>
+
+  <!-- HIDING BIPLACE PARTS -->
+  <animation>
+    <type>select</type>
+    <object-name>logos-BIPLACE</object-name>
+    <condition>
+      <false />
+    </condition>
   </animation>
 
   <!-- Spoilers -->
@@ -205,12 +220,12 @@
     <interpolation>
       <entry><ind> 0.0 </ind><dep>  0 </dep></entry>
       <entry><ind> 0.6 </ind><dep>  0 </dep></entry>
-      <entry><ind> 1.0 </ind><dep> 95 </dep></entry>
+      <entry><ind> 1.0 </ind><dep> 75 </dep></entry>
     </interpolation>
     <center>
-      <x-m> -3.133 </x-m>
+      <x-m> -3.331 </x-m>
       <y-m>  0.000 </y-m>
-      <z-m> -1.322 </z-m>
+      <z-m> -1.324 </z-m>
     </center>
     <axis>
       <x> 0 </x>

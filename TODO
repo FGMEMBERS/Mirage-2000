@@ -129,10 +129,9 @@ MODEL :
 - améliorer encore la PC ? (voir le f35 du hangar FGUK)
 - 2000C -> 2000-5
   * ajouter les antennes de queue
-  * supprimer le tube pitot
-  * ajouter les lance leurres sur les Karman de voilure
-- créer une version biplace (en suspens par hardball : il me manque un savoir
-  faire)
+  * supprimer le tube pitot [DONE]
+  * ajouter les lance leurres sur les Karman de voilure [DONE]
+- créer une version biplace [DONE]
 
 SUBMODELS :
 - Voir si en multijoueur, un missile lancé par un avion tiers peut être
@@ -146,7 +145,7 @@ INSTRUMENTS :
   d'atterrissage (existe dans les hud) ou encore gestion de waypoint (existe
   aussi)
 - Finir de rajouter les instruments qui manquent : manche, manette de gaz, ECM
-  APU etc ...
+  APU etc ... [WORK IN PROGRESS]
 - Siège éjectable (+bloquer la vue sur le siège éjecté+bloquer les commandes de
   l'avion)
 - améliorer l'EHSI : cas où nav1 est slave d'un wp gps
@@ -165,9 +164,9 @@ TANKER :
 
 LIGHT :
 - Mettre des boutons pour les lights...(ou sur le MFD ou en recupérer
-  d'ailleurs ....ce serait bien d'avoir 3 ou 4 option de light)
+  d'ailleurs ....ce serait bien d'avoir 3 ou 4 option de light) [DONE]
 - Les phares principaux ne font pas de lumière...(parking)
-- ajouter les lumières de vol en formation (gris éteint, vert pastel allumé)
+- ajouter les lumières de vol en formation (gris éteint, vert pastel allumé) [DONE]
 
 MISSILE :
 - Gérer les missiles semi actifs

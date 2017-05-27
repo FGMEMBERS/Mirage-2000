@@ -4,6 +4,10 @@
 
   <path>RedLight.ac</path>
 
+  <animation>
+    <object-name>Light</object-name>
+  </animation>
+  
   <effect>
     <inherits-from>Effects/model-transparent</inherits-from>
     <object-name>Light</object-name>
@@ -24,7 +28,7 @@
     <type>select</type>
     <object-name>Light</object-name>
     <condition>
-      <property>/sim/model/lights/beacon/state</property>
+      <property>sim/model/lights/beacon/state</property>
     </condition>
   </animation>
 
@@ -42,18 +46,10 @@
     <type>dist-scale</type>
     <object-name>Light</object-name>
     <interpolation>
-      <entry><ind>   0</ind><dep>0.25</dep></entry>
-      <entry><ind>  20</ind><dep>0.50</dep></entry>
-      <entry><ind>1500</ind><dep>5.00</dep></entry>
+      <entry><ind>    0 </ind><dep> 0.25 </dep></entry>
+      <entry><ind>   20 </ind><dep> 0.50 </dep></entry>
+      <entry><ind> 1500 </ind><dep> 5.00 </dep></entry>
     </interpolation>
-  </animation>
-
-  <animation>
-    <type>select</type>
-    <object-name>Light</object-name>
-    <condition>
-      <property>/systems/electrical/volts</property>
-    </condition>
   </animation>
 
 </PropertyList>

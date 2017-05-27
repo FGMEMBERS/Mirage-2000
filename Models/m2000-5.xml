@@ -5,47 +5,122 @@
        02/08/2015 Updated by Hardball : added comments
 -->
 <PropertyList>
-
+  
   <path>m2000-5.ac</path>
 
+  <offsets>
+    <z-m>0.015</z-m>
+  </offsets>
+
+  <sound>
+    <path>Aircraft/Mirage-2000/Sounds/mp-sound.xml</path>
+  </sound>
+  
   <nasal>
-    <load>
+    <load><![CDATA[
+      var self = cmdarg();
+      
+      # start missile over MP
+      #  
+      var skip = 0;
+      var lat = self.getNode("rotors/main/blade[0]/flap-deg");
+      var lon = self.getNode("rotors/main/blade[1]/flap-deg");
+      var alt = self.getNode("rotors/main/blade[2]/flap-deg");
+      if (alt == nil or alt.getValue() == nil) {
+        skip = 1;
+      }
+
+      var objs = {};
+
+      var loop = func () {
+
+        if(alt.getValue() != 0) {
+          var objModel = objs["first"];
+          if (objModel == nil) {
+            # create model
+            #print("creating missile");
+            var n = props.globals.getNode("models", 1);
+            var i = 0;
+            for (i = 0; 1==1; i += 1) {
+              if (n.getChild("model", i, 0) == nil) {
+                break;
+              }
+            }
+            objModel = n.getChild("model", i, 1);
+
+            objModel.getNode("elevation",1).setDoubleValue(0);
+            objModel.getNode("latitude",1).setDoubleValue(0);
+            objModel.getNode("longitude",1).setDoubleValue(0);
+            objModel.getNode("elevation-ft-prop",1).setValue(objModel.getPath()~"/elevation");
+            objModel.getNode("latitude-deg-prop",1).setValue(objModel.getPath()~"/latitude");
+            objModel.getNode("longitude-deg-prop",1).setValue(objModel.getPath()~"/longitude");
+            objModel.getNode("heading-deg",1).setDoubleValue(0);
+            objModel.getNode("pitch-deg",1).setDoubleValue(0);
+            objModel.getNode("roll-deg",1).setDoubleValue(0);
+            objModel.getNode("path",1).setValue("Aircraft/Mirage-2000/Missiles/MP_missile/mp_missile.xml");
+
+            var loadNode = objModel.getNode("load", 1);
+            loadNode.setBoolValue(1);
+
+            objs["first"] = objModel;
+            loadNode.remove();
+          }
+        }
+        var exist = 0;
+        if(alt.getValue() != 0) {
+          exist = 1;
+
+          var objModel = objs["first"];
+          if (objModel == nil) {
+            print("error: did not find mp missile.");
+            return;
+          }# else {
+          #  print("found a missile!");
+          #}
+          objModel.getNode("latitude").setDoubleValue(lat.getValue());
+          objModel.getNode("longitude").setDoubleValue(lon.getValue());
+          objModel.getNode("elevation").setDoubleValue(alt.getValue()*M2FT);
+
+        }
+        if (exist == 0) {
+          # remove model
+          var objModel = objs["first"];
+          if (objModel != nil) {
+            objModel.remove();
+            delete(objs, "first");
+          }
+        }
+
+        if (self.getNode("valid") == 0 or self.getNode("valid") == nil) {
+          return;
+        }
+        settimer(loop, 0.05);
+      }
+
+      if (skip == 0) {
+          loop();
+      }
+      #
+      # end missile over MP
+
+      ########################################################################################
       # WARNING : The on-load Nasal is not executed when this file is loaded as the
       # user aircraft.
       #
       # load the needed modules if it hasn't been done yet.
       # load handles broadcast of:
       #   - external load set.
-      if(! contains(globals, "m2000_load"))
+      if(! contains(globals, "m2000_mp"))
       {
-          var file = call(func getprop("/sim/fg-aircraft") ~ "/Mirage-2000/Nasal/ext_stores.nas", nil, var err = []);
+          var file = call(func "Aircraft/Mirage-2000/Nasal/MP.nas", nil, var err = []);
           var code = call(func compile(io.readfile(file), file), nil, err);
-          print("Path 1. Error : " ~size(err));
+          print("Path 0. Error : " ~size(err));
           if(size(err) == 0)
           {
-              io.load_nasal(file, "m2000_load");
+              io.load_nasal(file, "m2000_mp");
           }
       }
-      if(! contains(globals, "m2000_load"))
-      {
-          var file = call(func getprop("/sim/fg-aircraft[1]") ~ "/Mirage-2000/Nasal/ext_stores.nas", nil, var err = []);
-          var code = call(func compile(io.readfile(file), file), nil, err);
-          print("Path 2. Error : " ~size(err));
-          if(size(err) == 0)
-          {
-              io.load_nasal(file, "m2000_load");
-          }
-      }
-      if(! contains(globals, "m2000_load"))
-      {
-          var file = call(func getprop("/sim/fg-root") ~ "/Aircraft/Mirage-2000/Nasal/ext_stores.nas", nil, var err = []);
-          var code = call(func compile(io.readfile(file), file), nil, err);
-          print("Path 3. Error : " ~ size(err));
-          if(size(err) == 0)
-          {
-              io.load_nasal(file, "m2000_load");
-          }
-      }
+
       var update = aircraft.overlay_update.new();
       update.add("Aircraft/Mirage-2000/Models/Liveries", "sim/model/livery/file");
       update.add("Aircraft/Mirage-2000/Models/Logos/", "sim/multiplay/generic/string");
@@ -59,22 +134,30 @@
       var float_1 = self.getNode("sim/multiplay/generic/float[1]", 1);
       
       var myLoadString = self.getNode("sim/multiplay/generic/string[1]",1);
+      var myLoadInt = self.getNode("sim/multiplay/generic/int[8]",1);
       
       var crew_door = self.getNode("sim/model/door-positions/crew/position-norm", 1);
       var passenger_door = self.getNode("sim/model/door-positions/passenger/position-norm", 1);
       
+
+      
       # Update Time
       #print("Creating the Decodeur");
-      var myDecodeur = m2000_load.Decode_Load.new(self,myLoadString,0.5);
+      var myDecodeur = m2000_mp.Decode_Load.new(self,myLoadString,0.5);
+      var myBoolDecodeur = m2000_mp.Decode_Bool.new(self,myLoadInt,0.5);
+      var myMP_light = m2000_mp.MP_light.new(self);
       myDecodeur.decode();
+      myBoolDecodeur.start();
       
       crew_door.alias(float_0);
       passenger_door.alias(float_1);
       #print("multiplay");
       #MP.loads(1);
+      ]]>
     </load>
     <unload>
       myDecodeur.stop();
+      myBoolDecodeur.stop();
       #livery_update.stop();
       update.stop();
       crew_door.unalias();
@@ -92,7 +175,8 @@
     <object-name>paletteBD1</object-name>
     <object-name>paletteBG2</object-name>
     <object-name>paletteBD2</object-name>
-    <object-name>queue</object-name>
+    <object-name>queue-MONOPLACE</object-name>
+    <object-name>queue-BIPLACE</object-name>
     <object-name>ailes</object-name>
     <object-name>slatG1</object-name>
     <object-name>slatG2</object-name>
@@ -110,11 +194,16 @@
     <object-name>direction</object-name>
     <object-name>entrees</object-name>
     <object-name>souris</object-name>
-    <object-name>canope</object-name>
+    <object-name>canope-MONOPLACE</object-name>
+    <object-name>canopeAvant-BIPLACE</object-name>
+    <object-name>canopeArriere-BIPLACE</object-name>
     <object-name>antennes</object-name>
-    <object-name>tuyere</object-name>
+    <object-name>antennes-MONOPLACE</object-name>
+    <object-name>antennes-BIPLACE</object-name>
     <object-name>porteA1</object-name>
     <object-name>porteA2</object-name>
+    <object-name>porteAG</object-name>
+    <object-name>porteAD</object-name>
     <object-name>porteG1</object-name>
     <object-name>porteG2</object-name>
     <object-name>porteD1</object-name>
@@ -130,6 +219,8 @@
     <object-name>guns</object-name>
     <object-name>trous</object-name>
     <object-name>axeAH</object-name>
+    <!--object-name>axeAH2</object-name-->
+    <object-name>axeAlights</object-name>
     <object-name>axeAB</object-name>
     <object-name>axeA1</object-name>
     <object-name>axeA2</object-name>
@@ -150,10 +241,16 @@
     <object-name>roueD</object-name>
     <object-name>turbine</object-name>
     <object-name>bruleur</object-name>
+    <object-name>tuyere</object-name>
+
+    <object-name>parking</object-name>
 
     <!-- ~~~~~~~~~~~~~~~~~~ transparent objects -->
     <object-name>vitres</object-name>
-    <object-name>verriere</object-name>
+    <object-name>vitres-BIPLACE</object-name>
+    <object-name>verriere-MONOPLACE</object-name>
+    <object-name>verriereAvant-BIPLACE</object-name>
+    <object-name>verriereArriere-BIPLACE</object-name>
   </animation>
   
   <animation>
@@ -165,7 +262,8 @@
     <object-name>paletteBD1</object-name>
     <object-name>paletteBG2</object-name>
     <object-name>paletteBD2</object-name>
-    <object-name>queue</object-name>
+    <object-name>queue-MONOPLACE</object-name>
+    <object-name>queue-BIPLACE</object-name>
     <object-name>ailes</object-name>
     <object-name>slatG1</object-name>
     <object-name>slatG2</object-name>
@@ -183,11 +281,16 @@
     <object-name>direction</object-name>
     <object-name>entrees</object-name>
     <object-name>souris</object-name>
-    <object-name>canope</object-name>
+    <object-name>canope-MONOPLACE</object-name>
+    <object-name>canopeAvant-BIPLACE</object-name>
+    <object-name>canopeArriere-BIPLACE</object-name>
     <object-name>antennes</object-name>
-    <object-name>tuyere</object-name>
+    <object-name>antennes-MONOPLACE</object-name>
+    <object-name>antennes-BIPLACE</object-name>
     <object-name>porteA1</object-name>
     <object-name>porteA2</object-name>
+    <object-name>porteAG</object-name>
+    <object-name>porteAD</object-name>
     <object-name>porteG1</object-name>
     <object-name>porteG2</object-name>
     <object-name>porteD1</object-name>
@@ -203,6 +306,8 @@
     <object-name>guns</object-name>
     <object-name>trous</object-name>
     <object-name>axeAH</object-name>
+    <!--object-name>axeAH2</object-name-->
+    <object-name>axeAlights</object-name>
     <object-name>axeAB</object-name>
     <object-name>axeA1</object-name>
     <object-name>axeA2</object-name>
@@ -222,7 +327,6 @@
     <object-name>axeD4</object-name>
     <object-name>roueD</object-name>
     <object-name>turbine</object-name>
-    <object-name>bruleur</object-name>
 
     <!-- ~~~~~~~~~~~~~~~~~~ textures -->
     <property-base>sim/model/livery</property-base>
@@ -236,8 +340,35 @@
     </specular>
   </animation>
 
+  <!-- HIDING BIPLACE PARTS -->
+  <animation>
+    <type>select</type>
+    <object-name>queue-BIPLACE</object-name>
+    <object-name>canopeAvant-BIPLACE</object-name>
+    <object-name>canopeArriere-BIPLACE</object-name>
+    <object-name>vitres-BIPLACE</object-name>
+    <object-name>verriereAvant-BIPLACE</object-name>
+    <object-name>verriereArriere-BIPLACE</object-name>
+    <object-name>antennes-BIPLACE</object-name>
+    <condition>
+      <false />
+    </condition>
+  </animation>
+
+  <animation>
+    <type>select</type>
+    <object-name>parking</object-name>
+    <condition>
+      <and>
+        <property>controls/ground-equipment</property>
+        <property>controls/engines/engine[0]/cutoff</property>
+      </and>
+    </condition>
+  </animation>
+
   <effect>
-    <inherits-from>Aircraft/Generic/Effects/Fuselagereflect</inherits-from>
+    <!--inherits-from>Aircraft/Generic/Effects/Fuselagereflect</inherits-from-->
+    <inherits-from>Aircraft/Mirage-2000/Models/Effects/aircraft/aircraft</inherits-from>
     <object-name>fuselage</object-name>
     <object-name>paletteHG</object-name>
     <object-name>paletteHD</object-name>
@@ -245,7 +376,8 @@
     <object-name>paletteBD1</object-name>
     <object-name>paletteBG2</object-name>
     <object-name>paletteBD2</object-name>
-    <object-name>queue</object-name>
+    <object-name>queue-MONOPLACE</object-name>
+    <object-name>queue-BIPLACE</object-name>
     <object-name>ailes</object-name>
     <object-name>slatG1</object-name>
     <object-name>slatG2</object-name>
@@ -263,9 +395,12 @@
     <object-name>direction</object-name>
     <object-name>entrees</object-name>
     <object-name>souris</object-name>
-    <object-name>canope</object-name>
+    <object-name>canope-MONOPLACE</object-name>
+    <object-name>canopeAvant-BIPLACE</object-name>
+    <object-name>canopeArriere-BIPLACE</object-name>
     <object-name>antennes</object-name>
-    <object-name>tuyere</object-name>
+    <object-name>antennes-MONOPLACE</object-name>
+    <object-name>antennes-BIPLACE</object-name>
     <object-name>porteA1</object-name>
     <object-name>porteA2</object-name>
     <object-name>porteG1</object-name>
@@ -285,40 +420,31 @@
   <effect>
     <inherits-from>Aircraft/Mirage-2000/Models/Effects/Glass/glass</inherits-from>
     <object-name>vitres</object-name>
-    <object-name>verriere</object-name>
+    <object-name>verriere-MONOPLACE</object-name>
   </effect>
-
-  <!--
-  <animation>
-    <type>material</type>
-    <object-name>R550</object-name>
-    <object-name>ailettes</object-name>
-    <object-name>tank</object-name>
-    <object-name>Mica</object-name>
-    <object-name>tail</object-name>
-    <object-name>body</object-name>
-    <object-name>canard</object-name>
-    <object-name>AIM-120C5</object-name>
-    <object-name>gbu16</object-name>
-
-    <property-base>sim/model/livery-tank</property-base>
-    <texture-prop>texture</texture-prop>
-    <texture>External-objects/tank1700l/tank1700.png</texture>
-    <emission>
-      <red-prop>emission/red</red-prop>
-      <green-prop>emission/green</green-prop>
-      <blue-prop>emission/blue</blue-prop>
-    </emission>
-  </animation>
-  -->
-
+  
   <model>
+    <name>Interior</name>
     <path>Aircraft/Mirage-2000/Models/Interior/interior.xml</path>
   </model>
+  
+  <animation>
+    <type>translate</type>
+    <object-name>Interior</object-name>
+    <property>controls/cabin/shaking</property>
+    <axis>
+      <x1-m>  0</x1-m>
+      <y1-m>  0</y1-m>
+      <z1-m>  0</z1-m>
+      <x2-m>  0.5</x2-m>
+      <y2-m> -0.5</y2-m>
+      <z2-m>  0.8</z2-m>
+    </axis>
+  </animation>
 
-  <model>
-    <path>Aircraft/Generic/marker.xml</path>
-  </model>
+<!--  <model>
+    <path>Models/Aircraft/marker.xml</path>
+  </model>-->
 
   <model>
     <path>Aircraft/Mirage-2000/Models/Logos/logos.xml</path>
@@ -428,18 +554,6 @@
       <z> 0 </z>
     </axis>
   </animation>
-
-  <!-- bruleur
-  <animation>
-    <type>material</type>
-    <object-name>bruleur</object-name>
-    <emission>
-      <red>   1.00 </red>
-      <green> 0.20 </green>
-      <blue>  0.05 </blue>
-    </emission>
-  </animation>
-  -->
   
   <!-- Particules OSG -->
   <model>
@@ -499,6 +613,17 @@
   </model>
 
   <!-- ~~~~~~~~~~~~~~~~~~ ground effects -->
+
+  <!-- exhaust while rotation if it rain -->
+  <model>
+    <path>Aircraft/Mirage-2000/Models/Effects/ground/rain_exhaust.xml</path>
+    <offsets>
+      <x-m>  5   </x-m>
+      <y-m>  0   </y-m>
+      <z-m> -0.5 </z-m>
+    </offsets>
+  </model>
+
   <!-- front gear -->
   <model>
     <path>Aircraft/Mirage-2000/Models/Effects/ground/ground0.xml</path>
@@ -549,7 +674,7 @@
     </offsets>
   </model>
   
-  <!-- right gear -->
+  <!-- right gear touchdown -->
   <model>
     <path>Aircraft/Mirage-2000/Models/Effects/ground/ground2_touchdown.xml</path>
     <offsets>
@@ -959,16 +1084,56 @@
     <interpolation>
       <entry><ind> 0.0 </ind><dep>  0 </dep></entry>
       <entry><ind> 0.6 </ind><dep>  0 </dep></entry>
-      <entry><ind> 1.0 </ind><dep> 95 </dep></entry>
+      <entry><ind> 1.0 </ind><dep> 75 </dep></entry>
     </interpolation>
     <center>
-      <x-m> -3.133 </x-m>
+      <x-m> -3.331 </x-m>
       <y-m>  0.000 </y-m>
-      <z-m> -1.322 </z-m>
+      <z-m> -1.324 </z-m>
     </center>
     <axis>
       <x> 0 </x>
       <y> 1 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+  <animation>
+    <type>rotate</type>
+    <object-name>porteAG</object-name>
+    <property>gear/gear[0]/position-norm</property>
+    <interpolation>
+      <entry><ind> 0.0 </ind><dep>  0 </dep></entry>
+      <entry><ind> 0.6 </ind><dep>  0 </dep></entry>
+      <entry><ind> 1.0 </ind><dep> 65 </dep></entry>
+    </interpolation>
+    <center>
+      <x-m> -3.133 </x-m>
+      <y-m> -0.168 </y-m>
+      <z-m> -1.274 </z-m>
+    </center>
+    <axis>
+      <x> -1 </x>
+      <y> 0 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+  <animation>
+    <type>rotate</type>
+    <object-name>porteAD</object-name>
+    <property>gear/gear[0]/position-norm</property>
+    <interpolation>
+      <entry><ind> 0.0 </ind><dep>  0 </dep></entry>
+      <entry><ind> 0.6 </ind><dep>  0 </dep></entry>
+      <entry><ind> 1.0 </ind><dep> 65 </dep></entry>
+    </interpolation>
+    <center>
+      <x-m> -3.133 </x-m>
+      <y-m>  0.168 </y-m>
+      <z-m> -1.274 </z-m>
+    </center>
+    <axis>
+      <x> 1 </x>
+      <y> 0 </y>
       <z> 0 </z>
     </axis>
   </animation>
@@ -1077,10 +1242,14 @@
   <animation>
     <name>TrainAvant</name>
     <object-name>axeAH</object-name>
+    <!--object-name>axeAH2</object-name-->
     <object-name>axeAB</object-name>
     <object-name>axeA1</object-name>
     <object-name>axeA2</object-name>
     <object-name>roueA</object-name>
+    <object-name>axeAlights</object-name>
+    <object-name>LightCone1</object-name>
+    <object-name>LightCone2</object-name>
   </animation>
 
   <animation>
@@ -1093,9 +1262,9 @@
       <entry><ind> 1.0 </ind><dep>   0 </dep></entry>
     </interpolation>
     <center>
-      <x-m> -3.056 </x-m>
-      <y-m>  0.000 </y-m>
-      <z-m> -1.219 </z-m>
+      <x-m> -3.03673 </x-m>
+      <y-m>  0.00000 </y-m>
+      <z-m> -1.16016 </z-m>
     </center>
     <axis>
       <x> 0 </x>
@@ -1104,6 +1273,27 @@
     </axis>
   </animation>
 
+  <!--animation>
+    <type>rotate</type>
+    <object-name>axeAH2</object-name>
+    <property>gear/gear[0]/position-norm</property>
+    <interpolation>
+      <entry><ind> 0.0 </ind><dep> 19 </dep></entry>
+      <entry><ind> 0.6 </ind><dep> 19 </dep></entry>
+      <entry><ind> 1.0 </ind><dep>  0 </dep></entry>
+    </interpolation>
+    <center>
+      <x-m> -3.14993 </x-m>
+      <y-m>  0.00000 </y-m>
+      <z-m> -1.78437 </z-m>
+    </center>
+    <axis>
+      <x> 0 </x>
+      <y> 1 </y>
+      <z> 0 </z>
+    </axis>
+  </animation-->
+  
   <!-- ~~~~~~~~~~~~~~~~~~ front wheels -->
   <animation>
     <name>RoueGauche</name>
@@ -1416,8 +1606,19 @@
 
   <!-- Rotation de la roue avant en fonction de la gouverne de direction -->
   <animation>
+    <name>SousTrainAvant</name>
+    <object-name>axeAB</object-name>
+    <object-name>axeA1</object-name>
+    <object-name>axeA2</object-name>
+    <object-name>axeAlights</object-name>
+    <object-name>LightCone1</object-name>
+    <object-name>LightCone2</object-name>
+    <object-name>roueA</object-name>
+  </animation>
+  
+  <animation>
     <type>rotate</type>
-    <object-name>TrainAvant</object-name>
+    <object-name>SousTrainAvant</object-name>
     <property>surface-positions/nose-wheel-pos-norm</property>
     <factor> -125 </factor>
     <center>
@@ -1436,12 +1637,13 @@
   <animation>
     <type>spin</type>
     <object-name>roueA</object-name>
-    <property>gear/gear[0]/rollspeed-ms</property>
+    <!--property>gear/gear[0]/rollspeed-ms</property-->
+    <property>sim/multiplay/generic/float[11]</property>
     <factor> 30 </factor>
     <center>
-      <x-m> -2.996 </x-m>
+      <x-m> -2.988 </x-m>
       <y-m>  0.000 </y-m>
-      <z-m> -2.399 </z-m>
+      <z-m> -2.4313 </z-m>
     </center>
     <axis>
       <x>  0 </x>
@@ -1453,7 +1655,8 @@
   <animation>
     <type>spin</type>
     <object-name>roueG</object-name>
-    <property>gear/gear[1]/rollspeed-ms</property>
+    <!--property>gear/gear[1]/rollspeed-ms</property-->
+    <property>sim/multiplay/generic/float[12]</property>
     <factor>30</factor>
     <center>
       <x-m>  1.948 </x-m>
@@ -1470,7 +1673,8 @@
   <animation>
     <type>spin</type>
     <object-name>roueD</object-name>
-    <property>gear/gear[2]/rollspeed-ms</property>
+    <!--property>gear/gear[2]/rollspeed-ms</property-->
+    <property>sim/multiplay/generic/float[13]</property>
     <factor> 30 </factor>
     <center>
       <x-m>  1.948 </x-m>
@@ -1484,13 +1688,14 @@
     </axis>
   </animation>
 
+  <!-- Canopy pilot-->
   <animation>
     <name>EnsembleCanope</name>
-    <object-name>canope</object-name>
-    <object-name>verriere</object-name>
+    <object-name>canope-MONOPLACE</object-name>
+    <object-name>verriere-MONOPLACE</object-name>
   </animation>
 
-  <animation>
+  <!--animation>
     <type>pick</type>
     <object-name>EnsembleCanope</object-name>
     <visible>true</visible>
@@ -1502,7 +1707,7 @@
         <script>doors.move_canopy();</script>
       </binding>
     </action>
-  </animation>
+  </animation-->
 
   <animation>
     <type>rotate</type>
@@ -1525,17 +1730,27 @@
   </animation>
 
   <!-- Ajout des effets lumineux -->
+  <!-- top Vert stab -->
   <model>
-    <path>Aircraft/Mirage-2000/Models/lights/beacon.xml</path>
+    <path>Aircraft/Mirage-2000/Models/lights/StrobeWhite.xml</path>
     <offsets>
-      <x-m> 6.389 </x-m>
-      <y-m> 0.000 </y-m>
-      <z-m> 2.574 </z-m>
+      <x-m> 6.7 </x-m>
+      <y-m> 0.055 </y-m>
+      <z-m> 2.25 </z-m>
+    </offsets>
+  </model>
+  <!-- top Vert stab -->
+  <model>
+    <path>Aircraft/Mirage-2000/Models/lights/StrobeWhite.xml</path>
+    <offsets>
+      <x-m> 6.7 </x-m>
+      <y-m>-0.055 </y-m>
+      <z-m> 2.25 </z-m>
     </offsets>
   </model>
 
   <model>
-    <path>Aircraft/Mirage-2000/Models/lights/beacon.xml</path>
+    <path>Aircraft/Mirage-2000/Models/lights/StrobeLight.xml</path>
     <offsets>
       <x-m> -0.999 </x-m>
       <y-m>  0.000 </y-m>
@@ -1553,15 +1768,6 @@
   </model>
 
   <model>
-    <path>Aircraft/Mirage-2000/Models/lights/StrobeLight.xml</path>
-    <offsets>
-      <x-m>  4.119 </x-m>
-      <y-m> -4.408 </y-m>
-      <z-m> -1.263 </z-m>
-    </offsets>
-  </model>
-
-  <model>
     <path>Aircraft/Mirage-2000/Models/lights/GreenLight.xml</path>
     <offsets>
       <x-m>  4.070 </x-m>
@@ -1570,36 +1776,41 @@
     </offsets>
   </model>
 
+  <!-- Formation lights -->
   <model>
-    <path>Aircraft/Mirage-2000/Models/lights/StrobeLight.xml</path>
-    <offsets>
-      <x-m>  4.119 </x-m>
-      <y-m>  4.408 </y-m>
-      <z-m> -1.263 </z-m>
-    </offsets>
+    <path>Aircraft/Mirage-2000/Models/lights/formation.xml</path>
   </model>
-
+  
+  <!-- Dorsal strobe -->
   <model>
-    <path>Aircraft/Mirage-2000/Models/lights/position.xml</path>
+    <name>strobeFlash</name>
+    <path>Aircraft/Mirage-2000/Models/lights/strobe.xml</path>
+    <offsets>
+      <x-m>1.09</x-m>
+      <y-m>0.0</y-m>
+      <z-m>0.25</z-m>
+    </offsets>
   </model>
   
   <!-- Landing Lights -->
   <model>
     <path>Aircraft/Mirage-2000/Models/lights/light-cone.xml</path>
+    <name>LightCone1</name>
     <offsets>
-      <x-m> -3.080 </x-m>
-      <y-m> -0.110 </y-m>
-      <z-m> -1.840 </z-m>
+      <x-m> -2.99155 </x-m>
+      <y-m> -0.10927 </y-m>
+      <z-m> -1.93217 </z-m>
       <heading-deg> 10 </heading-deg>
     </offsets>
   </model>
 
   <model>
     <path>Aircraft/Mirage-2000/Models/lights/light-cone.xml</path>
+    <name>LightCone2</name>
     <offsets>
-      <x-m> -3.080 </x-m>
-      <y-m>  0.110 </y-m>
-      <z-m> -1.840 </z-m>
+      <x-m> -2.99155 </x-m>
+      <y-m>  0.10927 </y-m>
+      <z-m> -1.93217 </z-m>
       <heading-deg> -10 </heading-deg>
     </offsets>
   </model>
@@ -1621,7 +1832,7 @@
     </axis>
   </animation>
 
-   <animation>
+  <animation>
     <type>rotate</type>
     <object-name>paletteHG</object-name>
     <property>engines/engine[0]/massic-debit_div2</property>
@@ -1730,4 +1941,26 @@
     </axis>
   </animation>
   
+  <!-- red effects on engine-->
+  <animation>
+    <type>material</type>
+    <object-name>bruleur</object-name>
+    <emission>
+      <factor-prop>controls/engines/engine[0]/SAS_throttle</factor-prop>
+      <red>1</red>
+      <green>0.1</green>
+      <blue>0.1</blue>
+    </emission>
+  </animation>
+  <animation>
+    <type>material</type>
+    <object-name>tuyere</object-name>
+    <emission>
+      <factor-prop>controls/engines/engine[0]/SAS_throttle</factor-prop>
+      <red>0.7</red>
+      <green>0</green>
+      <blue>0</blue>
+    </emission>
+  </animation>
+
 </PropertyList>
