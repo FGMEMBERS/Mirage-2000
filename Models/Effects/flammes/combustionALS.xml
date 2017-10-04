@@ -3,6 +3,7 @@
 <PropertyList>
 
   <path>combustion.ac</path>
+  <nopreview/>
 
   <animation>
     <object-name>ReheatInner</object-name>

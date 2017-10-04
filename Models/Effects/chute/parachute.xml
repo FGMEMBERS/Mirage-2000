@@ -3,6 +3,7 @@
 <PropertyList>
 
   <path>parachute.ac</path>
+  <nopreview/>
 
   <animation>
     <!-- Objets opaques -->

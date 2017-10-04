@@ -3,6 +3,7 @@
 <PropertyList>
 
   <path>exhaust.ac</path>
+  <nopreview/>
 
   <animation>
     <!-- opaques objects  -->

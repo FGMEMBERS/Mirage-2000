@@ -3,6 +3,7 @@
 <PropertyList>
 
   <path>effect.ac</path>
+  <nopreview/>
 
   <!-- ******************************************************************* -->
   <!-- Condensation                                                        -->
