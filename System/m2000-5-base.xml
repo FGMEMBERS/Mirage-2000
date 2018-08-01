@@ -28,6 +28,7 @@
           <position-norm type="float">1</position-norm>
         </crew>
       </doors>
+      <fallback-model-index type="int">504</fallback-model-index>
     </model>
 
   </sim>
