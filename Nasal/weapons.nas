@@ -9,9 +9,11 @@ var dt = 0;
 var isFiring = 0;
 var splashdt = 0;
 var tokenFlare = 0;
-var MPMessaging = props.globals.getNode("/controls/armament/mp-messaging", 1);
+var tokenMessageFlare = 0;
+var MPMessaging = props.globals.getNode("/payload/armament/msg", 1);
 
 fire_MG = func(b) {
+    return 1;
     var time = getprop("/sim/time/elapsed-sec");
     
     # Here is the gun things : the firing should last 0,5 sec or 1 sec, and in
@@ -24,8 +26,8 @@ fire_MG = func(b) {
         setprop("/controls/armament/Gun_trigger", 1);
         settimer(stopFiring, 0.5);
     }
-    if(getprop("/controls/armament/stick-selector") == 2)
-    {
+    print("m2000_load.weaponARRAY_Index : "~ m2000_load.weaponARRAY_Index);
+    if(m2000_load.weaponARRAY_Index > 1){
         if(b == 1)
         {
             # To limit: one missile/second
@@ -130,7 +132,7 @@ var Impact = func() {
         var phrase = "Gun Splash On : " ~ splashOn;
         if(MPMessaging.getValue() == 1)
         {
-            setprop("/sim/multiplay/chat", phrase);
+            armament.defeatSpamFilter(phrase);
         }
         else
         {
@@ -206,16 +208,26 @@ var findmultiplayer = func(targetCoord, dist = 20) {
 
 var flare = func(){
 if(tokenFlare==0){
+    if(tokenMessageFlare==0){
+      tokenMessageFlare=1;
+      settimer(message_Flare,1);
+    }
     tokenFlare= 1;
-    setprop("rotors/main/blade[3]/flap-deg", rand());
+    setprop("rotors/main/blade[3]/flap-deg", rand());    #flare
+    setprop("rotors/main/blade[3]/position-deg", rand());#chaff
     settimer(initFlare,0.5);
     settimer(initToken,1);
   } 
 }
 
 var initFlare = func(){
-  setprop("rotors/main/blade[3]/flap-deg", 0); 
+  setprop("rotors/main/blade[3]/flap-deg", 0);   #flare
+  setprop("rotors/main/blade[3]/position-deg", 0);#chaff
 }
 var initToken = func(){
   tokenFlare= 0;
+}
+var message_Flare = func() {
+      setprop("/sim/messages/atc", "Flare");
+      tokenMessageFlare =0;
 }
