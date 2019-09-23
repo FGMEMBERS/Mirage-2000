@@ -17,6 +17,16 @@ var Elapsed_time_previous = 0;
 var LastTime              = 0;
 # Elapsed for time > 0.25 sec
 var Elapsed               = 0;
+var myErr                 = [];
+var myFramerate           = {a:0,b:0,c:0,d:0,e:0,f:0};#a = 0.1, b=0.2, c = 0.5, d=1, e=1.5 ; f = 2
+var EjectionKey = 0;
+
+
+var msgB = "Please land before changing payload.";
+
+
+
+#======   OBJECT CREATION =======
 
 # Need some simplification in the way to manage the interval
 var engine1 = engines.Jet.new(0, 0, 0.01, 20, 3, 5, 30, 15);
@@ -27,8 +37,28 @@ var engine1 = engines.Jet.new(0, 0, 0.01, 20, 3, 5, 30, 15);
 #var RDY
 
 var myRadar3 = radar.Radar.new(NewRangeTab:[10, 20, 40, 60, 160], NewRangeIndex:1, forcePath:"instrumentation/radar2/targets", NewAutoUpdate:1);
-var LaserDetection = radar.Radar.new(NewRangeTab:[20], NewVerticalAzimuth:180, NewRangeIndex:0, NewTypeTarget:["aircraft", "multiplayer", "carrier", "ship", "missile", "aim120", "aim-9"], NewRadarType:"laser", NewhaveSweep:0, NewAutoUpdate:0, forcePath:"instrumentation/radar2/targets");
+#var LaserDetection = radar.Radar.new(NewRangeTab:[20], NewVerticalAzimuth:180, NewRangeIndex:0, NewTypeTarget:["aircraft", "multiplayer", "carrier", "ship", "missile", "aim120", "aim-9"], NewRadarType:"laser", NewhaveSweep:0, NewAutoUpdate:0, forcePath:"instrumentation/radar2/targets");
 setprop("/instrumentation/radar/az-fieldCenter", 0);
+
+var hud_pilot = hud.HUD.new({"node": "canvasHUD", "texture": "hud.png"});
+# var rwr = hud.HUD.new({"node": "canvasRWR", "texture": "hud.png"});
+
+var prop = "payload/armament/fire-control";
+var actuator_fc = compat_failure_modes.set_unserviceable(prop);
+FailureMgr.add_failure_mode(prop, "Fire control", actuator_fc);
+
+
+############################################################
+# Global loop function
+# If you need to run nasal as loop, add it in this function
+############################################################
+var global_system_loop = func{
+    mirage2000.weather_effects_loop();
+}
+
+#===============================
+
+
 
 var InitListener = setlistener("/sim/signals/fdm-initialized", func() {
     settimer(main_Init_Loop, 5.0);
@@ -40,7 +70,7 @@ var InitListener = setlistener("/sim/signals/fdm-initialized", func() {
 # of "engine"
 var main_Init_Loop = func()
 {
-    # Loop Updated inside
+  # Loop Updated inside
     print("Electrical ... Check");
     settimer(electrics.Electrical_init, 1.0);
     
@@ -64,7 +94,7 @@ var main_Init_Loop = func()
     
     print("Radar ... Check");
     myRadar3.init();
-    LaserDetection.init();
+    #LaserDetection.init();  
     
     print("Flight Director ... Check");
     settimer(mirage2000.init_set, 4.0);
@@ -78,16 +108,27 @@ var main_Init_Loop = func()
     print("system loop ... Check");
     settimer(UpdateMain, 8.0);
     
+    print("blackout ... Check");
+    settimer(blackout.blackout_init, 10);
+    
     print("minihud ... Check");
     settimer(hud.minihud, 10);
     
-    print("MFD ... Check");
+        
+    print("HUD canvas...Check");
+    hud_pilot.update();
     
+    print("MFD ... Check");
     settimer(mirage2000.setCentralMFD, 10);
     if(getprop("/instrumentation/efis/Mode"))
     {
         mirage2000.mdfselection();
     }
+    
+    
+    settimer(environment.environment, 20);
+    #Should be replaced by an object creation
+    #settimer(func(){mirage2000.createMap();},10);
 }
 
 var UpdateMain = func
@@ -96,44 +137,117 @@ var UpdateMain = func
 }
 
 var updatefunction = func()
-{
-    Elapsed_time_Seconds = int(getprop("/sim/time/elapsed-sec"));
+{  
     AbsoluteTime = getprop("/sim/time/elapsed-sec");
+    #Things to update, order by refresh rate.
     
+    var AP_Alt = getprop("/autopilot/locks/altitude");
+    
+    ########################### rate 0
     mirage2000.Update_SAS();
-    mirage2000.update_main();
-    MfdTime = getprop ("sim/time/elapsed-sec");
-    if(AbsoluteTime - Elapsed > 0.5)
-    {
-        m2000_load.Encode_Load();
-        m2000_mp.Encode_Bool();
-        Elapsed = Elapsed_time_Seconds;
+    
+    
+    if (getprop("payload/armament/es/flags/deploy-id-10")!= nil) {
+      setprop("instrumentation/ejection/force", 7-5*getprop("payload/armament/es/flags/deploy-id-10"));
+    } else {
+      setprop("instrumentation/ejection/force", 7);
     }
+    
     
     # Flight Director (autopilot)
     if(getprop("/autopilot/locks/AP-status") == "AP1")
     {
-        mirage2000.update_fd();
-    }
-    else
-    {
-        # this is a way to reduce autopilot refreshing time when not activated  <-? what
-        if(Elapsed_time_Seconds != Elapsed_time_previous)
-        {
-            mirage2000.update_fd();
+        call(mirage2000.update_fd,nil,nil,nil, myErr= []);
+        if(size(myErr)>0){
+          foreach(var i;myErr) {
+            print(i);
+          }
         }
     }
 
-    if(Elapsed_time_Seconds != Elapsed_time_previous)
-    {
-        mirage2000.fuel_managment();
+
+    ################## Rate 0.1 ##################
+    if(AbsoluteTime - myFramerate.a > 0.05){
+      #call(hud_pilot.update,nil,nil,nil, myErr);
+      hud_pilot.update();
+      call(mirage2000.theShakeEffect,nil,nil,nil, myErr);
+      myFramerate.a = AbsoluteTime;
     }
-    mirage2000.tfs_radar();
-    mirage2000.theShakeEffect();
     
-    Elapsed_time_previous = Elapsed_time_Seconds;
-    LastTime = AbsoluteTime;
-    mirage2000.UpdateMain();
+    
+    ################## rate 0.5 ###############################
+
+    if(AbsoluteTime - myFramerate.c > 0.5)
+    {
+      #call(m2000_load.Encode_Load,nil,nil,nil, myErr);
+      call(m2000_mp.Encode_Bool,nil,nil,nil, myErr);
+      myFramerate.b = AbsoluteTime;
+      #if(getprop("autopilot/settings/tf-mode")){ <- need to find what is enabling it
+      #8 second prevision do not need to be updated each fps
+      if(AP_Alt =="TF"){
+        call(mirage2000.tfs_radar,nil,nil,nil, myErr= []);
+        if(size(myErr)) {
+          foreach(var i;myErr) {
+            print(i);
+          }
+        }
+      }
+      mp_messaging();
+      #mirage2000.weather_effects_loop();
+      #environment.environment();
+    }
+    
+
+
+    ###################### rate 1 ###########################
+    if(AbsoluteTime - myFramerate.d > 1)
+    {
+      call(mirage2000.fuel_managment,nil,nil,nil, myErr);
+      if(getprop("/autopilot/locks/AP-status") != "AP1"){
+        call(mirage2000.update_fd,nil,nil,nil, myErr= []);
+        if(size(myErr)>0){
+          foreach(var i;myErr) {
+            print(i);
+          }
+        }
+      }
+      myFramerate.d = AbsoluteTime;
+    }
+    
+    ###################### rate 1.5 ###########################
+    if(AbsoluteTime - myFramerate.e > 1.5)
+    {
+      call(environment.environment,nil,nil,nil, myErr);
+      if(size(myErr)>0){
+        #debug.printerror(myErr);
+      }
+      call(environment.max_cloud_layer,nil,nil,nil, myErr);
+      if(size(myErr)>0){
+        #debug.printerror(myErr);
+      }
+      myFramerate.e = AbsoluteTime;
+    }
+    ###################### rate 2 ###########################
+    if(AbsoluteTime - myFramerate.f > 2)
+    {
+      if(AP_Alt =="TF"){
+        call(mirage2000.long_view_avoiding,nil,nil,nil, myErr);
+        if(size(myErr)>0){
+          foreach(var i;myErr) {
+            print(i);
+          }
+        }
+      }    
+      myFramerate.f = AbsoluteTime;
+    }
+    
+    
+    
+    
+    
+
+    # Update at the end
+    call(mirage2000.UpdateMain,nil,nil,nil, myErr);
 }
 
 var init_Transpondeur = func()
@@ -144,10 +258,10 @@ var init_Transpondeur = func()
     
     if(idcode != nil)
     {
-        for(var i = 0 ; i < 4 ; i += 1)
-        {
-            setprop("/instrumentation/transponder/inputs/digit[" ~ i ~ "]", int(math.mod(idcode / poweroften[i], 10)));
-        }
+      for(var i = 0 ; i < 4 ; i += 1)
+      {
+        setprop("/instrumentation/transponder/inputs/digit[" ~ i ~ "]", int(math.mod(idcode / poweroften[i], 10)));
+      }
     }
 }
 
@@ -296,7 +410,7 @@ var theShakeEffect = func() {
     #sf = ((rSpeed / 500000 + G / 25000 + alpha / 20000 ) / 3) ;
     # I want to find a way to improve vibration amplitude with sf, but to tired actually to make it.
     
-    if(shakeEffect2000.getBoolValue() and (((G > 7 or alpha > 20) and rSpeed > 30) or (mach > 0.99 and mach < 1.01) or (wow and rSpeed > 100) or gun))
+    if(shakeEffect2000.getBoolValue() and (((G > 9 or alpha > 25) and rSpeed > 30) or (mach > 0.99 and mach < 1.01) or (wow and rSpeed > 100) or gun))
     {
         #print("it is working.");
         setprop("controls/cabin/shaking", math.sin(48 * myTime) / 333.333);
@@ -317,3 +431,89 @@ var setCentralMFD = func() {
 
 # to prevent dynamic view to act like helicopter due to defining <rotors>:
 dynamic_view.register(func {me.default_plane();});
+
+
+
+
+var test = func(){
+      if(! contains(globals, "m2000_mp"))
+      {
+        var err = [];
+        var myTree = props.globals.getNode("/sim");
+        var raw_list = myTree.getChildren();
+        foreach(var c ; raw_list)
+        {
+          if(c.getName() == "fg-aircraft"){
+            myAircraftTree = "/sim/" ~ c.getName()~"["~c.getIndex()~"]";
+            print(myAircraftTree);
+            var err = [];
+            var file = getprop(myAircraftTree) ~ "/Mirage-2000/Nasal/MP.nas";
+            print(file);
+            var code = call(func compile(io.readfile(file), file), nil, err);
+            print("Path 0. Error : " ~size(err));
+            if(size(err) == 0)
+            {
+              call(func {io.load_nasal(file, "m2000_mp");},nil, err);
+              if (size(err)) {
+                print("Path 0a. Error : ");
+                foreach(lin;err) print(lin);
+                }else{
+                  break;}
+            }else {
+              print("Path 0b. Error : ");
+              foreach(lin;err) print(lin);
+            }
+          }
+        }
+      }
+} 
+
+
+var mp_messaging = func(){
+  if(getprop("/payload/armament/msg")){
+          #call(func{fgcommand('dialog-close', multiplayer.dialog.dialog.prop())},nil,var err= []);# props.Node.new({"dialog-name": "location-in-air"}));
+      call(func{multiplayer.dialog.del();},nil,var err= []);
+      if (!getprop("/gear/gear[0]/wow")) {
+        #call(func{fgcommand('dialog-close', props.Node.new({"dialog-name": "map"}))},nil,var err2 = []);
+        #call(func{fgcommand('dialog-close', props.Node.new({"dialog-name": "map-canvas"}))},nil,var err2 = []);
+        call(func{fgcommand('dialog-close', props.Node.new({"dialog-name": "WeightAndFuel"}))},nil,var err2 = []);        
+        call(func{fgcommand('dialog-close', props.Node.new({"dialog-name": "system-failures"}))},nil,var err2 = []);
+        call(func{fgcommand('dialog-close', props.Node.new({"dialog-name": "instrument-failures"}))},nil,var err2 = []);  
+      }      
+      setprop("sim/freeze/fuel",0);
+      setprop("/sim/speed-up", 1);
+      setprop("/gui/map/draw-traffic", 0);
+      setprop("/sim/gui/dialogs/map-canvas/draw-TFC", 0);
+      setprop("/sim/rendering/als-filters/use-filtering", 1);
+    
+    
+  }
+}
+
+
+var ejection = func(){
+ print("Ejection");
+        if (getprop("instrumentation/ejection/done")==1) {
+            return;
+        }
+        EjectionKey = EjectionKey +1;
+        print("EjectionKey:"~EjectionKey);
+        
+        if(EjectionKey<3){
+          settimer(mirage2000.init_EjectionKey, 2.0);
+          return;
+        }
+        
+        setprop("instrumentation/ejection/done",1);
+        
+        var es = armament.AIM.new(10, "es","gamma", nil ,[-3.65,0,0.7]);
+
+        es.releaseAtNothing();
+        view.view_firing_missile(es);
+        setprop("sim/view[0]/enabled",0);
+#       settimer(func {crash.exp();},3.5);
+}
+
+var init_EjectionKey = func(){
+  EjectionKey = 0;
+}

@@ -19,6 +19,23 @@ var tmp_nearest_u     = nil;
 var nearest_rng       = 0;
 var nearest_u         = nil;
 var missileIndex = 0;
+var MytargetVariable = nil;
+var completeList     = [];
+#var LoopElapsed =0;
+
+
+#This is done for detecting a terrain between aircraft and target. Since 2017.2.1, a new method allow to do the same, faster, and with more precision. (See isNotBehindTerrain function)
+var versionString = getprop("sim/version/flightgear");
+var version = split(".", versionString);
+var major = num(version[0]);
+var minor = num(version[1]);
+var pica  = num(version[2]);
+var pickingMethod = 0;
+if ((major == 2017 and minor == 2 and pica >= 1) or (major == 2017 and minor > 2) or major > 2017) {
+    pickingMethod = 1;
+}
+#print("Version is "~ versionString ~ " So Picking method : "~pickingMethod);
+
 
 var weaponRadarNames = {
     # 
@@ -46,7 +63,8 @@ listOfGroundTargetNames = ["groundvehicle"];
 listOfShipNames      = ["carrier", "ship"];
 listOfAIRadarEchoes  = ["multiplayer", "tanker", "aircraft", "carrier", "ship", "missile", "groundvehicle"];
 listOfAIRadarEchoes2 = keys(weaponRadarNames);
-listOfGroundVehicleModels = ["buk-m2", "depot", "truck", "tower", "germansemidetached1"];
+listOfGroundVehicleModels = ["buk-m2", "depot", "truck", "tower", "germansemidetached1","GROUND_TARGET"];
+#listOfGroundVehicleModels = ["GROUND_TARGET"];
 listOfShipModels          = ["frigate", "missile_frigate", "USS-LakeChamplain", "USS-NORMANDY", "USS-OliverPerry", "USS-SanAntonio"];
 foreach(var addMe ; listOfAIRadarEchoes2) {
     append(listOfAIRadarEchoes, addMe);
@@ -106,21 +124,25 @@ var Radar = {
         m.ElectricalPath    = (NewElectricalPath == nil) ? "/systems/electrical/outputs/radar" : NewElectricalPath;
         m.detectionTypetab  = (NewRadarType == nil) ? "radar" : NewRadarType; # old : m.detectionTypetab = ["radar","laser"];
         m.source            = (NewSourcePath == nil) ? "ai/models" : NewSourcePath;
-        me.Mp               = props.globals.getNode(m.source);
+        m.Mp               = props.globals.getNode(m.source);
         
         #m.detectionTypeIndex = 0;
         
         # variables that need to be initialised
         m.loop_running  = 0;
+        m.LoopElapsed = 0;
        
         m.MyCoord       = geo.aircraft_position(); # this is when the radar is on our own aircraft. This part have to change if we want to put the radar on a missile/AI
         m.az_fld        = m.unfocused_az_fld;
         #m.vt_az_fld     = m.az_fld;
 
         # for Target Selection
-        m.tgts_list     = [];
-        m.Target_Index  = -1 ; # for Target Selection
-        m.Target_Callsign   = nil;
+        m.tgts_list       = [];
+        m.ContactsList    = [];
+        m.Target_Index    = -1 ; # for Target Selection
+        m.Target_Callsign = nil;
+        m.radarMaxSize    = 20;
+        m.selectedArmament= nil; #Actually useless : The idea is to allow the radar to occult everything that is not for the current loaded weapon
         
         # source behavior
         m.OurHdg        = 0;
@@ -138,6 +160,8 @@ var Radar = {
         m.swp_diplay_width  = 0;
         m.rng_diplay_width  = 0;
         m.ppi_diplay_radius = 0;
+        
+        m.tempo_Index = 0;
 
         if(m.haveSweep == 1)
         {
@@ -161,11 +185,13 @@ var Radar = {
             }
         }
         m.myTree = forcePath==nil?n.getChild("targets", i, 1):props.globals.getNode(forcePath, 1);
+        m.UseATree = 1;
 
-        print(m.myTree.getPath());
+        #print(m.myTree.getPath());
         
         # update interval for engine init() functions
-        m.UPDATE_PERIOD = 0.1; 
+        m.updating_now = 0;
+        m.UPDATE_PERIOD = 0.05; 
         
         # return our new object
         return m;
@@ -194,36 +220,78 @@ var Radar = {
             radarWorking = (radarWorking == nil) ? 0 : radarWorking;
             if(radarWorking > 24 and me.AutoUpdate)
             {
-                me.update();
-                #These line bellow are error management.
-                var UpdateErr = [];
-                call(me.update,[],me,nil,UpdateErr);
-                if(size(UpdateErr) != 0)
+              #me.update();
+              #These line bellow are error management.
+              var UpdateErr = [];
+#                 print("Calling radar");
+              call(me.update,[],me,nil,UpdateErr);
+              if(size(UpdateErr) > 0)
+              {
+                print("We have Radar update Errors, but radar still running");
+                foreach(var myErrors ; UpdateErr)
                 {
-                    print("We have Radar update Errors");
-                    foreach(var myErrors ; UpdateErr)
-                    {
-                        print(myErrors);
-                    }
+                  print(myErrors);
                 }
+              }
+#                 print("Radar refreshing done");
             }
             #me.Global_janitor();
             settimer(loop_Update, me.UPDATE_PERIOD);
         };
-        settimer(loop_Update, 0);
+        settimer(loop_Update,me.UPDATE_PERIOD);
 
         var loop_Sweep = func() {
             if(me.haveSweep ==1){me.maj_sweep();}
-            settimer(loop_Sweep, 0);
+            settimer(loop_Sweep, 0.05);
         };
-        settimer(loop_Sweep, 0);
+        settimer(loop_Sweep,0.05);
     },
 
     ############
     #  UPDATE  #
     ############
-    update: func(tempCoord = nil, tempHeading = nil, tempPitch = nil) {
     
+    
+    ## How the radar should work : 
+    ## 1 - use the tree via getNode
+    ## 2 - ARRAY1 : Stock contact in an array. This array should never be deleted and contact never be removed from it.
+    ## 3 - ARRAY1 : Update this array (new coord etc all data of the contact), and above all, update if "Display" or not.
+    ## 4 - ARRAY2 : Stock only "Display" Contact. This array can be tempo and contact can/have to be REMOVED once it is not "Display"
+    ## 5 - ARRAY3 : Stock Contact contact that can be targeted. Contact must not be deleted. (in case of a firing missile, the contact stocked here is the 
+    #       one that is updated. If we lose this contact, we cannont have action on the missile anymore (lost of the contact or anything else)
+    ## 6 - ARRAY3 : Update this array (new coord etc all data of the contact), and above all, update if "Display" or not.
+    ## 7 - ARRAY4 : Stock and update array with "Display" target. <-This is for target selection. Unavailable Target => must be REMOVED
+    ## 8 - ARRAY5 : Stock and update selected Target. Put the tag Painted on it. (Use an array here allow multiple selection and firing all the target in the same time)
+    
+    ## Schematic : 
+    ##   PROPERTY TREE                "Display"
+    ##        =============> ARRAY1  =========> ARRAY2
+    ##                          |
+    ##                          | Target stock          "Display"
+    ##                            =============>ARRAY3 ==========> ARRAY4
+    ##                                            |
+    ##                                            |   Painted/selected
+    ##                                             ====================> ARRAY5
+    
+    ## STOCRAGE ARRAY :     functions : add, update
+    ##  ARRAY1, ARRAY3
+    ##
+    ## DIPLAY ARRAY :       functions : add, update, remove
+    ##  ARRAY2, ARRAY4, ARRAY5
+    
+    ## Simplification : Only use ARRAY1, ARRAY2 and ARRAY5
+    
+    
+    
+    update: func(tempCoord = nil, tempHeading = nil, tempPitch = nil) {
+      
+        if(me.updating_now == 1)
+        {
+          return;
+        }else{
+          me.updating_now = 1;
+        }
+
         # First update Coord, Alt, heeading and Pitch. 
         # The code pout the aircraft properties if nothing has been passed in parameters
         # Coord update ! Should be filled with altitude
@@ -236,10 +304,13 @@ var Radar = {
             me.MyCoord = tempCoord;
         }
         
+        me.LoopElapsed = getprop("sim/time/elapsed-sec") - me.TimeWhenUpdate;
         # This is to know when was the last time we called the update
         me.TimeWhenUpdate = getprop("sim/time/elapsed-sec");
         
+        
         # Altitude update (in meters)
+
         me.our_alt = me.MyCoord.alt();
         
         # Heading Update (should be the airplane heading, not the radar look direction)
@@ -291,11 +362,12 @@ var Radar = {
             #    or type == "carrier"
             #    or type == "ship"
             #    or (type == "missile" and HaveRadarNode != nil))
-            #{
+            #
             if(me.check_selected_type(c))
             {
                 # creation of the tempo object Target
                 var u = Target.new(c,me.myTree.getPath());
+               
 
                 folderName = c.getName();
 
@@ -307,63 +379,140 @@ var Radar = {
                 # now we test the property folder name to guess what type it is:
                 foreach (var testMe ; listOfShipNames) {
                     if (testMe == folderName) {
-                        u.setType(missile.MARINE);
-                        me.skipDoppler = 1;
+                        if(u.get_altitude()<100){
+                          u.setType(armament.MARINE);
+                          me.skipDoppler = 1;
+                        }
+                        break;
+                          
                     }
                 }
-                foreach (var testMe ; listOfGroundTargetNames) {
-                    if (testMe == folderName) {
-                        u.setType(missile.SURFACE);
-                        me.skipDoppler = 1;
+
+                #If not MARINE skipDoppler still == 0
+                if (me.skipDoppler == 0) {
+                    foreach (var testMe ; listOfGroundTargetNames) {
+                        if (testMe == folderName) {
+                            u.setType(armament.SURFACE);
+                            me.skipDoppler = 0;
+                            break;
+                        }
                     }
-                }
-                
+                    
+                 }
+                if(u.get_type() == 0){
                 # now we test the model name to guess what type it is:
-                me.pathNode = c.getNode("sim/model/path");
-                if (me.pathNode != nil) {
-                    me.path = me.pathNode.getValue();
-                    me.model = split(".", split("/", me.path)[-1])[0];
-                    foreach (var testMe ; listOfShipModels) {
-                        if (testMe == me.model) {
-                           # Its a ship, Mirage ground radar will pick it up
-                           u.setType(missile.MARINE);
-                           me.skipDoppler = 1;
-                        }
-                    }
-                    foreach (var testMe ; listOfGroundVehicleModels) {
-                        if (testMe == me.model) {
-                           # its a ground vehicle, Mirage ground radar will pick it up
-                           u.setType(missile.SURFACE);
-                           me.skipDoppler = 1;
-                        }
-                    }
-                }
-                #print("Testing "~ u.get_Callsign()~"Type: " ~ type);
+                      me.pathNode = c.getNode("sim/model/path");
+                      if (me.pathNode != nil) {
+                          me.path = me.pathNode.getValue();
+                          me.model = split(".", split("/", me.path)[-1])[0];
+                          u.set_model(me.model);#used for RCS
+                          foreach (var testMe ; listOfShipModels) {
+                              if (testMe == me.model) {
+                                # Its a ship, Mirage ground radar will pick it up
+                                if(u.get_altitude()<100){
+                                  u.setType(armament.MARINE);
+                                  me.skipDoppler = 1;
+                                }
+                                break;
+                              }
+                          }
+                          foreach (var testMe ; listOfGroundVehicleModels) {
+                              if (testMe == me.model) {
+                                # its a ground vehicle, Mirage ground radar will not pick it up
+                                u.setType(armament.SURFACE);
+                                me.skipDoppler = 0;
+                                break;
+                              }
+                          }
+                      }
+                  }
+                  
+                 #Testing if ORDNANCE
+                 if (c.getNode("missile") != nil and c.getNode("missile").getValue()) {
+                    u.setType(armament.ORDNANCE);
+                 }
+                 #Testing Ground Target
+                  if(u.get_Callsign() == "GROUND_TARGET"){
+                    u.setType(armament.SURFACE);
+                  }
+ 
+
                 
+                #print("Start Testing "~ u.get_Callsign()~"Type: " ~ u.type);
+                
+                              
                 # set Check_List to void
                 me.Check_List = [];
                 # this function do all the checks and put all result of each
                 # test on an array[] named Check_List
+
                 me.go_check(u, me.skipDoppler);
                 
+                #print("Complete liste after update : " ~ size(completeList));
+                #me.decrease_life(completeList);
+                #me.sorting_and_suppr(completeList);
+                
+                #Displaying Check
+                #print("Testing "~ u.get_Callsign()~"Check: " ~ me.get_check());
+                
+                #print("End Testing "~ u.get_Callsign());
+                
                 # then a function just check it all
-                if(me.get_check(u))
+                if(me.get_check())
                 {
+                                        
+                    #Is in Range : Should be added to the main ARRAY1 (Here : ContactsList)
                     var HaveRadarNode = c.getNode("radar");
-                    u.create_tree(me.MyCoord, me.OurHdg);
-                    u.set_all(me.MyCoord);
-                    me.calculateScreen(u);
+
+                    #Update ContactList : Only updated when target is valid
+                    #Should return an Index, in order to take the object from the table and not the property tree
+                    
+                    if(me.UseATree){
+                      u.create_tree(me.MyCoord, me.OurHdg);
+                      u.set_all(me.MyCoord);
+                      me.calculateScreen(u);
+                    }
+                    
+                    #print("Update contactList");
+                    me.ContactsList = me.update_array(u,me.ContactsList);
+                    #me.tempo_Index = me.find_index_inArray(u,me.ContactsList);
+                    #me.ContactsList[me.tempo_Index].set_display(1);
+                    u.set_display(1);
+                    
+                    #if(me.tempo_Index != nil){ u = me.ContactsList[me.tempo_Index];}
+                    
+                    
                     # for Target Selection
                     # here we disable the capacity of targeting a missile. But 's possible.
-                    append(CANVASARRAY, u);
+                    # CANVASARRAY => ARRAY2
+                    
+                    
                     if(type != "missile" and !contains(weaponRadarNames, type))
                     {
+                        #tgts_list => ARRAY4
+                        
+                        #print("Update targetList" ~ u.get_Callsign());
+                        me.TargetList_Update(u);
                         me.TargetList_AddingTarget(u);
+                        
+                        #We should UPDATE tgts_list here
+                        
+                        #This shouldn't be here. See how to delet it
+                        if(u.getUnique() == me.tgts_list[me.Target_Index].getUnique() and u.getUnique() == me.Target_Callsign){
+                          #print("Picasso painting");
+                          u.setPainted(1);
+                          armament.contact = me.tgts_list[me.Target_Index];
+                          #print(armament.contact.get_type());
+                        }
                     }
+                    append(CANVASARRAY, u); 
                     me.displayTarget();
                 }
                 else
                 {
+                    #me.tempo_Index = me.find_index_inArray(u,me.ContactsList);
+                    #if(me.tempo_Index != nil){me.ContactsList[me.tempo_Index].set_display(1,me.myTree);}
+                  
                  #Here we shouldn't see the target anymore. It should disapear. So this is calling the Tempo_Janitor      
                     if(u.get_Validity() == 1)
                     {
@@ -372,11 +521,37 @@ var Radar = {
                           me.Tempo_janitor(u);
                         }
                     }
-                }
+                    
+                }    
+                completeList = me.update_array_no_life_reset(u,completeList);
             }
-        }
-        me.Global_janitor();
-        #settimer(me.Global_janitor(),me.janitorTime);
+            #Temporary adding this in order to make the whole new firesystem work
+            #print("Update completeList");
+            
+#             if(u.get_Callsign() == "GROUND_TARGET"){
+#               if(me.inAzimuth(u,0) == 0){
+#                 u.set_display(0,me.myTree);
+#               }else{
+#                 u.set_display(1,me.myTree);
+#               }
+#             }
+            
+            
+        }#For Each End
+;
+                
+        me.ContactsList = me.decrease_life(me.ContactsList);
+        #print("Test");
+        me.sorting_and_suppr(me.ContactsList);
+        #me.ContactsList = me.cut_array(me.radarMaxSize,me.ContactsList);
+        #me.Global_janitor();
+        #print("Side in RADAR : "~ size(me.ContactsList));
+        #foreach(contact;me.ContactsList){
+        #  print("Last Check : " ~ contact.get_Callsign() ~" 's life : "~ contact.life);
+        #}
+
+        #print("size(completeList) : " ~size(completeList) ~ "; size(me.ContactsList) : " ~ size(me.ContactsList));
+        me.updating_now = 0;
         return CANVASARRAY;
     },
     
@@ -387,21 +562,22 @@ var Radar = {
         
         SelectedObject.check_carrier_type();
         mydeviation = SelectedObject.get_deviation(me.OurHdg, me.MyCoord);
+        #print("My Radar deviation %f", mydeviation);
         var u_rng = me.targetRange(SelectedObject);
         
         # compute mp position in our B-scan like display. (Bearing/horizontal + Range/Vertical).
-        SelectedObject.set_relative_bearing(me.swp_diplay_width / me.az_fld * mydeviation);
+        SelectedObject.set_relative_bearing(me.swp_diplay_width / me.az_fld * mydeviation,me.UseATree);
         var factor_range_radar = me.rng_diplay_width / me.rangeTab[me.rangeIndex]; # length of the distance range on the B-scan screen.
-        SelectedObject.set_ddd_draw_range_nm(factor_range_radar * u_rng);
+        SelectedObject.set_ddd_draw_range_nm(factor_range_radar * u_rng,me.UseATree);
         u_fading = 1;
         u_display = 1;
         
         # Compute mp position in our PPI like display.
         factor_range_radar = me.ppi_diplay_radius / me.rangeTab[me.rangeIndex]; # Length of the radius range on the PPI like screen.
-        SelectedObject.set_tid_draw_range_nm(factor_range_radar * u_rng);
+        SelectedObject.set_tid_draw_range_nm(factor_range_radar * u_rng,me.UseATree);
         
         # Compute first digit of mp altitude rounded to nearest thousand. (labels).
-        SelectedObject.set_rounded_alt(rounding1000(SelectedObject.get_altitude()) / 1000);
+        SelectedObject.set_rounded_alt(rounding1000(SelectedObject.get_altitude()) / 1000,me.UseATree);
         
         # Compute closure rate in Kts.
         #SelectedObject.get_closure_rate_from_Coord(me.MyCoord) * MPS2KT;
@@ -413,97 +589,128 @@ var Radar = {
             tmp_nearest_u = SelectedObject;
             tmp_nearest_rng = u_rng;
         }
-        SelectedObject.set_display(u_display);
-        SelectedObject.set_fading(u_fading);
+        SelectedObject.set_display(u_display, me.UseATree);
+        SelectedObject.set_fading(u_fading, me.UseATree);
     },
 
     isNotBehindTerrain: func(SelectedObject){
+        if(SelectedObject.get_Callsign()=="GROUND_TARGET"){return 1;}
         isVisible = 0;
         
         # As the script is relatively ressource consuming, then, we do a maximum of test before doing it
-        if(me.get_check(SelectedObject))
+        if(me.get_check())
         {
             SelectCoord = SelectedObject.get_Coord();
+            
+            SelectCoord.set_alt(SelectCoord.alt()+1);
             # Because there is no terrain on earth that can be between these 2
             if(me.our_alt < 8900 and SelectCoord.alt() < 8900)
             {
-                # Temporary variable
-                # A (our plane) coord in meters
-                a = me.MyCoord.x();
-                b = me.MyCoord.y();
-                c = me.MyCoord.z();
-                # B (target) coord in meters
-                d = SelectCoord.x();
-                e = SelectCoord.y();
-                f = SelectCoord.z();
-                x = 0;
-                y = 0;
-                z = 0;
-                RecalculatedL = 0;
-                difa = d - a;
-                difb = e - b;
-                difc = f - c;
-                # direct Distance in meters
-                myDistance = SelectCoord.direct_distance_to(me.MyCoord);
-                Aprime = geo.Coord.new();
-                
-                # Here is to limit FPS drop on very long distance
-                L = 500;
-                if(myDistance > 50000)
-                {
-                    L = myDistance / 15;
-                }
-                step = L;
-                maxLoops = int(myDistance / L);
-                
-                isVisible = 1;
-                # This loop will make travel a point between us and the target and check if there is terrain
-                for(var i = 0 ; i < maxLoops ; i += 1)
-                {
-                    L = i * step;
-                    K = (L * L) / (1 + (-1 / difa) * (-1 / difa) * (difb * difb + difc * difc));
-                    DELTA = (-2 * a) * (-2 * a) - 4 * (a * a - K);
-                    
-                    if(DELTA >= 0)
-                    {
-                        # So 2 solutions or 0 (1 if DELTA = 0 but that 's just 2 solution in 1)
-                        x1 = (-(-2 * a) + math.sqrt(DELTA)) / 2;
-                        x2 = (-(-2 * a) - math.sqrt(DELTA)) / 2;
-                        # So 2 y points here
-                        y1 = b + (x1 - a) * (difb) / (difa);
-                        y2 = b + (x2 - a) * (difb) / (difa);
-                        # So 2 z points here
-                        z1 = c + (x1 - a) * (difc) / (difa);
-                        z2 = c + (x2 - a) * (difc) / (difa);
-                        # Creation Of 2 points
-                        Aprime1  = geo.Coord.new();
-                        Aprime1.set_xyz(x1, y1, z1);
-                        
-                        Aprime2  = geo.Coord.new();
-                        Aprime2.set_xyz(x2, y2, z2);
-                        
-                        # Here is where we choose the good
-                        if(math.round((myDistance - L), 2) == math.round(Aprime1.direct_distance_to(SelectCoord), 2))
-                        {
-                            Aprime.set_xyz(x1, y1, z1);
-                        }
-                        else
-                        {
-                            Aprime.set_xyz(x2, y2, z2);
-                        }
-                        AprimeLat = Aprime.lat();
-                        Aprimelon = Aprime.lon();
-                        AprimeTerrainAlt = geo.elevation(AprimeLat, Aprimelon);
-                        if(AprimeTerrainAlt == nil)
-                        {
-                            AprimeTerrainAlt = 0;
-                        }
-                        
-                        if(AprimeTerrainAlt > Aprime.alt())
-                        {
-                            isVisible = 0;
-                        }
-                    }
+              if (pickingMethod == 1) {
+                  var myPos = geo.aircraft_position();
+
+                  var xyz = {"x":myPos.x(),                  "y":myPos.y(),                 "z":myPos.z()};
+                  var dir = {"x":SelectCoord.x()-myPos.x(),  "y":SelectCoord.y()-myPos.y(), "z":SelectCoord.z()-myPos.z()};
+
+                  # Check for terrain between own aircraft and other:
+                  v = get_cart_ground_intersection(xyz, dir);
+                  if (v == nil) {
+                    return 1;
+                    #printf("No terrain, planes has clear view of each other");
+                  } else {
+                  var terrain = geo.Coord.new();
+                  terrain.set_latlon(v.lat, v.lon, v.elevation);
+                  var maxDist = myPos.direct_distance_to(SelectCoord);
+                  var terrainDist = myPos.direct_distance_to(terrain);
+                  if (terrainDist < maxDist) {
+                    #print("terrain found between the planes");
+                    return 0;
+                  } else {
+                      #print("The planes has clear view of each other");
+                      return 1;
+                  }
+                  }
+                } else {
+            
+            
+                  # Temporary variable
+                  # A (our plane) coord in meters
+                  a = me.MyCoord.x();
+                  b = me.MyCoord.y();
+                  c = me.MyCoord.z();
+                  # B (target) coord in meters
+                  d = SelectCoord.x();
+                  e = SelectCoord.y();
+                  f = SelectCoord.z();
+                  x = 0;
+                  y = 0;
+                  z = 0;
+                  RecalculatedL = 0;
+                  difa = d - a;
+                  difb = e - b;
+                  difc = f - c;
+                  # direct Distance in meters
+                  myDistance = SelectCoord.direct_distance_to(me.MyCoord);
+                  Aprime = geo.Coord.new();
+                  
+                  # Here is to limit FPS drop on very long distance
+                  L = 500;
+                  if(myDistance > 50000)
+                  {
+                      L = myDistance / 15;
+                  }
+                  step = L;
+                  maxLoops = int(myDistance / L);
+                  
+                  isVisible = 1;
+                  # This loop will make travel a point between us and the target and check if there is terrain
+                  for(var i = 0 ; i < maxLoops ; i += 1)
+                  {
+                      L = i * step;
+                      K = (L * L) / (1 + (-1 / difa) * (-1 / difa) * (difb * difb + difc * difc));
+                      DELTA = (-2 * a) * (-2 * a) - 4 * (a * a - K);
+                      
+                      if(DELTA >= 0)
+                      {
+                          # So 2 solutions or 0 (1 if DELTA = 0 but that 's just 2 solution in 1)
+                          x1 = (-(-2 * a) + math.sqrt(DELTA)) / 2;
+                          x2 = (-(-2 * a) - math.sqrt(DELTA)) / 2;
+                          # So 2 y points here
+                          y1 = b + (x1 - a) * (difb) / (difa);
+                          y2 = b + (x2 - a) * (difb) / (difa);
+                          # So 2 z points here
+                          z1 = c + (x1 - a) * (difc) / (difa);
+                          z2 = c + (x2 - a) * (difc) / (difa);
+                          # Creation Of 2 points
+                          Aprime1  = geo.Coord.new();
+                          Aprime1.set_xyz(x1, y1, z1);
+                          
+                          Aprime2  = geo.Coord.new();
+                          Aprime2.set_xyz(x2, y2, z2);
+                          
+                          # Here is where we choose the good
+                          if(math.round((myDistance - L), 2) == math.round(Aprime1.direct_distance_to(SelectCoord), 2))
+                          {
+                              Aprime.set_xyz(x1, y1, z1);
+                          }
+                          else
+                          {
+                              Aprime.set_xyz(x2, y2, z2);
+                          }
+                          AprimeLat = Aprime.lat();
+                          Aprimelon = Aprime.lon();
+                          AprimeTerrainAlt = geo.elevation(AprimeLat, Aprimelon);
+                          if(AprimeTerrainAlt == nil)
+                          {
+                              AprimeTerrainAlt = 0;
+                          }
+                          
+                          if(AprimeTerrainAlt > Aprime.alt())
+                          {
+                              isVisible = 0;
+                          }
+                      }
+                  }
                 }
             }
             else
@@ -515,6 +722,7 @@ var Radar = {
     },
 
     NotBeyondHorizon: func(SelectedObject){
+        if(SelectedObject.get_Callsign()=="GROUND_TARGET"){return 1;}
         # if distance is beyond the earth curve
         var horizon = SelectedObject.get_horizon(me.our_alt);
         var u_rng = me.targetRange(SelectedObject);
@@ -524,6 +732,22 @@ var Radar = {
     },
 
     doppler: func(SelectedObject){
+      
+        #if it is a radiating stuff, skip doppler
+      #print("In the doppler");
+      if(pylons.fcs.getSelectedWeapon() != nil){
+        #print("pylons.fcs.getSelectedWeapon() != nil");
+        if(pylons.fcs.getSelectedWeapon().type != "30mm Cannon"){
+          #print("pylons.fcs.getSelectedWeapon().guidance:" ~pylons.fcs.getSelectedWeapon().guidance);
+          if(pylons.fcs.getSelectedWeapon().guidance =="radiation"){
+            #print( "Is radiating :" ~ SelectedObject.isRadiating(me.MyCoord));
+            if(SelectedObject.isRadiating(me.MyCoord)){
+              return 1;
+            }
+          }
+        }
+      }
+      
         # Test to check if the target can hide bellow us
         # Or Hide using anti doppler movements
         
@@ -563,7 +787,8 @@ var Radar = {
         return GroundNotBehind;
     },
 
-    inAzimuth: func(SelectedObject){
+    inAzimuth: func(SelectedObject,ExceptGroundTarget = 1){
+        if(SelectedObject.get_Callsign()=="GROUND_TARGET" and ExceptGroundTarget){return 1;}
         # Check if it's in Azimuth.
         # first we check our heading+ center az deviation + the sweep if the radar is mechanical
         tempAz = me.az_fld;
@@ -586,6 +811,7 @@ var Radar = {
     },
 
     inElevation: func(SelectedObject){
+        if(SelectedObject.get_Callsign()=="GROUND_TARGET"){return 1;}
         # Moving the center of this field will be ne next option
         var tempAz = me.vt_az_fld;
         var myElevation = SelectedObject.get_total_elevation_from_Coord(me.OurPitch, me.MyCoord);
@@ -594,6 +820,7 @@ var Radar = {
     },
 
     InRange: func(SelectedObject){
+        if(SelectedObject.get_Callsign()=="GROUND_TARGET"){return 1;}
         # Check if it's in range
         IsInRange = 0;
         var myRange = me.targetRange(SelectedObject);
@@ -670,6 +897,18 @@ var Radar = {
         return myBearing;
     },
 
+    TargetList_Update: func(SelectedObject){
+      forindex(i; me.tgts_list){
+        #print("Target list update");
+        if(me.tgts_list[i].get_Callsign()==SelectedObject.get_Callsign()){
+          me.tgts_list[i].update(SelectedObject);
+          return i;
+        }
+      }
+      return nil;
+    },
+    
+    
     TargetList_AddingTarget: func(SelectedObject){
         # This is selectioned target management.
         if(me.TargetList_LookingForATarget(SelectedObject) == 0)
@@ -689,9 +928,11 @@ var Radar = {
                 if(TempTarget.get_shortring() != SelectedObject.get_shortring())
                 {
                     append(TempoTgts_list, TempTarget);
+                }else{
+                  #TempTarget.setPainted(0);
                 }
             }
-            me.tgts_list = TempoTgts_list;
+            #me.tgts_list = TempoTgts_list;
         }
     },
 
@@ -711,11 +952,15 @@ var Radar = {
     get_check: func(){
         # This function allow to display multi check
         var checked = 1;
-        var CheckTable = ["InRange:", "inAzimuth:", "inElevation:", "Horizon:", "Doppler:", "NotBtBehindTerrain:"];
+        var CheckTable = ["InRange:", "inAzimuth:", "inElevation:", "Horizon:", "RCS","Doppler:", "NotBtBehindTerrain:"];
         var i = 0;
         foreach(myCheck ; me.Check_List)
         {
-            #print(CheckTable[i] ~ " " ~ myCheck);
+            if(i<size(CheckTable)){
+              #print("i : "~ i ~"|" ~ CheckTable[i] ~ " " ~ myCheck);
+            }else{
+              #print("i : "~ i ~"|myCheck : " ~ myCheck);
+            }
             i +=1;
             checked = (myCheck and checked);
         }
@@ -741,6 +986,7 @@ var Radar = {
       var result = 0;
       #Variable for the selection Type test
       var selectedType = SelectedObject.getName();
+      
 
       selectedType = me.type_selector(SelectedObject);
 
@@ -754,7 +1000,7 @@ var Radar = {
       foreach(myType;me.typeTarget)
       {
         if(myType == selectedType){
-          result = 1;
+           result = 1;
         }
       }
 
@@ -797,14 +1043,20 @@ var Radar = {
         {
             return;
         }
+        append(me.Check_List, rcs.inRadarRange(SelectedObject, 60, 3.2));# Radar RDY: 60 NM for 3.2 RCS
+        if(me.Check_List[4] == 0)
+        {
+            return;
+        }
         #me.heat_sensor(SelectedObject);
         if( me.detectionTypetab=="laser" or skipDoppler == 1)
         {
+          #print("Skip Doppler");
           append(me.Check_List, 1);
          }else{
           append(me.Check_List, me.doppler(SelectedObject));
          }
-        if(me.Check_List[4] == 0)
+        if(me.Check_List[5] == 0)
         {
             return;
         }
@@ -819,6 +1071,7 @@ var Radar = {
     },
     
     Global_janitor: func(){
+        #Action on tree. Too complicated. has to be corrected or removed
         # This function is made to remove all persistent non relevant data on radar2 tree
         #var myRadarNode = props.globals.getNode("instrumentation/radar2/targets", 1);
         var raw_list = me.myTree.getChildren();
@@ -833,7 +1086,7 @@ var Radar = {
                     var Property_list = Tempo_TgtsFiles.getChildren();
                     foreach(var myProperty ; Property_list )
                     {
-                        # print(myProperty.getName());
+                        #print(myProperty.getName());
                         if(myProperty.getName() != "closure-last-time")
                         {
                             myProperty.setValue("");
@@ -874,7 +1127,7 @@ var Radar = {
             me.az_fld=me.focused_az_fld;
             me.vt_az_fld=me.focused_az_fld;
             me.swp_diplay_width = 0.0422;
-            me.tgts_list = [];
+            #me.tgts_list = [];
         }
         elsif(wcs_mode == "tws-auto")
         {
@@ -889,30 +1142,90 @@ var Radar = {
         return me.az_fld;
     },
 
-    next_Target_Index: func(){
+    next_Target_Index_Old: func(){
+      if(me.az_fld == me.focused_az_fld){  
+      if (size(me.tgts_list) > 0) {me.tgts_list[me.Target_Index].setPainted(0);}
         me.Target_Index = me.Target_Index + 1;
         if(me.Target_Index > (size(me.tgts_list)-1))
         {
             me.Target_Index = 0;
         }
         if (size(me.tgts_list) > 0) {
-          me.Target_Callsign = me.tgts_list[me.Target_Index].get_Callsign();
+        
+          ###  Verification of each valid elements
+          var tempo = 0;
+          foreach(tgts;me.tgts_list){
+            tempo = tgts.get_display()==1?tempo+1:tempo;
+          }
+          if(tempo ==0){
+            me.Target_Index = 0;
+            me.Target_Callsign = nil;
+            setprop("/ai/closest/range", 0);
+            return;
+          }
+          
+          if(me.tgts_list[me.Target_Index].get_display()!=1){
+            me.next_Target_Index();
+          }
+          
+          me.Target_Callsign = me.tgts_list[me.Target_Index].getUnique();
+          me.tgts_list[me.Target_Index].setPainted(1);
         } else {
           me.Target_Callsign = nil;
-        }
+          return
+        } 
+      }
+        #if(me.tgts_list[me.Target_Index].get_display()!=1){
+          #me.Target_Index = me.Target_Index==0?size(me.tgts_list)-1:me.Target_Index - 1; 
+          #me.next_Target_Index();
+        #}
     },
+    
+    next_loop: func(index,factor){
+      var number = 0;
+      for(i=1;i<size(me.tgts_list);i = i + 1){
+        number = math.mod(index + (i * factor), size(me.tgts_list));
+        if(me.tgts_list[number].get_display() == 1){ return number;}
+      }
+      return index;
+    },
+    
+    next_Target_Index: func(){
+      if(me.az_fld == me.focused_az_fld){
+        #Stuff to un paint previous target
+        if (size(me.tgts_list) > 0) {me.tgts_list[me.Target_Index].setPainted(0);}
+        
+        #Stuff to decrease the index
+        me.Target_Index = me.next_loop(me.Target_Index, 1);
 
-    previous_Target_Index: func(){
-        me.Target_Index = me.Target_Index - 1;
-        if(me.Target_Index < 0)
-        {
-            me.Target_Index = size(me.tgts_list)-1;
-        }
+        #Stuff to do with new index        
         if (size(me.tgts_list) > 0) {
-          me.Target_Callsign = me.tgts_list[me.Target_Index].get_Callsign();
+          me.Target_Callsign = me.tgts_list[me.Target_Index].getUnique();
+          me.tgts_list[me.Target_Index].setPainted(1);
         } else {
           me.Target_Callsign = nil;
         }
+      }
+
+    },
+    
+    previous_Target_Index: func(){
+      if(me.az_fld == me.focused_az_fld){
+        #Stuff to un paint previous target
+        if (size(me.tgts_list) > 0) {me.tgts_list[me.Target_Index].setPainted(0);}
+        
+        #Stuff to decrease the index
+        me.Target_Index = me.next_loop(me.Target_Index, -1);
+        
+        #Stuff to do with new index        
+        if (size(me.tgts_list) > 0) {
+          me.Target_Callsign = me.tgts_list[me.Target_Index].getUnique();
+          me.tgts_list[me.Target_Index].setPainted(1);
+        } else {
+          me.Target_Callsign = nil;
+        }
+      }
+
     },
 
     displayTarget: func(){
@@ -928,7 +1241,6 @@ var Radar = {
                  me.Target_Callsign = nil;
                  setprop("/ai/closest/range", 0);
                  return;#me.Target_Index = size(me.tgts_list) - 1;
-                 
             }
             if( me.Target_Index > size(me.tgts_list) - 1)
             {
@@ -937,7 +1249,7 @@ var Radar = {
                  setprop("/ai/closest/range", 0);
                  return;#me.Target_Index = 0;
             }
-            if (me.Target_Callsign != me.tgts_list[me.Target_Index].get_Callsign()) {
+            if (me.Target_Callsign != me.tgts_list[me.Target_Index].getUnique()) {
                 me.Target_Callsign = nil;
                 me.Target_Callsign = nil;
                 setprop("/ai/closest/range", 0);
@@ -945,6 +1257,7 @@ var Radar = {
              }
             
             var MyTarget = me.tgts_list[ me.Target_Index];
+            me.tgts_list[ me.Target_Index].setPainted(1);
             closeRange   = me.targetRange(MyTarget);
             heading      = MyTarget.get_heading();
             altitude     = MyTarget.get_altitude();
@@ -966,9 +1279,135 @@ var Radar = {
             setprop("/ai/closest/longitude", longitude);
             setprop("/ai/closest/latitude", latitude);
         }else{
+            if(me.az_fld != me.focused_az_fld){
+              if (size(me.tgts_list) > 0) {
+                me.tgts_list[me.Target_Index].setPainted(0);
+                armament.contact = nil;
+              }
+            }
             setprop("/ai/closest/range", 0);
         }
     },
+    
+    
+    
+    ###########################################################################
+    ###   Update element of the actual diplayed array
+    update_Element_of_array: func(SelectedObject,myArray){
+      #print("Normal Update bellow");
+      forindex(i; myArray){
+        if(myArray[i].getUnique()==SelectedObject.getUnique()){
+          myArray[i].update(SelectedObject);
+          return myArray;
+        }
+      }
+      return myArray;
+    },
+    
+    ###   add element to the array
+    add_Element_to_Array: func(SelectedObject,myArray){
+      append(myArray,SelectedObject);
+      return myArray;
+    },   
+    
+    ###   update array : update element, or add it if there aren't present
+    update_array: func(SelectedObject,myArray){
+      var tempo = nil;
+      if(size(myArray) > 0){
+        myArray = me.update_Element_of_array(SelectedObject,myArray);
+        tempo = me.find_index_inArray(SelectedObject,myArray);
+      }
+      
+      if(tempo == nil){;
+        myArray = me.add_Element_to_Array(SelectedObject,myArray);
+      }
+      return myArray;
+    },
+    
+    find_index_inArray: func(SelectedObject,myArray){
+          forindex(i; myArray){
+            #print("myArray[i].getUnique() : " ~ myArray[i].getUnique() ~" And SelectedObject.getUnique() : "~SelectedObject.getUnique());
+            if(myArray[i].getUnique()==SelectedObject.getUnique()){return i;}
+          }
+        return nil; 
+    },
+    
+    update_array_no_life_reset: func(SelectedObject,myArray){
+      var tempo = nil;
+      if(size(myArray) > 0){
+          #The idea is to keep the values of the variables and not reseting them
+          #This way it does not impact the radar
+          myIndex = me.find_index_inArray(SelectedObject,myArray);
+        
+        if(myIndex != nil and myArray[myIndex].Display_Node != nil){
+          var mypaint = myArray[myIndex].isPainted();
+          var myDisplay = myArray[myIndex].get_display();
+          var myLife = myArray[myIndex].life;
+        }
+        
+          me.update_array(SelectedObject,myArray);
+          
+        if(myIndex != nil and myArray[myIndex].Display_Node != nil){
+          myArray[myIndex].setPainted(mypaint);
+          myArray[myIndex].set_display(myDisplay, me.UseATree);
+          myArray[myIndex].life = myLife;
+        }
+      }else{
+          me.update_array(SelectedObject,myArray);
+      }
+      
+      return myArray;
+      
+    },
+    
+    #############################################################################
+    
+    
+    #decrease life of element. < 0 then it's not displayed anymore
+    #should call a remove_element function to remove element from array
+    decrease_life: func(myArray){
+      var i = 0;
+      foreach(contact;myArray){
+        contact.life = contact.life - me.LoopElapsed;
+        #print("Elapsed = " ~ me.LoopElapsed ~" Then " ~ contact.get_Callsign() ~ " 's life : "~ contact.life);
+        
+        if(contact.life<3){
+          #print("Elapsed = " ~ me.LoopElapsed ~" Then " ~ contact.get_Callsign() ~ " 's life : "~ contact.life);
+          contact.set_display(0, me.UseATree);
+          contact.setPainted(0);
+        }
+      }
+      return myArray;
+    },
+ 
+ 
+    #This function should sort and suppr
+    sorting_and_suppr: func(myArray){
+    #print("Test2 : size : " ~ size(me.ContactsList));
+      for(var i=0;i<size(myArray)-1;i = i + 1){
+        #print("Test3");
+        for(var j=0;j<size(myArray)-1;j = j + 1){
+          #print(myArray[i].get_Callsign() ~ " : " ~ myArray[i].life ~ " vs " ~ myArray[j].get_Callsign() ~ " : " ~ myArray[j].life);
+          if(myArray[i].life<myArray[j].life){
+            var u = myArray[i];
+            myArray[i] = myArray[j];
+            myArray[j] = u; 
+          }
+        }
+      }
+    },
+    
+    cut_array : func(ChoosenSize, Myarray){
+      var tempArray = [];
+      for(var i=0;i<size(Myarray)-1;i = i + 1){
+        if(i>ChoosenSize){
+          append(tempArray, Myarray[i]);
+        }
+      }
+      return tempArray;
+    },
+    
+ 
     GetTarget: func(){
         if(me.tgts_list == nil)
         {
@@ -986,7 +1425,8 @@ var Radar = {
         {
             return nil;#me.Target_Index = 0;
         }
-        if (me.Target_Callsign == me.tgts_list[me.Target_Index].get_Callsign()) {
+        if (me.Target_Callsign == me.tgts_list[me.Target_Index].getUnique()) {
+          me.tgts_list[me.Target_Index].setPainted(1);
           return me.tgts_list[me.Target_Index];
         } else {
           me.Target_Callsign = nil;
@@ -1000,556 +1440,6 @@ var Radar = {
     #},
 
     myRadarList : [],
-};
-
-################################################################
-#####################   Target class  ##########################
-################################################################
-
-setprop("sim/mul"~"tiplay/gen"~"eric/strin"~"g[14]", "o"~"r"~"f");
-
-var Target = {
-    new: func(c,theTree = nil){
-        var obj             = { parents : [Target,geo.Coord.new()]};
-        obj.RdrProp         = c.getNode("radar");
-        obj.Heading         = c.getNode("orientation/true-heading-deg");
-        
-        obj.Alt             = c.getNode("position/altitude-ft");
-        obj.lat             = c.getNode("position/latitude-deg");
-        obj.lon             = c.getNode("position/longitude-deg");
-        
-        #As it is a geo.Coord object, we have to update lat/lon/alt ->and alt is in meters
-        #print("obj.lat:"~obj.lat~" obj.lon:"~" obj.Alt * FT2M:"~obj.Alt * FT2M);
-        obj.set_latlon(obj.lat.getValue(), obj.lon.getValue(), obj.Alt.getValue() * FT2M);
-        
-        obj.pitch           = c.getNode("orientation/pitch-deg");
-        obj.Speed           = c.getNode("velocities/true-airspeed-kt");
-        obj.VSpeed          = c.getNode("velocities/vertical-speed-fps");
-        obj.Callsign        = c.getNode("callsign");
-        obj.name            = c.getNode("name");
-        obj.Valid            = c.getNode("valid");
-        obj.validTree       = 0;
-        obj.TransponderID = c.getNode("instrumentation/transponder/transmitted-id");
-        
-        obj.engineTree      = c.getNode("engines");
-        
-        obj.AcType          = c.getNode("sim/model/ac-type");
-        obj.type            = c.getName();
-        obj.index           = c.getIndex();
-        obj.flareNode       = c.getNode("rotors/main/blade[3]/flap-deg");
-        
-        #Change here the object type to set the radar2 path
-        #Overwrite selectedType if missile
-        var TestIfMissileNode = c.getNode("missile");
-        if(TestIfMissileNode != nil) {
-          if(TestIfMissileNode.getValue()){
-            #print("It is a missile");
-            obj.type  = "missile";
-            missileIndex = missileIndex + 1;
-            obj.index = missileIndex;            
-          }
-        }
-
-        
-        obj.string          = "ai/models/" ~ obj.type ~ "[" ~ obj.index ~ "]";
-        obj.shortstring     = obj.type ~ "[" ~ obj.index ~ "]";
-        
-        if(theTree == nil)
-        {
-            obj.InstrString     = "instrumentation/radar2/targets";
-        }
-        else
-        {
-            obj.InstrString     = theTree;
-        }
-        #print("obj.InstrString:" ~obj.InstrString);
-        obj.InstrTgts       = props.globals.getNode(obj.InstrString, 1);
-        
-        obj.TgtsFiles       =   0; #obj.InstrTgts.getNode(obj.shortstring, 1);
-        
-        obj.Range           = obj.RdrProp.getNode("range-nm");
-        obj.Bearing         = obj.RdrProp.getNode("bearing-deg");
-        obj.Elevation       = obj.RdrProp.getNode("elevation-deg");
-        obj.MyCallsign      = 0;
-        obj.BBearing        = 0; #obj.TgtsFiles.getNode("bearing-deg", 1);
-        obj.BHeading        = 0; #obj.TgtsFiles.getNode("true-heading-deg", 1);
-        obj.RangeScore      = 0; #obj.TgtsFiles.getNode("range-score", 1);
-        obj.RelBearing      = 0; #obj.TgtsFiles.getNode("ddd-relative-bearing", 1);
-        obj.Carrier         = 0; #obj.TgtsFiles.getNode("carrier", 1);
-        obj.EcmSignal       = 0; #obj.TgtsFiles.getNode("ecm-signal", 1);
-        obj.EcmSignalNorm   = 0; #obj.TgtsFiles.getNode("ecm-signal-norm", 1);
-        obj.EcmTypeNum      = 0; #obj.TgtsFiles.getNode("ecm_type_num", 1);
-        obj.Display         = 0; #obj.TgtsFiles.getNode("display", 1);
-        obj.Fading          = 0; #obj.TgtsFiles.getNode("ddd-echo-fading", 1);
-        obj.DddDrawRangeNm  = 0; #obj.TgtsFiles.getNode("ddd-draw-range-nm", 1);
-        obj.TidDrawRangeNm  = 0; #obj.TgtsFiles.getNode("tid-draw-range-nm", 1);
-        obj.RoundedAlt      = 0; #obj.TgtsFiles.getNode("rounded-alt-ft", 1);
-        obj.TimeLast        = 0; #obj.TgtsFiles.getNode("closure-last-time", 1);
-        obj.RangeLast       = 0; #obj.TgtsFiles.getNode("closure-last-range-nm", 1);
-        obj.ClosureRate     = 0; #obj.TgtsFiles.getNode("closure-rate-kts", 1);
-        
-        #obj.TimeLast.setValue(ElapsedSec.getValue());
-        
-        obj.RadarStandby    = c.getNode("sim/multiplay/generic/int[2]");
-        
-        obj.deviation       = nil;
-
-        obj.type = missile.AIR;
-
-        if (obj.get_Callsign() == "GROUND_TARGET") {
-            obj.type = missile.SURFACE;
-        }
-        
-        return obj;
-    },
-
-    create_tree: func(MyAircraftCoord,MyAircraftHeading = nil) {
-        me.TgtsFiles      = me.InstrTgts.getNode(me.shortstring, 1);
-        
-        me.MyCallsign     = me.TgtsFiles.getNode("callsign", 1);
-        me.BBearing       = me.TgtsFiles.getNode("bearing-deg", 1);
-        me.BHeading       = me.TgtsFiles.getNode("true-heading-deg", 1);
-        me.RangeScore     = me.TgtsFiles.getNode("range-score", 1);
-        me.RelBearing     = me.TgtsFiles.getNode("ddd-relative-bearing", 1);
-        me.Carrier        = me.TgtsFiles.getNode("carrier", 1);
-        me.EcmSignal      = me.TgtsFiles.getNode("ecm-signal", 1);
-        me.EcmSignalNorm  = me.TgtsFiles.getNode("ecm-signal-norm", 1);
-        me.EcmTypeNum     = me.TgtsFiles.getNode("ecm_type_num", 1);
-        me.Display        = me.TgtsFiles.getNode("display", 1);
-        me.Fading         = me.TgtsFiles.getNode("ddd-echo-fading", 1);
-        me.DddDrawRangeNm = me.TgtsFiles.getNode("ddd-draw-range-nm", 1);
-        me.TidDrawRangeNm = me.TgtsFiles.getNode("tid-draw-range-nm", 1);
-        me.RoundedAlt     = me.TgtsFiles.getNode("rounded-alt-ft", 1);
-        me.TimeLast       = me.TgtsFiles.getNode("closure-last-time", 1);
-        me.RangeLast      = me.TgtsFiles.getNode("closure-last-range-nm", 1);
-        me.ClosureRate    = me.TgtsFiles.getNode("closure-rate-kts", 1);
-        
-        me.TimeLast.setDoubleValue(ElapsedSec.getValue());
-        me.RangeLast.setValue(me.get_range_from_Coord(MyAircraftCoord));
-        me.Carrier.setBoolValue(0);
-        
-        #Create essential tree
-        var altTree =me.TgtsFiles.getNode("position/altitude-ft",1);
-        var latTree =me.TgtsFiles.getNode("position/latitude-deg",1);
-        var lonTree =me.TgtsFiles.getNode("position/longitude-deg",1);
-        me.validTree =me.TgtsFiles.getNode("valid",1);
-        var radarBearing =me.TgtsFiles.getNode("radar/bearing-deg",1);
-        var radarRange =me.TgtsFiles.getNode("radar/range-nm",1);
-        var elevation =me.TgtsFiles.getNode("radar/elevation-deg",1);
-        var deviation =me.TgtsFiles.getNode("radar/deviation-deg",1);
-        var velocities =me.TgtsFiles.getNode("velocities/true-airspeed-kt",1);
-        var transpondeur =me.TgtsFiles.getNode("instrumentation/transponder/transmitted-id",1);
-        var heading =me.TgtsFiles.getNode("orientation/true-heading-deg",1);
-        var myDeviation = me.get_deviation(MyAircraftHeading,MyAircraftCoord);
-
-        altTree.setValue(me.Alt.getValue());
-        latTree.setValue(me.lat.getValue());
-        lonTree.setValue(me.lon.getValue());
-        me.validTree.setValue(me.Valid.getValue());
-        radarBearing.setValue(me.Bearing.getValue());
-        radarRange.setValue(me.Range.getValue());
-        elevation.setValue(me.Elevation.getValue());
-        deviation.setValue(myDeviation);
-        velocities.setValue(me.Speed.getValue());
-        if(me.TransponderID != nil)
-        {
-            if(me.TransponderID.getValue() != nil)
-            {
-                transpondeur.setValue(me.TransponderID.getValue());
-            }
-        }
-        heading.setValue(me.Heading.getValue());
-    },
-
-    set_all: func(myAircraftCoord){
-        me.RdrProp.getNode("in-range",1).setBoolValue(1);
-        me.MyCallsign.setValue(me.get_Callsign());
-        me.BHeading.setValue(me.Heading.getValue());
-        me.BBearing.setValue(me.get_bearing_from_Coord(myAircraftCoord));
-    },
-
-    remove: func(){
-        #me.validTree = 0;
-        if(me.validTree != 0){me.validTree.setValue(0);}
-        me.InstrTgts.removeChild(me.type, me.index);
-    },
-
-    set_nill: func(){
-        # Suppression of the HUD display :
-        # The property is initialised when the target is in range of "instrumentation/radar/range"
-        # But nothing is done when "It's no more in range"
-        # So this is a little hack for HUD.
-        if(me.validTree != 0){me.validTree.setValue(0);}
-        #me.RdrProp.getNode("in-range").setValue("false");
-        
-        var Tempo_TgtsFiles = me.InstrTgts.getNode(me.shortstring, 1);
-        var Property_list   = Tempo_TgtsFiles.getChildren();
-        foreach(var myProperty ; Property_list)
-        {
-            #print(myProperty.getName());
-            if(myProperty.getName() != "closure-last-time")
-            {
-                myProperty.setValue("");
-            }
-        }
-    },
-
-    get_Validity: func(){
-        var n = 0;
-        if(getprop(me.InstrString ~ "/" ~ me.shortstring ~ "/closure-last-time") != nil)
-        {
-            n = 1;
-        }
-        return n;
-    },
-
-    get_TimeLast: func(){
-        var n = 0;
-        if(getprop(me.InstrString ~ "/" ~ me.shortstring ~ "/closure-last-time") != nil )
-        {
-            #print(me.InstrString ~ "/" ~ me.shortstring ~ "/closure-last-time");
-            #print(getprop(me.InstrString ~ "/" ~ me.shortstring ~ "/closure-last-time"));
-            n = getprop(me.InstrString ~ "/" ~ me.shortstring ~ "/closure-last-time");
-        }
-        return n;
-    },
-
-    get_Coord: func(){
-        TgTCoord  = geo.Coord.new();
-        TgTCoord.set_latlon(me.lat.getValue(), me.lon.getValue(), me.Alt.getValue() * FT2M);
-        me.set_latlon(me.lat.getValue(), me.lon.getValue(), me.Alt.getValue() * FT2M);
-        return TgTCoord;
-    },
-
-    get_Callsign: func(){
-        var n = me.Callsign.getValue();
-        if(size(n) < 1)
-        {
-            n = me.name.getValue();
-        }
-        if(n == nil or size(n) < 1)
-        {
-            n = "UFO";
-        }
-        return n;
-    },
-
-    get_Speed: func(){
-        var n = me.Speed.getValue();
-        #var alt = me.Alt.getValue();
-        #n = n / (0.632 ^ (-(alt / 25066))); # Calcul of Air Speed based on ground speed. the function ^ doesn't work !!
-        return n;
-    },
-
-    get_Longitude: func(){
-        var n = me.lon.getValue();
-        return n;
-    },
-
-    get_Latitude: func(){
-        var n = me.lat.getValue();
-        return n;
-    },
-
-    get_Pitch: func(){
-        var n = me.pitch.getValue();
-        return n;
-    },
-
-    get_heading : func(){
-        var n = me.Heading.getValue();
-        if(n == nil)
-        {
-            n = 0;
-        }
-        return n;
-    },
-
-    get_bearing: func(){
-        var n = 0;
-        n = me.Bearing.getValue();
-        if(n == nil)
-        {
-            n = 0;
-        }
-        return n;
-    },
-
-    get_bearing_from_Coord: func(MyAircraftCoord){
-        var myCoord = me.get_Coord();
-        var myBearing = 0;
-        if(myCoord.is_defined())
-        {
-            myBearing = MyAircraftCoord.course_to(myCoord);
-        }
-        #print("get_bearing_from_Coord :" ~ myBearing);
-        return myBearing;
-    },
-
-    set_relative_bearing: func(n){
-        if(n == nil)
-        {
-            n = 0;
-        }
-        me.RelBearing.setValue(n);
-    },
-
-    get_reciprocal_bearing: func(){
-        return geo.normdeg(me.get_bearing() + 180);
-    },
-
-    get_deviation: func(true_heading_ref, coord){
-        me.deviation =  - deviation_normdeg(true_heading_ref, me.get_bearing_from_Coord(coord));
-        #print(me.deviation);
-        return me.deviation;
-    },
-
-    get_altitude: func(){
-        #Return Alt in feet
-        return me.Alt.getValue();
-    },
-
-    get_Elevation_from_Coord: func(MyAircraftCoord){
-        var myCoord = me.get_Coord();
-        var myPitch = math.asin((myCoord.alt() - MyAircraftCoord.alt()) / myCoord.direct_distance_to(MyAircraftCoord)) * R2D;
-        return myPitch;
-    },
-
-    get_total_elevation_from_Coord: func(own_pitch, MyAircraftCoord){
-        var myTotalElevation =  - deviation_normdeg(own_pitch, me.get_Elevation_from_Coord(MyAircraftCoord));
-        return myTotalElevation;
-    },
-    
-    get_total_elevation: func(own_pitch){
-        me.myTotalElevation =  - deviation_normdeg(own_pitch, me.Elevation.getValue());
-        return me.myTotalElevation;
-    },
-
-    get_range: func(){
-        #print("me.Range.getValue() :" ~ me.Range.getValue());
-        return me.Range.getValue();
-    },
-
-    get_range_from_Coord: func(MyAircraftCoord){
-        var myCoord = me.get_Coord();
-        var myDistance = 0;
-        if(myCoord.is_defined())
-        {
-            myDistance = MyAircraftCoord.direct_distance_to(myCoord) * M2NM;
-        }
-        #print("get_range_from_Coord :" ~ myDistance);
-        return myDistance;
-    },
-
-    get_horizon: func(own_alt){
-    # Own alt in meters
-        var tgt_alt = me.get_altitude();#It's in feet
-        if(debug.isnan(tgt_alt))
-        {
-            return(0);
-        }
-        if(tgt_alt < 0 or tgt_alt == nil)
-        {
-            tgt_alt = 0;
-        }
-        if(own_alt < 0 or own_alt == nil)
-        {
-            own_alt = 0;
-        }
-        # Return the Horizon in NM
-        return(2.2 * ( math.sqrt(own_alt) + math.sqrt(tgt_alt * FT2M)));
-    },
-
-    get_engineTree: func(){
-        return me.engineTree;
-    },
-
-    check_carrier_type: func(){
-        var type = "none";
-        var carrier = 0;
-        if(me.AcType != nil)
-        {
-            type = me.AcType.getValue();
-        }
-        if(type == "MP-Nimitz"
-            or type == "MP-Eisenhower"
-            or type == "MP-Vinson"
-            or type == "Nimitz"
-            or type == "Eisenhower"
-            or type == "Vinson"
-        )
-        {
-            carrier = 1;
-        }
-        if(me.type == "carrier")
-        {
-            carrier = 1;
-        }
-        # This works only after the mp-carrier model has been loaded. Before that it is seen like a common aircraft.
-        if(me.get_Validity())
-        {
-            setprop(me.InstrString ~ "/" ~ me.shortstring ~ "/carrier", carrier);
-        }
-        return carrier;
-    },
-
-    get_rdr_standby: func(){
-        var s = 0;
-        if(me.RadarStandby != nil)
-        {
-            s = me.RadarStandby.getValue();
-            if(s == nil)
-            {
-                s = 0;
-            }
-            elsif(s != 1)
-            {
-                s = 0;
-            }
-        }
-        return s;
-    },
-
-    get_display: func(){
-        return me.Display.getValue();
-    },
-
-    set_display: func(n){
-        me.Display.setBoolValue(n);
-    },
-
-    get_fading: func(){
-        var fading = me.Fading.getValue();
-        if(fading == nil)
-        {
-            fading = 0;
-        }
-        return fading;
-    },
-
-    set_fading: func(n){
-        me.Fading.setValue(n);
-    },
-
-    set_ddd_draw_range_nm: func(n){
-        me.DddDrawRangeNm.setValue(n);
-    },
-
-    set_hud_draw_horiz_dev: func(n){
-        me.HudDrawHorizDev.setValue(n);
-    },
-
-    set_tid_draw_range_nm: func(n){
-        me.TidDrawRangeNm.setValue(n);
-    },
-
-    set_rounded_alt: func(n){
-        me.RoundedAlt.setValue(n);
-    },
-
-    get_closure_rate: func(){
-        var dt = ElapsedSec.getValue() - me.TimeLast.getValue();
-        var rng = me.Range.getValue();
-        var lrng = me.RangeLast.getValue();
-        if(debug.isnan(rng) or debug.isnan(lrng))
-        {
-            print("####### get_closure_rate(): rng or lrng = nan ########");
-            me.ClosureRate.setValue(0);
-            me.RangeLast.setValue(0);
-            return(0);
-        }
-        var t_distance = lrng - rng;
-        var cr = (dt > 0) ? t_distance / dt * 3600 : 0;
-        me.ClosureRate.setValue(cr);
-        me.RangeLast.setValue(rng);
-        return(cr);
-    },
-
-    get_closure_rate_from_Coord: func(MyAircraftCoord) {
-        # First step : find the target heading.
-        var myHeading = me.Heading.getValue();
-        
-        # Second What would be the aircraft heading to go to us
-        var myCoord = me.get_Coord();
-        var projectionHeading = myCoord.course_to(MyAircraftCoord);
-        
-        # Calculate the angle difference
-        var myAngle = myHeading - projectionHeading; #Should work even with negative values
-        
-        # take the "ground speed"
-        # velocities/true-air-speed-kt
-        var mySpeed = me.Speed.getValue();
-        var myProjetedHorizontalSpeed = mySpeed*math.cos(myAngle*D2R); #in KTS
-        
-        #print("Projetted Horizontal Speed:"~ myProjetedHorizontalSpeed);
-        
-        # Now getting the pitch deviation
-        var myPitchToAircraft = - me.Elevation.getValue();
-        #print("My pitch to Aircraft:"~myPitchToAircraft);
-        
-        # Get V speed
-        if(me.VSpeed.getValue() == nil)
-        {
-            return 0;
-        }
-        var myVspeed = me.VSpeed.getValue()*FPS2KT;
-        # This speed is absolutely vertical. So need to remove pi/2
-        
-        var myProjetedVerticalSpeed = myVspeed * math.cos(myPitchToAircraft-90*D2R);
-        
-        # Control Print
-        #print("myVspeed = " ~myVspeed);
-        #print("Total Closure Rate:" ~ (myProjetedHorizontalSpeed+myProjetedVerticalSpeed));
-        
-        # Total Calculation
-        var cr = myProjetedHorizontalSpeed+myProjetedVerticalSpeed;
-        
-        # Setting Essential properties
-        var rng = me. get_range_from_Coord(MyAircraftCoord);
-        var newTime= ElapsedSec.getValue();
-        if(me.get_Validity())
-        {
-            setprop(me.InstrString ~ "/" ~ me.shortstring ~ "/closure-last-range-nm", rng);
-            setprop(me.InstrString ~ "/" ~ me.shortstring ~ "/closure-rate-kts", cr);
-        }
-        
-        return cr;
-    },
-
-    get_shortring:func(){
-        return me.shortstring;
-    },
-
-    get_type: func(){
-        return me.type;
-    },
-
-    setType: func(typ) {
-        me.type = typ;
-    },
-
-    getUnique: func () {
-        return rand();
-    },
-
-    isValid: func() {
-        return me.Valid.getValue();
-        #return me.validTree.getValue();
-    },
-
-    getElevation: func () {
-        return me.get_Elevation_from_Coord(geo.aircraft_position());
-    },
-
-    getFlareNode: func(){
-        return me.flareNode;
-    },
-
-    isPainted: func() {
-        return 1;            # Shinobi this is if laser/lock is still on it. Used for laser and semi-radar guided missiles/bombs.
-    },
-
-    list : [],
 };
 
 # Utilities.
@@ -1572,5 +1462,4 @@ var rounding1000 = func(n){
     n = (n >= l) ? ((a + 1) * 1000) : (a * 1000);
     return(n);
 }
-
 
